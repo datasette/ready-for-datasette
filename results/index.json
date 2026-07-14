@@ -1,7 +1,414 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T01:59:21Z",
+  "generated_at": "2026-07-14T02:31:35Z",
   "results": [
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-accounts",
+        "version": "0.0.1a2",
+        "repository": null,
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/3d/c0/6e44912b2773f9463d121864ee4c41dcdd8ffe19da8ec50c6c25bd35ab1f/datasette_accounts-0.0.1a2.tar.gz",
+          "sha256": "edcb846c29d5a11ab2516ccd369afb66c37eb386b9394bffd802be78b521cc16"
+        },
+        "test_suite": {
+          "type": "pypi_sdist",
+          "repository": null,
+          "ref": null,
+          "git_sha": null
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023124Z-gh-29301262360-a1",
+        "started_at": "2026-07-14T02:31:24Z",
+        "completed_at": "2026-07-14T02:31:31Z",
+        "duration_seconds": 7.39,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-accounts[test] @ file:///tmp/datasette-accounts-0xyo61ca/datasette_accounts-0.0.1a2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-accounts/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 216,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 175
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_cli_bootstrap.py",
+        "tests/test_cli_confirm.py",
+        "tests/test_cli_create.py",
+        "tests/test_cli_expire.py",
+        "tests/test_cli_inspect.py",
+        "tests/test_cli_invite.py",
+        "tests/test_cli_lifecycle.py",
+        "tests/test_cli_registration.py"
+      ],
+      "test_inventory": {
+        "pypi_sdist": 15,
+        "release_tag": 0
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-accounts/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-acl",
+        "version": "0.6a1",
+        "repository": "datasette/datasette-acl",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/fc/84/208e362e0e68b870a6f6b7bd366d5e481748a4c306ae9b4f3fdb4a22b48e/datasette_acl-0.6a1.tar.gz",
+          "sha256": "21bd58e1aa663f48cf5a6def80dbd4125631cac91316b7a2e082e47136a5cf28"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-acl",
+          "ref": "0.6a1",
+          "git_sha": "b586db5bef9fa18efebd47bfc13a90980dd2f395"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": null
+      },
+      "run": {
+        "id": "20260714T023127Z-gh-29301262360-a1",
+        "started_at": "2026-07-14T02:31:27Z",
+        "completed_at": "2026-07-14T02:31:33Z",
+        "duration_seconds": 6.59,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 4,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-acl[test] @ file:///tmp/datasette-acl-znm56cbd/datasette_acl-0.6a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-acl/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "install_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_inventory": {
+        "pypi_sdist": 10,
+        "release_tag": 12
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-acl/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/pytest.txt"
+      },
+      "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-acl-share",
+        "version": "0.0.1a7",
+        "repository": "datasette/datasette-acl-share",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/c9/b0/ba9eed77a9eb5c92021fd85b381245be4b611f152c2e055951fe0ffb3ad2/datasette_acl_share-0.0.1a7.tar.gz",
+          "sha256": "75e177a33a9f22ed52bc4ff4003fe53903ac23d89cbb6ede2f871ca0ac858315"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-acl-share",
+          "ref": "0.0.1a7",
+          "git_sha": "38d82a1282244b158bc6e15fa77479416f53b105"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023128Z-gh-29301262360-a1",
+        "started_at": "2026-07-14T02:31:28Z",
+        "completed_at": "2026-07-14T02:31:35Z",
+        "duration_seconds": 7.028,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-acl-share[test] @ file:///tmp/datasette-acl-share-8d36xsdy/datasette_acl_share-0.0.1a7.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-acl-share/datasette-1.0a36/runs/20260714T023128Z-gh-29301262360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 7,
+        "passed": 5,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 4
+      },
+      "failing_tests": [
+        "tests/test_share.py::test_capabilities_endpoint",
+        "tests/test_share.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 8
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-acl-share/datasette-1.0a36/runs/20260714T023128Z-gh-29301262360-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-agent",
+        "version": "0.3a0",
+        "repository": "datasette/datasette-agent",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/c5/63/9b32d25eadadf661f0f427e616609ac21aaaf33b0bc9afce4a17ec99f0df/datasette_agent-0.3a0.tar.gz",
+          "sha256": "ac1ff02e15fcfb0c890a941db3a07a5aebd7046ce7e0287cdc91e7f0d9f5dd4e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent",
+          "ref": "0.3a0",
+          "git_sha": "476f0e0ecff011efe292d034b5934c45331f73a9"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023124Z-gh-29301262360-a1",
+        "started_at": "2026-07-14T02:31:24Z",
+        "completed_at": "2026-07-14T02:31:30Z",
+        "duration_seconds": 6.463,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent[test] @ file:///tmp/datasette-agent-guvneoyl/datasette_agent-0.3a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 196,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 164
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_export_markdown.py"
+      ],
+      "test_inventory": {
+        "pypi_sdist": 9,
+        "release_tag": 9
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-agent-charts",
+        "version": "0.1a2",
+        "repository": "datasette/datasette-agent-charts",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/cd/68/35aaf4bf570e57569b712e6bc2e7370c3f4e54a773c46fa767982c59d68b/datasette_agent_charts-0.1a2.tar.gz",
+          "sha256": "ed130eafddab2d6ff54cbfa20e2088e44b4ce4c77c7562b30d99980dff63065a"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent-charts",
+          "ref": "0.1a2",
+          "git_sha": "0c3baa8953504908c552871cbd80a5d411c37db4"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023127Z-gh-29301262360-a1",
+        "started_at": "2026-07-14T02:31:27Z",
+        "completed_at": "2026-07-14T02:31:34Z",
+        "duration_seconds": 7.27,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent-charts[test] @ file:///tmp/datasette-agent-charts-y_9k4yls/datasette_agent_charts-0.1a2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-charts/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_agent_charts.py"
+      ],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent-charts/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/pytest.txt"
+      }
+    },
     {
       "schema_version": 1,
       "package": {

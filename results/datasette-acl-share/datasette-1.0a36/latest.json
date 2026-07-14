@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-acl-share",
+    "version": "0.0.1a7",
+    "repository": "datasette/datasette-acl-share",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/c9/b0/ba9eed77a9eb5c92021fd85b381245be4b611f152c2e055951fe0ffb3ad2/datasette_acl_share-0.0.1a7.tar.gz",
+      "sha256": "75e177a33a9f22ed52bc4ff4003fe53903ac23d89cbb6ede2f871ca0ac858315"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-acl-share",
+      "ref": "0.0.1a7",
+      "git_sha": "38d82a1282244b158bc6e15fa77479416f53b105"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023128Z-gh-29301262360-a1",
+    "started_at": "2026-07-14T02:31:28Z",
+    "completed_at": "2026-07-14T02:31:35Z",
+    "duration_seconds": 7.028,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-acl-share[test] @ file:///tmp/datasette-acl-share-8d36xsdy/datasette_acl_share-0.0.1a7.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-acl-share/datasette-1.0a36/runs/20260714T023128Z-gh-29301262360-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 7,
+    "passed": 5,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 4
+  },
+  "failing_tests": [
+    "tests/test_share.py::test_capabilities_endpoint",
+    "tests/test_share.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 8
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-acl-share/datasette-1.0a36/runs/20260714T023128Z-gh-29301262360-a1/pytest.txt"
+  }
+}

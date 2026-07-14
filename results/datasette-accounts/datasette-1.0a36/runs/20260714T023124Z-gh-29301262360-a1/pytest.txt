@@ -1,0 +1,931 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-accounts @ file:///tmp/datasette-accounts-0xyo61ca/datasette_accounts-0.0.1a2.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-accounts @ file:///tmp/datasette-accounts-0xyo61ca/datasette_accounts-0.0.1a2.tar.gz
+Installed 51 packages in 92ms
+warning: The package `datasette-accounts @ file:///tmp/datasette-accounts-0xyo61ca/datasette_accounts-0.0.1a2.tar.gz` does not have an extra named `test`
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpeFgosi/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2
+configfile: pyproject.toml
+plugins: datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 216 items / 8 errors
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_cli_bootstrap.py _________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_bootstrap.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_bootstrap.py:5: in <module>
+    from cli_util import make_admin, query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+__________________ ERROR collecting tests/test_cli_confirm.py __________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_confirm.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_confirm.py:3: in <module>
+    from cli_util import make_admin, query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+__________________ ERROR collecting tests/test_cli_create.py ___________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_create.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_create.py:5: in <module>
+    from cli_util import query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+__________________ ERROR collecting tests/test_cli_expire.py ___________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_expire.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_expire.py:9: in <module>
+    from cli_util import make_admin, query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+__________________ ERROR collecting tests/test_cli_inspect.py __________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_inspect.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_inspect.py:5: in <module>
+    from cli_util import make_admin, run
+E   ModuleNotFoundError: No module named 'cli_util'
+__________________ ERROR collecting tests/test_cli_invite.py ___________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_invite.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_invite.py:8: in <module>
+    from cli_util import query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+_________________ ERROR collecting tests/test_cli_lifecycle.py _________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_lifecycle.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_lifecycle.py:5: in <module>
+    from cli_util import make_admin, query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+_______________ ERROR collecting tests/test_cli_registration.py ________________
+ImportError while importing test module '/tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_cli_registration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_cli_registration.py:10: in <module>
+    from cli_util import make_admin, query, run
+E   ModuleNotFoundError: No module named 'cli_util'
+=============================== warnings summary ===============================
+../../../../home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_default_fixture_loop_scope
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+../../../../home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/cD5jHxm7BgO7g9pT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_accounts.py:78
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:78: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:105
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:105: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:118
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:118: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:144
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:144: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:154
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:154: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:183
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:183: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:224
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:224: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:242
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:242: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:251
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:251: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:277
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:277: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:290
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:290: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:308
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:308: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:330
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:330: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:343
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:343: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:361
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:361: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:378
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:378: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:392
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:392: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:412
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:412: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:427
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:427: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:454
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:454: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:475
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:475: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:497
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:497: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:518
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:518: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:548
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:548: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:567
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:567: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:592
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:592: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:609
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:609: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:636
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:636: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:659
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:659: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:673
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:673: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:689
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:689: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:713
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:713: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:730
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:730: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:753
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:753: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:771
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:771: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:807
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:807: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:823
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:823: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:841
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:841: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:857
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:857: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:876
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:876: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:890
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:890: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:919
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:919: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:952
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:952: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:961
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:961: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1004
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1004: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1013
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1013: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1037
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1037: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1049
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1049: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1073
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1073: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1122
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1122: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1131
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1131: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1167
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1167: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1211
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1211: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1226
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1226: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1242
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1242: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1260
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1260: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1281
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1281: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1293
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1293: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1300
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1300: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1318
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1318: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1338
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1338: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1383
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1383: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1404
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1404: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1421
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1421: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1448
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1448: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_accounts.py:1468
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_accounts.py:1468: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:39
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:39: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:67
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:67: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:97
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:97: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:111
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:111: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:133
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:133: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:167
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:167: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:204
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:204: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:222
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:222: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:250
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:250: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:276
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:276: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:309
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:309: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:340
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:340: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:396
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:396: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:427
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:427: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:505
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:505: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:523
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:523: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:545
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:545: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:556
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:556: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_db.py:575
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_db.py:575: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:92
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:92: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:125
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:125: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:142
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:142: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:157
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:157: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:172
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:172: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:193
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:193: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:210
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:210: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:236
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:236: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:254
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:254: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:287
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:287: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:314
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:314: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:352
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:352: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:383
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:383: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:421
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:421: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:476
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:476: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:528
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:528: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:558
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:558: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:577
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:577: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:616
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:616: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:639
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:639: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:671
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:671: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_invite_links.py:710
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_invite_links.py:710: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:52
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:52: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:60
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:60: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:68
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:68: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:77
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:77: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:84
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:84: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:98
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:98: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:113
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:113: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:121
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:121: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:137
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:137: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:151
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:151: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:185
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:185: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:199
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:199: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:212
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:212: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_messages.py:221
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_messages.py:221: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:83
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:83: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:99
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:99: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:119
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:137
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:137: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:152
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:152: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:185
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:185: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:203
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:203: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:220
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:220: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:239
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:239: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:262
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:262: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:287
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:287: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:296
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:296: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:303
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:303: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:310
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:310: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:322
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:322: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:338
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:338: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:359
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:359: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:374
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:374: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:416
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:416: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:430
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:430: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:445
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:445: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:461
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:461: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_permissions.py:476
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_permissions.py:476: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:74
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:74: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:101
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:101: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:115
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:115: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:131
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:131: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:178
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:178: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:189
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:189: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:228
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:228: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:246
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:246: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:265
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:265: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:289
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:289: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:337
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:337: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:370
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:370: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:389
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:389: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:412
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:412: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:452
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:452: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:491
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:491: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:520
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:520: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:540
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:540: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:553
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:553: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:569
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:569: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:590
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:590: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:604
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:604: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:637
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:637: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:658
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:658: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:707
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:707: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:738
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:738: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:757
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:757: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:774
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:774: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_self_registration.py:791
+  /tmp/datasette-accounts-0xyo61ca/unpacked/datasette_accounts-0.0.1a2/tests/test_self_registration.py:791: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-accounts/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_cli_bootstrap.py
+ERROR tests/test_cli_confirm.py
+ERROR tests/test_cli_create.py
+ERROR tests/test_cli_expire.py
+ERROR tests/test_cli_inspect.py
+ERROR tests/test_cli_invite.py
+ERROR tests/test_cli_lifecycle.py
+ERROR tests/test_cli_registration.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 8 errors during collection !!!!!!!!!!!!!!!!!!!!
+======================= 175 warnings, 8 errors in 0.76s ========================

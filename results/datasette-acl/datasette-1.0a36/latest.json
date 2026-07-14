@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-acl",
+    "version": "0.6a1",
+    "repository": "datasette/datasette-acl",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/fc/84/208e362e0e68b870a6f6b7bd366d5e481748a4c306ae9b4f3fdb4a22b48e/datasette_acl-0.6a1.tar.gz",
+      "sha256": "21bd58e1aa663f48cf5a6def80dbd4125631cac91316b7a2e082e47136a5cf28"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-acl",
+      "ref": "0.6a1",
+      "git_sha": "b586db5bef9fa18efebd47bfc13a90980dd2f395"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260714T023127Z-gh-29301262360-a1",
+    "started_at": "2026-07-14T02:31:27Z",
+    "completed_at": "2026-07-14T02:31:33Z",
+    "duration_seconds": 6.59,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 4,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-acl[test] @ file:///tmp/datasette-acl-znm56cbd/datasette_acl-0.6a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-acl/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 10,
+    "release_tag": 12
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-acl/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

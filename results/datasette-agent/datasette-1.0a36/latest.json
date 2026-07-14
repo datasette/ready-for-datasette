@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-agent",
+    "version": "0.3a0",
+    "repository": "datasette/datasette-agent",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/c5/63/9b32d25eadadf661f0f427e616609ac21aaaf33b0bc9afce4a17ec99f0df/datasette_agent-0.3a0.tar.gz",
+      "sha256": "ac1ff02e15fcfb0c890a941db3a07a5aebd7046ce7e0287cdc91e7f0d9f5dd4e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent",
+      "ref": "0.3a0",
+      "git_sha": "476f0e0ecff011efe292d034b5934c45331f73a9"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023124Z-gh-29301262360-a1",
+    "started_at": "2026-07-14T02:31:24Z",
+    "completed_at": "2026-07-14T02:31:30Z",
+    "duration_seconds": 6.463,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-agent[test] @ file:///tmp/datasette-agent-guvneoyl/datasette_agent-0.3a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 196,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 164
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_export_markdown.py"
+  ],
+  "test_inventory": {
+    "pypi_sdist": 9,
+    "release_tag": 9
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/pytest.txt"
+  }
+}

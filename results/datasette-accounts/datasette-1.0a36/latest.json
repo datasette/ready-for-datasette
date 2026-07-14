@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-accounts",
+    "version": "0.0.1a2",
+    "repository": null,
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/3d/c0/6e44912b2773f9463d121864ee4c41dcdd8ffe19da8ec50c6c25bd35ab1f/datasette_accounts-0.0.1a2.tar.gz",
+      "sha256": "edcb846c29d5a11ab2516ccd369afb66c37eb386b9394bffd802be78b521cc16"
+    },
+    "test_suite": {
+      "type": "pypi_sdist",
+      "repository": null,
+      "ref": null,
+      "git_sha": null
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023124Z-gh-29301262360-a1",
+    "started_at": "2026-07-14T02:31:24Z",
+    "completed_at": "2026-07-14T02:31:31Z",
+    "duration_seconds": 7.39,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-accounts[test] @ file:///tmp/datasette-accounts-0xyo61ca/datasette_accounts-0.0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-accounts/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 216,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 175
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_cli_bootstrap.py",
+    "tests/test_cli_confirm.py",
+    "tests/test_cli_create.py",
+    "tests/test_cli_expire.py",
+    "tests/test_cli_inspect.py",
+    "tests/test_cli_invite.py",
+    "tests/test_cli_lifecycle.py",
+    "tests/test_cli_registration.py"
+  ],
+  "test_inventory": {
+    "pypi_sdist": 15,
+    "release_tag": 0
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-accounts/datasette-1.0a36/runs/20260714T023124Z-gh-29301262360-a1/pytest.txt"
+  }
+}

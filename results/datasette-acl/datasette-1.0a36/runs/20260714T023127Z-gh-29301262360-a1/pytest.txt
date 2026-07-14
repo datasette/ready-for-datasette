@@ -1,0 +1,16 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-acl @ file:///tmp/datasette-acl-znm56cbd/datasette_acl-0.6a1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-acl @ file:///tmp/datasette-acl-znm56cbd/datasette_acl-0.6a1.tar.gz
+Installed 40 packages in 41ms
+warning: The package `datasette-acl @ file:///tmp/datasette-acl-znm56cbd/datasette_acl-0.6a1.tar.gz` does not have an extra named `test`
+ImportError while loading conftest '/tmp/datasette-acl-znm56cbd/tagged-source/tests/conftest.py'.
+tests/conftest.py:3: in <module>
+    import pytest_asyncio
+E   ModuleNotFoundError: No module named 'pytest_asyncio'
