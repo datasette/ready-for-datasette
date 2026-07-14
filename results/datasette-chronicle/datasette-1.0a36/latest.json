@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-chronicle",
+    "version": "0.3",
+    "repository": "datasette/datasette-chronicle",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ff/12/3147db81397233101a33eb05d4e3b9edcf379be3e32fe23d40ac3f7192b4/datasette_chronicle-0.3.tar.gz",
+      "sha256": "faea74ec494fd6cf5b3db770525954b4b5f09fd1359318ff40e7a1f501ced04e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-chronicle",
+      "ref": "0.3",
+      "git_sha": "f78b761db8dd95aae1d4d9320e703bbc9cbc0c9b"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T141549Z-gh-29340026322-a1",
+    "started_at": "2026-07-14T14:15:49Z",
+    "completed_at": "2026-07-14T14:16:00Z",
+    "duration_seconds": 11.224,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-chronicle[test] @ file:///tmp/datasette-chronicle-suvn6ry0/datasette_chronicle-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "sqlite-utils",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-chronicle/datasette-1.0a36/runs/20260714T141549Z-gh-29340026322-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 4,
+    "passed": 3,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_chronicle.py::test_enable_disable_chronicle[root]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "sqlite-utils"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-chronicle/datasette-1.0a36/runs/20260714T141549Z-gh-29340026322-a1/pytest.txt"
+  }
+}

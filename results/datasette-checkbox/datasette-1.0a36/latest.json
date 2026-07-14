@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-checkbox",
+    "version": "0.1a4",
+    "repository": "datasette/datasette-checkbox",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/08/e3/4ed24dc09083328f42ada15bf0f663c8ce69c6c52e4647c379918fb90b5c/datasette_checkbox-0.1a4.tar.gz",
+      "sha256": "3b7db2b3d47a826be839bfc3aee7cab44669e404a70f47f601df104476272721"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-checkbox",
+      "ref": "0.1a4",
+      "git_sha": "6c20c317fb34da35405b7e01f668b62d9a42c6ec"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T141547Z-gh-29340026322-a1",
+    "started_at": "2026-07-14T14:15:47Z",
+    "completed_at": "2026-07-14T14:15:54Z",
+    "duration_seconds": 6.49,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-checkbox[test] @ file:///tmp/datasette-checkbox-2wv3r6im/datasette_checkbox-0.1a4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-checkbox/datasette-1.0a36/runs/20260714T141547Z-gh-29340026322-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-checkbox/datasette-1.0a36/runs/20260714T141547Z-gh-29340026322-a1/pytest.txt"
+  }
+}
