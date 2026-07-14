@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-edit-templates",
+    "version": "0.4.3",
+    "repository": "simonw/datasette-edit-templates",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/9e/8b/eb6de2d0dfb711e4374b6af88e2e371714c02ebc6b147a2f939a2f5447dc/datasette-edit-templates-0.4.3.tar.gz",
+      "sha256": "ad34eb90235e08b9883ce4262875d1d07d7564119e1fb9321ef595b9fd484157"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-edit-templates",
+      "ref": "0.4.3",
+      "git_sha": "53a00e046fe30c7d87b41ed13395f12cc2ddbb2b"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260714T232953Z-gh-29376290428-a1",
+    "started_at": "2026-07-14T23:29:53Z",
+    "completed_at": "2026-07-14T23:29:58Z",
+    "duration_seconds": 5.292,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 4,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-edit-templates @ file:///tmp/datasette-edit-templates-anda67o0/datasette-edit-templates-0.4.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-edit-templates/datasette-1.0a37/runs/20260714T232953Z-gh-29376290428-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-edit-templates/datasette-1.0a37/runs/20260714T232953Z-gh-29376290428-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

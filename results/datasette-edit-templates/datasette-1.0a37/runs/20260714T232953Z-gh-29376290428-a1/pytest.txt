@@ -1,0 +1,15 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-edit-templates @ file:///tmp/datasette-edit-templates-anda67o0/datasette-edit-templates-0.4.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-edit-templates @ file:///tmp/datasette-edit-templates-anda67o0/datasette-edit-templates-0.4.3.tar.gz
+Installed 39 packages in 29ms
+ImportError while loading conftest '/tmp/datasette-edit-templates-anda67o0/tagged-source/tests/conftest.py'.
+tests/conftest.py:2: in <module>
+    from datasette_test import wait_until_responds
+E   ModuleNotFoundError: No module named 'datasette_test'
