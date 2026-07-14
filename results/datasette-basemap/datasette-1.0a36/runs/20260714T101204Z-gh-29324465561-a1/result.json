@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-basemap",
+    "version": "0.2",
+    "repository": "simonw/datasette-basemap",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/90/19/f03e2051e3ea7302f038fa4ef29eaa3f924313c729bdb306b6c43f7df76d/datasette-basemap-0.2.tar.gz",
+      "sha256": "2a479d96b3caf92c30d4167bf69d9858fd09d219caa8c76d307da4d29172055f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-basemap",
+      "ref": "0.2",
+      "git_sha": "95a6ff36ff1e86616096f7757b6b28cca764ae04"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T101204Z-gh-29324465561-a1",
+    "started_at": "2026-07-14T10:12:04Z",
+    "completed_at": "2026-07-14T10:12:16Z",
+    "duration_seconds": 11.263,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-basemap @ file:///tmp/datasette-basemap-zyuhuo0b/datasette-basemap-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-basemap/datasette-1.0a36/runs/20260714T101204Z-gh-29324465561-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 0,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_basemap.py::test_database",
+    "tests/test_basemap.py::test_metadata"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-basemap/datasette-1.0a36/runs/20260714T101204Z-gh-29324465561-a1/pytest.txt"
+  }
+}

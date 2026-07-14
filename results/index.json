@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T07:22:04Z",
+  "generated_at": "2026-07-14T10:12:16Z",
   "results": [
     {
       "schema_version": 1,
@@ -2123,6 +2123,377 @@
         "pytest_output": "results/datasette-auth0/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/pytest.txt"
       },
       "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-backup",
+        "version": "0.1",
+        "repository": "simonw/datasette-backup",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/11/26/c2d817284cad97f600e9bff12abafb07dc0c35e02724f9a92eb496b3bf58/datasette-backup-0.1.tar.gz",
+          "sha256": "e9dde717e66b061769fb325475be30352d405c53cdcc44114c2664be876907bf"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-backup",
+          "ref": "0.1",
+          "git_sha": "b69eb953c480a0de189cb532aaf699d7cb831f47"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": null
+      },
+      "run": {
+        "id": "20260714T101202Z-gh-29324465561-a1",
+        "started_at": "2026-07-14T10:12:02Z",
+        "completed_at": "2026-07-14T10:12:09Z",
+        "duration_seconds": 6.417,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 3,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-backup @ file:///tmp/datasette-backup-yoz5uqi4/datasette-backup-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-backup/datasette-1.0a36/runs/20260714T101202Z-gh-29324465561-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "install_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-backup/datasette-1.0a36/runs/20260714T101202Z-gh-29324465561-a1/pytest.txt"
+      },
+      "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-basemap",
+        "version": "0.2",
+        "repository": "simonw/datasette-basemap",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/90/19/f03e2051e3ea7302f038fa4ef29eaa3f924313c729bdb306b6c43f7df76d/datasette-basemap-0.2.tar.gz",
+          "sha256": "2a479d96b3caf92c30d4167bf69d9858fd09d219caa8c76d307da4d29172055f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-basemap",
+          "ref": "0.2",
+          "git_sha": "95a6ff36ff1e86616096f7757b6b28cca764ae04"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T101204Z-gh-29324465561-a1",
+        "started_at": "2026-07-14T10:12:04Z",
+        "completed_at": "2026-07-14T10:12:16Z",
+        "duration_seconds": 11.263,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-basemap @ file:///tmp/datasette-basemap-zyuhuo0b/datasette-basemap-0.2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-basemap/datasette-1.0a36/runs/20260714T101204Z-gh-29324465561-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 2,
+        "passed": 0,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [
+        "tests/test_basemap.py::test_database",
+        "tests/test_basemap.py::test_metadata"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-basemap/datasette-1.0a36/runs/20260714T101204Z-gh-29324465561-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-block",
+        "version": "0.1.1",
+        "repository": "simonw/datasette-block",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/8b/36/b75da8cc429975d7a01d8e3262f18ddf974cea0f335cb5f890fb6e45151e/datasette-block-0.1.1.tar.gz",
+          "sha256": "d5334ade62c61b53b72143de9c6edfbf8ef9712bd6d5b318685e7e63cebdfa60"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-block",
+          "ref": "0.1.1",
+          "git_sha": "2c071fe71a6ad2fc4d4d397aa69aceda35eb3758"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T101202Z-gh-29324465561-a1",
+        "started_at": "2026-07-14T10:12:02Z",
+        "completed_at": "2026-07-14T10:12:08Z",
+        "duration_seconds": 5.959,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-block @ file:///tmp/datasette-block-21ebyjfg/datasette-block-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-block/datasette-1.0a36/runs/20260714T101202Z-gh-29324465561-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_block.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-block/datasette-1.0a36/runs/20260714T101202Z-gh-29324465561-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-block-robots",
+        "version": "1.1",
+        "repository": "simonw/datasette-block-robots",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/00/9b/983c94277d304381ee875500e8146e3d3c1456e01cd584c81e3bbcccf1c7/datasette-block-robots-1.1.tar.gz",
+          "sha256": "e679fc43c5694194a6e393902bc9e06d611563f4947a8ad7ac3127877f0a9f74"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-block-robots",
+          "ref": "1.1",
+          "git_sha": "503bb6e5bda413ac664d2e9c32badc277d1405a7"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T101200Z-gh-29324465561-a1",
+        "started_at": "2026-07-14T10:12:00Z",
+        "completed_at": "2026-07-14T10:12:07Z",
+        "duration_seconds": 6.643,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-block-robots @ file:///tmp/datasette-block-robots-xolz8drv/datasette-block-robots-1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-block-robots/datasette-1.0a36/runs/20260714T101200Z-gh-29324465561-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 8,
+        "passed": 0,
+        "failed": 8,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 6
+      },
+      "failing_tests": [
+        "tests/test_block_robots.py::test_allow_only_index",
+        "tests/test_block_robots.py::test_config_disallow[None-User-agent: *\\nDisallow: /]",
+        "tests/test_block_robots.py::test_config_disallow[config1-User-agent: *\\nDisallow: /foo]",
+        "tests/test_block_robots.py::test_config_disallow[config2-User-agent: *\\nDisallow: /foo\\nDisallow: /bar]",
+        "tests/test_block_robots.py::test_extra_lines_plugin_hook",
+        "tests/test_block_robots.py::test_literal",
+        "tests/test_block_robots.py::test_literal_prevent_literal_and_disallow_at_same_time",
+        "tests/test_block_robots.py::test_robots_txt"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-block-robots/datasette-1.0a36/runs/20260714T101200Z-gh-29324465561-a1/pytest.txt"
+      }
     },
     {
       "schema_version": 1,
