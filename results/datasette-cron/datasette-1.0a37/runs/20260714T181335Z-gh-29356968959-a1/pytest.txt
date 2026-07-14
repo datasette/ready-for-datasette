@@ -1,0 +1,120 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-cron @ file:///tmp/datasette-cron-llgolyhf/datasette_cron-0.0.1a2.tar.gz
+Downloading ruff (11.0MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded ruff
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-cron @ file:///tmp/datasette-cron-llgolyhf/datasette_cron-0.0.1a2.tar.gz
+Installed 54 packages in 40ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpeg58WI/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'time-machine': '3.2.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-cron-llgolyhf/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, time-machine-3.2.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 91 items
+
+tests/test_cron.py::test_add_task_creates_task_in_db PASSED              [  1%]
+tests/test_cron.py::test_add_task_upsert_preserves_next_run_at PASSED    [  2%]
+tests/test_cron.py::test_remove_task_removes_from_db PASSED              [  3%]
+tests/test_cron.py::test_trigger_task_runs_handler PASSED                [  4%]
+tests/test_cron.py::test_trigger_task_not_found PASSED                   [  5%]
+tests/test_cron.py::test_trigger_task_handler_not_found PASSED           [  6%]
+tests/test_cron.py::test_enable_disable_task PASSED                      [  7%]
+tests/test_cron.py::test_register_handlers_with_prefix PASSED            [  8%]
+tests/test_cron.py::test_get_handler_prefixed_and_bare PASSED            [  9%]
+tests/test_cron.py::test_get_handler_bare_name_no_overwrite PASSED       [ 10%]
+tests/test_cron.py::test_internal_db_get_task_returns_dict PASSED        [ 12%]
+tests/test_cron.py::test_internal_db_get_task_returns_none PASSED        [ 13%]
+tests/test_cron.py::test_internal_db_get_due_tasks_filters PASSED        [ 14%]
+tests/test_cron.py::test_internal_db_update_task_allowed_fields PASSED   [ 15%]
+tests/test_cron.py::test_internal_db_update_task_disallowed_field PASSED [ 16%]
+tests/test_cron.py::test_internal_db_update_task_config_serialized PASSED [ 17%]
+tests/test_cron.py::test_interval_schedule_next_run PASSED               [ 18%]
+tests/test_cron.py::test_interval_schedule_negative_raises PASSED        [ 19%]
+tests/test_cron.py::test_interval_schedule_describe PASSED               [ 20%]
+tests/test_cron.py::test_interval_schedule_to_dict PASSED                [ 21%]
+tests/test_cron.py::test_parse_schedule_interval PASSED                  [ 23%]
+tests/test_cron.py::test_parse_schedule_cron PASSED                      [ 24%]
+tests/test_cron.py::test_parse_schedule_invalid PASSED                   [ 25%]
+tests/test_cron.py::test_handler_execution_records_success_run PASSED    [ 26%]
+tests/test_cron.py::test_handler_execution_records_error_run PASSED      [ 27%]
+tests/test_cron.py::test_sync_handler_execution PASSED                   [ 28%]
+tests/test_cron.py::test_plugin_is_installed PASSED                      [ 29%]
+tests/test_cron.py::test_scheduler_starts_on_startup PASSED              [ 30%]
+tests/test_cron.py::test_record_run_lifecycle PASSED                     [ 31%]
+tests/test_cron.py::test_get_all_tasks PASSED                            [ 32%]
+tests/test_cron.py::test_scheduler_update_task PASSED                    [ 34%]
+tests/test_cron.py::test_one_second_interval_schedule PASSED             [ 35%]
+tests/test_cron.py::test_upsert_updates_schedule_config PASSED           [ 36%]
+tests/test_cron.py::test_task_with_past_next_run_at_is_due PASSED        [ 37%]
+tests/test_cron.py::test_handler_called_with_correct_config PASSED       [ 38%]
+tests/test_end_to_end.py::test_task_actually_executes PASSED             [ 39%]
+tests/test_end_to_end.py::test_task_executes_multiple_times PASSED       [ 40%]
+tests/test_end_to_end.py::test_runs_recorded_in_db PASSED                [ 41%]
+tests/test_end_to_end.py::test_task_status_updated PASSED                [ 42%]
+tests/test_end_to_end.py::test_next_run_at_advances PASSED               [ 43%]
+tests/test_persistent_db.py::test_persistent_task_registered PASSED      [ 45%]
+tests/test_persistent_db.py::test_persistent_task_executes PASSED        [ 46%]
+tests/test_persistent_db.py::test_persistent_task_runs_in_db PASSED      [ 47%]
+tests/test_persistent_db.py::test_persistent_task_multiple_runs PASSED   [ 48%]
+tests/test_plugin_hook_flow.py::test_handler_registered_via_hook PASSED  [ 49%]
+tests/test_plugin_hook_flow.py::test_task_created_via_startup_hook PASSED [ 50%]
+tests/test_plugin_hook_flow.py::test_hook_task_executes_automatically PASSED [ 51%]
+tests/test_plugin_hook_flow.py::test_hook_task_runs_recorded PASSED      [ 52%]
+tests/test_plugins_dir.py::test_sample_plugin_loaded PASSED              [ 53%]
+tests/test_plugins_dir.py::test_handler_registered_from_plugins_dir PASSED [ 54%]
+tests/test_plugins_dir.py::test_task_created_from_plugins_dir PASSED     [ 56%]disk I/O error
+attempt to write a readonly database
+
+tests/test_plugins_dir.py::test_task_executes_from_plugins_dir PASSED    [ 57%]
+tests/test_plugins_dir.py::test_cron_debug_table_populated PASSED        [ 58%]
+tests/test_router_debug.py::test_get_tasks PASSED                        [ 59%]
+tests/test_router_debug.py::test_get_runs PASSED                         [ 60%]
+tests/test_router_debug.py::test_post_trigger PASSED                     [ 61%]
+tests/test_router_debug.py::test_post_enable PASSED                      [ 62%]
+tests/test_routes.py::test_api_tasks_route_exists PASSED                 [ 63%]
+tests/test_routes.py::test_cron_page_route_exists PASSED                 [ 64%]
+tests/test_routes.py::test_cron_detail_route_exists PASSED               [ 65%]
+tests/test_routes.py::test_cron_detail_not_found PASSED                  [ 67%]
+tests/test_routes.py::test_api_trigger_route_exists PASSED               [ 68%]
+tests/test_routes.py::test_api_enable_route_exists PASSED                [ 69%]
+tests/test_sample_plugin.py::test_task_runs_automatically PASSED         [ 70%]
+tests/test_schedules.py::TestCronSchedule::test_next_run_daily PASSED    [ 71%]
+tests/test_schedules.py::TestCronSchedule::test_next_run_already_past PASSED [ 72%]
+tests/test_schedules.py::TestCronSchedule::test_next_run_with_timezone PASSED [ 73%]
+tests/test_schedules.py::TestCronSchedule::test_describe PASSED          [ 74%]
+tests/test_schedules.py::TestCronSchedule::test_to_dict PASSED           [ 75%]
+tests/test_schedules.py::TestCronSchedule::test_invalid_expression PASSED [ 76%]
+tests/test_schedules.py::TestIntervalSchedule::test_next_run PASSED      [ 78%]
+tests/test_schedules.py::TestIntervalSchedule::test_next_run_with_anchor PASSED [ 79%]
+tests/test_schedules.py::TestIntervalSchedule::test_negative_interval_raises PASSED [ 80%]
+tests/test_schedules.py::TestIntervalSchedule::test_describe_seconds PASSED [ 81%]
+tests/test_schedules.py::TestIntervalSchedule::test_describe_minutes PASSED [ 82%]
+tests/test_schedules.py::TestIntervalSchedule::test_describe_hours PASSED [ 83%]
+tests/test_schedules.py::TestIntervalSchedule::test_to_dict PASSED       [ 84%]
+tests/test_schedules.py::TestRRuleSchedule::test_next_run_weekly PASSED  [ 85%]
+tests/test_schedules.py::TestRRuleSchedule::test_describe PASSED         [ 86%]
+tests/test_schedules.py::TestRRuleSchedule::test_to_dict PASSED          [ 87%]
+tests/test_schedules.py::TestParseSchedule::test_parse_cron_string PASSED [ 89%]
+tests/test_schedules.py::TestParseSchedule::test_parse_interval_dict PASSED [ 90%]
+tests/test_schedules.py::TestParseSchedule::test_parse_rrule_dict PASSED [ 91%]
+tests/test_schedules.py::TestParseSchedule::test_parse_with_timezone PASSED [ 92%]
+tests/test_schedules.py::TestParseSchedule::test_parse_invalid PASSED    [ 93%]
+tests/test_schedules.py::TestScheduleFromDb::test_cron_from_db PASSED    [ 94%]
+tests/test_schedules.py::TestScheduleFromDb::test_interval_from_db PASSED [ 95%]
+tests/test_schedules.py::TestScheduleFromDb::test_rrule_from_db PASSED   [ 96%]
+tests/test_schedules.py::TestScheduleFromDb::test_unknown_type_raises PASSED [ 97%]
+tests/test_schedules.py::TestJitter::test_jitter_adds_time PASSED        [ 98%]
+tests/test_schedules.py::TestJitter::test_jitter_capped_at_30 PASSED     [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cron/datasette-1.0a37/runs/20260714T181335Z-gh-29356968959-a1/.pytest-report.json
+============================= 91 passed in 43.27s ==============================

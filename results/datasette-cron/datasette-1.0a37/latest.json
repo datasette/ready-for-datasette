@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-cron",
+    "version": "0.0.1a2",
+    "repository": "datasette/datasette-cron",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/bd/78/4f13e053664a5d33b5becb00ec75ac729d583686d4db9dddbacd971c8507/datasette_cron-0.0.1a2.tar.gz",
+      "sha256": "b9d3c4ee4f2a287ce374590a1e1084c502efb89642c77e4ae85cda37e64d52e4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-cron",
+      "ref": "0.0.1a2",
+      "git_sha": "3bdb077db96ce62298a286d4e383fc52a028ea72"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T181335Z-gh-29356968959-a1",
+    "started_at": "2026-07-14T18:13:35Z",
+    "completed_at": "2026-07-14T18:14:24Z",
+    "duration_seconds": 49.458,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-cron @ file:///tmp/datasette-cron-llgolyhf/datasette_cron-0.0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff>=0.15.0",
+      "--with",
+      "time-machine",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cron/datasette-1.0a37/runs/20260714T181335Z-gh-29356968959-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 91,
+    "passed": 91,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff>=0.15.0",
+      "time-machine"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 11,
+    "release_tag": 11
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-cron/datasette-1.0a37/runs/20260714T181335Z-gh-29356968959-a1/pytest.txt"
+  }
+}

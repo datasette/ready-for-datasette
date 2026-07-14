@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-css-properties",
+    "version": "0.2",
+    "repository": "simonw/datasette-css-properties",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/4c/ab/0132b715bf3660def1b256804313595e63c3e6030f4d300ae44aa2f7f2d4/datasette-css-properties-0.2.tar.gz",
+      "sha256": "d40593f149f6b5d0cbde5a159a9393e6ffd22a7fb04464f88f26df92dcea86ec"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-css-properties",
+      "ref": "0.2",
+      "git_sha": "2538b94b5fa4003e675521cac7dbe4b82186928d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T181337Z-gh-29356968959-a1",
+    "started_at": "2026-07-14T18:13:37Z",
+    "completed_at": "2026-07-14T18:13:44Z",
+    "duration_seconds": 6.835,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-css-properties @ file:///tmp/datasette-css-properties-emrns4tq/datasette-css-properties-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-css-properties/datasette-1.0a37/runs/20260714T181337Z-gh-29356968959-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_css_properties.py::test_css_output[select 'hello '' this has quotes '' ' as foo-raw1-:root {\\n  --foo: 'hello \\\\000027 this has quotes \\\\000027 ';\\n}]",
+    "tests/test_css_properties.py::test_css_output[select 'hello' as foo, 2 as bar, null as baz-raw0-:root {\\n  --foo: 'hello';\\n  --bar: '2';\\n  --baz: '';\\n}]",
+    "tests/test_css_properties.py::test_css_output[select 'hello' as foo-raw2-:root {\\n  --foo: hello;\\n}]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-css-properties/datasette-1.0a37/runs/20260714T181337Z-gh-29356968959-a1/pytest.txt"
+  }
+}
