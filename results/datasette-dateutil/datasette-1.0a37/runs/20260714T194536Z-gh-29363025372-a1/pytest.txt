@@ -1,0 +1,429 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-dateutil @ file:///tmp/datasette-dateutil-deccmbpt/datasette-dateutil-0.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-dateutil @ file:///tmp/datasette-dateutil-deccmbpt/datasette-dateutil-0.3.tar.gz
+Installed 39 packages in 18ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpvkveY4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-dateutil-deccmbpt/tagged-source
+configfile: pytest.ini
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 24 items
+
+tests/test_dateutil.py::test_plugin_is_installed FAILED                  [  4%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009')-2009-10-01T00:00:00] FAILED [  8%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('invalid')-None] FAILED [ 12%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('due on 1st october 2009')-None] FAILED [ 16%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october 2009')-2009-10-01T00:00:00] FAILED [ 20%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on')-None] FAILED [ 25%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2/2020')-2020-02-01T00:00:00] FAILED [ 29%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1/2/2020')-2020-01-02T00:00:00] FAILED [ 33%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1/2/2003')-2003-01-02T00:00:00] FAILED [ 37%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2/2003')-2003-02-01T00:00:00] FAILED [ 41%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009', '10th september 2020')-2009-10-01T00:00:00] FAILED [ 45%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october', '10th september 2020')-2020-10-01T00:00:00] FAILED [ 50%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october', '2020-01-01')-2020-10-01T00:00:00] FAILED [ 54%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2', '1981-01-01')-1981-02-01T00:00:00] FAILED [ 58%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2', '1765-01-01')-1765-02-01T00:00:00] FAILED [ 62%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter(2020)-2020-04-12] FAILED [ 66%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter('invalid')-None] FAILED [ 70%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] FAILED [ 75%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] FAILED [ 79%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] FAILED [ 83%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] FAILED [ 87%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020', 0)-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04"]] FAILED [ 91%]
+tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020')-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04", "2020-01-05"]] FAILED [ 95%]
+tests/test_dateutil.py::test_dateutil_unbounded_rrule_error FAILED       [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse('1st october 2009')-2009-10-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______ test_dateutil_sql_functions[select dateutil_parse('invalid')-None] ______
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse('due on 1st october 2009')-None] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october 2009')-2009-10-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___ test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on')-None] ____
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2/2020')-2020-02-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse('1/2/2020')-2020-01-02T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1/2/2003')-2003-01-02T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2/2003')-2003-02-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse('1st october 2009', '10th september 2020')-2009-10-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse('1st october', '10th september 2020')-2020-10-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october', '2020-01-01')-2020-10-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2', '1981-01-01')-1981-02-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2', '1765-01-01')-1765-02-01T00:00:00] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____ test_dateutil_sql_functions[select dateutil_easter(2020)-2020-04-12] _____
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____ test_dateutil_sql_functions[select dateutil_easter('invalid')-None] ______
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_rrule('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_rrule('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_rrule_date('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_rrule_date('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020', 0)-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020')-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04", "2020-01-05"]] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_dateutil_unbounded_rrule_error ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/gspHVh3f8NKf6Nfy/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/gspHVh3f8NKf6Nfy/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_dateutil.py:6
+  /tmp/datasette-dateutil-deccmbpt/tagged-source/tests/test_dateutil.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_dateutil.py:16
+  /tmp/datasette-dateutil-deccmbpt/tagged-source/tests/test_dateutil.py:16: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_dateutil.py:100
+  /tmp/datasette-dateutil-deccmbpt/tagged-source/tests/test_dateutil.py:100: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-dateutil/datasette-1.0a37/runs/20260714T194536Z-gh-29363025372-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_dateutil.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009')-2009-10-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('invalid')-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('due on 1st october 2009')-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october 2009')-2009-10-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on')-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2/2020')-2020-02-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1/2/2020')-2020-01-02T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1/2/2003')-2003-01-02T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2/2003')-2003-02-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009', '10th september 2020')-2009-10-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october', '10th september 2020')-2020-10-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october', '2020-01-01')-2020-10-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2', '1981-01-01')-1981-02-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2', '1765-01-01')-1765-02-01T00:00:00] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter(2020)-2020-04-12] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter('invalid')-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01T00:00:00", "2020-01-11T00:00:00", "2020-01-21T00:00:00", "2020-01-31T00:00:00", "2020-02-10T00:00:00"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('DTSTART:20200101\nFREQ=DAILY;INTERVAL=10;COUNT=5')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-["2020-01-01", "2020-01-11", "2020-01-21", "2020-01-31", "2020-02-10"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020', 0)-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020')-["2020-01-01", "2020-01-02", "2020-01-03", "2020-01-04", "2020-01-05"]] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_dateutil.py::test_dateutil_unbounded_rrule_error - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 24 failed, 4 warnings in 0.05s ========================

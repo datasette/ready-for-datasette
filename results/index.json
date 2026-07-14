@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T18:14:24Z",
+  "generated_at": "2026-07-14T19:45:42Z",
   "results": [
     {
       "schema_version": 1,
@@ -7440,6 +7440,212 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-css-properties/datasette-1.0a37/runs/20260714T181337Z-gh-29356968959-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-dateutil",
+        "version": "0.3",
+        "repository": "simonw/datasette-dateutil",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/f8/a7/f8866bd057de94307c2e2eaa7daeb244d01a0d9ee39520e8cbbe071d31ae/datasette-dateutil-0.3.tar.gz",
+          "sha256": "7005f83aa4774c9d9db892e630dc9adc5d78ed5c59c6e2263da93d8fdac9569e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-dateutil",
+          "ref": "0.3",
+          "git_sha": "d0b2aa6dd74da15e0c0cbab81b24f5f9bed3cca2"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T194536Z-gh-29363025372-a1",
+        "started_at": "2026-07-14T19:45:36Z",
+        "completed_at": "2026-07-14T19:45:42Z",
+        "duration_seconds": 5.479,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-dateutil @ file:///tmp/datasette-dateutil-deccmbpt/datasette-dateutil-0.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-dateutil/datasette-1.0a37/runs/20260714T194536Z-gh-29363025372-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 24,
+        "passed": 0,
+        "failed": 24,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 4
+      },
+      "failing_tests": [
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020')-[\"2020-01-01\", \"2020-01-02\", \"2020-01-03\", \"2020-01-04\", \"2020-01-05\"]]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_dates_between('1 january 2020', '5 jan 2020', 0)-[\"2020-01-01\", \"2020-01-02\", \"2020-01-03\", \"2020-01-04\"]]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter('invalid')-None]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_easter(2020)-2020-04-12]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1/2/2020')-2020-01-02T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009')-2009-10-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october 2009', '10th september 2020')-2009-10-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('1st october', '10th september 2020')-2020-10-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('due on 1st october 2009')-None]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse('invalid')-None]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2', '1981-01-01')-1981-02-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_dayfirst('1/2/2020')-2020-02-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1/2/2003')-2003-01-02T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october 2009')-2009-10-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on 1st october', '2020-01-01')-2020-10-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy('due on')-None]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2', '1765-01-01')-1765-02-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_parse_fuzzy_dayfirst('due on 1/2/2003')-2003-02-01T00:00:00]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('DTSTART:20200101\\nFREQ=DAILY;INTERVAL=10;COUNT=5')-[\"2020-01-01T00:00:00\", \"2020-01-11T00:00:00\", \"2020-01-21T00:00:00\", \"2020-01-31T00:00:00\", \"2020-02-10T00:00:00\"]]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-[\"2020-01-01T00:00:00\", \"2020-01-11T00:00:00\", \"2020-01-21T00:00:00\", \"2020-01-31T00:00:00\", \"2020-02-10T00:00:00\"]]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('DTSTART:20200101\\nFREQ=DAILY;INTERVAL=10;COUNT=5')-[\"2020-01-01\", \"2020-01-11\", \"2020-01-21\", \"2020-01-31\", \"2020-02-10\"]]",
+        "tests/test_dateutil.py::test_dateutil_sql_functions[select dateutil_rrule_date('FREQ=DAILY;INTERVAL=10;COUNT=5', '2020-01-01')-[\"2020-01-01\", \"2020-01-11\", \"2020-01-21\", \"2020-01-31\", \"2020-02-10\"]]",
+        "tests/test_dateutil.py::test_dateutil_unbounded_rrule_error",
+        "tests/test_dateutil.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-dateutil/datasette-1.0a37/runs/20260714T194536Z-gh-29363025372-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-debug-actors-from-ids",
+        "version": "0.1a3",
+        "repository": "datasette/datasette-debug-actors-from-ids",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ab/e7/2032c91ee7bc7922b9698352ee0c93701662264c38a4d02aa179231e7733/datasette_debug_actors_from_ids-0.1a3.tar.gz",
+          "sha256": "d0f2c41f5432825a9f3d9ad5e0c1f52e2eb11c5f269293c69083bbe8bc9fbdc0"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-debug-actors-from-ids",
+          "ref": "0.1a3",
+          "git_sha": "a887ab0853f6f7f17ae042644a36acbf8b4c493b"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T194536Z-gh-29363025372-a1",
+        "started_at": "2026-07-14T19:45:36Z",
+        "completed_at": "2026-07-14T19:45:42Z",
+        "duration_seconds": 5.58,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-debug-actors-from-ids[test] @ file:///tmp/datasette-debug-actors-from-ids-5mtvensd/datasette_debug_actors_from_ids-0.1a3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-httpx",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-actors-from-ids/datasette-1.0a37/runs/20260714T194536Z-gh-29363025372-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 1,
+        "passed": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-httpx",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-debug-actors-from-ids/datasette-1.0a37/runs/20260714T194536Z-gh-29363025372-a1/pytest.txt"
       }
     },
     {
