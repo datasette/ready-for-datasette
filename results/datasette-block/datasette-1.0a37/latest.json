@@ -22,12 +22,12 @@
     "installed_version": "1.0a37"
   },
   "run": {
-    "id": "20260714T164649Z-local-abb27e",
-    "started_at": "2026-07-14T16:46:49Z",
-    "completed_at": "2026-07-14T16:46:53Z",
-    "duration_seconds": 4.49,
+    "id": "20260714T165042Z-gh-29351285530-a1",
+    "started_at": "2026-07-14T16:50:42Z",
+    "completed_at": "2026-07-14T16:50:49Z",
+    "duration_seconds": 7.672,
     "python_version": "3.13",
-    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
     "pytest_exit_code": 2,
     "command": [
       "uv",
@@ -40,7 +40,7 @@
       "allow",
       "--no-progress",
       "--with",
-      "datasette-block @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-block-4pm2cw9x/datasette-block-0.1.1.tar.gz",
+      "datasette-block @ file:///tmp/datasette-block-u89rd663/datasette-block-0.1.1.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -50,7 +50,7 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-block/datasette-1.0a37/runs/20260714T164649Z-local-abb27e/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-block/datasette-1.0a37/runs/20260714T165042Z-gh-29351285530-a1/.pytest-report.json"
     ]
   },
   "passed": false,
@@ -86,6 +86,6 @@
     }
   ],
   "artifacts": {
-    "pytest_output": "results/datasette-block/datasette-1.0a37/runs/20260714T164649Z-local-abb27e/pytest.txt"
+    "pytest_output": "results/datasette-block/datasette-1.0a37/runs/20260714T165042Z-gh-29351285530-a1/pytest.txt"
   }
 }
