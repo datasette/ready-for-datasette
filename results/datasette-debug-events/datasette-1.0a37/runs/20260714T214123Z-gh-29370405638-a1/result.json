@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-debug-events",
+    "version": "0.1a2",
+    "repository": "datasette/datasette-debug-events",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ff/6d/c7d158ce6f6e91020936e5bdeb92c240c318f06c466dd4d675021cf6be62/datasette_debug_events-0.1a2.tar.gz",
+      "sha256": "b276e4c342db59d9e234607ad707835ba0e3a195f2f17e5fde7ecf055cb8456b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-debug-events",
+      "ref": "0.1a2",
+      "git_sha": "6e07710d024c14734d4571e4c6174e054d05e7d7"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T214123Z-gh-29370405638-a1",
+    "started_at": "2026-07-14T21:41:23Z",
+    "completed_at": "2026-07-14T21:41:30Z",
+    "duration_seconds": 7.268,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-debug-events[test] @ file:///tmp/datasette-debug-events-wfp_v7wk/datasette_debug_events-0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-events/datasette-1.0a37/runs/20260714T214123Z-gh-29370405638-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-debug-events/datasette-1.0a37/runs/20260714T214123Z-gh-29370405638-a1/pytest.txt"
+  }
+}
