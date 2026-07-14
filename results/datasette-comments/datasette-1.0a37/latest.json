@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-comments",
+    "version": "0.1.0",
+    "repository": "datasette/datasette-comments",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/b3/f5/4cbf49ac7556f4b0590f77edcf273cd36de45ae1231157ceddea2fe23644/datasette-comments-0.1.0.tar.gz",
+      "sha256": "5b29abdb2bb9b115fae4f68c0d84560213ba63682dc6711fc571a86b0ee9cbfb"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-comments",
+      "ref": "0.1.0",
+      "git_sha": "9cdc352615612e8bad65a4b5d8b6265b112da4e8"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T165041Z-gh-29351285530-a1",
+    "started_at": "2026-07-14T16:50:41Z",
+    "completed_at": "2026-07-14T16:50:50Z",
+    "duration_seconds": 8.904,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-comments @ file:///tmp/datasette-comments-ouwavrbc/datasette-comments-0.1.0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-playwright",
+      "--with",
+      "syrupy",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-comments/datasette-1.0a37/runs/20260714T165041Z-gh-29351285530-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 10,
+    "passed": 3,
+    "failed": 4,
+    "errors": 1,
+    "skipped": 2,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_comments.py::test_autocomplete_mentions[a-expected0]",
+    "tests/test_comments.py::test_autocomplete_mentions[s-expected1]",
+    "tests/test_comments.py::test_permissions",
+    "tests/test_comments.py::test_readonly_permissions"
+  ],
+  "error_tests": [
+    "tests/test_ui.py::test_initial_load[chromium]"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-playwright",
+      "syrupy"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 5
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-comments/datasette-1.0a37/runs/20260714T165041Z-gh-29351285530-a1/pytest.txt"
+  }
+}
