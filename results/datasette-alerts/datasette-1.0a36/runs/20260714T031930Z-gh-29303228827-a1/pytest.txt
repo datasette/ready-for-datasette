@@ -1,0 +1,133 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-alerts @ file:///tmp/datasette-alerts-pwj8k2uz/datasette_alerts-0.0.1a10.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading ty (11.5MiB)
+ Downloaded pydantic-core
+ Downloaded ty
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-alerts @ file:///tmp/datasette-alerts-pwj8k2uz/datasette_alerts-0.0.1a10.tar.gz
+Installed 63 packages in 57ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmppfpkt1/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-alerts-pwj8k2uz/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 65 items
+
+tests/test_alerts.py::test_plugin_loads_and_creates_tables PASSED        [  1%]
+tests/test_alerts.py::test_internal_db_new_alert PASSED                  [  3%]
+tests/test_alerts.py::test_internal_db_alert_subscriptions PASSED        [  4%]
+tests/test_alerts.py::test_internal_db_add_log PASSED                    [  6%]
+tests/test_alerts.py::test_internal_db_schedule_next PASSED              [  7%]
+tests/test_alerts.py::test_internal_db_start_ready_jobs PASSED           [  9%]
+tests/test_alerts.py::test_api_new_alert_endpoint PASSED                 [ 10%]
+tests/test_alerts.py::test_api_new_alert_invalid_database PASSED         [ 12%]
+tests/test_alerts.py::test_api_new_alert_invalid_payload FAILED          [ 13%]
+tests/test_alerts.py::test_api_new_alert_wrong_method FAILED             [ 15%]
+tests/test_alerts.py::test_table_action_link_with_permission PASSED      [ 16%]
+tests/test_alerts.py::test_table_action_link_without_permission PASSED   [ 18%]
+tests/test_alerts.py::test_message_basic PASSED                          [ 20%]
+tests/test_alerts.py::test_message_with_subject PASSED                   [ 21%]
+tests/test_alerts.py::test_build_messages_fallback_no_template PASSED    [ 23%]
+tests/test_alerts.py::test_build_messages_aggregate_with_template PASSED [ 24%]
+tests/test_alerts.py::test_build_messages_per_row_with_template PASSED   [ 26%]
+tests/test_alerts.py::test_build_messages_per_row_no_row_data_falls_back_to_aggregate PASSED [ 27%]
+tests/test_alerts.py::test_destination_crud PASSED                       [ 29%]
+tests/test_alerts.py::test_destination_not_found PASSED                  [ 30%]
+tests/test_alerts.py::test_alert_detail_includes_destination_info PASSED [ 32%]
+tests/test_alerts.py::test_api_create_destination PASSED                 [ 33%]
+tests/test_alerts.py::test_api_update_destination PASSED                 [ 35%]
+tests/test_alerts.py::test_api_delete_destination PASSED                 [ 36%]
+tests/test_alerts.py::test_api_delete_destination_not_found PASSED       [ 38%]
+tests/test_alerts.py::test_send_to_destination PASSED                    [ 40%]
+tests/test_alerts.py::test_send_to_destination_not_found PASSED          [ 41%]
+tests/test_alerts.py::test_send_to_destination_notifier_not_found PASSED [ 43%]
+tests/test_alerts.py::test_config_element PASSED                         [ 44%]
+tests/test_alerts.py::test_notifier_get_config_element_default PASSED    [ 46%]
+tests/test_alerts.py::test_notifier_with_config_element PASSED           [ 47%]
+tests/test_custom_alerts.py::test_migration_m004_columns_exist PASSED    [ 49%]
+tests/test_custom_alerts.py::test_api_create_custom_alert PASSED         [ 50%]
+tests/test_custom_alerts.py::test_api_list_alert_types PASSED            [ 52%]
+tests/test_custom_alerts.py::test_custom_alert_handler_calls_check_and_sends PASSED [ 53%]
+tests/test_custom_alerts.py::test_custom_alert_handler_no_messages PASSED [ 55%]
+tests/test_custom_alerts.py::test_custom_alert_handler_unknown_type PASSED [ 56%]
+tests/test_custom_alerts.py::test_custom_alert_handler_nonexistent_alert PASSED [ 58%]
+tests/test_custom_alerts.py::test_get_all_alerts_includes_custom PASSED  [ 60%]
+tests/test_custom_alerts.py::test_get_alert_for_check_custom PASSED      [ 61%]
+tests/test_custom_alerts.py::test_get_alert_for_check_nonexistent PASSED [ 63%]
+tests/test_custom_alerts.py::test_update_last_check PASSED               [ 64%]
+tests/test_custom_alerts.py::test_delete_custom_alert_db PASSED          [ 66%]
+tests/test_custom_alerts.py::test_api_delete_custom_alert PASSED         [ 67%]
+tests/test_custom_alerts.py::test_delete_alert_not_found PASSED          [ 69%]
+tests/test_custom_alerts.py::test_frequency_to_interval_minutes PASSED   [ 70%]
+tests/test_custom_alerts.py::test_frequency_to_interval_single_minute PASSED [ 72%]
+tests/test_custom_alerts.py::test_frequency_to_interval_hour PASSED      [ 73%]
+tests/test_custom_alerts.py::test_frequency_to_interval_hours PASSED     [ 75%]
+tests/test_custom_alerts.py::test_frequency_to_interval_seconds PASSED   [ 76%]
+tests/test_custom_alerts.py::test_frequency_to_interval_single_second PASSED [ 78%]
+tests/test_custom_alerts.py::test_frequency_to_interval_day PASSED       [ 80%]
+tests/test_custom_alerts.py::test_frequency_to_interval_days PASSED      [ 81%]
+tests/test_custom_alerts.py::test_frequency_to_interval_no_plus PASSED   [ 83%]
+tests/test_custom_alerts.py::test_frequency_to_interval_extra_whitespace PASSED [ 84%]
+tests/test_custom_alerts.py::test_cron_task_registered_on_custom_alert_create PASSED [ 86%]
+tests/test_custom_alerts.py::test_cron_task_registered_for_cursor_alert PASSED [ 87%]
+tests/test_custom_alerts.py::test_get_alert_types_returns_registered PASSED [ 89%]
+tests/test_custom_alerts.py::test_sync_alerts_to_cron_on_startup PASSED  [ 90%]
+tests/test_custom_alerts.py::test_handler_passes_last_check_at_on_second_call PASSED [ 92%]
+tests/test_custom_alerts.py::test_new_alert_custom_config_stored_as_json PASSED [ 93%]
+tests/test_custom_alerts.py::test_frequency_one_second_converts_correctly PASSED [ 95%]
+tests/test_custom_alerts.py::test_handler_updates_last_check_even_when_no_messages PASSED [ 96%]
+tests/test_custom_alerts.py::test_cron_task_uses_correct_handler_name PASSED [ 98%]
+tests/test_custom_alerts.py::test_get_alert_types_uses_global_pm PASSED  [100%]
+
+=================================== FAILURES ===================================
+______________________ test_api_new_alert_invalid_payload ______________________
+
+datasette = <datasette.app.Datasette object at 0x7f6356e4bc50>
+
+    @pytest.mark.asyncio
+    async def test_api_new_alert_invalid_payload(datasette):
+        """Test API endpoint with invalid payload returns an error."""
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.post(
+            "/-/data/datasette-alerts/api/new", json={"invalid": "payload"}, cookies=cookies
+        )
+    
+>       assert response.status_code == 500
+E       assert 400 == 500
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+
+tests/test_alerts.py:401: AssertionError
+_______________________ test_api_new_alert_wrong_method ________________________
+
+datasette = <datasette.app.Datasette object at 0x7f6356fb0410>
+
+    @pytest.mark.asyncio
+    async def test_api_new_alert_wrong_method(datasette):
+        """Test API endpoint with GET instead of POST returns 404."""
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(
+            "/-/data/datasette-alerts/api/new", cookies=cookies
+        )
+    
+        # GET hits the route but body parsing fails
+>       assert response.status_code == 500
+E       assert 400 == 500
+E        +  where 400 = <Response [400 Bad Request]>.status_code
+
+tests/test_alerts.py:413: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts/datasette-1.0a36/runs/20260714T031930Z-gh-29303228827-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_alerts.py::test_api_new_alert_invalid_payload - assert 400 == 500
+ +  where 400 = <Response [400 Bad Request]>.status_code
+FAILED tests/test_alerts.py::test_api_new_alert_wrong_method - assert 400 == 500
+ +  where 400 = <Response [400 Bad Request]>.status_code
+========================= 2 failed, 63 passed in 2.50s =========================

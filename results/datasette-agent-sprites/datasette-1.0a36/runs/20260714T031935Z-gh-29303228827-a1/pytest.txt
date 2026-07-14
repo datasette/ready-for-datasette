@@ -1,0 +1,62 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-agent-sprites @ file:///tmp/datasette-agent-sprites-r3qaitkw/datasette_agent_sprites-0.1a0.tar.gz
+Downloading openai (1.6MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-agent-sprites @ file:///tmp/datasette-agent-sprites-r3qaitkw/datasette_agent_sprites-0.1a0.tar.gz
+Installed 60 packages in 49ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQhHY0R/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'httpx': '0.36.2', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-agent-sprites-r3qaitkw/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, httpx-0.36.2, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_agent_sprites.py::test_plugin_is_installed FAILED             [  5%]
+tests/test_agent_sprites.py::test_list_sprites_no_token PASSED           [ 11%]
+tests/test_agent_sprites.py::test_list_sprites PASSED                    [ 16%]
+tests/test_agent_sprites.py::test_list_sprites_with_prefix PASSED        [ 22%]
+tests/test_agent_sprites.py::test_create_sprite PASSED                   [ 27%]
+tests/test_agent_sprites.py::test_get_sprite PASSED                      [ 33%]
+tests/test_agent_sprites.py::test_exec_on_sprite PASSED                  [ 38%]
+tests/test_agent_sprites.py::test_exec_on_sprite_with_cwd PASSED         [ 44%]
+tests/test_agent_sprites.py::test_exec_on_sprite_nonzero_exit PASSED     [ 50%]
+tests/test_agent_sprites.py::test_delete_sprite PASSED                   [ 55%]
+tests/test_agent_sprites.py::test_delete_sprite_not_found PASSED         [ 61%]
+tests/test_agent_sprites.py::test_read_sprite_file_binary_image PASSED   [ 66%]
+tests/test_agent_sprites.py::test_read_sprite_file_text PASSED           [ 72%]
+tests/test_agent_sprites.py::test_serve_sprite_file PASSED               [ 77%]
+tests/test_agent_sprites.py::test_read_sprite_file_no_token PASSED       [ 83%]
+tests/test_agent_sprites.py::test_write_sprite_file PASSED               [ 88%]
+tests/test_agent_sprites.py::test_write_sprite_file_no_token PASSED      [ 94%]
+tests/test_agent_sprites.py::test_write_sprite_file_not_found PASSED     [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+
+    @pytest.mark.asyncio
+    async def test_plugin_is_installed():
+        datasette = Datasette(memory=True)
+        response = await datasette.client.get("/-/plugins.json")
+        assert response.status_code == 200
+>       installed_plugins = {p["name"] for p in response.json()}
+                             ^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_agent_sprites.py:30: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-sprites/datasette-1.0a36/runs/20260714T031935Z-gh-29303228827-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_agent_sprites.py::test_plugin_is_installed - TypeError: string indices must be integers, not 'str'
+========================= 1 failed, 17 passed in 0.32s =========================

@@ -1,0 +1,64 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-agent-micropython @ file:///tmp/datasette-agent-micropython-ij_mrgnk/datasette_agent_micropython-0.1a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+Downloading wasmtime (9.4MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded wasmtime
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-agent-micropython @ file:///tmp/datasette-agent-micropython-ij_mrgnk/datasette_agent_micropython-0.1a0.tar.gz
+Installed 58 packages in 54ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp1RubXK/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-agent-micropython-ij_mrgnk/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_agent_micropython.py::test_plugin_is_installed FAILED         [  5%]
+tests/test_agent_micropython.py::test_tool_registered PASSED             [ 11%]
+tests/test_agent_micropython.py::test_execute_python_stdout PASSED       [ 16%]
+tests/test_agent_micropython.py::test_execute_python_preserves_emoji_stdout PASSED [ 22%]
+tests/test_agent_micropython.py::test_execute_python_state_persists PASSED [ 27%]
+tests/test_agent_micropython.py::test_context_is_unique_per_conversation PASSED [ 33%]
+tests/test_agent_micropython.py::test_execute_python_can_query_datasette_with_host_function PASSED [ 38%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_accepts_params PASSED [ 44%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_checks_execute_sql_permission PASSED [ 50%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_reports_unknown_database PASSED [ 55%]
+tests/test_agent_micropython.py::test_reset_context_clears_state_before_running PASSED [ 61%]
+tests/test_agent_micropython.py::test_parallel_reset_context_calls_are_serialized_per_conversation PASSED [ 66%]
+tests/test_agent_micropython.py::test_lru_eviction_waits_for_active_session PASSED [ 72%]
+tests/test_agent_micropython.py::test_no_conversation_id_fails_closed PASSED [ 77%]
+tests/test_agent_micropython.py::test_timeout_discards_session_state PASSED [ 83%]
+tests/test_agent_micropython.py::test_max_sessions_config_evicts_least_recently_used_session PASSED [ 88%]
+tests/test_agent_micropython.py::test_show_result_adds_html_side_channel PASSED [ 94%]
+tests/test_agent_micropython.py::test_show_result_false_does_not_hint_output_was_displayed PASSED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+
+    @pytest.mark.asyncio
+    async def test_plugin_is_installed():
+        datasette = Datasette(memory=True)
+        response = await datasette.client.get("/-/plugins.json")
+        assert response.status_code == 200
+>       installed_plugins = {p["name"] for p in response.json()}
+                             ^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_agent_micropython.py:66: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-micropython/datasette-1.0a36/runs/20260714T031931Z-gh-29303228827-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_agent_micropython.py::test_plugin_is_installed - TypeError: string indices must be integers, not 'str'
+======================== 1 failed, 17 passed in 10.04s =========================
