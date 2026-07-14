@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-agent-openai-imagegen",
+    "version": "0.1a1",
+    "repository": "datasette/datasette-agent-openai-imagegen",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/4d/b5/2ab71b4e340dac5d2422c6396785cb05726d31901204cb82d14f61f2c8a3/datasette_agent_openai_imagegen-0.1a1.tar.gz",
+      "sha256": "d691cb280b8470e16885c94a8343d5fdee71f123a41e5e0dc6a5b7e9880bd0bb"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent-openai-imagegen",
+      "ref": "0.1a1",
+      "git_sha": "6f2d8821aa3cd9b1379fd09b5f77d3ae0935ae1c"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023559Z-gh-29301453128-a1",
+    "started_at": "2026-07-14T02:35:59Z",
+    "completed_at": "2026-07-14T02:36:07Z",
+    "duration_seconds": 7.533,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-agent-openai-imagegen[test] @ file:///tmp/datasette-agent-openai-imagegen-43ftbe6t/datasette_agent_openai_imagegen-0.1a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-openai-imagegen/datasette-1.0a36/runs/20260714T023559Z-gh-29301453128-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 10
+  },
+  "failing_tests": [
+    "tests/test_agent_openai_imagegen.py::test_generate_and_serve_round_trip",
+    "tests/test_agent_openai_imagegen.py::test_generate_image",
+    "tests/test_agent_openai_imagegen.py::test_generate_image_custom_params",
+    "tests/test_agent_openai_imagegen.py::test_generate_image_no_api_key",
+    "tests/test_agent_openai_imagegen.py::test_plugin_is_installed",
+    "tests/test_agent_openai_imagegen.py::test_serve_image",
+    "tests/test_agent_openai_imagegen.py::test_serve_image_not_found",
+    "tests/test_agent_openai_imagegen.py::test_tool_registered"
+  ],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent-openai-imagegen/datasette-1.0a36/runs/20260714T023559Z-gh-29301453128-a1/pytest.txt"
+  }
+}

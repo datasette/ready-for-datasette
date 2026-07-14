@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-alerts",
+    "version": "0.0.1a10",
+    "repository": "datasette/datasette-alerts",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/2b/a1/68617bf36175f627eadf48f44f19395b7fbec496fcdf0708f45631ad2698/datasette_alerts-0.0.1a10.tar.gz",
+      "sha256": "b5122358ee8c00ca72fd4db1f6817563e438278f92fd02c353c4f116f97870b4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-alerts",
+      "ref": "0.0.1a10",
+      "git_sha": "e5c322c5111558da609130cc9bf1e8cdf441a042"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023602Z-gh-29301453128-a1",
+    "started_at": "2026-07-14T02:36:02Z",
+    "completed_at": "2026-07-14T02:36:09Z",
+    "duration_seconds": 7.17,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-alerts[test] @ file:///tmp/datasette-alerts-mkvrzhya/datasette_alerts-0.0.1a10.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_alerts.py",
+    "tests/test_custom_alerts.py"
+  ],
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-alerts/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,203 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-agent-openai-imagegen @ file:///tmp/datasette-agent-openai-imagegen-43ftbe6t/datasette_agent_openai_imagegen-0.1a1.tar.gz
+Downloading openai (1.6MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-agent-openai-imagegen @ file:///tmp/datasette-agent-openai-imagegen-43ftbe6t/datasette_agent_openai_imagegen-0.1a1.tar.gz
+Installed 55 packages in 70ms
+warning: The package `datasette-agent-openai-imagegen @ file:///tmp/datasette-agent-openai-imagegen-43ftbe6t/datasette_agent_openai_imagegen-0.1a1.tar.gz` does not have an extra named `test`
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpMO2xjB/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source
+configfile: pyproject.toml
+plugins: datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 8 items
+
+tests/test_agent_openai_imagegen.py::test_plugin_is_installed FAILED     [ 12%]
+tests/test_agent_openai_imagegen.py::test_tool_registered FAILED         [ 25%]
+tests/test_agent_openai_imagegen.py::test_serve_image FAILED             [ 37%]
+tests/test_agent_openai_imagegen.py::test_serve_image_not_found FAILED   [ 50%]
+tests/test_agent_openai_imagegen.py::test_generate_image FAILED          [ 62%]
+tests/test_agent_openai_imagegen.py::test_generate_image_custom_params FAILED [ 75%]
+tests/test_agent_openai_imagegen.py::test_generate_image_no_api_key FAILED [ 87%]
+tests/test_agent_openai_imagegen.py::test_generate_and_serve_round_trip FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_tool_registered _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________________ test_serve_image _______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________ test_serve_image_not_found __________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_generate_image ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________ test_generate_image_custom_params _______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_generate_image_no_api_key ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________ test_generate_and_serve_round_trip ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/OKAtEe1dm3s_E86q/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/OKAtEe1dm3s_E86q/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_default_fixture_loop_scope
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/OKAtEe1dm3s_E86q/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/OKAtEe1dm3s_E86q/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_agent_openai_imagegen.py:32
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:32: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:41
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:41: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:55
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:55: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:71
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:71: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:77
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:77: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:130
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:130: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:167
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:167: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_agent_openai_imagegen.py:184
+  /tmp/datasette-agent-openai-imagegen-43ftbe6t/tagged-source/tests/test_agent_openai_imagegen.py:184: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-openai-imagegen/datasette-1.0a36/runs/20260714T023559Z-gh-29301453128-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_agent_openai_imagegen.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_tool_registered - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_serve_image - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_serve_image_not_found - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_generate_image - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_generate_image_custom_params - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_generate_image_no_api_key - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_agent_openai_imagegen.py::test_generate_and_serve_round_trip - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 8 failed, 10 warnings in 0.08s ========================

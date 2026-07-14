@@ -1,0 +1,89 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-alerts @ file:///tmp/datasette-alerts-mkvrzhya/datasette_alerts-0.0.1a10.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-alerts @ file:///tmp/datasette-alerts-mkvrzhya/datasette_alerts-0.0.1a10.tar.gz
+Installed 53 packages in 50ms
+warning: The package `datasette-alerts @ file:///tmp/datasette-alerts-mkvrzhya/datasette_alerts-0.0.1a10.tar.gz` does not have an extra named `test`
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpXH6dyj/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-alerts-mkvrzhya/tagged-source
+configfile: pyproject.toml
+plugins: datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 0 items / 2 errors
+
+==================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_alerts.py _____________________
+ImportError while importing test module '/tmp/datasette-alerts-mkvrzhya/tagged-source/tests/test_alerts.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_alerts.py:17: in <module>
+    import pytest_asyncio
+E   ModuleNotFoundError: No module named 'pytest_asyncio'
+_________________ ERROR collecting tests/test_custom_alerts.py _________________
+ImportError while importing test module '/tmp/datasette-alerts-mkvrzhya/tagged-source/tests/test_custom_alerts.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1395: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_custom_alerts.py:7: in <module>
+    import pytest_asyncio
+E   ModuleNotFoundError: No module named 'pytest_asyncio'
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_default_fixture_loop_scope
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/e0MtNfb8wX9i9uEG/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_alerts.py
+ERROR tests/test_custom_alerts.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+======================== 2 warnings, 2 errors in 0.30s =========================

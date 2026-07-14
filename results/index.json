@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T02:31:35Z",
+  "generated_at": "2026-07-14T02:36:09Z",
   "results": [
     {
       "schema_version": 1,
@@ -407,6 +407,431 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-agent-charts/datasette-1.0a36/runs/20260714T023127Z-gh-29301262360-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-agent-micropython",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-agent-micropython",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ca/9a/abaf729d2aa076702be2f87364a243ca7bc86b1b9f94d3507c3005d5e158/datasette_agent_micropython-0.1a0.tar.gz",
+          "sha256": "aff205fb4aeb31efe6263276eda1b09f10835ba14fcc8b34c708eb0ff457c20f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent-micropython",
+          "ref": "0.1a0",
+          "git_sha": "4ce9a3dd89dbc67e51e067d1e2e154dc5e316ae6"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023602Z-gh-29301453128-a1",
+        "started_at": "2026-07-14T02:36:02Z",
+        "completed_at": "2026-07-14T02:36:08Z",
+        "duration_seconds": 6.802,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent-micropython[test] @ file:///tmp/datasette-agent-micropython-jfe6wd2v/datasette_agent_micropython-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-micropython/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_agent_micropython.py"
+      ],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent-micropython/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-agent-openai-imagegen",
+        "version": "0.1a1",
+        "repository": "datasette/datasette-agent-openai-imagegen",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/4d/b5/2ab71b4e340dac5d2422c6396785cb05726d31901204cb82d14f61f2c8a3/datasette_agent_openai_imagegen-0.1a1.tar.gz",
+          "sha256": "d691cb280b8470e16885c94a8343d5fdee71f123a41e5e0dc6a5b7e9880bd0bb"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent-openai-imagegen",
+          "ref": "0.1a1",
+          "git_sha": "6f2d8821aa3cd9b1379fd09b5f77d3ae0935ae1c"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023559Z-gh-29301453128-a1",
+        "started_at": "2026-07-14T02:35:59Z",
+        "completed_at": "2026-07-14T02:36:07Z",
+        "duration_seconds": 7.533,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent-openai-imagegen[test] @ file:///tmp/datasette-agent-openai-imagegen-43ftbe6t/datasette_agent_openai_imagegen-0.1a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-openai-imagegen/datasette-1.0a36/runs/20260714T023559Z-gh-29301453128-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 8,
+        "passed": 0,
+        "failed": 8,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 10
+      },
+      "failing_tests": [
+        "tests/test_agent_openai_imagegen.py::test_generate_and_serve_round_trip",
+        "tests/test_agent_openai_imagegen.py::test_generate_image",
+        "tests/test_agent_openai_imagegen.py::test_generate_image_custom_params",
+        "tests/test_agent_openai_imagegen.py::test_generate_image_no_api_key",
+        "tests/test_agent_openai_imagegen.py::test_plugin_is_installed",
+        "tests/test_agent_openai_imagegen.py::test_serve_image",
+        "tests/test_agent_openai_imagegen.py::test_serve_image_not_found",
+        "tests/test_agent_openai_imagegen.py::test_tool_registered"
+      ],
+      "error_tests": [],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent-openai-imagegen/datasette-1.0a36/runs/20260714T023559Z-gh-29301453128-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-agent-sprites",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-agent-sprites",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/4e/6e/9dbaa9ffad28b26f5937eee31b04c172c87d9db29259f91c7db5c81597cd/datasette_agent_sprites-0.1a0.tar.gz",
+          "sha256": "0b4945c34a09afa4d0f3bdc367096973ace1f5f46ecc675d494615658a4a9255"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent-sprites",
+          "ref": "0.1a0",
+          "git_sha": "80a4e42dbee3deae0da1a93500702286addfbe2c"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023600Z-gh-29301453128-a1",
+        "started_at": "2026-07-14T02:36:00Z",
+        "completed_at": "2026-07-14T02:36:07Z",
+        "duration_seconds": 7.205,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent-sprites[test] @ file:///tmp/datasette-agent-sprites-7n3adz25/datasette_agent_sprites-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-sprites/datasette-1.0a36/runs/20260714T023600Z-gh-29301453128-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 18,
+        "passed": 0,
+        "failed": 18,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 20
+      },
+      "failing_tests": [
+        "tests/test_agent_sprites.py::test_create_sprite",
+        "tests/test_agent_sprites.py::test_delete_sprite",
+        "tests/test_agent_sprites.py::test_delete_sprite_not_found",
+        "tests/test_agent_sprites.py::test_exec_on_sprite",
+        "tests/test_agent_sprites.py::test_exec_on_sprite_nonzero_exit",
+        "tests/test_agent_sprites.py::test_exec_on_sprite_with_cwd",
+        "tests/test_agent_sprites.py::test_get_sprite",
+        "tests/test_agent_sprites.py::test_list_sprites",
+        "tests/test_agent_sprites.py::test_list_sprites_no_token",
+        "tests/test_agent_sprites.py::test_list_sprites_with_prefix",
+        "tests/test_agent_sprites.py::test_plugin_is_installed",
+        "tests/test_agent_sprites.py::test_read_sprite_file_binary_image",
+        "tests/test_agent_sprites.py::test_read_sprite_file_no_token",
+        "tests/test_agent_sprites.py::test_read_sprite_file_text",
+        "tests/test_agent_sprites.py::test_serve_sprite_file",
+        "tests/test_agent_sprites.py::test_write_sprite_file",
+        "tests/test_agent_sprites.py::test_write_sprite_file_no_token",
+        "tests/test_agent_sprites.py::test_write_sprite_file_not_found"
+      ],
+      "error_tests": [],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent-sprites/datasette-1.0a36/runs/20260714T023600Z-gh-29301453128-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-alerts",
+        "version": "0.0.1a10",
+        "repository": "datasette/datasette-alerts",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/2b/a1/68617bf36175f627eadf48f44f19395b7fbec496fcdf0708f45631ad2698/datasette_alerts-0.0.1a10.tar.gz",
+          "sha256": "b5122358ee8c00ca72fd4db1f6817563e438278f92fd02c353c4f116f97870b4"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-alerts",
+          "ref": "0.0.1a10",
+          "git_sha": "e5c322c5111558da609130cc9bf1e8cdf441a042"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023602Z-gh-29301453128-a1",
+        "started_at": "2026-07-14T02:36:02Z",
+        "completed_at": "2026-07-14T02:36:09Z",
+        "duration_seconds": 7.17,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-alerts[test] @ file:///tmp/datasette-alerts-mkvrzhya/datasette_alerts-0.0.1a10.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_alerts.py",
+        "tests/test_custom_alerts.py"
+      ],
+      "test_inventory": {
+        "pypi_sdist": 2,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-alerts/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "package": {
+        "name": "datasette-alerts-desktop",
+        "version": "0.1.0a5",
+        "repository": "datasette/datasette-alerts-desktop",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/f4/2d/c483e6cecbd4863671c0822b49c802dddadb234feab337b6511eb47e3b33/datasette_alerts_desktop-0.1.0a5.tar.gz",
+          "sha256": "54ab96fa353a0c29caf0b75a9def6f63e2fe87fed7c1d252285d514af062a7b5"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-alerts-desktop",
+          "ref": "0.1.0a5",
+          "git_sha": "ef810a1baf721f1569b3a67d7db91818e4871645"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T023602Z-gh-29301453128-a1",
+        "started_at": "2026-07-14T02:36:02Z",
+        "completed_at": "2026-07-14T02:36:09Z",
+        "duration_seconds": 7.424,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-alerts-desktop[test] @ file:///tmp/datasette-alerts-desktop-jj1kg51s/datasette_alerts_desktop-0.1.0a5.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts-desktop/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 1,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 3
+      },
+      "failing_tests": [
+        "tests/test_alerts_desktop.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-alerts-desktop/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/pytest.txt"
       }
     },
     {

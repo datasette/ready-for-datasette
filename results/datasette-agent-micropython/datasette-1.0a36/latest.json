@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-agent-micropython",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-agent-micropython",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ca/9a/abaf729d2aa076702be2f87364a243ca7bc86b1b9f94d3507c3005d5e158/datasette_agent_micropython-0.1a0.tar.gz",
+      "sha256": "aff205fb4aeb31efe6263276eda1b09f10835ba14fcc8b34c708eb0ff457c20f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent-micropython",
+      "ref": "0.1a0",
+      "git_sha": "4ce9a3dd89dbc67e51e067d1e2e154dc5e316ae6"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T023602Z-gh-29301453128-a1",
+    "started_at": "2026-07-14T02:36:02Z",
+    "completed_at": "2026-07-14T02:36:08Z",
+    "duration_seconds": 6.802,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-agent-micropython[test] @ file:///tmp/datasette-agent-micropython-jfe6wd2v/datasette_agent_micropython-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-micropython/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_agent_micropython.py"
+  ],
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent-micropython/datasette-1.0a36/runs/20260714T023602Z-gh-29301453128-a1/pytest.txt"
+  }
+}
