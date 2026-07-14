@@ -1,0 +1,234 @@
+   Building datasette-ca460 @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-ca460-b42ab5de/datasette_ca460-0.0.1a4.tar.gz
+      Built datasette-ca460 @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-ca460-b42ab5de/datasette_ca460-0.0.1a4.tar.gz
+Installed 69 packages in 75ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpJfGfSJ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-ca460-b42ab5de/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 59 items
+
+tests/test_ca460.py::test_plugin_is_installed PASSED                     [  1%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_document_url PASSED [  3%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_document_url_no_slug PASSED [  5%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_document_url_trailing_slash PASSED [  6%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_project_url PASSED [  8%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_project_url_no_trailing_slash PASSED [ 10%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_unrecognized_url_returns_none PASSED [ 11%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_empty_string_returns_none PASSED [ 13%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_case_insensitive PASSED [ 15%]
+tests/test_documentcloud.py::TestParseDocumentcloudUrl::test_document_preferred_over_project PASSED [ 16%]
+tests/test_documentcloud.py::TestPageImageUrl::test_large_image PASSED   [ 18%]
+tests/test_documentcloud.py::TestPageImageUrl::test_small_size PASSED    [ 20%]
+tests/test_documentcloud.py::TestPageImageUrl::test_thumbnail_size PASSED [ 22%]
+tests/test_files_optional.py::test_is_files_available_installed FAILED   [ 23%]
+tests/test_files_optional.py::test_process_file_id_returns_501_when_files_unavailable PASSED [ 25%]
+tests/test_files_optional.py::test_process_document_id_still_works_without_files PASSED [ 27%]
+tests/test_files_optional.py::test_index_view_injects_files_available_flag FAILED [ 28%]
+tests/test_files_optional.py::test_index_view_files_available_false_when_unavailable FAILED [ 30%]
+tests/test_ingest.py::test_ingest_document_url_creates_sync_job PASSED   [ 32%]
+tests/test_ingest.py::test_ingest_rejects_non_documentcloud_url PASSED   [ 33%]
+tests/test_ingest.py::test_ingest_rejects_project_url PASSED             [ 35%]
+tests/test_ingest.py::test_ingest_requires_authorization PASSED          [ 37%]
+tests/test_ingest.py::test_ingest_requires_ingest_permission_not_just_access PASSED [ 38%]
+tests/test_ingest.py::test_ingest_accepts_model_overrides PASSED         [ 40%]
+tests/test_models_endpoint.py::test_models_endpoint_returns_classify_and_parse_lists PASSED [ 42%]
+tests/test_models_endpoint.py::test_models_endpoint_filters_by_purpose PASSED [ 44%]
+tests/test_sources.py::test_upload_source_store_page PASSED              [ 45%]
+tests/test_sources.py::test_upload_source_get_page_image_bytes PASSED    [ 47%]
+tests/test_sources.py::test_upload_source_image_response_returns_bytes PASSED [ 49%]
+tests/test_sources.py::test_upload_source_thumbnail_url PASSED           [ 50%]
+tests/test_sources.py::test_upload_source_embed_url PASSED               [ 52%]
+tests/test_sources.py::test_upload_source_pdf_response_redirect PASSED   [ 54%]
+tests/test_sources.py::test_dc_source_store_url_not_blob PASSED          [ 55%]
+tests/test_sources.py::test_dc_source_image_response_returns_url_for_redirect PASSED [ 57%]
+tests/test_sources.py::test_dc_source_thumbnail_url PASSED               [ 59%]
+tests/test_sources.py::test_dc_source_embed_url PASSED                   [ 61%]
+tests/test_sources.py::test_dc_source_pdf_response PASSED                [ 62%]
+tests/test_sources.py::test_factory_returns_upload_source PASSED         [ 64%]
+tests/test_sources.py::test_factory_returns_dc_source PASSED             [ 66%]
+tests/test_sources.py::test_dc_source_store_page_upserts PASSED          [ 67%]
+tests/test_task_queue.py::test_log_event PASSED                          [ 69%]
+tests/test_task_queue.py::test_log_event_multiple PASSED                 [ 71%]
+tests/test_task_queue.py::test_create_classify_tasks PASSED              [ 72%]
+tests/test_task_queue.py::test_create_classify_tasks_skips_existing_predictions PASSED [ 74%]
+tests/test_task_queue.py::test_create_classify_tasks_idempotent PASSED   [ 76%]
+tests/test_task_queue.py::test_claim_task PASSED                         [ 77%]
+tests/test_task_queue.py::test_claim_task_returns_none_when_empty PASSED [ 79%]
+tests/test_task_queue.py::test_claim_task_prefers_classify PASSED        [ 81%]
+tests/test_task_queue.py::test_claim_task_falls_back_to_other_type PASSED [ 83%]
+tests/test_task_queue.py::test_complete_task PASSED                      [ 84%]
+tests/test_task_queue.py::test_fail_task PASSED                          [ 86%]
+tests/test_task_queue.py::test_reset_stale_tasks PASSED                  [ 88%]
+tests/test_task_queue.py::test_reset_stale_tasks_ignores_recent PASSED   [ 89%]
+tests/test_task_queue.py::test_create_parse_task PASSED                  [ 91%]
+tests/test_task_queue.py::test_create_parse_task_skips_unknown PASSED    [ 93%]
+tests/test_task_queue.py::test_create_parse_task_idempotent PASSED       [ 94%]
+tests/test_task_queue.py::test_get_task_progress PASSED                  [ 96%]
+tests/test_task_queue.py::test_get_task_progress_empty PASSED            [ 98%]
+tests/test_task_queue.py::test_get_job_summary PASSED                    [100%]
+
+=================================== FAILURES ===================================
+______________________ test_is_files_available_installed _______________________
+
+    def test_is_files_available_installed():
+        """In this test env datasette-files is in the dev group, so this returns True."""
+        files_storage.is_files_available.cache_clear()
+>       assert files_storage.is_files_available() is True
+E       assert False is True
+E        +  where False = <functools._lru_cache_wrapper object at 0x10baa2f00>()
+E        +    where <functools._lru_cache_wrapper object at 0x10baa2f00> = files_storage.is_files_available
+
+tests/test_files_optional.py:45: AssertionError
+_________________ test_index_view_injects_files_available_flag _________________
+
+ds = <datasette.app.Datasette object at 0x10c804b90>
+auth_cookies = {'ds_actor': 'eyJhIjp7ImlkIjoicm9vdCJ9fQ.u0DSH80HF3mzRFT6NJQ-KA5uxz0'}
+
+    @pytest.mark.asyncio
+    async def test_index_view_injects_files_available_flag(ds, auth_cookies):
+        """The pageData blob should carry files_available for the frontend."""
+        response = await ds.client.get("/_memory/-/ca460", cookies=auth_cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_files_optional.py:98: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_plugin_router/__init__.py", line 175, in view
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/router.py", line 21, in wrapper
+    return await func(datasette=datasette, request=request, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/routes.py", line 54, in ca460_index_view
+    await _render_vite_entry(datasette, request, "src/index_view.ts", {"database": database})
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/routes.py", line 31, in _render_vite_entry
+    return await datasette.render_template(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 2391, in render_template
+    for extra_vars in pm.hook.extra_template_vars(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template=template.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        datasette=self,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_callers.py", line 167, in _multicall
+    raise exception
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/__init__.py", line 30, in extra_template_vars
+    entry = vite_entry(
+        datasette=datasette,
+        plugin_package="datasette_ca460",
+        vite_dev_path=os.environ.get("DATASETTE_CA460_VITE_PATH"),
+    )
+TypeError: vite_entry() got an unexpected keyword argument 'vite_dev_path'
+____________ test_index_view_files_available_false_when_unavailable ____________
+
+ds = <datasette.app.Datasette object at 0x10c807610>
+auth_cookies = {'ds_actor': 'eyJhIjp7ImlkIjoicm9vdCJ9fQ.mPVNf6ayfHuXW6mDm5fwV2es2UU'}
+files_unavailable = None
+
+    @pytest.mark.asyncio
+    async def test_index_view_files_available_false_when_unavailable(ds, auth_cookies, files_unavailable):
+        response = await ds.client.get("/_memory/-/ca460", cookies=auth_cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_files_optional.py:106: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_plugin_router/__init__.py", line 175, in view
+    return await fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/router.py", line 21, in wrapper
+    return await func(datasette=datasette, request=request, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/routes.py", line 54, in ca460_index_view
+    await _render_vite_entry(datasette, request, "src/index_view.ts", {"database": database})
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/routes.py", line 31, in _render_vite_entry
+    return await datasette.render_template(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette/app.py", line 2391, in render_template
+    for extra_vars in pm.hook.extra_template_vars(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template=template.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        datasette=self,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_callers.py", line 167, in _multicall
+    raise exception
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/pluggy/_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+  File "/Users/simon/.cache/uv/archive-v0/YQR8ELU6TA1MhKEVQsFcY/lib/python3.13/site-packages/datasette_ca460/__init__.py", line 30, in extra_template_vars
+    entry = vite_entry(
+        datasette=datasette,
+        plugin_package="datasette_ca460",
+        vite_dev_path=os.environ.get("DATASETTE_CA460_VITE_PATH"),
+    )
+TypeError: vite_entry() got an unexpected keyword argument 'vite_dev_path'
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-ca460/datasette-1.0a37/runs/20260714T164653Z-local-ac8026/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_files_optional.py::test_is_files_available_installed - assert False is True
+ +  where False = <functools._lru_cache_wrapper object at 0x10baa2f00>()
+ +    where <functools._lru_cache_wrapper object at 0x10baa2f00> = files_storage.is_files_available
+FAILED tests/test_files_optional.py::test_index_view_injects_files_available_flag - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_files_optional.py::test_index_view_files_available_false_when_unavailable - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 3 failed, 56 passed in 1.61s =========================

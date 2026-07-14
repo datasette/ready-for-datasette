@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-auth-passwords",
+    "version": "1.1.1",
+    "repository": "simonw/datasette-auth-passwords",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/41/27/2e613ed17c92effac6d3a23c9b16bb983fcaa56a223f62ead61070f37f83/datasette_auth_passwords-1.1.1.tar.gz",
+      "sha256": "403a53cb6a29617e91ea3de212dd54e7270c2bdb3e9e8dba350d540e1c5adfca"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-auth-passwords",
+      "ref": "1.1.1",
+      "git_sha": "bb96899c84395bb40e903b0da5e1e7cdb5d8c4dd"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164637Z-local-d52951",
+    "started_at": "2026-07-14T16:46:37Z",
+    "completed_at": "2026-07-14T16:46:44Z",
+    "duration_seconds": 6.424,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-auth-passwords[test] @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-passwords-ke1tfabe/datasette_auth_passwords-1.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-auth-passwords/datasette-1.0a37/runs/20260714T164637Z-local-d52951/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 22,
+    "passed": 16,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_auth_passwords.py::test_login[user1-password!-True-userone]",
+    "tests/test_auth_passwords.py::test_login[user1-password-False-None]",
+    "tests/test_auth_passwords.py::test_login[user2--False-None]",
+    "tests/test_auth_passwords.py::test_login[user2-password!-True-user2]",
+    "tests/test_auth_passwords.py::test_login[user3-password!-False-None]",
+    "tests/test_auth_passwords.py::test_password_tool"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-auth-passwords/datasette-1.0a37/runs/20260714T164637Z-local-d52951/pytest.txt"
+  }
+}

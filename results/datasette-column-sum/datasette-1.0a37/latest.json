@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-column-sum",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-column-sum",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/c8/32/0c6d1d228ea3629bdbe6565334217954944a6a3fe84292f35e6c16bdccd5/datasette-column-sum-0.1a0.tar.gz",
+      "sha256": "b02693f45788456cc02317c6acc70dc05c01cc0fddd4d0c4e451ca0a60714190"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-column-sum",
+      "ref": "0.1a0",
+      "git_sha": "4bcf9a6fa64cd82657378e4b703e5a4c3cdc7eb4"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164701Z-local-f8561b",
+    "started_at": "2026-07-14T16:47:01Z",
+    "completed_at": "2026-07-14T16:47:05Z",
+    "duration_seconds": 3.917,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-column-sum @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-sum-r1b5rmet/datasette-column-sum-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test",
+      "--with",
+      "nest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-column-sum/datasette-1.0a37/runs/20260714T164701Z-local-f8561b/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 2,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test",
+      "nest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-column-sum/datasette-1.0a37/runs/20260714T164701Z-local-f8561b/pytest.txt"
+  }
+}

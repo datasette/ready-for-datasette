@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-atom",
+    "version": "0.9",
+    "repository": "simonw/datasette-atom",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/e4/91/6bdae028e45ded933ac0a440e84892e0778be72caa1e18e691120aa9aed9/datasette-atom-0.9.tar.gz",
+      "sha256": "033025c0fb33bc181f3904c360e2fdfbeb0b1f99a3b3f85e093376525ea60b0d"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-atom",
+      "ref": "0.9",
+      "git_sha": "3fc967d6c420b9128db556ccf92e43ac89b02b99"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164636Z-local-692ccf",
+    "started_at": "2026-07-14T16:46:36Z",
+    "completed_at": "2026-07-14T16:46:41Z",
+    "duration_seconds": 5.453,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-atom @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/datasette-atom-0.9.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-atom/datasette-1.0a37/runs/20260714T164636Z-local-692ccf/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 10,
+    "passed": 0,
+    "failed": 10,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 7
+  },
+  "failing_tests": [
+    "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[False-False]",
+    "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[True-True]",
+    "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config2-True]",
+    "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config3-False]",
+    "tests/test_atom.py::test_atom_for_valid_query",
+    "tests/test_atom.py::test_atom_from_titled_canned_query",
+    "tests/test_atom.py::test_atom_link_only_shown_for_correct_queries",
+    "tests/test_atom.py::test_atom_with_bad_html",
+    "tests/test_atom.py::test_atom_with_optional_link",
+    "tests/test_atom.py::test_incorrect_sql_returns_400"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-atom/datasette-1.0a37/runs/20260714T164636Z-local-692ccf/pytest.txt"
+  }
+}

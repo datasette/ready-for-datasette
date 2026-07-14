@@ -1,0 +1,60 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-basemap @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-basemap-zv2c0ppo/datasette-basemap-0.2.tar.gz
+      Built datasette-basemap @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-basemap-zv2c0ppo/datasette-basemap-0.2.tar.gz
+Installed 39 packages in 48ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpsyyQxQ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-basemap-zv2c0ppo/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 2 items
+
+tests/test_basemap.py::test_database FAILED                              [ 50%]
+tests/test_basemap.py::test_metadata FAILED                              [100%]
+
+=================================== FAILURES ===================================
+________________________________ test_database _________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_metadata _________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_basemap.py:5
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-basemap-zv2c0ppo/tagged-source/tests/test_basemap.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_basemap.py:20
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-basemap-zv2c0ppo/tagged-source/tests/test_basemap.py:20: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-basemap/datasette-1.0a37/runs/20260714T164647Z-local-06e0fa/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_basemap.py::test_database - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_basemap.py::test_metadata - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 2 failed, 2 warnings in 0.01s =========================

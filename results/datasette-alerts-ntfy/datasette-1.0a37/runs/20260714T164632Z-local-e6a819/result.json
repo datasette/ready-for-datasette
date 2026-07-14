@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-alerts-ntfy",
+    "version": "0.1.0a2",
+    "repository": "datasette/datasette-alerts-ntfy",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/83/4a/5466b21cc862e21d3b7edc8fa9f92d11a97b9d2a24ecd598d75fa419dbb7/datasette_alerts_ntfy-0.1.0a2.tar.gz",
+      "sha256": "0d31bd3058644b2942e111a0b8746be8f3fe6da3d5846ccb06e412ce4117579b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-alerts-ntfy",
+      "ref": "0.1.0a2",
+      "git_sha": "e5f4c43e35b15f496e11363368254535201bdd9a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164632Z-local-e6a819",
+    "started_at": "2026-07-14T16:46:32Z",
+    "completed_at": "2026-07-14T16:46:35Z",
+    "duration_seconds": 3.924,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-alerts-ntfy @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-alerts-ntfy-af91v6ov/datasette_alerts_ntfy-0.1.0a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-alerts-ntfy/datasette-1.0a37/runs/20260714T164632Z-local-e6a819/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-alerts-ntfy/datasette-1.0a37/runs/20260714T164632Z-local-e6a819/pytest.txt"
+  }
+}

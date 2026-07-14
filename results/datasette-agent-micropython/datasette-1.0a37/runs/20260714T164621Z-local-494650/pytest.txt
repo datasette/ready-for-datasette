@@ -1,0 +1,35 @@
+   Building datasette-agent-micropython @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-micropython-6ep6g0hd/datasette_agent_micropython-0.1a0.tar.gz
+      Built datasette-agent-micropython @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-micropython-6ep6g0hd/datasette_agent_micropython-0.1a0.tar.gz
+Installed 58 packages in 71ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpJNVRkE/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-micropython-6ep6g0hd/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_agent_micropython.py::test_plugin_is_installed PASSED         [  5%]
+tests/test_agent_micropython.py::test_tool_registered PASSED             [ 11%]
+tests/test_agent_micropython.py::test_execute_python_stdout PASSED       [ 16%]
+tests/test_agent_micropython.py::test_execute_python_preserves_emoji_stdout PASSED [ 22%]
+tests/test_agent_micropython.py::test_execute_python_state_persists PASSED [ 27%]
+tests/test_agent_micropython.py::test_context_is_unique_per_conversation PASSED [ 33%]
+tests/test_agent_micropython.py::test_execute_python_can_query_datasette_with_host_function PASSED [ 38%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_accepts_params PASSED [ 44%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_checks_execute_sql_permission PASSED [ 50%]
+tests/test_agent_micropython.py::test_execute_python_sql_host_function_reports_unknown_database PASSED [ 55%]
+tests/test_agent_micropython.py::test_reset_context_clears_state_before_running PASSED [ 61%]
+tests/test_agent_micropython.py::test_parallel_reset_context_calls_are_serialized_per_conversation PASSED [ 66%]
+tests/test_agent_micropython.py::test_lru_eviction_waits_for_active_session PASSED [ 72%]
+tests/test_agent_micropython.py::test_no_conversation_id_fails_closed PASSED [ 77%]
+tests/test_agent_micropython.py::test_timeout_discards_session_state PASSED [ 83%]
+tests/test_agent_micropython.py::test_max_sessions_config_evicts_least_recently_used_session PASSED [ 88%]
+tests/test_agent_micropython.py::test_show_result_adds_html_side_channel PASSED [ 94%]
+tests/test_agent_micropython.py::test_show_result_false_does_not_hint_output_was_displayed PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-agent-micropython/datasette-1.0a37/runs/20260714T164621Z-local-494650/.pytest-report.json
+============================== 18 passed in 2.07s ==============================

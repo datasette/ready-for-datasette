@@ -1,0 +1,25 @@
+   Building datasette-auth-tailscale @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-tailscale-403ig0jm/datasette_auth_tailscale-0.0.1a1.tar.gz
+      Built datasette-auth-tailscale @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-tailscale-403ig0jm/datasette_auth_tailscale-0.0.1a1.tar.gz
+Installed 40 packages in 57ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpy42FKv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-tailscale-403ig0jm/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_auth_tailscale.py::test_plugin_is_installed PASSED            [ 12%]
+tests/test_auth_tailscale.py::test_actor_from_full_identity_headers PASSED [ 25%]
+tests/test_auth_tailscale.py::test_actor_with_only_login PASSED          [ 37%]
+tests/test_auth_tailscale.py::test_rfc2047_decoding_of_name PASSED       [ 50%]
+tests/test_auth_tailscale.py::test_require_tailscale_default_blocks_unauthenticated PASSED [ 62%]
+tests/test_auth_tailscale.py::test_require_tailscale_disabled_allows_unauthenticated PASSED [ 75%]
+tests/test_auth_tailscale.py::test_require_tailscale_passes_through_with_login_header PASSED [ 87%]
+tests/test_auth_tailscale.py::test_invalid_settings_rejected_at_startup PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-auth-tailscale/datasette-1.0a37/runs/20260714T164641Z-local-159e45/.pytest-report.json
+============================== 8 passed in 0.10s ===============================

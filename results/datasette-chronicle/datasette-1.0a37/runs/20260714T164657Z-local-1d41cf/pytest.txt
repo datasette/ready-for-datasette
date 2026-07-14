@@ -1,0 +1,108 @@
+   Building datasette-chronicle @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-chronicle-v9ifuv50/datasette_chronicle-0.3.tar.gz
+      Built datasette-chronicle @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-chronicle-v9ifuv50/datasette_chronicle-0.3.tar.gz
+Installed 41 packages in 42ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpwg05VU/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-chronicle-v9ifuv50/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_chronicle.py::test_enable_disable_chronicle[None] PASSED      [ 25%]
+tests/test_chronicle.py::test_enable_disable_chronicle[root] FAILED      [ 50%]
+tests/test_chronicle.py::test_enable_disable_chronicle[other] PASSED     [ 75%]
+tests/test_chronicle.py::test_upgrades_existing_chronicle_tables_on_startup PASSED [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_enable_disable_chronicle[root] ______________________
+
+actor_id = 'root'
+tmpdir = local('/private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/pytest-of-simon/pytest-80/test_enable_disable_chronicle_1')
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("actor_id", (None, "root", "other"))
+    async def test_enable_disable_chronicle(actor_id, tmpdir):
+        db_path = str(tmpdir / "test.db")
+        datasette = Datasette([db_path])
+        db = sqlite_utils.Database(db_path)
+        db["dogs"].insert_all(
+            [
+                {"name": "Cleo", "age": 7},
+                {"name": "Pancakes", "age": 6},
+                {"name": "Stacy", "age": 3},
+            ],
+            pk="id",
+        )
+    
+        cookies = {}
+        if actor_id:
+            cookies = {"ds_actor": datasette.sign({"a": {"id": actor_id}}, "actor")}
+    
+        # Fetch table page
+        response = await datasette.client.get("/test/dogs", cookies=cookies)
+        html = response.text
+        fragment = "/-/enable-chronicle/test/dogs"
+        if actor_id == "root":
+>           assert fragment in html
+E           assert '/-/enable-chronicle/test/dogs' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+
+tests/test_chronicle.py:30: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/views/table.py", line 1717, in table_view
+    response = await table_view_traced(datasette, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/views/table.py", line 1945, in table_view_traced
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    ),
+    ^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/templates/table.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/templates/table.html", line 34, in block 'content'
+    {% set action_links, action_title = actions(), "View actions" if is_view else "Table actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/views/table_extras.py", line 450, in actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/Users/simon/.cache/uv/archive-v0/ST7OhwtzmGGqQGbtUdeHt/lib/python3.13/site-packages/datasette_chronicle/__init__.py", line 60, in inner
+    if await datasette.permission_allowed(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-chronicle/datasette-1.0a37/runs/20260714T164657Z-local-1d41cf/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_chronicle.py::test_enable_disable_chronicle[root] - assert '/-/enable-chronicle/test/dogs' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+========================= 1 failed, 3 passed in 0.18s ==========================

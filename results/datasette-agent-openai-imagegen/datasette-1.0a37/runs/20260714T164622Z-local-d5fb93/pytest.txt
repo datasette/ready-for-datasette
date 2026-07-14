@@ -1,0 +1,25 @@
+   Building datasette-agent-openai-imagegen @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-openai-imagegen-o49gqbew/datasette_agent_openai_imagegen-0.1a1.tar.gz
+      Built datasette-agent-openai-imagegen @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-openai-imagegen-o49gqbew/datasette_agent_openai_imagegen-0.1a1.tar.gz
+Installed 56 packages in 79ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpp3UPUu/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-openai-imagegen-o49gqbew/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_agent_openai_imagegen.py::test_plugin_is_installed PASSED     [ 12%]
+tests/test_agent_openai_imagegen.py::test_tool_registered PASSED         [ 25%]
+tests/test_agent_openai_imagegen.py::test_serve_image PASSED             [ 37%]
+tests/test_agent_openai_imagegen.py::test_serve_image_not_found PASSED   [ 50%]
+tests/test_agent_openai_imagegen.py::test_generate_image PASSED          [ 62%]
+tests/test_agent_openai_imagegen.py::test_generate_image_custom_params PASSED [ 75%]
+tests/test_agent_openai_imagegen.py::test_generate_image_no_api_key PASSED [ 87%]
+tests/test_agent_openai_imagegen.py::test_generate_and_serve_round_trip PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-agent-openai-imagegen/datasette-1.0a37/runs/20260714T164622Z-local-d5fb93/.pytest-report.json
+============================== 8 passed in 0.67s ===============================

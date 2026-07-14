@@ -1,0 +1,43 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-block @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-block-4pm2cw9x/datasette-block-0.1.1.tar.gz
+      Built datasette-block @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-block-4pm2cw9x/datasette-block-0.1.1.tar.gz
+Installed 39 packages in 42ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpsbFAWK/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-block-4pm2cw9x/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_____________________ ERROR collecting tests/test_block.py _____________________
+ImportError while importing test module '/private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-block-4pm2cw9x/tagged-source/tests/test_block.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/simon/.cache/uv/archive-v0/Jjz12b9MAHHG35XjKK27V/lib/python3.13/site-packages/_pytest/python.py:508: in importtestmodule
+    mod = import_path(
+/Users/simon/.cache/uv/archive-v0/Jjz12b9MAHHG35XjKK27V/lib/python3.13/site-packages/_pytest/pathlib.py:596: in import_path
+    importlib.import_module(module_name)
+/Users/simon/.local/share/uv/python/cpython-3.13.12-macos-aarch64-none/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1331: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/Users/simon/.cache/uv/archive-v0/Jjz12b9MAHHG35XjKK27V/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+tests/test_block.py:1: in <module>
+    from asgi_lifespan import LifespanManager
+E   ModuleNotFoundError: No module named 'asgi_lifespan'
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-block/datasette-1.0a37/runs/20260714T164649Z-local-abb27e/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_block.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.08s ===============================

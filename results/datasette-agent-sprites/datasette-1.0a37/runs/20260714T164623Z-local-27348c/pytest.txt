@@ -1,0 +1,35 @@
+   Building datasette-agent-sprites @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-sprites-_mwf742f/datasette_agent_sprites-0.1a0.tar.gz
+      Built datasette-agent-sprites @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-sprites-_mwf742f/datasette_agent_sprites-0.1a0.tar.gz
+Installed 60 packages in 82ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmp4wCRfF/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2', 'httpx': '0.36.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-sprites-_mwf742f/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2, httpx-0.36.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_agent_sprites.py::test_plugin_is_installed PASSED             [  5%]
+tests/test_agent_sprites.py::test_list_sprites_no_token PASSED           [ 11%]
+tests/test_agent_sprites.py::test_list_sprites PASSED                    [ 16%]
+tests/test_agent_sprites.py::test_list_sprites_with_prefix PASSED        [ 22%]
+tests/test_agent_sprites.py::test_create_sprite PASSED                   [ 27%]
+tests/test_agent_sprites.py::test_get_sprite PASSED                      [ 33%]
+tests/test_agent_sprites.py::test_exec_on_sprite PASSED                  [ 38%]
+tests/test_agent_sprites.py::test_exec_on_sprite_with_cwd PASSED         [ 44%]
+tests/test_agent_sprites.py::test_exec_on_sprite_nonzero_exit PASSED     [ 50%]
+tests/test_agent_sprites.py::test_delete_sprite PASSED                   [ 55%]
+tests/test_agent_sprites.py::test_delete_sprite_not_found PASSED         [ 61%]
+tests/test_agent_sprites.py::test_read_sprite_file_binary_image PASSED   [ 66%]
+tests/test_agent_sprites.py::test_read_sprite_file_text PASSED           [ 72%]
+tests/test_agent_sprites.py::test_serve_sprite_file PASSED               [ 77%]
+tests/test_agent_sprites.py::test_read_sprite_file_no_token PASSED       [ 83%]
+tests/test_agent_sprites.py::test_write_sprite_file PASSED               [ 88%]
+tests/test_agent_sprites.py::test_write_sprite_file_no_token PASSED      [ 94%]
+tests/test_agent_sprites.py::test_write_sprite_file_not_found PASSED     [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-agent-sprites/datasette-1.0a37/runs/20260714T164623Z-local-27348c/.pytest-report.json
+============================== 18 passed in 0.09s ==============================

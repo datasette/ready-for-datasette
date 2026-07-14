@@ -1,0 +1,19 @@
+   Building datasette-checkbox @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-checkbox-_4cfkmgs/datasette_checkbox-0.1a4.tar.gz
+      Built datasette-checkbox @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-checkbox-_4cfkmgs/datasette_checkbox-0.1a4.tar.gz
+Installed 40 packages in 46ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpWRVFwn/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-checkbox-_4cfkmgs/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_checkbox.py::test_plugin_adds_javascript[False] PASSED        [ 50%]
+tests/test_checkbox.py::test_plugin_adds_javascript[True] PASSED         [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-checkbox/datasette-1.0a37/runs/20260714T164654Z-local-1dea26/.pytest-report.json
+============================== 2 passed in 0.10s ===============================

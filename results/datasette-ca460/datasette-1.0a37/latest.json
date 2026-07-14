@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-ca460",
+    "version": "0.0.1a4",
+    "repository": "datasette/datasette-ca460",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/30/3e/1a4dcb51537607e528304e364aa6181d554fdf9a1e73a38549697fe4c5be/datasette_ca460-0.0.1a4.tar.gz",
+      "sha256": "cdb58217deeba16bcf964513d1d1d83c0967861b17e433cbb4cc40826d699531"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-ca460",
+      "ref": "0.0.1a4",
+      "git_sha": "ed7ca9b79555917a209ef20a448ccff40ed60bba"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164653Z-local-ac8026",
+    "started_at": "2026-07-14T16:46:53Z",
+    "completed_at": "2026-07-14T16:47:03Z",
+    "duration_seconds": 9.642,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-ca460 @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-ca460-b42ab5de/datasette_ca460-0.0.1a4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff>=0.15.0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-ca460/datasette-1.0a37/runs/20260714T164653Z-local-ac8026/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 59,
+    "passed": 56,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_files_optional.py::test_index_view_files_available_false_when_unavailable",
+    "tests/test_files_optional.py::test_index_view_injects_files_available_flag",
+    "tests/test_files_optional.py::test_is_files_available_installed"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff>=0.15.0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 7,
+    "release_tag": 7
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-ca460/datasette-1.0a37/runs/20260714T164653Z-local-ac8026/pytest.txt"
+  }
+}

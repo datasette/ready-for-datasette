@@ -1,0 +1,20 @@
+   Building datasette-column-sum @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-sum-r1b5rmet/datasette-column-sum-0.1a0.tar.gz
+      Built datasette-column-sum @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-sum-r1b5rmet/datasette-column-sum-0.1a0.tar.gz
+Installed 43 packages in 36ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmp3F5sPP/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-sum-r1b5rmet/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_column_sum.py::test_plugin_is_installed PASSED                [ 50%]
+tests/test_playwright.py::test_table_cog_menus SKIPPED (playwright not
+installed)                                                               [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-column-sum/datasette-1.0a37/runs/20260714T164701Z-local-f8561b/.pytest-report.json
+========================= 1 passed, 1 skipped in 0.03s =========================

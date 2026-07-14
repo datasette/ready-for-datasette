@@ -1,0 +1,15 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-column-inspect @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-inspect-q_ayca3z/datasette-column-inspect-0.2a0.tar.gz
+      Built datasette-column-inspect @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-inspect-q_ayca3z/datasette-column-inspect-0.2a0.tar.gz
+Installed 39 packages in 41ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmp9qNOgq/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-inspect-q_ayca3z/unpacked/datasette-column-inspect-0.2a0
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 0 items
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-column-inspect/datasette-1.0a37/runs/20260714T164701Z-local-979b7f/.pytest-report.json
+============================ no tests ran in 0.00s =============================

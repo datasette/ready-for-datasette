@@ -1,0 +1,66 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-codespaces @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-codespaces-ei2lwsk_/datasette-codespaces-0.1.1.tar.gz
+      Built datasette-codespaces @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-codespaces-ei2lwsk_/datasette-codespaces-0.1.1.tar.gz
+Installed 40 packages in 43ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpNL5PQ7/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-codespaces-ei2lwsk_/tagged-source
+configfile: pytest.ini
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 2 items
+
+tests/test_codespaces.py::test_no_env_variable FAILED                    [ 50%]
+tests/test_codespaces.py::test_codespace_name FAILED                     [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_no_env_variable _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_codespace_name ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../../../../../../Users/simon/.cache/uv/archive-v0/xhUYw_2VaheO-9f4feh4y/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /Users/simon/.cache/uv/archive-v0/xhUYw_2VaheO-9f4feh4y/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_codespaces.py:7
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-codespaces-ei2lwsk_/tagged-source/tests/test_codespaces.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_codespaces.py:15
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-codespaces-ei2lwsk_/tagged-source/tests/test_codespaces.py:15: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-codespaces/datasette-1.0a37/runs/20260714T164659Z-local-2fca50/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_codespaces.py::test_no_env_variable - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_codespaces.py::test_codespace_name - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 2 failed, 3 warnings in 0.01s =========================

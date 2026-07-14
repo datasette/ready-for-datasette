@@ -1,0 +1,60 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-allow-permissions-debug @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-allow-permissions-debug-i7j3w2s_/datasette-allow-permissions-debug-0.1.tar.gz
+      Built datasette-allow-permissions-debug @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-allow-permissions-debug-i7j3w2s_/datasette-allow-permissions-debug-0.1.tar.gz
+Installed 39 packages in 46ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpNSY9GA/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-allow-permissions-debug-i7j3w2s_/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 2 items
+
+tests/test_allow_permissions_debug.py::test_plugin_is_installed FAILED   [ 50%]
+tests/test_allow_permissions_debug.py::test_allows_access FAILED         [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_allows_access ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_allow_permissions_debug.py:6
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-allow-permissions-debug-i7j3w2s_/tagged-source/tests/test_allow_permissions_debug.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_allow_permissions_debug.py:16
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-allow-permissions-debug-i7j3w2s_/tagged-source/tests/test_allow_permissions_debug.py:16: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-allow-permissions-debug/datasette-1.0a37/runs/20260714T164633Z-local-9a84dd/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_allow_permissions_debug.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_allow_permissions_debug.py::test_allows_access - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 2 failed, 2 warnings in 0.01s =========================

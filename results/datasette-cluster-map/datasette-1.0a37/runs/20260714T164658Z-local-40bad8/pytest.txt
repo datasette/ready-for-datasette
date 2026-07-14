@@ -1,0 +1,8 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-cluster-map @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-cluster-map-1xxi_z63/datasette_cluster_map-0.18.2.tar.gz
+      Built datasette-cluster-map @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-cluster-map-1xxi_z63/datasette_cluster_map-0.18.2.tar.gz
+Installed 40 packages in 40ms
+ImportError while loading conftest '/private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-cluster-map-1xxi_z63/tagged-source/tests/conftest.py'.
+tests/conftest.py:2: in <module>
+    from datasette_test import wait_until_responds
+E   ModuleNotFoundError: No module named 'datasette_test'

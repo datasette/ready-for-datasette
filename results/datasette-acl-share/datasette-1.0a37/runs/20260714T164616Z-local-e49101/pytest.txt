@@ -1,0 +1,24 @@
+   Building datasette-acl-share @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-acl-share-xk79ezel/datasette_acl_share-0.0.1a7.tar.gz
+      Built datasette-acl-share @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-acl-share-xk79ezel/datasette_acl_share-0.0.1a7.tar.gz
+Installed 54 packages in 109ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpUbScBv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-acl-share-xk79ezel/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_share.py::test_plugin_is_installed PASSED                     [ 14%]
+tests/test_share.py::test_assets_prod_mode PASSED                        [ 28%]
+tests/test_share.py::test_assets_real_manifest PASSED                    [ 42%]
+tests/test_share.py::test_assets_dev_mode PASSED                         [ 57%]
+tests/test_share.py::test_capabilities_degrade_gracefully PASSED         [ 71%]
+tests/test_share.py::test_capabilities_reflect_installed_plugins PASSED  [ 85%]
+tests/test_share.py::test_capabilities_endpoint PASSED                   [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-acl-share/datasette-1.0a37/runs/20260714T164616Z-local-e49101/.pytest-report.json
+============================== 7 passed in 0.09s ===============================

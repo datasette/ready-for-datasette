@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-column-inspect",
+    "version": "0.2a0",
+    "repository": "simonw/datasette-column-inspect",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/9d/6d/ae3bd9b67d7ae6115c05d143da1fd9d5870e05790336e955d76e195e9aae/datasette-column-inspect-0.2a0.tar.gz",
+      "sha256": "9263f3dde05543e7598bfcfd1971d9725196949c880f8e0780884caa48836279"
+    },
+    "test_suite": {
+      "type": "pypi_sdist",
+      "repository": null,
+      "ref": null,
+      "git_sha": null
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164701Z-local-979b7f",
+    "started_at": "2026-07-14T16:47:01Z",
+    "completed_at": "2026-07-14T16:47:04Z",
+    "duration_seconds": 2.931,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 5,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-column-inspect @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-column-inspect-q_ayca3z/datasette-column-inspect-0.2a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-column-inspect/datasette-1.0a37/runs/20260714T164701Z-local-979b7f/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "no_tests",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 0
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-column-inspect/datasette-1.0a37/runs/20260714T164701Z-local-979b7f/pytest.txt"
+  }
+}

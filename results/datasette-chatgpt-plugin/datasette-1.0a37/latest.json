@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-chatgpt-plugin",
+    "version": "0.1",
+    "repository": "simonw/datasette-chatgpt-plugin",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/fd/ad/6a723dfb9ca96665c10a36005e4e6414d3e69defa1e3d0f0721a56398e08/datasette-chatgpt-plugin-0.1.tar.gz",
+      "sha256": "5a657c17b85b1339dd1856f53a5fdde62680b7368633580c34050ce42bb61343"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-chatgpt-plugin",
+      "ref": "0.1",
+      "git_sha": "506c45e7c765f455333e9ae2b58810021c3745ea"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164653Z-local-3d58f6",
+    "started_at": "2026-07-14T16:46:53Z",
+    "completed_at": "2026-07-14T16:46:58Z",
+    "duration_seconds": 4.455,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-chatgpt-plugin @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-chatgpt-plugin-3v1_1c5w/datasette-chatgpt-plugin-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-chatgpt-plugin/datasette-1.0a37/runs/20260714T164653Z-local-3d58f6/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 6,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_chatgpt_plugin.py::test_ai_plugin",
+    "tests/test_chatgpt_plugin.py::test_chatgpt_openai_schema"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-chatgpt-plugin/datasette-1.0a37/runs/20260714T164653Z-local-3d58f6/pytest.txt"
+  }
+}

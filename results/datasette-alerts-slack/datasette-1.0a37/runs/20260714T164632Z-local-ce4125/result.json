@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-alerts-slack",
+    "version": "0.1.0a3",
+    "repository": "datasette/datasette-alerts-slack",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a5/2a/fe5c32a594be6a84aa5cc087c2fa9bfceb9b3dab71ae90870e49c0044851/datasette_alerts_slack-0.1.0a3.tar.gz",
+      "sha256": "bc4adf12f9f01c9a7794641157c3e200d03749aa931b35759411b7537dbe1cf7"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-alerts-slack",
+      "ref": "0.1.0a3",
+      "git_sha": "f956fdfcc54a3b82e1ee542798fbf2caff6334cc"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T164632Z-local-ce4125",
+    "started_at": "2026-07-14T16:46:32Z",
+    "completed_at": "2026-07-14T16:46:36Z",
+    "duration_seconds": 3.651,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-alerts-slack @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-alerts-slack-vorucd_7/datasette_alerts_slack-0.1.0a3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-alerts-slack/datasette-1.0a37/runs/20260714T164632Z-local-ce4125/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-alerts-slack/datasette-1.0a37/runs/20260714T164632Z-local-ce4125/pytest.txt"
+  }
+}

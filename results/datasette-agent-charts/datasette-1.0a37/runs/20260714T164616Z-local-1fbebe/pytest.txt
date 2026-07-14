@@ -1,0 +1,31 @@
+   Building datasette-agent-charts @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-charts-_leni1ht/datasette_agent_charts-0.1a2.tar.gz
+      Built datasette-agent-charts @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-charts-_leni1ht/datasette_agent_charts-0.1a2.tar.gz
+Installed 56 packages in 92ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmp0WB5hj/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-charts-_leni1ht/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+tests/test_agent_charts.py::test_plugin_is_installed PASSED              [  7%]
+tests/test_agent_charts.py::test_chart_type_schema PASSED                [ 14%]
+tests/test_agent_charts.py::test_tool_description_lists_all_chart_types PASSED [ 21%]
+tests/test_agent_charts.py::test_build_html PASSED                       [ 28%]
+tests/test_agent_charts.py::test_build_html_config_json_round_trips PASSED [ 35%]
+tests/test_agent_charts.py::test_render_chart_minimal PASSED             [ 42%]
+tests/test_agent_charts.py::test_render_chart_all_options PASSED         [ 50%]
+tests/test_agent_charts.py::test_render_chart_html_contains_script_and_element PASSED [ 57%]
+tests/test_agent_charts.py::test_render_chart_denied_without_execute_sql_permission PASSED [ 64%]
+tests/test_agent_charts.py::test_render_chart_invalid_sql_returns_error PASSED [ 71%]
+tests/test_agent_charts.py::test_render_chart_syntax_error_returns_error PASSED [ 78%]
+tests/test_agent_charts.py::test_render_chart_validates_columns PASSED   [ 85%]
+tests/test_agent_charts.py::test_render_chart_validates_color_column PASSED [ 92%]
+tests/test_agent_charts.py::test_render_chart_valid_columns_pass PASSED  [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-agent-charts/datasette-1.0a37/runs/20260714T164616Z-local-1fbebe/.pytest-report.json
+============================== 14 passed in 0.18s ==============================

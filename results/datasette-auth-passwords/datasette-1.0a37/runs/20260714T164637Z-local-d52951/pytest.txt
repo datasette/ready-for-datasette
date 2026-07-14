@@ -1,0 +1,269 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-auth-passwords @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-passwords-ke1tfabe/datasette_auth_passwords-1.1.1.tar.gz
+      Built datasette-auth-passwords @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-passwords-ke1tfabe/datasette_auth_passwords-1.1.1.tar.gz
+Installed 40 packages in 51ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpmWCYot/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-auth-passwords-ke1tfabe/tagged-source
+configfile: pytest.ini
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 22 items
+
+tests/test_auth_passwords.py::test_plugin_is_installed PASSED            [  4%]
+tests/test_auth_passwords.py::test_utils_hash_password PASSED            [  9%]
+tests/test_auth_passwords.py::test_verify_password PASSED                [ 13%]
+tests/test_auth_passwords.py::test_password_tool FAILED                  [ 18%]
+tests/test_auth_passwords.py::test_login_warning_no_accounts PASSED      [ 22%]
+tests/test_auth_passwords.py::test_login[user1-password!-True-userone] FAILED [ 27%]
+tests/test_auth_passwords.py::test_login[user1-password-False-None] FAILED [ 31%]
+tests/test_auth_passwords.py::test_login[user2--False-None] FAILED       [ 36%]
+tests/test_auth_passwords.py::test_login[user2-password!-True-user2] FAILED [ 40%]
+tests/test_auth_passwords.py::test_login[user3-password!-False-None] FAILED [ 45%]
+tests/test_command_hash_password.py::test_hash_password_interactive PASSED [ 50%]
+tests/test_command_hash_password.py::test_hash_password_no_confirm PASSED [ 54%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-user1-password!-True] PASSED [ 59%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-user1-password-False] PASSED [ 63%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-user2--False] PASSED [ 68%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-user2-password!-True] PASSED [ 72%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-user3-password!-False] PASSED [ 77%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-/404-user1-password!-True] PASSED [ 81%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-/404-user1-password-False] PASSED [ 86%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-/404-user2--False] PASSED [ 90%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-/404-user2-password!-True] PASSED [ 95%]
+tests/test_http_basic_auth.py::test_basic_auth_login[/-/404-user3-password!-False] PASSED [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_password_tool ______________________________
+
+    @pytest.mark.asyncio
+    async def test_password_tool():
+        ds = Datasette(memory=True)
+        response1 = await ds.client.get("/-/password-tool")
+>       csrftoken = response1.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+___________________ test_login[user1-password!-True-userone] ___________________
+
+username = 'user1', password = 'password!', should_login = True
+expected_username = 'userone'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "username,password,should_login,expected_username",
+        [
+            ("user1", "password!", True, "userone"),
+            ("user1", "password", False, None),
+            ("user2", "", False, None),
+            ("user2", "password!", True, "user2"),
+            ("user3", "password!", False, None),
+        ],
+    )
+    async def test_login(username, password, should_login, expected_username):
+        ds = Datasette(memory=True, metadata=TEST_METADATA)
+        # Menu should show 'Log in' option
+        html = (await ds.client.get("/")).text
+        LOG_IN = '<li><a href="/-/login">Log in</a></li>'
+        LOG_OUT = 'action="/-/logout"'
+        assert LOG_IN in html
+        assert LOG_OUT not in html
+        # Get csrftoken
+>       csrftoken = (await ds.client.get("/-/login")).cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+____________________ test_login[user1-password-False-None] _____________________
+
+username = 'user1', password = 'password', should_login = False
+expected_username = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "username,password,should_login,expected_username",
+        [
+            ("user1", "password!", True, "userone"),
+            ("user1", "password", False, None),
+            ("user2", "", False, None),
+            ("user2", "password!", True, "user2"),
+            ("user3", "password!", False, None),
+        ],
+    )
+    async def test_login(username, password, should_login, expected_username):
+        ds = Datasette(memory=True, metadata=TEST_METADATA)
+        # Menu should show 'Log in' option
+        html = (await ds.client.get("/")).text
+        LOG_IN = '<li><a href="/-/login">Log in</a></li>'
+        LOG_OUT = 'action="/-/logout"'
+        assert LOG_IN in html
+        assert LOG_OUT not in html
+        # Get csrftoken
+>       csrftoken = (await ds.client.get("/-/login")).cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+________________________ test_login[user2--False-None] _________________________
+
+username = 'user2', password = '', should_login = False
+expected_username = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "username,password,should_login,expected_username",
+        [
+            ("user1", "password!", True, "userone"),
+            ("user1", "password", False, None),
+            ("user2", "", False, None),
+            ("user2", "password!", True, "user2"),
+            ("user3", "password!", False, None),
+        ],
+    )
+    async def test_login(username, password, should_login, expected_username):
+        ds = Datasette(memory=True, metadata=TEST_METADATA)
+        # Menu should show 'Log in' option
+        html = (await ds.client.get("/")).text
+        LOG_IN = '<li><a href="/-/login">Log in</a></li>'
+        LOG_OUT = 'action="/-/logout"'
+        assert LOG_IN in html
+        assert LOG_OUT not in html
+        # Get csrftoken
+>       csrftoken = (await ds.client.get("/-/login")).cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+____________________ test_login[user2-password!-True-user2] ____________________
+
+username = 'user2', password = 'password!', should_login = True
+expected_username = 'user2'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "username,password,should_login,expected_username",
+        [
+            ("user1", "password!", True, "userone"),
+            ("user1", "password", False, None),
+            ("user2", "", False, None),
+            ("user2", "password!", True, "user2"),
+            ("user3", "password!", False, None),
+        ],
+    )
+    async def test_login(username, password, should_login, expected_username):
+        ds = Datasette(memory=True, metadata=TEST_METADATA)
+        # Menu should show 'Log in' option
+        html = (await ds.client.get("/")).text
+        LOG_IN = '<li><a href="/-/login">Log in</a></li>'
+        LOG_OUT = 'action="/-/logout"'
+        assert LOG_IN in html
+        assert LOG_OUT not in html
+        # Get csrftoken
+>       csrftoken = (await ds.client.get("/-/login")).cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+____________________ test_login[user3-password!-False-None] ____________________
+
+username = 'user3', password = 'password!', should_login = False
+expected_username = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "username,password,should_login,expected_username",
+        [
+            ("user1", "password!", True, "userone"),
+            ("user1", "password", False, None),
+            ("user2", "", False, None),
+            ("user2", "password!", True, "user2"),
+            ("user3", "password!", False, None),
+        ],
+    )
+    async def test_login(username, password, should_login, expected_username):
+        ds = Datasette(memory=True, metadata=TEST_METADATA)
+        # Menu should show 'Log in' option
+        html = (await ds.client.get("/")).text
+        LOG_IN = '<li><a href="/-/login">Log in</a></li>'
+        LOG_OUT = 'action="/-/logout"'
+        assert LOG_IN in html
+        assert LOG_OUT not in html
+        # Get csrftoken
+>       csrftoken = (await ds.client.get("/-/login")).cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_auth_passwords.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/Users/simon/.cache/uv/archive-v0/4R-uAE2ax7eSr-3K_Ko6s/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-auth-passwords/datasette-1.0a37/runs/20260714T164637Z-local-d52951/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_auth_passwords.py::test_password_tool - KeyError: 'ds_csrftoken'
+FAILED tests/test_auth_passwords.py::test_login[user1-password!-True-userone] - KeyError: 'ds_csrftoken'
+FAILED tests/test_auth_passwords.py::test_login[user1-password-False-None] - KeyError: 'ds_csrftoken'
+FAILED tests/test_auth_passwords.py::test_login[user2--False-None] - KeyError: 'ds_csrftoken'
+FAILED tests/test_auth_passwords.py::test_login[user2-password!-True-user2] - KeyError: 'ds_csrftoken'
+FAILED tests/test_auth_passwords.py::test_login[user3-password!-False-None] - KeyError: 'ds_csrftoken'
+========================= 6 failed, 16 passed in 1.14s =========================

@@ -1,0 +1,208 @@
+WARN `--no-project` was provided, but no project was found
+   Building datasette-atom @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/datasette-atom-0.9.tar.gz
+      Built datasette-atom @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/datasette-atom-0.9.tar.gz
+Installed 43 packages in 47ms
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0 -- /Users/simon/.cache/uv/builds-v0/.tmpcTliVG/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.12', 'Platform': 'macOS-26.4-arm64-arm-64bit-Mach-O', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'datasette': '1.0a37', 'anyio': '4.14.2'}}
+rootdir: /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, datasette-1.0a37, anyio-4.14.2
+collecting ... collected 10 items
+
+tests/test_atom.py::test_incorrect_sql_returns_400 FAILED                [ 10%]
+tests/test_atom.py::test_atom_for_valid_query FAILED                     [ 20%]
+tests/test_atom.py::test_atom_with_optional_link FAILED                  [ 30%]
+tests/test_atom.py::test_atom_with_bad_html FAILED                       [ 40%]
+tests/test_atom.py::test_atom_link_only_shown_for_correct_queries FAILED [ 50%]
+tests/test_atom.py::test_atom_from_titled_canned_query FAILED            [ 60%]
+tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[True-True] FAILED [ 70%]
+tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[False-False] FAILED [ 80%]
+tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config2-True] FAILED [ 90%]
+tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config3-False] FAILED [100%]
+
+=================================== FAILURES ===================================
+________________________ test_incorrect_sql_returns_400 ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________ test_atom_for_valid_query ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_atom_with_optional_link _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_atom_with_bad_html ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________ test_atom_link_only_shown_for_correct_queries _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________ test_atom_from_titled_canned_query ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________ test_allow_unsafe_html_in_canned_queries[True-True] ______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________ test_allow_unsafe_html_in_canned_queries[False-False] _____________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________ test_allow_unsafe_html_in_canned_queries[config2-True] ____________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________ test_allow_unsafe_html_in_canned_queries[config3-False] ____________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_atom.py:99
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:99: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:107
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:107: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:135
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:135: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:155
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:155: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:175
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:175: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:198
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:198: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_atom.py:223
+  /private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-atom-e05w0c5o/tagged-source/tests/test_atom.py:223: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /private/tmp/ready-for-datasette-a37/datasette-atom/datasette-1.0a37/runs/20260714T164636Z-local-692ccf/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_atom.py::test_incorrect_sql_returns_400 - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_atom_for_valid_query - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_atom_with_optional_link - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_atom_with_bad_html - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_atom_link_only_shown_for_correct_queries - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_atom_from_titled_canned_query - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[True-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[False-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config2-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config3-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 10 failed, 7 warnings in 0.02s ========================
