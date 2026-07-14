@@ -83,9 +83,9 @@
     "name": "datasette-alerts",
     "github_repo": "datasette/datasette-alerts",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "49c7375ae0cba7b4831610de73decc72997e226fdbec8e72d5c09637433d964c",
-    "metadata_etag": "\"dc5bdd9e7326cc4372a6d07b03a90542ed2497a2f860182966a0080eecf26fa7\"",
-    "latest_version": "0.0.1a10"
+    "metadata_sha256": "16f8898149161123193d5db0526ac73bd2413f108fdaef9f1f280711ec9049cb",
+    "metadata_etag": "\"49f8d1d835947931cea885a9651263a45c308e1e52e15acc90d1cb538c7c35cf\"",
+    "latest_version": "0.0.1a11"
   },
   {
     "name": "datasette-alerts-desktop",
@@ -122,9 +122,9 @@
   {
     "name": "datasette-allow-permissions-debug",
     "github_repo": "simonw/datasette-allow-permissions-debug",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "fee3779f5c5326fb66771e155d64d279c9df66a3d70295c3d4eaf0b3233c3b9e",
-    "metadata_etag": "\"29a11180acd2e827f73189fc2903da98efdbb0bbe808a14263d7ec2c9e77dabf\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "769c4fd8294bb7de793298fec923148f46a232d60e07662e78ce5e6d3d8e7e3e",
+    "metadata_etag": "\"39f1005d7b014b562bc01f1210164d9ac41f5f6d6fa2e63ae45cd6410195a9ec\"",
     "latest_version": "0.1"
   },
   {
@@ -1171,9 +1171,9 @@
     "name": "datasette-paper",
     "github_repo": "datasette/datasette-paper",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "9a488147f5624ca2ba8f05feb5181cdcc3482c4982a9e68eade0ffef500398e6",
-    "metadata_etag": "\"037fab5fe6925b59509f66a5641c697715a58e8e2ac26f32f04e8b447755b824\"",
-    "latest_version": "0.0.2a10"
+    "metadata_sha256": "46f1b52ad25616fcfc45d8f5f1b8404d2155cae6bf029a795212672c1e752af3",
+    "metadata_etag": "\"af4cb496c183c458c45bf0bd7e02833988ea06900de1958df1688633f0932baf\"",
+    "latest_version": "0.0.2a12"
   },
   {
     "name": "datasette-paste",
