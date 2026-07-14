@@ -1,0 +1,194 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-acl @ file:///tmp/datasette-acl-3cbsm2er/datasette_acl-0.6a1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-acl @ file:///tmp/datasette-acl-3cbsm2er/datasette_acl-0.6a1.tar.gz
+Installed 41 packages in 42ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQQvlwx/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-acl-3cbsm2er/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 139 items
+
+tests/test_api_mutations.py::test_grant_by_role PASSED                   [  0%]
+tests/test_api_mutations.py::test_grant_by_actions PASSED                [  1%]
+tests/test_api_mutations.py::test_grant_enriched_display PASSED          [  2%]
+tests/test_api_mutations.py::test_grant_group PASSED                     [  2%]
+tests/test_api_mutations.py::test_grant_public_audience PASSED           [  3%]
+tests/test_api_mutations.py::test_grant_actor_with_audience_looking_id PASSED [  4%]
+tests/test_api_mutations.py::test_grant_invalid_principal_type_is_400 PASSED [  5%]
+tests/test_api_mutations.py::test_update_swaps_role PASSED               [  5%]
+tests/test_api_mutations.py::test_revoke_removes_all PASSED              [  6%]
+tests/test_api_mutations.py::test_revoke_group PASSED                    [  7%]
+tests/test_api_mutations.py::test_non_manager_cannot_grant PASSED        [  7%]
+tests/test_api_mutations.py::test_anonymous_cannot_grant PASSED          [  8%]
+tests/test_api_mutations.py::test_manager_role_grants_manage_ability PASSED [  9%]
+tests/test_api_mutations.py::test_non_manager_role_cannot_grant PASSED   [ 10%]
+tests/test_api_mutations.py::test_group_manager_role_grants_manage_ability PASSED [ 10%]
+tests/test_api_mutations.py::test_unknown_resource_type PASSED           [ 11%]
+tests/test_api_mutations.py::test_grant_nonexistent_resource_forbidden PASSED [ 12%]
+tests/test_api_mutations.py::test_grant_requires_exactly_one_principal PASSED [ 12%]
+tests/test_api_mutations.py::test_grant_unknown_role PASSED              [ 13%]
+tests/test_api_mutations.py::test_update_requires_role PASSED            [ 14%]
+tests/test_api_mutations.py::test_get_on_mutation_route_not_allowed PASSED [ 15%]
+tests/test_api_mutations.py::test_csrf_cross_origin_browser_post_rejected PASSED [ 15%]
+tests/test_api_mutations.py::test_csrf_same_origin_post_accepted PASSED  [ 16%]
+tests/test_api_mutations.py::test_html_page_manager_can_view PASSED      [ 17%]
+tests/test_api_mutations.py::test_html_page_manager_can_grant_via_post PASSED [ 17%]
+tests/test_api_mutations.py::test_html_page_group_manager_can_view PASSED [ 18%]
+tests/test_api_mutations.py::test_html_page_non_manager_forbidden PASSED [ 19%]
+tests/test_api_mutations.py::test_html_page_non_manage_role_forbidden PASSED [ 20%]
+tests/test_api_mutations.py::test_html_page_global_admin_can_view PASSED [ 20%]
+tests/test_api_mutations.py::test_grant_helper_rejects_unknown_raw_action PASSED [ 21%]
+tests/test_api_mutations.py::test_api_grant_rejects_unknown_raw_action PASSED [ 22%]
+tests/test_api_mutations.py::test_grant_unknown_action_partial_list_is_atomic PASSED [ 23%]
+tests/test_api_mutations.py::test_future_action_name_not_persisted_as_stale_grant PASSED [ 23%]
+tests/test_api_mutations.py::test_api_revoke_last_manager_is_409 PASSED  [ 24%]
+tests/test_api_mutations.py::test_api_revoke_manager_with_other_manager_ok PASSED [ 25%]
+tests/test_api_mutations.py::test_api_revoke_manager_with_managing_group_ok PASSED [ 25%]
+tests/test_api_mutations.py::test_api_downgrade_last_manager_is_409 PASSED [ 26%]
+tests/test_api_mutations.py::test_api_downgrade_manager_with_other_manager_ok PASSED [ 27%]
+tests/test_api_mutations.py::test_api_revoke_non_manager_ok PASSED       [ 28%]
+tests/test_api_pickers.py::test_groups_requires_permission PASSED        [ 28%]
+tests/test_api_pickers.py::test_groups_lists_active_with_counts PASSED   [ 29%]
+tests/test_api_pickers.py::test_actors_requires_permission PASSED        [ 30%]
+tests/test_api_pickers.py::test_actors_fallback_returns_valid_actors PASSED [ 30%]
+tests/test_api_pickers.py::test_actors_fallback_filters_by_q PASSED      [ 31%]
+tests/test_api_pickers.py::test_actors_delegates_to_profiles PASSED      [ 32%]
+tests/test_api_pickers.py::test_actors_delegates_q_to_profiles PASSED    [ 33%]
+tests/test_api_pickers.py::test_actors_forwards_actor_to_gated_profiles PASSED [ 33%]
+tests/test_api_pickers.py::test_manager_can_use_groups_picker_with_resource PASSED [ 34%]
+tests/test_api_pickers.py::test_manager_can_use_actors_picker_with_resource PASSED [ 35%]
+tests/test_api_pickers.py::test_non_manager_cannot_use_pickers_with_resource PASSED [ 35%]
+tests/test_api_pickers.py::test_anonymous_cannot_use_pickers_with_resource PASSED [ 36%]
+tests/test_api_pickers.py::test_manager_without_resource_still_requires_global_admin PASSED [ 37%]
+tests/test_api_pickers.py::test_global_admin_still_works_without_resource PASSED [ 38%]
+tests/test_api_read.py::test_read_requires_manage PASSED                 [ 38%]
+tests/test_api_read.py::test_read_unknown_resource_type PASSED           [ 39%]
+tests/test_api_read.py::test_read_nonexistent_resource_forbidden PASSED  [ 40%]
+tests/test_api_read.py::test_per_resource_manager_can_read PASSED        [ 41%]
+tests/test_api_read.py::test_read_full_shape PASSED                      [ 41%]
+tests/test_api_read.py::test_group_member_count PASSED                   [ 42%]
+tests/test_api_read.py::test_read_empty_resource PASSED                  [ 43%]
+tests/test_api_read.py::test_unknown_actor_falls_back PASSED             [ 43%]
+tests/test_custom_resources.py::test_direct_grant_on_custom_resource PASSED [ 44%]
+tests/test_custom_resources.py::test_group_grant_on_custom_resource PASSED [ 45%]
+tests/test_custom_resources.py::test_resource_type_does_not_leak PASSED  [ 46%]
+tests/test_custom_resources.py::test_authenticated_public_grant PASSED   [ 46%]
+tests/test_custom_resources.py::test_everyone_public_grant PASSED        [ 47%]
+tests/test_custom_resources.py::test_anonymous_public_grant PASSED       [ 48%]
+tests/test_custom_resources.py::test_anonymous_grant_never_matches_a_signed_in_actor PASSED [ 48%]
+tests/test_custom_resources.py::test_actor_grant_with_legacy_wildcard_looking_id PASSED [ 49%]
+tests/test_custom_resources.py::test_public_and_actor_grants_coexist PASSED [ 50%]
+tests/test_custom_resources.py::test_generic_resource_view_lists_dynamic_actions PASSED [ 51%]
+tests/test_custom_resources.py::test_generic_resource_view_requires_permission PASSED [ 51%]
+tests/test_custom_resources.py::test_generic_resource_view_unknown_type PASSED [ 52%]
+tests/test_custom_resources.py::test_generic_resource_view_nonexistent_resource_forbidden PASSED [ 53%]
+tests/test_custom_resources.py::test_generic_resource_view_nonexistent_not_persisted PASSED [ 53%]
+tests/test_custom_resources.py::test_generic_resource_view_grants_via_post PASSED [ 54%]
+tests/test_custom_resources.py::test_generic_resource_view_renders_general_access PASSED [ 55%]
+tests/test_custom_resources.py::test_generic_resource_view_grants_public_via_post PASSED [ 56%]
+tests/test_custom_resources.py::test_generic_resource_view_revokes_public_via_post PASSED [ 56%]
+tests/test_custom_resources.py::test_generic_resource_view_revokes_via_post PASSED [ 57%]
+tests/test_datasette_acl_valid_actors.py::test_datasette_acl_valid_actors FAILED [ 58%]
+tests/test_grants.py::test_build_resource_parent_only PASSED             [ 58%]
+tests/test_grants.py::test_build_resource_two_level PASSED               [ 59%]
+tests/test_grants.py::test_build_resource_unknown_type PASSED            [ 60%]
+tests/test_grants.py::test_grant_by_role PASSED                          [ 61%]
+tests/test_grants.py::test_grant_by_raw_actions PASSED                   [ 61%]
+tests/test_grants.py::test_grant_is_idempotent PASSED                    [ 62%]
+tests/test_grants.py::test_grant_to_group PASSED                         [ 63%]
+tests/test_grants.py::test_grant_unknown_role_raises PASSED              [ 64%]
+tests/test_grants.py::test_grant_requires_exactly_one_of_role_or_actions PASSED [ 64%]
+tests/test_grants.py::test_revoke_removes_all_rows PASSED                [ 65%]
+tests/test_grants.py::test_revoke_only_targets_principal PASSED          [ 66%]
+tests/test_grants.py::test_update_role_swaps_atomically PASSED           [ 66%]
+tests/test_grants.py::test_update_role_upgrades PASSED                   [ 67%]
+tests/test_grants.py::test_audit_rows_written PASSED                     [ 68%]
+tests/test_grants.py::test_list_grants_actor_and_group PASSED            [ 69%]
+tests/test_grants.py::test_list_grants_empty PASSED                      [ 69%]
+tests/test_grants.py::test_list_grants_public_principal_and_ordering PASSED [ 70%]
+tests/test_grants.py::test_principal_constructors PASSED                 [ 71%]
+tests/test_grants.py::test_principal_from_parts PASSED                   [ 71%]
+tests/test_grants.py::test_raw_audience_insert_with_actor_id_rejected PASSED [ 72%]
+tests/test_grants.py::test_insert_grant_dedupes PASSED                   [ 73%]
+tests/test_grants.py::test_revoke_last_manager_raises_and_writes_nothing PASSED [ 74%]
+tests/test_grants.py::test_revoke_manager_when_another_actor_manager_exists PASSED [ 74%]
+tests/test_grants.py::test_revoke_manager_when_managing_group_exists PASSED [ 75%]
+tests/test_grants.py::test_downgrade_last_manager_raises_and_writes_nothing PASSED [ 76%]
+tests/test_grants.py::test_downgrade_manager_when_another_manager_exists PASSED [ 76%]
+tests/test_grants.py::test_revoke_non_manager_is_allowed PASSED          [ 77%]
+tests/test_grants.py::test_guard_inert_for_resource_type_without_manage_role PASSED [ 78%]
+tests/test_grants.py::test_concurrent_revokes_keep_a_manager PASSED      [ 79%]
+tests/test_groups.py::test_manage_group_membership[Add user to group-setup_post_data0-post_data0-expected_members0-expected_audit_rows0] PASSED [ 79%]
+tests/test_groups.py::test_manage_group_membership[Remove user from group-setup_post_data1-post_data1-expected_members1-expected_audit_rows1] PASSED [ 80%]
+tests/test_groups.py::test_cannot_edit_dynamic_group PASSED              [ 81%]
+tests/test_groups.py::test_deleted_group PASSED                          [ 82%]
+tests/test_groups.py::test_create_delete_group PASSED                    [ 82%]
+tests/test_roles.py::test_registry_built_and_grouped_by_resource_type PASSED [ 83%]
+tests/test_roles.py::test_role_for_actions_picks_highest_rank_subset PASSED [ 84%]
+tests/test_roles.py::test_role_for_actions_no_match_returns_none PASSED  [ 84%]
+tests/test_roles.py::test_actions_for_role PASSED                        [ 85%]
+tests/test_roles.py::test_manage_actions_returns_manager_actions PASSED  [ 86%]
+tests/test_roles.py::test_manage_actions_empty_when_no_manage_role PASSED [ 87%]
+tests/test_roles.py::test_manage_only_actions_excludes_shared_actions PASSED [ 87%]
+tests/test_roles.py::test_manage_only_actions_empty_when_no_manage_role PASSED [ 88%]
+tests/test_roles.py::test_standard_roles_builds_canonical_triple PASSED  [ 89%]
+tests/test_roles.py::test_standard_roles_accepts_lists_and_dedupes PASSED [ 89%]
+tests/test_roles.py::test_standard_roles_description_overrides PASSED    [ 90%]
+tests/test_startup.py::test_can_startup_with_no_configuration PASSED     [ 91%]
+tests/test_startup.py::test_startup_applies_internal_migrations PASSED   [ 92%]
+tests/test_table_acls.py::test_manage_table_permissions[Group: add insert-row-setup_post_data0-post_data0-expected_acls0-should_fail_then_succeed0-expected_audit_rows0] PASSED [ 92%]
+tests/test_table_acls.py::test_manage_table_permissions[Group: remove insert-row, add update-row and delete-row-setup_post_data1-post_data1-expected_acls1-should_fail_then_succeed1-expected_audit_rows1] PASSED [ 93%]
+tests/test_table_acls.py::test_manage_table_permissions[New user: set with insert-row and update-row-setup_post_data2-post_data2-expected_acls2-should_fail_then_succeed2-expected_audit_rows2] PASSED [ 94%]
+tests/test_table_acls.py::test_manage_table_permissions[Existing user: remove insert-row, add update-row-setup_post_data3-post_data3-expected_acls3-should_fail_then_succeed3-expected_audit_rows3] PASSED [ 94%]
+tests/test_table_acls.py::test_update_dynamic_groups PASSED              [ 95%]
+tests/test_table_acls.py::test_table_creator_permissions PASSED          [ 96%]
+tests/test_table_acls.py::test_fresh_acl_resources_schema PASSED         [ 97%]
+tests/test_table_acls.py::test_acl_schema_constraints PASSED             [ 97%]
+tests/test_table_acls.py::test_table_actions[True] PASSED                [ 98%]
+tests/test_table_acls.py::test_table_actions[False] PASSED               [ 99%]
+tests/test_table_acls.py::test_table_resource_acl_page_actions_are_dynamic PASSED [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_datasette_acl_valid_actors ________________________
+
+ds = <datasette.app.Datasette object at 0x7fb07c445e50>, register_plugin = None
+
+    @pytest.mark.asyncio
+    async def test_datasette_acl_valid_actors(ds, register_plugin):
+        plugins_response = await ds.client.get("/-/plugins.json")
+>       assert any(
+            plugin
+            for plugin in plugins_response.json()
+            if plugin["name"] == "TestActorIdsPlugin"
+        )
+
+tests/test_datasette_acl_valid_actors.py:34: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <dict_keyiterator object at 0x7fb07c481710>
+
+    assert any(
+        plugin
+        for plugin in plugins_response.json()
+>       if plugin["name"] == "TestActorIdsPlugin"
+           ^^^^^^^^^^^^^^
+    )
+E   TypeError: string indices must be integers, not 'str'
+
+tests/test_datasette_acl_valid_actors.py:37: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-acl/datasette-1.0a36/runs/20260714T031250Z-gh-29302956099-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_acl_valid_actors.py::test_datasette_acl_valid_actors - TypeError: string indices must be integers, not 'str'
+======================== 1 failed, 138 passed in 7.60s =========================
