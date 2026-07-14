@@ -1,0 +1,87 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-build @ file:///tmp/datasette-build-0tpkwkii/datasette-build-0.1a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-build @ file:///tmp/datasette-build-0tpkwkii/datasette-build-0.1a0.tar.gz
+Installed 40 packages in 41ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpt8DBDR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-build-0tpkwkii/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_build.py::test_demo_db_tables ERROR                           [ 25%]
+tests/test_build.py::test_demo_db_tsv ERROR                              [ 50%]
+tests/test_build.py::test_demo_db_csv ERROR                              [ 75%]
+tests/test_build.py::test_demo_db_json ERROR                             [100%]
+
+==================================== ERRORS ====================================
+____________________ ERROR at setup of test_demo_db_tables _____________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f2cc2dad7b0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def demo_db(tmp_path_factory):
+        tmpdir = tmp_path_factory.mktemp("built")
+        db_path = str(tmpdir / "demo.db")
+>       runner = CliRunner(mix_stderr=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+
+tests/test_build.py:14: TypeError
+______________________ ERROR at setup of test_demo_db_tsv ______________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f2cc2dad7b0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def demo_db(tmp_path_factory):
+        tmpdir = tmp_path_factory.mktemp("built")
+        db_path = str(tmpdir / "demo.db")
+>       runner = CliRunner(mix_stderr=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+
+tests/test_build.py:14: TypeError
+______________________ ERROR at setup of test_demo_db_csv ______________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f2cc2dad7b0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def demo_db(tmp_path_factory):
+        tmpdir = tmp_path_factory.mktemp("built")
+        db_path = str(tmpdir / "demo.db")
+>       runner = CliRunner(mix_stderr=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+
+tests/test_build.py:14: TypeError
+_____________________ ERROR at setup of test_demo_db_json ______________________
+
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x7f2cc2dad7b0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def demo_db(tmp_path_factory):
+        tmpdir = tmp_path_factory.mktemp("built")
+        db_path = str(tmpdir / "demo.db")
+>       runner = CliRunner(mix_stderr=False)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+
+tests/test_build.py:14: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-build/datasette-1.0a36/runs/20260714T114600Z-gh-29330022127-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_build.py::test_demo_db_tables - TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+ERROR tests/test_build.py::test_demo_db_tsv - TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+ERROR tests/test_build.py::test_demo_db_csv - TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+ERROR tests/test_build.py::test_demo_db_json - TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+============================== 4 errors in 0.06s ===============================
