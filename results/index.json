@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T23:30:01Z",
+  "generated_at": "2026-07-14T23:53:59Z",
   "results": [
     {
       "schema_version": 1,
@@ -8543,6 +8543,195 @@
         "pytest_output": "results/datasette-edit-templates/datasette-1.0a37/runs/20260714T232953Z-gh-29376290428-a1/pytest.txt"
       },
       "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-embeddings",
+        "version": "0.1a3",
+        "repository": "datasette/datasette-embeddings",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/96/1a/e54cffc0906915ca3a587c0d4db1860e2a08311753093259563dd6012095/datasette-embeddings-0.1a3.tar.gz",
+          "sha256": "342fb1ffc3136e009794337f5c0fa4095a1d9201bf65e26a083428b91860c4f6"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-embeddings",
+          "ref": "0.1a3",
+          "git_sha": "8dc282b3a5a78f0598a64dddef7dfdede45398b4"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T235352Z-gh-29377463991-a1",
+        "started_at": "2026-07-14T23:53:52Z",
+        "completed_at": "2026-07-14T23:53:59Z",
+        "duration_seconds": 6.234,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-embeddings @ file:///tmp/datasette-embeddings-t4u0gtak/datasette-embeddings-0.1a3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-recording",
+          "--with",
+          "datasette-test",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-embeddings/datasette-1.0a37/runs/20260714T235352Z-gh-29377463991-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 7,
+        "passed": 3,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_embeddings.py::test_enrichment",
+        "tests/test_embeddings.py::test_show_semantic_search_action_item[None]",
+        "tests/test_embeddings.py::test_similarity_search[False-items.id = _embeddings_items.id]",
+        "tests/test_embeddings.py::test_similarity_search[True-items.category = _embeddings_items.category and items.id = _embeddings_items.id]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-recording",
+          "datasette-test"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-embeddings/datasette-1.0a37/runs/20260714T235352Z-gh-29377463991-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-endpoints",
+        "version": "0.1",
+        "repository": "datasette/datasette-endpoints",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/4d/3b/1df3d3257b30efee329327bf96d75b2284ae2f57384da2bc4eb8ccacf065/datasette_endpoints-0.1.tar.gz",
+          "sha256": "c0394657ed3b776f15e96d5ee210b9321c3fc03650c1561fdf521a9e4740dd88"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-endpoints",
+          "ref": "0.1",
+          "git_sha": "f55d448bc651606104ab36a71be1c6f0d4f522b4"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T235351Z-gh-29377463991-a1",
+        "started_at": "2026-07-14T23:53:51Z",
+        "completed_at": "2026-07-14T23:53:57Z",
+        "duration_seconds": 5.823,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-endpoints @ file:///tmp/datasette-endpoints-n8qdbv3e/datasette_endpoints-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-endpoints/datasette-1.0a37/runs/20260714T235351Z-gh-29377463991-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 15,
+        "passed": 15,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-endpoints/datasette-1.0a37/runs/20260714T235351Z-gh-29377463991-a1/pytest.txt"
+      }
     },
     {
       "schema_version": 1,

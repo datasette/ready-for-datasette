@@ -1,0 +1,242 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-embeddings @ file:///tmp/datasette-embeddings-t4u0gtak/datasette-embeddings-0.1a3.tar.gz
+Downloading cryptography (4.5MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-embeddings @ file:///tmp/datasette-embeddings-t4u0gtak/datasette-embeddings-0.1a3.tar.gz
+Installed 51 packages in 21ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpxd0pHJ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'recording': '0.13.4', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-embeddings-t4u0gtak/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, recording-0.13.4, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_embeddings.py::test_enrichment FAILED                         [ 14%]
+tests/test_embeddings.py::test_similarity_search[False-items.id = _embeddings_items.id] FAILED [ 28%]
+tests/test_embeddings.py::test_similarity_search[True-items.category = _embeddings_items.category and items.id = _embeddings_items.id] FAILED [ 42%]
+tests/test_embeddings.py::test_show_semantic_search_action_item[None] FAILED [ 57%]
+tests/test_embeddings.py::test_show_semantic_search_action_item[no_table] PASSED [ 71%]
+tests/test_embeddings.py::test_show_semantic_search_action_item[no_api_key] PASSED [ 85%]
+tests/test_embeddings.py::test_show_semantic_search_action_item[no_execute_sql] PASSED [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_enrichment ________________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment0')
+
+    @pytest.mark.vcr(ignore_localhost=True)
+    @pytest.mark.asyncio
+    async def test_enrichment(tmpdir):
+        data = str(tmpdir / "data.db")
+        datasette = Datasette(
+            [data],
+            plugin_config={
+                "datasette-embeddings": {
+                    "api_key": os.environ.get("OPENAI_API_KEY") or "sk-mock-api-key"
+                }
+            },
+        )
+        db = sqlite_utils.Database(data)
+        rows = [
+            {"id": 1, "name": "One", "description": "First item"},
+            {"id": 2, "name": "Two", "description": "Second item"},
+        ]
+        db["items"].insert_all(rows, pk="id")
+        assert set(db.table_names()) == {"items"}
+    
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_embeddings.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_embeddings.py:14: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+________ test_similarity_search[False-items.id = _embeddings_items.id] _________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_similarity_search_False_i0')
+use_compound_pk = False, on_sql = 'items.id = _embeddings_items.id'
+
+    @pytest.mark.vcr(ignore_localhost=True)
+    @pytest.mark.parametrize(
+        "use_compound_pk,on_sql",
+        (
+            (False, "items.id = _embeddings_items.id"),
+            (
+                True,
+                "items.category = _embeddings_items.category and items.id = _embeddings_items.id",
+            ),
+        ),
+    )
+    @pytest.mark.asyncio
+    async def test_similarity_search(tmpdir, use_compound_pk, on_sql):
+>       datasette = await test_enrichment(tmpdir)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_embeddings.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_embeddings.py:41: in test_enrichment
+    cookies = await _cookies(datasette)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_embeddings.py:14: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_ test_similarity_search[True-items.category = _embeddings_items.category and items.id = _embeddings_items.id] _
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_similarity_search_True_it0')
+use_compound_pk = True
+on_sql = 'items.category = _embeddings_items.category and items.id = _embeddings_items.id'
+
+    @pytest.mark.vcr(ignore_localhost=True)
+    @pytest.mark.parametrize(
+        "use_compound_pk,on_sql",
+        (
+            (False, "items.id = _embeddings_items.id"),
+            (
+                True,
+                "items.category = _embeddings_items.category and items.id = _embeddings_items.id",
+            ),
+        ),
+    )
+    @pytest.mark.asyncio
+    async def test_similarity_search(tmpdir, use_compound_pk, on_sql):
+>       datasette = await test_enrichment(tmpdir)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_embeddings.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_embeddings.py:41: in test_enrichment
+    cookies = await _cookies(datasette)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_embeddings.py:14: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_________________ test_show_semantic_search_action_item[None] __________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_show_semantic_search_acti0/data.db'
+scenario = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", (None, "no_table", "no_api_key", "no_execute_sql"))
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="Uses config= from Datasette 1.0",
+    )
+    async def test_show_semantic_search_action_item(db_path, scenario):
+        plugin_config = {}
+        if scenario != "no_api_key":
+            plugin_config = {"datasette-embeddings": {"api_key": "sk-blah"}}
+        config = {}
+        if scenario == "no_execute_sql":
+            config["databases"] = {"data": {"allow_sql": False}}
+        datasette = Datasette([db_path], plugin_config=plugin_config, config=config)
+        if scenario == "no_table":
+            await datasette.get_database("data").execute_write(
+                "drop table _embeddings_items"
+            )
+    
+        html = (await datasette.client.get("/data/items")).text
+        if scenario is None:
+>           assert ">Semantic" in html
+E           assert '>Semantic' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+
+tests/test_embeddings.py:217: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/views/table.py", line 1717, in table_view
+    response = await table_view_traced(datasette, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/views/table.py", line 1945, in table_view_traced
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/templates/table.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/templates/table.html", line 34, in block 'content'
+    {% set action_links, action_title = actions(), "View actions" if is_view else "Table actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/views/table_extras.py", line 450, in actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/uZK8h1o2CeIGyBn1/lib/python3.13/site-packages/datasette_embeddings/__init__.py", line 152, in inner
+    can_execute_sql = await datasette.permission_allowed(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-embeddings/datasette-1.0a37/runs/20260714T235352Z-gh-29377463991-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_embeddings.py::test_enrichment - KeyError: 'ds_csrftoken'
+FAILED tests/test_embeddings.py::test_similarity_search[False-items.id = _embeddings_items.id] - KeyError: 'ds_csrftoken'
+FAILED tests/test_embeddings.py::test_similarity_search[True-items.category = _embeddings_items.category and items.id = _embeddings_items.id] - KeyError: 'ds_csrftoken'
+FAILED tests/test_embeddings.py::test_show_semantic_search_action_item[None] - assert '>Semantic' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+========================= 4 failed, 3 passed in 0.73s ==========================
