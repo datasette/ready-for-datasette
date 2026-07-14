@@ -1,0 +1,116 @@
+name: Test plugins
+
+on:
+  schedule:
+    # GitHub Actions schedules use UTC. Offset from the nightly metadata refresh.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: Maximum number of plugin test suites (up to 5)
+        required: false
+        default: "5"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: plugin-test-batch
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      has_work: ${{ steps.select.outputs.has_work }}
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Select untested combinations
+        id: select
+        env:
+          LIMIT: ${{ github.event.inputs.limit || '5' }}
+        run: >-
+          uv run --no-project python select_test_matrix.py
+          --limit "$LIMIT"
+          --github-output "$GITHUB_OUTPUT"
+
+  test:
+    needs: plan
+    if: ${{ needs.plan.outputs.has_work == 'true' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Run released plugin tests
+        run: >-
+          uv run --no-project python run_plugin_tests.py
+          "${{ matrix.package }}"
+          --package-version "${{ matrix.package_version }}"
+          --datasette-version "${{ matrix.datasette_version }}"
+          --results-dir staged-results
+
+      - name: Upload test result
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: >-
+            result-${{ matrix.package }}-${{ matrix.package_version }}-datasette-${{ matrix.datasette_version }}
+          path: staged-results
+          if-no-files-found: error
+          retention-days: 7
+
+  merge:
+    needs:
+      - plan
+      - test
+    if: ${{ always() && needs.plan.outputs.has_work == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: repository-writes
+      cancel-in-progress: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Download test results
+        uses: actions/download-artifact@v5
+        with:
+          path: incoming-results
+
+      - name: Merge immutable results
+        run: |
+          git pull --ff-only
+          uv run --no-project python merge_test_results.py incoming-results
+
+      - name: Commit and push results
+        run: |
+          git add results
+          if git diff --cached --quiet; then
+            echo "Test results are already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record plugin test results"
+          git push

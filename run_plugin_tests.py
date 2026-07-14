@@ -195,9 +195,14 @@ def fetch_json(url: str, *, timeout: float = 30, retries: int = 3) -> Any:
     raise AssertionError("retry loop ended unexpectedly")
 
 
-def pypi_project(package_name: str) -> Mapping[str, Any]:
+def pypi_project(
+    package_name: str, version: str | None = None
+) -> Mapping[str, Any]:
     normalized = normalize_package_name(package_name)
-    payload = fetch_json(f"{PYPI_API}/{quote(normalized, safe='')}/json")
+    url = f"{PYPI_API}/{quote(normalized, safe='')}"
+    if version is not None:
+        url += f"/{quote(version, safe='')}"
+    payload = fetch_json(f"{url}/json")
     if not isinstance(payload, Mapping):
         raise ValueError(f"PyPI returned invalid metadata for {package_name}")
     return payload
@@ -337,6 +342,49 @@ def extract_sdist(archive_path: Path, destination: Path) -> Path:
     if not source.is_dir():
         raise RuntimeError("Source distribution root is not a directory")
     return source
+
+
+def find_test_files(root: Path) -> list[str]:
+    test_files: list[str] = []
+    for path in root.rglob("*.py"):
+        if not path.is_file():
+            continue
+        relative = path.relative_to(root)
+        parent_parts = {part.casefold() for part in relative.parts[:-1]}
+        filename = relative.name.casefold()
+        if (
+            "tests" in parent_parts
+            or "test" in parent_parts
+            or filename.startswith("test_")
+            or filename.endswith("_test.py")
+        ):
+            test_files.append(relative.as_posix())
+    return sorted(test_files)
+
+
+def inspect_test_inventory(
+    sdist_root: Path, release_tag_root: Path | None
+) -> tuple[dict[str, int], list[dict[str, str]]]:
+    sdist_count = len(find_test_files(sdist_root))
+    release_tag_count = (
+        len(find_test_files(release_tag_root)) if release_tag_root is not None else 0
+    )
+    inventory = {
+        "pypi_sdist": sdist_count,
+        "release_tag": release_tag_count,
+    }
+    warnings: list[dict[str, str]] = []
+    if release_tag_count and not sdist_count:
+        warnings.append(
+            {
+                "code": "tests_missing_from_sdist",
+                "message": (
+                    "The exact release tag contains tests, but the PyPI sdist "
+                    "does not."
+                ),
+            }
+        )
+    return inventory, warnings
 
 
 def build_pytest_command(
@@ -628,6 +676,8 @@ def _build_result(
     summary: Mapping[str, Any],
     paths: ResultPaths,
     detail: str | None = None,
+    test_inventory: Mapping[str, int] | None = None,
+    result_warnings: Sequence[Mapping[str, str]] = (),
 ) -> dict[str, Any]:
     result: dict[str, Any] = {
         "schema_version": 1,
@@ -664,6 +714,8 @@ def _build_result(
             "command": list(command),
         },
         **summary,
+        "test_inventory": dict(test_inventory or {}),
+        "warnings": [dict(warning) for warning in result_warnings],
         "artifacts": {"pytest_output": _artifact_path(paths)},
     }
     if detail:
@@ -673,7 +725,7 @@ def _build_result(
 
 def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     started = datetime.now(UTC)
-    package_payload = pypi_project(args.package)
+    package_payload = pypi_project(args.package, args.package_version)
     info_value = package_payload.get("info")
     if not isinstance(info_value, Mapping):
         raise ValueError(f"PyPI returned no project information for {args.package}")
@@ -681,6 +733,11 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     package_version = info_value.get("version")
     if not isinstance(package_name_value, str) or not isinstance(package_version, str):
         raise ValueError(f"PyPI returned incomplete project information for {args.package}")
+    if args.package_version is not None and package_version != args.package_version:
+        raise ValueError(
+            f"PyPI returned version {package_version!r}, expected "
+            f"{args.package_version!r}"
+        )
     package_name = normalize_package_name(package_name_value)
     sdist = select_sdist(package_payload)
 
@@ -709,6 +766,8 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     paths.pytest_output.touch()
 
     report_path = paths.run_directory / ".pytest-report.json"
+    test_inventory = {"pypi_sdist": 0, "release_tag": 0}
+    result_warnings: list[dict[str, str]] = []
 
     with tempfile.TemporaryDirectory(prefix=f"{package_name}-") as temporary:
         temporary_path = Path(temporary)
@@ -729,6 +788,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
             source_directory = extract_sdist(
                 archive_path, temporary_path / "unpacked"
             )
+            sdist_directory = source_directory
         except Exception as ex:
             completed = datetime.now(UTC)
             result = _build_result(
@@ -772,6 +832,20 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
                     )
                     source_directory = temporary_path / "tagged-source"
 
+        release_tag_directory = (
+            source_directory
+            if source.test_suite.kind == "github_release_tag"
+            else None
+        )
+        test_inventory, result_warnings = inspect_test_inventory(
+            sdist_directory, release_tag_directory
+        )
+        for warning in result_warnings:
+            print(
+                f"WARNING [{warning['code']}]: {warning['message']}",
+                file=sys.stderr,
+            )
+
         print(
             f"Testing released {package_name} {package_version} "
             f"against Datasette {datasette_version}",
@@ -814,6 +888,8 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
         summary=summary,
         paths=paths,
         detail=detail,
+        test_inventory=test_inventory,
+        result_warnings=result_warnings,
     )
     store_result(paths, result)
     return result, paths
@@ -833,6 +909,10 @@ def build_parser() -> argparse.ArgumentParser:
         dest="python_version",
         default="3.13",
         help="Python version passed to uv (default: 3.13)",
+    )
+    parser.add_argument(
+        "--package-version",
+        help="Test this exact PyPI release instead of the current latest release",
     )
     parser.add_argument(
         "--datasette-version",

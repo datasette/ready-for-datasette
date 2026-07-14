@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-plugins
+  group: repository-writes
   cancel-in-progress: false
 
 jobs:

@@ -2,7 +2,6 @@ import hashlib
 import json
 import zipfile
 from datetime import UTC, datetime
-from pathlib import Path
 
 import pytest
 
@@ -73,6 +72,20 @@ def test_github_repository_accepts_a_github_homepage():
         run_plugin_tests.github_repository(info, "datasette-homepage")
         == "dogsheep/datasette-homepage"
     )
+
+
+def test_pypi_project_can_resolve_an_exact_version(monkeypatch):
+    requested = []
+    monkeypatch.setattr(
+        run_plugin_tests,
+        "fetch_json",
+        lambda url: requested.append(url) or {"info": {"version": "1.2.3"}},
+    )
+
+    payload = run_plugin_tests.pypi_project("Datasette.Example", "1.2.3")
+
+    assert payload["info"]["version"] == "1.2.3"
+    assert requested == ["https://pypi.org/pypi/datasette-example/1.2.3/json"]
 
 
 def test_select_sdist_uses_the_non_yanked_pypi_source_distribution():
@@ -167,6 +180,27 @@ def test_extract_sdist_requires_one_safe_top_level_directory(tmp_path):
 
     assert source == tmp_path / "source" / "datasette-example-1.0"
     assert (source / "pyproject.toml").read_text() == "[project]"
+
+
+def test_inspect_test_inventory_warns_when_release_tag_tests_are_missing_from_sdist(
+    tmp_path,
+):
+    sdist = tmp_path / "sdist"
+    tagged = tmp_path / "tagged"
+    (sdist / "datasette_example").mkdir(parents=True)
+    (sdist / "datasette_example" / "plugin.py").write_text("")
+    (tagged / "tests").mkdir(parents=True)
+    (tagged / "tests" / "test_plugin.py").write_text("")
+
+    inventory, warnings = run_plugin_tests.inspect_test_inventory(sdist, tagged)
+
+    assert inventory == {"pypi_sdist": 0, "release_tag": 1}
+    assert warnings == [
+        {
+            "code": "tests_missing_from_sdist",
+            "message": "The exact release tag contains tests, but the PyPI sdist does not.",
+        }
+    ]
 
 
 def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):

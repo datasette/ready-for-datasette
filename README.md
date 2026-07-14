@@ -40,7 +40,8 @@ exactly matches that PyPI version, it uses the test suite from that tag;
 otherwise it uses only tests included in the source distribution. It never
 tests the repository's unreleased default branch. The package installed in the
 test environment is always the verified PyPI source distribution; a Git tag
-supplies tests only.
+supplies tests only. If that tag contains tests but the source distribution
+does not, the runner records a `tests_missing_from_sdist` warning.
 
 Additional pytest arguments follow `--`:
 
@@ -53,3 +54,18 @@ for a package/Datasette pair is copied to `latest.json`, and `results/index.json
 contains all latest results. A failed test suite is successfully recorded and
 does not make the runner command itself fail; infrastructure or metadata errors
 do.
+
+## Working through the test backlog
+
+The `Test plugins` workflow runs hourly at 17 minutes past the hour and can also
+be started manually with `workflow_dispatch`. It selects at most five released
+package/version and Datasette-alpha combinations that have not reached a
+terminal result. New plugin releases take priority, followed by plugins that
+have never been tested and plugins that need testing against a new Datasette
+alpha. Infrastructure failures are retried after a six-hour cooldown.
+
+Each selected combination runs independently. A final serialized job downloads
+their artifacts, merges each immutable run into `results/`, rebuilds the latest
+files and index, and commits and pushes the changes. The nightly plugin refresh
+uses the same repository-write concurrency group so the two workflows cannot
+push at the same time.
