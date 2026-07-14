@@ -67,7 +67,7 @@ do.
 
 ## Working through the test backlog
 
-The `Test plugins` workflow runs hourly at 17 minutes past the hour and can also
+The `Test plugins` workflow runs on a schedule and can also
 be started manually with `workflow_dispatch`, and runs on pushes to `main`. It
 selects at most five released package/version and Datasette-alpha combinations
 that have not reached a terminal result. New plugin releases take priority,
