@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T05:10:59Z",
+  "generated_at": "2026-07-14T05:48:59Z",
   "results": [
     {
       "schema_version": 1,
@@ -1438,6 +1438,305 @@
     },
     {
       "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-apps",
+        "version": "0.1a3",
+        "repository": "datasette/datasette-apps",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/e4/8f/97de60b8af727807ccef1c2208d688233deb262a8361caef8fe850707bf9/datasette_apps-0.1a3.tar.gz",
+          "sha256": "fc9c3f9162fb9e1b8b818d892a5e27260502d78f76f5d131248f5ad64cf46619"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-apps",
+          "ref": "0.1a3",
+          "git_sha": "62fd0364d0137f410802d1685d3dce190b12931d"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T054827Z-gh-29309487997-a1",
+        "started_at": "2026-07-14T05:48:27Z",
+        "completed_at": "2026-07-14T05:48:59Z",
+        "duration_seconds": 31.222,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-apps @ file:///tmp/datasette-apps-jd3117tc/datasette_apps-0.1a3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "--with",
+          "playwright>=1.60.0",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a36/runs/20260714T054827Z-gh-29309487997-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 186,
+        "passed": 174,
+        "failed": 12,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_apps.py::test_plugin_is_installed",
+        "tests/test_data_access.py::test_datasette_query_intersects_actor_permissions",
+        "tests/test_data_access.py::test_datasette_stored_query_intersects_actor_permissions",
+        "tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data",
+        "tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe",
+        "tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet",
+        "tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel",
+        "tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal",
+        "tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal",
+        "tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel",
+        "tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin",
+        "tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "playwright>=1.60.0",
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 16,
+        "release_tag": 16
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-apps/datasette-1.0a36/runs/20260714T054827Z-gh-29309487997-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-atom",
+        "version": "0.9",
+        "repository": "simonw/datasette-atom",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/e4/91/6bdae028e45ded933ac0a440e84892e0778be72caa1e18e691120aa9aed9/datasette-atom-0.9.tar.gz",
+          "sha256": "033025c0fb33bc181f3904c360e2fdfbeb0b1f99a3b3f85e093376525ea60b0d"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-atom",
+          "ref": "0.9",
+          "git_sha": "3fc967d6c420b9128db556ccf92e43ac89b02b99"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T054828Z-gh-29309487997-a1",
+        "started_at": "2026-07-14T05:48:28Z",
+        "completed_at": "2026-07-14T05:48:36Z",
+        "duration_seconds": 8.005,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-atom @ file:///tmp/datasette-atom-ywjybr6n/datasette-atom-0.9.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-atom/datasette-1.0a36/runs/20260714T054828Z-gh-29309487997-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 10,
+        "passed": 0,
+        "failed": 10,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 7
+      },
+      "failing_tests": [
+        "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[False-False]",
+        "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[True-True]",
+        "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config2-True]",
+        "tests/test_atom.py::test_allow_unsafe_html_in_canned_queries[config3-False]",
+        "tests/test_atom.py::test_atom_for_valid_query",
+        "tests/test_atom.py::test_atom_from_titled_canned_query",
+        "tests/test_atom.py::test_atom_link_only_shown_for_correct_queries",
+        "tests/test_atom.py::test_atom_with_bad_html",
+        "tests/test_atom.py::test_atom_with_optional_link",
+        "tests/test_atom.py::test_incorrect_sql_returns_400"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-atom/datasette-1.0a36/runs/20260714T054828Z-gh-29309487997-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-auth-github",
+        "version": "0.14",
+        "repository": "simonw/datasette-auth-github",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/7a/c8/054677d30b9bf39e8473d6e33142b414af593b0204cf76a9e5afa315897f/datasette_auth_github-0.14.tar.gz",
+          "sha256": "88f5de74db49798092c1bb998974089d9ed0fb4153d19f78396a3323a37bce36"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-auth-github",
+          "ref": "0.14",
+          "git_sha": "10547b832bedc5b851252b08b591685358180630"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T054831Z-gh-29309487997-a1",
+        "started_at": "2026-07-14T05:48:31Z",
+        "completed_at": "2026-07-14T05:48:38Z",
+        "duration_seconds": 7.759,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-auth-github[test] @ file:///tmp/datasette-auth-github-wnt0e1o2/datasette_auth_github-0.14.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "sqlite-utils",
+          "--with",
+          "pytest-httpx",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 7,
+        "passed": 5,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_datasette_auth_github.py::test_database_access_permissions[False-expected_databases0]",
+        "tests/test_datasette_auth_github.py::test_database_access_permissions[True-expected_databases1]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "sqlite-utils",
+          "pytest-httpx"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
       "package": {
         "name": "datasette-indieauth",
         "version": "1.2.2",
@@ -1459,13 +1758,13 @@
         "installed_version": "1.0a36"
       },
       "run": {
-        "id": "20260714T015916Z-local-6372aa",
-        "started_at": "2026-07-14T01:59:16Z",
-        "completed_at": "2026-07-14T01:59:21Z",
-        "duration_seconds": 5.534,
+        "id": "20260714T054828Z-gh-29309487997-a1",
+        "started_at": "2026-07-14T05:48:28Z",
+        "completed_at": "2026-07-14T05:48:35Z",
+        "duration_seconds": 6.598,
         "python_version": "3.13",
-        "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
-        "pytest_exit_code": 1,
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
         "command": [
           "uv",
           "run",
@@ -1477,7 +1776,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-indieauth[test] @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-indieauth-y6ipfe9p/datasette-indieauth-1.2.2.tar.gz",
+          "datasette-indieauth @ file:///tmp/datasette-indieauth-wz9jj3x6/datasette-indieauth-1.2.2.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -1487,47 +1786,43 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/Users/simon/Dropbox/dev/ready-for-datasette/results/datasette-indieauth/datasette-1.0a36/runs/20260714T015916Z-local-6372aa/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-indieauth/datasette-1.0a36/runs/20260714T054828Z-gh-29309487997-a1/.pytest-report.json"
         ]
       },
       "passed": false,
-      "outcome": "test_failures",
+      "outcome": "runner_error",
       "counts": {
-        "collected": 67,
-        "passed": 48,
-        "failed": 10,
-        "errors": 9,
+        "collected": 48,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
         "skipped": 0,
         "xfailed": 0,
         "xpassed": 0,
         "deselected": 0,
-        "warnings": 0
+        "warnings": 1
       },
-      "failing_tests": [
-        "tests/test_indieauth.py::test_h_app[None]",
-        "tests/test_indieauth.py::test_h_app[This is the title]",
-        "tests/test_indieauth.py::test_indieauth_done_no_params_error",
-        "tests/test_indieauth.py::test_indieauth_errors[-bodies1-Invalid IndieAuth identifier]",
-        "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie1]",
-        "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie2]",
-        "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie3]",
-        "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[this-is-bad]",
-        "tests/test_indieauth.py::test_plugin_is_installed",
-        "tests/test_indieauth.py::test_restrict_access"
-      ],
+      "failing_tests": [],
       "error_tests": [
-        "tests/test_indieauth.py::test_indieauth_errors[https://simonwillison.net/-bodies0-Invalid IndieAuth identifier - no authorization_endpoint found]",
-        "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me2=no%20me%20here-None-Invalid authorization_code response from authorization server]",
-        "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me=https%3A%2F%2Findieauth.simonwillison.com%2F&scope=email-None-&#34;me&#34; value returned by authorization server had a domain that did not match the initial URL]",
-        "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me=https%3A%2F%2Findieauth.simonwillison.net%2Findex.php%2Fauthor%2Fsimonw%2F&scope=email-expected_profile1-None]",
-        "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-{\"me\": \"https://indieauth.simonwillison.net/index.php/author/simonw/\", \"profile\": {\"email\": \"simon@example.net\"}, \"scope\": \"email\"}-expected_profile0-None]",
-        "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-500-error-None-Invalid response from authorization server]",
-        "tests/test_indieauth.py::test_invalid_url",
-        "tests/test_indieauth.py::test_non_matching_authorization_endpoint",
-        "tests/test_utils.py::test_discover_endpoints[mocks4-None-DiscoverEndpointsError]"
+        "tests/test_indieauth.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 2
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
       ],
       "artifacts": {
-        "pytest_output": "results/datasette-indieauth/datasette-1.0a36/runs/20260714T015916Z-local-6372aa/pytest.txt"
+        "pytest_output": "results/datasette-indieauth/datasette-1.0a36/runs/20260714T054828Z-gh-29309487997-a1/pytest.txt"
       }
     }
   ]

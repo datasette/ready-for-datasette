@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-apps",
+    "version": "0.1a3",
+    "repository": "datasette/datasette-apps",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/e4/8f/97de60b8af727807ccef1c2208d688233deb262a8361caef8fe850707bf9/datasette_apps-0.1a3.tar.gz",
+      "sha256": "fc9c3f9162fb9e1b8b818d892a5e27260502d78f76f5d131248f5ad64cf46619"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-apps",
+      "ref": "0.1a3",
+      "git_sha": "62fd0364d0137f410802d1685d3dce190b12931d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T054827Z-gh-29309487997-a1",
+    "started_at": "2026-07-14T05:48:27Z",
+    "completed_at": "2026-07-14T05:48:59Z",
+    "duration_seconds": 31.222,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-apps @ file:///tmp/datasette-apps-jd3117tc/datasette_apps-0.1a3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "--with",
+      "playwright>=1.60.0",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a36/runs/20260714T054827Z-gh-29309487997-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 186,
+    "passed": 174,
+    "failed": 12,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_apps.py::test_plugin_is_installed",
+    "tests/test_data_access.py::test_datasette_query_intersects_actor_permissions",
+    "tests/test_data_access.py::test_datasette_stored_query_intersects_actor_permissions",
+    "tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data",
+    "tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe",
+    "tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet",
+    "tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel",
+    "tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal",
+    "tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal",
+    "tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel",
+    "tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin",
+    "tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "playwright>=1.60.0",
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 16,
+    "release_tag": 16
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-apps/datasette-1.0a36/runs/20260714T054827Z-gh-29309487997-a1/pytest.txt"
+  }
+}

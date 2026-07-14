@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-auth-github",
+    "version": "0.14",
+    "repository": "simonw/datasette-auth-github",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/7a/c8/054677d30b9bf39e8473d6e33142b414af593b0204cf76a9e5afa315897f/datasette_auth_github-0.14.tar.gz",
+      "sha256": "88f5de74db49798092c1bb998974089d9ed0fb4153d19f78396a3323a37bce36"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-auth-github",
+      "ref": "0.14",
+      "git_sha": "10547b832bedc5b851252b08b591685358180630"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T054831Z-gh-29309487997-a1",
+    "started_at": "2026-07-14T05:48:31Z",
+    "completed_at": "2026-07-14T05:48:38Z",
+    "duration_seconds": 7.759,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-auth-github[test] @ file:///tmp/datasette-auth-github-wnt0e1o2/datasette_auth_github-0.14.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "sqlite-utils",
+      "--with",
+      "pytest-httpx",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 7,
+    "passed": 5,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_datasette_auth_github.py::test_database_access_permissions[False-expected_databases0]",
+    "tests/test_datasette_auth_github.py::test_database_access_permissions[True-expected_databases1]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "sqlite-utils",
+      "pytest-httpx"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/pytest.txt"
+  }
+}

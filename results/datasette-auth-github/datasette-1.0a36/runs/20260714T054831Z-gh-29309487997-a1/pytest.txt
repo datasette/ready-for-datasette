@@ -1,0 +1,99 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-auth-github @ file:///tmp/datasette-auth-github-wnt0e1o2/datasette_auth_github-0.14.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-auth-github @ file:///tmp/datasette-auth-github-wnt0e1o2/datasette_auth_github-0.14.tar.gz
+Installed 41 packages in 49ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmphTUtXf/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'httpx': '0.36.2', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-auth-github-wnt0e1o2/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, httpx-0.36.2, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_datasette_auth_github.py::test_ds_fixture PASSED              [ 14%]
+tests/test_datasette_auth_github.py::test_github_auth_start PASSED       [ 28%]
+tests/test_datasette_auth_github.py::test_github_auth_callback PASSED    [ 42%]
+tests/test_datasette_auth_github.py::test_sign_in_with_github_button PASSED [ 57%]
+tests/test_datasette_auth_github.py::test_database_access_permissions[False-expected_databases0] FAILED [ 71%]
+tests/test_datasette_auth_github.py::test_database_access_permissions[True-expected_databases1] FAILED [ 85%]
+tests/test_datasette_auth_github.py::test_github_enterprise_host PASSED  [100%]
+
+=================================== FAILURES ===================================
+_________ test_database_access_permissions[False-expected_databases0] __________
+
+ds = <datasette.app.Datasette object at 0x7f3567a26710>
+mocked_github_api = None, authenticated = False, expected_databases = {'test'}
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "authenticated,expected_databases",
+        [
+            (False, {"test"}),
+            (True, {"test", "demouser_org_only"}),
+        ],
+    )
+    async def test_database_access_permissions(
+        ds, mocked_github_api, authenticated, expected_databases
+    ):
+        cookies = {}
+        if authenticated:
+            auth_response = await ds.client.get(
+                "/-/github-auth-callback?code=github-code-here",
+                follow_redirects=False,
+            )
+            cookies = {"ds_actor": auth_response.cookies["ds_actor"]}
+        databases = await ds.client.get("/.json", cookies=cookies)
+        # This differs between Datasette <1.0 and >=1.0a20
+        if "databases" in databases.json():
+>           assert set(databases.json()["databases"].keys()) == expected_databases
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'list' object has no attribute 'keys'
+
+tests/test_datasette_auth_github.py:202: AttributeError
+__________ test_database_access_permissions[True-expected_databases1] __________
+
+ds = <datasette.app.Datasette object at 0x7f3567950b90>
+mocked_github_api = None, authenticated = True
+expected_databases = {'demouser_org_only', 'test'}
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "authenticated,expected_databases",
+        [
+            (False, {"test"}),
+            (True, {"test", "demouser_org_only"}),
+        ],
+    )
+    async def test_database_access_permissions(
+        ds, mocked_github_api, authenticated, expected_databases
+    ):
+        cookies = {}
+        if authenticated:
+            auth_response = await ds.client.get(
+                "/-/github-auth-callback?code=github-code-here",
+                follow_redirects=False,
+            )
+            cookies = {"ds_actor": auth_response.cookies["ds_actor"]}
+        databases = await ds.client.get("/.json", cookies=cookies)
+        # This differs between Datasette <1.0 and >=1.0a20
+        if "databases" in databases.json():
+>           assert set(databases.json()["databases"].keys()) == expected_databases
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'list' object has no attribute 'keys'
+
+tests/test_datasette_auth_github.py:202: AttributeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_auth_github.py::test_database_access_permissions[False-expected_databases0] - AttributeError: 'list' object has no attribute 'keys'
+FAILED tests/test_datasette_auth_github.py::test_database_access_permissions[True-expected_databases1] - AttributeError: 'list' object has no attribute 'keys'
+========================= 2 failed, 5 passed in 0.54s ==========================
