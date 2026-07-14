@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-create-view",
+    "version": "0.1",
+    "repository": "datasette/datasette-create-view",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/58/55/a6a93b4da09a6eae40102746088f61dd6f74bdf81dd23012d825ab43eaa5/datasette-create-view-0.1.tar.gz",
+      "sha256": "b8dd84c511c18f8de549674061f7c85d91711a429624ec108d4f1b95945423e1"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-create-view",
+      "ref": "0.1",
+      "git_sha": "16b19ae38a66b1e6596d77bc424558b89b97958d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T170504Z-gh-29352271321-a1",
+    "started_at": "2026-07-14T17:05:04Z",
+    "completed_at": "2026-07-14T17:05:11Z",
+    "duration_seconds": 6.778,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-create-view @ file:///tmp/datasette-create-view-lf9d7lhd/datasette-create-view-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-create-view/datasette-1.0a37/runs/20260714T170504Z-gh-29352271321-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 10,
+    "passed": 3,
+    "failed": 7,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_create_view.py::test_create_view_errors[None-args0-create-table permission is needed to create views]",
+    "tests/test_create_view.py::test_create_view_errors[non_root-args1-create-table permission is needed to create views]",
+    "tests/test_create_view.py::test_create_view_errors[root-args2-SQL and name are both required]",
+    "tests/test_create_view.py::test_create_view_errors[root-args3-SQL and name are both required]",
+    "tests/test_create_view.py::test_create_view_errors[root-args4-SQL query cannot have :named parameters]",
+    "tests/test_create_view.py::test_happy_path",
+    "tests/test_create_view.py::test_query_action_menu[root-select 1-True]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-create-view/datasette-1.0a37/runs/20260714T170504Z-gh-29352271321-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,159 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-cors @ file:///tmp/datasette-cors-2r61gyir/datasette-cors-1.0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-cors @ file:///tmp/datasette-cors-2r61gyir/datasette-cors-1.0.1.tar.gz
+Installed 40 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmptWVhDS/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-cors-2r61gyir/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 7 items
+
+test_datasette_cors.py::test_datasette_cors_plugin_installed FAILED      [ 14%]
+test_datasette_cors.py::test_asgi_cors_hosts[None-None] FAILED           [ 28%]
+test_datasette_cors.py::test_asgi_cors_hosts[http://example.com-http://example.com] FAILED [ 42%]
+test_datasette_cors.py::test_asgi_cors_hosts[http://foo.com-None] FAILED [ 57%]
+test_datasette_cors.py::test_asgi_cors_headers FAILED                    [ 71%]
+test_datasette_cors.py::test_asgi_cors_methods FAILED                    [ 85%]
+test_datasette_cors.py::test_asgi_cors_max_age FAILED                    [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_datasette_cors_plugin_installed _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________ test_asgi_cors_hosts[None-None] ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________ test_asgi_cors_hosts[http://example.com-http://example.com] __________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_asgi_cors_hosts[http://foo.com-None] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_asgi_cors_headers ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_asgi_cors_methods ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_asgi_cors_max_age ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+test_datasette_cors.py:7
+  /tmp/datasette-cors-2r61gyir/tagged-source/test_datasette_cors.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+test_datasette_cors.py:23
+  /tmp/datasette-cors-2r61gyir/tagged-source/test_datasette_cors.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+test_datasette_cors.py:51
+  /tmp/datasette-cors-2r61gyir/tagged-source/test_datasette_cors.py:51: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+test_datasette_cors.py:76
+  /tmp/datasette-cors-2r61gyir/tagged-source/test_datasette_cors.py:76: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+test_datasette_cors.py:98
+  /tmp/datasette-cors-2r61gyir/tagged-source/test_datasette_cors.py:98: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cors/datasette-1.0a37/runs/20260714T170507Z-gh-29352271321-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED test_datasette_cors.py::test_datasette_cors_plugin_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_hosts[None-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_hosts[http://example.com-http://example.com] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_hosts[http://foo.com-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_headers - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_methods - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_cors.py::test_asgi_cors_max_age - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 7 failed, 5 warnings in 0.04s =========================

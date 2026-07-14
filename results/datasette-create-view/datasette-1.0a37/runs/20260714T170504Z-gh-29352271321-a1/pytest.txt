@@ -1,0 +1,368 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-create-view @ file:///tmp/datasette-create-view-lf9d7lhd/datasette-create-view-0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-create-view @ file:///tmp/datasette-create-view-lf9d7lhd/datasette-create-view-0.1.tar.gz
+Installed 40 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQBwmQo/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-create-view-lf9d7lhd/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/test_create_view.py::test_query_action_menu[None-select 1-False] PASSED [ 10%]
+tests/test_create_view.py::test_query_action_menu[non_root-select 1-False] PASSED [ 20%]
+tests/test_create_view.py::test_query_action_menu[root-select 1-True] FAILED [ 30%]
+tests/test_create_view.py::test_query_action_menu[root-select :name-False] PASSED [ 40%]
+tests/test_create_view.py::test_create_view_errors[None-args0-create-table permission is needed to create views] FAILED [ 50%]
+tests/test_create_view.py::test_create_view_errors[non_root-args1-create-table permission is needed to create views] FAILED [ 60%]
+tests/test_create_view.py::test_create_view_errors[root-args2-SQL and name are both required] FAILED [ 70%]
+tests/test_create_view.py::test_create_view_errors[root-args3-SQL and name are both required] FAILED [ 80%]
+tests/test_create_view.py::test_create_view_errors[root-args4-SQL query cannot have :named parameters] FAILED [ 90%]
+tests/test_create_view.py::test_happy_path FAILED                        [100%]
+
+=================================== FAILURES ===================================
+__________________ test_query_action_menu[root-select 1-True] __________________
+
+actor = 'root', sql = 'select 1', should_see_option = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,sql,should_see_option",
+        (
+            (None, "select 1", False),
+            ("non_root", "select 1", False),
+            ("root", "select 1", True),
+            ("root", "select :name", False),
+        ),
+    )
+    async def test_query_action_menu(actor, sql, should_see_option):
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        response = await datasette.client.get("/test", params={"sql": sql}, cookies=cookies)
+        fragment = (
+            '<a href="/test/-/create-view?sql=select+1">Create SQL view for this query</a>'
+        )
+        if should_see_option:
+>           assert fragment in response.text
+E           assert '<a href="/test/-/create-view?sql=select+1">Create SQL view for this query</a>' in ''
+E            +  where '' = <Response [302 Found]>.text
+
+tests/test_create_view.py:26: AssertionError
+_ test_create_view_errors[None-args0-create-table permission is needed to create views] _
+
+actor = None, args = {'name': 'a', 'sql': 'select 1'}
+expected_error = 'create-table permission is needed to create views'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,args,expected_error",
+        (
+            (
+                None,
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            (
+                "non_root",
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            ("root", {"name": "", "sql": "select 1"}, "SQL and name are both required"),
+            ("root", {"name": "a", "sql": ""}, "SQL and name are both required"),
+            (
+                "root",
+                {"name": "a", "sql": "select :id"},
+                "SQL query cannot have :named parameters",
+            ),
+        ),
+    )
+    async def test_create_view_errors(actor, args, expected_error):
+        # Get csfrtoken
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        get_response = await datasette.client.get(
+            "/test/-/create-view", params=args, cookies=cookies
+        )
+        assert get_response.status_code == 200
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_ test_create_view_errors[non_root-args1-create-table permission is needed to create views] _
+
+actor = 'non_root', args = {'name': 'a', 'sql': 'select 1'}
+expected_error = 'create-table permission is needed to create views'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,args,expected_error",
+        (
+            (
+                None,
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            (
+                "non_root",
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            ("root", {"name": "", "sql": "select 1"}, "SQL and name are both required"),
+            ("root", {"name": "a", "sql": ""}, "SQL and name are both required"),
+            (
+                "root",
+                {"name": "a", "sql": "select :id"},
+                "SQL query cannot have :named parameters",
+            ),
+        ),
+    )
+    async def test_create_view_errors(actor, args, expected_error):
+        # Get csfrtoken
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        get_response = await datasette.client.get(
+            "/test/-/create-view", params=args, cookies=cookies
+        )
+        assert get_response.status_code == 200
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+______ test_create_view_errors[root-args2-SQL and name are both required] ______
+
+actor = 'root', args = {'name': '', 'sql': 'select 1'}
+expected_error = 'SQL and name are both required'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,args,expected_error",
+        (
+            (
+                None,
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            (
+                "non_root",
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            ("root", {"name": "", "sql": "select 1"}, "SQL and name are both required"),
+            ("root", {"name": "a", "sql": ""}, "SQL and name are both required"),
+            (
+                "root",
+                {"name": "a", "sql": "select :id"},
+                "SQL query cannot have :named parameters",
+            ),
+        ),
+    )
+    async def test_create_view_errors(actor, args, expected_error):
+        # Get csfrtoken
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        get_response = await datasette.client.get(
+            "/test/-/create-view", params=args, cookies=cookies
+        )
+        assert get_response.status_code == 200
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+______ test_create_view_errors[root-args3-SQL and name are both required] ______
+
+actor = 'root', args = {'name': 'a', 'sql': ''}
+expected_error = 'SQL and name are both required'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,args,expected_error",
+        (
+            (
+                None,
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            (
+                "non_root",
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            ("root", {"name": "", "sql": "select 1"}, "SQL and name are both required"),
+            ("root", {"name": "a", "sql": ""}, "SQL and name are both required"),
+            (
+                "root",
+                {"name": "a", "sql": "select :id"},
+                "SQL query cannot have :named parameters",
+            ),
+        ),
+    )
+    async def test_create_view_errors(actor, args, expected_error):
+        # Get csfrtoken
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        get_response = await datasette.client.get(
+            "/test/-/create-view", params=args, cookies=cookies
+        )
+        assert get_response.status_code == 200
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_ test_create_view_errors[root-args4-SQL query cannot have :named parameters] __
+
+actor = 'root', args = {'name': 'a', 'sql': 'select :id'}
+expected_error = 'SQL query cannot have :named parameters'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "actor,args,expected_error",
+        (
+            (
+                None,
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            (
+                "non_root",
+                {"name": "a", "sql": "select 1"},
+                "create-table permission is needed to create views",
+            ),
+            ("root", {"name": "", "sql": "select 1"}, "SQL and name are both required"),
+            ("root", {"name": "a", "sql": ""}, "SQL and name are both required"),
+            (
+                "root",
+                {"name": "a", "sql": "select :id"},
+                "SQL query cannot have :named parameters",
+            ),
+        ),
+    )
+    async def test_create_view_errors(actor, args, expected_error):
+        # Get csfrtoken
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {}
+        if actor:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": actor})}
+        get_response = await datasette.client.get(
+            "/test/-/create-view", params=args, cookies=cookies
+        )
+        assert get_response.status_code == 200
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_______________________________ test_happy_path ________________________________
+
+    @pytest.mark.asyncio
+    async def test_happy_path():
+        datasette = Datasette()
+        db = datasette.add_memory_database("test")
+        cookies = {"ds_actor": datasette.client.actor_cookie({"id": "root"})}
+        get_response = await datasette.client.get("/test/-/create-view", cookies=cookies)
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_create_view.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/jmsQzolWXvF7Ov0o/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-create-view/datasette-1.0a37/runs/20260714T170504Z-gh-29352271321-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_create_view.py::test_query_action_menu[root-select 1-True] - assert '<a href="/test/-/create-view?sql=select+1">Create SQL view for this query</a>' in ''
+ +  where '' = <Response [302 Found]>.text
+FAILED tests/test_create_view.py::test_create_view_errors[None-args0-create-table permission is needed to create views] - KeyError: 'ds_csrftoken'
+FAILED tests/test_create_view.py::test_create_view_errors[non_root-args1-create-table permission is needed to create views] - KeyError: 'ds_csrftoken'
+FAILED tests/test_create_view.py::test_create_view_errors[root-args2-SQL and name are both required] - KeyError: 'ds_csrftoken'
+FAILED tests/test_create_view.py::test_create_view_errors[root-args3-SQL and name are both required] - KeyError: 'ds_csrftoken'
+FAILED tests/test_create_view.py::test_create_view_errors[root-args4-SQL query cannot have :named parameters] - KeyError: 'ds_csrftoken'
+FAILED tests/test_create_view.py::test_happy_path - KeyError: 'ds_csrftoken'
+========================= 7 failed, 3 passed in 0.52s ==========================
