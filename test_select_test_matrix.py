@@ -1,5 +1,6 @@
 import json
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 
 import pytest
 
@@ -294,3 +295,14 @@ def test_main_manual_plugins_override_history_and_limit(tmp_path, capsys):
         "datasette-one",
     ]
     assert all(item["reason"] == "manual_request" for item in matrix["include"])
+
+
+def test_workflow_exposes_manual_plugin_input_and_ten_job_matrix():
+    workflow = Path(__file__).with_name(".github").joinpath(
+        "workflows", "test-plugins.yml"
+    ).read_text()
+
+    assert "plugins:" in workflow
+    assert "PLUGIN_NAMES: ${{ github.event.inputs.plugins || '' }}" in workflow
+    assert '--plugin-names "$PLUGIN_NAMES"' in workflow
+    assert "max-parallel: 10" in workflow
