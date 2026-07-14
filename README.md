@@ -2,6 +2,8 @@
 
 Tracking which Datasette plugins are ready for Datasette 1.0 stable.
 
+https://lite.datasette.io/?json=https%3A%2F%2Fdatasette.github.io%2Fready-for-datasette%2Fplugins.json#/data/plugins
+
 ## Updating the plugin list
 
 `update_plugins.py` scans the public repositories owned by `simonw`, `dogsheep`,
