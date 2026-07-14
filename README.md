@@ -58,14 +58,30 @@ do.
 ## Working through the test backlog
 
 The `Test plugins` workflow runs hourly at 17 minutes past the hour and can also
-be started manually with `workflow_dispatch`. It selects at most five released
-package/version and Datasette-alpha combinations that have not reached a
-terminal result. New plugin releases take priority, followed by plugins that
-have never been tested and plugins that need testing against a new Datasette
-alpha. Infrastructure failures are retried after a six-hour cooldown.
+be started manually with `workflow_dispatch`, and runs on pushes to `main`. It
+selects at most five released package/version and Datasette-alpha combinations
+that have not reached a terminal result. New plugin releases take priority,
+followed by plugins that have never been tested and plugins that need testing
+against a new Datasette alpha. Infrastructure failures are retried after a
+six-hour cooldown.
 
 Each selected combination runs independently. A final serialized job downloads
 their artifacts, merges each immutable run into `results/`, rebuilds the latest
 files and index, and commits and pushes the changes. The nightly plugin refresh
 uses the same repository-write concurrency group so the two workflows cannot
 push at the same time.
+
+## Publishing the progress report
+
+`generate_report.py` builds a static, searchable scoreboard plus a flat JSON
+dataset containing one object for every plugin:
+
+```bash
+uv run --no-project python generate_report.py --output site
+```
+
+The output is `site/index.html`, `site/plugins.json`, and `site/.nojekyll`.
+Every value in each JSON plugin object is a scalar—there are no nested objects
+or arrays. The final job in the `Test plugins` workflow always regenerates and
+deploys this report to GitHub Pages, even when planning, testing, or merging
+results fails.

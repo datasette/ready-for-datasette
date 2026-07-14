@@ -1,6 +1,9 @@
 name: Test plugins
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # GitHub Actions schedules use UTC. Offset from the nightly metadata refresh.
     - cron: "17 * * * *"
@@ -114,3 +117,41 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Record plugin test results"
           git push
+
+  publish:
+    needs:
+      - plan
+      - test
+      - merge
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out latest results
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Generate progress report
+        run: uv run --no-project python generate_report.py --output _site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
