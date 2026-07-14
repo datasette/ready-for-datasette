@@ -1,0 +1,461 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-configure-fts @ file:///tmp/datasette-configure-fts-p2xi7_vl/datasette_configure_fts-1.1.4.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-configure-fts @ file:///tmp/datasette-configure-fts-p2xi7_vl/datasette_configure_fts-1.1.4.tar.gz
+Installed 40 packages in 85ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpA4s1Ry/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-configure-fts-p2xi7_vl/tagged-source
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 12 items
+
+tests/test_configure_fts.py::test_initial_db_is_not_searchable PASSED    [  8%]
+tests/test_configure_fts.py::test_permissions[/-/configure-fts] PASSED   [ 16%]
+tests/test_configure_fts.py::test_permissions[/-/configure-fts/data] PASSED [ 25%]
+tests/test_configure_fts.py::test_redirects_to_database_if_only_one FAILED [ 33%]
+tests/test_configure_fts.py::test_database_page_sets_cookie FAILED       [ 41%]
+tests/test_configure_fts.py::test_lists_databases_if_more_than_one FAILED [ 50%]
+tests/test_configure_fts.py::test_lists_tables_in_database FAILED        [ 58%]
+tests/test_configure_fts.py::test_text_columns_only FAILED               [ 66%]
+tests/test_configure_fts.py::test_make_table_searchable FAILED           [ 75%]
+tests/test_configure_fts.py::test_uncheck_all_columns FAILED             [ 83%]
+tests/test_configure_fts.py::test_table_actions[True] FAILED             [ 91%]
+tests/test_configure_fts.py::test_table_actions[False] FAILED            [100%]
+
+=================================== FAILURES ===================================
+____________________ test_redirects_to_database_if_only_one ____________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_redirects_to_database_if_0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_redirects_to_database_if_only_one(db_path):
+        ds = Datasette([db_path])
+        response = await ds.client.get(
+            "/-/configure-fts",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:65: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 52, in configure_fts_index
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________ test_database_page_sets_cookie ________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_database_page_sets_cookie0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_database_page_sets_cookie(db_path):
+        ds = Datasette([db_path])
+        response = await ds.client.get(
+            "/-/configure-fts/data",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert "ds_csrftoken" in response.cookies
+E       AssertionError: assert 'ds_csrftoken' in <Cookies[]>
+E        +  where <Cookies[]> = <Response [500 Internal Server Error]>.cookies
+
+tests/test_configure_fts.py:76: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 69, in configure_fts_database
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+____________________ test_lists_databases_if_more_than_one _____________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_lists_databases_if_more_t0/data.db'
+db_path2 = '/tmp/pytest-of-runner/pytest-0/test_lists_databases_if_more_t0/data2.db'
+
+    @pytest.mark.asyncio
+    async def test_lists_databases_if_more_than_one(db_path, db_path2):
+        ds = Datasette([db_path, db_path2])
+        response = await ds.client.get(
+            "/-/configure-fts",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:86: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 52, in configure_fts_index
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________ test_lists_tables_in_database _________________________
+
+db_path2 = '/tmp/pytest-of-runner/pytest-0/test_lists_tables_in_database0/data2.db'
+
+    @pytest.mark.asyncio
+    async def test_lists_tables_in_database(db_path2):
+        ds = Datasette([db_path2])
+        response = await ds.client.get(
+            "/-/configure-fts/data2",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:98: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 69, in configure_fts_database
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+____________________________ test_text_columns_only ____________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_text_columns_only0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_text_columns_only(db_path):
+        ds = Datasette([db_path])
+        sqlite_utils.Database(db_path)["mixed_types"].insert(
+            {
+                "name": "text",
+                "age": 5,
+                "height": 1.4,
+                "description": "description",
+            }
+        )
+        response = await ds.client.get(
+            "/-/configure-fts/data?table=mixed_types",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:127: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 69, in configure_fts_database
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________________________ test_make_table_searchable __________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_make_table_searchable0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_make_table_searchable(db_path):
+        ds = Datasette([db_path])
+        response1 = await ds.client.get(
+            "/-/configure-fts/data",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       csrftoken = response1.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_configure_fts.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 69, in configure_fts_database
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________________ test_uncheck_all_columns ___________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_uncheck_all_columns0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_uncheck_all_columns(db_path):
+        ds = Datasette([db_path])
+        db = sqlite_utils.Database(db_path)
+        db["creatures"].enable_fts(["name"])
+        response1 = await ds.client.get(
+            "/-/configure-fts/data",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       csrftoken = response1.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_configure_fts.py:187: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 69, in configure_fts_database
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________________ test_table_actions[True] ___________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_table_actions_True_0/data.db'
+authenticate = True
+
+    @pytest.mark.parametrize("authenticate", [True, False])
+    @pytest.mark.asyncio
+    async def test_table_actions(db_path, authenticate):
+        ds = Datasette([db_path])
+        cookies = None
+        if authenticate:
+            cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/data/creatures", cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:213: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table.py", line 1717, in table_view
+    response = await table_view_traced(datasette, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table.py", line 1945, in table_view_traced
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/table.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/table.html", line 34, in block 'content'
+    {% set action_links, action_title = actions(), "View actions" if is_view else "Table actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table_extras.py", line 450, in actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 24, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________________________ test_table_actions[False] ___________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/test_table_actions_False_0/data.db'
+authenticate = False
+
+    @pytest.mark.parametrize("authenticate", [True, False])
+    @pytest.mark.asyncio
+    async def test_table_actions(db_path, authenticate):
+        ds = Datasette([db_path])
+        cookies = None
+        if authenticate:
+            cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/data/creatures", cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_configure_fts.py:213: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table.py", line 1717, in table_view
+    response = await table_view_traced(datasette, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table.py", line 1945, in table_view_traced
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/table.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/templates/table.html", line 34, in block 'content'
+    {% set action_links, action_title = actions(), "View actions" if is_view else "Table actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/views/table_extras.py", line 450, in actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/ZfMBbGt9v56TROlD/lib/python3.13/site-packages/datasette_configure_fts/__init__.py", line 24, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-configure-fts/datasette-1.0a37/runs/20260714T165516Z-gh-29351594980-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_configure_fts.py::test_redirects_to_database_if_only_one - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_configure_fts.py::test_database_page_sets_cookie - AssertionError: assert 'ds_csrftoken' in <Cookies[]>
+ +  where <Cookies[]> = <Response [500 Internal Server Error]>.cookies
+FAILED tests/test_configure_fts.py::test_lists_databases_if_more_than_one - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_configure_fts.py::test_lists_tables_in_database - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_configure_fts.py::test_text_columns_only - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_configure_fts.py::test_make_table_searchable - KeyError: 'ds_csrftoken'
+FAILED tests/test_configure_fts.py::test_uncheck_all_columns - KeyError: 'ds_csrftoken'
+FAILED tests/test_configure_fts.py::test_table_actions[True] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_configure_fts.py::test_table_actions[False] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 9 failed, 3 passed in 0.79s ==========================

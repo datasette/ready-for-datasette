@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-cookies-for-magic-parameters",
+    "version": "0.1.2",
+    "repository": "simonw/datasette-cookies-for-magic-parameters",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/dc/78/9d0f2f8ae1f5b609358cfcdb8affaa88cffe8d11f1492eb40d86ba93d3f1/datasette-cookies-for-magic-parameters-0.1.2.tar.gz",
+      "sha256": "0e16376e9217b0c8749b5148ccecc59f16f70e0275359857fe5ff6dabdedd3b4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-cookies-for-magic-parameters",
+      "ref": "0.1.2",
+      "git_sha": "2ee086c7805f6fe994df6d77a6da725bb5ce2cfd"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T165521Z-gh-29351594980-a1",
+    "started_at": "2026-07-14T16:55:21Z",
+    "completed_at": "2026-07-14T16:55:28Z",
+    "duration_seconds": 6.919,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-cookies-for-magic-parameters @ file:///tmp/datasette-cookies-for-magic-parameters-njku0f22/datasette-cookies-for-magic-parameters-0.1.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cookies-for-magic-parameters/datasette-1.0a37/runs/20260714T165521Z-gh-29351594980-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 5,
+    "passed": 0,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_cookies_for_magic_parameters.py::test_dedupe_multiple_uses_of_parameter",
+    "tests/test_cookies_for_magic_parameters.py::test_javascript_present[/-False-200]",
+    "tests/test_cookies_for_magic_parameters.py::test_javascript_present[/_memory-False-200]",
+    "tests/test_cookies_for_magic_parameters.py::test_javascript_present[/_memory/name-True-400]",
+    "tests/test_cookies_for_magic_parameters.py::test_javascript_present[/_memory/other-False-200]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-cookies-for-magic-parameters/datasette-1.0a37/runs/20260714T165521Z-gh-29351594980-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-configure-fts",
+    "version": "1.1.4",
+    "repository": "simonw/datasette-configure-fts",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/d0/80/57d7f3cd144d02c186221288f63ddd12541953d25c075b8d97b0347ccfb6/datasette_configure_fts-1.1.4.tar.gz",
+      "sha256": "097ac91f03dc516de882193924662b2f24297fc94175ad7a61be05ae9c7a77a7"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-configure-fts",
+      "ref": "1.1.4",
+      "git_sha": "70e90a0a1a658bbb1a459a2ac2b55954d748f146"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T165516Z-gh-29351594980-a1",
+    "started_at": "2026-07-14T16:55:16Z",
+    "completed_at": "2026-07-14T16:55:23Z",
+    "duration_seconds": 7.137,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-configure-fts[test] @ file:///tmp/datasette-configure-fts-p2xi7_vl/datasette_configure_fts-1.1.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-configure-fts/datasette-1.0a37/runs/20260714T165516Z-gh-29351594980-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 12,
+    "passed": 3,
+    "failed": 9,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_configure_fts.py::test_database_page_sets_cookie",
+    "tests/test_configure_fts.py::test_lists_databases_if_more_than_one",
+    "tests/test_configure_fts.py::test_lists_tables_in_database",
+    "tests/test_configure_fts.py::test_make_table_searchable",
+    "tests/test_configure_fts.py::test_redirects_to_database_if_only_one",
+    "tests/test_configure_fts.py::test_table_actions[False]",
+    "tests/test_configure_fts.py::test_table_actions[True]",
+    "tests/test_configure_fts.py::test_text_columns_only",
+    "tests/test_configure_fts.py::test_uncheck_all_columns"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-configure-fts/datasette-1.0a37/runs/20260714T165516Z-gh-29351594980-a1/pytest.txt"
+  }
+}
