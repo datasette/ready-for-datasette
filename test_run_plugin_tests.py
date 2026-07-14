@@ -135,9 +135,11 @@ def test_select_sdist_refuses_to_test_without_a_released_sdist():
 
 
 def test_release_tag_candidates_only_name_the_exact_pypi_version():
-    assert run_plugin_tests.release_tag_candidates(
-        "datasette-example", "1.2.3"
-    ) == ("1.2.3", "v1.2.3", "datasette-example-1.2.3")
+    assert run_plugin_tests.release_tag_candidates("datasette-example", "1.2.3") == (
+        "1.2.3",
+        "v1.2.3",
+        "datasette-example-1.2.3",
+    )
 
 
 def test_download_sdist_verifies_the_published_sha256(tmp_path, monkeypatch):
@@ -162,7 +164,9 @@ def test_download_sdist_verifies_the_published_sha256(tmp_path, monkeypatch):
             self.offset += len(chunk)
             return chunk
 
-    monkeypatch.setattr(run_plugin_tests, "urlopen", lambda request, timeout: Response())
+    monkeypatch.setattr(
+        run_plugin_tests, "urlopen", lambda request, timeout: Response()
+    )
     destination = tmp_path / "release.sdist"
 
     run_plugin_tests.download_sdist(sdist, destination)
@@ -223,8 +227,7 @@ def test_published_test_extra_uses_only_an_extra_pypi_says_exists(
 
 
 def test_discover_test_dependencies_reads_pep_735_groups(tmp_path):
-    (tmp_path / "pyproject.toml").write_text(
-        """
+    (tmp_path / "pyproject.toml").write_text("""
 [dependency-groups]
 async = ["pytest-asyncio"]
 dev = [
@@ -232,8 +235,7 @@ dev = [
     "pytest",
     "inline-snapshot",
 ]
-"""
-    )
+""")
 
     source, dependencies = run_plugin_tests.discover_test_dependencies(tmp_path)
 
@@ -244,15 +246,13 @@ dev = [
 def test_discover_test_dependencies_can_use_unpublished_optional_dependencies(
     tmp_path,
 ):
-    (tmp_path / "pyproject.toml").write_text(
-        """
+    (tmp_path / "pyproject.toml").write_text("""
 [project]
 name = "datasette-example"
 
 [project.optional-dependencies]
 test = ["pytest-httpx", "pytest-asyncio"]
-"""
-    )
+""")
 
     source, dependencies = run_plugin_tests.discover_test_dependencies(tmp_path)
 
@@ -277,9 +277,7 @@ def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):
     assert command[:2] == ["uv", "run"]
     assert "--no-project" in command
     assert ".[test]" not in command
-    assert (
-        f"datasette-example[test] @ {sdist_path.resolve().as_uri()}" in command
-    )
+    assert f"datasette-example[test] @ {sdist_path.resolve().as_uri()}" in command
     assert ["--with", "datasette==1.0a36"] == command[
         command.index("datasette==1.0a36") - 1 : command.index("datasette==1.0a36") + 1
     ]
@@ -400,9 +398,7 @@ def test_result_paths_use_package_and_datasette_as_the_primary_lookup(tmp_path):
     )
 
     pair_directory = tmp_path / "datasette-example" / "datasette-1.0a36"
-    run_directory = (
-        pair_directory / "runs" / "20260713T013041Z-gh-124123456-a1"
-    )
+    run_directory = pair_directory / "runs" / "20260713T013041Z-gh-124123456-a1"
     assert paths.run_directory == run_directory
     assert paths.pytest_output == run_directory / "pytest.txt"
     assert paths.result == run_directory / "result.json"

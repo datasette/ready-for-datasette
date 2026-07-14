@@ -16,7 +16,6 @@ from run_plugin_tests import (
     pypi_project,
 )
 
-
 TERMINAL_OUTCOMES = {
     "passed",
     "test_failures",
@@ -104,7 +103,9 @@ def select_requested_plugins(
     repositories: Mapping[str, str] | None = None,
 ) -> list[dict[str, str]]:
     if len(requested_plugins) > MAX_TESTS:
-        raise ValueError(f"A manual test matrix may contain at most {MAX_TESTS} plugins")
+        raise ValueError(
+            f"A manual test matrix may contain at most {MAX_TESTS} plugins"
+        )
     repositories = {} if repositories is None else repositories
     normalized_plugins = {
         normalize_package_name(name): version for name, version in plugins.items()
@@ -113,9 +114,7 @@ def select_requested_plugins(
     missing = [name for name in requested if name not in normalized_plugins]
     if missing:
         label = "plugin" if len(missing) == 1 else "plugins"
-        raise ValueError(
-            f"Unknown or unreleased {label}: {', '.join(missing)}"
-        )
+        raise ValueError(f"Unknown or unreleased {label}: {', '.join(missing)}")
 
     candidates: list[dict[str, str]] = []
     for package in requested:
@@ -156,8 +155,7 @@ def _result_identity(result: Mapping[str, Any]) -> tuple[str, str, str] | None:
     version = package.get("version")
     datasette_version = datasette.get("requested_version")
     if not all(
-        isinstance(value, str) and value
-        for value in (name, version, datasette_version)
+        isinstance(value, str) and value for value in (name, version, datasette_version)
     ):
         return None
     return normalize_package_name(name), version, datasette_version

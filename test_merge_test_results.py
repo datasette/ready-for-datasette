@@ -45,22 +45,21 @@ def test_merge_results_installs_run_updates_latest_and_rebuilds_index(tmp_path):
 
     merged = merge_test_results.merge_results(incoming, results)
 
-    run = (
-        results
-        / "datasette-example"
-        / "datasette-1.0a36"
-        / "runs"
-        / "run-2"
-    )
+    run = results / "datasette-example" / "datasette-1.0a36" / "runs" / "run-2"
     assert merged == [run]
     stored = json.loads((run / "result.json").read_text())
     assert stored["artifacts"]["pytest_output"] == (
         "results/datasette-example/datasette-1.0a36/runs/run-2/pytest.txt"
     )
     assert (run / "pytest.txt").read_text() == "pytest output\n"
-    assert json.loads(
-        (results / "datasette-example" / "datasette-1.0a36" / "latest.json").read_text()
-    ) == stored
+    assert (
+        json.loads(
+            (
+                results / "datasette-example" / "datasette-1.0a36" / "latest.json"
+            ).read_text()
+        )
+        == stored
+    )
     index = json.loads((results / "index.json").read_text())
     assert index["results"] == [stored]
 
@@ -107,13 +106,7 @@ def test_merge_results_refuses_conflicting_immutable_run(tmp_path):
         "datasette-example", "2.0", "1.0a36", "same-run", "2026-07-13T12:00:00Z"
     )
     stage_result(incoming, payload, output="incoming\n")
-    existing = (
-        results
-        / "datasette-example"
-        / "datasette-1.0a36"
-        / "runs"
-        / "same-run"
-    )
+    existing = results / "datasette-example" / "datasette-1.0a36" / "runs" / "same-run"
     existing.mkdir(parents=True)
     (existing / "result.json").write_text(json.dumps(payload))
     (existing / "pytest.txt").write_text("different\n")

@@ -26,7 +26,6 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
 
-
 PYPI_API = "https://pypi.org/pypi"
 USER_AGENT = "ready-for-datasette-test-runner/2.0"
 ALPHA_PATTERN = re.compile(r"^1\.0a(\d+)$", re.IGNORECASE)
@@ -198,9 +197,7 @@ def fetch_json(url: str, *, timeout: float = 30, retries: int = 3) -> Any:
     raise AssertionError("retry loop ended unexpectedly")
 
 
-def pypi_project(
-    package_name: str, version: str | None = None
-) -> Mapping[str, Any]:
+def pypi_project(package_name: str, version: str | None = None) -> Mapping[str, Any]:
     normalized = normalize_package_name(package_name)
     url = f"{PYPI_API}/{quote(normalized, safe='')}"
     if version is not None:
@@ -330,9 +327,7 @@ def extract_sdist(archive_path: Path, destination: Path) -> Path:
                 path = _archive_member_path(item.name)
                 roots.add(path.parts[0])
                 if not (item.isfile() or item.isdir()):
-                    raise RuntimeError(
-                        f"Unsupported archive member: {item.name!r}"
-                    )
+                    raise RuntimeError(f"Unsupported archive member: {item.name!r}")
             archive.extractall(destination, members=members)
     else:
         raise RuntimeError(f"Unsupported source distribution archive: {archive_path}")
@@ -424,9 +419,7 @@ def _dependency_group(
     groups: Mapping[str, Any], name: str, resolving: tuple[str, ...] = ()
 ) -> list[str]:
     if name in resolving:
-        raise ValueError(
-            "Dependency group cycle: " + " -> ".join((*resolving, name))
-        )
+        raise ValueError("Dependency group cycle: " + " -> ".join((*resolving, name)))
     value = groups.get(name)
     if not isinstance(value, list):
         raise ValueError(f"Dependency group {name!r} is not an array")
@@ -474,7 +467,9 @@ def discover_test_dependencies(source_root: Path) -> tuple[str | None, tuple[str
         with pyproject_path.open("rb") as file:
             pyproject = tomllib.load(file)
     except (OSError, tomllib.TOMLDecodeError) as ex:
-        raise ValueError(f"Could not parse test dependencies in {pyproject_path}: {ex}") from ex
+        raise ValueError(
+            f"Could not parse test dependencies in {pyproject_path}: {ex}"
+        ) from ex
 
     groups = pyproject.get("dependency-groups")
     if isinstance(groups, Mapping):
@@ -486,12 +481,16 @@ def discover_test_dependencies(source_root: Path) -> tuple[str | None, tuple[str
             )
 
     project = pyproject.get("project")
-    optional = project.get("optional-dependencies") if isinstance(project, Mapping) else None
+    optional = (
+        project.get("optional-dependencies") if isinstance(project, Mapping) else None
+    )
     if isinstance(optional, Mapping):
         group_name = _named_group(optional)
         dependencies = optional.get(group_name) if group_name is not None else None
-        if group_name is not None and isinstance(dependencies, list) and all(
-            isinstance(item, str) for item in dependencies
+        if (
+            group_name is not None
+            and isinstance(dependencies, list)
+            and all(isinstance(item, str) for item in dependencies)
         ):
             return (
                 f"project.optional-dependencies.{group_name}",
@@ -500,7 +499,9 @@ def discover_test_dependencies(source_root: Path) -> tuple[str | None, tuple[str
 
     tool = pyproject.get("tool")
     uv = tool.get("uv") if isinstance(tool, Mapping) else None
-    legacy_dependencies = uv.get("dev-dependencies") if isinstance(uv, Mapping) else None
+    legacy_dependencies = (
+        uv.get("dev-dependencies") if isinstance(uv, Mapping) else None
+    )
     if isinstance(legacy_dependencies, list) and all(
         isinstance(item, str) for item in legacy_dependencies
     ):
@@ -553,11 +554,11 @@ def build_pytest_command(
             command.extend(("--with", dependency))
     command.extend(
         [
-        "pytest",
-        "-vv",
-        "--json-report",
-        f"--json-report-file={report_path}",
-        *pytest_args,
+            "pytest",
+            "-vv",
+            "--json-report",
+            f"--json-report-file={report_path}",
+            *pytest_args,
         ]
     )
     return command
@@ -843,9 +844,12 @@ def _build_result(
         },
         "datasette": {
             "requested_version": datasette_version,
-            "installed_version": datasette_version
-            if pytest_exit_code is not None and summary.get("outcome") != "install_error"
-            else None,
+            "installed_version": (
+                datasette_version
+                if pytest_exit_code is not None
+                and summary.get("outcome") != "install_error"
+                else None
+            ),
         },
         "run": {
             "id": run_id,
@@ -881,7 +885,9 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     package_name_value = info_value.get("name") or args.package
     package_version = info_value.get("version")
     if not isinstance(package_name_value, str) or not isinstance(package_version, str):
-        raise ValueError(f"PyPI returned incomplete project information for {args.package}")
+        raise ValueError(
+            f"PyPI returned incomplete project information for {args.package}"
+        )
     if args.package_version is not None and package_version != args.package_version:
         raise ValueError(
             f"PyPI returned version {package_version!r}, expected "
@@ -938,9 +944,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
         )
         try:
             download_sdist(sdist, archive_path)
-            source_directory = extract_sdist(
-                archive_path, temporary_path / "unpacked"
-            )
+            source_directory = extract_sdist(archive_path, temporary_path / "unpacked")
             sdist_directory = source_directory
         except Exception as ex:
             completed = datetime.now(UTC)
@@ -987,9 +991,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
                     source_directory = temporary_path / "tagged-source"
 
         release_tag_directory = (
-            source_directory
-            if source.test_suite.kind == "github_release_tag"
-            else None
+            source_directory if source.test_suite.kind == "github_release_tag" else None
         )
         test_inventory, result_warnings = inspect_test_inventory(
             sdist_directory, release_tag_directory

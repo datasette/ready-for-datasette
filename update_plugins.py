@@ -22,7 +22,6 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
-
 DEFAULT_OWNERS = ("simonw", "dogsheep", "datasette", "asg017")
 GITHUB_API = "https://api.github.com"
 RAW_GITHUB = "https://raw.githubusercontent.com"
@@ -267,13 +266,19 @@ def parse_setup_py(document: str) -> str | None:
     try:
         tree = ast.parse(document, filename="setup.py")
     except SyntaxError as ex:
-        raise ProjectParseError(f"Invalid setup.py: {ex.msg} (line {ex.lineno})") from ex
+        raise ProjectParseError(
+            f"Invalid setup.py: {ex.msg} (line {ex.lineno})"
+        ) from ex
 
     bindings: dict[str, ast.AST] = {}
     for statement in tree.body:
         if isinstance(statement, (ast.Assign, ast.AnnAssign)):
             value = statement.value
-            targets = statement.targets if isinstance(statement, ast.Assign) else [statement.target]
+            targets = (
+                statement.targets
+                if isinstance(statement, ast.Assign)
+                else [statement.target]
+            )
             for target in targets:
                 if isinstance(target, ast.Name) and value is not None:
                     bindings[target.id] = value
@@ -362,7 +367,9 @@ def _source_from_304(
     response: RawResponse,
 ) -> PluginSource:
     if previous is None:
-        raise FetchError(f"Received an unexpected 304 for {github_repo}/{metadata_file}")
+        raise FetchError(
+            f"Received an unexpected 304 for {github_repo}/{metadata_file}"
+        )
     name = previous.get("name")
     metadata_sha256 = previous.get("metadata_sha256")
     if not isinstance(name, str) or not isinstance(metadata_sha256, str):
@@ -491,7 +498,9 @@ def add_versions(
         )
         if unchanged and not refresh_pypi:
             cached_version = previous.get("latest_version")
-            versions[source] = cached_version if isinstance(cached_version, str) else None
+            versions[source] = (
+                cached_version if isinstance(cached_version, str) else None
+            )
         else:
             to_fetch.append(source)
 
@@ -536,7 +545,10 @@ def discover_sources(
     repositories: dict[str, dict[str, Any]] = {}
     for owner in owners:
         owner_repositories = list_public_repositories(owner, client)
-        print(f"{owner}: found {len(owner_repositories)} public repositories", file=sys.stderr)
+        print(
+            f"{owner}: found {len(owner_repositories)} public repositories",
+            file=sys.stderr,
+        )
         for repository in owner_repositories:
             full_name = repository.get("full_name")
             name = repository.get("name")

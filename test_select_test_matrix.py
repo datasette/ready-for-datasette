@@ -30,14 +30,11 @@ def test_released_plugins_deduplicates_names_and_rejects_version_conflicts():
         {"name": "datasette-unreleased", "latest_version": None},
     ]
 
-    assert select_test_matrix.released_plugins(plugins) == {
-        "datasette-example": "1.0"
-    }
+    assert select_test_matrix.released_plugins(plugins) == {"datasette-example": "1.0"}
 
     with pytest.raises(ValueError, match="Conflicting latest versions"):
         select_test_matrix.released_plugins(
-            plugins
-            + [{"name": "datasette_example", "latest_version": "2.0"}]
+            plugins + [{"name": "datasette_example", "latest_version": "2.0"}]
         )
 
 
@@ -158,9 +155,7 @@ def test_write_github_outputs_emits_compact_matrix_and_has_work(tmp_path):
 def test_select_candidates_never_returns_more_than_ten():
     plugins = {f"datasette-example-{number}": "1.0" for number in range(15)}
 
-    selected = select_test_matrix.select_candidates(
-        plugins, [], "1.0a36", limit=20
-    )
+    selected = select_test_matrix.select_candidates(plugins, [], "1.0a36", limit=20)
 
     assert len(selected) == 10
 

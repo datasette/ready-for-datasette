@@ -53,7 +53,9 @@ def test_parse_pyproject_rejects_a_non_datasette_project():
 
 
 def test_parse_pyproject_reports_invalid_toml():
-    with pytest.raises(update_plugins.ProjectParseError, match="Invalid pyproject.toml"):
+    with pytest.raises(
+        update_plugins.ProjectParseError, match="Invalid pyproject.toml"
+    ):
         update_plugins.parse_pyproject("[project\nname = 'broken'")
 
 
@@ -149,7 +151,9 @@ def test_http_client_sends_if_none_match_and_returns_response_etag(monkeypatch):
     monkeypatch.setattr(update_plugins, "urlopen", fake_urlopen)
     client = update_plugins.HttpClient(timeout=12)
 
-    result = client.get_raw("https://raw.githubusercontent.com/example", etag='"old-etag"')
+    result = client.get_raw(
+        "https://raw.githubusercontent.com/example", etag='"old-etag"'
+    )
 
     assert captured["request"].get_header("If-none-match") == '"old-etag"'
     assert captured["timeout"] == 12
@@ -167,13 +171,13 @@ def test_inspect_repository_falls_back_to_setup_py_only_when_pyproject_is_absent
     pyproject_url = (
         "https://raw.githubusercontent.com/simonw/datasette-legacy/main/pyproject.toml"
     )
-    setup_url = "https://raw.githubusercontent.com/simonw/datasette-legacy/main/setup.py"
-    setup_py = textwrap.dedent(
-        """
+    setup_url = (
+        "https://raw.githubusercontent.com/simonw/datasette-legacy/main/setup.py"
+    )
+    setup_py = textwrap.dedent("""
         from setuptools import setup
         setup(name="datasette-package-name", entry_points={"datasette": []})
-        """
-    ).encode()
+        """).encode()
     client = BytesClient(
         {
             pyproject_url: update_plugins.RawResponse(content=None, etag=None),
@@ -261,7 +265,9 @@ def test_cached_setup_py_still_checks_for_a_new_pyproject_first():
         "default_branch": "main",
     }
     pyproject_url = "https://raw.githubusercontent.com/simonw/datasette-legacy-cached/main/pyproject.toml"
-    setup_url = "https://raw.githubusercontent.com/simonw/datasette-legacy-cached/main/setup.py"
+    setup_url = (
+        "https://raw.githubusercontent.com/simonw/datasette-legacy-cached/main/setup.py"
+    )
     previous = {
         "name": "datasette-legacy-cached",
         "github_repo": "simonw/datasette-legacy-cached",
@@ -302,8 +308,12 @@ class JsonClient:
 
 
 def test_list_public_repositories_paginates_until_a_short_page():
-    first_url = "https://api.github.com/users/simonw/repos?per_page=100&page=1&type=public"
-    second_url = "https://api.github.com/users/simonw/repos?per_page=100&page=2&type=public"
+    first_url = (
+        "https://api.github.com/users/simonw/repos?per_page=100&page=1&type=public"
+    )
+    second_url = (
+        "https://api.github.com/users/simonw/repos?per_page=100&page=2&type=public"
+    )
     first_page = [
         {"full_name": f"simonw/repository-{number}", "default_branch": "main"}
         for number in range(100)
@@ -330,13 +340,9 @@ def test_list_public_repositories_paginates_until_a_short_page():
     ),
 )
 def test_latest_pypi_version(payload, expected):
-    client = JsonClient(
-        {"https://pypi.org/pypi/datasette-example/json": payload}
-    )
+    client = JsonClient({"https://pypi.org/pypi/datasette-example/json": payload})
 
-    assert (
-        update_plugins.latest_pypi_version("datasette-example", client) == expected
-    )
+    assert update_plugins.latest_pypi_version("datasette-example", client) == expected
 
 
 def test_add_versions_reuses_pypi_metadata_when_packaging_hash_is_unchanged():
@@ -359,9 +365,7 @@ def test_add_versions_reuses_pypi_metadata_when_packaging_hash_is_unchanged():
     ]
     client = JsonClient({})
 
-    records = update_plugins.add_versions(
-        [source], previous, client, workers=1
-    )
+    records = update_plugins.add_versions([source], previous, client, workers=1)
 
     assert records == [
         update_plugins.PluginRecord(

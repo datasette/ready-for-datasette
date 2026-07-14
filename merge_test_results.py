@@ -85,9 +85,7 @@ def _canonical_result(
     package_name = normalize_package_name(
         _required_string(package, "name", source_result)
     )
-    datasette_version = _required_string(
-        datasette, "requested_version", source_result
-    )
+    datasette_version = _required_string(datasette, "requested_version", source_result)
     run_id = _required_string(run, "id", source_result)
     _completed_at(payload, source_result)
     paths = result_paths(results_dir, package_name, datasette_version, run_id)

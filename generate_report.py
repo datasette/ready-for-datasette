@@ -15,7 +15,6 @@ from urllib.parse import quote
 
 from run_plugin_tests import normalize_package_name
 
-
 DEFAULT_REPOSITORY_URL = "https://github.com/datasette/ready-for-datasette"
 STATUS_LABELS = {
     "ready": "Ready",
@@ -171,8 +170,12 @@ def build_plugin_rows(
         if plugin_id in seen_plugin_ids:
             raise ValueError(f"Duplicate plugin identifier: {plugin_id}")
         seen_plugin_ids.add(plugin_id)
-        page_anchor = "plugin-" + re.sub(r"[^a-z0-9]+", "-", plugin_id.casefold()).strip("-")
-        owner = github_repo.split("/", 1)[0] if github_repo and "/" in github_repo else None
+        page_anchor = "plugin-" + re.sub(
+            r"[^a-z0-9]+", "-", plugin_id.casefold()
+        ).strip("-")
+        owner = (
+            github_repo.split("/", 1)[0] if github_repo and "/" in github_repo else None
+        )
         latest_version = _string(plugin.get("latest_version"))
         result = latest_by_name.get(name)
         plugin_history = history_by_name.get(name, [])
@@ -188,7 +191,11 @@ def build_plugin_rows(
         failing_tests = _string_list(result.get("failing_tests")) if result else []
         error_tests = _string_list(result.get("error_tests")) if result else []
         result_warnings = result.get("warnings") if result else []
-        warnings = [item for item in result_warnings if isinstance(item, Mapping)] if isinstance(result_warnings, list) else []
+        warnings = (
+            [item for item in result_warnings if isinstance(item, Mapping)]
+            if isinstance(result_warnings, list)
+            else []
+        )
         output_path = _string(artifacts.get("pytest_output"))
         output_url = (
             f"{repository_url}/blob/main/{quote(output_path, safe='/')}"
@@ -230,8 +237,16 @@ def build_plugin_rows(
             "status_description": STATUS_DESCRIPTIONS[status],
             "tested": result is not None,
             "tested_latest_release": tested_latest_release,
-            "passed": result.get("passed") if result and isinstance(result.get("passed"), bool) else None,
-            "runner_version": _integer(result.get("runner_version")) if result and result.get("runner_version") is not None else None,
+            "passed": (
+                result.get("passed")
+                if result and isinstance(result.get("passed"), bool)
+                else None
+            ),
+            "runner_version": (
+                _integer(result.get("runner_version"))
+                if result and result.get("runner_version") is not None
+                else None
+            ),
             "outcome": _string(result.get("outcome")) if result else None,
             "tested_package_version": tested_package_version,
             "datasette_version": _string(datasette.get("requested_version")),
@@ -244,7 +259,11 @@ def build_plugin_rows(
             "duration_seconds": _number(run.get("duration_seconds")),
             "python_version": _string(run.get("python_version")),
             "platform": _string(run.get("platform")),
-            "pytest_exit_code": _integer(run.get("pytest_exit_code")) if run.get("pytest_exit_code") is not None else None,
+            "pytest_exit_code": (
+                _integer(run.get("pytest_exit_code"))
+                if run.get("pytest_exit_code") is not None
+                else None
+            ),
             "collected": _integer(counts.get("collected")),
             "tests_passed": _integer(counts.get("passed")),
             "tests_failed": _integer(counts.get("failed")),
@@ -313,7 +332,11 @@ def _test_list(value: Any) -> str:
     tests = str(value or "").splitlines()
     if not tests:
         return ""
-    return '<ul class="test-list">' + "".join(f"<li><code>{_e(test)}</code></li>" for test in tests) + "</ul>"
+    return (
+        '<ul class="test-list">'
+        + "".join(f"<li><code>{_e(test)}</code></li>" for test in tests)
+        + "</ul>"
+    )
 
 
 def _plugin_table_row(row: Mapping[str, Any]) -> str:
@@ -325,25 +348,48 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
         if tested
         else '<span class="muted">—</span>'
     )
-    links = [f'<a href="{_e(row["github_url"])}">GitHub</a>'] if row["github_url"] else []
+    links = (
+        [f'<a href="{_e(row["github_url"])}">GitHub</a>'] if row["github_url"] else []
+    )
     links.append(f'<a href="{_e(row["pypi_url"])}">PyPI</a>')
     if row["pytest_output_url"]:
         links.append(f'<a href="{_e(row["pytest_output_url"])}">pytest output</a>')
     details: list[str] = []
     if row["failing_tests"]:
-        details.append(f'<div class="detail-block"><h4>Failing tests</h4>{_test_list(row["failing_tests"])}</div>')
+        details.append(
+            f'<div class="detail-block"><h4>Failing tests</h4>{_test_list(row["failing_tests"])}</div>'
+        )
     if row["error_tests"]:
-        details.append(f'<div class="detail-block"><h4>Collection / setup errors</h4>{_test_list(row["error_tests"])}</div>')
+        details.append(
+            f'<div class="detail-block"><h4>Collection / setup errors</h4>{_test_list(row["error_tests"])}</div>'
+        )
     if row["result_warning_messages"]:
-        details.append(f'<div class="detail-block warning-copy"><h4>Runner warnings</h4><p>{_e(row["result_warning_messages"])}</p></div>')
+        details.append(
+            f'<div class="detail-block warning-copy"><h4>Runner warnings</h4><p>{_e(row["result_warning_messages"])}</p></div>'
+        )
     if row["test_dependencies"]:
-        details.append(f'<div class="detail-block"><h4>Installed test dependencies</h4>{_test_list(row["test_dependencies"])}</div>')
+        details.append(
+            f'<div class="detail-block"><h4>Installed test dependencies</h4>{_test_list(row["test_dependencies"])}</div>'
+        )
     if row["detail"]:
-        details.append(f'<div class="detail-block"><h4>Runner detail</h4><p>{_e(row["detail"])}</p></div>')
-    details_html = "".join(details) or '<p class="muted detail-empty">No failure details recorded.</p>'
+        details.append(
+            f'<div class="detail-block"><h4>Runner detail</h4><p>{_e(row["detail"])}</p></div>'
+        )
+    details_html = (
+        "".join(details)
+        or '<p class="muted detail-empty">No failure details recorded.</p>'
+    )
     search = " ".join(
         str(row.get(key) or "")
-        for key in ("name", "owner", "latest_version", "status_label", "outcome", "failing_tests", "error_tests")
+        for key in (
+            "name",
+            "owner",
+            "latest_version",
+            "status_label",
+            "outcome",
+            "failing_tests",
+            "error_tests",
+        )
     ).casefold()
     latest_version = row["latest_version"] or "—"
     datasette_version = row["datasette_version"] or "—"
@@ -405,7 +451,9 @@ def render_html(rows: Sequence[Mapping[str, Any]], generated_at: datetime) -> st
     target_version = versions[-1] if versions else "Awaiting first run"
     owners = sorted({str(row["owner"]) for row in rows if row["owner"]})
     table_rows = "".join(_plugin_table_row(row) for row in rows)
-    owner_options = "".join(f'<option value="{_e(owner)}">{_e(owner)}</option>' for owner in owners)
+    owner_options = "".join(
+        f'<option value="{_e(owner)}">{_e(owner)}</option>' for owner in owners
+    )
     status_options = "".join(
         f'<option value="{status}">{_e(STATUS_LABELS[status])} ({status_counts[status]})</option>'
         for status in STATUS_ORDER
@@ -413,7 +461,7 @@ def render_html(rows: Sequence[Mapping[str, Any]], generated_at: datetime) -> st
     legend = "".join(
         f'<button type="button" class="legend-item" data-filter-status="{status}">'
         f'<span class="legend-dot status-{status}"></span>'
-        f'<span><strong>{status_counts[status]}</strong>{_e(STATUS_LABELS[status])}</span></button>'
+        f"<span><strong>{status_counts[status]}</strong>{_e(STATUS_LABELS[status])}</span></button>"
         for status in STATUS_ORDER
     )
     progress_segments = "".join(
@@ -427,12 +475,15 @@ def render_html(rows: Sequence[Mapping[str, Any]], generated_at: datetime) -> st
         key=lambda row: str(row["last_tested_at"]),
         reverse=True,
     )[:6]
-    recent = "".join(
-        f'<li><span class="status status-{_e(row["status"])}"><span></span>{_e(row["status_label"])}</span>'
-        f'<a href="#{_e(row["page_anchor"])}">{_e(row["name"])}</a>'
-        f'<time>{_e(_format_timestamp(row["last_tested_at"]))}</time></li>'
-        for row in recent_rows
-    ) or '<li class="muted">No test runs have landed yet.</li>'
+    recent = (
+        "".join(
+            f'<li><span class="status status-{_e(row["status"])}"><span></span>{_e(row["status_label"])}</span>'
+            f'<a href="#{_e(row["page_anchor"])}">{_e(row["name"])}</a>'
+            f'<time>{_e(_format_timestamp(row["last_tested_at"]))}</time></li>'
+            for row in recent_rows
+        )
+        or '<li class="muted">No test runs have landed yet.</li>'
+    )
     generated_text = generated_at.astimezone(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
     replacements = {
@@ -466,7 +517,9 @@ def generate_report(
     generated_at: datetime | None = None,
 ) -> list[dict[str, Any]]:
     plugins = _read_json(plugins_path)
-    if not isinstance(plugins, list) or not all(isinstance(item, Mapping) for item in plugins):
+    if not isinstance(plugins, list) or not all(
+        isinstance(item, Mapping) for item in plugins
+    ):
         raise ValueError(f"Expected {plugins_path} to contain an array of objects")
     latest_results = load_latest_results(results_dir)
     history = load_history(results_dir)
