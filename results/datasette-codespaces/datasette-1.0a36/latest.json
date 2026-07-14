@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-codespaces",
+    "version": "0.1.1",
+    "repository": "simonw/datasette-codespaces",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/14/71/eaf0840db061ea2c1a8437fb1c8d5d1f59ee1afeb26abbbcdafa2463d4b3/datasette-codespaces-0.1.1.tar.gz",
+      "sha256": "5aa750c7516744b61960d084efc6d4bb50d8945df1ba38cc6f41a4378668be53"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-codespaces",
+      "ref": "0.1.1",
+      "git_sha": "ed41e538e2d80d241a69ac03eb31f389bfc2dbbf"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T155120Z-gh-29347134922-a1",
+    "started_at": "2026-07-14T15:51:20Z",
+    "completed_at": "2026-07-14T15:51:26Z",
+    "duration_seconds": 6.627,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-codespaces @ file:///tmp/datasette-codespaces-uc95p9r2/datasette-codespaces-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-codespaces/datasette-1.0a36/runs/20260714T155120Z-gh-29347134922-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 0,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_codespaces.py::test_codespace_name",
+    "tests/test_codespaces.py::test_no_env_variable"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-codespaces/datasette-1.0a36/runs/20260714T155120Z-gh-29347134922-a1/pytest.txt"
+  }
+}
