@@ -1,0 +1,634 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-comments @ file:///tmp/datasette-comments-ouwavrbc/datasette-comments-0.1.0.tar.gz
+Downloading playwright (45.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded playwright
+ Downloaded pip
+      Built datasette-comments @ file:///tmp/datasette-comments-ouwavrbc/datasette-comments-0.1.0.tar.gz
+Installed 53 packages in 48ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp9JRXdx/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'syrupy': '5.5.3', 'json-report': '1.5.0', 'playwright': '0.8.0', 'metadata': '3.1.1', 'base-url': '2.1.0', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64', 'Base URL': ''}
+rootdir: /tmp/datasette-comments-ouwavrbc/tagged-source
+configfile: pytest.ini
+plugins: asyncio-1.4.0, datasette-1.0a37, syrupy-5.5.3, json-report-1.5.0, playwright-0.8.0, metadata-3.1.1, base-url-2.1.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/test_comment_parser.py::test_valid_url PASSED                      [ 10%]
+tests/test_comment_parser.py::test_parse PASSED                          [ 20%]
+tests/test_comments.py::test_plugin_is_installed PASSED                  [ 30%]
+tests/test_comments.py::test_permissions FAILED                          [ 40%]
+tests/test_comments.py::test_readonly_permissions FAILED                 [ 50%]
+tests/test_comments.py::test_autocomplete_mentions[a-expected0] FAILED   [ 60%]
+tests/test_comments.py::test_autocomplete_mentions[s-expected1] FAILED   [ 70%]
+tests/test_ui.py::test_initial_load[chromium] ERROR                      [ 80%]
+tests/test_ui.py::test_table_view_manual[chromium] SKIPPED (need to
+figure out authenticated users)                                          [ 90%]
+tests/test_ui.py::test_table_view_screenshots[chromium] SKIPPED (no
+screenshot tests yet)                                                    [100%]
+
+==================================== ERRORS ====================================
+________________ ERROR at setup of test_initial_load[chromium] _________________
+
+fixturedef = <FixtureDef argname='browser' scope='session' baseid=''>
+request = <SubRequest 'browser' for <Function test_initial_load[chromium]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/pytest_asyncio/plugin.py:924: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/pytest_playwright/pytest_playwright.py:316: in browser
+    browser = launch_browser()
+              ^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/pytest_playwright/pytest_playwright.py:308: in launch
+    browser = browser_type.launch(**launch_options)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f93f8a08590>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f93f8928400>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+=================================== FAILURES ===================================
+_______________________________ test_permissions _______________________________
+
+    @pytest.mark.asyncio
+    async def test_permissions():
+        datasette = Datasette(
+            memory=True,
+            metadata={"permissions": {"datasette-comments-access": {"id": ["alex"]}}},
+        )
+    
+        response = await datasette.client.post(
+            "/-/datasette-comments/api/thread/new",
+            json={"type": "database", "database": "foo", "comment": "lol #yo"},
+            cookies=cookie_for_actor(datasette, "alex"),
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_comments.py:31: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py", line 71, in wrapper
+    result = await datasette.permission_allowed(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________________________ test_readonly_permissions ___________________________
+
+    @pytest.mark.asyncio
+    async def test_readonly_permissions():
+        datasette = Datasette(
+            memory=True,
+            metadata={
+                "permissions": {
+                    "datasette-comments-access": {"id": ["alex"]},
+                    "datasette-comments-readonly": {"id": ["readonly"]},
+                }
+            },
+        )
+    
+        # datasette-comments-access users can create threads
+        response = await datasette.client.post(
+            "/-/datasette-comments/api/thread/new",
+            json={"type": "database", "database": "foo", "comment": "lol #yo"},
+            cookies=cookie_for_actor(datasette, "alex"),
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_comments.py:62: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py", line 71, in wrapper
+    result = await datasette.permission_allowed(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________ test_autocomplete_mentions[a-expected0] ____________________
+
+self = <datasette.app.DatasetteRouter object at 0x7f93f89110f0>
+scope = {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'GET', ...}
+receive = <function ASGITransport.handle_async_request.<locals>.receive at 0x7f93f893b740>
+send = <function ASGITransport.handle_async_request.<locals>.send at 0x7f93f893b9c0>
+path = '/-/datasette-comments/api/autocomplete/mentions'
+
+    async def route_path(self, scope, receive, send, path):
+        # Strip off base_url if present before routing
+        base_url = self.ds.setting("base_url")
+        if base_url != "/" and path.startswith(base_url):
+            path = "/" + path[len(base_url) :]
+            scope = dict(scope, route_path=path)
+        request = Request(
+            scope,
+            receive,
+            max_post_body_bytes=self.ds.setting("max_post_body_bytes"),
+        )
+        # Populate request_messages if ds_messages cookie is present
+        try:
+            request._messages = self.ds.unsign(
+                request.cookies.get("ds_messages", ""), "messages"
+            )
+        except BadSignature:
+            pass
+    
+        scope_modifications = {}
+        # Apply force_https_urls, if set
+        if (
+            self.ds.setting("force_https_urls")
+            and scope["type"] == "http"
+            and scope.get("scheme") != "https"
+        ):
+            scope_modifications["scheme"] = "https"
+        # Handle authentication
+        default_actor = scope.get("actor") or None
+        actor = None
+        token_error = None
+        results = pm.hook.actor_from_request(datasette=self.ds, request=request)
+        for result in results:
+            try:
+                result = await await_me_maybe(result)
+            except TokenInvalid as ex:
+                # A presented token was recognized but rejected - fail the
+                # request with a 401 even if another credential is valid,
+                # but keep awaiting the remaining coroutines first
+                if token_error is None:
+                    token_error = ex
+                continue
+            if result and actor is None:
+                actor = result
+                # Don't break — we must await all coroutines to avoid
+                # "coroutine was never awaited" warnings
+        if token_error is not None:
+            return await self.handle_401(request, send, token_error)
+        scope_modifications["actor"] = actor or default_actor
+        scope = dict(scope, **scope_modifications)
+    
+        match, view = resolve_routes(self.routes, path)
+    
+        if match is None:
+            return await self.handle_404(request, send)
+    
+        new_scope = dict(scope, url_route={"kwargs": match.groupdict()})
+        request.scope = new_scope
+        try:
+>           response = await view(request, send)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2927: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3129: in async_view_fn
+    response = await async_call_with_supported_arguments(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py:1178: in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scope = {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'GET', ...}
+receive = <function ASGITransport.handle_async_request.<locals>.receive at 0x7f93f893b740>
+datasette = <datasette.app.Datasette object at 0x7f93f8b87c50>
+request = <asgi.Request method="GET" url="http://localhost/-/datasette-comments/api/autocomplete/mentions?prefix=a">
+
+    @wraps(func)
+    async def wrapper(scope, receive, datasette, request):
+        if write:
+>           result = await datasette.permission_allowed(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                request.actor, PERMISSION_ACCESS_NAME, default=False
+            )
+E           AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py:71: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+datasette_with_plugin = <datasette.app.Datasette object at 0x7f93f8b87c50>
+prefix = 'a'
+expected = [{'username': 'asg017', 'author': {'actor_id': '1', 'name': None, 'profile_photo_url': None, 'username': None}}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "prefix,expected",
+        [
+            (
+                "a",
+                [
+                    {
+                        "username": "asg017",
+                        "author": {
+                            "actor_id": "1",
+                            "name": None,
+                            "profile_photo_url": None,
+                            "username": None,
+                        },
+                    }
+                ],
+            ),
+            (
+                "s",
+                [
+                    {
+                        "author": {
+                            "actor_id": "2",
+                            "name": None,
+                            "profile_photo_url": None,
+                            "username": None,
+                        },
+                        "username": "simonw",
+                    }
+                ],
+            ),
+        ],
+    )
+    async def test_autocomplete_mentions(datasette_with_plugin, prefix, expected):
+        assert not hasattr(datasette_with_plugin, "_datasette_comments_users_accessed")
+>       response = await datasette_with_plugin.client.get(
+            "/-/datasette-comments/api/autocomplete/mentions?prefix={}".format(prefix),
+            cookies=cookie_for_actor(datasette_with_plugin, "alex"),
+        )
+
+tests/test_comments.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/asgi.py:632: in __call__
+    return await self.asgi(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/asgi.py:311: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/csrf.py:93: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2864: in __call__
+    return await self.route_path(scope, receive, send, path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2945: in route_path
+    return await self.handle_exception(request, send, exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3068: in handle_exception
+    response = await await_me_maybe(hook)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py:176: in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/handle_exception.py:25: in inner
+    pdb.post_mortem(exception.__traceback__)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:2406: in post_mortem
+    return _post_mortem(t, Pdb())
+           ^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:2425: in _post_mortem
+    pdb_instance.interaction(None, t)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:643: in interaction
+    self._cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:529: in _cmdloop
+    self.cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/cmd.py:134: in cmdloop
+    line = input(self.prompt)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x7f93f992b770>, size = -1
+
+    def read(self, size: int = -1) -> str:
+>       raise OSError(
+            "pytest: reading from stdin while output is captured!  Consider using `-s`."
+        )
+E       OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/_pytest/capture.py:229: OSError
+----------------------------- Captured stdout call -----------------------------
+> /home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py(71)wrapper()
+-> result = await datasette.permission_allowed(
+(Pdb) 
+___________________ test_autocomplete_mentions[s-expected1] ____________________
+
+self = <datasette.app.DatasetteRouter object at 0x7f93f8913100>
+scope = {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'GET', ...}
+receive = <function ASGITransport.handle_async_request.<locals>.receive at 0x7f93f8917ce0>
+send = <function ASGITransport.handle_async_request.<locals>.send at 0x7f93f8917d80>
+path = '/-/datasette-comments/api/autocomplete/mentions'
+
+    async def route_path(self, scope, receive, send, path):
+        # Strip off base_url if present before routing
+        base_url = self.ds.setting("base_url")
+        if base_url != "/" and path.startswith(base_url):
+            path = "/" + path[len(base_url) :]
+            scope = dict(scope, route_path=path)
+        request = Request(
+            scope,
+            receive,
+            max_post_body_bytes=self.ds.setting("max_post_body_bytes"),
+        )
+        # Populate request_messages if ds_messages cookie is present
+        try:
+            request._messages = self.ds.unsign(
+                request.cookies.get("ds_messages", ""), "messages"
+            )
+        except BadSignature:
+            pass
+    
+        scope_modifications = {}
+        # Apply force_https_urls, if set
+        if (
+            self.ds.setting("force_https_urls")
+            and scope["type"] == "http"
+            and scope.get("scheme") != "https"
+        ):
+            scope_modifications["scheme"] = "https"
+        # Handle authentication
+        default_actor = scope.get("actor") or None
+        actor = None
+        token_error = None
+        results = pm.hook.actor_from_request(datasette=self.ds, request=request)
+        for result in results:
+            try:
+                result = await await_me_maybe(result)
+            except TokenInvalid as ex:
+                # A presented token was recognized but rejected - fail the
+                # request with a 401 even if another credential is valid,
+                # but keep awaiting the remaining coroutines first
+                if token_error is None:
+                    token_error = ex
+                continue
+            if result and actor is None:
+                actor = result
+                # Don't break — we must await all coroutines to avoid
+                # "coroutine was never awaited" warnings
+        if token_error is not None:
+            return await self.handle_401(request, send, token_error)
+        scope_modifications["actor"] = actor or default_actor
+        scope = dict(scope, **scope_modifications)
+    
+        match, view = resolve_routes(self.routes, path)
+    
+        if match is None:
+            return await self.handle_404(request, send)
+    
+        new_scope = dict(scope, url_route={"kwargs": match.groupdict()})
+        request.scope = new_scope
+        try:
+>           response = await view(request, send)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2927: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3129: in async_view_fn
+    response = await async_call_with_supported_arguments(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py:1178: in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+scope = {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'GET', ...}
+receive = <function ASGITransport.handle_async_request.<locals>.receive at 0x7f93f8917ce0>
+datasette = <datasette.app.Datasette object at 0x7f93f8a74050>
+request = <asgi.Request method="GET" url="http://localhost/-/datasette-comments/api/autocomplete/mentions?prefix=s">
+
+    @wraps(func)
+    async def wrapper(scope, receive, datasette, request):
+        if write:
+>           result = await datasette.permission_allowed(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                request.actor, PERMISSION_ACCESS_NAME, default=False
+            )
+E           AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py:71: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+datasette_with_plugin = <datasette.app.Datasette object at 0x7f93f8a74050>
+prefix = 's'
+expected = [{'author': {'actor_id': '2', 'name': None, 'profile_photo_url': None, 'username': None}, 'username': 'simonw'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "prefix,expected",
+        [
+            (
+                "a",
+                [
+                    {
+                        "username": "asg017",
+                        "author": {
+                            "actor_id": "1",
+                            "name": None,
+                            "profile_photo_url": None,
+                            "username": None,
+                        },
+                    }
+                ],
+            ),
+            (
+                "s",
+                [
+                    {
+                        "author": {
+                            "actor_id": "2",
+                            "name": None,
+                            "profile_photo_url": None,
+                            "username": None,
+                        },
+                        "username": "simonw",
+                    }
+                ],
+            ),
+        ],
+    )
+    async def test_autocomplete_mentions(datasette_with_plugin, prefix, expected):
+        assert not hasattr(datasette_with_plugin, "_datasette_comments_users_accessed")
+>       response = await datasette_with_plugin.client.get(
+            "/-/datasette-comments/api/autocomplete/mentions?prefix={}".format(prefix),
+            cookies=cookie_for_actor(datasette_with_plugin, "alex"),
+        )
+
+tests/test_comments.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/asgi.py:632: in __call__
+    return await self.asgi(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/asgi.py:311: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/csrf.py:93: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2864: in __call__
+    return await self.route_path(scope, receive, send, path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:2945: in route_path
+    return await self.handle_exception(request, send, exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/app.py:3068: in handle_exception
+    response = await await_me_maybe(hook)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/utils/__init__.py:176: in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette/handle_exception.py:25: in inner
+    pdb.post_mortem(exception.__traceback__)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:2406: in post_mortem
+    return _post_mortem(t, Pdb())
+           ^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:2425: in _post_mortem
+    pdb_instance.interaction(None, t)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:643: in interaction
+    self._cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/pdb.py:529: in _cmdloop
+    self.cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/cmd.py:134: in cmdloop
+    line = input(self.prompt)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x7f93f992b770>, size = -1
+
+    def read(self, size: int = -1) -> str:
+>       raise OSError(
+            "pytest: reading from stdin while output is captured!  Consider using `-s`."
+        )
+E       OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/_pytest/capture.py:229: OSError
+----------------------------- Captured stdout call -----------------------------
+> /home/runner/work/_temp/setup-uv-cache/archive-v0/qLoRdy0TzcWD4EvD/lib/python3.13/site-packages/datasette_comments/__init__.py(71)wrapper()
+-> result = await datasette.permission_allowed(
+(Pdb) 
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-comments/datasette-1.0a37/runs/20260714T165041Z-gh-29351285530-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_comments.py::test_permissions - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_comments.py::test_readonly_permissions - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_comments.py::test_autocomplete_mentions[a-expected0] - OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+FAILED tests/test_comments.py::test_autocomplete_mentions[s-expected1] - OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+ERROR tests/test_ui.py::test_initial_load[chromium] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+=============== 4 failed, 3 passed, 2 skipped, 1 error in 1.43s ================
