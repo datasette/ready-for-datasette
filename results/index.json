@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T22:37:54Z",
+  "generated_at": "2026-07-14T23:09:25Z",
   "results": [
     {
       "schema_version": 1,
@@ -8191,6 +8191,189 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-demo-dbs/datasette-1.0a37/runs/20260714T223747Z-gh-29373602842-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-demo-for-llm-accountant",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-demo-for-llm-accountant",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/eb/50/ace62fce19144e1ee958f92062f2985edf73503dd8ef16a431a84871c533/datasette_demo_for_llm_accountant-0.1a0.tar.gz",
+          "sha256": "71ac827b6149daecaaf8f99a6dc73ef9b5a800e8f69e6aa927400d5dd14d658d"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-demo-for-llm-accountant",
+          "ref": "0.1a0",
+          "git_sha": "a8fe47dc9b694c6980e5e85e424bff71877f3f1a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": null
+      },
+      "run": {
+        "id": "20260714T230918Z-gh-29375239846-a1",
+        "started_at": "2026-07-14T23:09:18Z",
+        "completed_at": "2026-07-14T23:09:25Z",
+        "duration_seconds": 7.235,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 3,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-demo-for-llm-accountant[test] @ file:///tmp/datasette-demo-for-llm-accountant-19ad4gqp/datasette_demo_for_llm_accountant-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-demo-for-llm-accountant/datasette-1.0a37/runs/20260714T230918Z-gh-29375239846-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "install_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-demo-for-llm-accountant/datasette-1.0a37/runs/20260714T230918Z-gh-29375239846-a1/pytest.txt"
+      },
+      "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-dns",
+        "version": "0.1a1",
+        "repository": "simonw/datasette-dns",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/56/bd/1bc94c36d6c1d3bdaae5e9fc579683e95b816f29e1a891da33d1bf60748e/datasette-dns-0.1a1.tar.gz",
+          "sha256": "833d828ad0710d1157bebafb2b00768a86e16349052ca7fc865832e72954c9f0"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-dns",
+          "ref": "0.1a1",
+          "git_sha": "527f4b7e4c754fb6840b6b4c3fa8d859a284541a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T230916Z-gh-29375239846-a1",
+        "started_at": "2026-07-14T23:09:16Z",
+        "completed_at": "2026-07-14T23:09:23Z",
+        "duration_seconds": 7.155,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-dns @ file:///tmp/datasette-dns-m1n97h4i/datasette-dns-0.1a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-dns/datasette-1.0a37/runs/20260714T230916Z-gh-29375239846-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 2,
+        "passed": 0,
+        "failed": 1,
+        "errors": 1,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [
+        "tests/test_dns.py::test_plugin_is_installed"
+      ],
+      "error_tests": [
+        "tests/test_dns.py::test_dns_txt_on_exception"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-dns/datasette-1.0a37/runs/20260714T230916Z-gh-29375239846-a1/pytest.txt"
       }
     },
     {

@@ -1,0 +1,76 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-dns @ file:///tmp/datasette-dns-m1n97h4i/datasette-dns-0.1a1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-dns @ file:///tmp/datasette-dns-m1n97h4i/datasette-dns-0.1a1.tar.gz
+Installed 40 packages in 35ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp34kXGy/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-dns-m1n97h4i/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 2 items
+
+tests/test_dns.py::test_plugin_is_installed FAILED                       [ 50%]
+tests/test_dns.py::test_dns_txt_on_exception ERROR                       [100%]
+
+==================================== ERRORS ====================================
+_________________ ERROR at setup of test_dns_txt_on_exception __________________
+file /tmp/datasette-dns-m1n97h4i/tagged-source/tests/test_dns.py, line 19
+  @pytest.mark.asyncio
+  async def test_dns_txt_on_exception(mocker):
+      m = mocker.patch.object(datasette_dns, "resolve_txt")
+      m.side_effect = dns.resolver.NoAnswer
+      app = Datasette([], memory=True).app()
+      async with httpx.AsyncClient(app=app) as client:
+          response = await client.get(
+              "http://localhost/:memory:.json?"
+              + urlencode({"sql": "select dns_txt('example.com')"})
+          )
+          assert response.status_code == 200
+          assert (
+              response.json()["rows"][0][0]
+              == "The DNS response does not contain an answer to the question."
+          )
+E       fixture 'mocker' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-dns-m1n97h4i/tagged-source/tests/test_dns.py:19
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_dns.py:9
+  /tmp/datasette-dns-m1n97h4i/tagged-source/tests/test_dns.py:9: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_dns.py:19
+  /tmp/datasette-dns-m1n97h4i/tagged-source/tests/test_dns.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-dns/datasette-1.0a37/runs/20260714T230916Z-gh-29375239846-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_dns.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+ERROR tests/test_dns.py::test_dns_txt_on_exception
+==================== 1 failed, 2 warnings, 1 error in 0.01s ====================

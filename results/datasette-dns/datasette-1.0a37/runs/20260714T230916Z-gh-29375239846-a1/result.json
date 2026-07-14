@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-dns",
+    "version": "0.1a1",
+    "repository": "simonw/datasette-dns",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/56/bd/1bc94c36d6c1d3bdaae5e9fc579683e95b816f29e1a891da33d1bf60748e/datasette-dns-0.1a1.tar.gz",
+      "sha256": "833d828ad0710d1157bebafb2b00768a86e16349052ca7fc865832e72954c9f0"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-dns",
+      "ref": "0.1a1",
+      "git_sha": "527f4b7e4c754fb6840b6b4c3fa8d859a284541a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T230916Z-gh-29375239846-a1",
+    "started_at": "2026-07-14T23:09:16Z",
+    "completed_at": "2026-07-14T23:09:23Z",
+    "duration_seconds": 7.155,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-dns @ file:///tmp/datasette-dns-m1n97h4i/datasette-dns-0.1a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-dns/datasette-1.0a37/runs/20260714T230916Z-gh-29375239846-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 0,
+    "failed": 1,
+    "errors": 1,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_dns.py::test_plugin_is_installed"
+  ],
+  "error_tests": [
+    "tests/test_dns.py::test_dns_txt_on_exception"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-dns/datasette-1.0a37/runs/20260714T230916Z-gh-29375239846-a1/pytest.txt"
+  }
+}
