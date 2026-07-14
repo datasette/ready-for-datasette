@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-copyable",
+    "version": "0.3.2",
+    "repository": "simonw/datasette-copyable",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/af/89/09f5889f5f37e5638449beaff393065280d47fa53133ad54f287c8fb3a11/datasette-copyable-0.3.2.tar.gz",
+      "sha256": "c0eacfbb14fd255a903f7ee858bea51cae48e7ba9668a38acebeaaecc82db0b4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-copyable",
+      "ref": "0.3.2",
+      "git_sha": "6a2e8152af428bb219db212d98cdfa46bc374efc"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T170333Z-gh-29352150622-a1",
+    "started_at": "2026-07-14T17:03:33Z",
+    "completed_at": "2026-07-14T17:03:40Z",
+    "duration_seconds": 7.258,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-copyable @ file:///tmp/datasette-copyable-_76w1n2m/datasette-copyable-0.3.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-copyable/datasette-1.0a37/runs/20260714T170333Z-gh-29352150622-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 8
+  },
+  "failing_tests": [
+    "tests/test_copyable.py::test_copyable_page_github",
+    "tests/test_copyable.py::test_copyable_page_github_with_labels",
+    "tests/test_copyable.py::test_copyable_page_tsv",
+    "tests/test_copyable.py::test_plugin_adds_copyable_extension",
+    "tests/test_copyable.py::test_plugin_is_installed",
+    "tests/test_copyable.py::test_raw_page_github",
+    "tests/test_copyable.py::test_raw_page_tsv",
+    "tests/test_copyable.py::test_raw_page_tsv_with_labels"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-copyable/datasette-1.0a37/runs/20260714T170333Z-gh-29352150622-a1/pytest.txt"
+  }
+}

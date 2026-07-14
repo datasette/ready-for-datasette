@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-copy-to-memory",
+    "version": "0.2",
+    "repository": "simonw/datasette-copy-to-memory",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ba/96/b6d695d5af7335652234bbfdcbdd9ee6618e86e23d060ac4ce07df340129/datasette-copy-to-memory-0.2.tar.gz",
+      "sha256": "f2407e030db46fd6985ebec0557c00811ca0efc4df4fe0a5a235884d6d3c096f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-copy-to-memory",
+      "ref": "0.2",
+      "git_sha": "d541c18a78ae6f707a8f9b1e7fc4c020a9f68f2e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260714T170325Z-gh-29352150622-a1",
+    "started_at": "2026-07-14T17:03:25Z",
+    "completed_at": "2026-07-14T17:03:33Z",
+    "duration_seconds": 8.039,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-copy-to-memory @ file:///tmp/datasette-copy-to-memory-9gkjov1c/datasette-copy-to-memory-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-copy-to-memory/datasette-1.0a37/runs/20260714T170325Z-gh-29352150622-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 5,
+    "passed": 0,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 5
+  },
+  "failing_tests": [
+    "tests/test_copy_to_memory.py::test_copy_to_memory_creates_database",
+    "tests/test_copy_to_memory.py::test_copy_to_memory_queries[None-db_names0-expected_databases0]",
+    "tests/test_copy_to_memory.py::test_copy_to_memory_queries[metadata1-db_names1-expected_databases1]",
+    "tests/test_copy_to_memory.py::test_copy_to_memory_replace[None-replacetest-expected_names_and_memory0]",
+    "tests/test_copy_to_memory.py::test_copy_to_memory_replace[metadata1-replacetest2-expected_names_and_memory1]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-copy-to-memory/datasette-1.0a37/runs/20260714T170325Z-gh-29352150622-a1/pytest.txt"
+  }
+}
