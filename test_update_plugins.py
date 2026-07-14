@@ -461,3 +461,223 @@ def test_write_plugins_json_is_sorted_and_has_a_trailing_newline(tmp_path):
         },
     ]
     assert output.read_bytes().endswith(b"\n")
+
+
+def test_parse_package_names_normalizes_and_deduplicates():
+    assert update_plugins.parse_package_names(
+        " datasette-One, Datasette.One, datasette_two "
+    ) == ["datasette-one", "datasette-two"]
+
+    with pytest.raises(ValueError, match="No package names"):
+        update_plugins.parse_package_names(" , , ")
+
+
+class TargetedClient:
+    def __init__(self, json_responses, raw_responses=None):
+        self.json_responses = json_responses
+        self.raw_responses = raw_responses or {}
+        self.json_requests = []
+        self.raw_requests = []
+
+    def get_json(self, url, *, github_api=False):
+        self.json_requests.append((url, github_api))
+        return self.json_responses.get(url)
+
+    def get_raw(self, url, *, etag=None):
+        self.raw_requests.append((url, etag))
+        return self.raw_responses[url]
+
+
+def test_refresh_named_plugins_updates_existing_records_from_pypi_only():
+    previous = [
+        {
+            "name": "datasette-example",
+            "github_repo": "simonw/datasette-example",
+            "metadata_file": "pyproject.toml",
+            "metadata_sha256": "existing-hash",
+            "metadata_etag": '"existing-etag"',
+            "latest_version": "1.0",
+        }
+    ]
+    pypi_url = "https://pypi.org/pypi/datasette-example/json"
+    client = TargetedClient(
+        {pypi_url: {"info": {"name": "datasette-example", "version": "2.0"}}}
+    )
+
+    records = update_plugins.refresh_named_plugins(
+        ["datasette-example"], previous, client
+    )
+
+    assert records == [
+        update_plugins.PluginRecord(
+            name="datasette-example",
+            github_repo="simonw/datasette-example",
+            metadata_file="pyproject.toml",
+            metadata_sha256="existing-hash",
+            metadata_etag='"existing-etag"',
+            latest_version="2.0",
+        )
+    ]
+    assert client.json_requests == [(pypi_url, False)]
+    assert client.raw_requests == []
+
+
+def test_refresh_named_plugins_discovers_a_new_repository_from_pypi():
+    pypi_url = "https://pypi.org/pypi/datasette-brand-new/json"
+    repository_url = "https://api.github.com/repos/datasette/datasette-brand-new"
+    raw_url = "https://raw.githubusercontent.com/datasette/datasette-brand-new/main/pyproject.toml"
+    pyproject = textwrap.dedent("""
+        [project]
+        name = "datasette-brand-new"
+
+        [project.entry-points.datasette]
+        brand_new = "datasette_brand_new"
+        """).encode()
+    client = TargetedClient(
+        {
+            pypi_url: {
+                "info": {
+                    "name": "datasette-brand-new",
+                    "version": "0.1",
+                    "project_urls": {
+                        "Source": "https://github.com/datasette/datasette-brand-new"
+                    },
+                }
+            },
+            repository_url: {
+                "full_name": "datasette/datasette-brand-new",
+                "name": "datasette-brand-new",
+                "default_branch": "main",
+            },
+        },
+        {
+            raw_url: update_plugins.RawResponse(
+                content=pyproject,
+                etag='"brand-new-etag"',
+            )
+        },
+    )
+
+    records = update_plugins.refresh_named_plugins(["datasette-brand-new"], [], client)
+
+    assert records == [
+        update_plugins.PluginRecord(
+            name="datasette-brand-new",
+            github_repo="datasette/datasette-brand-new",
+            metadata_file="pyproject.toml",
+            metadata_sha256=hashlib.sha256(pyproject).hexdigest(),
+            metadata_etag='"brand-new-etag"',
+            latest_version="0.1",
+        )
+    ]
+    assert client.json_requests == [
+        (pypi_url, False),
+        (repository_url, True),
+    ]
+    assert client.raw_requests == [(raw_url, None)]
+
+
+def test_merge_plugin_records_replaces_named_repositories_and_preserves_others():
+    existing = [
+        {
+            "name": "datasette-one",
+            "github_repo": "simonw/datasette-one",
+            "metadata_file": "pyproject.toml",
+            "metadata_sha256": "one-old",
+            "metadata_etag": None,
+            "latest_version": "1.0",
+        },
+        {
+            "name": "datasette-two",
+            "github_repo": "datasette/datasette-two",
+            "metadata_file": "setup.py",
+            "metadata_sha256": "two",
+            "metadata_etag": None,
+            "latest_version": "2.0",
+        },
+    ]
+    updates = [
+        update_plugins.PluginRecord(
+            name="datasette-one",
+            github_repo="simonw/datasette-one",
+            metadata_file="pyproject.toml",
+            metadata_sha256="one-new",
+            metadata_etag='"new"',
+            latest_version="1.1",
+        ),
+        update_plugins.PluginRecord(
+            name="datasette-three",
+            github_repo="datasette/datasette-three",
+            metadata_file="pyproject.toml",
+            metadata_sha256="three",
+            metadata_etag=None,
+            latest_version="3.0",
+        ),
+    ]
+
+    merged = update_plugins.merge_plugin_records(existing, updates)
+
+    assert [(record.name, record.latest_version) for record in merged] == [
+        ("datasette-one", "1.1"),
+        ("datasette-three", "3.0"),
+        ("datasette-two", "2.0"),
+    ]
+
+
+def test_main_writes_and_later_merges_exact_targeted_records(tmp_path, monkeypatch):
+    catalog = tmp_path / "plugins.json"
+    selected = tmp_path / "named-plugins.json"
+    catalog.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "datasette-example",
+                    "github_repo": "simonw/datasette-example",
+                    "metadata_file": "pyproject.toml",
+                    "metadata_sha256": "existing-hash",
+                    "metadata_etag": None,
+                    "latest_version": "1.0",
+                }
+            ]
+        )
+    )
+    pypi_url = "https://pypi.org/pypi/datasette-example/json"
+    client = TargetedClient(
+        {pypi_url: {"info": {"name": "datasette-example", "version": "2.0"}}}
+    )
+    monkeypatch.setattr(update_plugins, "HttpClient", lambda **kwargs: client)
+
+    assert (
+        update_plugins.main(
+            [
+                "--output",
+                str(catalog),
+                "--package-names",
+                "datasette-example",
+                "--selected-output",
+                str(selected),
+            ]
+        )
+        == 0
+    )
+    assert json.loads(catalog.read_text())[0]["latest_version"] == "2.0"
+    assert json.loads(selected.read_text())[0]["latest_version"] == "2.0"
+
+    # Simulate the merge job starting from the older catalog checkout. This
+    # must apply the exact planned record without making another HTTP request.
+    old_catalog = json.loads(catalog.read_text())
+    old_catalog[0]["latest_version"] = "1.0"
+    catalog.write_text(json.dumps(old_catalog))
+    monkeypatch.setattr(
+        update_plugins,
+        "HttpClient",
+        lambda **kwargs: pytest.fail("merge mode must not construct an HTTP client"),
+    )
+
+    assert (
+        update_plugins.main(
+            ["--output", str(catalog), "--merge-records", str(selected)]
+        )
+        == 0
+    )
+    assert json.loads(catalog.read_text())[0]["latest_version"] == "2.0"

@@ -38,6 +38,25 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
 
+      - name: Refresh named plugin metadata
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.plugins != '' }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PLUGIN_NAMES: ${{ github.event.inputs.plugins }}
+        run: >-
+          uv run --no-project python update_plugins.py
+          --package-names "$PLUGIN_NAMES"
+          --selected-output named-plugins.json
+
+      - name: Upload named plugin metadata
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.plugins != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: named-plugin-metadata
+          path: named-plugins.json
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Select plugin combinations
         id: select
         env:
@@ -108,14 +127,18 @@ jobs:
         with:
           path: incoming-results
 
-      - name: Merge immutable results
+      - name: Merge metadata and immutable results
         run: |
           git pull --ff-only
+          if test -f incoming-results/named-plugin-metadata/named-plugins.json; then
+            uv run --no-project python update_plugins.py \
+              --merge-records incoming-results/named-plugin-metadata/named-plugins.json
+          fi
           uv run --no-project python merge_test_results.py incoming-results
 
       - name: Commit and push results
         run: |
-          git add results
+          git add plugins.json results
           if git diff --cached --quiet; then
             echo "Test results are already up to date"
             exit 0

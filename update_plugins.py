@@ -22,11 +22,14 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 
+from run_plugin_tests import github_repository, normalize_package_name
+
 DEFAULT_OWNERS = ("simonw", "dogsheep", "datasette", "asg017")
 GITHUB_API = "https://api.github.com"
 RAW_GITHUB = "https://raw.githubusercontent.com"
 PYPI_API = "https://pypi.org/pypi"
 USER_AGENT = "ready-for-datasette/1.0"
+MAX_NAMED_PACKAGES = 10
 
 
 class ProjectParseError(ValueError):
@@ -457,6 +460,157 @@ def latest_pypi_version(name: str, client: HttpClient) -> str | None:
     return version if isinstance(version, str) and version else None
 
 
+def parse_package_names(value: str) -> list[str]:
+    packages: list[str] = []
+    seen: set[str] = set()
+    for item in value.split(","):
+        name = item.strip()
+        if not name:
+            continue
+        normalized = normalize_package_name(name)
+        if normalized not in seen:
+            packages.append(normalized)
+            seen.add(normalized)
+    if not packages:
+        raise ValueError("No package names were provided")
+    if len(packages) > MAX_NAMED_PACKAGES:
+        raise ValueError(
+            f"At most {MAX_NAMED_PACKAGES} named packages can be refreshed"
+        )
+    return packages
+
+
+def _plugin_record(record: Mapping[str, Any]) -> PluginRecord:
+    required = (
+        "name",
+        "github_repo",
+        "metadata_file",
+        "metadata_sha256",
+    )
+    values = {key: record.get(key) for key in required}
+    if not all(isinstance(value, str) and value for value in values.values()):
+        raise ValueError(f"Invalid plugin record: {record!r}")
+    metadata_etag = record.get("metadata_etag")
+    latest_version = record.get("latest_version")
+    if metadata_etag is not None and not isinstance(metadata_etag, str):
+        raise ValueError(f"Invalid plugin metadata ETag: {metadata_etag!r}")
+    if latest_version is not None and not isinstance(latest_version, str):
+        raise ValueError(f"Invalid plugin version: {latest_version!r}")
+    return PluginRecord(
+        name=values["name"],
+        github_repo=values["github_repo"],
+        metadata_file=values["metadata_file"],
+        metadata_sha256=values["metadata_sha256"],
+        metadata_etag=metadata_etag,
+        latest_version=latest_version,
+    )
+
+
+def merge_plugin_records(
+    existing: Sequence[Mapping[str, Any]],
+    updates: Sequence[PluginRecord],
+) -> list[PluginRecord]:
+    by_repository = {
+        record.github_repo: record for record in map(_plugin_record, existing)
+    }
+    by_repository.update({record.github_repo: record for record in updates})
+    return sorted(
+        by_repository.values(),
+        key=lambda record: (record.name.casefold(), record.github_repo),
+    )
+
+
+def refresh_named_plugins(
+    package_names: Sequence[str],
+    previous_records: Sequence[Mapping[str, Any]],
+    client: HttpClient,
+) -> list[PluginRecord]:
+    previous_by_name: dict[str, list[Mapping[str, Any]]] = {}
+    for record in previous_records:
+        name = record.get("name")
+        if isinstance(name, str):
+            previous_by_name.setdefault(normalize_package_name(name), []).append(record)
+
+    refreshed: list[PluginRecord] = []
+    seen: set[str] = set()
+    for raw_name in package_names:
+        package = normalize_package_name(raw_name)
+        if package in seen:
+            continue
+        seen.add(package)
+        pypi_url = f"{PYPI_API}/{quote(package, safe='')}/json"
+        payload = client.get_json(pypi_url)
+        if not isinstance(payload, Mapping):
+            raise FetchError(f"No released PyPI project found for {package}")
+        info = payload.get("info")
+        if not isinstance(info, Mapping):
+            raise FetchError(f"PyPI returned no project metadata for {package}")
+        published_name = info.get("name") or package
+        version = info.get("version")
+        if (
+            not isinstance(published_name, str)
+            or not isinstance(version, str)
+            or not version
+        ):
+            raise FetchError(f"PyPI returned incomplete project metadata for {package}")
+        normalized_name = normalize_package_name(published_name)
+
+        previous_matches = previous_by_name.get(normalized_name, [])
+        if previous_matches:
+            for previous in previous_matches:
+                record = _plugin_record(previous)
+                refreshed.append(
+                    PluginRecord(
+                        name=record.name,
+                        github_repo=record.github_repo,
+                        metadata_file=record.metadata_file,
+                        metadata_sha256=record.metadata_sha256,
+                        metadata_etag=record.metadata_etag,
+                        latest_version=version,
+                    )
+                )
+            continue
+
+        repository_name = github_repository(info, published_name)
+        if repository_name is None:
+            raise FetchError(
+                f"PyPI metadata for {published_name} has no usable GitHub repository"
+            )
+        owner, repository = repository_name.split("/", 1)
+        repository_url = (
+            f"{GITHUB_API}/repos/{quote(owner, safe='')}/"
+            f"{quote(repository, safe='')}"
+        )
+        repository_payload = client.get_json(repository_url, github_api=True)
+        if not isinstance(repository_payload, Mapping):
+            raise FetchError(f"GitHub repository not found: {repository_name}")
+        source = inspect_repository(repository_payload, client)
+        if source is None:
+            raise FetchError(
+                f"{repository_name} does not declare a Datasette plugin entry point"
+            )
+        if normalize_package_name(source.name) != normalized_name:
+            raise FetchError(
+                f"PyPI project {published_name} does not match repository project "
+                f"{source.name}"
+            )
+        refreshed.append(
+            PluginRecord(
+                name=source.name,
+                github_repo=source.github_repo,
+                metadata_file=source.metadata_file,
+                metadata_sha256=source.metadata_sha256,
+                metadata_etag=source.metadata_etag,
+                latest_version=version,
+            )
+        )
+
+    return sorted(
+        refreshed,
+        key=lambda record: (record.name.casefold(), record.github_repo),
+    )
+
+
 def load_previous_records(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
@@ -642,6 +796,24 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Refresh every PyPI version even when packaging content is unchanged",
     )
+    parser.add_argument(
+        "--package-names",
+        default="",
+        help=(
+            "Refresh only these comma-separated PyPI packages, adding new "
+            f"plugins from PyPI metadata (maximum {MAX_NAMED_PACKAGES})"
+        ),
+    )
+    parser.add_argument(
+        "--selected-output",
+        type=Path,
+        help="Write the targeted records to this artifact for a later exact merge",
+    )
+    parser.add_argument(
+        "--merge-records",
+        type=Path,
+        help="Merge records from this JSON artifact into --output without fetching",
+    )
     return parser
 
 
@@ -649,9 +821,47 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.workers < 1:
         raise SystemExit("--workers must be at least 1")
-    owners = args.owners or list(DEFAULT_OWNERS)
     previous_records = load_previous_records(args.output)
+
+    if args.merge_records:
+        if args.package_names or args.selected_output or args.owners:
+            raise SystemExit(
+                "--merge-records cannot be combined with --package-names, "
+                "--selected-output, or --owner"
+            )
+        updates = [
+            _plugin_record(record)
+            for record in load_previous_records(args.merge_records)
+        ]
+        records = merge_plugin_records(previous_records, updates)
+        write_plugins_json(records, args.output)
+        print(
+            f"Merged {len(updates)} targeted records into {args.output}",
+            file=sys.stderr,
+        )
+        return 0
+
     client = HttpClient(github_token=os.environ.get("GITHUB_TOKEN"))
+    if args.package_names:
+        if args.owners or args.refresh_pypi:
+            raise SystemExit(
+                "--package-names cannot be combined with --owner or --refresh-pypi"
+            )
+        packages = parse_package_names(args.package_names)
+        updates = refresh_named_plugins(packages, previous_records, client)
+        records = merge_plugin_records(previous_records, updates)
+        write_plugins_json(records, args.output)
+        if args.selected_output:
+            write_plugins_json(updates, args.selected_output)
+        print(
+            f"Refreshed {len(packages)} named packages in {args.output}",
+            file=sys.stderr,
+        )
+        return 0
+    if args.selected_output:
+        raise SystemExit("--selected-output requires --package-names")
+
+    owners = args.owners or list(DEFAULT_OWNERS)
     sources = discover_sources(
         owners,
         client,

@@ -298,11 +298,18 @@ def test_main_manual_plugins_override_history_and_limit(tmp_path, capsys):
 
 
 def test_workflow_exposes_manual_plugin_input_and_ten_job_matrix():
-    workflow = Path(__file__).with_name(".github").joinpath(
-        "workflows", "test-plugins.yml"
-    ).read_text()
+    workflow = (
+        Path(__file__)
+        .with_name(".github")
+        .joinpath("workflows", "test-plugins.yml")
+        .read_text()
+    )
 
     assert "plugins:" in workflow
     assert "PLUGIN_NAMES: ${{ github.event.inputs.plugins || '' }}" in workflow
+    assert '--package-names "$PLUGIN_NAMES"' in workflow
     assert '--plugin-names "$PLUGIN_NAMES"' in workflow
+    assert "named-plugin-metadata" in workflow
+    assert "--merge-records" in workflow
+    assert "git add plugins.json results" in workflow
     assert "max-parallel: 10" in workflow
