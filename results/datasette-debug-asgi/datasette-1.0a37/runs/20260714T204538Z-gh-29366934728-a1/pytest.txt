@@ -1,0 +1,63 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-debug-asgi @ file:///tmp/datasette-debug-asgi-xywh_ifd/datasette-debug-asgi-1.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-debug-asgi @ file:///tmp/datasette-debug-asgi-xywh_ifd/datasette-debug-asgi-1.1.tar.gz
+Installed 39 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpM0fhzz/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-debug-asgi-xywh_ifd/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 2 items
+
+test_datasette_debug_asgi.py::test_datasette_debug_asgi[/-/asgi-scope] FAILED [ 50%]
+test_datasette_debug_asgi.py::test_datasette_debug_asgi[/-/asgi-scope/blah] FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________ test_datasette_debug_asgi[/-/asgi-scope] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________ test_datasette_debug_asgi[/-/asgi-scope/blah] _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+test_datasette_debug_asgi.py:5
+  /tmp/datasette-debug-asgi-xywh_ifd/tagged-source/test_datasette_debug_asgi.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-asgi/datasette-1.0a37/runs/20260714T204538Z-gh-29366934728-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED test_datasette_debug_asgi.py::test_datasette_debug_asgi[/-/asgi-scope] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED test_datasette_debug_asgi.py::test_datasette_debug_asgi[/-/asgi-scope/blah] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+========================= 2 failed, 1 warning in 0.01s =========================

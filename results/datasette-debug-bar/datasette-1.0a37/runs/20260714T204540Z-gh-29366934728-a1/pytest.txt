@@ -1,0 +1,29 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-debug-bar @ file:///tmp/datasette-debug-bar-66w_u148/datasette_debug_bar-0.0.1a1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-debug-bar @ file:///tmp/datasette-debug-bar-66w_u148/datasette_debug_bar-0.0.1a1.tar.gz
+Installed 40 packages in 32ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpFzq1nR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-debug-bar-66w_u148/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_debug_bar.py::test_plugin_is_installed PASSED                 [ 25%]
+tests/test_debug_bar.py::test_no_bar_without_items PASSED                [ 50%]
+tests/test_debug_bar.py::test_bar_with_plugins_dir PASSED                [ 75%]
+tests/test_debug_bar.py::test_bar_contains_both_sections PASSED          [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-bar/datasette-1.0a37/runs/20260714T204540Z-gh-29366934728-a1/.pytest-report.json
+============================== 4 passed in 0.23s ===============================
