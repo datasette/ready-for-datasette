@@ -1,0 +1,28 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-demo-dbs @ file:///tmp/datasette-demo-dbs-s5g183vp/datasette_demo_dbs-0.1.1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-demo-dbs @ file:///tmp/datasette-demo-dbs-s5g183vp/datasette_demo_dbs-0.1.1.tar.gz
+Installed 41 packages in 22ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQpLaMr/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'httpx': '0.36.2', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-demo-dbs-s5g183vp/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, httpx-0.36.2, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/test_demo_dbs.py::test_downloads_and_adds_database PASSED          [ 33%]
+tests/test_demo_dbs.py::test_skips_download_if_db_exists PASSED          [ 66%]
+tests/test_demo_dbs.py::test_skips_download_if_deleted_marker_exists PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-demo-dbs/datasette-1.0a37/runs/20260714T223747Z-gh-29373602842-a1/.pytest-report.json
+============================== 3 passed in 0.41s ===============================

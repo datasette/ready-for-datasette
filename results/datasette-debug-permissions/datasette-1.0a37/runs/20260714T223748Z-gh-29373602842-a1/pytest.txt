@@ -1,0 +1,37 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-debug-permissions @ file:///tmp/datasette-debug-permissions-uhn2l2x_/datasette-debug-permissions-0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-debug-permissions @ file:///tmp/datasette-debug-permissions-uhn2l2x_/datasette-debug-permissions-0.1.tar.gz
+Installed 39 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpfiFxFj/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-debug-permissions-uhn2l2x_/tagged-source
+configfile: pyproject.toml
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 1 item
+
+tests/test_datasette_debug_permissions.py::test_datasette_debug_permissions FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_datasette_debug_permissions _______________________
+
+    def test_datasette_debug_permissions():
+        # datasette --get '/-/databases.json'
+>       result = CliRunner(mix_stderr=False).invoke(cli, ["--get", "/-/plugins.json"])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+
+tests/test_datasette_debug_permissions.py:8: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-permissions/datasette-1.0a37/runs/20260714T223748Z-gh-29373602842-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_debug_permissions.py::test_datasette_debug_permissions - TypeError: CliRunner.__init__() got an unexpected keyword argument 'mix_stderr'
+============================== 1 failed in 0.13s ===============================

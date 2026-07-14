@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T21:41:30Z",
+  "generated_at": "2026-07-14T22:37:54Z",
   "results": [
     {
       "schema_version": 1,
@@ -8011,6 +8011,186 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-debug-gotham/datasette-1.0a37/runs/20260714T214121Z-gh-29370405638-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-debug-permissions",
+        "version": "0.1",
+        "repository": "datasette/datasette-debug-permissions",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/86/b7/8ff2acc8e6dd7c8887efe480f282c1c058f6262f1ee5179d7823d65654ff/datasette-debug-permissions-0.1.tar.gz",
+          "sha256": "169737e1725ebbba498a04d5d582e9708a57857cf3c385c768be23f3b47f8b80"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-debug-permissions",
+          "ref": "0.1",
+          "git_sha": "c5bb2ad8ca221a955dcdcb19a39904e250b48d44"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T223748Z-gh-29373602842-a1",
+        "started_at": "2026-07-14T22:37:48Z",
+        "completed_at": "2026-07-14T22:37:54Z",
+        "duration_seconds": 5.751,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-debug-permissions @ file:///tmp/datasette-debug-permissions-uhn2l2x_/datasette-debug-permissions-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-permissions/datasette-1.0a37/runs/20260714T223748Z-gh-29373602842-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 1,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_datasette_debug_permissions.py::test_datasette_debug_permissions"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-debug-permissions/datasette-1.0a37/runs/20260714T223748Z-gh-29373602842-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-demo-dbs",
+        "version": "0.1.1",
+        "repository": "datasette/datasette-demo-dbs",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a3/af/2b012f6af95dc94f38fccdd22627549dc7e9c1cd02dec88700580fa2eb14/datasette_demo_dbs-0.1.1.tar.gz",
+          "sha256": "10696bd70b0209d033faf61089fe00c69e6a69e3b4cdb5a40991929dcba93b11"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-demo-dbs",
+          "ref": "0.1.1",
+          "git_sha": "fb42b309ed4fffd7d4ab46b09a2b1fd7c7093498"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260714T223747Z-gh-29373602842-a1",
+        "started_at": "2026-07-14T22:37:47Z",
+        "completed_at": "2026-07-14T22:37:53Z",
+        "duration_seconds": 6.155,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-demo-dbs[test] @ file:///tmp/datasette-demo-dbs-s5g183vp/datasette_demo_dbs-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-httpx",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-demo-dbs/datasette-1.0a37/runs/20260714T223747Z-gh-29373602842-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 3,
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-httpx"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-demo-dbs/datasette-1.0a37/runs/20260714T223747Z-gh-29373602842-a1/pytest.txt"
       }
     },
     {
