@@ -16,6 +16,7 @@ import sys
 import tarfile
 import tempfile
 import time
+import tomllib
 import zipfile
 from dataclasses import dataclass
 from datetime import UTC, datetime
@@ -27,9 +28,11 @@ from urllib.request import Request, urlopen
 
 
 PYPI_API = "https://pypi.org/pypi"
-USER_AGENT = "ready-for-datasette-test-runner/1.0"
+USER_AGENT = "ready-for-datasette-test-runner/2.0"
 ALPHA_PATTERN = re.compile(r"^1\.0a(\d+)$", re.IGNORECASE)
 SAFE_VERSION_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._+-]*$")
+RUNNER_VERSION = 2
+TEST_DEPENDENCY_NAMES = ("test", "tests", "testing", "dev")
 
 
 @dataclass(frozen=True)
@@ -387,6 +390,129 @@ def inspect_test_inventory(
     return inventory, warnings
 
 
+def _normalized_dependency_name(value: str) -> str:
+    return re.sub(r"[-_.]+", "-", value).casefold()
+
+
+def published_test_extra(info: Mapping[str, Any]) -> str | None:
+    provides_extra = info.get("provides_extra")
+    if not isinstance(provides_extra, list):
+        return None
+    available = {
+        _normalized_dependency_name(extra)
+        for extra in provides_extra
+        if isinstance(extra, str) and extra
+    }
+    return next((name for name in TEST_DEPENDENCY_NAMES if name in available), None)
+
+
+def _named_group(
+    groups: Mapping[str, Any], candidates: Sequence[str] = TEST_DEPENDENCY_NAMES
+) -> str | None:
+    by_normalized_name = {
+        _normalized_dependency_name(name): name
+        for name in groups
+        if isinstance(name, str)
+    }
+    return next(
+        (by_normalized_name[name] for name in candidates if name in by_normalized_name),
+        None,
+    )
+
+
+def _dependency_group(
+    groups: Mapping[str, Any], name: str, resolving: tuple[str, ...] = ()
+) -> list[str]:
+    if name in resolving:
+        raise ValueError(
+            "Dependency group cycle: " + " -> ".join((*resolving, name))
+        )
+    value = groups.get(name)
+    if not isinstance(value, list):
+        raise ValueError(f"Dependency group {name!r} is not an array")
+    dependencies: list[str] = []
+    for item in value:
+        if isinstance(item, str):
+            dependencies.append(item)
+            continue
+        if isinstance(item, Mapping) and isinstance(item.get("include-group"), str):
+            included_name = item["include-group"]
+            if included_name not in groups:
+                normalized = _normalized_dependency_name(included_name)
+                included_name = next(
+                    (
+                        group_name
+                        for group_name in groups
+                        if isinstance(group_name, str)
+                        and _normalized_dependency_name(group_name) == normalized
+                    ),
+                    included_name,
+                )
+            dependencies.extend(
+                _dependency_group(groups, included_name, (*resolving, name))
+            )
+            continue
+        raise ValueError(f"Unsupported item in dependency group {name!r}: {item!r}")
+    return dependencies
+
+
+def _unique_dependencies(dependencies: Sequence[str]) -> tuple[str, ...]:
+    unique: list[str] = []
+    seen: set[str] = set()
+    for dependency in dependencies:
+        if dependency not in seen:
+            seen.add(dependency)
+            unique.append(dependency)
+    return tuple(unique)
+
+
+def discover_test_dependencies(source_root: Path) -> tuple[str | None, tuple[str, ...]]:
+    pyproject_path = source_root / "pyproject.toml"
+    if not pyproject_path.is_file():
+        return None, ()
+    try:
+        with pyproject_path.open("rb") as file:
+            pyproject = tomllib.load(file)
+    except (OSError, tomllib.TOMLDecodeError) as ex:
+        raise ValueError(f"Could not parse test dependencies in {pyproject_path}: {ex}") from ex
+
+    groups = pyproject.get("dependency-groups")
+    if isinstance(groups, Mapping):
+        group_name = _named_group(groups)
+        if group_name is not None:
+            return (
+                f"dependency-groups.{group_name}",
+                _unique_dependencies(_dependency_group(groups, group_name)),
+            )
+
+    project = pyproject.get("project")
+    optional = project.get("optional-dependencies") if isinstance(project, Mapping) else None
+    if isinstance(optional, Mapping):
+        group_name = _named_group(optional)
+        dependencies = optional.get(group_name) if group_name is not None else None
+        if group_name is not None and isinstance(dependencies, list) and all(
+            isinstance(item, str) for item in dependencies
+        ):
+            return (
+                f"project.optional-dependencies.{group_name}",
+                _unique_dependencies(dependencies),
+            )
+
+    tool = pyproject.get("tool")
+    uv = tool.get("uv") if isinstance(tool, Mapping) else None
+    legacy_dependencies = uv.get("dev-dependencies") if isinstance(uv, Mapping) else None
+    if isinstance(legacy_dependencies, list) and all(
+        isinstance(item, str) for item in legacy_dependencies
+    ):
+        return "tool.uv.dev-dependencies", _unique_dependencies(legacy_dependencies)
+    return None, ()
+
+
+def _is_pytest_requirement(requirement: str) -> bool:
+    match = re.match(r"\s*([A-Za-z0-9_.-]+)", requirement)
+    return bool(match and _normalized_dependency_name(match.group(1)) == "pytest")
+
+
 def build_pytest_command(
     package_name: str,
     sdist_path: Path,
@@ -395,8 +521,15 @@ def build_pytest_command(
     *,
     python_version: str = "3.13",
     pytest_args: Sequence[str] = (),
+    package_extra: str | None = None,
+    test_dependencies: Sequence[str] = (),
 ) -> list[str]:
-    return [
+    normalized_package = normalize_package_name(package_name)
+    package_requirement = normalized_package
+    if package_extra:
+        package_requirement += f"[{_normalized_dependency_name(package_extra)}]"
+    package_requirement += f" @ {sdist_path.resolve().as_uri()}"
+    command = [
         "uv",
         "run",
         "--isolated",
@@ -407,20 +540,27 @@ def build_pytest_command(
         "allow",
         "--no-progress",
         "--with",
-        f"{normalize_package_name(package_name)}[test] @ "
-        f"{sdist_path.resolve().as_uri()}",
+        package_requirement,
         "--with",
         "pytest",
         "--with",
         "pytest-json-report",
         "--with",
         f"datasette=={datasette_version}",
+    ]
+    for dependency in _unique_dependencies(test_dependencies):
+        if not _is_pytest_requirement(dependency):
+            command.extend(("--with", dependency))
+    command.extend(
+        [
         "pytest",
         "-vv",
         "--json-report",
         f"--json-report-file={report_path}",
         *pytest_args,
-    ]
+        ]
+    )
+    return command
 
 
 def run_and_capture(command: Sequence[str], cwd: Path, output: Path) -> int:
@@ -678,9 +818,13 @@ def _build_result(
     detail: str | None = None,
     test_inventory: Mapping[str, int] | None = None,
     result_warnings: Sequence[Mapping[str, str]] = (),
+    package_extra: str | None = None,
+    dependency_source: str | None = None,
+    test_dependencies: Sequence[str] = (),
 ) -> dict[str, Any]:
     result: dict[str, Any] = {
         "schema_version": 1,
+        "runner_version": RUNNER_VERSION,
         "package": {
             "name": package_name,
             "version": package_version,
@@ -714,6 +858,11 @@ def _build_result(
             "command": list(command),
         },
         **summary,
+        "test_environment": {
+            "package_extra": package_extra,
+            "dependency_source": dependency_source,
+            "dependencies": list(test_dependencies),
+        },
         "test_inventory": dict(test_inventory or {}),
         "warnings": [dict(warning) for warning in result_warnings],
         "artifacts": {"pytest_output": _artifact_path(paths)},
@@ -739,6 +888,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
             f"{args.package_version!r}"
         )
     package_name = normalize_package_name(package_name_value)
+    package_extra = published_test_extra(info_value)
     sdist = select_sdist(package_payload)
 
     if args.datasette_version:
@@ -768,6 +918,8 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     report_path = paths.run_directory / ".pytest-report.json"
     test_inventory = {"pypi_sdist": 0, "release_tag": 0}
     result_warnings: list[dict[str, str]] = []
+    dependency_source: str | None = None
+    test_dependencies: tuple[str, ...] = ()
 
     with tempfile.TemporaryDirectory(prefix=f"{package_name}-") as temporary:
         temporary_path = Path(temporary)
@@ -782,6 +934,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
             report_path,
             python_version=args.python_version,
             pytest_args=args.pytest_args,
+            package_extra=package_extra,
         )
         try:
             download_sdist(sdist, archive_path)
@@ -805,6 +958,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
                 summary=empty_summary("runner_error"),
                 paths=paths,
                 detail=str(ex),
+                package_extra=package_extra,
             )
             store_result(paths, result)
             return result, paths
@@ -840,6 +994,19 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
         test_inventory, result_warnings = inspect_test_inventory(
             sdist_directory, release_tag_directory
         )
+        dependency_source, test_dependencies = discover_test_dependencies(
+            source_directory
+        )
+        command = build_pytest_command(
+            package_name,
+            archive_path,
+            datasette_version,
+            report_path,
+            python_version=args.python_version,
+            pytest_args=args.pytest_args,
+            package_extra=package_extra,
+            test_dependencies=test_dependencies,
+        )
         for warning in result_warnings:
             print(
                 f"WARNING [{warning['code']}]: {warning['message']}",
@@ -860,6 +1027,14 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
             )
         else:
             print("Test suite: files included in the PyPI sdist", file=sys.stderr)
+        if package_extra:
+            print(f"Published test extra: {package_extra}", file=sys.stderr)
+        if dependency_source:
+            print(
+                f"Test dependencies ({dependency_source}): "
+                + ", ".join(test_dependencies),
+                file=sys.stderr,
+            )
         print("$ " + " ".join(command), file=sys.stderr)
         pytest_exit_code = run_and_capture(
             command, source_directory, paths.pytest_output
@@ -890,6 +1065,9 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
         detail=detail,
         test_inventory=test_inventory,
         result_warnings=result_warnings,
+        package_extra=package_extra,
+        dependency_source=dependency_source,
+        test_dependencies=test_dependencies,
     )
     store_result(paths, result)
     return result, paths

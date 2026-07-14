@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 from run_plugin_tests import (
+    RUNNER_VERSION,
     latest_datasette_alpha,
     normalize_package_name,
     pypi_project,
@@ -24,6 +25,7 @@ TERMINAL_OUTCOMES = {
     "install_error",
 }
 MAX_TESTS = 5
+OWNER_PRIORITY = {"datasette": 0, "dogsheep": 1, "simonw": 2, "asg017": 3}
 
 
 def released_plugins(records: Sequence[Mapping[str, Any]]) -> dict[str, str]:
@@ -44,13 +46,38 @@ def released_plugins(records: Sequence[Mapping[str, Any]]) -> dict[str, str]:
     return released
 
 
-def load_plugins(path: Path) -> dict[str, str]:
+def plugin_repositories(records: Sequence[Mapping[str, Any]]) -> dict[str, str]:
+    candidates: dict[str, list[str]] = {}
+    for record in records:
+        name = record.get("name")
+        repository = record.get("github_repo")
+        if not isinstance(name, str) or not isinstance(repository, str):
+            continue
+        normalized = normalize_package_name(name)
+        candidates.setdefault(normalized, []).append(repository)
+    return {
+        name: min(
+            repositories,
+            key=lambda repository: (
+                OWNER_PRIORITY.get(repository.partition("/")[0].casefold(), 99),
+                repository.casefold(),
+            ),
+        )
+        for name, repositories in candidates.items()
+    }
+
+
+def load_plugin_records(path: Path) -> list[Mapping[str, Any]]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, list) or not all(
         isinstance(item, Mapping) for item in payload
     ):
         raise ValueError(f"Expected {path} to contain a JSON array of objects")
-    return released_plugins(payload)
+    return payload
+
+
+def load_plugins(path: Path) -> dict[str, str]:
+    return released_plugins(load_plugin_records(path))
 
 
 def load_history(results_dir: Path) -> list[Mapping[str, Any]]:
@@ -106,16 +133,22 @@ def select_candidates(
     limit: int = 5,
     now: datetime | None = None,
     retry_after: timedelta = timedelta(hours=6),
+    repositories: Mapping[str, str] | None = None,
 ) -> list[dict[str, str]]:
     if limit < 0:
         raise ValueError("limit must not be negative")
     now = datetime.now(UTC) if now is None else now.astimezone(UTC)
+    repositories = {} if repositories is None else repositories
     terminal: list[tuple[tuple[str, str, str], Mapping[str, Any]]] = []
     runner_errors: dict[tuple[str, str, str], list[Mapping[str, Any]]] = {}
+    older_runner_identities: set[tuple[str, str, str]] = set()
     for result in history:
         identity = _result_identity(result)
         outcome = result.get("outcome")
         if identity is None or not isinstance(outcome, str):
+            continue
+        if result.get("runner_version") != RUNNER_VERSION:
+            older_runner_identities.add(identity)
             continue
         if outcome in TERMINAL_OUTCOMES:
             terminal.append((identity, result))
@@ -151,7 +184,10 @@ def select_candidates(
                 for existing_identity in package_terminal
                 if existing_identity[1] == package_version
             ]
-            if package_terminal and not version_terminal:
+            if identity in older_runner_identities:
+                priority = 0
+                reason = "runner_updated"
+            elif package_terminal and not version_terminal:
                 priority = 0
                 reason = "new_release"
             elif not package_terminal:
@@ -167,6 +203,9 @@ def select_candidates(
             "datasette_version": datasette_version,
             "reason": reason,
         }
+        repository = repositories.get(package)
+        if repository:
+            candidate["repository"] = repository
         candidates.append((priority, package, candidate))
 
     candidates.sort(key=lambda item: (item[0], item[1]))
@@ -195,11 +234,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     datasette_version = args.datasette_version or latest_datasette_alpha(
         pypi_project("datasette")
     )
+    plugin_records = load_plugin_records(args.plugins)
     candidates = select_candidates(
-        load_plugins(args.plugins),
+        released_plugins(plugin_records),
         load_history(args.results),
         datasette_version,
         limit=args.limit,
+        repositories=plugin_repositories(plugin_records),
     )
     if args.github_output:
         write_github_outputs(candidates, args.github_output)

@@ -16,6 +16,7 @@ def make_result(
 ):
     return {
         "schema_version": 1,
+        "runner_version": 2,
         "package": {
             "name": package,
             "version": package_version,
@@ -47,6 +48,11 @@ def make_result(
         },
         "passed": passed,
         "outcome": outcome,
+        "test_environment": {
+            "package_extra": None,
+            "dependency_source": "dependency-groups.dev",
+            "dependencies": ["pytest", "pytest-asyncio"],
+        },
         "counts": {
             "collected": 3,
             "passed": 2 if passed else 1,
@@ -122,6 +128,9 @@ def test_build_plugin_rows_has_one_flat_object_per_plugin():
     assert rows[0]["status"] == "ready"
     assert rows[0]["tested_latest_release"] is True
     assert rows[0]["test_runs"] == 2
+    assert rows[0]["runner_version"] == 2
+    assert rows[0]["test_dependency_source"] == "dependency-groups.dev"
+    assert rows[0]["test_dependencies"] == "pytest\npytest-asyncio"
     assert rows[0]["datasette_versions_tested"] == "1.0a35, 1.0a36"
     assert rows[0]["failing_tests"] == ""
     assert rows[0]["pytest_output_url"].startswith(
@@ -224,4 +233,8 @@ def test_generate_report_writes_flat_json_and_information_rich_html(tmp_path):
     assert 'data-status="not_ready"' in html
     assert "tests/test_plugin.py::test_failure" in html
     assert "Search 1 plugin" in html
+    assert "--blue: #276890" in html
+    assert "--blue-light: #6090ad" in html
+    assert 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif' in html
+    assert "letter-spacing: -." not in html
     assert (output_dir / ".nojekyll").exists()

@@ -203,6 +203,63 @@ def test_inspect_test_inventory_warns_when_release_tag_tests_are_missing_from_sd
     ]
 
 
+@pytest.mark.parametrize(
+    ("provides_extra", "expected"),
+    (
+        (["docs", "test"], "test"),
+        (["Tests"], "tests"),
+        (["dev"], "dev"),
+        (None, None),
+        ([], None),
+    ),
+)
+def test_published_test_extra_uses_only_an_extra_pypi_says_exists(
+    provides_extra, expected
+):
+    assert (
+        run_plugin_tests.published_test_extra({"provides_extra": provides_extra})
+        == expected
+    )
+
+
+def test_discover_test_dependencies_reads_pep_735_groups(tmp_path):
+    (tmp_path / "pyproject.toml").write_text(
+        """
+[dependency-groups]
+async = ["pytest-asyncio"]
+dev = [
+    {include-group = "async"},
+    "pytest",
+    "inline-snapshot",
+]
+"""
+    )
+
+    source, dependencies = run_plugin_tests.discover_test_dependencies(tmp_path)
+
+    assert source == "dependency-groups.dev"
+    assert dependencies == ("pytest-asyncio", "pytest", "inline-snapshot")
+
+
+def test_discover_test_dependencies_can_use_unpublished_optional_dependencies(
+    tmp_path,
+):
+    (tmp_path / "pyproject.toml").write_text(
+        """
+[project]
+name = "datasette-example"
+
+[project.optional-dependencies]
+test = ["pytest-httpx", "pytest-asyncio"]
+"""
+    )
+
+    source, dependencies = run_plugin_tests.discover_test_dependencies(tmp_path)
+
+    assert source == "project.optional-dependencies.test"
+    assert dependencies == ("pytest-httpx", "pytest-asyncio")
+
+
 def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):
     report_path = tmp_path / "pytest-report.json"
     sdist_path = tmp_path / "datasette-example-2.0.tar.gz"
@@ -214,6 +271,7 @@ def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):
         report_path,
         python_version="3.13",
         pytest_args=("tests/test_api.py", "-x"),
+        package_extra="test",
     )
 
     assert command[:2] == ["uv", "run"]
@@ -228,6 +286,31 @@ def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):
     assert "pytest-json-report" in command
     assert f"--json-report-file={report_path}" in command
     assert command[-2:] == ["tests/test_api.py", "-x"]
+
+
+def test_build_pytest_command_does_not_invent_an_extra_and_adds_declared_deps(
+    tmp_path,
+):
+    report_path = tmp_path / "pytest-report.json"
+    sdist_path = tmp_path / "datasette-example-2.0.tar.gz"
+
+    command = run_plugin_tests.build_pytest_command(
+        "datasette-example",
+        sdist_path,
+        "1.0a36",
+        report_path,
+        test_dependencies=("pytest", "pytest-asyncio", "inline-snapshot"),
+    )
+
+    assert f"datasette-example @ {sdist_path.resolve().as_uri()}" in command
+    assert not any("datasette-example[test]" in argument for argument in command)
+    assert command.count("pytest") == 2  # --with pytest, then the pytest executable
+    assert ["--with", "pytest-asyncio"] == command[
+        command.index("pytest-asyncio") - 1 : command.index("pytest-asyncio") + 1
+    ]
+    assert ["--with", "inline-snapshot"] == command[
+        command.index("inline-snapshot") - 1 : command.index("inline-snapshot") + 1
+    ]
 
 
 def test_parse_arguments_keeps_runner_options_out_of_pytest_arguments(tmp_path):

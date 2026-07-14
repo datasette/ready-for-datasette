@@ -64,6 +64,7 @@ jobs:
           "${{ matrix.package }}"
           --package-version "${{ matrix.package_version }}"
           --datasette-version "${{ matrix.datasette_version }}"
+          --repository "${{ matrix.repository }}"
           --results-dir staged-results
 
       - name: Upload test result

@@ -43,6 +43,14 @@ test environment is always the verified PyPI source distribution; a Git tag
 supplies tests only. If that tag contains tests but the source distribution
 does not, the runner records a `tests_missing_from_sdist` warning.
 
+The runner only requests a package test extra when that exact PyPI release
+advertises one. It also reads standard PEP 735 `test`, `tests`, `testing`, or
+`dev` dependency groups (plus compatible optional and legacy uv dependency
+declarations) from the exact release source and installs those dependencies
+explicitly. The selected extra, dependency source, and dependency list are
+recorded in each result. Runner-version changes cause older results to be
+scheduled for a fresh run while preserving their immutable history.
+
 Additional pytest arguments follow `--`:
 
 ```bash

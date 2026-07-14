@@ -3,6 +3,7 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 
+import run_plugin_tests
 import select_test_matrix
 
 
@@ -14,6 +15,7 @@ def result(
     completed_at="2026-07-13T00:00:00Z",
 ):
     return {
+        "runner_version": run_plugin_tests.RUNNER_VERSION,
         "package": {"name": package, "version": package_version},
         "datasette": {"requested_version": datasette_version},
         "run": {"completed_at": completed_at},
@@ -37,6 +39,23 @@ def test_released_plugins_deduplicates_names_and_rejects_version_conflicts():
             plugins
             + [{"name": "datasette_example", "latest_version": "2.0"}]
         )
+
+
+def test_plugin_repositories_prefers_the_canonical_owner_for_duplicates():
+    plugins = [
+        {
+            "name": "datasette-example",
+            "github_repo": "asg017/datasette-example",
+        },
+        {
+            "name": "Datasette.Example",
+            "github_repo": "datasette/datasette-example",
+        },
+    ]
+
+    assert select_test_matrix.plugin_repositories(plugins) == {
+        "datasette-example": "datasette/datasette-example"
+    }
 
 
 def test_select_candidates_prioritizes_releases_then_never_tested_then_alpha():
@@ -144,3 +163,34 @@ def test_select_candidates_never_returns_more_than_five():
     )
 
     assert len(selected) == 5
+
+
+def test_select_candidates_retests_results_from_an_older_runner():
+    previous = result("datasette-example", "1.0", "1.0a36", "test_failures")
+    previous["runner_version"] = run_plugin_tests.RUNNER_VERSION - 1
+
+    selected = select_test_matrix.select_candidates(
+        {"datasette-example": "1.0"},
+        [previous],
+        "1.0a36",
+    )
+
+    assert selected == [
+        {
+            "package": "datasette-example",
+            "package_version": "1.0",
+            "datasette_version": "1.0a36",
+            "reason": "runner_updated",
+        }
+    ]
+
+
+def test_select_candidates_includes_the_known_repository():
+    selected = select_test_matrix.select_candidates(
+        {"datasette-example": "1.0"},
+        [],
+        "1.0a36",
+        repositories={"datasette-example": "datasette/datasette-example"},
+    )
+
+    assert selected[0]["repository"] == "datasette/datasette-example"

@@ -183,6 +183,7 @@ def build_plugin_rows(
         source = _object(package.get("source"))
         test_suite = _object(package.get("test_suite"))
         inventory = _object(result.get("test_inventory")) if result else {}
+        test_environment = _object(result.get("test_environment")) if result else {}
         artifacts = _object(result.get("artifacts")) if result else {}
         failing_tests = _string_list(result.get("failing_tests")) if result else []
         error_tests = _string_list(result.get("error_tests")) if result else []
@@ -230,6 +231,7 @@ def build_plugin_rows(
             "tested": result is not None,
             "tested_latest_release": tested_latest_release,
             "passed": result.get("passed") if result and isinstance(result.get("passed"), bool) else None,
+            "runner_version": _integer(result.get("runner_version")) if result and result.get("runner_version") is not None else None,
             "outcome": _string(result.get("outcome")) if result else None,
             "tested_package_version": tested_package_version,
             "datasette_version": _string(datasette.get("requested_version")),
@@ -263,6 +265,13 @@ def build_plugin_rows(
                 message
                 for warning in warnings
                 if (message := _string(warning.get("message")))
+            ),
+            "test_package_extra": _string(test_environment.get("package_extra")),
+            "test_dependency_source": _string(
+                test_environment.get("dependency_source")
+            ),
+            "test_dependencies": "\n".join(
+                _string_list(test_environment.get("dependencies"))
             ),
             "detail": _string(result.get("detail")) if result else None,
             "test_suite_type": _string(test_suite.get("type")),
@@ -327,6 +336,8 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
         details.append(f'<div class="detail-block"><h4>Collection / setup errors</h4>{_test_list(row["error_tests"])}</div>')
     if row["result_warning_messages"]:
         details.append(f'<div class="detail-block warning-copy"><h4>Runner warnings</h4><p>{_e(row["result_warning_messages"])}</p></div>')
+    if row["test_dependencies"]:
+        details.append(f'<div class="detail-block"><h4>Installed test dependencies</h4>{_test_list(row["test_dependencies"])}</div>')
     if row["detail"]:
         details.append(f'<div class="detail-block"><h4>Runner detail</h4><p>{_e(row["detail"])}</p></div>')
     details_html = "".join(details) or '<p class="muted detail-empty">No failure details recorded.</p>'
@@ -369,6 +380,7 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
                 <div><dt>Duration</dt><dd>{_e(row['duration_seconds']) + 's' if row['duration_seconds'] is not None else '—'}</dd></div>
                 <div><dt>Python</dt><dd>{_e(row['python_version'] or '—')}</dd></div>
                 <div><dt>Test source</dt><dd>{_e(row['test_suite_type'] or '—')}</dd></div>
+                <div><dt>Dependency source</dt><dd>{_e(row['test_dependency_source'] or row['test_package_extra'] or '—')}</dd></div>
                 <div><dt>sdist tests</dt><dd>{_e(row['sdist_test_files'])}</dd></div>
                 <div><dt>Tag tests</dt><dd>{_e(row['release_tag_test_files'])}</dd></div>
               </dl>
@@ -510,20 +522,21 @@ HTML_TEMPLATE = """<!doctype html>
   <title>Ready for Datasette 1.0?</title>
   <style>
     :root {
-      --ink: #151510;
-      --muted: #68675f;
-      --paper: #fffdf4;
+      --ink: #111a35;
+      --muted: #526475;
+      --paper: #f8fafb;
       --panel: #ffffff;
-      --line: #d8d5c7;
-      --yellow: #ffe45c;
-      --yellow-dark: #e3bd00;
-      --blue: #1f5eff;
+      --line: #d8e6f5;
+      --blue: #276890;
+      --blue-light: #6090ad;
+      --blue-pale: #eef6ff;
+      --blue-dark: #194f70;
       --green: #18794e;
       --red: #c8302c;
       --orange: #b75b00;
       --purple: #7157c8;
       --grey: #77766f;
-      --shadow: 0 12px 32px rgba(27, 25, 14, 0.09);
+      --shadow: 0 12px 32px rgba(39, 104, 144, 0.09);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -531,8 +544,9 @@ HTML_TEMPLATE = """<!doctype html>
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      letter-spacing: 0.012em;
     }
     a { color: var(--blue); text-underline-offset: 0.16em; }
     a:hover { text-decoration-thickness: 2px; }
@@ -541,8 +555,8 @@ HTML_TEMPLATE = """<!doctype html>
       position: relative;
       overflow: hidden;
       color: #fff;
-      background: var(--ink);
-      border-bottom: 7px solid var(--yellow);
+      background: linear-gradient(180deg, var(--blue-light) 0%, var(--blue) 55%, var(--blue-dark) 100%);
+      border-bottom: 7px solid var(--blue-pale);
     }
     .hero::after {
       content: "";
@@ -551,7 +565,7 @@ HTML_TEMPLATE = """<!doctype html>
       height: 520px;
       right: -180px;
       top: -250px;
-      border: 70px solid rgba(255, 228, 92, 0.13);
+      border: 70px solid rgba(255, 255, 255, 0.1);
       border-radius: 50%;
     }
     .wrap { width: min(1440px, calc(100% - 40px)); margin: 0 auto; }
@@ -570,8 +584,8 @@ HTML_TEMPLATE = """<!doctype html>
       place-items: center;
       width: 38px;
       height: 38px;
-      color: var(--ink);
-      background: var(--yellow);
+      color: var(--blue);
+      background: #fff;
       border-radius: 7px 7px 7px 1px;
       font: 900 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
       transform: rotate(-2deg);
@@ -579,31 +593,31 @@ HTML_TEMPLATE = """<!doctype html>
     .top-links { display: flex; gap: 22px; }
     .top-links a { color: #fff; font-size: 14px; font-weight: 700; }
     .hero-content { position: relative; z-index: 1; max-width: 1000px; padding: 70px 0 76px; }
-    .eyebrow { margin: 0 0 14px; color: var(--yellow); font: 800 12px/1.2 ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: 0; max-width: 900px; font-size: clamp(48px, 8vw, 106px); line-height: .92; letter-spacing: -.065em; }
-    h1 span { color: var(--yellow); }
-    .lede { max-width: 760px; margin: 28px 0 0; color: #d8d7cf; font-size: clamp(18px, 2vw, 24px); }
+    .eyebrow { margin: 0 0 14px; color: #fff; font: 800 12px/1.2 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 900px; font-size: clamp(48px, 8vw, 106px); line-height: 1; letter-spacing: .005em; }
+    h1 span { color: #fff; }
+    .lede { max-width: 760px; margin: 28px 0 0; color: rgba(255,255,255,.9); font-size: clamp(18px, 2vw, 24px); letter-spacing: .018em; }
     .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
-    .hero-facts span { padding: 8px 11px; border: 1px solid #56554e; border-radius: 7px; color: #d8d7cf; font: 650 13px/1.2 ui-monospace, monospace; }
+    .hero-facts span { padding: 8px 11px; border: 1px solid rgba(255,255,255,.38); border-radius: 7px; color: #fff; background: rgba(17,26,53,.12); font: 650 13px/1.2 ui-monospace, monospace; letter-spacing: .02em; }
     main { padding: 42px 0 80px; }
     .metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
     .metric { min-height: 145px; padding: 22px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
-    .metric strong { display: block; margin: 8px 0 4px; font-size: clamp(30px, 4vw, 51px); line-height: 1; letter-spacing: -.04em; }
-    .metric .label { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .metric strong { display: block; margin: 8px 0 4px; font-size: clamp(30px, 4vw, 51px); line-height: 1; letter-spacing: .01em; }
+    .metric .label { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
     .metric small { color: var(--muted); }
-    .metric-highlight { background: var(--yellow); border-color: var(--yellow-dark); }
-    .metric-highlight .label, .metric-highlight small { color: #514500; }
+    .metric-highlight { color: #fff; background: var(--blue); border-color: var(--blue-dark); }
+    .metric-highlight .label, .metric-highlight small { color: rgba(255,255,255,.86); }
     .section { margin-top: 22px; padding: 26px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
     .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
-    .section-heading h2 { margin: 0; font-size: 27px; letter-spacing: -.03em; }
+    .section-heading h2 { margin: 0; font-size: 27px; letter-spacing: .01em; }
     .section-heading p { max-width: 670px; margin: 5px 0 0; color: var(--muted); }
     .section-heading .kicker { color: var(--blue); font: 800 11px/1.3 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
-    .progress-track { display: flex; height: 20px; overflow: hidden; background: #ece9dc; border: 2px solid var(--ink); border-radius: 999px; }
+    .progress-track { display: flex; height: 20px; overflow: hidden; background: var(--blue-pale); border: 2px solid var(--blue); border-radius: 999px; }
     .progress-segment { display: block; min-width: 3px; }
     .progress-copy { display: flex; justify-content: space-between; margin-top: 10px; color: var(--muted); font-size: 13px; }
     .legend { display: grid; grid-template-columns: repeat(7, minmax(95px, 1fr)); gap: 8px; margin-top: 22px; }
-    .legend-item { display: flex; gap: 9px; align-items: center; padding: 10px; text-align: left; color: var(--muted); background: #faf9f3; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
-    .legend-item:hover { border-color: var(--ink); }
+    .legend-item { display: flex; gap: 9px; align-items: center; padding: 10px; text-align: left; color: var(--muted); background: var(--blue-pale); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+    .legend-item:hover { border-color: var(--blue); }
     .legend-item strong { display: block; color: var(--ink); font-size: 19px; line-height: 1; }
     .legend-item span:last-child { font-size: 11px; }
     .legend-dot { flex: 0 0 10px; width: 10px; height: 10px; border-radius: 50%; }
@@ -616,11 +630,11 @@ HTML_TEMPLATE = """<!doctype html>
     .status-unreleased, .legend-dot.status-unreleased, .progress-segment.status-unreleased { --status: #d4d1c4; }
     .legend-dot, .progress-segment { background: var(--status); }
     .two-up { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; }
-    .method-note { background: #edf2ff; border-color: #b9c9ff; }
+    .method-note { background: var(--blue-pale); border-color: #bfd6ea; }
     .method-note p { margin: 0; }
     .method-note strong { color: #123da6; }
     .recent { list-style: none; margin: 0; padding: 0; }
-    .recent li { display: grid; grid-template-columns: 148px 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid #ece9dc; }
+    .recent li { display: grid; grid-template-columns: 148px 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
     .recent li:first-child { border-top: 0; }
     .recent a { min-width: 0; overflow: hidden; color: var(--ink); font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
     .recent time { color: var(--muted); font-size: 11px; }
@@ -628,15 +642,15 @@ HTML_TEMPLATE = """<!doctype html>
     .status > span { width: 7px; height: 7px; background: var(--status); border-radius: 50%; }
     .filters { display: grid; grid-template-columns: minmax(240px, 2fr) repeat(3, minmax(145px, .7fr)) auto; gap: 10px; margin-bottom: 16px; }
     .control { width: 100%; min-height: 42px; padding: 8px 11px; color: var(--ink); background: #fff; border: 1px solid #aaa79b; border-radius: 7px; }
-    .control:focus { outline: 3px solid rgba(31,94,255,.2); border-color: var(--blue); }
-    .clear { padding: 8px 14px; color: #fff; background: var(--ink); border: 1px solid var(--ink); border-radius: 7px; cursor: pointer; }
+    .control:focus { outline: 3px solid rgba(39,104,144,.2); border-color: var(--blue); }
+    .clear { padding: 8px 14px; color: #fff; background: var(--blue); border: 1px solid var(--blue); border-radius: 7px; cursor: pointer; }
     .result-count { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 9px; }
     table { width: 100%; min-width: 1080px; border-collapse: collapse; background: #fff; }
-    th { position: sticky; top: 0; z-index: 2; padding: 11px 13px; text-align: left; color: #55534c; background: #f0eee5; border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
-    td { padding: 13px; vertical-align: top; border-bottom: 1px solid #ece9dc; font-size: 13px; }
+    th { position: sticky; top: 0; z-index: 2; padding: 11px 13px; text-align: left; color: var(--ink); background: var(--blue-pale); border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    td { padding: 13px; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 13px; }
     tr:last-child td { border-bottom: 0; }
-    tbody tr:hover { background: #fffdf2; }
+    tbody tr:hover { background: #f8fbff; }
     .plugin-cell { min-width: 225px; }
     .plugin-name { display: block; color: var(--ink); font-size: 14px; font-weight: 820; }
     .owner, .subtle { display: block; margin-top: 3px; color: var(--muted); font: 11px/1.3 ui-monospace, monospace; }
@@ -650,10 +664,10 @@ HTML_TEMPLATE = """<!doctype html>
     details { position: relative; }
     summary { color: var(--blue); font-weight: 750; cursor: pointer; }
     .details-cell { min-width: 90px; }
-    .details-panel { min-width: 570px; max-width: 680px; margin-top: 10px; padding: 17px; background: #faf9f3; border: 1px solid var(--line); border-radius: 8px; }
+    .details-panel { min-width: 570px; max-width: 680px; margin-top: 10px; padding: 17px; background: var(--blue-pale); border: 1px solid var(--line); border-radius: 8px; }
     .status-explanation { margin: 0 0 13px; font-weight: 650; }
     dl { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0; }
-    dl div { padding: 7px; background: #fff; border: 1px solid #e7e3d6; border-radius: 5px; }
+    dl div { padding: 7px; background: #fff; border: 1px solid var(--line); border-radius: 5px; }
     dt { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
     dd { margin: 3px 0 0; font: 700 11px/1.3 ui-monospace, monospace; overflow-wrap: anywhere; }
     .detail-block { margin-top: 14px; }
