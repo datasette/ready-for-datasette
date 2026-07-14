@@ -253,7 +253,7 @@
     "metadata_file": "setup.py",
     "metadata_sha256": "27d67fae29a25571ea5e528b68164c0b714ea418367f41b4c4c1e5636e9161d5",
     "metadata_etag": "\"0921761821b1dfc5ac04d8c609eab0940cfa03ebe919ca04d03da28eab226479\"",
-    "latest_version": "1.1"
+    "latest_version": "1.1.1"
   },
   {
     "name": "datasette-bplist",

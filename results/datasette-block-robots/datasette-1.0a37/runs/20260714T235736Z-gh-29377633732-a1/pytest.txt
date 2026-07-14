@@ -1,0 +1,33 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-block-robots @ file:///tmp/datasette-block-robots-lqezsc44/datasette_block_robots-1.1.1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-block-robots @ file:///tmp/datasette-block-robots-lqezsc44/datasette_block_robots-1.1.1.tar.gz
+Installed 40 packages in 32ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp1P7crH/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-block-robots-lqezsc44/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_block_robots.py::test_robots_txt PASSED                       [ 12%]
+tests/test_block_robots.py::test_config_disallow[None-User-agent: *\nDisallow: /] PASSED [ 25%]
+tests/test_block_robots.py::test_config_disallow[config1-User-agent: *\nDisallow: /foo] PASSED [ 37%]
+tests/test_block_robots.py::test_config_disallow[config2-User-agent: *\nDisallow: /foo\nDisallow: /bar] PASSED [ 50%]
+tests/test_block_robots.py::test_literal PASSED                          [ 62%]
+tests/test_block_robots.py::test_literal_prevent_literal_and_disallow_at_same_time PASSED [ 75%]
+tests/test_block_robots.py::test_allow_only_index PASSED                 [ 87%]
+tests/test_block_robots.py::test_extra_lines_plugin_hook PASSED          [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-block-robots/datasette-1.0a37/runs/20260714T235736Z-gh-29377633732-a1/.pytest-report.json
+============================== 8 passed in 0.17s ===============================
