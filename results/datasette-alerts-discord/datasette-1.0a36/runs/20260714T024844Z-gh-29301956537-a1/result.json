@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-alerts-discord",
+    "version": "0.1.0a4",
+    "repository": "datasette/datasette-alerts-discord",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/26/7d/f138877517d06af1b9bccb4b634a7566dd35897986414b37479c4c0f3878/datasette_alerts_discord-0.1.0a4.tar.gz",
+      "sha256": "25149df03adc22687322fe1257a2eb068722edefa4cd305b327c1ab90f8b5f39"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-alerts-discord",
+      "ref": "0.1.0a4",
+      "git_sha": "4b2aa3f63309138ad858b0c7b957c690d2928013"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T024844Z-gh-29301956537-a1",
+    "started_at": "2026-07-14T02:48:44Z",
+    "completed_at": "2026-07-14T02:48:50Z",
+    "duration_seconds": 5.469,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-alerts-discord[test] @ file:///tmp/datasette-alerts-discord-d6mx7jlr/datasette_alerts_discord-0.1.0a4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts-discord/datasette-1.0a36/runs/20260714T024844Z-gh-29301956537-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_alerts_discord.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-alerts-discord/datasette-1.0a36/runs/20260714T024844Z-gh-29301956537-a1/pytest.txt"
+  }
+}

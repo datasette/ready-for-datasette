@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-allow-permissions-debug",
+    "version": "0.1",
+    "repository": "simonw/datasette-allow-permissions-debug",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/15/e6/7b817021f8289efee6ccf62a7a1a88a36ecefea1b533d959346a1277bc34/datasette-allow-permissions-debug-0.1.tar.gz",
+      "sha256": "86e4bfaf855a7fe827031e23ab830df31c4c48a94a101aa2cf0d2ec8e1cac038"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-allow-permissions-debug",
+      "ref": "0.1",
+      "git_sha": "7d9d315082b70fd03a979acc0bf55df1443b3d27"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T024842Z-gh-29301956537-a1",
+    "started_at": "2026-07-14T02:48:42Z",
+    "completed_at": "2026-07-14T02:48:49Z",
+    "duration_seconds": 7.329,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-allow-permissions-debug[test] @ file:///tmp/datasette-allow-permissions-debug-m4bo7e04/datasette-allow-permissions-debug-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-allow-permissions-debug/datasette-1.0a36/runs/20260714T024842Z-gh-29301956537-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 0,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_allow_permissions_debug.py::test_allows_access",
+    "tests/test_allow_permissions_debug.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-allow-permissions-debug/datasette-1.0a36/runs/20260714T024842Z-gh-29301956537-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-alerts-ntfy",
+    "version": "0.1.0a2",
+    "repository": "datasette/datasette-alerts-ntfy",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/83/4a/5466b21cc862e21d3b7edc8fa9f92d11a97b9d2a24ecd598d75fa419dbb7/datasette_alerts_ntfy-0.1.0a2.tar.gz",
+      "sha256": "0d31bd3058644b2942e111a0b8746be8f3fe6da3d5846ccb06e412ce4117579b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-alerts-ntfy",
+      "ref": "0.1.0a2",
+      "git_sha": "e5f4c43e35b15f496e11363368254535201bdd9a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T024841Z-gh-29301956537-a1",
+    "started_at": "2026-07-14T02:48:41Z",
+    "completed_at": "2026-07-14T02:48:48Z",
+    "duration_seconds": 7.214,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-alerts-ntfy[test] @ file:///tmp/datasette-alerts-ntfy-9cl7fjta/datasette_alerts_ntfy-0.1.0a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts-ntfy/datasette-1.0a36/runs/20260714T024841Z-gh-29301956537-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_alerts_ntfy.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-alerts-ntfy/datasette-1.0a36/runs/20260714T024841Z-gh-29301956537-a1/pytest.txt"
+  }
+}

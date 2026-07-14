@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-app-support",
+    "version": "0.11.8",
+    "repository": "simonw/datasette-app-support",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/94/5f/e59dc0c028091828031176a1be3b1ed8863525b785ac20a933dbbd5d73cd/datasette-app-support-0.11.8.tar.gz",
+      "sha256": "4b069f162bfea353d10b631d32ab180aeff33ebf0f0f43855905efd01a2b9276"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-app-support",
+      "ref": "0.11.8",
+      "git_sha": "6fad5c20068161b6f3d4fdfb808880eaee090167"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T024843Z-gh-29301956537-a1",
+    "started_at": "2026-07-14T02:48:43Z",
+    "completed_at": "2026-07-14T02:48:51Z",
+    "duration_seconds": 8.106,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-app-support[test] @ file:///tmp/datasette-app-support-mf1h8bq4/datasette-app-support-0.11.8.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-app-support/datasette-1.0a36/runs/20260714T024843Z-gh-29301956537-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 17,
+    "passed": 0,
+    "failed": 12,
+    "errors": 5,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_app_support.py::test_static_asset_sticky_footer",
+    "tests/test_auth_app_user.py::test_auth_app_user",
+    "tests/test_dump_restore_temporary.py::test_dump_temporary_to_file",
+    "tests/test_dump_restore_temporary.py::test_restore_temporary_from_file",
+    "tests/test_new_empty_database_file.py::test_new_empty_database_file",
+    "tests/test_open_csv_file.py::test_import_csv_files",
+    "tests/test_open_csv_file.py::test_open_csv_files",
+    "tests/test_open_csv_file.py::test_open_csv_files_invalid_csv",
+    "tests/test_open_database_file.py::test_open_database_files",
+    "tests/test_open_database_file.py::test_open_database_files_invalid[does-not-exist.txt]",
+    "tests/test_open_database_file.py::test_open_database_files_invalid[invalid.txt]",
+    "tests/test_plugin_directory.py::test_plugin_directory"
+  ],
+  "error_tests": [
+    "tests/test_open_csv_file.py::test_import_csv_url[False-None-test]",
+    "tests/test_open_csv_file.py::test_import_csv_url[False-creatures-creatures]",
+    "tests/test_open_csv_file.py::test_import_csv_url[True-None-test-redirect]",
+    "tests/test_open_csv_file.py::test_import_csv_url[True-creatures-creatures]",
+    "tests/test_plugin_directory.py::test_plugin_directory_no_connection"
+  ],
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 8
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-app-support/datasette-1.0a36/runs/20260714T024843Z-gh-29301956537-a1/pytest.txt"
+  }
+}
