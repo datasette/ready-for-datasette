@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "package": {
+    "name": "datasette-indieauth",
+    "version": "1.2.2",
+    "repository": "simonw/datasette-indieauth",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/34/41/3106cfe6586f927e1baf803ebf305b902aa92d2b153b30ee5dfa5239531b/datasette-indieauth-1.2.2.tar.gz",
+      "sha256": "9e12803cf5ccda49441b59e4e3732221fec2a6ef4f98fb0233ef9ed4a4ec802c"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-indieauth",
+      "ref": "1.2.2",
+      "git_sha": "55b8eefa35aff9d7819fa040abf4f897aee28836"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T015916Z-local-6372aa",
+    "started_at": "2026-07-14T01:59:16Z",
+    "completed_at": "2026-07-14T01:59:21Z",
+    "duration_seconds": 5.534,
+    "python_version": "3.13",
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-indieauth[test] @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-indieauth-y6ipfe9p/datasette-indieauth-1.2.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/Users/simon/Dropbox/dev/ready-for-datasette/results/datasette-indieauth/datasette-1.0a36/runs/20260714T015916Z-local-6372aa/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 67,
+    "passed": 48,
+    "failed": 10,
+    "errors": 9,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_indieauth.py::test_h_app[None]",
+    "tests/test_indieauth.py::test_h_app[This is the title]",
+    "tests/test_indieauth.py::test_indieauth_done_no_params_error",
+    "tests/test_indieauth.py::test_indieauth_errors[-bodies1-Invalid IndieAuth identifier]",
+    "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie1]",
+    "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie2]",
+    "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[bad_cookie3]",
+    "tests/test_indieauth.py::test_invalid_ds_indieauth_cookie[this-is-bad]",
+    "tests/test_indieauth.py::test_plugin_is_installed",
+    "tests/test_indieauth.py::test_restrict_access"
+  ],
+  "error_tests": [
+    "tests/test_indieauth.py::test_indieauth_errors[https://simonwillison.net/-bodies0-Invalid IndieAuth identifier - no authorization_endpoint found]",
+    "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me2=no%20me%20here-None-Invalid authorization_code response from authorization server]",
+    "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me=https%3A%2F%2Findieauth.simonwillison.com%2F&scope=email-None-&#34;me&#34; value returned by authorization server had a domain that did not match the initial URL]",
+    "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-me=https%3A%2F%2Findieauth.simonwillison.net%2Findex.php%2Fauthor%2Fsimonw%2F&scope=email-expected_profile1-None]",
+    "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-200-{\"me\": \"https://indieauth.simonwillison.net/index.php/author/simonw/\", \"profile\": {\"email\": \"simon@example.net\"}, \"scope\": \"email\"}-expected_profile0-None]",
+    "tests/test_indieauth.py::test_indieauth_flow[https://indieauth.simonwillison.net/-500-error-None-Invalid response from authorization server]",
+    "tests/test_indieauth.py::test_invalid_url",
+    "tests/test_indieauth.py::test_non_matching_authorization_endpoint",
+    "tests/test_utils.py::test_discover_endpoints[mocks4-None-DiscoverEndpointsError]"
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-indieauth/datasette-1.0a36/runs/20260714T015916Z-local-6372aa/pytest.txt"
+  }
+}
