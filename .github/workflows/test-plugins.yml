@@ -10,9 +10,13 @@ on:
   workflow_dispatch:
     inputs:
       limit:
-        description: Maximum number of plugin test suites (up to 5)
+        description: Maximum number of backlog test suites (up to 10)
         required: false
         default: "5"
+      plugins:
+        description: Comma-separated plugin names to test instead of the backlog (up to 10)
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -34,13 +38,15 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
 
-      - name: Select untested combinations
+      - name: Select plugin combinations
         id: select
         env:
           LIMIT: ${{ github.event.inputs.limit || '5' }}
+          PLUGIN_NAMES: ${{ github.event.inputs.plugins || '' }}
         run: >-
           uv run --no-project python select_test_matrix.py
           --limit "$LIMIT"
+          --plugin-names "$PLUGIN_NAMES"
           --github-output "$GITHUB_OUTPUT"
 
   test:
@@ -49,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 5
+      max-parallel: 10
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
       - name: Check out repository

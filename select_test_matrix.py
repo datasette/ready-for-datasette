@@ -24,7 +24,7 @@ TERMINAL_OUTCOMES = {
     "no_tests",
     "install_error",
 }
-MAX_TESTS = 5
+MAX_TESTS = 10
 OWNER_PRIORITY = {"datasette": 0, "dogsheep": 1, "simonw": 2, "asg017": 3}
 
 
@@ -78,6 +78,58 @@ def load_plugin_records(path: Path) -> list[Mapping[str, Any]]:
 
 def load_plugins(path: Path) -> dict[str, str]:
     return released_plugins(load_plugin_records(path))
+
+
+def parse_requested_plugins(value: str) -> list[str]:
+    requested: list[str] = []
+    seen: set[str] = set()
+    for item in value.split(","):
+        name = item.strip()
+        if not name:
+            continue
+        normalized = normalize_package_name(name)
+        if normalized not in seen:
+            requested.append(normalized)
+            seen.add(normalized)
+    if not requested:
+        raise ValueError("No plugin names were provided")
+    return requested
+
+
+def select_requested_plugins(
+    plugins: Mapping[str, str],
+    requested_plugins: Sequence[str],
+    datasette_version: str,
+    *,
+    repositories: Mapping[str, str] | None = None,
+) -> list[dict[str, str]]:
+    if len(requested_plugins) > MAX_TESTS:
+        raise ValueError(f"A manual test matrix may contain at most {MAX_TESTS} plugins")
+    repositories = {} if repositories is None else repositories
+    normalized_plugins = {
+        normalize_package_name(name): version for name, version in plugins.items()
+    }
+    requested = [normalize_package_name(name) for name in requested_plugins]
+    missing = [name for name in requested if name not in normalized_plugins]
+    if missing:
+        label = "plugin" if len(missing) == 1 else "plugins"
+        raise ValueError(
+            f"Unknown or unreleased {label}: {', '.join(missing)}"
+        )
+
+    candidates: list[dict[str, str]] = []
+    for package in requested:
+        candidate = {
+            "package": package,
+            "package_version": normalized_plugins[package],
+            "datasette_version": datasette_version,
+            "reason": "manual_request",
+        }
+        repository = repositories.get(package)
+        if repository:
+            candidate["repository"] = repository
+        candidates.append(candidate)
+    return candidates
 
 
 def load_history(results_dir: Path) -> list[Mapping[str, Any]]:
@@ -224,6 +276,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--plugins", type=Path, default=Path("plugins.json"))
     parser.add_argument("--results", type=Path, default=Path("results"))
     parser.add_argument("--limit", type=int, default=5)
+    parser.add_argument(
+        "--plugin-names",
+        default="",
+        help=(
+            "Comma-separated plugin names to test explicitly, ignoring history "
+            f"and --limit (maximum {MAX_TESTS})"
+        ),
+    )
     parser.add_argument("--datasette-version")
     parser.add_argument("--github-output", type=Path)
     return parser
@@ -235,13 +295,23 @@ def main(argv: Sequence[str] | None = None) -> int:
         pypi_project("datasette")
     )
     plugin_records = load_plugin_records(args.plugins)
-    candidates = select_candidates(
-        released_plugins(plugin_records),
-        load_history(args.results),
-        datasette_version,
-        limit=args.limit,
-        repositories=plugin_repositories(plugin_records),
-    )
+    plugins = released_plugins(plugin_records)
+    repositories = plugin_repositories(plugin_records)
+    if args.plugin_names:
+        candidates = select_requested_plugins(
+            plugins,
+            parse_requested_plugins(args.plugin_names),
+            datasette_version,
+            repositories=repositories,
+        )
+    else:
+        candidates = select_candidates(
+            plugins,
+            load_history(args.results),
+            datasette_version,
+            limit=args.limit,
+            repositories=repositories,
+        )
     if args.github_output:
         write_github_outputs(candidates, args.github_output)
     print(json.dumps({"include": candidates}, indent=2))

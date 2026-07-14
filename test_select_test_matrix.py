@@ -155,14 +155,14 @@ def test_write_github_outputs_emits_compact_matrix_and_has_work(tmp_path):
     assert json.loads(lines[1].removeprefix("matrix=")) == {"include": candidates}
 
 
-def test_select_candidates_never_returns_more_than_five():
-    plugins = {f"datasette-example-{number}": "1.0" for number in range(10)}
+def test_select_candidates_never_returns_more_than_ten():
+    plugins = {f"datasette-example-{number}": "1.0" for number in range(15)}
 
     selected = select_test_matrix.select_candidates(
         plugins, [], "1.0a36", limit=20
     )
 
-    assert len(selected) == 5
+    assert len(selected) == 10
 
 
 def test_select_candidates_retests_results_from_an_older_runner():
@@ -194,3 +194,108 @@ def test_select_candidates_includes_the_known_repository():
     )
 
     assert selected[0]["repository"] == "datasette/datasette-example"
+
+
+def test_parse_requested_plugins_normalizes_and_deduplicates_names():
+    assert select_test_matrix.parse_requested_plugins(
+        " datasette-One,Datasette.One, datasette_two "
+    ) == ["datasette-one", "datasette-two"]
+
+    with pytest.raises(ValueError, match="No plugin names"):
+        select_test_matrix.parse_requested_plugins(" , , ")
+
+
+def test_select_requested_plugins_uses_exact_input_order_and_repositories():
+    selected = select_test_matrix.select_requested_plugins(
+        {
+            "datasette-one": "1.0",
+            "datasette-two": "2.0",
+            "datasette-three": "3.0",
+        },
+        ["datasette-two", "datasette-one"],
+        "1.0a37",
+        repositories={
+            "datasette-one": "simonw/datasette-one",
+            "datasette-two": "datasette/datasette-two",
+        },
+    )
+
+    assert selected == [
+        {
+            "package": "datasette-two",
+            "package_version": "2.0",
+            "datasette_version": "1.0a37",
+            "reason": "manual_request",
+            "repository": "datasette/datasette-two",
+        },
+        {
+            "package": "datasette-one",
+            "package_version": "1.0",
+            "datasette_version": "1.0a37",
+            "reason": "manual_request",
+            "repository": "simonw/datasette-one",
+        },
+    ]
+
+    with pytest.raises(ValueError, match="Unknown or unreleased plugin: missing"):
+        select_test_matrix.select_requested_plugins(
+            {"datasette-one": "1.0"},
+            ["missing"],
+            "1.0a37",
+        )
+
+    with pytest.raises(ValueError, match="at most 10"):
+        select_test_matrix.select_requested_plugins(
+            {f"datasette-{number}": "1.0" for number in range(11)},
+            [f"datasette-{number}" for number in range(11)],
+            "1.0a37",
+        )
+
+
+def test_main_manual_plugins_override_history_and_limit(tmp_path, capsys):
+    plugins = tmp_path / "plugins.json"
+    results = tmp_path / "results"
+    plugins.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "datasette-one",
+                    "latest_version": "1.0",
+                    "github_repo": "simonw/datasette-one",
+                },
+                {
+                    "name": "datasette-two",
+                    "latest_version": "2.0",
+                    "github_repo": "datasette/datasette-two",
+                },
+            ]
+        )
+    )
+    run = results / "datasette-two" / "datasette-1.0a37" / "runs" / "run-1"
+    run.mkdir(parents=True)
+    (run / "result.json").write_text(
+        json.dumps(result("datasette-two", "2.0", "1.0a37", "passed"))
+    )
+
+    return_code = select_test_matrix.main(
+        [
+            "--plugins",
+            str(plugins),
+            "--results",
+            str(results),
+            "--datasette-version",
+            "1.0a37",
+            "--limit",
+            "1",
+            "--plugin-names",
+            "datasette-two,datasette-one",
+        ]
+    )
+
+    assert return_code == 0
+    matrix = json.loads(capsys.readouterr().out)
+    assert [item["package"] for item in matrix["include"]] == [
+        "datasette-two",
+        "datasette-one",
+    ]
+    assert all(item["reason"] == "manual_request" for item in matrix["include"])
