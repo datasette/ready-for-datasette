@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-auth0",
+    "version": "0.1",
+    "repository": "simonw/datasette-auth0",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/31/f5/ad9f4cc2f940b72992020cfc9e656cc0c1393fbd42e32dee677a84af2711/datasette-auth0-0.1.tar.gz",
+      "sha256": "e85e7dd2a23534b5a8b8578d8389576c67e6cc6195dbdab517a6da2a2a9a12c5"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-auth0",
+      "ref": "0.1",
+      "git_sha": "2ffd71812267b4d39c9654449721e1106e3c6d3e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260714T072157Z-gh-29314288170-a1",
+    "started_at": "2026-07-14T07:21:57Z",
+    "completed_at": "2026-07-14T07:22:04Z",
+    "duration_seconds": 6.278,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-auth0 @ file:///tmp/datasette-auth0-e1uo47ht/datasette-auth0-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth0/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-auth0/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

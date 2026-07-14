@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T05:48:59Z",
+  "generated_at": "2026-07-14T07:22:04Z",
   "results": [
     {
       "schema_version": 1,
@@ -1733,6 +1733,396 @@
       "artifacts": {
         "pytest_output": "results/datasette-auth-github/datasette-1.0a36/runs/20260714T054831Z-gh-29309487997-a1/pytest.txt"
       }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-auth-passwords",
+        "version": "1.1.1",
+        "repository": "simonw/datasette-auth-passwords",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/41/27/2e613ed17c92effac6d3a23c9b16bb983fcaa56a223f62ead61070f37f83/datasette_auth_passwords-1.1.1.tar.gz",
+          "sha256": "403a53cb6a29617e91ea3de212dd54e7270c2bdb3e9e8dba350d540e1c5adfca"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-auth-passwords",
+          "ref": "1.1.1",
+          "git_sha": "bb96899c84395bb40e903b0da5e1e7cdb5d8c4dd"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T072153Z-gh-29314288170-a1",
+        "started_at": "2026-07-14T07:21:53Z",
+        "completed_at": "2026-07-14T07:22:02Z",
+        "duration_seconds": 8.614,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-auth-passwords[test] @ file:///tmp/datasette-auth-passwords-wt3rv9h2/datasette_auth_passwords-1.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-passwords/datasette-1.0a36/runs/20260714T072153Z-gh-29314288170-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 22,
+        "passed": 15,
+        "failed": 7,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_auth_passwords.py::test_login[user1-password!-True-userone]",
+        "tests/test_auth_passwords.py::test_login[user1-password-False-None]",
+        "tests/test_auth_passwords.py::test_login[user2--False-None]",
+        "tests/test_auth_passwords.py::test_login[user2-password!-True-user2]",
+        "tests/test_auth_passwords.py::test_login[user3-password!-False-None]",
+        "tests/test_auth_passwords.py::test_password_tool",
+        "tests/test_auth_passwords.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-auth-passwords/datasette-1.0a36/runs/20260714T072153Z-gh-29314288170-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-auth-tailscale",
+        "version": "0.0.1a1",
+        "repository": "datasette/datasette-auth-tailscale",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/00/87/fccef800408ad13a3aac06cc7ff6045210ece4f440d8c62577eb13161e14/datasette_auth_tailscale-0.0.1a1.tar.gz",
+          "sha256": "58914b19e1f747327578fb7ea5219ab573c38ab760440bf16792bd0a56d778a6"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-auth-tailscale",
+          "ref": "0.0.1a1",
+          "git_sha": "7520939af6eff6c804135a73926bb621027c8314"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T072157Z-gh-29314288170-a1",
+        "started_at": "2026-07-14T07:21:57Z",
+        "completed_at": "2026-07-14T07:22:03Z",
+        "duration_seconds": 6.309,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-auth-tailscale @ file:///tmp/datasette-auth-tailscale-owyj55fz/datasette_auth_tailscale-0.0.1a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-tailscale/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 8,
+        "passed": 7,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_auth_tailscale.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-auth-tailscale/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-auth-tokens",
+        "version": "0.3",
+        "repository": "simonw/datasette-auth-tokens",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/37/e8/9232738f0a0e825be9dec92244b1fb48ec897b04dbd599237cf1e3239319/datasette-auth-tokens-0.3.tar.gz",
+          "sha256": "526ce6f150e729e51c6df283238c58885a437eeb90d80a12357d4a454ba6f36e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-auth-tokens",
+          "ref": "0.3",
+          "git_sha": "0390c07eb6b5c6ffc6053500b58c334ccab30c44"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": "1.0a36"
+      },
+      "run": {
+        "id": "20260714T072154Z-gh-29314288170-a1",
+        "started_at": "2026-07-14T07:21:54Z",
+        "completed_at": "2026-07-14T07:22:03Z",
+        "duration_seconds": 9.495,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-auth-tokens @ file:///tmp/datasette-auth-tokens-lqjmb8ic/datasette-auth-tokens-0.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-tokens/datasette-1.0a36/runs/20260714T072154Z-gh-29314288170-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 27,
+        "passed": 0,
+        "failed": 0,
+        "errors": 27,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 5
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_auth_tokens.py::test_actor[1-oneone-expected_actor0]",
+        "tests/test_auth_tokens.py::test_actor[2-twotwo-expected_actor1]",
+        "tests/test_auth_tokens.py::test_actor[invalid-None0]",
+        "tests/test_auth_tokens.py::test_actor[invalid-None1]",
+        "tests/test_auth_tokens.py::test_query[-/-200]",
+        "tests/test_auth_tokens.py::test_query[-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_query[1-oneone-/-200]",
+        "tests/test_auth_tokens.py::test_query[1-oneone-/demo?sql=select+1-200]",
+        "tests/test_auth_tokens.py::test_query[2-twotwo-/-200]",
+        "tests/test_auth_tokens.py::test_query[2-twotwo-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_query[invalid-/-200]",
+        "tests/test_auth_tokens.py::test_query[invalid-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_query_param[-/?-200]",
+        "tests/test_auth_tokens.py::test_query_param[-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_query_param[one-/?-200]",
+        "tests/test_auth_tokens.py::test_query_param[one-/demo?sql=select+1-200]",
+        "tests/test_auth_tokens.py::test_query_param[two-/?-200]",
+        "tests/test_auth_tokens.py::test_query_param[two-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_token[-/-200]",
+        "tests/test_auth_tokens.py::test_token[-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_token[one-/-200]",
+        "tests/test_auth_tokens.py::test_token[one-/demo?sql=select+1-200]",
+        "tests/test_auth_tokens.py::test_token[two-/-200]",
+        "tests/test_auth_tokens.py::test_token[two-/demo?sql=select+1-403]",
+        "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens/tokens]",
+        "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens?sql=select+*+from+tokens]",
+        "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens]"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-auth-tokens/datasette-1.0a36/runs/20260714T072154Z-gh-29314288170-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-auth0",
+        "version": "0.1",
+        "repository": "simonw/datasette-auth0",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/31/f5/ad9f4cc2f940b72992020cfc9e656cc0c1393fbd42e32dee677a84af2711/datasette-auth0-0.1.tar.gz",
+          "sha256": "e85e7dd2a23534b5a8b8578d8389576c67e6cc6195dbdab517a6da2a2a9a12c5"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-auth0",
+          "ref": "0.1",
+          "git_sha": "2ffd71812267b4d39c9654449721e1106e3c6d3e"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a36",
+        "installed_version": null
+      },
+      "run": {
+        "id": "20260714T072157Z-gh-29314288170-a1",
+        "started_at": "2026-07-14T07:21:57Z",
+        "completed_at": "2026-07-14T07:22:04Z",
+        "duration_seconds": 6.278,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 3,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-auth0 @ file:///tmp/datasette-auth0-e1uo47ht/datasette-auth0-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a36",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth0/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "install_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-auth0/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/pytest.txt"
+      },
+      "detail": "uv or pytest exited before producing a JSON test report"
     },
     {
       "schema_version": 1,

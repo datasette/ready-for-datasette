@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-auth-tailscale",
+    "version": "0.0.1a1",
+    "repository": "datasette/datasette-auth-tailscale",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/00/87/fccef800408ad13a3aac06cc7ff6045210ece4f440d8c62577eb13161e14/datasette_auth_tailscale-0.0.1a1.tar.gz",
+      "sha256": "58914b19e1f747327578fb7ea5219ab573c38ab760440bf16792bd0a56d778a6"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-auth-tailscale",
+      "ref": "0.0.1a1",
+      "git_sha": "7520939af6eff6c804135a73926bb621027c8314"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T072157Z-gh-29314288170-a1",
+    "started_at": "2026-07-14T07:21:57Z",
+    "completed_at": "2026-07-14T07:22:03Z",
+    "duration_seconds": 6.309,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-auth-tailscale @ file:///tmp/datasette-auth-tailscale-owyj55fz/datasette_auth_tailscale-0.0.1a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-tailscale/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 7,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_auth_tailscale.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-auth-tailscale/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/pytest.txt"
+  }
+}

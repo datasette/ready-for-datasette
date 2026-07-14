@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-auth-tokens",
+    "version": "0.3",
+    "repository": "simonw/datasette-auth-tokens",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/37/e8/9232738f0a0e825be9dec92244b1fb48ec897b04dbd599237cf1e3239319/datasette-auth-tokens-0.3.tar.gz",
+      "sha256": "526ce6f150e729e51c6df283238c58885a437eeb90d80a12357d4a454ba6f36e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-auth-tokens",
+      "ref": "0.3",
+      "git_sha": "0390c07eb6b5c6ffc6053500b58c334ccab30c44"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a36",
+    "installed_version": "1.0a36"
+  },
+  "run": {
+    "id": "20260714T072154Z-gh-29314288170-a1",
+    "started_at": "2026-07-14T07:21:54Z",
+    "completed_at": "2026-07-14T07:22:03Z",
+    "duration_seconds": 9.495,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-auth-tokens @ file:///tmp/datasette-auth-tokens-lqjmb8ic/datasette-auth-tokens-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-tokens/datasette-1.0a36/runs/20260714T072154Z-gh-29314288170-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 27,
+    "passed": 0,
+    "failed": 0,
+    "errors": 27,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 5
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_auth_tokens.py::test_actor[1-oneone-expected_actor0]",
+    "tests/test_auth_tokens.py::test_actor[2-twotwo-expected_actor1]",
+    "tests/test_auth_tokens.py::test_actor[invalid-None0]",
+    "tests/test_auth_tokens.py::test_actor[invalid-None1]",
+    "tests/test_auth_tokens.py::test_query[-/-200]",
+    "tests/test_auth_tokens.py::test_query[-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_query[1-oneone-/-200]",
+    "tests/test_auth_tokens.py::test_query[1-oneone-/demo?sql=select+1-200]",
+    "tests/test_auth_tokens.py::test_query[2-twotwo-/-200]",
+    "tests/test_auth_tokens.py::test_query[2-twotwo-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_query[invalid-/-200]",
+    "tests/test_auth_tokens.py::test_query[invalid-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_query_param[-/?-200]",
+    "tests/test_auth_tokens.py::test_query_param[-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_query_param[one-/?-200]",
+    "tests/test_auth_tokens.py::test_query_param[one-/demo?sql=select+1-200]",
+    "tests/test_auth_tokens.py::test_query_param[two-/?-200]",
+    "tests/test_auth_tokens.py::test_query_param[two-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_token[-/-200]",
+    "tests/test_auth_tokens.py::test_token[-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_token[one-/-200]",
+    "tests/test_auth_tokens.py::test_token[one-/demo?sql=select+1-200]",
+    "tests/test_auth_tokens.py::test_token[two-/-200]",
+    "tests/test_auth_tokens.py::test_token[two-/demo?sql=select+1-403]",
+    "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens/tokens]",
+    "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens?sql=select+*+from+tokens]",
+    "tests/test_auth_tokens.py::test_tokens_table_not_visible[/tokens]"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-auth-tokens/datasette-1.0a36/runs/20260714T072154Z-gh-29314288170-a1/pytest.txt"
+  }
+}

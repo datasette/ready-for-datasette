@@ -1,0 +1,48 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-auth-tailscale @ file:///tmp/datasette-auth-tailscale-owyj55fz/datasette_auth_tailscale-0.0.1a1.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-auth-tailscale @ file:///tmp/datasette-auth-tailscale-owyj55fz/datasette_auth_tailscale-0.0.1a1.tar.gz
+Installed 40 packages in 35ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpPIiHHt/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-auth-tailscale-owyj55fz/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_auth_tailscale.py::test_plugin_is_installed FAILED            [ 12%]
+tests/test_auth_tailscale.py::test_actor_from_full_identity_headers PASSED [ 25%]
+tests/test_auth_tailscale.py::test_actor_with_only_login PASSED          [ 37%]
+tests/test_auth_tailscale.py::test_rfc2047_decoding_of_name PASSED       [ 50%]
+tests/test_auth_tailscale.py::test_require_tailscale_default_blocks_unauthenticated PASSED [ 62%]
+tests/test_auth_tailscale.py::test_require_tailscale_disabled_allows_unauthenticated PASSED [ 75%]
+tests/test_auth_tailscale.py::test_require_tailscale_passes_through_with_login_header PASSED [ 87%]
+tests/test_auth_tailscale.py::test_invalid_settings_rejected_at_startup PASSED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+
+    @pytest.mark.asyncio
+    async def test_plugin_is_installed():
+        datasette = make_datasette(require_tailscale=False)
+        response = await datasette.client.get("/-/plugins.json")
+        assert response.status_code == 200
+>       installed_plugins = {p["name"] for p in response.json()}
+                             ^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_auth_tailscale.py:28: TypeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-tailscale/datasette-1.0a36/runs/20260714T072157Z-gh-29314288170-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_auth_tailscale.py::test_plugin_is_installed - TypeError: string indices must be integers, not 'str'
+========================= 1 failed, 7 passed in 0.19s ==========================
