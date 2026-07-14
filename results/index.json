@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T23:09:25Z",
+  "generated_at": "2026-07-14T23:10:37Z",
   "results": [
     {
       "schema_version": 1,
@@ -1642,12 +1642,12 @@
         "installed_version": "1.0a37"
       },
       "run": {
-        "id": "20260714T164628Z-local-be7f02",
-        "started_at": "2026-07-14T16:46:28Z",
-        "completed_at": "2026-07-14T16:46:33Z",
-        "duration_seconds": 5.681,
+        "id": "20260714T231028Z-gh-29375290099-a1",
+        "started_at": "2026-07-14T23:10:28Z",
+        "completed_at": "2026-07-14T23:10:37Z",
+        "duration_seconds": 8.741,
         "python_version": "3.13",
-        "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 1,
         "command": [
           "uv",
@@ -1660,7 +1660,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-alerts @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-alerts-n14bgkgd/datasette_alerts-0.0.1a10.tar.gz",
+          "datasette-alerts @ file:///tmp/datasette-alerts-kfoup2yn/datasette_alerts-0.0.1a10.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -1684,7 +1684,7 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-alerts/datasette-1.0a37/runs/20260714T164628Z-local-be7f02/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-alerts/datasette-1.0a37/runs/20260714T231028Z-gh-29375290099-a1/.pytest-report.json"
         ]
       },
       "passed": false,
@@ -1725,7 +1725,7 @@
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-alerts/datasette-1.0a37/runs/20260714T164628Z-local-be7f02/pytest.txt"
+        "pytest_output": "results/datasette-alerts/datasette-1.0a37/runs/20260714T231028Z-gh-29375290099-a1/pytest.txt"
       }
     },
     {
