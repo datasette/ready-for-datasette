@@ -1,0 +1,733 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-app-support @ file:///tmp/datasette-app-support-0px9xkub/datasette-app-support-0.11.8.tar.gz
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-app-support @ file:///tmp/datasette-app-support-0px9xkub/datasette-app-support-0.11.8.tar.gz
+Installed 39 packages in 42ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpBmPzlC/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a36', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-app-support-0px9xkub/tagged-source
+plugins: datasette-1.0a36, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 17 items
+
+tests/test_app_support.py::test_static_asset_sticky_footer ERROR         [  5%]
+tests/test_auth_app_user.py::test_auth_app_user ERROR                    [ 11%]
+tests/test_dump_restore_temporary.py::test_dump_temporary_to_file ERROR  [ 17%]
+tests/test_dump_restore_temporary.py::test_restore_temporary_from_file ERROR [ 23%]
+tests/test_new_empty_database_file.py::test_new_empty_database_file ERROR [ 29%]
+tests/test_open_csv_file.py::test_open_csv_files ERROR                   [ 35%]
+tests/test_open_csv_file.py::test_open_csv_files_invalid_csv ERROR       [ 41%]
+tests/test_open_csv_file.py::test_import_csv_files ERROR                 [ 47%]
+tests/test_open_csv_file.py::test_import_csv_url[False-None-test] ERROR  [ 52%]
+tests/test_open_csv_file.py::test_import_csv_url[True-None-test-redirect] ERROR [ 58%]
+tests/test_open_csv_file.py::test_import_csv_url[False-creatures-creatures] ERROR [ 64%]
+tests/test_open_csv_file.py::test_import_csv_url[True-creatures-creatures] ERROR [ 70%]
+tests/test_open_database_file.py::test_open_database_files ERROR         [ 76%]
+tests/test_open_database_file.py::test_open_database_files_invalid[does-not-exist.txt] ERROR [ 82%]
+tests/test_open_database_file.py::test_open_database_files_invalid[invalid.txt] ERROR [ 88%]
+tests/test_plugin_directory.py::test_plugin_directory ERROR              [ 94%]
+tests/test_plugin_directory.py::test_plugin_directory_no_connection ERROR [100%]
+
+==================================== ERRORS ====================================
+______________ ERROR at setup of test_static_asset_sticky_footer _______________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_app_support.py, line 5
+  @pytest.mark.asyncio
+  async def test_static_asset_sticky_footer():
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      response = await datasette.client.get(
+          "/-/static-plugins/datasette_app_support/sticky-footer.css"
+      )
+      assert response.status_code == 200
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+_____________________ ERROR at setup of test_auth_app_user _____________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_auth_app_user.py, line 5
+  @pytest.mark.asyncio
+  async def test_auth_app_user():
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      response = await datasette.client.post(
+          "/-/auth-app-user",
+          json={"redirect": "/-/metadata"},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 302
+      assert response.headers["location"] == "/-/metadata"
+      assert response.headers["set-cookie"].startswith("ds_actor=")
+      assert datasette.unsign(response.cookies["ds_actor"], "actor") == {
+          "a": {"id": "root"}
+      }
+      # With a bad token
+      response2 = await datasette.client.post(
+          "/-/auth-app-user",
+          json={"redirect": "/-/metadata"},
+          headers={"Authorization": "Bearer bad-token"},
+      )
+      assert response2.status_code == 401
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+________________ ERROR at setup of test_dump_temporary_to_file _________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_dump_restore_temporary.py, line 6
+  @pytest.mark.asyncio
+  async def test_dump_temporary_to_file(tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      # Import CSV into temporary
+      path = str(tmpdir / "backup_demo.csv")
+      backup_path = str(tmpdir / "backup.db")
+      open(path, "w").write("id,name\n123,Hello")
+      response = await datasette.client.post(
+          "/-/open-csv-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      # Dump temporary to a file
+      response = await datasette.client.post(
+          "/-/dump-temporary-to-file",
+          json={"path": backup_path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {"ok": True, "path": backup_path}
+      # Check that the backup file has the right stuff
+      conn = sqlite3.connect(backup_path)
+      assert conn.execute("select * from backup_demo").fetchall() == [("123", "Hello")]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+______________ ERROR at setup of test_restore_temporary_from_file ______________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_dump_restore_temporary.py, line 33
+  @pytest.mark.asyncio
+  async def test_restore_temporary_from_file(tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      # Populate backup database
+      backup_path = str(tmpdir / "backup.db")
+      conn = sqlite3.connect(backup_path)
+      conn.execute("create table backup_restored (id integer primary key)")
+      conn.execute("insert into backup_restored (id) values (1)")
+      conn.execute("insert into backup_restored (id) values (2)")
+      conn.execute("insert into backup_restored (id) values (3)")
+      conn.close()
+      response = await datasette.client.get("/temporary/backup_restored")
+      assert response.status_code == 404
+      # Restore it
+      response = await datasette.client.post(
+          "/-/restore-temporary-from-file",
+          json={"path": backup_path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {
+          "ok": True,
+          "path": backup_path,
+          "restored_tables": ["backup_restored"],
+          "backup_tables": ["backup_restored"],
+      }
+      # Check the restore
+      response2 = await datasette.client.get("/temporary/backup_restored")
+      assert response2.status_code == 200
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+________________ ERROR at setup of test_new_empty_database_file ________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_new_empty_database_file.py, line 5
+  @pytest.mark.asyncio
+  async def test_new_empty_database_file(tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      path = str(tmpdir / "new.db")
+      response = await datasette.client.post(
+          "/-/new-empty-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {"ok": True, "path": "/new"}
+      response = await datasette.client.get("/new.json")
+      assert (
+          response.json().items()
+          >= {"database": "new", "path": "/new", "tables": []}.items()
+      )
+      # Attempting to create the same file again throws an error
+      response2 = await datasette.client.post(
+          "/-/new-empty-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response2.status_code == 400
+      assert response2.json() == {"error": "That file already exists", "ok": False}
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+____________________ ERROR at setup of test_open_csv_files _____________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 6
+  @pytest.mark.asyncio
+  async def test_open_csv_files(tmpdir):
+      datasette = Datasette([], memory=True, pdb=True)
+      await datasette.invoke_startup()
+      path = str(tmpdir / "demo.csv")
+      open(path, "w").write("id,name\n123,Hello")
+      response = await datasette.client.post(
+          "/-/open-csv-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {"ok": True, "path": "/temporary/demo", "rows": 1}
+      response2 = await datasette.client.get("/temporary/demo.json?_shape=array")
+      assert response2.json() == [{"rowid": 1, "id": "123", "name": "Hello"}]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+______________ ERROR at setup of test_open_csv_files_invalid_csv _______________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 23
+  @pytest.mark.asyncio
+  async def test_open_csv_files_invalid_csv(tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      path = str(tmpdir / "bad.csv")
+      open(path, "wb").write(
+          b"date,name,latitude,longitude\n" b"2020-03-04,S\xe3o Paulo,-23.561,-46.645\n"
+      )
+      response = await datasette.client.post(
+          "/-/open-csv-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 500
+      assert response.json() == {
+          "ok": False,
+          "error": "'utf-8' codec can't decode byte 0xe3 in position 41: invalid continuation byte",
+      }
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+___________________ ERROR at setup of test_import_csv_files ____________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 43
+  @pytest.mark.asyncio
+  async def test_import_csv_files(tmpdir):
+      db_path = str(tmpdir / "data.db")
+      sqlite3.connect(db_path).execute("vacuum")
+      datasette = Datasette([db_path], memory=True, pdb=True)
+      await datasette.invoke_startup()
+      path = str(tmpdir / "demo.csv")
+      open(path, "w").write("id,name\n123,Hello")
+      response = await datasette.client.post(
+          "/-/import-csv-file",
+          json={"path": path, "database": "data"},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {"ok": True, "path": "/data/demo", "rows": 1}
+      response2 = await datasette.client.get("/data/demo.json?_shape=array")
+      assert response2.json() == [{"rowid": 1, "id": "123", "name": "Hello"}]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+____________ ERROR at setup of test_import_csv_url[False-None-test] ____________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 62
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize(
+      "should_redirect,table_name,expected_table_name",
+      (
+          (False, None, "test"),
+          (True, None, "test-redirect"),
+          (False, "creatures", "creatures"),
+          (True, "creatures", "creatures"),
+      ),
+  )
+  async def test_import_csv_url(
+      httpx_mock, should_redirect, table_name, expected_table_name
+  ):
+      url = "http://example.com/test.csv"
+      if should_redirect:
+          httpx_mock.add_response(
+              url="http://example.com/test-redirect",
+              status_code=302,
+              headers={"Location": "/test.csv"},
+          )
+          url = "http://example.com/test-redirect"
+      httpx_mock.add_response(
+          url="http://example.com/test.csv", text="id,name\n1,Banyan\n2,Crystal"
+      )
+      datasette = Datasette([], memory=True)
+      # Reset temporary database, if populated
+      await datasette.invoke_startup()
+      await _reset_temporary(datasette)
+      response = await datasette.client.post(
+          "/-/open-csv-from-url",
+          json={"url": url, "table_name": table_name},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {
+          "ok": True,
+          "path": "/temporary/{}".format(expected_table_name),
+          "rows": 2,
+      }
+      response2 = await datasette.client.get(
+          "/temporary/{}.json?_shape=array".format(expected_table_name)
+      )
+      assert response2.json() == [
+          {"rowid": 1, "id": "1", "name": "Banyan"},
+          {"rowid": 2, "id": "2", "name": "Crystal"},
+      ]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+________ ERROR at setup of test_import_csv_url[True-None-test-redirect] ________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 62
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize(
+      "should_redirect,table_name,expected_table_name",
+      (
+          (False, None, "test"),
+          (True, None, "test-redirect"),
+          (False, "creatures", "creatures"),
+          (True, "creatures", "creatures"),
+      ),
+  )
+  async def test_import_csv_url(
+      httpx_mock, should_redirect, table_name, expected_table_name
+  ):
+      url = "http://example.com/test.csv"
+      if should_redirect:
+          httpx_mock.add_response(
+              url="http://example.com/test-redirect",
+              status_code=302,
+              headers={"Location": "/test.csv"},
+          )
+          url = "http://example.com/test-redirect"
+      httpx_mock.add_response(
+          url="http://example.com/test.csv", text="id,name\n1,Banyan\n2,Crystal"
+      )
+      datasette = Datasette([], memory=True)
+      # Reset temporary database, if populated
+      await datasette.invoke_startup()
+      await _reset_temporary(datasette)
+      response = await datasette.client.post(
+          "/-/open-csv-from-url",
+          json={"url": url, "table_name": table_name},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {
+          "ok": True,
+          "path": "/temporary/{}".format(expected_table_name),
+          "rows": 2,
+      }
+      response2 = await datasette.client.get(
+          "/temporary/{}.json?_shape=array".format(expected_table_name)
+      )
+      assert response2.json() == [
+          {"rowid": 1, "id": "1", "name": "Banyan"},
+          {"rowid": 2, "id": "2", "name": "Crystal"},
+      ]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+_______ ERROR at setup of test_import_csv_url[False-creatures-creatures] _______
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 62
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize(
+      "should_redirect,table_name,expected_table_name",
+      (
+          (False, None, "test"),
+          (True, None, "test-redirect"),
+          (False, "creatures", "creatures"),
+          (True, "creatures", "creatures"),
+      ),
+  )
+  async def test_import_csv_url(
+      httpx_mock, should_redirect, table_name, expected_table_name
+  ):
+      url = "http://example.com/test.csv"
+      if should_redirect:
+          httpx_mock.add_response(
+              url="http://example.com/test-redirect",
+              status_code=302,
+              headers={"Location": "/test.csv"},
+          )
+          url = "http://example.com/test-redirect"
+      httpx_mock.add_response(
+          url="http://example.com/test.csv", text="id,name\n1,Banyan\n2,Crystal"
+      )
+      datasette = Datasette([], memory=True)
+      # Reset temporary database, if populated
+      await datasette.invoke_startup()
+      await _reset_temporary(datasette)
+      response = await datasette.client.post(
+          "/-/open-csv-from-url",
+          json={"url": url, "table_name": table_name},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {
+          "ok": True,
+          "path": "/temporary/{}".format(expected_table_name),
+          "rows": 2,
+      }
+      response2 = await datasette.client.get(
+          "/temporary/{}.json?_shape=array".format(expected_table_name)
+      )
+      assert response2.json() == [
+          {"rowid": 1, "id": "1", "name": "Banyan"},
+          {"rowid": 2, "id": "2", "name": "Crystal"},
+      ]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+_______ ERROR at setup of test_import_csv_url[True-creatures-creatures] ________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py, line 62
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize(
+      "should_redirect,table_name,expected_table_name",
+      (
+          (False, None, "test"),
+          (True, None, "test-redirect"),
+          (False, "creatures", "creatures"),
+          (True, "creatures", "creatures"),
+      ),
+  )
+  async def test_import_csv_url(
+      httpx_mock, should_redirect, table_name, expected_table_name
+  ):
+      url = "http://example.com/test.csv"
+      if should_redirect:
+          httpx_mock.add_response(
+              url="http://example.com/test-redirect",
+              status_code=302,
+              headers={"Location": "/test.csv"},
+          )
+          url = "http://example.com/test-redirect"
+      httpx_mock.add_response(
+          url="http://example.com/test.csv", text="id,name\n1,Banyan\n2,Crystal"
+      )
+      datasette = Datasette([], memory=True)
+      # Reset temporary database, if populated
+      await datasette.invoke_startup()
+      await _reset_temporary(datasette)
+      response = await datasette.client.post(
+          "/-/open-csv-from-url",
+          json={"url": url, "table_name": table_name},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {
+          "ok": True,
+          "path": "/temporary/{}".format(expected_table_name),
+          "rows": 2,
+      }
+      response2 = await datasette.client.get(
+          "/temporary/{}.json?_shape=array".format(expected_table_name)
+      )
+      assert response2.json() == [
+          {"rowid": 1, "id": "1", "name": "Banyan"},
+          {"rowid": 2, "id": "2", "name": "Crystal"},
+      ]
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+__________________ ERROR at setup of test_open_database_files __________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_database_file.py, line 6
+  @pytest.mark.asyncio
+  async def test_open_database_files(tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      path = str(tmpdir / "test.db")
+      db = sqlite3.connect(path)
+      db.execute("create table foo (id integer primary key)")
+      response = await datasette.client.post(
+          "/-/open-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 200
+      assert response.json() == {"ok": True, "path": "/test"}
+      response = await datasette.client.get("/test.json")
+      assert (
+          response.json()["tables"][0].items()
+          >= {"name": "foo", "columns": ["id"], "primary_keys": ["id"]}.items()
+      )
+      # Opening the same file again won't work
+      response2 = await datasette.client.post(
+          "/-/open-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response2.status_code == 400
+      assert response2.json() == {"error": "That file is already open", "ok": False}
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+____ ERROR at setup of test_open_database_files_invalid[does-not-exist.txt] ____
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_database_file.py, line 35
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize("file", ("does-not-exist.txt", "invalid.txt"))
+  async def test_open_database_files_invalid(file, tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      if file == "does-not-exist.txt":
+          path = str(tmpdir / "does-not-exists.txt")
+      elif file == "invalid.txt":
+          path = str(tmpdir / "invalid.txt")
+          open(path, "w").write("invalid")
+      else:
+          assert False
+      response = await datasette.client.post(
+          "/-/open-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 400
+      assert response.json()["ok"] is False
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+_______ ERROR at setup of test_open_database_files_invalid[invalid.txt] ________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_database_file.py, line 35
+  @pytest.mark.asyncio
+  @pytest.mark.parametrize("file", ("does-not-exist.txt", "invalid.txt"))
+  async def test_open_database_files_invalid(file, tmpdir):
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      if file == "does-not-exist.txt":
+          path = str(tmpdir / "does-not-exists.txt")
+      elif file == "invalid.txt":
+          path = str(tmpdir / "invalid.txt")
+          open(path, "w").write("invalid")
+      else:
+          assert False
+      response = await datasette.client.post(
+          "/-/open-database-file",
+          json={"path": path},
+          headers={"Authorization": "Bearer fake-token"},
+      )
+      assert response.status_code == 400
+      assert response.json()["ok"] is False
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+___________________ ERROR at setup of test_plugin_directory ____________________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_plugin_directory.py, line 6
+  @pytest.mark.asyncio
+  async def test_plugin_directory():
+      datasette = Datasette([], memory=True)
+      await datasette.invoke_startup()
+      plugins = (
+          await datasette.get_database("plugin_directory").execute(
+              "select * from plugins"
+          )
+      ).rows
+      assert len(plugins) == 1
+      assert dict(plugins[0]) == {
+          "name": "datasette-write",
+          "full_name": "simonw/datasette-write",
+          "owner": "simonw",
+          "description": "Datasette plugin providing a UI for executing SQL writes against the database",
+          "stargazers_count": 3,
+          "tag_name": "0.2",
+          "latest_release_at": "2021-09-11T05:59:43Z",
+          "created_at": "2020-06-29T02:27:31Z",
+          "openGraphImageUrl": "https://avatars.githubusercontent.com/u/9599?s=400&v=4",
+          "usesCustomOpenGraphImage": 0,
+          "downloads_this_week": 163,
+          "is_plugin": 1,
+          "is_tool": 0,
+          "installed": "not installed",
+          "installed_version": None,
+          "upgrade": None,
+          "is_default": 0,
+      }
+      response = await datasette.client.get("/plugin_directory/plugins")
+      assert "<h2>datasette-write</h2>" in response.text
+      assert (
+          "<p><strong>Latest release:</strong> 0.2 on 11th September 2021</p>"
+          in response.text
+      )
+      assert '<label for="_search">Search:</label>' in response.text
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+____________ ERROR at setup of test_plugin_directory_no_connection _____________
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_plugin_directory.py, line 44
+  @pytest.mark.asyncio
+  async def test_plugin_directory_no_connection(httpx_mock):
+      httpx_mock.reset(False)
+
+      def raise_timeout(request):
+file /tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py, line 12
+  @pytest.fixture(autouse=True)
+  def mock_datasette_plugin_api(httpx_mock):
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, mock_datasette_plugin_api, mock_settings_env_vars, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-app-support-0px9xkub/tagged-source/tests/conftest.py:12
+=============================== warnings summary ===============================
+tests/test_app_support.py:5
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_app_support.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_auth_app_user.py:5
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_auth_app_user.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_dump_restore_temporary.py:6
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_dump_restore_temporary.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_dump_restore_temporary.py:33
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_dump_restore_temporary.py:33: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_new_empty_database_file.py:5
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_new_empty_database_file.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_csv_file.py:6
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_csv_file.py:23
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_csv_file.py:43
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py:43: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_csv_file.py:62
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_csv_file.py:62: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_database_file.py:6
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_database_file.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_open_database_file.py:35
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_open_database_file.py:35: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_plugin_directory.py:6
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_plugin_directory.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_plugin_directory.py:44
+  /tmp/datasette-app-support-0px9xkub/tagged-source/tests/test_plugin_directory.py:44: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-app-support/datasette-1.0a36/runs/20260714T051050Z-gh-29307830142-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_app_support.py::test_static_asset_sticky_footer
+ERROR tests/test_auth_app_user.py::test_auth_app_user
+ERROR tests/test_dump_restore_temporary.py::test_dump_temporary_to_file
+ERROR tests/test_dump_restore_temporary.py::test_restore_temporary_from_file
+ERROR tests/test_new_empty_database_file.py::test_new_empty_database_file
+ERROR tests/test_open_csv_file.py::test_open_csv_files
+ERROR tests/test_open_csv_file.py::test_open_csv_files_invalid_csv
+ERROR tests/test_open_csv_file.py::test_import_csv_files
+ERROR tests/test_open_csv_file.py::test_import_csv_url[False-None-test]
+ERROR tests/test_open_csv_file.py::test_import_csv_url[True-None-test-redirect]
+ERROR tests/test_open_csv_file.py::test_import_csv_url[False-creatures-creatures]
+ERROR tests/test_open_csv_file.py::test_import_csv_url[True-creatures-creatures]
+ERROR tests/test_open_database_file.py::test_open_database_files
+ERROR tests/test_open_database_file.py::test_open_database_files_invalid[does-not-exist.txt]
+ERROR tests/test_open_database_file.py::test_open_database_files_invalid[invalid.txt]
+ERROR tests/test_plugin_directory.py::test_plugin_directory
+ERROR tests/test_plugin_directory.py::test_plugin_directory_no_connection
+======================= 13 warnings, 17 errors in 0.06s ========================
