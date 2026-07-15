@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T16:21:54Z",
+  "generated_at": "2026-07-15T17:42:22Z",
   "results": [
     {
       "schema_version": 1,
@@ -11190,6 +11190,194 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-graphql/datasette-1.0a37/runs/20260715T162147Z-gh-29432058538-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-gunicorn",
+        "version": "0.1.1",
+        "repository": "simonw/datasette-gunicorn",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/f7/ea/a930415f1c3b4272a8ace361acabb467288d0207b42bd5caf6c5da2fa8d7/datasette-gunicorn-0.1.1.tar.gz",
+          "sha256": "3dabced1e00ed60e0cb85133f04836a355e9ce0ced9fc174a229b5deb27de27e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-gunicorn",
+          "ref": "0.1.1",
+          "git_sha": "0276401151b575850007c2e97789eddf1a45596d"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T174215Z-gh-29437565759-a1",
+        "started_at": "2026-07-15T17:42:15Z",
+        "completed_at": "2026-07-15T17:42:22Z",
+        "duration_seconds": 7.456,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-gunicorn @ file:///tmp/datasette-gunicorn-4wfmd4jj/datasette-gunicorn-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-gunicorn/datasette-1.0a37/runs/20260715T174215Z-gh-29437565759-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 6,
+        "passed": 6,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-gunicorn/datasette-1.0a37/runs/20260715T174215Z-gh-29437565759-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-gzip",
+        "version": "0.3",
+        "repository": "simonw/datasette-gzip",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/bb/a0/fec574e7b4bcb175315700789ea8952e99b2188426ec0b32888da96e338b/datasette_gzip-0.3.tar.gz",
+          "sha256": "9458742239f09f7f3cfe6dde90f78ec4612be978c2277b37577166c9d68c6fe6"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-gzip",
+          "ref": "0.3",
+          "git_sha": "7a7e9e434c192e54ca990785ab6bd42f72da90ed"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T174215Z-gh-29437565759-a1",
+        "started_at": "2026-07-15T17:42:15Z",
+        "completed_at": "2026-07-15T17:42:20Z",
+        "duration_seconds": 4.166,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-gzip @ file:///tmp/datasette-gzip-19s44md9/datasette_gzip-0.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-gzip/datasette-1.0a37/runs/20260715T174215Z-gh-29437565759-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 4,
+        "passed": 0,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_gzip.py::test_accept_gzip_makes_a_difference",
+        "tests/test_gzip.py::test_compatible_with_plugins_that_modify_content",
+        "tests/test_gzip.py::test_trylast_true_is_what_makes_this_work[GzipTryFirst-False]",
+        "tests/test_gzip.py::test_trylast_true_is_what_makes_this_work[datasette_gzip-True]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-gzip/datasette-1.0a37/runs/20260715T174215Z-gh-29437565759-a1/pytest.txt"
       }
     },
     {
