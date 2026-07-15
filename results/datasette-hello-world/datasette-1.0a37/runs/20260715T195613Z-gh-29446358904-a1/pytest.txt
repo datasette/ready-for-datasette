@@ -1,0 +1,24 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-hello-world @ file:///tmp/datasette-hello-world-v_jumj0a/datasette-hello-world-0.1.1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-hello-world @ file:///tmp/datasette-hello-world-v_jumj0a/datasette-hello-world-0.1.1.tar.gz
+Installed 39 packages in 16ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp1ZRAbY/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-hello-world-v_jumj0a/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 1 item
+
+tests/test_hello_world.py::test_verify PASSED                            [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-hello-world/datasette-1.0a37/runs/20260715T195613Z-gh-29446358904-a1/.pytest-report.json
+============================== 1 passed in 0.08s ===============================
