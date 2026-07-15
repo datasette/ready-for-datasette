@@ -147,9 +147,9 @@
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "653409121137830a3ed112af1d75c2aa6a83c913295363fdaafd21445684dac5",
-    "metadata_etag": "\"04862ce1801588aab423c65834e908348577694f17a7dbd81b869e591bb1fa7a\"",
-    "latest_version": "0.1a3"
+    "metadata_sha256": "10fad7f2e4f6ed1c1ff0c999409b9e7ee727d22993047a2aa0f604fdcfe3da13",
+    "metadata_etag": "\"4fbab970ef5743127937e4faca90e4ad7117f1dc8323e239e765bdcf90e2845d\"",
+    "latest_version": "0.1a4"
   },
   {
     "name": "datasette-atom",
@@ -250,9 +250,9 @@
   {
     "name": "datasette-block-robots",
     "github_repo": "simonw/datasette-block-robots",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "27d67fae29a25571ea5e528b68164c0b714ea418367f41b4c4c1e5636e9161d5",
-    "metadata_etag": "\"0921761821b1dfc5ac04d8c609eab0940cfa03ebe919ca04d03da28eab226479\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "b009a5aa40bc4fed8d4b788c9db99ff9f971a44630056a42c61d377c257fb948",
+    "metadata_etag": "\"a8e15510fefecd4410d1657bf488fc73c55b83960da94d5b1ba3c3762af63145\"",
     "latest_version": "1.1.1"
   },
   {
@@ -547,8 +547,8 @@
     "name": "datasette-enrichments",
     "github_repo": "datasette/datasette-enrichments",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "30482bd7ca3146ef492fc5b2f59c192cd37164b62c9cef32a24c33fce91955ac",
-    "metadata_etag": "\"720c797066beeed02f0a7b476aa7af581d71689cee819670e23fee5e279fa530\"",
+    "metadata_sha256": "4d9481a3e395c3012ea5d3fabc1de5a198201ad6e86afc59b65c14b1a92342e7",
+    "metadata_etag": "\"82318c452e8f235914340d59ba188026e422c31161343d401fe017aed73b74a8\"",
     "latest_version": "0.5.1"
   },
   {
