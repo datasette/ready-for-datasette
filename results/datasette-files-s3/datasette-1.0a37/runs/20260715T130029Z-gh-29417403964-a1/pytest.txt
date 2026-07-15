@@ -1,0 +1,58 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-files-s3 @ file:///tmp/datasette-files-s3-xog13fsm/datasette_files_s3-0.1a2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pillow (6.6MiB)
+Downloading botocore (13.4MiB)
+Downloading cryptography (4.5MiB)
+Downloading pip (1.7MiB)
+Downloading aiohttp (1.7MiB)
+Downloading moto (6.4MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded aiohttp
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pillow
+ Downloaded cryptography
+ Downloaded pip
+ Downloaded moto
+ Downloaded botocore
+      Built datasette-files-s3 @ file:///tmp/datasette-files-s3-xog13fsm/datasette_files_s3-0.1a2.tar.gz
+Installed 72 packages in 103ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpnfJM7k/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-files-s3-xog13fsm/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 23 items
+
+tests/test_files_s3.py::test_plugin_is_installed PASSED                  [  4%]
+tests/test_files_s3.py::test_configure PASSED                            [  8%]
+tests/test_files_s3.py::test_configure_defaults PASSED                   [ 13%]
+tests/test_files_s3.py::test_configure_with_credentials_url PASSED       [ 17%]
+tests/test_files_s3.py::test_credentials_url_refreshes_after_expiration PASSED [ 21%]
+tests/test_files_s3.py::test_receive_upload_and_read PASSED              [ 26%]
+tests/test_files_s3.py::test_get_file_metadata PASSED                    [ 30%]
+tests/test_files_s3.py::test_get_file_metadata_missing PASSED            [ 34%]
+tests/test_files_s3.py::test_read_file_missing PASSED                    [ 39%]
+tests/test_files_s3.py::test_stream_file PASSED                          [ 43%]
+tests/test_files_s3.py::test_stream_file_missing PASSED                  [ 47%]
+tests/test_files_s3.py::test_delete_file PASSED                          [ 52%]
+tests/test_files_s3.py::test_list_files PASSED                           [ 56%]
+tests/test_files_s3.py::test_list_files_with_limit PASSED                [ 60%]
+tests/test_files_s3.py::test_list_files_with_prefix_filter PASSED        [ 65%]
+tests/test_files_s3.py::test_prefix_is_prepended PASSED                  [ 69%]
+tests/test_files_s3.py::test_prefix_trailing_slash_normalized PASSED     [ 73%]
+tests/test_files_s3.py::test_download_url PASSED                         [ 78%]
+tests/test_files_s3.py::test_capabilities PASSED                         [ 82%]
+tests/test_files_s3.py::test_storage_type PASSED                         [ 86%]
+tests/test_files_s3.py::test_configure_credentials_url_404_does_not_block_startup PASSED [ 91%]
+tests/test_files_s3.py::test_end_to_end_with_datasette PASSED            [ 95%]
+tests/test_files_s3.py::test_upload_via_api_endpoints PASSED             [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-files-s3/datasette-1.0a37/runs/20260715T130029Z-gh-29417403964-a1/.pytest-report.json
+============================== 23 passed in 3.50s ==============================
