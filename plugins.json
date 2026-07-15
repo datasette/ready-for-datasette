@@ -221,7 +221,7 @@
     "metadata_file": "setup.py",
     "metadata_sha256": "ef423a46dc25c89dda28d146f3c99ad5203e68e4fa485cbd05cb60489165739e",
     "metadata_etag": "\"9f8640c9b00ca9cfc391e489b3c49f8a50a928212cf4af8e16e11414a3cc3a60\"",
-    "latest_version": "0.1"
+    "latest_version": "0.1.1"
   },
   {
     "name": "datasette-basemap",

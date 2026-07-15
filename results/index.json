@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T19:56:20Z",
+  "generated_at": "2026-07-15T20:18:30Z",
   "results": [
     {
       "schema_version": 1,
@@ -4308,18 +4308,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-backup",
-        "version": "0.1",
+        "version": "0.1.1",
         "repository": "simonw/datasette-backup",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/11/26/c2d817284cad97f600e9bff12abafb07dc0c35e02724f9a92eb496b3bf58/datasette-backup-0.1.tar.gz",
-          "sha256": "e9dde717e66b061769fb325475be30352d405c53cdcc44114c2664be876907bf"
+          "url": "https://files.pythonhosted.org/packages/76/ec/d18c6c70cb2e5a978b7207ef10305e7eeeae9c2ed8074349b841c3954ca1/datasette_backup-0.1.1.tar.gz",
+          "sha256": "4066a8536c8892573e409ef053224ec44fda64807f6ed99ca06843e44bfe6954"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "simonw/datasette-backup",
-          "ref": "0.1",
-          "git_sha": "b69eb953c480a0de189cb532aaf699d7cb831f47"
+          "ref": "0.1.1",
+          "git_sha": "3fca4df56f63dd6259b51600daf478f8e4b8fe9c"
         }
       },
       "datasette": {
@@ -4327,12 +4327,12 @@
         "installed_version": null
       },
       "run": {
-        "id": "20260714T164645Z-local-8a73d3",
-        "started_at": "2026-07-14T16:46:45Z",
-        "completed_at": "2026-07-14T16:46:49Z",
-        "duration_seconds": 3.544,
+        "id": "20260715T201826Z-gh-29447764492-a1",
+        "started_at": "2026-07-15T20:18:26Z",
+        "completed_at": "2026-07-15T20:18:30Z",
+        "duration_seconds": 4.83,
         "python_version": "3.13",
-        "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 3,
         "command": [
           "uv",
@@ -4345,17 +4345,23 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-backup @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-backup-pezxb_30/datasette-backup-0.1.tar.gz",
+          "datasette-backup @ file:///tmp/datasette-backup-o4iiapir/datasette_backup-0.1.1.tar.gz",
           "--with",
           "pytest",
           "--with",
           "pytest-json-report",
           "--with",
           "datasette==1.0a37",
+          "--with",
+          "httpx",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "sqlite-utils",
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-backup/datasette-1.0a37/runs/20260714T164645Z-local-8a73d3/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-backup/datasette-1.0a37/runs/20260715T201826Z-gh-29447764492-a1/.pytest-report.json"
         ]
       },
       "passed": false,
@@ -4375,21 +4381,21 @@
       "error_tests": [],
       "test_environment": {
         "package_extra": null,
-        "dependency_source": null,
-        "dependencies": []
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "httpx",
+          "pytest",
+          "pytest-asyncio",
+          "sqlite-utils"
+        ]
       },
       "test_inventory": {
-        "pypi_sdist": 0,
+        "pypi_sdist": 1,
         "release_tag": 1
       },
-      "warnings": [
-        {
-          "code": "tests_missing_from_sdist",
-          "message": "The exact release tag contains tests, but the PyPI sdist does not."
-        }
-      ],
+      "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-backup/datasette-1.0a37/runs/20260714T164645Z-local-8a73d3/pytest.txt"
+        "pytest_output": "results/datasette-backup/datasette-1.0a37/runs/20260715T201826Z-gh-29447764492-a1/pytest.txt"
       },
       "detail": "uv or pytest exited before producing a JSON test report"
     },
