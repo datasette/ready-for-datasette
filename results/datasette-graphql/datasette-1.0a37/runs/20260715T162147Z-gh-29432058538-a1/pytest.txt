@@ -1,0 +1,1073 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-graphql @ file:///tmp/datasette-graphql-chidf89e/datasette-graphql-2.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-graphql @ file:///tmp/datasette-graphql-chidf89e/datasette-graphql-2.2.tar.gz
+Installed 42 packages in 18ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp8JF0qX/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-graphql-chidf89e/tagged-source
+configfile: pytest.ini
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 73 items
+
+tests/test_docs.py::test_examples_link_to_live_demo[path0] PASSED        [  1%]
+tests/test_docs.py::test_examples_link_to_live_demo[path1] PASSED        [  2%]
+tests/test_docs.py::test_examples_link_to_live_demo[path2] PASSED        [  4%]
+tests/test_docs.py::test_examples_link_to_live_demo[path3] PASSED        [  5%]
+tests/test_docs.py::test_examples_link_to_live_demo[path4] PASSED        [  6%]
+tests/test_docs.py::test_examples_link_to_live_demo[path5] PASSED        [  8%]
+tests/test_docs.py::test_examples_link_to_live_demo[path6] PASSED        [  9%]
+tests/test_docs.py::test_examples_link_to_live_demo[path7] PASSED        [ 10%]
+tests/test_docs.py::test_examples_link_to_live_demo[path8] PASSED        [ 12%]
+tests/test_docs.py::test_examples_link_to_live_demo[path9] PASSED        [ 13%]
+tests/test_docs.py::test_examples_link_to_live_demo[path10] PASSED       [ 15%]
+tests/test_docs.py::test_examples_link_to_live_demo[path11] PASSED       [ 16%]
+tests/test_docs.py::test_examples_link_to_live_demo[path12] PASSED       [ 17%]
+tests/test_docs.py::test_examples_link_to_live_demo[path13] PASSED       [ 19%]
+tests/test_docs.py::test_examples_link_to_live_demo[path14] PASSED       [ 20%]
+tests/test_docs.py::test_examples_link_to_live_demo[path15] PASSED       [ 21%]
+tests/test_graphql.py::test_plugin_is_installed FAILED                   [ 23%]
+tests/test_graphql.py::test_menu FAILED                                  [ 24%]
+tests/test_graphql.py::test_graphiql FAILED                              [ 26%]
+tests/test_graphql.py::test_query_fields FAILED                          [ 27%]
+tests/test_graphql.py::test_graphql_errors[{\n                users(search:"cleopaws") {\n                    nodes {\n                        name\n                    }\n                }\n            }-expected_errors0] FAILED [ 28%]
+tests/test_graphql.py::test_graphql_examples[path0] FAILED               [ 30%]
+tests/test_graphql.py::test_graphql_examples[path1] FAILED               [ 31%]
+tests/test_graphql.py::test_graphql_examples[path2] FAILED               [ 32%]
+tests/test_graphql.py::test_graphql_examples[path3] FAILED               [ 34%]
+tests/test_graphql.py::test_graphql_examples[path4] FAILED               [ 35%]
+tests/test_graphql.py::test_graphql_examples[path5] FAILED               [ 36%]
+tests/test_graphql.py::test_graphql_examples[path6] FAILED               [ 38%]
+tests/test_graphql.py::test_graphql_examples[path7] FAILED               [ 39%]
+tests/test_graphql.py::test_graphql_examples[path8] FAILED               [ 41%]
+tests/test_graphql.py::test_graphql_examples[path9] FAILED               [ 42%]
+tests/test_graphql.py::test_graphql_examples[path10] FAILED              [ 43%]
+tests/test_graphql.py::test_graphql_examples[path11] FAILED              [ 45%]
+tests/test_graphql.py::test_graphql_examples[path12] FAILED              [ 46%]
+tests/test_graphql.py::test_graphql_examples[path13] FAILED              [ 47%]
+tests/test_graphql.py::test_graphql_examples[path14] FAILED              [ 49%]
+tests/test_graphql.py::test_graphql_error FAILED                         [ 50%]
+tests/test_graphql.py::test_graphql_auto_camelcase[True-expected0] FAILED [ 52%]
+tests/test_graphql.py::test_graphql_auto_camelcase[False-expected1] FAILED [ 53%]
+tests/test_graphql.py::test_graphql_pagination[table_with_pk] FAILED     [ 54%]
+tests/test_graphql.py::test_graphql_pagination[table_with_rowid] FAILED  [ 56%]
+tests/test_graphql.py::test_graphql_pagination[table_with_compound_pk] FAILED [ 57%]
+tests/test_graphql.py::test_graphql_multiple_databases FAILED            [ 58%]
+tests/test_graphql.py::test_graphql_json_columns FAILED                  [ 60%]
+tests/test_graphql.py::test_graphql_output_schema FAILED                 [ 61%]
+tests/test_graphql.py::test_cors_headers[True] FAILED                    [ 63%]
+tests/test_graphql.py::test_cors_headers[False] FAILED                   [ 64%]
+tests/test_graphql.py::test_operation_name[Q1-200-expected_data0] FAILED [ 65%]
+tests/test_graphql.py::test_operation_name[Q2-200-expected_data1] FAILED [ 67%]
+tests/test_graphql.py::test_operation_name[-500-expected_data2] FAILED   [ 68%]
+tests/test_graphql.py::test_graphql_http_get[\n            {\n                users_row {\n                    name\n                }\n            }\n            -extra_query_string0-expected_data0] FAILED [ 69%]
+tests/test_graphql.py::test_graphql_http_get[\n            query Q1 {\n                users_row {\n                    name\n                }\n            }\n            query Q2 {\n                users_row {\n                    id\n                }\n            }\n            -extra_query_string1-expected_data1] FAILED [ 71%]
+tests/test_graphql.py::test_graphql_http_get[\n            query specific_repo($name: String) {\n                repos(filter: {name: {eq: $name}}) {\n                    nodes {\n                        name\n                    }\n                }\n            }\n            -extra_query_string2-expected_data2] FAILED [ 72%]
+tests/test_graphql.py::test_configured_fts_search_for_view FAILED        [ 73%]
+tests/test_graphql.py::test_time_limit_ms FAILED                         [ 75%]
+tests/test_graphql.py::test_num_queries_limit FAILED                     [ 76%]
+tests/test_graphql.py::test_time_limits_0 FAILED                         [ 78%]
+tests/test_graphql.py::test_permissions[metadata0-expected0] FAILED      [ 79%]
+tests/test_graphql.py::test_permissions[metadata1-expected1] FAILED      [ 80%]
+tests/test_graphql.py::test_permissions[metadata2-expected2] FAILED      [ 82%]
+tests/test_graphql.py::test_no_error_on_empty_schema FAILED              [ 83%]
+tests/test_graphql.py::test_table_action[repos-repos-id full_name name tags owner { id name } license { _key name }] FAILED [ 84%]
+tests/test_graphql.py::test_table_action[_csv_progress_-t_csv_progress_-id filename bytes_todo bytes_done rows_done started completed error] FAILED [ 86%]
+tests/test_graphql.py::test_graphql_reserved_column_names FAILED         [ 87%]
+tests/test_graphql.py::test_graphql_dangerous_column_names FAILED        [ 89%]
+tests/test_graphql.py::test_bad_foreign_keys FAILED                      [ 90%]
+tests/test_graphql.py::test_alternative_graphql FAILED                   [ 91%]
+tests/test_plugin_hook.py::test_graphql_extra_fields_hook FAILED         [ 93%]
+tests/test_schema_caching.py::test_schema_caching FAILED                 [ 94%]
+tests/test_schema_for_database.py::test_schema FAILED                    [ 95%]
+tests/test_template_tag.py::test_schema_caching[\n{% set users = graphql("""\n{\n    users {\n        nodes {\n            name\n            points\n            score\n        }\n    }\n}\n""")["users"] %}\n{% for user in users.nodes %}\n    <p>{{ user.name }} - points: {{ user.points }}, score = {{ user.score }}</p>\n{% endfor %}\n-<p>cleopaws - points: 5, score = 51.5</p>\n\n    <p>simonw - points: 3, score = 35.2</p>] FAILED [ 97%]
+tests/test_template_tag.py::test_schema_caching[\n{% set user = graphql("""\nquery ($id: Int) {\n    users_row(id: $id) {\n        id\n        name\n    }\n}\n""", variables={"id": 2})["users_row"] %}\n<p>{{ user.id }}: {{ user.name }}</p>\n-<p>2: simonw</p>] FAILED [ 98%]
+tests/test_utils.py::test_namer PASSED                                   [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________________ test_menu ___________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_graphiql _________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_query_fields _______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_graphql_errors[{\n                users(search:"cleopaws") {\n                    nodes {\n                        name\n                    }\n                }\n            }-expected_errors0] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path0] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path1] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path2] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path3] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path4] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path5] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path6] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path7] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path8] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_graphql_examples[path9] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_examples[path10] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_examples[path11] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_examples[path12] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_examples[path13] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_examples[path14] _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_graphql_error ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_graphql_auto_camelcase[True-expected0] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_graphql_auto_camelcase[False-expected1] _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_graphql_pagination[table_with_pk] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_graphql_pagination[table_with_rowid] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_graphql_pagination[table_with_compound_pk] ________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________ test_graphql_multiple_databases ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________ test_graphql_json_columns ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________ test_graphql_output_schema __________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_cors_headers[True] ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_cors_headers[False] ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_operation_name[Q1-200-expected_data0] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_operation_name[Q2-200-expected_data1] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_operation_name[-500-expected_data2] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_graphql_http_get[\n            {\n                users_row {\n                    name\n                }\n            }\n            -extra_query_string0-expected_data0] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_graphql_http_get[\n            query Q1 {\n                users_row {\n                    name\n                }\n            }\n            query Q2 {\n                users_row {\n                    id\n                }\n            }\n            -extra_query_string1-expected_data1] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_graphql_http_get[\n            query specific_repo($name: String) {\n                repos(filter: {name: {eq: $name}}) {\n                    nodes {\n                        name\n                    }\n                }\n            }\n            -extra_query_string2-expected_data2] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_configured_fts_search_for_view ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_time_limit_ms ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_num_queries_limit ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_time_limits_0 ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_permissions[metadata0-expected0] _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_permissions[metadata1-expected1] _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_permissions[metadata2-expected2] _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_no_error_on_empty_schema _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_table_action[repos-repos-id full_name name tags owner { id name } license { _key name }] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_table_action[_csv_progress_-t_csv_progress_-id filename bytes_todo bytes_done rows_done started completed error] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________ test_graphql_reserved_column_names ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_graphql_dangerous_column_names ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_bad_foreign_keys _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_alternative_graphql ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_graphql_extra_fields_hook ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_schema_caching ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________________ test_schema __________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_schema_caching[\n{% set users = graphql("""\n{\n    users {\n        nodes {\n            name\n            points\n            score\n        }\n    }\n}\n""")["users"] %}\n{% for user in users.nodes %}\n    <p>{{ user.name }} - points: {{ user.points }}, score = {{ user.score }}</p>\n{% endfor %}\n-<p>cleopaws - points: 5, score = 51.5</p>\n\n    <p>simonw - points: 3, score = 35.2</p>] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_schema_caching[\n{% set user = graphql("""\nquery ($id: Int) {\n    users_row(id: $id) {\n        id\n        name\n    }\n}\n""", variables={"id": 2})["users_row"] %}\n<p>{{ user.id }}: {{ user.name }}</p>\n-<p>2: simonw</p>] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/e4cJJFNf4alIfL-Z/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/e4cJJFNf4alIfL-Z/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_graphql.py:21
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:21: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:30
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:30: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:38
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:38: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:66
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:66: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:118
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:118: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:146
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:146: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:172
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:172: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:199
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:199: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:231
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:231: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:283
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:283: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:302
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:302: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:347
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:347: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:371
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:371: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:391
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:391: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:425
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:425: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:482
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:482: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:517
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:517: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:544
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:544: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:578
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:578: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:630
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:630: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:702
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:702: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:710
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:710: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:772
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:772: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:800
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:800: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:825
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:825: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_graphql.py:844
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_graphql.py:844: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/e4cJJFNf4alIfL-Z/lib/python3.13/site-packages/_pytest/python.py:124
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/e4cJJFNf4alIfL-Z/lib/python3.13/site-packages/_pytest/python.py:124: PytestRemovedIn10Warning: Passing a non-Collection iterable to parametrize is deprecated.
+  Test: tests/test_graphql.py::test_graphql_examples, argvalues type: map
+  Please convert to a list or tuple.
+  See https://docs.pytest.org/en/stable/deprecations.html#parametrize-iterators
+    metafunc.parametrize(*marker.args, **marker.kwargs, _param_mark=marker)
+
+tests/test_plugin_hook.py:8
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_plugin_hook.py:8: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_schema_caching.py:14
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_schema_caching.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_schema_for_database.py:7
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_schema_for_database.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_template_tag.py:35
+  /tmp/datasette-graphql-chidf89e/tagged-source/tests/test_template_tag.py:35: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-graphql/datasette-1.0a37/runs/20260715T162147Z-gh-29432058538-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_graphql.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_menu - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphiql - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_query_fields - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_errors[{\n                users(search:"cleopaws") {\n                    nodes {\n                        name\n                    }\n                }\n            }-expected_errors0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path3] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path4] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path5] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path6] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path7] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path8] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path9] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path10] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path11] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path12] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path13] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_examples[path14] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_error - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_auto_camelcase[True-expected0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_auto_camelcase[False-expected1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_pagination[table_with_pk] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_pagination[table_with_rowid] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_pagination[table_with_compound_pk] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_multiple_databases - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_json_columns - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_output_schema - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_cors_headers[True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_cors_headers[False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_operation_name[Q1-200-expected_data0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_operation_name[Q2-200-expected_data1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_operation_name[-500-expected_data2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_http_get[\n            {\n                users_row {\n                    name\n                }\n            }\n            -extra_query_string0-expected_data0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_http_get[\n            query Q1 {\n                users_row {\n                    name\n                }\n            }\n            query Q2 {\n                users_row {\n                    id\n                }\n            }\n            -extra_query_string1-expected_data1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_http_get[\n            query specific_repo($name: String) {\n                repos(filter: {name: {eq: $name}}) {\n                    nodes {\n                        name\n                    }\n                }\n            }\n            -extra_query_string2-expected_data2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_configured_fts_search_for_view - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_time_limit_ms - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_num_queries_limit - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_time_limits_0 - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_permissions[metadata0-expected0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_permissions[metadata1-expected1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_permissions[metadata2-expected2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_no_error_on_empty_schema - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_table_action[repos-repos-id full_name name tags owner { id name } license { _key name }] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_table_action[_csv_progress_-t_csv_progress_-id filename bytes_todo bytes_done rows_done started completed error] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_reserved_column_names - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_graphql_dangerous_column_names - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_bad_foreign_keys - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_graphql.py::test_alternative_graphql - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_plugin_hook.py::test_graphql_extra_fields_hook - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_schema_caching.py::test_schema_caching - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_schema_for_database.py::test_schema - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_template_tag.py::test_schema_caching[\n{% set users = graphql("""\n{\n    users {\n        nodes {\n            name\n            points\n            score\n        }\n    }\n}\n""")["users"] %}\n{% for user in users.nodes %}\n    <p>{{ user.name }} - points: {{ user.points }}, score = {{ user.score }}</p>\n{% endfor %}\n-<p>cleopaws - points: 5, score = 51.5</p>\n\n    <p>simonw - points: 3, score = 35.2</p>] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_template_tag.py::test_schema_caching[\n{% set user = graphql("""\nquery ($id: Int) {\n    users_row(id: $id) {\n        id\n        name\n    }\n}\n""", variables={"id": 2})["users_row"] %}\n<p>{{ user.id }}: {{ user.name }}</p>\n-<p>2: simonw</p>] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+================== 56 failed, 17 passed, 32 warnings in 0.41s ==================

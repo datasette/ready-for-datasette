@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-granian",
+    "version": "0.1",
+    "repository": "simonw/datasette-granian",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ee/7c/f6e3729fe7bf45eb66e9a49ded82fe17e9c3d29246db61856809ca6d00e7/datasette-granian-0.1.tar.gz",
+      "sha256": "4680b1ebca4ae01b173fcc354f318aa2c3af278ff2b5981c5fafe9fd1a8e0582"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-granian",
+      "ref": "0.1",
+      "git_sha": "3e2f7a4833538f34e1b437c463b1d8a12f5c95af"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260715T162148Z-gh-29432058538-a1",
+    "started_at": "2026-07-15T16:21:48Z",
+    "completed_at": "2026-07-15T16:21:54Z",
+    "duration_seconds": 6.189,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-granian @ file:///tmp/datasette-granian-iwd0pw7_/datasette-granian-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-granian/datasette-1.0a37/runs/20260715T162148Z-gh-29432058538-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-granian/datasette-1.0a37/runs/20260715T162148Z-gh-29432058538-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}
