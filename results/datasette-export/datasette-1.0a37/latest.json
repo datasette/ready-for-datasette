@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-export",
+    "version": "0.1a0",
+    "repository": "simonw/datasette-export",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/c3/ef/c64af64001a4370b9435bdb8c7b8e8f55fae415232b0332a40cf84cad2e8/datasette-export-0.1a0.tar.gz",
+      "sha256": "3064cc2826bfbca7eb9d9649d64427f7c8b6cee576e2584b5929e1e0daa8832a"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-export",
+      "ref": "0.1a0",
+      "git_sha": "b6e6e1fc569515c54cf141ad93d49a6f8eb4b8de"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T060156Z-gh-29393019258-a1",
+    "started_at": "2026-07-15T06:01:56Z",
+    "completed_at": "2026-07-15T06:02:03Z",
+    "duration_seconds": 6.923,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-export @ file:///tmp/datasette-export-6stha_g0/datasette-export-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-export/datasette-1.0a37/runs/20260715T060156Z-gh-29393019258-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-export/datasette-1.0a37/runs/20260715T060156Z-gh-29393019258-a1/pytest.txt"
+  }
+}
