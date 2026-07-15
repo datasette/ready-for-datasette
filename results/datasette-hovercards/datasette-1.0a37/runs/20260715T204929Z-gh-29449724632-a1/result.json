@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-hovercards",
+    "version": "0.1a0",
+    "repository": "simonw/datasette-hovercards",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/aa/6c/2d86245be9080e699281896d9a9e12f9876b0a9f939af26d7b7911cbfbde/datasette-hovercards-0.1a0.tar.gz",
+      "sha256": "0b2222f1d69317e93949bfa2096181b2679df619208a5e1113b31146466d27d6"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-hovercards",
+      "ref": "0.1a0",
+      "git_sha": "40b4a153d3ef8a703f2fb34001555b23a723b455"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T204929Z-gh-29449724632-a1",
+    "started_at": "2026-07-15T20:49:29Z",
+    "completed_at": "2026-07-15T20:49:36Z",
+    "duration_seconds": 6.514,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-hovercards @ file:///tmp/datasette-hovercards-er31m7f3/datasette-hovercards-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-hovercards/datasette-1.0a37/runs/20260715T204929Z-gh-29449724632-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_hovercards.py::test_included_on_table_page[/db-False]",
+    "tests/test_hovercards.py::test_included_on_table_page[/db/t-True]",
+    "tests/test_hovercards.py::test_static_asset"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-hovercards/datasette-1.0a37/runs/20260715T204929Z-gh-29449724632-a1/pytest.txt"
+  }
+}

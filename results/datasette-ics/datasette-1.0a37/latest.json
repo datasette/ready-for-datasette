@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-ics",
+    "version": "0.5.2",
+    "repository": "simonw/datasette-ics",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/bf/b1/2f08723d89563604348a12b0f5bc334115cc6d02ac08be541f81e62324df/datasette-ics-0.5.2.tar.gz",
+      "sha256": "61ba2c939338526d2ef46add8cb3279748f478d9254981f36f8c7bd50b46f4e0"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-ics",
+      "ref": "0.5.2",
+      "git_sha": "f4c0520104cc404e19ae05c37da44463691529bd"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260715T204931Z-gh-29449724632-a1",
+    "started_at": "2026-07-15T20:49:31Z",
+    "completed_at": "2026-07-15T20:49:37Z",
+    "duration_seconds": 6.626,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-ics @ file:///tmp/datasette-ics-rd6b847y/datasette-ics-0.5.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ics/datasette-1.0a37/runs/20260715T204931Z-gh-29449724632-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-ics/datasette-1.0a37/runs/20260715T204931Z-gh-29449724632-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}
