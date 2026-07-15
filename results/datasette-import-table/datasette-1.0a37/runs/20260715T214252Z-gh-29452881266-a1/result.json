@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-import-table",
+    "version": "0.3",
+    "repository": "datasette/datasette-import-table",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/bb/59/8a9357885a5972682369160b25cd7c930dbc7311ed67d71bf7b93e88d7f2/datasette-import-table-0.3.tar.gz",
+      "sha256": "7e342cd1b1ccd1ff6205963b56e13dbdf151acf2554ecc82c991b0616a6b31db"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-import-table",
+      "ref": "0.3",
+      "git_sha": "9825cab7c3e1cdd7bcfd0b21dda4a22bda601f88"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T214252Z-gh-29452881266-a1",
+    "started_at": "2026-07-15T21:42:52Z",
+    "completed_at": "2026-07-15T21:42:59Z",
+    "duration_seconds": 7.54,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-import-table @ file:///tmp/datasette-import-table-l9qhyu36/datasette-import-table-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-import-table/datasette-1.0a37/runs/20260715T214252Z-gh-29452881266-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 4,
+    "passed": 0,
+    "failed": 3,
+    "errors": 1,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 4
+  },
+  "failing_tests": [
+    "tests/test_import_table.py::test_import_table_multiple_databases",
+    "tests/test_import_table.py::test_permissions",
+    "tests/test_import_table.py::test_plugin_is_installed"
+  ],
+  "error_tests": [
+    "tests/test_import_table.py::test_import_table"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-import-table/datasette-1.0a37/runs/20260715T214252Z-gh-29452881266-a1/pytest.txt"
+  }
+}

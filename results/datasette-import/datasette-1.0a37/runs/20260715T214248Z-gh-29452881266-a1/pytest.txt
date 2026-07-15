@@ -1,0 +1,8 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+  × No solution found when resolving `--with` dependencies:
+  ╰─▶ Because only datasette-import[test]==0.1a6 is available and
+      datasette-import==0.1a6 depends on datasette==1.0a19, we can conclude
+      that all versions of datasette-import[test] depend on datasette==1.0a19.
+      And because you require datasette-import[test] and datasette==1.0a37, we
+      can conclude that your requirements are unsatisfiable.

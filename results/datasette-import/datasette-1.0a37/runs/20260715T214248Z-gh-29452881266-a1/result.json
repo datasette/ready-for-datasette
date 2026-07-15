@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-import",
+    "version": "0.1a6",
+    "repository": "datasette/datasette-import",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/cc/54/f1c52254a9ec10ad3842dbee8e792f62860961d46e3f6ad4fc79d08565f7/datasette_import-0.1a6.tar.gz",
+      "sha256": "0654b2311e6859bd700f6ad1d8fa5413985e9450edbefc671e91216091247dd8"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-import",
+      "ref": "0.1a6",
+      "git_sha": "5178a7a57ad80b263c6d92ca5e010271ceae1e10"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260715T214248Z-gh-29452881266-a1",
+    "started_at": "2026-07-15T21:42:48Z",
+    "completed_at": "2026-07-15T21:42:50Z",
+    "duration_seconds": 1.635,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-import[test] @ file:///tmp/datasette-import-zoysgtxb/datasette_import-0.1a6.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-import/datasette-1.0a37/runs/20260715T214248Z-gh-29452881266-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-import/datasette-1.0a37/runs/20260715T214248Z-gh-29452881266-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

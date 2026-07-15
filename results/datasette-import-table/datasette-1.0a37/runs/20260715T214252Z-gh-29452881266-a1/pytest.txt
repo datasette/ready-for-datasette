@@ -1,0 +1,134 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-import-table @ file:///tmp/datasette-import-table-l9qhyu36/datasette-import-table-0.3.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-import-table @ file:///tmp/datasette-import-table-l9qhyu36/datasette-import-table-0.3.tar.gz
+Installed 39 packages in 31ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmptGhT9l/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-import-table-l9qhyu36/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 4 items
+
+tests/test_import_table.py::test_plugin_is_installed FAILED              [ 25%]
+tests/test_import_table.py::test_import_table ERROR                      [ 50%]
+tests/test_import_table.py::test_import_table_multiple_databases FAILED  [ 75%]
+tests/test_import_table.py::test_permissions FAILED                      [100%]
+
+==================================== ERRORS ====================================
+_____________________ ERROR at setup of test_import_table ______________________
+file /tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py, line 24
+  @pytest.mark.asyncio
+  async def test_import_table(tmpdir, httpx_mock):
+      db_path = str(tmpdir / "test.db")
+      httpx_mock.add_response(
+          url="http://example/some/table.json?_shape=objects&_size=max",
+          json={
+              "table": "mytable",
+              "rows": [{"foo": "bar"}],
+              "primary_keys": [],
+              "filtered_table_rows_count": 1,
+              "next_url": None,
+          },
+          headers={"content-type": "application/json"},
+      )
+
+      datasette = Datasette([db_path])
+      cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+      async with httpx.AsyncClient(app=datasette.app()) as client:
+          response = await client.get("http://localhost/-/import-table", cookies=cookies)
+          assert 200 == response.status_code
+          csrftoken = response.cookies["ds_csrftoken"]
+          cookies["ds_csrftoken"] = csrftoken
+          response = await client.post(
+              "http://localhost/-/import-table",
+              data={
+                  "url": "http://example/some/table",
+                  "csrftoken": csrftoken,
+              },
+              allow_redirects=False,
+              cookies=cookies,
+          )
+          assert response.status_code == 302
+          assert response.headers["location"] == "/test/mytable?_import_expected_rows=1"
+E       fixture 'httpx_mock' not found
+>       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, include_metadata_in_junit_xml, json_metadata, metadata, monkeypatch, non_mocked_hosts, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+/tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py:24
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_import_table_multiple_databases _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________________ test_permissions _______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_import_table.py:14
+  /tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_import_table.py:24
+  /tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py:24: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_import_table.py:59
+  /tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py:59: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_import_table.py:77
+  /tmp/datasette-import-table-l9qhyu36/tagged-source/tests/test_import_table.py:77: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-import-table/datasette-1.0a37/runs/20260715T214252Z-gh-29452881266-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_import_table.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_import_table.py::test_import_table_multiple_databases - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_import_table.py::test_permissions - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+ERROR tests/test_import_table.py::test_import_table
+==================== 3 failed, 4 warnings, 1 error in 0.03s ====================
