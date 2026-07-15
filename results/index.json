@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T00:50:13Z",
+  "generated_at": "2026-07-15T03:49:31Z",
   "results": [
     {
       "schema_version": 1,
@@ -9779,6 +9779,187 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-events-forward/datasette-1.0a37/runs/20260715T005007Z-gh-29380092431-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-examples",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-examples",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/2b/02/682a2134b351a0991561e620325a69b969679db32c0eb8365eaf8c306702/datasette_examples-0.1a0.tar.gz",
+          "sha256": "74f3528672675f36be8e016e21d1055912d52f3b9540365d2bd613a79cb06954"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-examples",
+          "ref": "0.1a0",
+          "git_sha": "8164f64458ae58c5b3086a13d32d1f1bb96ccf41"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T034924Z-gh-29387445821-a1",
+        "started_at": "2026-07-15T03:49:24Z",
+        "completed_at": "2026-07-15T03:49:31Z",
+        "duration_seconds": 6.355,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-examples[test] @ file:///tmp/datasette-examples-sl_861rq/datasette_examples-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-httpx",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-examples/datasette-1.0a37/runs/20260715T034924Z-gh-29387445821-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 2,
+        "passed": 2,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-httpx"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-examples/datasette-1.0a37/runs/20260715T034924Z-gh-29387445821-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-explain",
+        "version": "0.2.1",
+        "repository": "simonw/datasette-explain",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/75/ea/e02f3c59f3bdf7db049216748d651db51290ce298494482a7d035976de39/datasette-explain-0.2.1.tar.gz",
+          "sha256": "fcb0dfd852b08f535335de35d9f4ec90db28ce2e1052e63e0dc658a668bf602d"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-explain",
+          "ref": "0.2.1",
+          "git_sha": "75201adf80b6a41c755e4fa24f7b0ac332d2f611"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T034921Z-gh-29387445821-a1",
+        "started_at": "2026-07-15T03:49:21Z",
+        "completed_at": "2026-07-15T03:49:27Z",
+        "duration_seconds": 6.03,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-explain @ file:///tmp/datasette-explain-fle72d_l/datasette-explain-0.2.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-explain/datasette-1.0a37/runs/20260715T034921Z-gh-29387445821-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 6,
+        "passed": 6,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-explain/datasette-1.0a37/runs/20260715T034921Z-gh-29387445821-a1/pytest.txt"
       }
     },
     {

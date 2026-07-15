@@ -1,0 +1,32 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-explain @ file:///tmp/datasette-explain-fle72d_l/datasette-explain-0.2.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-explain @ file:///tmp/datasette-explain-fle72d_l/datasette-explain-0.2.1.tar.gz
+Installed 40 packages in 32ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpvxGJ9X/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+Datasette: 1.0a37
+rootdir: /tmp/datasette-explain-fle72d_l/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_explain.py::test_explain[select 1-expected0] PASSED           [ 16%]
+tests/test_explain.py::test_explain[select * from t1-expected1] PASSED   [ 33%]
+tests/test_explain.py::test_explain[select * from t1 where id > :id-expected2] PASSED [ 50%]
+tests/test_explain.py::test_explain[select id, (select id from t2 where t2.id = t1.id) from t1-expected3] PASSED [ 66%]
+tests/test_explain.py::test_explain[select count(*) from t1 where id > :id-expected4] PASSED [ 83%]
+tests/test_explain.py::test_explain[explain select count(*) from t1-expected5] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-explain/datasette-1.0a37/runs/20260715T034921Z-gh-29387445821-a1/.pytest-report.json
+============================== 6 passed in 0.17s ===============================
