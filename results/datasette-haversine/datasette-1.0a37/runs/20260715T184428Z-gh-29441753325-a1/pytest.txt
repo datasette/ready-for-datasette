@@ -1,0 +1,43 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-haversine @ file:///tmp/datasette-haversine-p4h6m4t6/datasette-haversine-0.2.1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-haversine @ file:///tmp/datasette-haversine-p4h6m4t6/datasette-haversine-0.2.1.tar.gz
+Installed 40 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpZDLkDr/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-haversine-p4h6m4t6/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 12 items
+
+tests/test_haversine.py::test_haversine[float-ft-1120114.909] PASSED     [  8%]
+tests/test_haversine.py::test_haversine[float-m-341411.024] PASSED       [ 16%]
+tests/test_haversine.py::test_haversine[float-in-13441378.915] PASSED    [ 25%]
+tests/test_haversine.py::test_haversine[float-mi-212.143] PASSED         [ 33%]
+tests/test_haversine.py::test_haversine[float-nmi-184.3472] PASSED       [ 41%]
+tests/test_haversine.py::test_haversine[float-km-341.411] PASSED         [ 50%]
+tests/test_haversine.py::test_haversine[str-ft-1120114.909] PASSED       [ 58%]
+tests/test_haversine.py::test_haversine[str-m-341411.024] PASSED         [ 66%]
+tests/test_haversine.py::test_haversine[str-in-13441378.915] PASSED      [ 75%]
+tests/test_haversine.py::test_haversine[str-mi-212.143] PASSED           [ 83%]
+tests/test_haversine.py::test_haversine[str-nmi-184.3472] PASSED         [ 91%]
+tests/test_haversine.py::test_haversine[str-km-341.411] PASSED           [100%]
+
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/NU0lShLIAQTYkKTM/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/NU0lShLIAQTYkKTM/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-haversine/datasette-1.0a37/runs/20260715T184428Z-gh-29441753325-a1/.pytest-report.json
+======================== 12 passed, 1 warning in 0.02s =========================

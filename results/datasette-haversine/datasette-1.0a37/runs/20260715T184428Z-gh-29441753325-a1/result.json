@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-haversine",
+    "version": "0.2.1",
+    "repository": "simonw/datasette-haversine",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/af/40/3ce30a6fe1d9b9df5c6a96d72f705514f392daf38318822c6f9beffba31c/datasette-haversine-0.2.1.tar.gz",
+      "sha256": "7405fcb2aa6ca5c6c256ce34c96994d432259203af9fcd1a7b96534221d0357f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-haversine",
+      "ref": "0.2.1",
+      "git_sha": "3b045775c30fd191f92cf358988580b948d9f081"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T184428Z-gh-29441753325-a1",
+    "started_at": "2026-07-15T18:44:28Z",
+    "completed_at": "2026-07-15T18:44:34Z",
+    "duration_seconds": 5.487,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-haversine @ file:///tmp/datasette-haversine-p4h6m4t6/datasette-haversine-0.2.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-haversine/datasette-1.0a37/runs/20260715T184428Z-gh-29441753325-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 12,
+    "passed": 12,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-haversine/datasette-1.0a37/runs/20260715T184428Z-gh-29441753325-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-hashed-urls",
+    "version": "0.4",
+    "repository": "simonw/datasette-hashed-urls",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/be/ac/f991e3c41f6e935968c0ba5def91571ed69c97273568b77dadc488141ec3/datasette-hashed-urls-0.4.tar.gz",
+      "sha256": "f6f9d69f9a4bd65947489b9a10f8143882abee444e24013bbc1cd430932c1358"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-hashed-urls",
+      "ref": "0.4",
+      "git_sha": "2f9f02618c7bce23c19ec5509ebe9680ed6c6626"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T184431Z-gh-29441753325-a1",
+    "started_at": "2026-07-15T18:44:31Z",
+    "completed_at": "2026-07-15T18:44:37Z",
+    "duration_seconds": 6.497,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-hashed-urls @ file:///tmp/datasette-hashed-urls-bincbfpb/datasette-hashed-urls-0.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-hashed-urls/datasette-1.0a37/runs/20260715T184431Z-gh-29441753325-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_hashed_urls.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-hashed-urls/datasette-1.0a37/runs/20260715T184431Z-gh-29441753325-a1/pytest.txt"
+  }
+}
