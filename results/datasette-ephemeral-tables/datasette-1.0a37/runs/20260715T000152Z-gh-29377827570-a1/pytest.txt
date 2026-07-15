@@ -1,0 +1,30 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-ephemeral-tables @ file:///tmp/datasette-ephemeral-tables-hots53c6/datasette_ephemeral_tables-0.2.3.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-ephemeral-tables @ file:///tmp/datasette-ephemeral-tables-hots53c6/datasette_ephemeral_tables-0.2.3.tar.gz
+Installed 40 packages in 21ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpFVUeRP/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-ephemeral-tables-hots53c6/tagged-source
+configfile: pytest.ini
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+tests/test_ephemeral_tables.py::test_database_created_on_startup[custom] PASSED [ 20%]
+tests/test_ephemeral_tables.py::test_database_created_on_startup[None] PASSED [ 40%]
+tests/test_ephemeral_tables.py::test_table_dropped_after_ttl_seconds[normal] PASSED [ 60%]
+tests/test_ephemeral_tables.py::test_table_dropped_after_ttl_seconds[has_underscore-and-hyphen] PASSED [ 80%]
+tests/test_ephemeral_tables.py::test_timer_on_table_pages PASSED         [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ephemeral-tables/datasette-1.0a37/runs/20260715T000152Z-gh-29377827570-a1/.pytest-report.json
+============================== 5 passed in 3.59s ===============================

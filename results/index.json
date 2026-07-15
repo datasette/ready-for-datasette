@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T00:00:49Z",
+  "generated_at": "2026-07-15T00:02:04Z",
   "results": [
     {
       "schema_version": 1,
@@ -9410,6 +9410,184 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-enrichments-re2/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-slow",
+        "version": "0.3",
+        "repository": "datasette/datasette-enrichments-slow",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/96/a2/e5695ede169f766c8a7c0653111a9a56c471ebed557c00bdcc0b979bef74/datasette_enrichments_slow-0.3.tar.gz",
+          "sha256": "2f19355179383c7eb35760584a892f3f56d7a8d1dc8eccac77066b91601d8df5"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-slow",
+          "ref": "0.3",
+          "git_sha": "2ea8b63072b041cc990ed61a1d48097b74b1b257"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000151Z-gh-29377827570-a1",
+        "started_at": "2026-07-15T00:01:51Z",
+        "completed_at": "2026-07-15T00:01:57Z",
+        "duration_seconds": 6.511,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-slow[test] @ file:///tmp/datasette-enrichments-slow-ck6ym6cn/datasette_enrichments_slow-0.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-slow/datasette-1.0a37/runs/20260715T000151Z-gh-29377827570-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 1,
+        "passed": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-slow/datasette-1.0a37/runs/20260715T000151Z-gh-29377827570-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-ephemeral-tables",
+        "version": "0.2.3",
+        "repository": "simonw/datasette-ephemeral-tables",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/9e/65/84b9a202409f48a9c178f6ab51e09445b9057ae1e638699b4273441cb680/datasette_ephemeral_tables-0.2.3.tar.gz",
+          "sha256": "73d88acb44035dd6b6c488c1e4ae645f179b429a61cedc11959605e1e0028e9f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-ephemeral-tables",
+          "ref": "0.2.3",
+          "git_sha": "0acdd4a83bb513e15d85af42441512c002d0d7f4"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000152Z-gh-29377827570-a1",
+        "started_at": "2026-07-15T00:01:52Z",
+        "completed_at": "2026-07-15T00:02:04Z",
+        "duration_seconds": 11.293,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-ephemeral-tables[test] @ file:///tmp/datasette-ephemeral-tables-hots53c6/datasette_ephemeral_tables-0.2.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ephemeral-tables/datasette-1.0a37/runs/20260715T000152Z-gh-29377827570-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 5,
+        "passed": 5,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-ephemeral-tables/datasette-1.0a37/runs/20260715T000152Z-gh-29377827570-a1/pytest.txt"
       }
     },
     {

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments-slow",
+    "version": "0.3",
+    "repository": "datasette/datasette-enrichments-slow",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/96/a2/e5695ede169f766c8a7c0653111a9a56c471ebed557c00bdcc0b979bef74/datasette_enrichments_slow-0.3.tar.gz",
+      "sha256": "2f19355179383c7eb35760584a892f3f56d7a8d1dc8eccac77066b91601d8df5"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments-slow",
+      "ref": "0.3",
+      "git_sha": "2ea8b63072b041cc990ed61a1d48097b74b1b257"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000151Z-gh-29377827570-a1",
+    "started_at": "2026-07-15T00:01:51Z",
+    "completed_at": "2026-07-15T00:01:57Z",
+    "duration_seconds": 6.511,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments-slow[test] @ file:///tmp/datasette-enrichments-slow-ck6ym6cn/datasette_enrichments_slow-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-slow/datasette-1.0a37/runs/20260715T000151Z-gh-29377827570-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments-slow/datasette-1.0a37/runs/20260715T000151Z-gh-29377827570-a1/pytest.txt"
+  }
+}

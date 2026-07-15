@@ -1,0 +1,28 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-enrichments-slow @ file:///tmp/datasette-enrichments-slow-ck6ym6cn/datasette_enrichments_slow-0.3.tar.gz
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-enrichments-slow @ file:///tmp/datasette-enrichments-slow-ck6ym6cn/datasette_enrichments_slow-0.3.tar.gz
+Installed 46 packages in 30ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp2bsvXr/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-enrichments-slow-ck6ym6cn/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_enrichments_slow.py::test_plugin_is_installed PASSED          [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-slow/datasette-1.0a37/runs/20260715T000151Z-gh-29377827570-a1/.pytest-report.json
+============================== 1 passed in 0.05s ===============================
