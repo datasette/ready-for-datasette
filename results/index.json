@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T06:02:24Z",
+  "generated_at": "2026-07-15T08:31:49Z",
   "results": [
     {
       "schema_version": 1,
@@ -10056,6 +10056,189 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-export/datasette-1.0a37/runs/20260715T060156Z-gh-29393019258-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-export-database",
+        "version": "0.2.1",
+        "repository": "datasette/datasette-export-database",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/69/6a/832569c014ce85a4f5db574cf4db94f84ebb02ef3aedaa4873ee036e3678/datasette-export-database-0.2.1.tar.gz",
+          "sha256": "270c19f59722fe550e662580b1b8800fe5aca324ec69a4fe6eeb3781ba810319"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-export-database",
+          "ref": "0.2.1",
+          "git_sha": "ed04e4c8a10aa80d6dee83c5283886890767fb3a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T083139Z-gh-29401087439-a1",
+        "started_at": "2026-07-15T08:31:39Z",
+        "completed_at": "2026-07-15T08:31:45Z",
+        "duration_seconds": 6.337,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-export-database @ file:///tmp/datasette-export-database-lcmf5dby/datasette-export-database-0.2.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-export-database/datasette-1.0a37/runs/20260715T083139Z-gh-29401087439-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 4,
+        "passed": 1,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_export_database.py::test_bad_csrftoken",
+        "tests/test_export_database.py::test_no_space",
+        "tests/test_export_database.py::test_permissions_and_test_fetch"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-export-database/datasette-1.0a37/runs/20260715T083139Z-gh-29401087439-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-export-notebook",
+        "version": "1.0.1",
+        "repository": "simonw/datasette-export-notebook",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/d0/af/89d87338994ac2dc3f9687fd888eaa24981a237c8b9f7223aed90342a25d/datasette-export-notebook-1.0.1.tar.gz",
+          "sha256": "dee6f0c005be9a86f9ca52d3d2615938731ceb4845bd5f2edd7e1efdc0194556"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-export-notebook",
+          "ref": "1.0.1",
+          "git_sha": "701e784f7b44463c09955e4fdf8f1e43ebdac8a8"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T083142Z-gh-29401087439-a1",
+        "started_at": "2026-07-15T08:31:42Z",
+        "completed_at": "2026-07-15T08:31:49Z",
+        "duration_seconds": 7.53,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-export-notebook @ file:///tmp/datasette-export-notebook-eau2ajpq/datasette-export-notebook-1.0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-export-notebook/datasette-1.0a37/runs/20260715T083142Z-gh-29401087439-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 9,
+        "passed": 4,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 4
+      },
+      "failing_tests": [
+        "tests/test_export_notebook.py::test_export_notebook[/db/big.Notebook-http://localhost/db/big.json?_shape=array-http://localhost/db/big.csv?_stream=on]",
+        "tests/test_export_notebook.py::test_export_notebook[/db/blah.Notebook-http://localhost/db/blah.json?_shape=array-]",
+        "tests/test_export_notebook.py::test_export_notebook_pandas_stream_with_types",
+        "tests/test_export_notebook.py::test_notebook_no_cors",
+        "tests/test_export_notebook.py::test_notebook_no_csv"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-export-notebook/datasette-1.0a37/runs/20260715T083142Z-gh-29401087439-a1/pytest.txt"
       }
     },
     {

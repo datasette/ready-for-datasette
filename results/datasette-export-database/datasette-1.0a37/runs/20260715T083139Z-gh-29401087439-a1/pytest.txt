@@ -1,0 +1,319 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-export-database @ file:///tmp/datasette-export-database-lcmf5dby/datasette-export-database-0.2.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-export-database @ file:///tmp/datasette-export-database-lcmf5dby/datasette-export-database-0.2.1.tar.gz
+Installed 40 packages in 36ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpTRT144/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-export-database-lcmf5dby/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_export_database.py::test_permissions_and_test_fetch FAILED    [ 25%]
+tests/test_export_database.py::test_no_space FAILED                      [ 50%]
+tests/test_export_database.py::test_cleans_up_stale_tmp_files_on_startup PASSED [ 75%]
+tests/test_export_database.py::test_bad_csrftoken FAILED                 [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_permissions_and_test_fetch ________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/dbs0/data.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_permissions_and_test_fetc0')
+
+    @pytest.mark.asyncio
+    async def test_permissions_and_test_fetch(db_path, tmpdir):
+        datasette = Datasette([db_path])
+        anon_response1 = await datasette.client.get("/data/-/export-database")
+        assert anon_response1.status_code == 403
+        anon_response2 = await datasette.client.get("/data")
+        assert "/export-database" not in anon_response2.text
+        # Now get the signed URL
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        root_response1 = await datasette.client.get("/data", cookies=cookies)
+>       cookies["ds_csrftoken"] = root_response1.cookies["ds_csrftoken"]
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_export_database.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 3103, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/base.py", line 74, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 230, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<41 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 25, in block 'content'
+    {% set action_links, action_title = database_actions(), "Database actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 178, in database_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette_export_database/__init__.py", line 138, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 3103, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/base.py", line 74, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 230, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<41 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 25, in block 'content'
+    {% set action_links, action_title = database_actions(), "Database actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 178, in database_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette_export_database/__init__.py", line 138, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________________ test_no_space _________________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/dbs0/data.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_no_space0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fc4fba9c050>
+
+    @pytest.mark.asyncio
+    async def test_no_space(db_path, tmpdir, monkeypatch):
+        monkeypatch.setattr(shutil, "disk_usage", lambda x: (100, 50, 20))
+        datasette = Datasette([db_path])
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        root_response1 = await datasette.client.get("/data", cookies=cookies)
+>       cookies["ds_csrftoken"] = root_response1.cookies["ds_csrftoken"]
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_export_database.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 3103, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/base.py", line 74, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 230, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<41 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 25, in block 'content'
+    {% set action_links, action_title = database_actions(), "Database actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 178, in database_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette_export_database/__init__.py", line 138, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________________ test_bad_csrftoken ______________________________
+
+db_path = '/tmp/pytest-of-runner/pytest-0/dbs0/data.db'
+
+    @pytest.mark.asyncio
+    async def test_bad_csrftoken(db_path):
+        datasette = Datasette([db_path])
+        cookies1 = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        cookies2 = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        root_response1 = await datasette.client.get("/data", cookies=cookies1)
+>       cookies1["ds_csrftoken"] = root_response1.cookies["ds_csrftoken"]
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_export_database.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 3103, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/base.py", line 74, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 230, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<41 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/templates/database.html", line 25, in block 'content'
+    {% set action_links, action_title = database_actions(), "Database actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/views/database.py", line 178, in database_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/tQiXKadcLRSY_xSR/lib/python3.13/site-packages/datasette_export_database/__init__.py", line 138, in inner
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-export-database/datasette-1.0a37/runs/20260715T083139Z-gh-29401087439-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_export_database.py::test_permissions_and_test_fetch - KeyError: 'ds_csrftoken'
+FAILED tests/test_export_database.py::test_no_space - KeyError: 'ds_csrftoken'
+FAILED tests/test_export_database.py::test_bad_csrftoken - KeyError: 'ds_csrftoken'
+========================= 3 failed, 1 passed in 0.53s ==========================

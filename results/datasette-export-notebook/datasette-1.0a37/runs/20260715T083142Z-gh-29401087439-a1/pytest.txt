@@ -1,0 +1,127 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-export-notebook @ file:///tmp/datasette-export-notebook-eau2ajpq/datasette-export-notebook-1.0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-export-notebook @ file:///tmp/datasette-export-notebook-eau2ajpq/datasette-export-notebook-1.0.1.tar.gz
+Installed 39 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpboFLQB/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-export-notebook-eau2ajpq/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 9 items
+
+tests/test_export_notebook.py::test_export_notebook[/db/blah.Notebook-http://localhost/db/blah.json?_shape=array-] FAILED [ 11%]
+tests/test_export_notebook.py::test_export_notebook[/db/big.Notebook-http://localhost/db/big.json?_shape=array-http://localhost/db/big.csv?_stream=on] FAILED [ 22%]
+tests/test_export_notebook.py::test_export_notebook_pandas_stream_with_types FAILED [ 33%]
+tests/test_export_notebook.py::test_notebook_no_cors FAILED              [ 44%]
+tests/test_export_notebook.py::test_notebook_no_csv FAILED               [ 55%]
+tests/test_export_notebook.py::test_detect_types[rows0-expected_types0] PASSED [ 66%]
+tests/test_export_notebook.py::test_detect_types[rows1-expected_types1] PASSED [ 77%]
+tests/test_export_notebook.py::test_detect_types[rows2-expected_types2] PASSED [ 88%]
+tests/test_export_notebook.py::test_detect_types[rows3-expected_types3] PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_export_notebook[/db/blah.Notebook-http://localhost/db/blah.json?_shape=array-] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_export_notebook[/db/big.Notebook-http://localhost/db/big.json?_shape=array-http://localhost/db/big.csv?_stream=on] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________ test_export_notebook_pandas_stream_with_types _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_notebook_no_cors _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_notebook_no_csv _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_export_notebook.py:18
+  /tmp/datasette-export-notebook-eau2ajpq/tagged-source/tests/test_export_notebook.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_export_notebook.py:69
+  /tmp/datasette-export-notebook-eau2ajpq/tagged-source/tests/test_export_notebook.py:69: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_export_notebook.py:83
+  /tmp/datasette-export-notebook-eau2ajpq/tagged-source/tests/test_export_notebook.py:83: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_export_notebook.py:93
+  /tmp/datasette-export-notebook-eau2ajpq/tagged-source/tests/test_export_notebook.py:93: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-export-notebook/datasette-1.0a37/runs/20260715T083142Z-gh-29401087439-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_export_notebook.py::test_export_notebook[/db/blah.Notebook-http://localhost/db/blah.json?_shape=array-] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_export_notebook.py::test_export_notebook[/db/big.Notebook-http://localhost/db/big.json?_shape=array-http://localhost/db/big.csv?_stream=on] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_export_notebook.py::test_export_notebook_pandas_stream_with_types - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_export_notebook.py::test_notebook_no_cors - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_export_notebook.py::test_notebook_no_csv - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=================== 5 failed, 4 passed, 4 warnings in 0.13s ====================
