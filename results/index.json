@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T22:39:48Z",
+  "generated_at": "2026-07-15T23:37:49Z",
   "results": [
     {
       "schema_version": 1,
@@ -12498,6 +12498,191 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-insert/datasette-1.0a37/runs/20260715T223936Z-gh-29456120010-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-insert-unsafe",
+        "version": "0.1",
+        "repository": "simonw/datasette-insert-unsafe",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/72/0f/907e6bb013e31d53ac87c4c8092deac57f94d4a354075c47a5000d3d895e/datasette-insert-unsafe-0.1.tar.gz",
+          "sha256": "409a3a1b3c0edd105453fb6e4f2f670ec835115bd514c67f01d51eff821e0215"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-insert-unsafe",
+          "ref": "0.1",
+          "git_sha": "7ac29da85f272d8d6410e81c56756fc4f522f349"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T233742Z-gh-29459085401-a1",
+        "started_at": "2026-07-15T23:37:42Z",
+        "completed_at": "2026-07-15T23:37:49Z",
+        "duration_seconds": 6.738,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-insert-unsafe @ file:///tmp/datasette-insert-unsafe-o6sbbwsj/datasette-insert-unsafe-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-insert-unsafe/datasette-1.0a37/runs/20260715T233742Z-gh-29459085401-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 3,
+        "passed": 0,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 3
+      },
+      "failing_tests": [
+        "tests/test_insert_unsafe.py::test_insert_allowed",
+        "tests/test_insert_unsafe.py::test_insert_disallowed_if_plugin_disabled",
+        "tests/test_insert_unsafe.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-insert-unsafe/datasette-1.0a37/runs/20260715T233742Z-gh-29459085401-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-ip-rate-limit",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-ip-rate-limit",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/09/29/6047f5f3f940711bfd3f1c08e2beae71857204798c4748c96eec736e0e6a/datasette_ip_rate_limit-0.1a0.tar.gz",
+          "sha256": "146fa15e6e8ada4a3c009d01d9e95de6717158356abce5954503227b827668f2"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-ip-rate-limit",
+          "ref": "0.1a0",
+          "git_sha": "8d338b0898d7e7e816f90723e99e219993c307c5"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T233740Z-gh-29459085401-a1",
+        "started_at": "2026-07-15T23:37:40Z",
+        "completed_at": "2026-07-15T23:37:46Z",
+        "duration_seconds": 6.203,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-ip-rate-limit @ file:///tmp/datasette-ip-rate-limit-1g_7rl9u/datasette_ip_rate_limit-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "httpx",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ip-rate-limit/datasette-1.0a37/runs/20260715T233740Z-gh-29459085401-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 11,
+        "passed": 11,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "httpx",
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-ip-rate-limit/datasette-1.0a37/runs/20260715T233740Z-gh-29459085401-a1/pytest.txt"
       }
     },
     {

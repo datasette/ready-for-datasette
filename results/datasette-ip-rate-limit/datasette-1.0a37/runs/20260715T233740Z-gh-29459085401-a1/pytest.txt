@@ -1,0 +1,36 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-ip-rate-limit @ file:///tmp/datasette-ip-rate-limit-1g_7rl9u/datasette_ip_rate_limit-0.1a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-ip-rate-limit @ file:///tmp/datasette-ip-rate-limit-1g_7rl9u/datasette_ip_rate_limit-0.1a0.tar.gz
+Installed 40 packages in 22ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpMvsTKl/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-ip-rate-limit-1g_7rl9u/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/test_ip_rate_limit.py::test_plugin_is_installed PASSED             [  9%]
+tests/test_ip_rate_limit.py::test_no_config_passes_through PASSED        [ 18%]
+tests/test_ip_rate_limit.py::test_blocks_ip_after_limit_using_asgi_client_by_default PASSED [ 27%]
+tests/test_ip_rate_limit.py::test_configured_header_overrides_asgi_client_ip PASSED [ 36%]
+tests/test_ip_rate_limit.py::test_debug_route_is_not_available_by_default PASSED [ 45%]
+tests/test_ip_rate_limit.py::test_debug_route_returns_pretty_printed_json_state PASSED [ 54%]
+tests/test_ip_rate_limit.py::test_debug_route_is_not_rate_limited_or_tracked PASSED [ 63%]
+tests/test_ip_rate_limit.py::test_block_expires_after_configured_period PASSED [ 72%]
+tests/test_ip_rate_limit.py::test_query_params_min_only_counts_matching_requests PASSED [ 81%]
+tests/test_ip_rate_limit.py::test_exempt_paths_are_not_rate_limited PASSED [ 90%]
+tests/test_ip_rate_limit.py::test_state_evicts_oldest_keys_to_cap_memory PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ip-rate-limit/datasette-1.0a37/runs/20260715T233740Z-gh-29459085401-a1/.pytest-report.json
+============================== 11 passed in 0.38s ==============================
