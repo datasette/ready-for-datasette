@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-init",
+    "version": "0.2",
+    "repository": "simonw/datasette-init",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/0b/a9/35870161d1db6c303cc5f7b060ea92c3f3401b194bd5f7458e46c6afd331/datasette-init-0.2.tar.gz",
+      "sha256": "6b92a3cb396fbf777d2891d385da6238e9c7c4b7a1cf02c7966d2206123be398"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-init",
+      "ref": "0.2",
+      "git_sha": "f978d0308f82641fcc6c71bab45d9a542b7bb66d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T223942Z-gh-29456120010-a1",
+    "started_at": "2026-07-15T22:39:42Z",
+    "completed_at": "2026-07-15T22:39:48Z",
+    "duration_seconds": 5.934,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-init @ file:///tmp/datasette-init-gtu1ch_l/datasette-init-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-init/datasette-1.0a37/runs/20260715T223942Z-gh-29456120010-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 6,
+    "passed": 0,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 6
+  },
+  "failing_tests": [
+    "tests/test_init.py::test_ignore_if_table_already_exists",
+    "tests/test_init.py::test_no_error_if_no_metadata",
+    "tests/test_init.py::test_replace_view_if_already_exists",
+    "tests/test_init.py::test_tables",
+    "tests/test_init.py::test_tables_compound_primary_key",
+    "tests/test_init.py::test_views"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-init/datasette-1.0a37/runs/20260715T223942Z-gh-29456120010-a1/pytest.txt"
+  }
+}

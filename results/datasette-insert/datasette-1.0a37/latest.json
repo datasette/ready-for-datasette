@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-insert",
+    "version": "0.8",
+    "repository": "simonw/datasette-insert",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/c3/18/36d812ff3cb298c8a081c1b780b6f39b0995cc25ae06430af86adf0aaeb0/datasette-insert-0.8.tar.gz",
+      "sha256": "a6c53304f517f403729454d9673a1b4c30c0eea8a590a04cc3f28e3f7bf2f180"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-insert",
+      "ref": "0.8",
+      "git_sha": "dc0902c3064b29e267eada87502a4dd758646bcf"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T223936Z-gh-29456120010-a1",
+    "started_at": "2026-07-15T22:39:36Z",
+    "completed_at": "2026-07-15T22:39:42Z",
+    "duration_seconds": 5.944,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-insert @ file:///tmp/datasette-insert-btshek7p/datasette-insert-0.8.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-insert/datasette-1.0a37/runs/20260715T223936Z-gh-29456120010-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 20,
+    "passed": 0,
+    "failed": 20,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 12
+  },
+  "failing_tests": [
+    "tests/test_insert_api.py::test_cors[False]",
+    "tests/test_insert_api.py::test_cors[True]",
+    "tests/test_insert_api.py::test_insert_alter",
+    "tests/test_insert_api.py::test_insert_creates_table[input0-id-None]",
+    "tests/test_insert_api.py::test_insert_creates_table[input1-None-expected1]",
+    "tests/test_insert_api.py::test_insert_creates_table[input2-id-expected2]",
+    "tests/test_insert_api.py::test_insert_creates_table[input3-None-expected3]",
+    "tests/test_insert_api.py::test_missing_column_error",
+    "tests/test_insert_api.py::test_permission_allowed_by_allow_block",
+    "tests/test_insert_api.py::test_permission_denied_by_allow_block",
+    "tests/test_insert_api.py::test_permission_denied_by_default",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions0-insert-update-200-None]",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions1-insert-update-403-Permission denied]",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions2-create-table-200-None]",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions3-create-table-400-Table dogs does not exist]",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions4-alter-table-200-None]",
+    "tests/test_insert_api.py::test_permission_finely_grained[permissions5-alter-table-403-Alter permission denied]",
+    "tests/test_insert_api.py::test_plugin_is_installed",
+    "tests/test_insert_api.py::test_upsert",
+    "tests/test_insert_api.py::test_upsert_reuires_pk_error"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-insert/datasette-1.0a37/runs/20260715T223936Z-gh-29456120010-a1/pytest.txt"
+  }
+}
