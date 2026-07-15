@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T00:02:04Z",
+  "generated_at": "2026-07-15T00:50:13Z",
   "results": [
     {
       "schema_version": 1,
@@ -9588,6 +9588,197 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-ephemeral-tables/datasette-1.0a37/runs/20260715T000152Z-gh-29377827570-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-events-db",
+        "version": "0.1a2",
+        "repository": "datasette/datasette-events-db",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/04/c0/b8cbbb10d82c43a9a738df1eeb78e9cc8137a8d184f784b940465d2f2e1f/datasette_events_db-0.1a2.tar.gz",
+          "sha256": "9f5643dc8805e94d011ae82748ba4f5b6b7a0ead080b2b69cb3c94b64fdc6686"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-events-db",
+          "ref": "0.1a2",
+          "git_sha": "6378e4b80ef87b96bcc97a66e59497241b3973a4"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T005006Z-gh-29380092431-a1",
+        "started_at": "2026-07-15T00:50:06Z",
+        "completed_at": "2026-07-15T00:50:12Z",
+        "duration_seconds": 6.059,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-events-db[test] @ file:///tmp/datasette-events-db-3b9kc5b3/datasette_events_db-0.1a2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-events-db/datasette-1.0a37/runs/20260715T005006Z-gh-29380092431-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 2,
+        "passed": 0,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_events_db.py::test_log_events_to_db[None]",
+        "tests/test_events_db.py::test_log_events_to_db[demo]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-events-db/datasette-1.0a37/runs/20260715T005006Z-gh-29380092431-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-events-forward",
+        "version": "0.1a4",
+        "repository": "datasette/datasette-events-forward",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/d5/b1/5578ac409f061341384191e6fa36c988e6c4865f92598c0a6d9f8f78b12a/datasette_events_forward-0.1a4.tar.gz",
+          "sha256": "2ab1fbd2729b5c51c7f1bf81cfcbf3df30d5319b011919a05dbd2d4cf9010839"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-events-forward",
+          "ref": "0.1a4",
+          "git_sha": "887199fa53b943092a47995df2f1d3a38df909b5"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T005007Z-gh-29380092431-a1",
+        "started_at": "2026-07-15T00:50:07Z",
+        "completed_at": "2026-07-15T00:50:13Z",
+        "duration_seconds": 5.215,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-events-forward[test] @ file:///tmp/datasette-events-forward-vepdqg_3/datasette_events_forward-0.1a4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-httpx",
+          "--with",
+          "datasette-test",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-events-forward/datasette-1.0a37/runs/20260715T005007Z-gh-29380092431-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 3,
+        "passed": 1,
+        "failed": 1,
+        "errors": 1,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_events_forward.py::test_events_forward[False]"
+      ],
+      "error_tests": [
+        "tests/test_events_forward.py::test_events_forward[True]"
+      ],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-httpx",
+          "datasette-test"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-events-forward/datasette-1.0a37/runs/20260715T005007Z-gh-29380092431-a1/pytest.txt"
       }
     },
     {

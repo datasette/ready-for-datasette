@@ -1,0 +1,265 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-events-db @ file:///tmp/datasette-events-db-3b9kc5b3/datasette_events_db-0.1a2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-events-db @ file:///tmp/datasette-events-db-3b9kc5b3/datasette_events_db-0.1a2.tar.gz
+Installed 40 packages in 33ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpJPAJDG/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-events-db-3b9kc5b3/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_events_db.py::test_log_events_to_db[None] FAILED              [ 50%]
+tests/test_events_db.py::test_log_events_to_db[demo] FAILED              [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_log_events_to_db[None] __________________________
+
+configured_database = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("configured_database", (None, "demo"))
+    async def test_log_events_to_db(configured_database):
+        config = {
+            "permissions": {"create-table": True},
+        }
+        if configured_database:
+            config["plugins"] = {"datasette-events-db": {"database": configured_database}}
+    
+        expected_database = configured_database or "_internal"
+        datasette = Datasette(
+            memory=True,
+            config=config,
+        )
+        db = datasette.add_memory_database("demo")
+        await datasette.invoke_startup()
+        # Drop table if it exists
+        await db.execute_write("drop table if exists new_table")
+    
+        # Ensure we can see _internal if necessary
+        if expected_database == "_internal":
+            internal_db = datasette.get_internal_database()
+            datasette.add_database(internal_db, name="_internal", route="_internal")
+    
+        # Test table was created and starts empty
+        response = await datasette.client.get(
+            f"/{expected_database}/datasette_events.json?_extra=columns"
+        )
+        assert response.status_code == 200
+>       assert response.json() == {
+            "ok": True,
+            "next": None,
+            "columns": [
+                "id",
+                "event",
+                "created",
+                "actor_id",
+                "database_name",
+                "table_name",
+                "properties",
+            ],
+            "rows": [],
+            "truncated": False,
+        }
+E       AssertionError: assert {'ok': True, 'next': None, 'next_url': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False} == {'ok': True, 'next': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False}
+E         
+E         Common items:
+E         {'columns': ['id',
+E                      'event',
+E                      'created',
+E                      'actor_id',
+E                      'database_name',
+E                      'table_name',
+E                      'properties'],
+E          'next': None,
+E          'ok': True,
+E          'rows': [],
+E          'truncated': False}
+E         Left contains 1 more item:
+E         {'next_url': None}
+E         
+E         Full diff:
+E           {
+E               'ok': True,
+E               'next': None,
+E         +     'next_url': None,
+E               'columns': [
+E                   'id',
+E                   'event',
+E                   'created',
+E                   'actor_id',
+E                   'database_name',
+E                   'table_name',
+E                   'properties',
+E               ],
+E               'rows': [],
+E               'truncated': False,
+E           }
+
+tests/test_events_db.py:35: AssertionError
+_________________________ test_log_events_to_db[demo] __________________________
+
+configured_database = 'demo'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("configured_database", (None, "demo"))
+    async def test_log_events_to_db(configured_database):
+        config = {
+            "permissions": {"create-table": True},
+        }
+        if configured_database:
+            config["plugins"] = {"datasette-events-db": {"database": configured_database}}
+    
+        expected_database = configured_database or "_internal"
+        datasette = Datasette(
+            memory=True,
+            config=config,
+        )
+        db = datasette.add_memory_database("demo")
+        await datasette.invoke_startup()
+        # Drop table if it exists
+        await db.execute_write("drop table if exists new_table")
+    
+        # Ensure we can see _internal if necessary
+        if expected_database == "_internal":
+            internal_db = datasette.get_internal_database()
+            datasette.add_database(internal_db, name="_internal", route="_internal")
+    
+        # Test table was created and starts empty
+        response = await datasette.client.get(
+            f"/{expected_database}/datasette_events.json?_extra=columns"
+        )
+        assert response.status_code == 200
+>       assert response.json() == {
+            "ok": True,
+            "next": None,
+            "columns": [
+                "id",
+                "event",
+                "created",
+                "actor_id",
+                "database_name",
+                "table_name",
+                "properties",
+            ],
+            "rows": [],
+            "truncated": False,
+        }
+E       AssertionError: assert {'ok': True, 'next': None, 'next_url': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False} == {'ok': True, 'next': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False}
+E         
+E         Common items:
+E         {'columns': ['id',
+E                      'event',
+E                      'created',
+E                      'actor_id',
+E                      'database_name',
+E                      'table_name',
+E                      'properties'],
+E          'next': None,
+E          'ok': True,
+E          'rows': [],
+E          'truncated': False}
+E         Left contains 1 more item:
+E         {'next_url': None}
+E         
+E         Full diff:
+E           {
+E               'ok': True,
+E               'next': None,
+E         +     'next_url': None,
+E               'columns': [
+E                   'id',
+E                   'event',
+E                   'created',
+E                   'actor_id',
+E                   'database_name',
+E                   'table_name',
+E                   'properties',
+E               ],
+E               'rows': [],
+E               'truncated': False,
+E           }
+
+tests/test_events_db.py:35: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-events-db/datasette-1.0a37/runs/20260715T005006Z-gh-29380092431-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_events_db.py::test_log_events_to_db[None] - AssertionError: assert {'ok': True, 'next': None, 'next_url': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False} == {'ok': True, 'next': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False}
+  
+  Common items:
+  {'columns': ['id',
+               'event',
+               'created',
+               'actor_id',
+               'database_name',
+               'table_name',
+               'properties'],
+   'next': None,
+   'ok': True,
+   'rows': [],
+   'truncated': False}
+  Left contains 1 more item:
+  {'next_url': None}
+  
+  Full diff:
+    {
+        'ok': True,
+        'next': None,
+  +     'next_url': None,
+        'columns': [
+            'id',
+            'event',
+            'created',
+            'actor_id',
+            'database_name',
+            'table_name',
+            'properties',
+        ],
+        'rows': [],
+        'truncated': False,
+    }
+FAILED tests/test_events_db.py::test_log_events_to_db[demo] - AssertionError: assert {'ok': True, 'next': None, 'next_url': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False} == {'ok': True, 'next': None, 'columns': ['id', 'event', 'created', 'actor_id', 'database_name', 'table_name', 'properties'], 'rows': [], 'truncated': False}
+  
+  Common items:
+  {'columns': ['id',
+               'event',
+               'created',
+               'actor_id',
+               'database_name',
+               'table_name',
+               'properties'],
+   'next': None,
+   'ok': True,
+   'rows': [],
+   'truncated': False}
+  Left contains 1 more item:
+  {'next_url': None}
+  
+  Full diff:
+    {
+        'ok': True,
+        'next': None,
+  +     'next_url': None,
+        'columns': [
+            'id',
+            'event',
+            'created',
+            'actor_id',
+            'database_name',
+            'table_name',
+            'properties',
+        ],
+        'rows': [],
+        'truncated': False,
+    }
+============================== 2 failed in 0.12s ===============================

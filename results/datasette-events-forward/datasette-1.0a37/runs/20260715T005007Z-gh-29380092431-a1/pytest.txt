@@ -1,0 +1,230 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-events-forward @ file:///tmp/datasette-events-forward-vepdqg_3/datasette_events_forward-0.1a4.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-events-forward @ file:///tmp/datasette-events-forward-vepdqg_3/datasette_events_forward-0.1a4.tar.gz
+Installed 45 packages in 14ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpOI7qwO/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'httpx': '0.36.2', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-events-forward-vepdqg_3/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, httpx-0.36.2, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/test_events_forward.py::test_events_forward[True] FAILED           [ 33%]
+tests/test_events_forward.py::test_events_forward[True] ERROR            [ 33%]
+tests/test_events_forward.py::test_events_forward[False] FAILED          [ 66%]
+tests/test_events_forward.py::test_multiple_instances_no_interference PASSED [100%]
+
+==================================== ERRORS ====================================
+________________ ERROR at teardown of test_events_forward[True] ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f3d4319fce0>
+request = <SubRequest 'httpx_mock' for <Coroutine test_events_forward[True]>>
+
+    @pytest.fixture
+    def httpx_mock(
+        monkeypatch: MonkeyPatch,
+        request: FixtureRequest,
+    ) -> Generator[HTTPXMock, None, None]:
+        options = {}
+        for marker in request.node.iter_markers("httpx_mock"):
+            options = marker.kwargs | options
+        __tracebackhide__ = methodcaller("errisinstance", TypeError)
+        options = _HTTPXMockOptions(**options)
+    
+        mock = HTTPXMock(options)
+    
+        # Mock synchronous requests
+        real_handle_request = httpx.HTTPTransport.handle_request
+    
+        def mocked_handle_request(
+            transport: httpx.HTTPTransport, request: httpx.Request
+        ) -> httpx.Response:
+            if options.should_mock(request):
+                return mock._handle_request(transport, request)
+            return real_handle_request(transport, request)
+    
+        monkeypatch.setattr(
+            httpx.HTTPTransport,
+            "handle_request",
+            mocked_handle_request,
+        )
+    
+        # Mock asynchronous requests
+        real_handle_async_request = httpx.AsyncHTTPTransport.handle_async_request
+    
+        async def mocked_handle_async_request(
+            transport: httpx.AsyncHTTPTransport, request: httpx.Request
+        ) -> httpx.Response:
+            if options.should_mock(request):
+                return await mock._handle_async_request(transport, request)
+            return await real_handle_async_request(transport, request)
+    
+        monkeypatch.setattr(
+            httpx.AsyncHTTPTransport,
+            "handle_async_request",
+            mocked_handle_async_request,
+        )
+    
+        yield mock
+        try:
+>           mock._assert_options()
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/7hmSda3Sa0ks24DY/lib/python3.13/site-packages/pytest_httpx/__init__.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pytest_httpx._httpx_mock.HTTPXMock object at 0x7f3d4287acf0>
+
+    def _assert_options(self) -> None:
+        callbacks_not_executed = [
+            matcher for matcher, _ in self._callbacks if matcher.should_have_matched()
+        ]
+        matchers_description = "\n".join(
+            [f"- {matcher}" for matcher in callbacks_not_executed]
+        )
+    
+>       assert not callbacks_not_executed, (
+            "The following responses are mocked but not requested:\n"
+            f"{matchers_description}\n"
+            "\n"
+            "If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-register-more-responses-than-what-will-be-requested"
+        )
+E       AssertionError: The following responses are mocked but not requested:
+E         - Match any request on https://example.com/data/-/create
+E         
+E         If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-register-more-responses-than-what-will-be-requested
+E       assert not [<pytest_httpx._request_matcher._RequestMatcher object at 0x7f3d4287b380>]
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/7hmSda3Sa0ks24DY/lib/python3.13/site-packages/pytest_httpx/_httpx_mock.py:325: AssertionError
+=================================== FAILURES ===================================
+__________________________ test_events_forward[True] ___________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_events_forward_True_0')
+configured = True
+httpx_mock = <pytest_httpx._httpx_mock.HTTPXMock object at 0x7f3d4287acf0>
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("configured", (True, False))
+    async def test_events_forward(tmpdir, configured, httpx_mock):
+        if configured:
+            # Allow multiple POST requests to the same URL
+            def custom_response(request):
+                return httpx.Response(200, json={"ok": True})
+    
+            httpx_mock.add_callback(
+                custom_response, url="https://example.com/data/-/create"
+            )
+    
+        db_path = str(tmpdir / "data.db")
+        db = Database(db_path)
+        db["foo"].insert({"id": 1}, pk="id")
+        datasette = Datasette(
+            [db_path],
+            config={
+                "plugins": {
+                    "datasette-events-forward": {
+                        "api_url": (
+                            "https://example.com/data/-/create" if configured else ""
+                        ),
+                        "api_token": "xxx",
+                        "max_rate": 5,
+                        "time_period": 0.2,
+                    }
+                }
+            },
+        )
+        datasette.root_enabled = True
+        await datasette.invoke_startup()
+        # Should have created the internal table
+        internal_db = datasette.get_internal_database()
+        assert await internal_db.table_exists("datasette_events_to_forward")
+        # Now we trigger an event
+        token = datasette.create_token("root")
+        response = await datasette.client.post(
+            "/data/-/create",
+            json={"table": "hello", "row": {"id": 1}, "pk": "id"},
+            headers={"Authorization": "Bearer {}".format(token)},
+        )
+>       assert response.status_code == 201
+E       assert 403 == 201
+E        +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_events_forward.py:56: AssertionError
+__________________________ test_events_forward[False] __________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_events_forward_False_0')
+configured = False
+httpx_mock = <pytest_httpx._httpx_mock.HTTPXMock object at 0x7f3d42a28190>
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("configured", (True, False))
+    async def test_events_forward(tmpdir, configured, httpx_mock):
+        if configured:
+            # Allow multiple POST requests to the same URL
+            def custom_response(request):
+                return httpx.Response(200, json={"ok": True})
+    
+            httpx_mock.add_callback(
+                custom_response, url="https://example.com/data/-/create"
+            )
+    
+        db_path = str(tmpdir / "data.db")
+        db = Database(db_path)
+        db["foo"].insert({"id": 1}, pk="id")
+        datasette = Datasette(
+            [db_path],
+            config={
+                "plugins": {
+                    "datasette-events-forward": {
+                        "api_url": (
+                            "https://example.com/data/-/create" if configured else ""
+                        ),
+                        "api_token": "xxx",
+                        "max_rate": 5,
+                        "time_period": 0.2,
+                    }
+                }
+            },
+        )
+        datasette.root_enabled = True
+        await datasette.invoke_startup()
+        # Should have created the internal table
+        internal_db = datasette.get_internal_database()
+        assert await internal_db.table_exists("datasette_events_to_forward")
+        # Now we trigger an event
+        token = datasette.create_token("root")
+        response = await datasette.client.post(
+            "/data/-/create",
+            json={"table": "hello", "row": {"id": 1}, "pk": "id"},
+            headers={"Authorization": "Bearer {}".format(token)},
+        )
+>       assert response.status_code == 201
+E       assert 403 == 201
+E        +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_events_forward.py:56: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-events-forward/datasette-1.0a37/runs/20260715T005007Z-gh-29380092431-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_events_forward.py::test_events_forward[True] - assert 403 == 201
+ +  where 403 = <Response [403 Forbidden]>.status_code
+FAILED tests/test_events_forward.py::test_events_forward[False] - assert 403 == 201
+ +  where 403 = <Response [403 Forbidden]>.status_code
+ERROR tests/test_events_forward.py::test_events_forward[True] - AssertionError: The following responses are mocked but not requested:
+  - Match any request on https://example.com/data/-/create
+  
+  If this is on purpose, refer to https://github.com/Colin-b/pytest_httpx/blob/master/README.md#allow-to-register-more-responses-than-what-will-be-requested
+assert not [<pytest_httpx._request_matcher._RequestMatcher object at 0x7f3d4287b380>]
+===================== 2 failed, 1 passed, 1 error in 0.44s =====================
+/home/runner/work/_temp/setup-uv-cache/archive-v0/7hmSda3Sa0ks24DY/lib/python3.13/site-packages/_pytest/unraisableexception.py:33: RuntimeWarning: coroutine 'Datasette.create_token' was never awaited
+  gc.collect()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
