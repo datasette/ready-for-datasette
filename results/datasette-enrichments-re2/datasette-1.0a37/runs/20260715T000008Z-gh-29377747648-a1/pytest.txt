@@ -1,0 +1,544 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-enrichments-re2 @ file:///tmp/datasette-enrichments-re2-yt3r5ks1/datasette-enrichments-re2-0.1.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-enrichments-re2 @ file:///tmp/datasette-enrichments-re2-yt3r5ks1/datasette-enrichments-re2-0.1.tar.gz
+Installed 47 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpkqzUoL/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-enrichments-re2-yt3r5ks1/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+tests/test_enrichments_re2.py::test_re2[post0-expected0] FAILED          [ 20%]
+tests/test_enrichments_re2.py::test_re2[post1-expected1] FAILED          [ 40%]
+tests/test_enrichments_re2.py::test_re2[post2-expected2] FAILED          [ 60%]
+tests/test_enrichments_re2.py::test_re2[post3-expected3] FAILED          [ 80%]
+tests/test_enrichments_re2.py::test_re2[post4-expected4] FAILED          [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_re2[post0-expected0] ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7ff134979be0>
+post = {'source_column': 'body', 'regex': 'example (?P<letter>[a-z])', 'single_column': 'letter', 'mode': 'single'}
+expected = [{'body': 'example a', 'letter': 'a'}, {'body': 'example b', 'letter': 'b'}, {'body': 'example c', 'letter': 'c'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "post,expected",
+        (
+            (
+                # mode=single
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letter",
+                    "mode": "single",
+                },
+                [
+                    {"body": "example a", "letter": "a"},
+                    {"body": "example b", "letter": "b"},
+                    {"body": "example c", "letter": "c"},
+                ],
+            ),
+            (
+                # mode=replace
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "",  # Blank means same column
+                    "mode": "replace",
+                    "replacement": r"replaced \1",
+                },
+                [
+                    {"body": "replaced a"},
+                    {"body": "replaced b"},
+                    {"body": "replaced c"},
+                ],
+            ),
+            (
+                # mode=json with no named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example ([a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '["a"]'},
+                    {"body": "example b", "letters": '["b"]'},
+                    {"body": "example c", "letters": '["c"]'},
+                ],
+            ),
+            (
+                # mode=json with named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '[{"letter": "a"}]'},
+                    {"body": "example b", "letters": '[{"letter": "b"}]'},
+                    {"body": "example c", "letters": '[{"letter": "c"}]'},
+                ],
+            ),
+            (
+                # mode=multi
+                {
+                    "source_column": "body",
+                    "regex": r"(?P<example>example) (?P<letter>[a-z])",
+                    "mode": "multi",
+                },
+                [
+                    {"body": "example a", "example": "example", "letter": "a"},
+                    {"body": "example b", "example": "example", "letter": "b"},
+                    {"body": "example c", "example": "example", "letter": "c"},
+                ],
+            ),
+        ),
+    )
+    async def test_re2(datasette: Datasette, post: dict, expected: list):
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_re2.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_re2.py:21: in _cookies
+    csrftoken = (
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uUuY5bRhAN-S3CTH/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+__________________________ test_re2[post1-expected1] ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7ff134355d10>
+post = {'source_column': 'body', 'regex': 'example (?P<letter>[a-z])', 'single_column': '', 'mode': 'replace', ...}
+expected = [{'body': 'replaced a'}, {'body': 'replaced b'}, {'body': 'replaced c'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "post,expected",
+        (
+            (
+                # mode=single
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letter",
+                    "mode": "single",
+                },
+                [
+                    {"body": "example a", "letter": "a"},
+                    {"body": "example b", "letter": "b"},
+                    {"body": "example c", "letter": "c"},
+                ],
+            ),
+            (
+                # mode=replace
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "",  # Blank means same column
+                    "mode": "replace",
+                    "replacement": r"replaced \1",
+                },
+                [
+                    {"body": "replaced a"},
+                    {"body": "replaced b"},
+                    {"body": "replaced c"},
+                ],
+            ),
+            (
+                # mode=json with no named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example ([a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '["a"]'},
+                    {"body": "example b", "letters": '["b"]'},
+                    {"body": "example c", "letters": '["c"]'},
+                ],
+            ),
+            (
+                # mode=json with named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '[{"letter": "a"}]'},
+                    {"body": "example b", "letters": '[{"letter": "b"}]'},
+                    {"body": "example c", "letters": '[{"letter": "c"}]'},
+                ],
+            ),
+            (
+                # mode=multi
+                {
+                    "source_column": "body",
+                    "regex": r"(?P<example>example) (?P<letter>[a-z])",
+                    "mode": "multi",
+                },
+                [
+                    {"body": "example a", "example": "example", "letter": "a"},
+                    {"body": "example b", "example": "example", "letter": "b"},
+                    {"body": "example c", "example": "example", "letter": "c"},
+                ],
+            ),
+        ),
+    )
+    async def test_re2(datasette: Datasette, post: dict, expected: list):
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_re2.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_re2.py:21: in _cookies
+    csrftoken = (
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uUuY5bRhAN-S3CTH/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+__________________________ test_re2[post2-expected2] ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7ff134356c10>
+post = {'source_column': 'body', 'regex': 'example ([a-z])', 'single_column': 'letters', 'mode': 'json'}
+expected = [{'body': 'example a', 'letters': '["a"]'}, {'body': 'example b', 'letters': '["b"]'}, {'body': 'example c', 'letters': '["c"]'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "post,expected",
+        (
+            (
+                # mode=single
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letter",
+                    "mode": "single",
+                },
+                [
+                    {"body": "example a", "letter": "a"},
+                    {"body": "example b", "letter": "b"},
+                    {"body": "example c", "letter": "c"},
+                ],
+            ),
+            (
+                # mode=replace
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "",  # Blank means same column
+                    "mode": "replace",
+                    "replacement": r"replaced \1",
+                },
+                [
+                    {"body": "replaced a"},
+                    {"body": "replaced b"},
+                    {"body": "replaced c"},
+                ],
+            ),
+            (
+                # mode=json with no named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example ([a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '["a"]'},
+                    {"body": "example b", "letters": '["b"]'},
+                    {"body": "example c", "letters": '["c"]'},
+                ],
+            ),
+            (
+                # mode=json with named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '[{"letter": "a"}]'},
+                    {"body": "example b", "letters": '[{"letter": "b"}]'},
+                    {"body": "example c", "letters": '[{"letter": "c"}]'},
+                ],
+            ),
+            (
+                # mode=multi
+                {
+                    "source_column": "body",
+                    "regex": r"(?P<example>example) (?P<letter>[a-z])",
+                    "mode": "multi",
+                },
+                [
+                    {"body": "example a", "example": "example", "letter": "a"},
+                    {"body": "example b", "example": "example", "letter": "b"},
+                    {"body": "example c", "example": "example", "letter": "c"},
+                ],
+            ),
+        ),
+    )
+    async def test_re2(datasette: Datasette, post: dict, expected: list):
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_re2.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_re2.py:21: in _cookies
+    csrftoken = (
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uUuY5bRhAN-S3CTH/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+__________________________ test_re2[post3-expected3] ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7ff134356e90>
+post = {'source_column': 'body', 'regex': 'example (?P<letter>[a-z])', 'single_column': 'letters', 'mode': 'json'}
+expected = [{'body': 'example a', 'letters': '[{"letter": "a"}]'}, {'body': 'example b', 'letters': '[{"letter": "b"}]'}, {'body': 'example c', 'letters': '[{"letter": "c"}]'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "post,expected",
+        (
+            (
+                # mode=single
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letter",
+                    "mode": "single",
+                },
+                [
+                    {"body": "example a", "letter": "a"},
+                    {"body": "example b", "letter": "b"},
+                    {"body": "example c", "letter": "c"},
+                ],
+            ),
+            (
+                # mode=replace
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "",  # Blank means same column
+                    "mode": "replace",
+                    "replacement": r"replaced \1",
+                },
+                [
+                    {"body": "replaced a"},
+                    {"body": "replaced b"},
+                    {"body": "replaced c"},
+                ],
+            ),
+            (
+                # mode=json with no named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example ([a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '["a"]'},
+                    {"body": "example b", "letters": '["b"]'},
+                    {"body": "example c", "letters": '["c"]'},
+                ],
+            ),
+            (
+                # mode=json with named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '[{"letter": "a"}]'},
+                    {"body": "example b", "letters": '[{"letter": "b"}]'},
+                    {"body": "example c", "letters": '[{"letter": "c"}]'},
+                ],
+            ),
+            (
+                # mode=multi
+                {
+                    "source_column": "body",
+                    "regex": r"(?P<example>example) (?P<letter>[a-z])",
+                    "mode": "multi",
+                },
+                [
+                    {"body": "example a", "example": "example", "letter": "a"},
+                    {"body": "example b", "example": "example", "letter": "b"},
+                    {"body": "example c", "example": "example", "letter": "c"},
+                ],
+            ),
+        ),
+    )
+    async def test_re2(datasette: Datasette, post: dict, expected: list):
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_re2.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_re2.py:21: in _cookies
+    csrftoken = (
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uUuY5bRhAN-S3CTH/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+__________________________ test_re2[post4-expected4] ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7ff1343a1310>
+post = {'source_column': 'body', 'regex': '(?P<example>example) (?P<letter>[a-z])', 'mode': 'multi'}
+expected = [{'body': 'example a', 'example': 'example', 'letter': 'a'}, {'body': 'example b', 'example': 'example', 'letter': 'b'}, {'body': 'example c', 'example': 'example', 'letter': 'c'}]
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "post,expected",
+        (
+            (
+                # mode=single
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letter",
+                    "mode": "single",
+                },
+                [
+                    {"body": "example a", "letter": "a"},
+                    {"body": "example b", "letter": "b"},
+                    {"body": "example c", "letter": "c"},
+                ],
+            ),
+            (
+                # mode=replace
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "",  # Blank means same column
+                    "mode": "replace",
+                    "replacement": r"replaced \1",
+                },
+                [
+                    {"body": "replaced a"},
+                    {"body": "replaced b"},
+                    {"body": "replaced c"},
+                ],
+            ),
+            (
+                # mode=json with no named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example ([a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '["a"]'},
+                    {"body": "example b", "letters": '["b"]'},
+                    {"body": "example c", "letters": '["c"]'},
+                ],
+            ),
+            (
+                # mode=json with named capture
+                {
+                    "source_column": "body",
+                    "regex": r"example (?P<letter>[a-z])",
+                    "single_column": "letters",
+                    "mode": "json",
+                },
+                [
+                    {"body": "example a", "letters": '[{"letter": "a"}]'},
+                    {"body": "example b", "letters": '[{"letter": "b"}]'},
+                    {"body": "example c", "letters": '[{"letter": "c"}]'},
+                ],
+            ),
+            (
+                # mode=multi
+                {
+                    "source_column": "body",
+                    "regex": r"(?P<example>example) (?P<letter>[a-z])",
+                    "mode": "multi",
+                },
+                [
+                    {"body": "example a", "example": "example", "letter": "a"},
+                    {"body": "example b", "example": "example", "letter": "b"},
+                    {"body": "example c", "example": "example", "letter": "c"},
+                ],
+            ),
+        ),
+    )
+    async def test_re2(datasette: Datasette, post: dict, expected: list):
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_re2.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_re2.py:21: in _cookies
+    csrftoken = (
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/uUuY5bRhAN-S3CTH/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-re2/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_enrichments_re2.py::test_re2[post0-expected0] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_re2.py::test_re2[post1-expected1] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_re2.py::test_re2[post2-expected2] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_re2.py::test_re2[post3-expected3] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_re2.py::test_re2[post4-expected4] - KeyError: 'ds_csrftoken'
+============================== 5 failed in 0.35s ===============================

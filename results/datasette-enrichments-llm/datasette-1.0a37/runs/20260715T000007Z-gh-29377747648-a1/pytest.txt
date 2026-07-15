@@ -1,0 +1,169 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-enrichments-llm @ file:///tmp/datasette-enrichments-llm-6k414j5z/datasette_enrichments_llm-0.2a1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading openai (1.6MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-enrichments-llm @ file:///tmp/datasette-enrichments-llm-6k414j5z/datasette_enrichments_llm-0.2a1.tar.gz
+Installed 61 packages in 62ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpzsoTaR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'recording': '0.13.4', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-enrichments-llm-6k414j5z/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, recording-0.13.4, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_enrichments_llm.py::test_plugin_is_installed PASSED           [ 25%]
+tests/test_enrichments_llm.py::test_enrichment FAILED                    [ 50%]
+tests/test_enrichments_llm.py::test_enrichment_with_system_prompt FAILED [ 75%]
+tests/test_enrichments_llm.py::test_enrichment_passes_actor FAILED       [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_enrichment ________________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment0')
+
+    @pytest.mark.asyncio
+    async def test_enrichment(tmpdir):
+        data = str(tmpdir / "data.db")
+        datasette = Datasette([data], memory=True, config=CONFIG)
+        db = sqlite_utils.Database(data)
+        db["items"].insert_all(
+            [
+                {"id": 1, "name": "One", "description": "First item"},
+                {"id": 2, "name": "Two", "description": "Second item"},
+            ],
+            pk="id",
+        )
+    
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_llm.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_llm.py:17: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/MFdsyWfcFkVio0jJ/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+______________________ test_enrichment_with_system_prompt ______________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment_with_system_pr0')
+
+    @pytest.mark.asyncio
+    async def test_enrichment_with_system_prompt(tmpdir):
+        data = str(tmpdir / "data.db")
+        datasette = Datasette([data], memory=True, config=CONFIG)
+        db = sqlite_utils.Database(data)
+        db["items"].insert_all(
+            [{"id": 1, "name": "One", "description": "First item"}],
+            pk="id",
+        )
+    
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_llm.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_llm.py:17: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/MFdsyWfcFkVio0jJ/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_________________________ test_enrichment_passes_actor _________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment_passes_actor0')
+
+    @pytest.mark.asyncio
+    async def test_enrichment_passes_actor(tmpdir):
+        """Test that the actor is resolved from actor_id and passed to llm.model()."""
+        hook_calls = []
+    
+        class ActorTracker:
+            __name__ = "actor_tracker_plugin"
+    
+            @hookimpl
+            def llm_prompt_context(self, datasette, model_id, prompt, purpose, actor):
+                @asynccontextmanager
+                async def tracker(result):
+                    hook_calls.append(
+                        {
+                            "model_id": model_id,
+                            "purpose": purpose,
+                            "actor": actor,
+                        }
+                    )
+                    yield
+    
+                return tracker
+    
+        plugin = ActorTracker()
+        pm.register(plugin)
+        try:
+            data = str(tmpdir / "data.db")
+            datasette = Datasette([data], memory=True, config=CONFIG)
+            db = sqlite_utils.Database(data)
+            db["items"].insert_all(
+                [{"id": 1, "name": "One", "description": "First item"}],
+                pk="id",
+            )
+    
+>           cookies = await _cookies(datasette)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_llm.py:148: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_llm.py:17: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/MFdsyWfcFkVio0jJ/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+=============================== warnings summary ===============================
+tests/test_enrichments_llm.py::test_enrichment
+tests/test_enrichments_llm.py::test_enrichment_with_system_prompt
+tests/test_enrichments_llm.py::test_enrichment_passes_actor
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/MFdsyWfcFkVio0jJ/lib/python3.13/site-packages/wtforms/fields/core.py:424: DeprecationWarning: Passing SelectField choices as tuples is deprecated and will be removed in wtforms 3.4. Please use SelectChoice instead.
+    return self.field_class(*self.args, **kw)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-llm/datasette-1.0a37/runs/20260715T000007Z-gh-29377747648-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_enrichments_llm.py::test_enrichment - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_llm.py::test_enrichment_with_system_prompt - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_llm.py::test_enrichment_passes_actor - KeyError: 'ds_csrftoken'
+=================== 3 failed, 1 passed, 3 warnings in 2.37s ====================

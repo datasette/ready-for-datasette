@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments-jinja",
+    "version": "0.1",
+    "repository": "datasette/datasette-enrichments-jinja",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/6a/42/8b1cb747a2f97f6b1c98c7feb1fcc26f81b1577bc5f76bc7c88fd3d6a2a6/datasette-enrichments-jinja-0.1.tar.gz",
+      "sha256": "f383d6d487615abf9ad84d27bae7ccdfb4a92d38f482a017790a9859cd02dd4b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments-jinja",
+      "ref": "0.1",
+      "git_sha": "8c96ec514ccd0c306c0a0a1ee675c62450a1a08f"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000009Z-gh-29377747648-a1",
+    "started_at": "2026-07-15T00:00:09Z",
+    "completed_at": "2026-07-15T00:00:15Z",
+    "duration_seconds": 6.681,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments-jinja @ file:///tmp/datasette-enrichments-jinja-4cjbsoe6/datasette-enrichments-jinja-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "sqlite-utils",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-jinja/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_enrichments_jinja.py::test_enrichment"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "sqlite-utils"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments-jinja/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/pytest.txt"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T23:57:42Z",
+  "generated_at": "2026-07-15T00:00:49Z",
   "results": [
     {
       "schema_version": 1,
@@ -8725,6 +8725,691 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-endpoints/datasette-1.0a37/runs/20260714T235351Z-gh-29377463991-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments",
+        "version": "0.5.1",
+        "repository": "datasette/datasette-enrichments",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/27/e1/5fe05e4cabfc4e95313a6e3ebc69e98dab5fc3877f835e4249fd9602c3cc/datasette_enrichments-0.5.1.tar.gz",
+          "sha256": "e3c578a924b7cd9b9e099bef47d4d636df377a58449068741be50ddf365754a1"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments",
+          "ref": "0.5.1",
+          "git_sha": "4a33a1d6b1a668925744c415f205ed19938a61ce"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000008Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:08Z",
+        "completed_at": "2026-07-15T00:00:16Z",
+        "duration_seconds": 8.03,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments[test] @ file:///tmp/datasette-enrichments-av13q8f2/datasette_enrichments-0.5.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 20,
+        "passed": 0,
+        "failed": 20,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_enrichments.py::test_enrichment_using_secret[env]",
+        "tests/test_enrichments.py::test_enrichment_using_secret[user-input]",
+        "tests/test_enrichments.py::test_enrichment_with_errors",
+        "tests/test_enrichments.py::test_enrichment_with_no_config_form",
+        "tests/test_enrichments.py::test_enrichments_pause_cancel_exceptions",
+        "tests/test_enrichments.py::test_enrichments_pause_resume_cancel_buttons",
+        "tests/test_enrichments.py::test_enrichments_start_on_startup",
+        "tests/test_enrichments.py::test_error_log",
+        "tests/test_enrichments.py::test_job_listings",
+        "tests/test_enrichments.py::test_permission_registered",
+        "tests/test_enrichments.py::test_row_actions[/data/compound_pk_table/dog,a-compound_pk_table?category=dog&amp;name=a]",
+        "tests/test_enrichments.py::test_row_actions[/data/foo~2Fbar/1-foo~2Fbar?_id__exact=1]",
+        "tests/test_enrichments.py::test_row_actions[/data/rowid_table/1-rowid_table?rowid=1]",
+        "tests/test_enrichments.py::test_row_actions[/data/t/1-t?id=1]",
+        "tests/test_enrichments.py::test_uppercase_plugin[foo/bar-False]",
+        "tests/test_enrichments.py::test_uppercase_plugin[foo/bar-True]",
+        "tests/test_enrichments.py::test_uppercase_plugin[rowid_table-False]",
+        "tests/test_enrichments.py::test_uppercase_plugin[rowid_table-True]",
+        "tests/test_enrichments.py::test_uppercase_plugin[t-False]",
+        "tests/test_enrichments.py::test_uppercase_plugin[t-True]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-gpt",
+        "version": "0.5",
+        "repository": "datasette/datasette-enrichments-gpt",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ac/33/9921ab268a1f31dc40c7a8e8cd2d56e3db9c89096071345ab50d33853f01/datasette_enrichments_gpt-0.5.tar.gz",
+          "sha256": "d4aa7992ce85ee18a74592c02387b216f40c027553e2ec5e80f140d01b08011f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-gpt",
+          "ref": "0.5",
+          "git_sha": "1bede50ad21d7ae9fa663fd2a199bcd46b52cf6e"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000008Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:08Z",
+        "completed_at": "2026-07-15T00:00:14Z",
+        "duration_seconds": 6.372,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-gpt @ file:///tmp/datasette-enrichments-gpt-61udunh_/datasette_enrichments_gpt-0.5.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "datasette-test",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-recording",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-gpt/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 1,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_enrichments_gpt.py::test_enrichments_gpt"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "datasette-test",
+          "pytest",
+          "pytest-asyncio",
+          "pytest-recording"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-gpt/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-jinja",
+        "version": "0.1",
+        "repository": "datasette/datasette-enrichments-jinja",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/6a/42/8b1cb747a2f97f6b1c98c7feb1fcc26f81b1577bc5f76bc7c88fd3d6a2a6/datasette-enrichments-jinja-0.1.tar.gz",
+          "sha256": "f383d6d487615abf9ad84d27bae7ccdfb4a92d38f482a017790a9859cd02dd4b"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-jinja",
+          "ref": "0.1",
+          "git_sha": "8c96ec514ccd0c306c0a0a1ee675c62450a1a08f"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000009Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:09Z",
+        "completed_at": "2026-07-15T00:00:15Z",
+        "duration_seconds": 6.681,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-jinja @ file:///tmp/datasette-enrichments-jinja-4cjbsoe6/datasette-enrichments-jinja-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "sqlite-utils",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-jinja/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 1,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_enrichments_jinja.py::test_enrichment"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "sqlite-utils"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-jinja/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-llm",
+        "version": "0.2a1",
+        "repository": "datasette/datasette-enrichments-llm",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/49/e0/e99da60cc4cfdfdf117f7289d07cbb353780e18bb061d72edbf66f1b1eed/datasette_enrichments_llm-0.2a1.tar.gz",
+          "sha256": "ad1b364850475ddcc8d807e936581a10803f9181ca89e0bb1408f930569410a0"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-llm",
+          "ref": "0.2a1",
+          "git_sha": "40e7923095605f8a39d202031f86a4d76423d92f"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000007Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:07Z",
+        "completed_at": "2026-07-15T00:00:16Z",
+        "duration_seconds": 8.613,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-llm @ file:///tmp/datasette-enrichments-llm-6k414j5z/datasette_enrichments_llm-0.2a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-recording",
+          "--with",
+          "llm-echo>=0.3",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-llm/datasette-1.0a37/runs/20260715T000007Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 4,
+        "passed": 1,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 3
+      },
+      "failing_tests": [
+        "tests/test_enrichments_llm.py::test_enrichment",
+        "tests/test_enrichments_llm.py::test_enrichment_passes_actor",
+        "tests/test_enrichments_llm.py::test_enrichment_with_system_prompt"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-recording",
+          "llm-echo>=0.3"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-llm/datasette-1.0a37/runs/20260715T000007Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-opencage",
+        "version": "0.1.1",
+        "repository": "datasette/datasette-enrichments-opencage",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/fe/c5/96d994aa68dfd312503969453937287b03dd4b93a567415b61752d528b49/datasette-enrichments-opencage-0.1.1.tar.gz",
+          "sha256": "04087586a42f29059a3b715fc246c8f9a1c3c21af89414e71060bd8bb2aa144f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-opencage",
+          "ref": "0.1.1",
+          "git_sha": "8766da1cfab9aea0586ee1bb6bdd2221dbb3595f"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000009Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:09Z",
+        "completed_at": "2026-07-15T00:00:15Z",
+        "duration_seconds": 6.478,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-opencage @ file:///tmp/datasette-enrichments-opencage-5gs3l15g/datasette-enrichments-opencage-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-httpx",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-opencage/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 4,
+        "passed": 0,
+        "failed": 0,
+        "errors": 4,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_enrichments_opencage.py::test_enrichment[False-False]",
+        "tests/test_enrichments_opencage.py::test_enrichment[False-True]",
+        "tests/test_enrichments_opencage.py::test_enrichment[True-False]",
+        "tests/test_enrichments_opencage.py::test_enrichment[True-True]"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-httpx"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-opencage/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-quickjs",
+        "version": "0.1a2",
+        "repository": "datasette/datasette-enrichments-quickjs",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/3e/2d/04baadc71a566372e245893d0c4ceb565eb77d6cd3be5de88824840914b9/datasette-enrichments-quickjs-0.1a2.tar.gz",
+          "sha256": "20e79bc8e93c720b15afff028ddf1f2fb0451271a0e01b6caafa138e7b2f2c18"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-quickjs",
+          "ref": "0.1a2",
+          "git_sha": "0301b78e8562ef41e8ad886a22287038b26058f5"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000010Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:10Z",
+        "completed_at": "2026-07-15T00:00:49Z",
+        "duration_seconds": 38.58,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-quickjs @ file:///tmp/datasette-enrichments-quickjs-_fmp8fas/datasette-enrichments-quickjs-0.1a2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-timeout",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-quickjs/datasette-1.0a37/runs/20260715T000010Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 5,
+        "passed": 0,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_enrichments_quickjs.py::test_enrichment",
+        "tests/test_enrichments_quickjs.py::test_enrichment_multi",
+        "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        let obj = {};\\n        for (let i = 0; i < 100000; i++) {\\n            obj = {nested: obj};\\n        }\\n        return obj;\\n    }-null\\n]",
+        "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        let start = Date.now();\\n        while (Date.now() - start < 500);\\n        return 'Task completed';\\n    }-InternalError: interrupted\\n    at enrich (<input>:3)\\n]",
+        "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        return 1;\\n    }-None]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-timeout"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-quickjs/datasette-1.0a37/runs/20260715T000010Z-gh-29377747648-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-enrichments-re2",
+        "version": "0.1",
+        "repository": "datasette/datasette-enrichments-re2",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/f2/f8/c6251040335b85a5179133fb81d38bc5a388f757cf1c37848363f90de52f/datasette-enrichments-re2-0.1.tar.gz",
+          "sha256": "9fc84c940cca541ab5b697356cdb162a6fc1d46d2097431ceb4e74b3af8d6b5e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-enrichments-re2",
+          "ref": "0.1",
+          "git_sha": "2d1e767b6024d78a558cb88c6e39af135d1f366a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T000008Z-gh-29377747648-a1",
+        "started_at": "2026-07-15T00:00:08Z",
+        "completed_at": "2026-07-15T00:00:14Z",
+        "duration_seconds": 6.289,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-enrichments-re2 @ file:///tmp/datasette-enrichments-re2-yt3r5ks1/datasette-enrichments-re2-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-re2/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 5,
+        "passed": 0,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_enrichments_re2.py::test_re2[post0-expected0]",
+        "tests/test_enrichments_re2.py::test_re2[post1-expected1]",
+        "tests/test_enrichments_re2.py::test_re2[post2-expected2]",
+        "tests/test_enrichments_re2.py::test_re2[post3-expected3]",
+        "tests/test_enrichments_re2.py::test_re2[post4-expected4]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-enrichments-re2/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
       }
     },
     {

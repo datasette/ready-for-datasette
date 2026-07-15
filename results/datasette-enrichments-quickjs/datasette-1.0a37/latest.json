@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments-quickjs",
+    "version": "0.1a2",
+    "repository": "datasette/datasette-enrichments-quickjs",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/3e/2d/04baadc71a566372e245893d0c4ceb565eb77d6cd3be5de88824840914b9/datasette-enrichments-quickjs-0.1a2.tar.gz",
+      "sha256": "20e79bc8e93c720b15afff028ddf1f2fb0451271a0e01b6caafa138e7b2f2c18"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments-quickjs",
+      "ref": "0.1a2",
+      "git_sha": "0301b78e8562ef41e8ad886a22287038b26058f5"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000010Z-gh-29377747648-a1",
+    "started_at": "2026-07-15T00:00:10Z",
+    "completed_at": "2026-07-15T00:00:49Z",
+    "duration_seconds": 38.58,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments-quickjs @ file:///tmp/datasette-enrichments-quickjs-_fmp8fas/datasette-enrichments-quickjs-0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-timeout",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-quickjs/datasette-1.0a37/runs/20260715T000010Z-gh-29377747648-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 5,
+    "passed": 0,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_enrichments_quickjs.py::test_enrichment",
+    "tests/test_enrichments_quickjs.py::test_enrichment_multi",
+    "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        let obj = {};\\n        for (let i = 0; i < 100000; i++) {\\n            obj = {nested: obj};\\n        }\\n        return obj;\\n    }-null\\n]",
+    "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        let start = Date.now();\\n        while (Date.now() - start < 500);\\n        return 'Task completed';\\n    }-InternalError: interrupted\\n    at enrich (<input>:3)\\n]",
+    "tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\\n    function enrich() {\\n        return 1;\\n    }-None]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-timeout"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments-quickjs/datasette-1.0a37/runs/20260715T000010Z-gh-29377747648-a1/pytest.txt"
+  }
+}

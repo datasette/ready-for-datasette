@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments-opencage",
+    "version": "0.1.1",
+    "repository": "datasette/datasette-enrichments-opencage",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/fe/c5/96d994aa68dfd312503969453937287b03dd4b93a567415b61752d528b49/datasette-enrichments-opencage-0.1.1.tar.gz",
+      "sha256": "04087586a42f29059a3b715fc246c8f9a1c3c21af89414e71060bd8bb2aa144f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments-opencage",
+      "ref": "0.1.1",
+      "git_sha": "8766da1cfab9aea0586ee1bb6bdd2221dbb3595f"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000009Z-gh-29377747648-a1",
+    "started_at": "2026-07-15T00:00:09Z",
+    "completed_at": "2026-07-15T00:00:15Z",
+    "duration_seconds": 6.478,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments-opencage @ file:///tmp/datasette-enrichments-opencage-5gs3l15g/datasette-enrichments-opencage-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-httpx",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-opencage/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 4,
+    "passed": 0,
+    "failed": 0,
+    "errors": 4,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_enrichments_opencage.py::test_enrichment[False-False]",
+    "tests/test_enrichments_opencage.py::test_enrichment[False-True]",
+    "tests/test_enrichments_opencage.py::test_enrichment[True-False]",
+    "tests/test_enrichments_opencage.py::test_enrichment[True-True]"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-httpx"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments-opencage/datasette-1.0a37/runs/20260715T000009Z-gh-29377747648-a1/pytest.txt"
+  }
+}

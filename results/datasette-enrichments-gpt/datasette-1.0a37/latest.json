@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments-gpt",
+    "version": "0.5",
+    "repository": "datasette/datasette-enrichments-gpt",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ac/33/9921ab268a1f31dc40c7a8e8cd2d56e3db9c89096071345ab50d33853f01/datasette_enrichments_gpt-0.5.tar.gz",
+      "sha256": "d4aa7992ce85ee18a74592c02387b216f40c027553e2ec5e80f140d01b08011f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments-gpt",
+      "ref": "0.5",
+      "git_sha": "1bede50ad21d7ae9fa663fd2a199bcd46b52cf6e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000008Z-gh-29377747648-a1",
+    "started_at": "2026-07-15T00:00:08Z",
+    "completed_at": "2026-07-15T00:00:14Z",
+    "duration_seconds": 6.372,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments-gpt @ file:///tmp/datasette-enrichments-gpt-61udunh_/datasette_enrichments_gpt-0.5.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "datasette-test",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-recording",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-gpt/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_enrichments_gpt.py::test_enrichments_gpt"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "datasette-test",
+      "pytest",
+      "pytest-asyncio",
+      "pytest-recording"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments-gpt/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
+  }
+}

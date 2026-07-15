@@ -1,0 +1,341 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-enrichments-quickjs @ file:///tmp/datasette-enrichments-quickjs-_fmp8fas/datasette-enrichments-quickjs-0.1a2.tar.gz
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+   Building quickjs==1.19.4
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-enrichments-quickjs @ file:///tmp/datasette-enrichments-quickjs-_fmp8fas/datasette-enrichments-quickjs-0.1a2.tar.gz
+      Built quickjs==1.19.4
+Installed 48 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpSrXYIN/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'timeout': '2.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-enrichments-quickjs-_fmp8fas/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, timeout-2.4.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+tests/test_enrichments_quickjs.py::test_enrichment FAILED                [ 20%]
+tests/test_enrichments_quickjs.py::test_enrichment_multi FAILED          [ 40%]
+tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        let obj = {};\n        for (let i = 0; i < 100000; i++) {\n            obj = {nested: obj};\n        }\n        return obj;\n    }-null\n] FAILED [ 60%]
+tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        let start = Date.now();\n        while (Date.now() - start < 500);\n        return 'Task completed';\n    }-InternalError: interrupted\n    at enrich (<input>:3)\n] FAILED [ 80%]
+tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        return 1;\n    }-None] FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_enrichment ________________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment0')
+
+    @pytest.mark.asyncio
+    async def test_enrichment(tmpdir):
+        data = str(tmpdir / "data.db")
+        datasette = Datasette([data], memory=True)
+        db = sqlite_utils.Database(data)
+        rows = [
+            {"id": 1, "name": "One", "description": "First item"},
+            {"id": 2, "name": "Two", "description": "Second item"},
+            {"id": 3, "name": "Three", "description": "Third item"},
+        ]
+        db["items"].insert_all(rows, pk="id")
+    
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_quickjs.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_quickjs.py:10: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/eOwtPGIA3d4ihOPo/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+____________________________ test_enrichment_multi _____________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_enrichment_multi0')
+
+    @pytest.mark.asyncio
+    async def test_enrichment_multi(tmpdir):
+        data = str(tmpdir / "data.db")
+        datasette = Datasette([data], memory=True)
+        db = sqlite_utils.Database(data)
+        rows = [
+            {
+                "id": 1,
+                "name": "NYC",
+                "point": "40.71,-74.0",
+            },
+            {
+                "id": 2,
+                "name": "SF",
+                "point": "37.77,-122.41",
+            },
+        ]
+        db["items"].insert_all(rows, pk="id")
+    
+>       cookies = await _cookies(datasette)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments_quickjs.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_quickjs.py:10: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/eOwtPGIA3d4ihOPo/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_ test_time_and_memory_limit[\n    function enrich() {\n        let obj = {};\n        for (let i = 0; i < 100000; i++) {\n            obj = {nested: obj};\n        }\n        return obj;\n    }-null\n] _
+
+javascript = '\n    function enrich() {\n        let obj = {};\n        for (let i = 0; i < 100000; i++) {\n            obj = {nested: obj};\n        }\n        return obj;\n    }'
+expected_error = 'null\n'
+
+    @pytest.mark.asyncio
+    @pytest.mark.timeout(5)
+    @pytest.mark.parametrize(
+        "javascript,expected_error",
+        [
+            # Deeply nested object should run out of memory
+            (
+                """
+        function enrich() {
+            let obj = {};
+            for (let i = 0; i < 100000; i++) {
+                obj = {nested: obj};
+            }
+            return obj;
+        }""",
+                "null\n",
+            ),
+            # Long running operation should return interrupted error
+            (
+                """
+        function enrich() {
+            let start = Date.now();
+            while (Date.now() - start < 500);
+            return 'Task completed';
+        }""",
+                "InternalError: interrupted\n    at enrich (<input>:3)\n",
+            ),
+            # Should work
+            (
+                """
+        function enrich() {
+            return 1;
+        }""",
+                None,
+            ),
+        ],
+    )
+    async def test_time_and_memory_limit(javascript, expected_error):
+        ds = Datasette()
+        db = ds.add_memory_database("test_time_and_memory_limit")
+        await db.execute_write("create table if not exists foo (id integer primary key)")
+        await db.execute_write("insert or replace into foo (id) values (1)")
+        try:
+            # In-memory DB persists between runs, so clear it
+            await db.execute_write("delete from _enrichment_jobs")
+            await db.execute_write("delete from _enrichment_errors")
+        except Exception:
+            # Table does not exist yet
+            pass
+>       cookies = await _cookies(
+            ds, path="/-/enrich/test_time_and_memory_limit/foo/quickjs"
+        )
+
+tests/test_enrichments_quickjs.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_quickjs.py:10: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/eOwtPGIA3d4ihOPo/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+no such table: _enrichment_jobs
+_ test_time_and_memory_limit[\n    function enrich() {\n        let start = Date.now();\n        while (Date.now() - start < 500);\n        return 'Task completed';\n    }-InternalError: interrupted\n    at enrich (<input>:3)\n] _
+
+javascript = "\n    function enrich() {\n        let start = Date.now();\n        while (Date.now() - start < 500);\n        return 'Task completed';\n    }"
+expected_error = 'InternalError: interrupted\n    at enrich (<input>:3)\n'
+
+    @pytest.mark.asyncio
+    @pytest.mark.timeout(5)
+    @pytest.mark.parametrize(
+        "javascript,expected_error",
+        [
+            # Deeply nested object should run out of memory
+            (
+                """
+        function enrich() {
+            let obj = {};
+            for (let i = 0; i < 100000; i++) {
+                obj = {nested: obj};
+            }
+            return obj;
+        }""",
+                "null\n",
+            ),
+            # Long running operation should return interrupted error
+            (
+                """
+        function enrich() {
+            let start = Date.now();
+            while (Date.now() - start < 500);
+            return 'Task completed';
+        }""",
+                "InternalError: interrupted\n    at enrich (<input>:3)\n",
+            ),
+            # Should work
+            (
+                """
+        function enrich() {
+            return 1;
+        }""",
+                None,
+            ),
+        ],
+    )
+    async def test_time_and_memory_limit(javascript, expected_error):
+        ds = Datasette()
+        db = ds.add_memory_database("test_time_and_memory_limit")
+        await db.execute_write("create table if not exists foo (id integer primary key)")
+        await db.execute_write("insert or replace into foo (id) values (1)")
+        try:
+            # In-memory DB persists between runs, so clear it
+            await db.execute_write("delete from _enrichment_jobs")
+            await db.execute_write("delete from _enrichment_errors")
+        except Exception:
+            # Table does not exist yet
+            pass
+>       cookies = await _cookies(
+            ds, path="/-/enrich/test_time_and_memory_limit/foo/quickjs"
+        )
+
+tests/test_enrichments_quickjs.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_quickjs.py:10: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/eOwtPGIA3d4ihOPo/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+no such table: _enrichment_jobs
+_ test_time_and_memory_limit[\n    function enrich() {\n        return 1;\n    }-None] _
+
+javascript = '\n    function enrich() {\n        return 1;\n    }'
+expected_error = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.timeout(5)
+    @pytest.mark.parametrize(
+        "javascript,expected_error",
+        [
+            # Deeply nested object should run out of memory
+            (
+                """
+        function enrich() {
+            let obj = {};
+            for (let i = 0; i < 100000; i++) {
+                obj = {nested: obj};
+            }
+            return obj;
+        }""",
+                "null\n",
+            ),
+            # Long running operation should return interrupted error
+            (
+                """
+        function enrich() {
+            let start = Date.now();
+            while (Date.now() - start < 500);
+            return 'Task completed';
+        }""",
+                "InternalError: interrupted\n    at enrich (<input>:3)\n",
+            ),
+            # Should work
+            (
+                """
+        function enrich() {
+            return 1;
+        }""",
+                None,
+            ),
+        ],
+    )
+    async def test_time_and_memory_limit(javascript, expected_error):
+        ds = Datasette()
+        db = ds.add_memory_database("test_time_and_memory_limit")
+        await db.execute_write("create table if not exists foo (id integer primary key)")
+        await db.execute_write("insert or replace into foo (id) values (1)")
+        try:
+            # In-memory DB persists between runs, so clear it
+            await db.execute_write("delete from _enrichment_jobs")
+            await db.execute_write("delete from _enrichment_errors")
+        except Exception:
+            # Table does not exist yet
+            pass
+>       cookies = await _cookies(
+            ds, path="/-/enrich/test_time_and_memory_limit/foo/quickjs"
+        )
+
+tests/test_enrichments_quickjs.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_enrichments_quickjs.py:10: in _cookies
+    csrftoken = (await datasette.client.get(path, cookies=cookies)).cookies[
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/eOwtPGIA3d4ihOPo/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+no such table: _enrichment_jobs
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments-quickjs/datasette-1.0a37/runs/20260715T000010Z-gh-29377747648-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_enrichments_quickjs.py::test_enrichment - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_quickjs.py::test_enrichment_multi - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        let obj = {};\n        for (let i = 0; i < 100000; i++) {\n            obj = {nested: obj};\n        }\n        return obj;\n    }-null\n] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        let start = Date.now();\n        while (Date.now() - start < 500);\n        return 'Task completed';\n    }-InternalError: interrupted\n    at enrich (<input>:3)\n] - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments_quickjs.py::test_time_and_memory_limit[\n    function enrich() {\n        return 1;\n    }-None] - KeyError: 'ds_csrftoken'
+============================== 5 failed in 0.38s ===============================

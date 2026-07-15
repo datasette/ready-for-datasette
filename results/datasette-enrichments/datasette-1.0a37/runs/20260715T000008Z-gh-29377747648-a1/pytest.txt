@@ -1,0 +1,1027 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-enrichments @ file:///tmp/datasette-enrichments-av13q8f2/datasette_enrichments-0.5.1.tar.gz
+Downloading ruff (11.0MiB)
+Downloading pygments (1.2MiB)
+Downloading black (1.8MiB)
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded ruff
+ Downloaded black
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-enrichments @ file:///tmp/datasette-enrichments-av13q8f2/datasette_enrichments-0.5.1.tar.gz
+Installed 51 packages in 36ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpVt9iL1/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-enrichments-av13q8f2/tagged-source
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/test_enrichments.py::test_uppercase_plugin[t-True] FAILED          [  5%]
+tests/test_enrichments.py::test_uppercase_plugin[t-False] FAILED         [ 10%]
+tests/test_enrichments.py::test_uppercase_plugin[rowid_table-True] FAILED [ 15%]
+tests/test_enrichments.py::test_uppercase_plugin[rowid_table-False] FAILED [ 20%]
+tests/test_enrichments.py::test_uppercase_plugin[foo/bar-True] FAILED    [ 25%]
+tests/test_enrichments.py::test_uppercase_plugin[foo/bar-False] FAILED   [ 30%]
+tests/test_enrichments.py::test_error_log FAILED                         [ 35%]
+tests/test_enrichments.py::test_row_actions[/data/t/1-t?id=1] FAILED     [ 40%]
+tests/test_enrichments.py::test_row_actions[/data/rowid_table/1-rowid_table?rowid=1] FAILED [ 45%]
+tests/test_enrichments.py::test_row_actions[/data/compound_pk_table/dog,a-compound_pk_table?category=dog&amp;name=a] FAILED [ 50%]
+tests/test_enrichments.py::test_row_actions[/data/foo~2Fbar/1-foo~2Fbar?_id__exact=1] FAILED [ 55%]
+tests/test_enrichments.py::test_job_listings FAILED                      [ 60%]
+tests/test_enrichments.py::test_enrichment_using_secret[env] FAILED      [ 65%]
+tests/test_enrichments.py::test_enrichment_using_secret[user-input] FAILED [ 70%]
+tests/test_enrichments.py::test_enrichment_with_no_config_form FAILED    [ 75%]
+tests/test_enrichments.py::test_enrichment_with_errors FAILED            [ 80%]
+tests/test_enrichments.py::test_enrichments_start_on_startup FAILED      [ 85%]
+tests/test_enrichments.py::test_enrichments_pause_resume_cancel_buttons FAILED [ 90%]
+tests/test_enrichments.py::test_enrichments_pause_cancel_exceptions FAILED [ 95%]
+tests/test_enrichments.py::test_permission_registered FAILED             [100%]
+
+=================================== FAILURES ===================================
+________________________ test_uppercase_plugin[t-True] _________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d7dbe0>, is_root = True
+table = 't'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+            assert response1.status_code == 403
+            return
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/{}".format(encoded_table), cookies=cookies
+        )
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:68: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________ test_uppercase_plugin[t-False] ________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d99950>, is_root = False
+table = 't'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+>           assert response1.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:61: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________ test_uppercase_plugin[rowid_table-True] ____________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d9b110>, is_root = True
+table = 'rowid_table'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+            assert response1.status_code == 403
+            return
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/{}".format(encoded_table), cookies=cookies
+        )
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:68: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________ test_uppercase_plugin[rowid_table-False] ___________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d9b890>, is_root = False
+table = 'rowid_table'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+>           assert response1.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:61: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_____________________ test_uppercase_plugin[foo/bar-True] ______________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77d9950>, is_root = True
+table = 'foo/bar'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+            assert response1.status_code == 403
+            return
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/{}".format(encoded_table), cookies=cookies
+        )
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:68: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_____________________ test_uppercase_plugin[foo/bar-False] _____________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77d9450>, is_root = False
+table = 'foo/bar'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("is_root", [True, False])
+    @pytest.mark.parametrize("table", ("t", "rowid_table", "foo/bar"))
+    async def test_uppercase_plugin(datasette, is_root, table):
+        encoded_table = tilde_encode(table)
+        if not is_root:
+            response1 = await datasette.client.get(
+                "/-/enrich/data/{}".format(encoded_table)
+            )
+>           assert response1.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:61: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________________ test_error_log ________________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77db250>
+
+    @pytest.mark.asyncio
+    async def test_error_log(datasette):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+>       csrftoken = (
+            await datasette.client.get("/-/enrich/data/t/uppercasedemo", cookies=cookies)
+        ).cookies["ds_csrftoken"]
+
+tests/test_enrichments.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 123, in enrichment_view
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________ test_row_actions[/data/t/1-t?id=1] ______________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d98a50>
+path = '/data/t/1', expected_path = 't?id=1'
+
+    @pytest.mark.asyncio
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="uses row_actions() plugin hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/data/t/1", "t?id=1"),
+            ("/data/rowid_table/1", "rowid_table?rowid=1"),
+            ("/data/compound_pk_table/dog,a", "compound_pk_table?category=dog&amp;name=a"),
+            ("/data/foo~2Fbar/1", "foo~2Fbar?_id__exact=1"),
+        ),
+    )
+    async def test_row_actions(datasette, path, expected_path):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(path, cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:176: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 173, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 121, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 257, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 274, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 554, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py", line 627, in inner
+    if await datasette.permission_allowed(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_row_actions[/data/rowid_table/1-rowid_table?rowid=1] ___________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7d99090>
+path = '/data/rowid_table/1', expected_path = 'rowid_table?rowid=1'
+
+    @pytest.mark.asyncio
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="uses row_actions() plugin hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/data/t/1", "t?id=1"),
+            ("/data/rowid_table/1", "rowid_table?rowid=1"),
+            ("/data/compound_pk_table/dog,a", "compound_pk_table?category=dog&amp;name=a"),
+            ("/data/foo~2Fbar/1", "foo~2Fbar?_id__exact=1"),
+        ),
+    )
+    async def test_row_actions(datasette, path, expected_path):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(path, cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:176: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 173, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 121, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 257, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 274, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 554, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py", line 627, in inner
+    if await datasette.permission_allowed(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_row_actions[/data/compound_pk_table/dog,a-compound_pk_table?category=dog&amp;name=a] _
+
+datasette = <datasette.app.Datasette object at 0x7f1df77dad50>
+path = '/data/compound_pk_table/dog,a'
+expected_path = 'compound_pk_table?category=dog&amp;name=a'
+
+    @pytest.mark.asyncio
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="uses row_actions() plugin hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/data/t/1", "t?id=1"),
+            ("/data/rowid_table/1", "rowid_table?rowid=1"),
+            ("/data/compound_pk_table/dog,a", "compound_pk_table?category=dog&amp;name=a"),
+            ("/data/foo~2Fbar/1", "foo~2Fbar?_id__exact=1"),
+        ),
+    )
+    async def test_row_actions(datasette, path, expected_path):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(path, cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:176: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 173, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 121, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 257, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 274, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 554, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py", line 627, in inner
+    if await datasette.permission_allowed(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_row_actions[/data/foo~2Fbar/1-foo~2Fbar?_id__exact=1] __________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77da850>
+path = '/data/foo~2Fbar/1', expected_path = 'foo~2Fbar?_id__exact=1'
+
+    @pytest.mark.asyncio
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="uses row_actions() plugin hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/data/t/1", "t?id=1"),
+            ("/data/rowid_table/1", "rowid_table?rowid=1"),
+            ("/data/compound_pk_table/dog,a", "compound_pk_table?category=dog&amp;name=a"),
+            ("/data/foo~2Fbar/1", "foo~2Fbar?_id__exact=1"),
+        ),
+    )
+    async def test_row_actions(datasette, path, expected_path):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(path, cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:176: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 173, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/base.py", line 121, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 257, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 274, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/views/row.py", line 554, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py", line 627, in inner
+    if await datasette.permission_allowed(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________________ test_job_listings _______________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77db890>
+
+    @pytest.mark.asyncio
+    async def test_job_listings(datasette):
+        "Test /-/enrich/data/-/jobs and /-/enrich/data/-/jobs/18 and database action button"
+        # /-/enrich/data/-/jobs requires auth
+        response = await datasette.client.get("/-/enrich/data/-/jobs")
+>       assert response.status_code == 403
+E       assert 500 == 403
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:195: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 88, in list_jobs_view
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________ test_enrichment_using_secret[env] _______________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df77dbd90>, scenario = 'env'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f1df76f2900>
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", ("env", "user-input"))
+    async def test_enrichment_using_secret(datasette, scenario, monkeypatch):
+        if scenario == "env":
+            monkeypatch.setenv("DATASETTE_SECRETS_STRING_SECRET", "env-secret")
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get("/-/enrich/data/t", cookies=cookies)
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:213: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________ test_enrichment_using_secret[user-input] ___________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7678050>
+scenario = 'user-input'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f1df76f03d0>
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", ("env", "user-input"))
+    async def test_enrichment_using_secret(datasette, scenario, monkeypatch):
+        if scenario == "env":
+            monkeypatch.setenv("DATASETTE_SECRETS_STRING_SECRET", "env-secret")
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get("/-/enrich/data/t", cookies=cookies)
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:213: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_____________________ test_enrichment_with_no_config_form ______________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df76787d0>
+
+    @pytest.mark.asyncio
+    async def test_enrichment_with_no_config_form(datasette):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get("/-/enrich/data/t", cookies=cookies)
+>       assert response1.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_enrichments.py:264: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 194, in enrichment_picker
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_________________________ test_enrichment_with_errors __________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7678a50>
+
+    @pytest.mark.asyncio
+    async def test_enrichment_with_errors(datasette):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/has_50_rows/haserrors", cookies=cookies
+        )
+>       assert "<h2>8 success then 2 errors, repeated</h2>" in response1.text
+E       assert '<h2>8 success then 2 errors, repeated</h2>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+E        +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+
+tests/test_enrichments.py:306: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 123, in enrichment_view
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________ test_enrichments_start_on_startup _______________________
+
+fut = <coroutine object Event.wait at 0x7f1df7685e00>, timeout = 1
+
+    async def wait_for(fut, timeout):
+        """Wait for the single Future or coroutine to complete, with timeout.
+    
+        Coroutine will be wrapped in Task.
+    
+        Returns result of the Future or coroutine.  When a timeout occurs,
+        it cancels the task and raises TimeoutError.  To avoid the task
+        cancellation, wrap it in shield().
+    
+        If the wait is cancelled, the task is also cancelled.
+    
+        If the task suppresses the cancellation and returns a value instead,
+        that value is returned.
+    
+        This function is a coroutine.
+        """
+        # The special case for timeout <= 0 is for the following case:
+        #
+        # async def test_waitfor():
+        #     func_started = False
+        #
+        #     async def func():
+        #         nonlocal func_started
+        #         func_started = True
+        #
+        #     try:
+        #         await asyncio.wait_for(func(), 0)
+        #     except asyncio.TimeoutError:
+        #         assert not func_started
+        #     else:
+        #         assert False
+        #
+        # asyncio.run(test_waitfor())
+    
+    
+        if timeout is not None and timeout <= 0:
+            fut = ensure_future(fut)
+    
+            if fut.done():
+                return fut.result()
+    
+            await _cancel_and_wait(fut)
+            try:
+                return fut.result()
+            except exceptions.CancelledError as exc:
+                raise TimeoutError from exc
+    
+        async with timeouts.timeout(timeout):
+>           return await fut
+                   ^^^^^^^^^
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/asyncio/tasks.py:507: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <asyncio.locks.Event object at 0x7f1df54f9910 [unset]>
+
+    async def wait(self):
+        """Block until the internal flag is true.
+    
+        If the internal flag is true on entry, return True
+        immediately.  Otherwise, block until another task calls
+        set() to set the flag to true, then return True.
+        """
+        if self._value:
+            return True
+    
+        fut = self._get_loop().create_future()
+        self._waiters.append(fut)
+        try:
+>           await fut
+E           asyncio.exceptions.CancelledError
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/asyncio/locks.py:213: CancelledError
+
+The above exception was the direct cause of the following exception:
+
+datasette = <datasette.app.Datasette object at 0x7f1df7678f50>
+
+    @pytest.mark.asyncio
+    async def test_enrichments_start_on_startup(datasette):
+        # Add a partially complete enrichment to the table
+        db = datasette.get_database("data")
+        from datasette_enrichments import ensure_tables
+    
+        job_id = random.randint(1000, 100000)
+    
+        await ensure_tables(db)
+        await db.execute_write(
+            """
+            insert into _enrichment_jobs (
+                id, status, enrichment, database_name, table_name, filter_querystring, config,
+                next_cursor, done_count, error_count
+            ) values (
+                ?, 'running', 'haserrors', 'data', 'has_50_rows', '', '{}', '40', 40, 0
+            )
+        """,
+            (job_id,),
+        )
+        # First request to the app should cause that to finish
+        await datasette.client.get("/")
+>       await wait_for_job(datasette, job_id, "data", timeout=1)
+
+tests/test_enrichments.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/utils.py:57: in wait_for_job
+    await asyncio.wait_for(event.wait(), timeout)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/asyncio/tasks.py:506: in wait_for
+    async with timeouts.timeout(timeout):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Timeout [expired]>
+exc_type = <class 'asyncio.exceptions.CancelledError'>
+exc_val = CancelledError(), exc_tb = <traceback object at 0x7f1df7d39bc0>
+
+    async def __aexit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[BaseException],
+        exc_tb: Optional[TracebackType],
+    ) -> Optional[bool]:
+        assert self._state in (_State.ENTERED, _State.EXPIRING)
+    
+        if self._timeout_handler is not None:
+            self._timeout_handler.cancel()
+            self._timeout_handler = None
+    
+        if self._state is _State.EXPIRING:
+            self._state = _State.EXPIRED
+    
+            if self._task.uncancel() <= self._cancelling and exc_type is not None:
+                # Since there are no new cancel requests, we're
+                # handling this.
+                if issubclass(exc_type, exceptions.CancelledError):
+>                   raise TimeoutError from exc_val
+E                   TimeoutError
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/asyncio/timeouts.py:117: TimeoutError
+------------------------------ Captured log call -------------------------------
+ERROR    asyncio:base_events.py:1889 Task exception was never retrieved
+future: <Task finished name='Task-100' coro=<Enrichment.start_enrichment_in_process.<locals>.run_enrichment() done, defined at /home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py:411> exception=KeyError('rows')>
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/__init__.py", line 441, in run_enrichment
+    rows = response.json()["rows"]
+           ~~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'rows'
+_________________ test_enrichments_pause_resume_cancel_buttons _________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7679a90>
+
+    @pytest.mark.asyncio
+    async def test_enrichments_pause_resume_cancel_buttons(datasette):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/has_50_rows/queue", cookies=cookies
+        )
+>       assert "<h2>Queue controlled enrichment</h2>" in response1.text
+E       assert '<h2>Queue controlled enrichment</h2>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+E        +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+
+tests/test_enrichments.py:425: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 123, in enrichment_view
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________ test_enrichments_pause_cancel_exceptions ___________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df7679950>
+
+    @pytest.mark.asyncio
+    async def test_enrichments_pause_cancel_exceptions(datasette):
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response1 = await datasette.client.get(
+            "/-/enrich/data/has_50_rows/queue", cookies=cookies
+        )
+>       csrftoken = response1.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_enrichments.py:543: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 123, in enrichment_view
+    await check_permissions(datasette, request, database)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/DsfZOaddpkJaHu8L/lib/python3.13/site-packages/datasette_enrichments/views.py", line 14, in check_permissions
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________________________ test_permission_registered __________________________
+
+datasette = <datasette.app.Datasette object at 0x7f1df767a5d0>
+
+    @pytest.mark.asyncio
+    @pytest.mark.skipif(
+        parse(version.__version__) < parse("1.0a13"),
+        reason="uses datasette.Permission",
+    )
+    async def test_permission_registered(datasette):
+>       permission = datasette.get_permission("enrichments")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'get_permission'
+
+tests/test_enrichments.py:620: AttributeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_enrichments.py::test_uppercase_plugin[t-True] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_uppercase_plugin[t-False] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_uppercase_plugin[rowid_table-True] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_uppercase_plugin[rowid_table-False] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_uppercase_plugin[foo/bar-True] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_uppercase_plugin[foo/bar-False] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_error_log - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments.py::test_row_actions[/data/t/1-t?id=1] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_row_actions[/data/rowid_table/1-rowid_table?rowid=1] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_row_actions[/data/compound_pk_table/dog,a-compound_pk_table?category=dog&amp;name=a] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_row_actions[/data/foo~2Fbar/1-foo~2Fbar?_id__exact=1] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_job_listings - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_enrichment_using_secret[env] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_enrichment_using_secret[user-input] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_enrichment_with_no_config_form - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_enrichments.py::test_enrichment_with_errors - assert '<h2>8 success then 2 errors, repeated</h2>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+ +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+FAILED tests/test_enrichments.py::test_enrichments_start_on_startup - TimeoutError
+FAILED tests/test_enrichments.py::test_enrichments_pause_resume_cancel_buttons - assert '<h2>Queue controlled enrichment</h2>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+ +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=73db66e93234">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';</script>\n<script src="/-/static/datasette-manager.js?_hash=47fe291076c6" defer></script>\n</head>\n<body class="">\n<div class="not-footer">\n<header class="hd"><nav>\n    \n    <details class="nav-menu details-menu">\n        <summary><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner">\n            <ul>\n                <li><button type="button" class="button-as-link" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n<script>\ndocument.body.addEventListener(\'click\', (ev) => {\n    /* Close any open details elements that this click is outside of */\n    var target = ev.target;\n    var detailsClickedWithin = null;\n    while (target && target.tagName != \'DETAILS\') {\n        target = target.parentNode;\n    }\n    if (target && target.tagName == \'DETAILS\') {\n        detailsClickedWithin = target;\n    }\n    Array.from(document.querySelectorAll(\'details.details-menu\')).filter(\n        (details) => details.open && details != detailsClickedWithin\n    ).forEach(details => details.open = false);\n});\n\n/* Sync aria-expanded and add keyboard navigation for details-menu elements */\ndocument.querySelectorAll(\'details.details-menu\').forEach(function(details) {\n    var summary = details.querySelector(\'summary\');\n    details.addEventListener(\'toggle\', function() {\n        if (summary) {\n            summary.setAttribute(\'aria-expanded\', details.open ? \'true\' : \'false\');\n        }\n        if (details.open) {\n            /* Focus first menu item when menu opens */\n            var firstItem = details.querySelector(\'[role="menuitem"]\');\n            if (firstItem) { firstItem.focus(); }\n        }\n    });\n});\n\ndocument.body.addEventListener(\'keydown\', function(ev) {\n    /* Keyboard navigation for open details-menu elements */\n    var openDetails = Array.from(document.querySelectorAll(\'details.details-menu[open]\'));\n    if (!openDetails.length) { return; }\n\n    if (ev.key === \'Escape\') {\n        openDetails.forEach(function(details) {\n            details.open = false;\n            var summary = details.querySelector(\'summary\');\n            if (summary) { summary.focus(); }\n        });\n        return;\n    }\n\n    if (ev.key === \'ArrowDown\' || ev.key === \'ArrowUp\') {\n        var focused = document.activeElement;\n        openDetails.forEach(function(details) {\n            var items = Array.from(details.querySelectorAll(\'[role="menuitem"]\'));\n            if (!items.length) { return; }\n            var idx = items.indexOf(focused);\n            if (idx === -1) { return; }\n            ev.preventDefault();\n            if (ev.key === \'ArrowDown\') {\n                items[(idx + 1) % items.length].focus();\n            } else {\n                items[(idx - 1 + items.length) % items.length].focus();\n            }\n        });\n    }\n});\n</script>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=1cb9111efe6a" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+FAILED tests/test_enrichments.py::test_enrichments_pause_cancel_exceptions - KeyError: 'ds_csrftoken'
+FAILED tests/test_enrichments.py::test_permission_registered - AttributeError: 'Datasette' object has no attribute 'get_permission'
+============================== 20 failed in 2.20s ==============================

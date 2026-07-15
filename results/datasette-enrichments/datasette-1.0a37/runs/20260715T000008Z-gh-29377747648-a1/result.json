@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-enrichments",
+    "version": "0.5.1",
+    "repository": "datasette/datasette-enrichments",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/27/e1/5fe05e4cabfc4e95313a6e3ebc69e98dab5fc3877f835e4249fd9602c3cc/datasette_enrichments-0.5.1.tar.gz",
+      "sha256": "e3c578a924b7cd9b9e099bef47d4d636df377a58449068741be50ddf365754a1"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-enrichments",
+      "ref": "0.5.1",
+      "git_sha": "4a33a1d6b1a668925744c415f205ed19938a61ce"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T000008Z-gh-29377747648-a1",
+    "started_at": "2026-07-15T00:00:08Z",
+    "completed_at": "2026-07-15T00:00:16Z",
+    "duration_seconds": 8.03,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-enrichments[test] @ file:///tmp/datasette-enrichments-av13q8f2/datasette_enrichments-0.5.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-enrichments/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 20,
+    "passed": 0,
+    "failed": 20,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_enrichments.py::test_enrichment_using_secret[env]",
+    "tests/test_enrichments.py::test_enrichment_using_secret[user-input]",
+    "tests/test_enrichments.py::test_enrichment_with_errors",
+    "tests/test_enrichments.py::test_enrichment_with_no_config_form",
+    "tests/test_enrichments.py::test_enrichments_pause_cancel_exceptions",
+    "tests/test_enrichments.py::test_enrichments_pause_resume_cancel_buttons",
+    "tests/test_enrichments.py::test_enrichments_start_on_startup",
+    "tests/test_enrichments.py::test_error_log",
+    "tests/test_enrichments.py::test_job_listings",
+    "tests/test_enrichments.py::test_permission_registered",
+    "tests/test_enrichments.py::test_row_actions[/data/compound_pk_table/dog,a-compound_pk_table?category=dog&amp;name=a]",
+    "tests/test_enrichments.py::test_row_actions[/data/foo~2Fbar/1-foo~2Fbar?_id__exact=1]",
+    "tests/test_enrichments.py::test_row_actions[/data/rowid_table/1-rowid_table?rowid=1]",
+    "tests/test_enrichments.py::test_row_actions[/data/t/1-t?id=1]",
+    "tests/test_enrichments.py::test_uppercase_plugin[foo/bar-False]",
+    "tests/test_enrichments.py::test_uppercase_plugin[foo/bar-True]",
+    "tests/test_enrichments.py::test_uppercase_plugin[rowid_table-False]",
+    "tests/test_enrichments.py::test_uppercase_plugin[rowid_table-True]",
+    "tests/test_enrichments.py::test_uppercase_plugin[t-False]",
+    "tests/test_enrichments.py::test_uppercase_plugin[t-True]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-enrichments/datasette-1.0a37/runs/20260715T000008Z-gh-29377747648-a1/pytest.txt"
+  }
+}
