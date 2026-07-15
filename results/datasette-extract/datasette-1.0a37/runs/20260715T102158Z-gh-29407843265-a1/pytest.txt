@@ -1,0 +1,135 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-extract @ file:///tmp/datasette-extract-o2m252ht/datasette_extract-0.3a0.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pygments (1.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-extract @ file:///tmp/datasette-extract-o2m252ht/datasette_extract-0.3a0.tar.gz
+Installed 60 packages in 62ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpHT6kFI/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'recording': '0.13.4', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-extract-o2m252ht/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, recording-0.13.4, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 24 items
+
+tests/test_web.py::test_extract_flow FAILED                              [  4%]
+tests/test_web.py::test_permissions[root-/test/-/extract-True] PASSED    [  8%]
+tests/test_web.py::test_permissions[root-/test/foo/-/extract-True] PASSED [ 12%]
+tests/test_web.py::test_permissions[allowed_all-/test/-/extract-True] PASSED [ 16%]
+tests/test_web.py::test_permissions[allowed_all-/test/foo/-/extract-True] PASSED [ 20%]
+tests/test_web.py::test_permissions[no_extract-/test/-/extract-False] PASSED [ 25%]
+tests/test_web.py::test_permissions[no_extract-/test/foo/-/extract-False] PASSED [ 29%]
+tests/test_web.py::test_permissions[no_insert-/test/-/extract-True] PASSED [ 33%]
+tests/test_web.py::test_permissions[no_insert-/test/foo/-/extract-False] PASSED [ 37%]
+tests/test_web.py::test_permissions[no_create-/test/-/extract-False] PASSED [ 41%]
+tests/test_web.py::test_permissions[no_create-/test/foo/-/extract-True] PASSED [ 45%]
+tests/test_web.py::test_action_menus_require_api_key[True-/test2] PASSED [ 50%]
+tests/test_web.py::test_action_menus_require_api_key[True-/test2/foo] PASSED [ 54%]
+tests/test_web.py::test_action_menus_require_api_key[False-/test2] PASSED [ 58%]
+tests/test_web.py::test_action_menus_require_api_key[False-/test2/foo] PASSED [ 62%]
+tests/test_web.py::test_create_table_copying_columns PASSED              [ 66%]
+tests/test_web.py::test_remove_null_bytes[input0-expected0] PASSED       [ 70%]
+tests/test_web.py::test_remove_null_bytes[input1-expected1] PASSED       [ 75%]
+tests/test_web.py::test_remove_null_bytes[input2-expected2] PASSED       [ 79%]
+tests/test_web.py::test_remove_null_bytes[input3-expected3] PASSED       [ 83%]
+tests/test_web.py::test_remove_null_bytes[input4-expected4] PASSED       [ 87%]
+tests/test_web.py::test_remove_null_bytes[input5-expected5] PASSED       [ 91%]
+tests/test_web.py::test_blank_prompt_when_no_content FAILED              [ 95%]
+tests/test_web.py::test_image_upload FAILED                              [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_extract_flow _______________________________
+
+    @pytest.mark.vcr(ignore_localhost=True)
+    @pytest.mark.asyncio
+    async def test_extract_flow():
+        ds = Datasette()
+        ds.root_enabled = True
+        ds.add_memory_database("data")
+        cookies = {"ds_actor": ds.client.actor_cookie({"id": "root"})}
+        response = await ds.client.get("/data/-/extract", cookies=cookies)
+        assert response.status_code == 200
+        assert "<h1>Extract data to create a new table in data</h1>" in response.text
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_web.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/UEGz0TobDhlbgAfm/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+______________________ test_blank_prompt_when_no_content _______________________
+
+    @pytest.mark.asyncio
+    async def test_blank_prompt_when_no_content():
+        """When no content or image is provided, a blank space should be used as the prompt."""
+        ds = Datasette()
+        ds.root_enabled = True
+        ds.add_memory_database("data")
+        cookies = {"ds_actor": ds.client.actor_cookie({"id": "root"})}
+        response = await ds.client.get("/data/-/extract", cookies=cookies)
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_web.py:211: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/UEGz0TobDhlbgAfm/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+______________________________ test_image_upload _______________________________
+
+    @pytest.mark.asyncio
+    async def test_image_upload():
+        """Uploading an image should not return 'No content provided'."""
+        ds = Datasette()
+        ds.root_enabled = True
+        ds.add_memory_database("data")
+        cookies = {"ds_actor": ds.client.actor_cookie({"id": "root"})}
+        response = await ds.client.get("/data/-/extract", cookies=cookies)
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_web.py:261: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/UEGz0TobDhlbgAfm/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-extract/datasette-1.0a37/runs/20260715T102158Z-gh-29407843265-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_web.py::test_extract_flow - KeyError: 'ds_csrftoken'
+FAILED tests/test_web.py::test_blank_prompt_when_no_content - KeyError: 'ds_csrftoken'
+FAILED tests/test_web.py::test_image_upload - KeyError: 'ds_csrftoken'
+======================== 3 failed, 21 passed in 10.80s =========================

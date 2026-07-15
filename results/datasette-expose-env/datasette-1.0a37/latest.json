@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-expose-env",
+    "version": "0.2",
+    "repository": "simonw/datasette-expose-env",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/dc/b5/c58a01d57fdefa168c8a704175d5ce253049e5a918431227a38491598795/datasette-expose-env-0.2.tar.gz",
+      "sha256": "3d17c93daadd8f3a3a3996622de4bb6e9b3035135139a5a27502b73b98769d8c"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-expose-env",
+      "ref": "0.2",
+      "git_sha": "6c14a5998aa98af298ddc24416d43d4393262b34"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T102157Z-gh-29407843265-a1",
+    "started_at": "2026-07-15T10:21:57Z",
+    "completed_at": "2026-07-15T10:22:04Z",
+    "duration_seconds": 6.256,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-expose-env @ file:///tmp/datasette-expose-env-9s6sz9p4/datasette-expose-env-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-expose-env/datasette-1.0a37/runs/20260715T102157Z-gh-29407843265-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "runner_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_expose_env.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-expose-env/datasette-1.0a37/runs/20260715T102157Z-gh-29407843265-a1/pytest.txt"
+  }
+}
