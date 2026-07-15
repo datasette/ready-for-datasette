@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-glitch",
+    "version": "0.1",
+    "repository": "simonw/datasette-glitch",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/40/e2/d2becbef9bc50d041f3069ee5bd654ab03fa558cb1faeed1fa0585bd2960/datasette-glitch-0.1.tar.gz",
+      "sha256": "a4b7c6d2b9402fe69faa94dfa3dc6e14a80a3e28279038e985b5afed39b5e5c8"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-glitch",
+      "ref": "0.1",
+      "git_sha": "ab01c36c2ffc3a8cdbfa714f14bf3143d7f88d79"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T145943Z-gh-29426067503-a1",
+    "started_at": "2026-07-15T14:59:43Z",
+    "completed_at": "2026-07-15T14:59:49Z",
+    "duration_seconds": 5.926,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-glitch @ file:///tmp/datasette-glitch-r8xp90hk/datasette-glitch-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-glitch/datasette-1.0a37/runs/20260715T145943Z-gh-29426067503-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_glitch.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-glitch/datasette-1.0a37/runs/20260715T145943Z-gh-29426067503-a1/pytest.txt"
+  }
+}

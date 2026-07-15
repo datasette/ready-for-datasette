@@ -1,0 +1,49 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-glitch @ file:///tmp/datasette-glitch-r8xp90hk/datasette-glitch-0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-glitch @ file:///tmp/datasette-glitch-r8xp90hk/datasette-glitch-0.1.tar.gz
+Installed 39 packages in 15ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp083C6Y/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-glitch-r8xp90hk/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 3 items
+
+tests/test_glitch.py::test_plugin_is_installed FAILED                    [ 33%]
+tests/test_glitch.py::test_startup_with_no_variable PASSED               [ 66%]
+tests/test_glitch.py::test_startup_with_variable PASSED                  [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_glitch.py:7
+  /tmp/datasette-glitch-r8xp90hk/tagged-source/tests/test_glitch.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-glitch/datasette-1.0a37/runs/20260715T145943Z-gh-29426067503-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_glitch.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+==================== 1 failed, 2 passed, 1 warning in 0.01s ====================

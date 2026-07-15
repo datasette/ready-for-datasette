@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T13:00:40Z",
+  "generated_at": "2026-07-15T14:59:49Z",
   "results": [
     {
       "schema_version": 1,
@@ -10789,6 +10789,181 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-fixtures/datasette-1.0a37/runs/20260715T130029Z-gh-29417403964-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-geojson",
+        "version": "0.4.0",
+        "repository": "simonw/datasette-geojson",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/f6/d3/a2cc7e759ca701e403bb2470f9fce14170ead6fc0a309061edac2b9aa0e3/datasette-geojson-0.4.0.tar.gz",
+          "sha256": "ecf7ca75b084b57d0a8007cfb9965cdae53fbb29fe8f0a41feffff941a23da8a"
+        },
+        "test_suite": {
+          "type": "pypi_sdist",
+          "repository": null,
+          "ref": null,
+          "git_sha": null
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T145942Z-gh-29426067503-a1",
+        "started_at": "2026-07-15T14:59:42Z",
+        "completed_at": "2026-07-15T14:59:49Z",
+        "duration_seconds": 6.712,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 5,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-geojson @ file:///tmp/datasette-geojson-une4wzla/datasette-geojson-0.4.0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-geojson/datasette-1.0a37/runs/20260715T145942Z-gh-29426067503-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "no_tests",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 0
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-geojson/datasette-1.0a37/runs/20260715T145942Z-gh-29426067503-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-glitch",
+        "version": "0.1",
+        "repository": "simonw/datasette-glitch",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/40/e2/d2becbef9bc50d041f3069ee5bd654ab03fa558cb1faeed1fa0585bd2960/datasette-glitch-0.1.tar.gz",
+          "sha256": "a4b7c6d2b9402fe69faa94dfa3dc6e14a80a3e28279038e985b5afed39b5e5c8"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-glitch",
+          "ref": "0.1",
+          "git_sha": "ab01c36c2ffc3a8cdbfa714f14bf3143d7f88d79"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260715T145943Z-gh-29426067503-a1",
+        "started_at": "2026-07-15T14:59:43Z",
+        "completed_at": "2026-07-15T14:59:49Z",
+        "duration_seconds": 5.926,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-glitch @ file:///tmp/datasette-glitch-r8xp90hk/datasette-glitch-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-glitch/datasette-1.0a37/runs/20260715T145943Z-gh-29426067503-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 3,
+        "passed": 2,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [
+        "tests/test_glitch.py::test_plugin_is_installed"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-glitch/datasette-1.0a37/runs/20260715T145943Z-gh-29426067503-a1/pytest.txt"
       }
     },
     {
