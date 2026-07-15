@@ -1,0 +1,621 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-faiss @ file:///tmp/datasette-faiss-_61nd2f2/datasette_faiss-0.2.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading faiss-cpu (17.6MiB)
+ Downloaded pydantic-core
+      Built datasette-faiss @ file:///tmp/datasette-faiss-_61nd2f2/datasette_faiss-0.2.1.tar.gz
+ Downloaded faiss-cpu
+ Downloaded pygments
+ Downloaded pip
+   Building numpy==1.26.4
+      Built numpy==1.26.4
+Installed 42 packages in 12ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpKue4PM/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-faiss-_61nd2f2/tagged-source
+configfile: pytest.ini
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_faiss.py::test_faiss[select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[1, 2]] FAILED [ 12%]
+tests/test_faiss.py::test_faiss[select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[[1, 0.25], [2, 30.25]]] FAILED [ 25%]
+tests/test_faiss.py::test_faiss[select faiss_encode('[1, 2, 3]') as results-expected2] FAILED [ 37%]
+tests/test_faiss.py::test_faiss[select faiss_decode(faiss_encode('[1, 2, 3]')) as results-[1.0, 2.0, 3.0]] FAILED [ 50%]
+tests/test_faiss.py::test_faiss_agg[faiss_agg-[1, 2, 3]-[1, 2]] FAILED   [ 62%]
+tests/test_faiss.py::test_faiss_agg[faiss_agg-[4, 5, 6]-[2, 1]] FAILED   [ 75%]
+tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[1, 2, 3]-[[1, 0.25], [2, 30.25]]] FAILED [ 87%]
+tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[4, 5, 6]-[[2, 0.25], [1, 24.25]]] FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_faiss[select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[1, 2]] _
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+sql = "select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results"
+expected = '[1, 2]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql,expected",
+        (
+            (
+                "select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[1, 2]",
+            ),
+            (
+                "select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[[1, 0.25], [2, 30.25]]",
+            ),
+            (
+                "select faiss_encode('[1, 2, 3]') as results",
+                {"$base64": True, "encoded": "AACAPwAAAEAAAEBA"},
+            ),
+            (
+                "select faiss_decode(faiss_encode('[1, 2, 3]')) as results",
+                "[1.0, 2.0, 3.0]",
+            ),
+        ),
+    )
+    async def test_faiss(path, sql, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+_ test_faiss[select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[[1, 0.25], [2, 30.25]]] _
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+sql = "select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results"
+expected = '[[1, 0.25], [2, 30.25]]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql,expected",
+        (
+            (
+                "select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[1, 2]",
+            ),
+            (
+                "select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[[1, 0.25], [2, 30.25]]",
+            ),
+            (
+                "select faiss_encode('[1, 2, 3]') as results",
+                {"$base64": True, "encoded": "AACAPwAAAEAAAEBA"},
+            ),
+            (
+                "select faiss_decode(faiss_encode('[1, 2, 3]')) as results",
+                "[1.0, 2.0, 3.0]",
+            ),
+        ),
+    )
+    async def test_faiss(path, sql, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+______ test_faiss[select faiss_encode('[1, 2, 3]') as results-expected2] _______
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+sql = "select faiss_encode('[1, 2, 3]') as results"
+expected = {'$base64': True, 'encoded': 'AACAPwAAAEAAAEBA'}
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql,expected",
+        (
+            (
+                "select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[1, 2]",
+            ),
+            (
+                "select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[[1, 0.25], [2, 30.25]]",
+            ),
+            (
+                "select faiss_encode('[1, 2, 3]') as results",
+                {"$base64": True, "encoded": "AACAPwAAAEAAAEBA"},
+            ),
+            (
+                "select faiss_decode(faiss_encode('[1, 2, 3]')) as results",
+                "[1.0, 2.0, 3.0]",
+            ),
+        ),
+    )
+    async def test_faiss(path, sql, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+_ test_faiss[select faiss_decode(faiss_encode('[1, 2, 3]')) as results-[1.0, 2.0, 3.0]] _
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+sql = "select faiss_decode(faiss_encode('[1, 2, 3]')) as results"
+expected = '[1.0, 2.0, 3.0]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql,expected",
+        (
+            (
+                "select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[1, 2]",
+            ),
+            (
+                "select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results",
+                "[[1, 0.25], [2, 30.25]]",
+            ),
+            (
+                "select faiss_encode('[1, 2, 3]') as results",
+                {"$base64": True, "encoded": "AACAPwAAAEAAAEBA"},
+            ),
+            (
+                "select faiss_decode(faiss_encode('[1, 2, 3]')) as results",
+                "[1.0, 2.0, 3.0]",
+            ),
+        ),
+    )
+    async def test_faiss(path, sql, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+__________________ test_faiss_agg[faiss_agg-[1, 2, 3]-[1, 2]] __________________
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db', fn = 'faiss_agg'
+input = '[1, 2, 3]', expected = '[1, 2]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "fn,input,expected",
+        (
+            ("faiss_agg", "[1, 2, 3]", "[1, 2]"),
+            ("faiss_agg", "[4, 5, 6]", "[2, 1]"),
+            ("faiss_agg_with_scores", "[1, 2, 3]", "[[1, 0.25], [2, 30.25]]"),
+            ("faiss_agg_with_scores", "[4, 5, 6]", "[[2, 0.25], [1, 24.25]]"),
+        ),
+    )
+    async def test_faiss_agg(path, fn, input, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        sql = f"select {fn}(id, embedding, faiss_encode(:embedding), 2) as results from embeddings"
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                    "embedding": input,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+__________________ test_faiss_agg[faiss_agg-[4, 5, 6]-[2, 1]] __________________
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db', fn = 'faiss_agg'
+input = '[4, 5, 6]', expected = '[2, 1]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "fn,input,expected",
+        (
+            ("faiss_agg", "[1, 2, 3]", "[1, 2]"),
+            ("faiss_agg", "[4, 5, 6]", "[2, 1]"),
+            ("faiss_agg_with_scores", "[1, 2, 3]", "[[1, 0.25], [2, 30.25]]"),
+            ("faiss_agg_with_scores", "[4, 5, 6]", "[[2, 0.25], [1, 24.25]]"),
+        ),
+    )
+    async def test_faiss_agg(path, fn, input, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        sql = f"select {fn}(id, embedding, faiss_encode(:embedding), 2) as results from embeddings"
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                    "embedding": input,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+___ test_faiss_agg[faiss_agg_with_scores-[1, 2, 3]-[[1, 0.25], [2, 30.25]]] ____
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+fn = 'faiss_agg_with_scores', input = '[1, 2, 3]'
+expected = '[[1, 0.25], [2, 30.25]]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "fn,input,expected",
+        (
+            ("faiss_agg", "[1, 2, 3]", "[1, 2]"),
+            ("faiss_agg", "[4, 5, 6]", "[2, 1]"),
+            ("faiss_agg_with_scores", "[1, 2, 3]", "[[1, 0.25], [2, 30.25]]"),
+            ("faiss_agg_with_scores", "[4, 5, 6]", "[[2, 0.25], [1, 24.25]]"),
+        ),
+    )
+    async def test_faiss_agg(path, fn, input, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        sql = f"select {fn}(id, embedding, faiss_encode(:embedding), 2) as results from embeddings"
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                    "embedding": input,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+___ test_faiss_agg[faiss_agg_with_scores-[4, 5, 6]-[[2, 0.25], [1, 24.25]]] ____
+
+path = '/tmp/pytest-of-runner/pytest-0/dbs0/demo.db'
+fn = 'faiss_agg_with_scores', input = '[4, 5, 6]'
+expected = '[[2, 0.25], [1, 24.25]]'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "fn,input,expected",
+        (
+            ("faiss_agg", "[1, 2, 3]", "[1, 2]"),
+            ("faiss_agg", "[4, 5, 6]", "[2, 1]"),
+            ("faiss_agg_with_scores", "[1, 2, 3]", "[[1, 0.25], [2, 30.25]]"),
+            ("faiss_agg_with_scores", "[4, 5, 6]", "[[2, 0.25], [1, 24.25]]"),
+        ),
+    )
+    async def test_faiss_agg(path, fn, input, expected):
+        ds = Datasette(
+            [path],
+            metadata={"plugins": {"datasette-faiss": {"tables": [["demo", "embeddings"]]}}},
+        )
+        await ds.invoke_startup()
+        sql = f"select {fn}(id, embedding, faiss_encode(:embedding), 2) as results from embeddings"
+        response = await ds.client.get(
+            "/demo.json?"
+            + urllib.parse.urlencode(
+                {
+                    "_shape": "array",
+                    "sql": sql,
+                    "embedding": input,
+                }
+            )
+        )
+>       assert response.json()[0]["results"] == expected
+               ^^^^^^^^^^^^^^^
+
+tests/test_faiss.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/GbxMvP0xvcgRqPvY/lib/python3.13/site-packages/httpx/_models.py:832: in json
+    return jsonlib.loads(self.content, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/__init__.py:352: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:345: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.decoder.JSONDecoder object at 0x7fb05cbdaa50>, s = '', idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/json/decoder.py:363: JSONDecodeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-faiss/datasette-1.0a37/runs/20260715T115343Z-gh-29413207579-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_faiss.py::test_faiss[select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[1, 2]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss[select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[[1, 0.25], [2, 30.25]]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss[select faiss_encode('[1, 2, 3]') as results-expected2] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss[select faiss_decode(faiss_encode('[1, 2, 3]')) as results-[1.0, 2.0, 3.0]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss_agg[faiss_agg-[1, 2, 3]-[1, 2]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss_agg[faiss_agg-[4, 5, 6]-[2, 1]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[1, 2, 3]-[[1, 0.25], [2, 30.25]]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+FAILED tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[4, 5, 6]-[[2, 0.25], [1, 24.25]]] - json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+============================== 8 failed in 0.57s ===============================

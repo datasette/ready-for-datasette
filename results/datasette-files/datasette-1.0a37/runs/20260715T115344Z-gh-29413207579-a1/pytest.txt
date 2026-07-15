@@ -1,0 +1,227 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-files @ file:///tmp/datasette-files-ui06_lv7/datasette_files-0.1a3.tar.gz
+Downloading pillow (6.6MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pillow
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-files @ file:///tmp/datasette-files-ui06_lv7/datasette_files-0.1a3.tar.gz
+Installed 42 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpkaLFxR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-files-ui06_lv7/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 168 items
+
+tests/test_delete_api.py::test_delete_file PASSED                        [  0%]
+tests/test_delete_api.py::test_delete_requires_permission PASSED         [  1%]
+tests/test_delete_api.py::test_delete_nonexistent_file PASSED            [  1%]
+tests/test_download_security.py::test_svg_download_served_as_attachment PASSED [  2%]
+tests/test_download_security.py::test_html_download_served_as_attachment PASSED [  2%]
+tests/test_download_security.py::test_all_downloads_are_attachment PASSED [  3%]
+tests/test_download_security.py::test_download_has_nosniff_header PASSED [  4%]
+tests/test_download_security.py::test_filename_stripped_to_alnum_in_content_disposition PASSED [  4%]
+tests/test_download_security.py::test_filename_fallback_when_all_stripped PASSED [  5%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[text/plain-txt] PASSED [  5%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[image/jpeg-jpg] PASSED [  6%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[image/png-png] PASSED [  7%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[application/pdf-pdf] PASSED [  7%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[application/json-json] PASSED [  8%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[text/csv-csv] PASSED [  8%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[application/zip-zip] PASSED [  9%]
+tests/test_download_security.py::test_filename_fallback_uses_content_type_extension[application/octet-stream-dat] PASSED [ 10%]
+tests/test_files.py::test_plugin_is_installed PASSED                     [ 10%]
+tests/test_files.py::test_file_column_type_is_registered PASSED          [ 11%]
+tests/test_files.py::test_file_metadata_dataclass PASSED                 [ 11%]
+tests/test_files.py::test_upload_instructions_dataclass PASSED           [ 12%]
+tests/test_files.py::test_storage_capabilities_defaults PASSED           [ 13%]
+tests/test_files.py::test_filesystem_storage_configure PASSED            [ 13%]
+tests/test_files.py::test_filesystem_storage_receive_and_read PASSED     [ 14%]
+tests/test_files.py::test_filesystem_storage_list_files PASSED           [ 14%]
+tests/test_files.py::test_filesystem_storage_delete PASSED               [ 15%]
+tests/test_files.py::test_startup_creates_tables PASSED                  [ 16%]
+tests/test_files.py::test_startup_creates_fts_triggers PASSED            [ 16%]
+tests/test_files.py::test_actions_registered PASSED                      [ 17%]
+tests/test_files.py::test_upload_file PASSED                             [ 17%]
+tests/test_files.py::test_upload_requires_valid_source PASSED            [ 18%]
+tests/test_files.py::test_upload_post_denied_without_permission PASSED   [ 19%]
+tests/test_files.py::test_file_info_denied_without_permission PASSED     [ 19%]
+tests/test_files.py::test_file_json_denied_without_permission PASSED     [ 20%]
+tests/test_files.py::test_file_download_denied_without_permission PASSED [ 20%]
+tests/test_files.py::test_batch_json_denied_without_permission PASSED    [ 21%]
+tests/test_files.py::test_file_info_page PASSED                          [ 22%]
+tests/test_files.py::test_file_json_metadata PASSED                      [ 22%]
+tests/test_files.py::test_file_download PASSED                           [ 23%]
+tests/test_files.py::test_file_not_found PASSED                          [ 23%]
+tests/test_files.py::test_batch_json_with_permission PASSED              [ 24%]
+tests/test_files.py::test_sources_json PASSED                            [ 25%]
+tests/test_files.py::test_fts_populated_on_upload PASSED                 [ 25%]
+tests/test_files.py::test_search_json_empty PASSED                       [ 26%]
+tests/test_files.py::test_search_json_with_query PASSED                  [ 26%]
+tests/test_files.py::test_search_json_prefix_match PASSED                [ 27%]
+tests/test_files.py::test_search_json_no_query_lists_recent PASSED       [ 27%]
+tests/test_files.py::test_search_html_page PASSED                        [ 28%]
+tests/test_files.py::test_search_source_filter PASSED                    [ 29%]
+tests/test_files.py::test_homepage_action_with_browse_permission PASSED  [ 29%]
+tests/test_files.py::test_homepage_action_without_permission PASSED      [ 30%]
+tests/test_files.py::test_files_index_page PASSED                        [ 30%]
+tests/test_files.py::test_files_index_no_permission PASSED               [ 31%]
+tests/test_files.py::test_files_index_multi_source PASSED                [ 32%]
+tests/test_files.py::test_source_files_page PASSED                       [ 32%]
+tests/test_files.py::test_source_files_page_shows_upload_form PASSED     [ 33%]
+tests/test_files.py::test_source_files_page_hides_upload_without_permission PASSED [ 33%]
+tests/test_files.py::test_source_files_denied_without_browse PASSED      [ 34%]
+tests/test_files.py::test_source_files_not_found PASSED                  [ 35%]
+tests/test_files.py::test_source_files_pagination PASSED                 [ 35%]
+tests/test_files.py::test_source_files_empty PASSED                      [ 36%]
+tests/test_files.py::test_search_denied_without_permission PASSED        [ 36%]
+tests/test_files.py::test_search_with_fts_query_denied PASSED            [ 37%]
+tests/test_files.py::test_search_multi_source_permission PASSED          [ 38%]
+tests/test_files.py::test_search_multi_source_fts_filtered PASSED        [ 38%]
+tests/test_files.py::test_search_actor_specific_permission PASSED        [ 39%]
+tests/test_files.py::test_file_info_actor_permission PASSED              [ 39%]
+tests/test_files.py::test_search_text_column_exists PASSED               [ 40%]
+tests/test_files.py::test_search_text_in_fts PASSED                      [ 41%]
+tests/test_files.py::test_search_text_not_in_filename_match PASSED       [ 41%]
+tests/test_files.py::test_files_edit_action_registered PASSED            [ 42%]
+tests/test_files.py::test_render_cell_includes_data_column PASSED        [ 42%]
+tests/test_files.py::test_render_cell_no_data_column_without_table PASSED [ 43%]
+tests/test_files.py::test_render_cell_no_match_for_non_file_id PASSED    [ 44%]
+tests/test_files.py::test_render_cell_escapes_column_name PASSED         [ 44%]
+tests/test_files.py::test_table_page_only_renders_file_typed_columns PASSED [ 45%]
+tests/test_files.py::test_extra_body_script_on_table_page PASSED         [ 45%]
+tests/test_files.py::test_extra_body_script_includes_file_columns PASSED [ 46%]
+tests/test_files.py::test_extra_body_script_with_update_permission PASSED [ 47%]
+tests/test_files.py::test_extra_body_script_not_on_non_table_pages PASSED [ 47%]
+tests/test_files.py::test_file_actions_hook_no_actions_by_default PASSED [ 48%]
+tests/test_files.py::test_file_actions_hook_with_plugin PASSED           [ 48%]
+tests/test_files.py::test_file_actions_hook_async PASSED                 [ 49%]
+tests/test_files.py::test_file_actions_suggestion_based_on_preview_bytes PASSED [ 50%]
+tests/test_files.py::test_imports_table_created_at_startup PASSED        [ 50%]
+tests/test_files.py::test_csv_file_actions_suggests_import PASSED        [ 51%]
+tests/test_files.py::test_tsv_file_actions_suggests_import PASSED        [ 51%]
+tests/test_files.py::test_csv_file_actions_not_for_non_csv PASSED        [ 52%]
+tests/test_files.py::test_import_preview_get PASSED                      [ 52%]
+tests/test_files.py::test_import_preview_get_404_for_missing_file PASSED [ 53%]
+tests/test_files.py::test_import_post_requires_csrf_token FAILED         [ 54%]
+tests/test_files.py::test_import_permission_checks[no-create-table] PASSED [ 54%]
+tests/test_files.py::test_import_permission_checks[no-insert-row] PASSED [ 55%]
+tests/test_files.py::test_import_permission_checks[table-already-exists] PASSED [ 55%]
+tests/test_files.py::test_import_post_creates_job_and_imports PASSED     [ 56%]
+tests/test_files.py::test_import_csv_with_empty_rows PASSED              [ 57%]
+tests/test_files.py::test_import_progress_json PASSED                    [ 57%]
+tests/test_files.py::test_import_progress_page PASSED                    [ 58%]
+tests/test_get_file.py::test_parse_created_at_variants[2026-03-13 23:23:24-expected0] PASSED [ 58%]
+tests/test_get_file.py::test_parse_created_at_variants[2026-03-13T23:23:24-expected1] PASSED [ 59%]
+tests/test_get_file.py::test_parse_created_at_variants[2026-03-13T23:23:24.123456-expected2] PASSED [ 60%]
+tests/test_get_file.py::test_parse_created_at_variants[2026-03-13T15:23:24-08:00-expected3] PASSED [ 60%]
+tests/test_get_file.py::test_parse_created_at_variants[2026-03-13T23:23:24Z-expected4] PASSED [ 61%]
+tests/test_get_file.py::test_get_file_returns_file_object PASSED         [ 61%]
+tests/test_get_file.py::test_get_file_returns_none_for_missing PASSED    [ 62%]
+tests/test_get_file.py::test_get_file_read_all PASSED                    [ 63%]
+tests/test_get_file.py::test_get_file_read_max_bytes PASSED              [ 63%]
+tests/test_get_file.py::test_get_file_open_streaming PASSED              [ 64%]
+tests/test_get_file.py::test_get_file_metadata_fields PASSED             [ 64%]
+tests/test_owner_permissions.py::test_file_resource_used_for_edit_and_delete PASSED [ 65%]
+tests/test_owner_permissions.py::test_source_level_delete_permission_still_works PASSED [ 66%]
+tests/test_owner_permissions.py::test_source_level_edit_permission_still_works PASSED [ 66%]
+tests/test_owner_permissions.py::test_owner_permission[Owner can delete their own file] PASSED [ 67%]
+tests/test_owner_permissions.py::test_owner_permission[Owner can edit their own file] PASSED [ 67%]
+tests/test_owner_permissions.py::test_owner_permission[Owner cannot delete without owners_can_delete config] PASSED [ 68%]
+tests/test_owner_permissions.py::test_owner_permission[Owner cannot edit without owners_can_edit config] PASSED [ 69%]
+tests/test_owner_permissions.py::test_owner_permission[owners_can_edit does not grant delete] PASSED [ 69%]
+tests/test_owner_permissions.py::test_owner_permission[owners_can_delete does not grant edit] PASSED [ 70%]
+tests/test_owner_permissions.py::test_owner_permission[Non-owner cannot delete even with owners_can_delete] PASSED [ 70%]
+tests/test_owner_permissions.py::test_owner_permission[Non-owner cannot edit even with owners_can_edit] PASSED [ 71%]
+tests/test_owner_permissions.py::test_anonymous_upload_no_owner PASSED   [ 72%]
+tests/test_path_traversal.py::test_path_traversal_read_blocked PASSED    [ 72%]
+tests/test_path_traversal.py::test_path_traversal_write_blocked PASSED   [ 73%]
+tests/test_path_traversal.py::test_path_traversal_delete_blocked PASSED  [ 73%]
+tests/test_path_traversal.py::test_path_traversal_metadata_blocked PASSED [ 74%]
+tests/test_path_traversal.py::test_path_traversal_stream_blocked PASSED  [ 75%]
+tests/test_path_traversal.py::test_path_traversal_list_blocked PASSED    [ 75%]
+tests/test_path_traversal.py::test_valid_paths_still_work PASSED         [ 76%]
+tests/test_thumbnails.py::test_generate_file_icon_svg_pdf PASSED         [ 76%]
+tests/test_thumbnails.py::test_generate_file_icon_svg_unknown PASSED     [ 77%]
+tests/test_thumbnails.py::test_generate_file_icon_svg_csv_by_content_type PASSED [ 77%]
+tests/test_thumbnails.py::test_generate_file_icon_svg_escapes_label PASSED [ 78%]
+tests/test_thumbnails.py::test_pillow_generator_registered_via_hook PASSED [ 79%]
+tests/test_thumbnails.py::test_pillow_can_generate_jpeg PASSED           [ 79%]
+tests/test_thumbnails.py::test_pillow_cannot_generate_pdf PASSED         [ 80%]
+tests/test_thumbnails.py::test_pillow_generates_thumbnail PASSED         [ 80%]
+tests/test_thumbnails.py::test_pillow_preserves_transparency PASSED      [ 81%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_for_text_file PASSED   [ 82%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_for_text_file_supports_etag PASSED [ 82%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_for_pdf PASSED         [ 83%]
+tests/test_thumbnails.py::test_thumbnail_not_found PASSED                [ 83%]
+tests/test_thumbnails.py::test_thumbnail_permission_denied PASSED        [ 84%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_for_image PASSED       [ 85%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_for_image_supports_etag PASSED [ 85%]
+tests/test_thumbnails.py::test_thumbnail_endpoint_uses_registered_non_image_generator PASSED [ 86%]
+tests/test_thumbnails.py::test_thumbnail_is_cached_in_database PASSED    [ 86%]
+tests/test_thumbnails.py::test_thumbnail_generated_on_upload PASSED      [ 87%]
+tests/test_thumbnails.py::test_thumbnail_generated_on_upload_for_non_image_generator PASSED [ 88%]
+tests/test_thumbnails.py::test_thumbnail_deleted_with_file PASSED        [ 88%]
+tests/test_update_api.py::test_update_search_text PASSED                 [ 89%]
+tests/test_update_api.py::test_update_requires_edit_permission PASSED    [ 89%]
+tests/test_update_api.py::test_update_invalid_field PASSED               [ 90%]
+tests/test_update_api.py::test_update_missing_update_key PASSED          [ 91%]
+tests/test_update_api.py::test_update_nonexistent_file PASSED            [ 91%]
+tests/test_update_api.py::test_update_search_text_appears_in_search PASSED [ 92%]
+tests/test_upload_api.py::test_upload_page_uses_web_component PASSED     [ 92%]
+tests/test_upload_api.py::test_source_page_shows_upload_component PASSED [ 93%]
+tests/test_upload_api.py::test_prepare_returns_upload_instructions PASSED [ 94%]
+tests/test_upload_api.py::test_prepare_requires_upload_permission PASSED [ 94%]
+tests/test_upload_api.py::test_prepare_requires_filename PASSED          [ 95%]
+tests/test_upload_api.py::test_prepare_invalid_source PASSED             [ 95%]
+tests/test_upload_api.py::test_content_upload PASSED                     [ 96%]
+tests/test_upload_api.py::test_content_upload_invalid_token PASSED       [ 97%]
+tests/test_upload_api.py::test_complete_registers_file PASSED            [ 97%]
+tests/test_upload_api.py::test_complete_without_content_fails PASSED     [ 98%]
+tests/test_upload_api.py::test_complete_double_use_fails PASSED          [ 98%]
+tests/test_upload_api.py::test_full_upload_flow_file_on_disk PASSED      [ 99%]
+tests/test_upload_api.py::test_overlong_filename_is_truncated PASSED     [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_import_post_requires_csrf_token _____________________
+
+upload_dir = '/tmp/pytest-of-runner/pytest-0/test_import_post_requires_csrf0/uploads'
+
+    @pytest.mark.asyncio
+    async def test_import_post_requires_csrf_token(upload_dir):
+        """POST /-/files/import/{file_id} without a CSRF token should return 403."""
+        ds = _make_datasette(
+            upload_dir,
+            permissions={"files-browse": True, "files-upload": True},
+        )
+        result = await _upload_file(
+            ds,
+            filename="data.csv",
+            content=b"name,age\nAlice,30\n",
+            content_type="text/csv",
+        )
+        file_id = result["file_id"]
+    
+        # GET the page first to obtain the CSRF cookie
+        get_response = await ds.client.get(f"/-/files/import/{file_id}")
+        assert get_response.status_code == 200
+        csrf_cookie = get_response.cookies.get("ds_csrftoken")
+>       assert csrf_cookie, "Expected ds_csrftoken cookie from GET"
+E       AssertionError: Expected ds_csrftoken cookie from GET
+E       assert None
+
+tests/test_files.py:1633: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-files/datasette-1.0a37/runs/20260715T115344Z-gh-29413207579-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_files.py::test_import_post_requires_csrf_token - AssertionError: Expected ds_csrftoken cookie from GET
+assert None
+======================== 1 failed, 167 passed in 9.40s =========================

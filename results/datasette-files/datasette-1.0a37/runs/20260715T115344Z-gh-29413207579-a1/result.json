@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-files",
+    "version": "0.1a3",
+    "repository": "datasette/datasette-files",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/cf/16/bfb1c3be646b03711ccbc0c09fc8bbe819b127a2f47dcdd5e83ce7035028/datasette_files-0.1a3.tar.gz",
+      "sha256": "6d7aca073e017f29e82dd794519ce5001f6e0a7022e1d29bed0479a9b18b2500"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-files",
+      "ref": "0.1a3",
+      "git_sha": "c83b78bb8a894e92f296489c7d303d6dc6177fdb"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T115344Z-gh-29413207579-a1",
+    "started_at": "2026-07-15T11:53:44Z",
+    "completed_at": "2026-07-15T11:54:01Z",
+    "duration_seconds": 17.482,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-files @ file:///tmp/datasette-files-ui06_lv7/datasette_files-0.1a3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-files/datasette-1.0a37/runs/20260715T115344Z-gh-29413207579-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 168,
+    "passed": 167,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_files.py::test_import_post_requires_csrf_token"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 9,
+    "release_tag": 10
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-files/datasette-1.0a37/runs/20260715T115344Z-gh-29413207579-a1/pytest.txt"
+  }
+}

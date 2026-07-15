@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-faiss",
+    "version": "0.2.1",
+    "repository": "simonw/datasette-faiss",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/2d/61/674028fdf92b29c488caebe473dbc79813b4c58397ee90a1ad76114b2194/datasette_faiss-0.2.1.tar.gz",
+      "sha256": "f41fa89637f368a460f1d4a4ebf083c33c99d6060fff2a4c54afc3561d6522a9"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-faiss",
+      "ref": "0.2.1",
+      "git_sha": "4fe395607bd6e5a7ec63b737bd787535501b589d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260715T115343Z-gh-29413207579-a1",
+    "started_at": "2026-07-15T11:53:43Z",
+    "completed_at": "2026-07-15T11:55:53Z",
+    "duration_seconds": 129.658,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-faiss[test] @ file:///tmp/datasette-faiss-_61nd2f2/datasette_faiss-0.2.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-faiss/datasette-1.0a37/runs/20260715T115343Z-gh-29413207579-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_faiss.py::test_faiss[select faiss_decode(faiss_encode('[1, 2, 3]')) as results-[1.0, 2.0, 3.0]]",
+    "tests/test_faiss.py::test_faiss[select faiss_encode('[1, 2, 3]') as results-expected2]",
+    "tests/test_faiss.py::test_faiss[select faiss_search('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[1, 2]]",
+    "tests/test_faiss.py::test_faiss[select faiss_search_with_scores('demo', 'embeddings', faiss_encode('[1, 2, 3]'), 2) as results-[[1, 0.25], [2, 30.25]]]",
+    "tests/test_faiss.py::test_faiss_agg[faiss_agg-[1, 2, 3]-[1, 2]]",
+    "tests/test_faiss.py::test_faiss_agg[faiss_agg-[4, 5, 6]-[2, 1]]",
+    "tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[1, 2, 3]-[[1, 0.25], [2, 30.25]]]",
+    "tests/test_faiss.py::test_faiss_agg[faiss_agg_with_scores-[4, 5, 6]-[[2, 0.25], [1, 24.25]]]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-faiss/datasette-1.0a37/runs/20260715T115343Z-gh-29413207579-a1/pytest.txt"
+  }
+}
