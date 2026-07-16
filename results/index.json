@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T01:04:48Z",
+  "generated_at": "2026-07-16T04:19:27Z",
   "results": [
     {
       "schema_version": 1,
@@ -12767,6 +12767,95 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-jellyfish/datasette-1.0a37/runs/20260716T010442Z-gh-29463183541-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-json-html",
+        "version": "1.0.1",
+        "repository": "simonw/datasette-json-html",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/95/45/a7f5e828dd6b249e9d0214d11d789350fd8a24f12b08b878c05416c5e08b/datasette-json-html-1.0.1.tar.gz",
+          "sha256": "9b23bd0eb685df0c5a72fabda8e3be6695e4f23019f340cc4f5ddf57ba837480"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-json-html",
+          "ref": "1.0.1",
+          "git_sha": "c8d0190d54a5b13cc1d0d727881e1a9f6c50e912"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T041921Z-gh-29471080804-a1",
+        "started_at": "2026-07-16T04:19:21Z",
+        "completed_at": "2026-07-16T04:19:27Z",
+        "duration_seconds": 6.118,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-json-html @ file:///tmp/datasette-json-html-ufemm6ry/datasette-json-html-1.0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-json-html/datasette-1.0a37/runs/20260716T041921Z-gh-29471080804-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 14,
+        "passed": 14,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 3
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-json-html/datasette-1.0a37/runs/20260716T041921Z-gh-29471080804-a1/pytest.txt"
       }
     },
     {
