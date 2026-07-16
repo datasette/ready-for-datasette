@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-leaflet-geojson",
+    "version": "0.8.2",
+    "repository": "simonw/datasette-leaflet-geojson",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/0f/80/914c65057714798c97bdcdaaa480dcdcb94c246358d00cd185e9e9c91fa1/datasette_leaflet_geojson-0.8.2.tar.gz",
+      "sha256": "d72e5390b7cb3bafcc8792d1353e053165920876d56ee6185c7b4480bbec6d06"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-leaflet-geojson",
+      "ref": "0.8.2",
+      "git_sha": "5da7e3c45d1290ddd996947fb4844b4872e4d163"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260716T155426Z-gh-29513234251-a1",
+    "started_at": "2026-07-16T15:54:26Z",
+    "completed_at": "2026-07-16T15:54:32Z",
+    "duration_seconds": 6.213,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-leaflet-geojson @ file:///tmp/datasette-leaflet-geojson-fo370ce7/datasette_leaflet_geojson-0.8.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet-geojson/datasette-1.0a37/runs/20260716T155426Z-gh-29513234251-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 12,
+    "passed": 10,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_config.py::test_plugin_configuration[20-20]",
+    "tests/test_config.py::test_plugin_configuration[None-10]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-leaflet-geojson/datasette-1.0a37/runs/20260716T155426Z-gh-29513234251-a1/pytest.txt"
+  }
+}

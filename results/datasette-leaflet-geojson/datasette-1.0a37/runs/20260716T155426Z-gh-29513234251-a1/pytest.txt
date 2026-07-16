@@ -1,0 +1,73 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-leaflet-geojson @ file:///tmp/datasette-leaflet-geojson-fo370ce7/datasette_leaflet_geojson-0.8.2.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-leaflet-geojson @ file:///tmp/datasette-leaflet-geojson-fo370ce7/datasette_leaflet_geojson-0.8.2.tar.gz
+Installed 40 packages in 32ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpM2vIHT/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-leaflet-geojson-fo370ce7/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 12 items
+
+tests/test_config.py::test_plugin_configuration[None-10] FAILED          [  8%]
+tests/test_config.py::test_plugin_configuration[20-20] FAILED            [ 16%]
+tests/test_render_cell.py::test_render_cell[-False] PASSED               [ 25%]
+tests/test_render_cell.py::test_render_cell[3-False] PASSED              [ 33%]
+tests/test_render_cell.py::test_render_cell[{not-json-False] PASSED      [ 41%]
+tests/test_render_cell.py::test_render_cell[{}-False0] PASSED            [ 50%]
+tests/test_render_cell.py::test_render_cell[{}-False1] PASSED            [ 58%]
+tests/test_render_cell.py::test_render_cell[{"type": "Bad"}-False] PASSED [ 66%]
+tests/test_render_cell.py::test_render_cell[{"type": "Polygon"}-True] PASSED [ 75%]
+tests/test_render_cell.py::test_render_cell[{"type": "FeatureCollection"}-True] PASSED [ 83%]
+tests/test_render_cell.py::test_render_cell_truncates_floating_points PASSED [ 91%]
+tests/test_render_cell.py::test_render_cell_not_confused_by_other_properties PASSED [100%]
+
+=================================== FAILURES ===================================
+______________________ test_plugin_configuration[None-10] ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________ test_plugin_configuration[20-20] _______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_config.py:12
+  /tmp/datasette-leaflet-geojson-fo370ce7/tagged-source/tests/test_config.py:12: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet-geojson/datasette-1.0a37/runs/20260716T155426Z-gh-29513234251-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_config.py::test_plugin_configuration[None-10] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_config.py::test_plugin_configuration[20-20] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=================== 2 failed, 10 passed, 1 warning in 0.02s ====================
