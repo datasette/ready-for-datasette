@@ -1,0 +1,37 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm-usage @ file:///tmp/datasette-llm-usage-jt_u9xyc/datasette_llm_usage-0.2a0.tar.gz
+      Built datasette-llm-usage @ file:///tmp/datasette-llm-usage-jt_u9xyc/datasette_llm_usage-0.2a0.tar.gz
+Downloading openai (1.6MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+Installed 56 packages in 73ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpsFhtJX/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-usage-jt_u9xyc/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_llm_usage.py::test_tables_created PASSED                      [ 12%]
+tests/test_llm_usage.py::test_counts_usage PASSED                        [ 25%]
+tests/test_llm_usage.py::test_prompt_logging PASSED                      [ 37%]
+tests/test_llm_usage.py::test_no_actor PASSED                            [ 50%]
+tests/test_llm_usage.py::test_counts_usage_for_chain_responses PASSED    [ 62%]
+tests/test_llm_usage.py::test_tool_calls_logged PASSED                   [ 75%]
+tests/test_llm_usage.py::test_simple_prompt_permission_denied PASSED     [ 87%]
+tests/test_llm_usage.py::test_simple_prompt_permission_allowed PASSED    [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-usage/datasette-1.0a37/runs/20260716T232537Z-gh-29542132362-a1/.pytest-report.json
+============================== 8 passed in 2.06s ===============================
