@@ -218,9 +218,9 @@
   {
     "name": "datasette-backup",
     "github_repo": "simonw/datasette-backup",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "ef423a46dc25c89dda28d146f3c99ad5203e68e4fa485cbd05cb60489165739e",
-    "metadata_etag": "\"9f8640c9b00ca9cfc391e489b3c49f8a50a928212cf4af8e16e11414a3cc3a60\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "603fa12f232964570b18594afa228698ae027858fcc631038e39cd97ced2093a",
+    "metadata_etag": "\"e005d9ae28f01c519bdc13e40bc410d288047ed46b438373b919edbe035306d7\"",
     "latest_version": "0.1.1"
   },
   {
