@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-jupyterlite",
+    "version": "0.1a1",
+    "repository": "simonw/datasette-jupyterlite",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a3/fe/0c7481c4d174c04faf554d75c51999f7715bb259efdb9f8d2c3dfac27f92/datasette-jupyterlite-0.1a1.tar.gz",
+      "sha256": "e7ae879d3de7683028d3e28cb238d971b9cd208fd5eff45f081ea478a5f23a18"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-jupyterlite",
+      "ref": "0.1a1",
+      "git_sha": "43d643eab3e7a8fe85a64aa2e177a3238603e800"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20260716T105652Z-gh-29492614433-a1",
+    "started_at": "2026-07-16T10:56:52Z",
+    "completed_at": "2026-07-16T10:56:58Z",
+    "duration_seconds": 6.062,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-jupyterlite @ file:///tmp/datasette-jupyterlite-nlp944ql/datasette-jupyterlite-0.1a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-jupyterlite/datasette-1.0a37/runs/20260716T105652Z-gh-29492614433-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-jupyterlite/datasette-1.0a37/runs/20260716T105652Z-gh-29492614433-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

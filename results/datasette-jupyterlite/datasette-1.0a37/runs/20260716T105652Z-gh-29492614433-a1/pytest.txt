@@ -1,0 +1,72 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-jupyterlite @ file:///tmp/datasette-jupyterlite-nlp944ql/datasette-jupyterlite-0.1a1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading jupyterlite-core (15.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded jupyterlite-core
+      Built datasette-jupyterlite @ file:///tmp/datasette-jupyterlite-nlp944ql/datasette-jupyterlite-0.1a1.tar.gz
+Installed 46 packages in 36ms
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/_pytest/main.py", line 326, in wrap_session
+INTERNALERROR>     config._do_configure()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/_pytest/config/__init__.py", line 1205, in _do_configure
+INTERNALERROR>     self.hook.pytest_configure.call_historic(kwargs=dict(config=self))
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/pluggy/_hooks.py", line 534, in call_historic
+INTERNALERROR>     res = self._hookexec(self.name, self._hookimpls.copy(), kwargs, False)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/pluggy/_manager.py", line 120, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/pluggy/_callers.py", line 167, in _multicall
+INTERNALERROR>     raise exception
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/pluggy/_callers.py", line 121, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 53, in pytest_configure
+INTERNALERROR>     _install_tracking()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 38, in _install_tracking
+INTERNALERROR>     from datasette.app import Datasette
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 188, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette/app.py", line 47, in <module>
+INTERNALERROR>     from .views.database import (
+INTERNALERROR>     ...<3 lines>...
+INTERNALERROR>     )
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 188, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette/views/database.py", line 36, in <module>
+INTERNALERROR>     from datasette.plugins import pm
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+INTERNALERROR>   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 188, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette/plugins.py", line 71, in <module>
+INTERNALERROR>     pm.load_setuptools_entrypoints("datasette")
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/pluggy/_manager.py", line 416, in load_setuptools_entrypoints
+INTERNALERROR>     plugin = ep.load()
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py", line 179, in load
+INTERNALERROR>     module = import_module(match.group('module'))
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py", line 88, in import_module
+INTERNALERROR>     return _bootstrap._gcd_import(name[level:], package, level)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/CHD7M5cZ69kse04C/lib/python3.13/site-packages/datasette_jupyterlite/__init__.py", line 8, in <module>
+INTERNALERROR>     tarpath = list(files("jupyterlite").glob("*.tgz"))[0]
+INTERNALERROR>               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+INTERNALERROR> IndexError: list index out of range
