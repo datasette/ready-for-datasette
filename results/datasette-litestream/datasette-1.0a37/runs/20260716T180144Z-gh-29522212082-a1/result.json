@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-litestream",
+    "version": "0.2a0",
+    "repository": "datasette/datasette-litestream",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/24/c0/6336f9ada45b490c7eaf3ca43d39867f18a525d749edbdac0888ff51dce7/datasette_litestream-0.2a0.tar.gz",
+      "sha256": "216b201543f335499a2590a27873e23d7c242e72eb11045fcddf0c023f4b30e3"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-litestream",
+      "ref": "0.2a0",
+      "git_sha": "6d043ddcafee3b2bfd1db05460cde8d6a86461a7"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260716T180144Z-gh-29522212082-a1",
+    "started_at": "2026-07-16T18:01:44Z",
+    "completed_at": "2026-07-16T18:01:51Z",
+    "duration_seconds": 7.065,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-litestream @ file:///tmp/datasette-litestream-7z4knaed/datasette_litestream-0.2a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-litestream/datasette-1.0a37/runs/20260716T180144Z-gh-29522212082-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 32,
+    "passed": 26,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_datasette_litestream.py::test_basic_db_level",
+    "tests/test_datasette_litestream.py::test_credential_refresh_task_is_stored",
+    "tests/test_datasette_litestream.py::test_credentials_command_basic",
+    "tests/test_datasette_litestream.py::test_credentials_file_basic",
+    "tests/test_datasette_litestream.py::test_credentials_redacted_in_status_page",
+    "tests/test_datasette_litestream.py::test_metrics"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-litestream/datasette-1.0a37/runs/20260716T180144Z-gh-29522212082-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,649 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-litestream @ file:///tmp/datasette-litestream-7z4knaed/datasette_litestream-0.2a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-litestream @ file:///tmp/datasette-litestream-7z4knaed/datasette_litestream-0.2a0.tar.gz
+Installed 41 packages in 24ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpkbCVuq/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-litestream-7z4knaed/tagged-source
+configfile: pytest.ini
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 32 items
+
+tests/test_datasette_litestream.py::test_plugin_is_installed PASSED      [  3%]
+tests/test_datasette_litestream.py::test_no_litestream_config PASSED     [  6%]
+tests/test_datasette_litestream.py::test_basic_db_level FAILED           [  9%]
+tests/test_datasette_litestream.py::test_metrics FAILED                  [ 12%]
+tests/test_datasette_litestream.py::test_load_credentials_from_file PASSED [ 15%]
+tests/test_datasette_litestream.py::test_load_credentials_from_file_with_session_token PASSED [ 18%]
+tests/test_datasette_litestream.py::test_load_credentials_from_file_missing_keys PASSED [ 21%]
+tests/test_datasette_litestream.py::test_load_credentials_from_file_not_found PASSED [ 25%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command PASSED [ 28%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command_with_session_token PASSED [ 31%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command_with_script PASSED [ 34%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command_failure PASSED [ 37%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command_invalid_json PASSED [ 40%]
+tests/test_datasette_litestream.py::test_load_credentials_from_command_missing_keys PASSED [ 43%]
+tests/test_datasette_litestream.py::test_get_dynamic_credentials_with_file PASSED [ 46%]
+tests/test_datasette_litestream.py::test_get_dynamic_credentials_with_command PASSED [ 50%]
+tests/test_datasette_litestream.py::test_get_dynamic_credentials_neither PASSED [ 53%]
+tests/test_datasette_litestream.py::test_get_dynamic_credentials_with_session_token_file PASSED [ 56%]
+tests/test_datasette_litestream.py::test_get_dynamic_credentials_with_session_token_command PASSED [ 59%]
+tests/test_datasette_litestream.py::test_credentials_hash PASSED         [ 62%]
+tests/test_datasette_litestream.py::test_credentials_hash_with_session_token PASSED [ 65%]
+tests/test_datasette_litestream.py::test_credentials_file_and_command_error PASSED [ 68%]
+tests/test_datasette_litestream.py::test_credentials_refresh_interval_required PASSED [ 71%]
+tests/test_datasette_litestream.py::test_credentials_file_basic FAILED   [ 75%]
+tests/test_datasette_litestream.py::test_credentials_command_basic FAILED [ 78%]
+tests/test_datasette_litestream.py::test_credentials_file_not_found_error PASSED [ 81%]
+tests/test_datasette_litestream.py::test_credentials_command_failure_at_startup PASSED [ 84%]
+tests/test_datasette_litestream.py::test_redact_credentials_basic PASSED [ 87%]
+tests/test_datasette_litestream.py::test_redact_credentials_with_session_token PASSED [ 90%]
+tests/test_datasette_litestream.py::test_redact_credentials_without_secrets PASSED [ 93%]
+tests/test_datasette_litestream.py::test_credentials_redacted_in_status_page FAILED [ 96%]
+tests/test_datasette_litestream.py::test_credential_refresh_task_is_stored FAILED [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_basic_db_level ______________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_basic_db_level0/students.db'
+
+    @pytest.mark.asyncio
+    async def test_basic_db_level(students_db_path):
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        assert not Path(backup_dir).exists()
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                }
+            },
+        )
+        datasette.root_enabled = True
+    
+>       response = await datasette.client.get("/-/litestream-status")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_datasette_litestream.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+_________________________________ test_metrics _________________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_metrics0/students.db'
+
+    @pytest.mark.asyncio
+    async def test_metrics(students_db_path):
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        assert not Path(backup_dir).exists()
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "plugins": {"datasette-litestream": {"metrics-addr": ":9998"}},
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                },
+            },
+        )
+        datasette.root_enabled = True
+    
+>       response = await datasette.client.get(
+            "/-/litestream-status",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+
+tests/test_datasette_litestream.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+_________________________ test_credentials_file_basic __________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_credentials_file_basic0/students.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_credentials_file_basic0')
+
+    @pytest.mark.asyncio
+    async def test_credentials_file_basic(students_db_path, tmpdir):
+        """Test basic operation with credentials from file."""
+        creds_file = tmpdir / "creds.json"
+        creds_file.write_text(
+            json.dumps(
+                {
+                    "access-key-id": "AKIAFILETEST",
+                    "secret-access-key": "filesecrettest",
+                }
+            ),
+            encoding="utf-8",
+        )
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "plugins": {
+                    "datasette-litestream": {
+                        "credentials-file": str(creds_file),
+                        "credentials-refresh-interval": 300,
+                    }
+                },
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                },
+            },
+        )
+        datasette.root_enabled = True
+    
+>       response = await datasette.client.get(
+            "/-/litestream-status",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+
+tests/test_datasette_litestream.py:490: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+________________________ test_credentials_command_basic ________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_credentials_command_basic0/students.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_credentials_command_basic0')
+
+    @pytest.mark.asyncio
+    async def test_credentials_command_basic(students_db_path, tmpdir):
+        """Test basic operation with credentials from command."""
+        creds_json = json.dumps(
+            {
+                "access-key-id": "AKIACMDTEST",
+                "secret-access-key": "cmdsecrettest",
+            }
+        )
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "plugins": {
+                    "datasette-litestream": {
+                        "credentials-command": f"echo '{creds_json}'",
+                        "credentials-refresh-interval": 300,
+                    }
+                },
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                },
+            },
+        )
+        datasette.root_enabled = True
+    
+>       response = await datasette.client.get(
+            "/-/litestream-status",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+
+tests/test_datasette_litestream.py:533: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+___________________ test_credentials_redacted_in_status_page ___________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_credentials_redacted_in_s0/students.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_credentials_redacted_in_s0')
+
+    @pytest.mark.asyncio
+    async def test_credentials_redacted_in_status_page(students_db_path, tmpdir):
+        """Test that secret-access-key and session-token are redacted on the status page."""
+        creds_file = tmpdir / "creds.json"
+        creds_file.write_text(
+            json.dumps(
+                {
+                    "access-key-id": "AKIAVISIBLE",
+                    "secret-access-key": "supersecretvalue789",
+                    "session-token": "sessiontokenvalue123",
+                }
+            ),
+            encoding="utf-8",
+        )
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "plugins": {
+                    "datasette-litestream": {
+                        "credentials-file": str(creds_file),
+                        "credentials-refresh-interval": 300,
+                    }
+                },
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                },
+            },
+        )
+        datasette.root_enabled = True
+    
+>       response = await datasette.client.get(
+            "/-/litestream-status",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+
+tests/test_datasette_litestream.py:678: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+____________________ test_credential_refresh_task_is_stored ____________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_credential_refresh_task_i0/students.db'
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_credential_refresh_task_i0')
+
+    @pytest.mark.asyncio
+    async def test_credential_refresh_task_is_stored(students_db_path, tmpdir):
+        """Test that the credential refresh task is stored to prevent garbage collection.
+    
+        This prevents the "Task was destroyed but it is pending!" warning that occurs
+        when asyncio.create_task() is called but the returned task is not stored.
+        """
+        creds_file = tmpdir / "creds.json"
+        creds_file.write_text(
+            json.dumps(
+                {
+                    "access-key-id": "AKIATEST",
+                    "secret-access-key": "secrettest",
+                }
+            ),
+            encoding="utf-8",
+        )
+        backup_dir = str(Path(students_db_path).parents[0] / "students-backup")
+    
+        datasette = Datasette(
+            [students_db_path],
+            config={
+                "plugins": {
+                    "datasette-litestream": {
+                        "credentials-file": str(creds_file),
+                        "credentials-refresh-interval": 300,
+                    }
+                },
+                "databases": {
+                    "students": {
+                        "plugins": {
+                            "datasette-litestream": {"replicas": [{"path": backup_dir}]}
+                        }
+                    }
+                },
+            },
+        )
+    
+        # Make a request to trigger startup
+>       response = await datasette.client.get("/-/plugins.json")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_datasette_litestream.py:734: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3247: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:3244: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1768: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1629: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/httpx/_transports/asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/utils/asgi.py:631: in __call__
+    await hook()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette/app.py:829: in invoke_startup
+    for hook in pm.hook.startup(datasette=self):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_hooks.py:512: in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/pluggy/_manager.py:120: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:424: in startup
+    litestream_process.start_replicate()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:125: in start_replicate
+    litestream_path = resolve_litestream_path()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def resolve_litestream_path():
+        """resolives the full path to a litestream binary. Hopefully is bundled in the installed wheel"""
+    
+        # First try to see if litestream was bundled with that package, in a pre-built wheel
+        wheel_path = Path(__file__).resolve().parent / "bin" / "litestream"
+        if wheel_path.exists():
+            return str(wheel_path)
+    
+        # Fallback to any litestream binary on the system.
+        executable_path = shutil.which("litestream")
+    
+        if executable_path is None:
+>           raise Exception("litestream not found.")
+E           Exception: litestream not found.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/VHDDOXfySlV_7nv1/lib/python3.13/site-packages/datasette_litestream/__init__.py:240: Exception
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-litestream/datasette-1.0a37/runs/20260716T180144Z-gh-29522212082-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_litestream.py::test_basic_db_level - Exception: litestream not found.
+FAILED tests/test_datasette_litestream.py::test_metrics - Exception: litestream not found.
+FAILED tests/test_datasette_litestream.py::test_credentials_file_basic - Exception: litestream not found.
+FAILED tests/test_datasette_litestream.py::test_credentials_command_basic - Exception: litestream not found.
+FAILED tests/test_datasette_litestream.py::test_credentials_redacted_in_status_page - Exception: litestream not found.
+FAILED tests/test_datasette_litestream.py::test_credential_refresh_task_is_stored - Exception: litestream not found.
+========================= 6 failed, 26 passed in 1.23s =========================
