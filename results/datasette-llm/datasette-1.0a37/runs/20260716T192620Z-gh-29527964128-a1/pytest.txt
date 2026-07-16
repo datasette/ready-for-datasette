@@ -1,0 +1,82 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm @ file:///tmp/datasette-llm-oae9vh_j/datasette_llm-0.1a8.tar.gz
+Downloading pygments (1.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading openai (1.6MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm @ file:///tmp/datasette-llm-oae9vh_j/datasette_llm-0.1a8.tar.gz
+Installed 55 packages in 47ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQW5CB3/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-oae9vh_j/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 53 items
+
+tests/test_llm.py::test_plugin_is_installed PASSED                       [  1%]
+tests/test_llm.py::test_model PASSED                                     [  3%]
+tests/test_llm.py::test_model_with_purpose PASSED                        [  5%]
+tests/test_llm.py::test_llm_prompt_context_hook PASSED                   [  7%]
+tests/test_llm.py::test_llm_prompt_context_hook_tracks_chain_responses PASSED [  9%]
+tests/test_llm.py::test_llm_prompt_context_chain_exits_after_responses PASSED [ 11%]
+tests/test_llm.py::test_multiple_context_hooks PASSED                    [ 13%]
+tests/test_llm.py::test_hook_can_block_prompt PASSED                     [ 15%]
+tests/test_llm.py::test_streaming_response PASSED                        [ 16%]
+tests/test_llm.py::test_group_basic PASSED                               [ 18%]
+tests/test_llm.py::test_group_forces_completion PASSED                   [ 20%]
+tests/test_llm.py::test_group_passes_to_hooks PASSED                     [ 22%]
+tests/test_llm.py::test_models_returns_available_models PASSED           [ 24%]
+tests/test_llm.py::test_models_filtered_by_config PASSED                 [ 26%]
+tests/test_llm.py::test_models_blocked_by_config PASSED                  [ 28%]
+tests/test_llm.py::test_default_model_from_config PASSED                 [ 30%]
+tests/test_llm.py::test_purpose_specific_model PASSED                    [ 32%]
+tests/test_llm.py::test_model_not_found_error PASSED                     [ 33%]
+tests/test_llm.py::test_group_without_model_id PASSED                    [ 35%]
+tests/test_llm.py::test_llm_filter_models_hook PASSED                    [ 37%]
+tests/test_llm.py::test_llm_default_model_hook PASSED                    [ 39%]
+tests/test_llm.py::test_register_llm_purposes PASSED                     [ 41%]
+tests/test_llm.py::test_register_llm_purposes_deduplication PASSED       [ 43%]
+tests/test_llm.py::test_register_llm_purposes_no_plugins PASSED          [ 45%]
+tests/test_llm.py::test_llm_default_model_hook_async PASSED              [ 47%]
+tests/test_llm.py::test_purpose_specific_models_filter PASSED            [ 49%]
+tests/test_llm.py::test_purpose_specific_blocked_models PASSED           [ 50%]
+tests/test_llm.py::test_purpose_models_overrides_global_models PASSED    [ 52%]
+tests/test_llm.py::test_purpose_blocked_models_overrides_global PASSED   [ 54%]
+tests/test_llm.py::test_purpose_default_model_automatically_in_models_list PASSED [ 56%]
+tests/test_llm.py::test_global_default_model_automatically_in_models_list PASSED [ 58%]
+tests/test_llm.py::test_global_models_order_matches_config PASSED        [ 60%]
+tests/test_llm.py::test_default_model_is_first PASSED                    [ 62%]
+tests/test_llm.py::test_purpose_default_model_is_first PASSED            [ 64%]
+tests/test_llm.py::test_purpose_models_order_then_global_order PASSED    [ 66%]
+tests/test_llm.py::test_purpose_models_order_with_default PASSED         [ 67%]
+tests/test_llm.py::test_purpose_models_order_with_blocked PASSED         [ 69%]
+tests/test_llm.py::test_global_default_used_when_no_purpose_default PASSED [ 71%]
+tests/test_llm.py::test_purpose_model_dict_with_key PASSED               [ 73%]
+tests/test_llm.py::test_purpose_models_list_dict_with_key PASSED         [ 75%]
+tests/test_llm.py::test_default_model_dict_with_key PASSED               [ 77%]
+tests/test_llm.py::test_purpose_key_overrides_default_key PASSED         [ 79%]
+tests/test_llm.py::test_purpose_models_list_key_takes_priority_over_purpose_model_key PASSED [ 81%]
+tests/test_llm.py::test_same_provider_different_keys_in_models_list PASSED [ 83%]
+tests/test_llm.py::test_model_dict_no_key_field PASSED                   [ 84%]
+tests/test_llm.py::test_sort_models_with_dict_refs PASSED                [ 86%]
+tests/test_llm.py::test_filter_models_with_dict_refs PASSED              [ 88%]
+tests/test_llm.py::test_resolve_model_id_with_dict_default PASSED        [ 90%]
+tests/test_llm.py::test_resolve_model_id_with_dict_purpose_model PASSED  [ 92%]
+tests/test_llm.py::test_group_uses_purpose_key PASSED                    [ 94%]
+tests/test_llm.py::test_custom_key_secrets_auto_registered PASSED        [ 96%]
+tests/test_llm.py::test_default_model_options_applied PASSED             [ 98%]
+tests/test_llm.py::test_default_model_options_overridden_by_kwargs PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a37/runs/20260716T192620Z-gh-29527964128-a1/.pytest-report.json
+============================== 53 passed in 8.95s ==============================
