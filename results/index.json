@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-15T23:37:49Z",
+  "generated_at": "2026-07-16T01:04:48Z",
   "results": [
     {
       "schema_version": 1,
@@ -12683,6 +12683,90 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-ip-rate-limit/datasette-1.0a37/runs/20260715T233740Z-gh-29459085401-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-jellyfish",
+        "version": "2.0",
+        "repository": "simonw/datasette-jellyfish",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/62/cd/473c4f1ac7e3406afac8fafbfb3ec68f08a3305c3ce4780783225f9654e3/datasette-jellyfish-2.0.tar.gz",
+          "sha256": "4ca91fa7b09658a31b6942db2771884e46e7ead0dd731c06424adf5f4eb8965f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-jellyfish",
+          "ref": "2.0",
+          "git_sha": "e9073cf8a5f6ca2f6fdca832f24f973476868bf8"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T010442Z-gh-29463183541-a1",
+        "started_at": "2026-07-16T01:04:42Z",
+        "completed_at": "2026-07-16T01:04:48Z",
+        "duration_seconds": 5.854,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-jellyfish @ file:///tmp/datasette-jellyfish-y2xf2wl1/datasette-jellyfish-2.0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-jellyfish/datasette-1.0a37/runs/20260716T010442Z-gh-29463183541-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 10,
+        "passed": 10,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-jellyfish/datasette-1.0a37/runs/20260716T010442Z-gh-29463183541-a1/pytest.txt"
       }
     },
     {

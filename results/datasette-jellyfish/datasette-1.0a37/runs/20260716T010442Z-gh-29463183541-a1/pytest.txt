@@ -1,0 +1,33 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-jellyfish @ file:///tmp/datasette-jellyfish-y2xf2wl1/datasette-jellyfish-2.0.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-jellyfish @ file:///tmp/datasette-jellyfish-y2xf2wl1/datasette-jellyfish-2.0.tar.gz
+Installed 40 packages in 31ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmplwpcP4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-jellyfish-y2xf2wl1/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 10 items
+
+tests/test_jellyfish.py::test_jellyfish[soundex("hello")-H400] PASSED    [ 10%]
+tests/test_jellyfish.py::test_jellyfish[metaphone("hello")-HL] PASSED    [ 20%]
+tests/test_jellyfish.py::test_jellyfish[nysiis("hello")-HAL] PASSED      [ 30%]
+tests/test_jellyfish.py::test_jellyfish[match_rating_codex("hello")-HL] PASSED [ 40%]
+tests/test_jellyfish.py::test_jellyfish[levenshtein_distance("hello", "hello world")-6] PASSED [ 50%]
+tests/test_jellyfish.py::test_jellyfish[damerau_levenshtein_distance("hello", "hello world")-6] PASSED [ 60%]
+tests/test_jellyfish.py::test_jellyfish[hamming_distance("hello", "hello world")-6] PASSED [ 70%]
+tests/test_jellyfish.py::test_jellyfish[jaro_similarity("hello", "hello world")-expected7] PASSED [ 80%]
+tests/test_jellyfish.py::test_jellyfish[jaro_winkler_similarity("hello", "hello world")-expected8] PASSED [ 90%]
+tests/test_jellyfish.py::test_jellyfish[match_rating_comparison("hello", "helloo")-1] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-jellyfish/datasette-1.0a37/runs/20260716T010442Z-gh-29463183541-a1/.pytest-report.json
+============================== 10 passed in 0.02s ==============================
