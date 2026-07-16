@@ -1,0 +1,131 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-leaflet-freedraw @ file:///tmp/datasette-leaflet-freedraw-6snz_4ky/datasette-leaflet-freedraw-0.3.1.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-leaflet-freedraw @ file:///tmp/datasette-leaflet-freedraw-6snz_4ky/datasette-leaflet-freedraw-0.3.1.tar.gz
+Installed 40 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp7GiPkJ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source
+plugins: datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+collecting ... collected 9 items
+
+tests/test_leaflet_freedraw.py::test_plugin_is_installed FAILED          [ 11%]
+tests/test_leaflet_freedraw.py::test_plugin_scripts[datasette-leaflet-freedraw.js] FAILED [ 22%]
+tests/test_leaflet_freedraw.py::test_plugin_scripts[leaflet-freedraw.esm.js] FAILED [ 33%]
+tests/test_leaflet_freedraw.py::test_extra_template_vars PASSED          [ 44%]
+tests/test_leaflet_freedraw.py::test_extra_body_script FAILED            [ 55%]
+tests/test_leaflet_freedraw.py::test_did_not_break_table_page FAILED     [ 66%]
+tests/test_leaflet_freedraw.py::test_show_for_table_only_if_spatialite[places_no_spatialite-False-False] SKIPPED [ 77%]
+tests/test_leaflet_freedraw.py::test_show_for_table_only_if_spatialite[places_spatialite-True-False] SKIPPED [ 88%]
+tests/test_leaflet_freedraw.py::test_show_for_table_only_if_spatialite[places_spatialite_spatial_index-True-True] SKIPPED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________ test_plugin_scripts[datasette-leaflet-freedraw.js] ______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_plugin_scripts[leaflet-freedraw.esm.js] _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_extra_body_script ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_did_not_break_table_page _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_leaflet_freedraw.py:18
+  /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source/tests/test_leaflet_freedraw.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_leaflet_freedraw.py:27
+  /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source/tests/test_leaflet_freedraw.py:27: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_leaflet_freedraw.py:54
+  /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source/tests/test_leaflet_freedraw.py:54: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_leaflet_freedraw.py:73
+  /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source/tests/test_leaflet_freedraw.py:73: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_leaflet_freedraw.py:90
+  /tmp/datasette-leaflet-freedraw-6snz_4ky/tagged-source/tests/test_leaflet_freedraw.py:90: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet-freedraw/datasette-1.0a37/runs/20260716T142540Z-gh-29506511063-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_leaflet_freedraw.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_leaflet_freedraw.py::test_plugin_scripts[datasette-leaflet-freedraw.js] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_leaflet_freedraw.py::test_plugin_scripts[leaflet-freedraw.esm.js] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_leaflet_freedraw.py::test_extra_body_script - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_leaflet_freedraw.py::test_did_not_break_table_page - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+============== 5 failed, 1 passed, 3 skipped, 5 warnings in 0.03s ==============

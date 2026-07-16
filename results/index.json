@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T12:15:21Z",
+  "generated_at": "2026-07-16T14:25:47Z",
   "results": [
     {
       "schema_version": 1,
@@ -13224,6 +13224,101 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-leaflet/datasette-1.0a37/runs/20260716T121515Z-gh-29497413246-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-leaflet-freedraw",
+        "version": "0.3.1",
+        "repository": "simonw/datasette-leaflet-freedraw",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/7d/39/6bed00aa8b0937dab22533ed0bfa7df6eb79d353ffbdec2b0bd3b683915b/datasette-leaflet-freedraw-0.3.1.tar.gz",
+          "sha256": "7ee5d14a5804f834e2ee3b8e07e4fc6faa8725ae0cf9707f51a4b9ed3217454a"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-leaflet-freedraw",
+          "ref": "0.3.1",
+          "git_sha": "373117f6a4fc405e6694cf8a5a7a74c6fb5721c1"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T142540Z-gh-29506511063-a1",
+        "started_at": "2026-07-16T14:25:40Z",
+        "completed_at": "2026-07-16T14:25:47Z",
+        "duration_seconds": 7.307,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-leaflet-freedraw @ file:///tmp/datasette-leaflet-freedraw-6snz_4ky/datasette-leaflet-freedraw-0.3.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet-freedraw/datasette-1.0a37/runs/20260716T142540Z-gh-29506511063-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 9,
+        "passed": 1,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 3,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 5
+      },
+      "failing_tests": [
+        "tests/test_leaflet_freedraw.py::test_did_not_break_table_page",
+        "tests/test_leaflet_freedraw.py::test_extra_body_script",
+        "tests/test_leaflet_freedraw.py::test_plugin_is_installed",
+        "tests/test_leaflet_freedraw.py::test_plugin_scripts[datasette-leaflet-freedraw.js]",
+        "tests/test_leaflet_freedraw.py::test_plugin_scripts[leaflet-freedraw.esm.js]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-leaflet-freedraw/datasette-1.0a37/runs/20260716T142540Z-gh-29506511063-a1/pytest.txt"
       }
     },
     {
