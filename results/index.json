@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T19:26:36Z",
+  "generated_at": "2026-07-16T20:26:00Z",
   "results": [
     {
       "schema_version": 1,
@@ -13686,6 +13686,104 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-llm/datasette-1.0a37/runs/20260716T192620Z-gh-29527964128-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-llm-accountant",
+        "version": "0.1a4",
+        "repository": "datasette/datasette-llm-accountant",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/74/bb/0b91136b559d270c0d70a3e92b5a8cc471dd0eba698b121ca1d5a3a9020a/datasette_llm_accountant-0.1a4.tar.gz",
+          "sha256": "5b4120fd040677c9c6e17c8ab9cdd617584570840d30895725b01318bd96a6b7"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-llm-accountant",
+          "ref": "0.1a4",
+          "git_sha": "77f4dbf348a32195b79c52ce5dc32e2a744cc286"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T202549Z-gh-29531999063-a1",
+        "started_at": "2026-07-16T20:25:49Z",
+        "completed_at": "2026-07-16T20:26:00Z",
+        "duration_seconds": 11.178,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-llm-accountant @ file:///tmp/datasette-llm-accountant-irsk8v22/datasette_llm_accountant-0.1a4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "sqlite-utils",
+          "--with",
+          "llm-echo",
+          "--with",
+          "datasette-debug-gotham",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-accountant/datasette-1.0a37/runs/20260716T202549Z-gh-29531999063-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 25,
+        "passed": 25,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "sqlite-utils",
+          "llm-echo",
+          "datasette-debug-gotham"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-llm-accountant/datasette-1.0a37/runs/20260716T202549Z-gh-29531999063-a1/pytest.txt"
       }
     },
     {

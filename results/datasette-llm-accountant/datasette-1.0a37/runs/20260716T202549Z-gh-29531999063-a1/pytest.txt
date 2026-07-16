@@ -1,0 +1,54 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm-accountant @ file:///tmp/datasette-llm-accountant-irsk8v22/datasette_llm_accountant-0.1a4.tar.gz
+Downloading cryptography (4.5MiB)
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm-accountant @ file:///tmp/datasette-llm-accountant-irsk8v22/datasette_llm_accountant-0.1a4.tar.gz
+Installed 68 packages in 57ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpAZezgO/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-accountant-irsk8v22/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_hooks.py::test_plugin_is_installed PASSED                     [  4%]
+tests/test_hooks.py::test_single_prompt_auto_reservation PASSED          [  8%]
+tests/test_hooks.py::test_chain_settles_aggregate_cost PASSED            [ 12%]
+tests/test_hooks.py::test_grouped_prompts_single_reservation PASSED      [ 16%]
+tests/test_hooks.py::test_insufficient_balance_blocks_prompt PASSED      [ 20%]
+tests/test_hooks.py::test_config_purpose_reservation PASSED              [ 24%]
+tests/test_hooks.py::test_no_accountants_passes_through PASSED           [ 28%]
+tests/test_hooks.py::test_group_without_accountants PASSED               [ 32%]
+tests/test_hooks.py::test_rollback_on_group_error PASSED                 [ 36%]
+tests/test_hooks.py::test_multiple_accountants PASSED                    [ 40%]
+tests/test_hooks.py::test_conversation_prompts_with_accounting PASSED    [ 44%]
+tests/test_hooks.py::test_custom_pricing_provider_via_hook PASSED        [ 48%]
+tests/test_hooks.py::test_default_pricing_provider_fallback PASSED       [ 52%]
+tests/test_hooks.py::test_filter_models_removes_unpriceable PASSED       [ 56%]
+tests/test_hooks.py::test_filter_models_no_accountants_passes_through PASSED [ 60%]
+tests/test_hooks.py::test_actor_id_passed_to_accountant PASSED           [ 64%]
+tests/test_llm_accountant.py::test_plugin_is_installed PASSED            [ 68%]
+tests/test_pricing.py::test_calculate_cost_from_response PASSED          [ 72%]
+tests/test_pricing.py::test_calculate_cost_not_found PASSED              [ 76%]
+tests/test_pricing.py::test_pricing_provider_abc_contract PASSED         [ 80%]
+tests/test_pricing.py::test_custom_provider_calculate_cost PASSED        [ 84%]
+tests/test_pricing.py::test_supported_models PASSED                      [ 88%]
+tests/test_pricing.py::test_nanocents_class PASSED                       [ 92%]
+tests/test_pricing.py::test_calculate_cost_returns_nanocents PASSED      [ 96%]
+tests/test_pricing.py::test_default_pricing_provider_is_pricing_provider PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-accountant/datasette-1.0a37/runs/20260716T202549Z-gh-29531999063-a1/.pytest-report.json
+============================== 25 passed in 3.99s ==============================
