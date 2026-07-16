@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T15:54:32Z",
+  "generated_at": "2026-07-16T16:57:58Z",
   "results": [
     {
       "schema_version": 1,
@@ -13406,6 +13406,98 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-leaflet-geojson/datasette-1.0a37/runs/20260716T155426Z-gh-29513234251-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-libfec",
+        "version": "0.0.1a22",
+        "repository": "datasette/datasette-libfec",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/7e/2e/09adeae79c9cef72f4f4bbdea0a6ce2b85c5f9b6c0f2daa822e0f47f649c/datasette_libfec-0.0.1a22.tar.gz",
+          "sha256": "2ab60c96c5c5879597a0a8802889399c31180e8d05089876face94113a8678c6"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-libfec",
+          "ref": "0.0.1a22",
+          "git_sha": "da8ee15228d2361d7eacadea9892e6934662310c"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T165749Z-gh-29517757764-a1",
+        "started_at": "2026-07-16T16:57:49Z",
+        "completed_at": "2026-07-16T16:57:58Z",
+        "duration_seconds": 8.572,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-libfec @ file:///tmp/datasette-libfec-62hdib01/datasette_libfec-0.0.1a22.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "ruff>=0.15.0",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-libfec/datasette-1.0a37/runs/20260716T165749Z-gh-29517757764-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 34,
+        "passed": 34,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "ruff>=0.15.0"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-libfec/datasette-1.0a37/runs/20260716T165749Z-gh-29517757764-a1/pytest.txt"
       }
     },
     {

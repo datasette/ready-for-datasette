@@ -1,0 +1,63 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-libfec @ file:///tmp/datasette-libfec-62hdib01/datasette_libfec-0.0.1a22.tar.gz
+Downloading libfec (6.9MiB)
+Downloading ruff (10.9MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded ruff
+ Downloaded pygments
+ Downloaded pip
+ Downloaded libfec
+      Built datasette-libfec @ file:///tmp/datasette-libfec-62hdib01/datasette_libfec-0.0.1a22.tar.gz
+Installed 57 packages in 36ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbFr7Ks/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-libfec-62hdib01/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 34 items
+
+tests/test_alerts.py::test_queue_table_and_trigger_created PASSED        [  2%]
+tests/test_alerts.py::test_insert_filing_populates_queue PASSED          [  5%]
+tests/test_alerts.py::test_filing_check_drains_queue PASSED              [  8%]
+tests/test_alerts.py::test_filing_check_empty_queue PASSED               [ 11%]
+tests/test_alerts.py::test_contributor_check_drains_and_matches PASSED   [ 14%]
+tests/test_alerts.py::test_contributor_check_no_match_still_drains PASSED [ 17%]
+tests/test_alerts.py::test_contributor_check_multiple_matches PASSED     [ 20%]
+tests/test_alerts.py::test_contributor_check_empty_contributors PASSED   [ 23%]
+tests/test_alerts.py::test_create_fec_filing_alert PASSED                [ 26%]
+tests/test_alerts.py::test_create_fec_contributor_alert PASSED           [ 29%]
+tests/test_alerts.py::test_delete_fec_alert PASSED                       [ 32%]
+tests/test_alerts.py::test_invalid_alert_type_returns_400 PASSED         [ 35%]
+tests/test_alerts.py::test_alerts_page_shows_created_alerts PASSED       [ 38%]
+tests/test_alerts.py::test_full_filing_handler_execution PASSED          [ 41%]
+tests/test_alerts.py::test_full_contributor_handler_execution PASSED     [ 44%]
+tests/test_alerts.py::test_trigger_created_on_alert_creation PASSED      [ 47%]
+tests/test_alerts.py::test_alert_frequency_is_one_second PASSED          [ 50%]
+tests/test_alerts.py::test_cron_schedule_is_one_second PASSED            [ 52%]
+tests/test_alerts.py::test_five_filings_all_queued_and_drained PASSED    [ 55%]
+tests/test_alerts.py::test_create_filing_with_committees_stores_config PASSED [ 58%]
+tests/test_alerts.py::test_create_filing_with_races_stores_config PASSED [ 61%]
+tests/test_alerts.py::test_create_contributor_stores_config PASSED       [ 64%]
+tests/test_alerts.py::test_create_empty_filing_stores_empty_config PASSED [ 67%]
+tests/test_alerts.py::test_alert_types_registered PASSED                 [ 70%]
+tests/test_alerts.py::test_alert_detail_page_loads PASSED                [ 73%]
+tests/test_alerts.py::test_alert_detail_page_404_for_missing PASSED      [ 76%]
+tests/test_alerts.py::test_race_spec_model PASSED                        [ 79%]
+tests/test_alerts.py::test_contributor_criteria_model PASSED             [ 82%]
+tests/test_alerts.py::test_filing_alert_config_excludes_defaults PASSED  [ 85%]
+tests/test_alerts.py::test_contributor_alert_config PASSED               [ 88%]
+tests/test_export_commands.py::test_export_rpc_params_construction PASSED [ 91%]
+tests/test_export_commands.py::test_export_subprocess_args PASSED        [ 94%]
+tests/test_export_commands.py::test_export_params_match_api_body PASSED  [ 97%]
+tests/test_libfec.py::test_plugin_is_installed PASSED                    [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-libfec/datasette-1.0a37/runs/20260716T165749Z-gh-29517757764-a1/.pytest-report.json
+============================== 34 passed in 1.47s ==============================
