@@ -24,7 +24,7 @@ from urllib.request import Request, urlopen
 
 from run_plugin_tests import github_repository, normalize_package_name
 
-DEFAULT_OWNERS = ("simonw", "dogsheep", "datasette", "asg017")
+DEFAULT_OWNERS = ("simonw", "dogsheep", "datasette", "asg017", "eyeseast")
 GITHUB_API = "https://api.github.com"
 RAW_GITHUB = "https://raw.githubusercontent.com"
 PYPI_API = "https://pypi.org/pypi"
