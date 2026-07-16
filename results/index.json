@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T21:31:43Z",
+  "generated_at": "2026-07-16T22:30:21Z",
   "results": [
     {
       "schema_version": 1,
@@ -13878,6 +13878,115 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-llm-embed/datasette-1.0a37/runs/20260716T213137Z-gh-29536347848-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-llm-limits",
+        "version": "0.1a1",
+        "repository": "datasette/datasette-llm-limits",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ab/df/fee71e40dfc7201e534746dc982126c8e3ec962c5bcdf7098813402d2bd8/datasette_llm_limits-0.1a1.tar.gz",
+          "sha256": "4b10f8a83d68e83e342ec3b1878a1af4c100471c679e4d4fc4b8b284e4393a05"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-llm-limits",
+          "ref": "0.1a1",
+          "git_sha": "bdc2f7145a2cd6b7fdbd8f23edbb95d4e6e35e20"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260716T223013Z-gh-29539713908-a1",
+        "started_at": "2026-07-16T22:30:13Z",
+        "completed_at": "2026-07-16T22:30:21Z",
+        "duration_seconds": 7.735,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-llm-limits @ file:///tmp/datasette-llm-limits-73u6z4d5/datasette_llm_limits-0.1a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-limits/datasette-1.0a37/runs/20260716T223013Z-gh-29539713908-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 59,
+        "passed": 40,
+        "failed": 19,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_accountant.py::test_anonymous_caller_bypasses_actor_scope_only",
+        "tests/test_accountant.py::test_calendar_window_error_includes_reset_time",
+        "tests/test_accountant.py::test_instance_limit_aggregates_across_actors",
+        "tests/test_accountant.py::test_model_filtered_limit_only_applies_for_that_model",
+        "tests/test_accountant.py::test_no_matching_limits_inserts_row_but_does_not_reject",
+        "tests/test_accountant.py::test_per_actor_isolation",
+        "tests/test_accountant.py::test_purpose_filtered_limit_only_applies_for_that_purpose",
+        "tests/test_accountant.py::test_reserve_over_cap_raises_insufficient_balance",
+        "tests/test_accountant.py::test_reserve_returns_tx_and_inserts_row",
+        "tests/test_accountant.py::test_reserve_under_cap_succeeds_repeatedly",
+        "tests/test_accountant.py::test_rollback_zeros_out_the_reservation",
+        "tests/test_accountant.py::test_rolling_window_error_omits_reset_time",
+        "tests/test_accountant.py::test_settle_updates_settled_columns",
+        "tests/test_accountant.py::test_settling_under_reservation_frees_headroom",
+        "tests/test_concurrency.py::test_parallel_reservations_at_exact_cap_only_one_fails",
+        "tests/test_concurrency.py::test_parallel_reservations_respect_cap",
+        "tests/test_view.py::test_actor_scoped_usage_is_reported_per_actor",
+        "tests/test_view.py::test_authorized_user_gets_json",
+        "tests/test_view.py::test_html_view_marks_actor_limit_usage_as_per_actor"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 8,
+        "release_tag": 9
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-llm-limits/datasette-1.0a37/runs/20260716T223013Z-gh-29539713908-a1/pytest.txt"
       }
     },
     {

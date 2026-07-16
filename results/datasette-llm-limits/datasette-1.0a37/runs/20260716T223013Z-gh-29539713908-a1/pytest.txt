@@ -1,0 +1,1021 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm-limits @ file:///tmp/datasette-llm-limits-73u6z4d5/datasette_llm_limits-0.1a1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm-limits @ file:///tmp/datasette-llm-limits-73u6z4d5/datasette_llm_limits-0.1a1.tar.gz
+Installed 56 packages in 62ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpFd7ftR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-limits-73u6z4d5/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 59 items
+
+tests/test_accountant.py::test_reserve_returns_tx_and_inserts_row FAILED [  1%]
+tests/test_accountant.py::test_reserve_over_cap_raises_insufficient_balance FAILED [  3%]
+tests/test_accountant.py::test_reserve_under_cap_succeeds_repeatedly FAILED [  5%]
+tests/test_accountant.py::test_settle_updates_settled_columns FAILED     [  6%]
+tests/test_accountant.py::test_settling_under_reservation_frees_headroom FAILED [  8%]
+tests/test_accountant.py::test_rollback_zeros_out_the_reservation FAILED [ 10%]
+tests/test_accountant.py::test_per_actor_isolation FAILED                [ 11%]
+tests/test_accountant.py::test_anonymous_caller_bypasses_actor_scope_only FAILED [ 13%]
+tests/test_accountant.py::test_instance_limit_aggregates_across_actors FAILED [ 15%]
+tests/test_accountant.py::test_purpose_filtered_limit_only_applies_for_that_purpose FAILED [ 16%]
+tests/test_accountant.py::test_model_filtered_limit_only_applies_for_that_model FAILED [ 18%]
+tests/test_accountant.py::test_no_matching_limits_inserts_row_but_does_not_reject FAILED [ 20%]
+tests/test_accountant.py::test_calendar_window_error_includes_reset_time FAILED [ 22%]
+tests/test_accountant.py::test_rolling_window_error_omits_reset_time FAILED [ 23%]
+tests/test_concurrency.py::test_parallel_reservations_respect_cap cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+FAILED [ 25%]cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+
+tests/test_concurrency.py::test_parallel_reservations_at_exact_cap_only_one_fails cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+FAILED [ 27%]cannot start a transaction within a transaction
+cannot start a transaction within a transaction
+
+tests/test_config.py::test_parse_minimal_actor_limit PASSED              [ 28%]
+tests/test_config.py::test_parse_instance_limit_with_purpose_and_model PASSED [ 30%]
+tests/test_config.py::test_parse_empty_returns_empty_list PASSED         [ 32%]
+tests/test_config.py::test_unknown_scope_or_window_rejected[scope-team] PASSED [ 33%]
+tests/test_config.py::test_unknown_scope_or_window_rejected[window-rolling-1h] PASSED [ 35%]
+tests/test_config.py::test_non_positive_amount_rejected[0] PASSED        [ 37%]
+tests/test_config.py::test_non_positive_amount_rejected[-1] PASSED       [ 38%]
+tests/test_config.py::test_non_positive_amount_rejected[-0.5] PASSED     [ 40%]
+tests/test_config.py::test_unknown_field_rejected PASSED                 [ 42%]
+tests/test_config.py::test_missing_required_field_rejected PASSED        [ 44%]
+tests/test_config.py::test_instance_scope_matches_anonymous_caller PASSED [ 45%]
+tests/test_config.py::test_actor_scope_skips_when_actor_id_is_none PASSED [ 47%]
+tests/test_config.py::test_actor_scope_matches_when_actor_id_present PASSED [ 49%]
+tests/test_config.py::test_purpose_filter_only_matches_when_purpose_matches PASSED [ 50%]
+tests/test_config.py::test_model_id_filter_only_matches_when_model_matches PASSED [ 52%]
+tests/test_hook_integration.py::test_plugin_registers_a_limits_accountant PASSED [ 54%]
+tests/test_llm_limits.py::test_plugin_is_installed PASSED                [ 55%]
+tests/test_storage.py::test_startup_creates_llm_limits_tx_table PASSED   [ 57%]
+tests/test_storage.py::test_llm_limits_tx_has_expected_columns PASSED    [ 59%]
+tests/test_storage.py::test_startup_is_idempotent PASSED                 [ 61%]
+tests/test_storage.py::test_invalid_config_fails_at_startup PASSED       [ 62%]
+tests/test_view.py::test_anonymous_user_denied PASSED                    [ 64%]
+tests/test_view.py::test_user_without_permission_denied PASSED           [ 66%]
+tests/test_view.py::test_authorized_user_gets_html PASSED                [ 67%]
+tests/test_view.py::test_menu_link_visible_to_authorized_user PASSED     [ 69%]
+tests/test_view.py::test_menu_link_hidden_from_unauthorized_user PASSED  [ 71%]
+tests/test_view.py::test_authorized_user_gets_json FAILED                [ 72%]
+tests/test_view.py::test_actor_scoped_usage_is_reported_per_actor FAILED [ 74%]
+tests/test_view.py::test_html_view_lists_configured_limits PASSED        [ 76%]
+tests/test_view.py::test_html_view_marks_actor_limit_usage_as_per_actor FAILED [ 77%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-24h-delta0] PASSED [ 79%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-7d-delta1] PASSED [ 81%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-30d-delta2] PASSED [ 83%]
+tests/test_windows.py::test_calendar_day_starts_at_utc_midnight PASSED   [ 84%]
+tests/test_windows.py::test_calendar_week_starts_on_monday_at_midnight_utc PASSED [ 86%]
+tests/test_windows.py::test_calendar_week_on_a_monday_returns_that_monday PASSED [ 88%]
+tests/test_windows.py::test_calendar_month_starts_on_day_1_utc_midnight PASSED [ 89%]
+tests/test_windows.py::test_unknown_window_raises_value_error PASSED     [ 91%]
+tests/test_windows.py::test_window_reset_is_none_for_rolling_windows PASSED [ 93%]
+tests/test_windows.py::test_window_reset_calendar_day_is_next_midnight_utc PASSED [ 94%]
+tests/test_windows.py::test_window_reset_calendar_week_is_next_monday_midnight_utc PASSED [ 96%]
+tests/test_windows.py::test_window_reset_calendar_month_is_first_of_next_month PASSED [ 98%]
+tests/test_windows.py::test_window_reset_calendar_month_crosses_year PASSED [100%]
+
+=================================== FAILURES ===================================
+___________________ test_reserve_returns_tx_and_inserts_row ____________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3585080>
+
+    @pytest.mark.asyncio
+    async def test_reserve_returns_tx_and_inserts_row(make_datasette):
+        datasette, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+    
+>       tx = await accountant.reserve(usd(0.10), actor_id="alice", model_id="gpt-4o")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_accountant.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb34cf970>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+______________ test_reserve_over_cap_raises_insufficient_balance _______________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3587d80>
+
+    @pytest.mark.asyncio
+    async def test_reserve_over_cap_raises_insufficient_balance(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "tight": {"scope": "actor", "window": "rolling-24h", "amount_usd": 0.50}
+            }
+        )
+>       await accountant.reserve(usd(0.40), actor_id="alice")
+
+tests/test_accountant.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb344ca90>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+__________________ test_reserve_under_cap_succeeds_repeatedly __________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3584220>
+
+    @pytest.mark.asyncio
+    async def test_reserve_under_cap_succeeds_repeatedly(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+        for _ in range(5):
+>           await accountant.reserve(usd(0.10), actor_id="alice")
+
+tests/test_accountant.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb344e020>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+_____________________ test_settle_updates_settled_columns ______________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3587b00>
+
+    @pytest.mark.asyncio
+    async def test_settle_updates_settled_columns(make_datasette):
+        datasette, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+>       tx = await accountant.reserve(usd(0.50), actor_id="alice")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_accountant.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb344f2e0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+________________ test_settling_under_reservation_frees_headroom ________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34fad40>
+
+    @pytest.mark.asyncio
+    async def test_settling_under_reservation_frees_headroom(make_datasette):
+        """Reserve $0.80 of $1 cap; settle for $0.10 → another $0.80 fits."""
+        _, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+>       tx = await accountant.reserve(usd(0.80), actor_id="alice")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_accountant.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb34204f0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+___________________ test_rollback_zeros_out_the_reservation ____________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb515ccc0>
+
+    @pytest.mark.asyncio
+    async def test_rollback_zeros_out_the_reservation(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+>       tx = await accountant.reserve(usd(0.90), actor_id="alice")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_accountant.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb3421b70>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+___________________________ test_per_actor_isolation ___________________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3410040>
+
+    @pytest.mark.asyncio
+    async def test_per_actor_isolation(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00}
+            }
+        )
+>       await accountant.reserve(usd(0.90), actor_id="alice")
+
+tests/test_accountant.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb34231f0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+_______________ test_anonymous_caller_bypasses_actor_scope_only ________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34fa160>
+
+    @pytest.mark.asyncio
+    async def test_anonymous_caller_bypasses_actor_scope_only(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "actor-daily": {
+                    "scope": "actor",
+                    "window": "rolling-24h",
+                    "amount_usd": 0.50,
+                },
+                "instance-daily": {
+                    "scope": "instance",
+                    "window": "rolling-24h",
+                    "amount_usd": 0.30,
+                },
+            }
+        )
+        # Anonymous doesn't trip the actor-scoped cap, but it DOES trip the instance cap
+>       await accountant.reserve(usd(0.20), actor_id=None)
+
+tests/test_accountant.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb344e5c0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+_________________ test_instance_limit_aggregates_across_actors _________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34fa0c0>
+
+    @pytest.mark.asyncio
+    async def test_instance_limit_aggregates_across_actors(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "instance-daily": {
+                    "scope": "instance",
+                    "window": "rolling-24h",
+                    "amount_usd": 1.00,
+                }
+            }
+        )
+>       await accountant.reserve(usd(0.60), actor_id="alice")
+
+tests/test_accountant.py:158: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb34235b0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+__________ test_purpose_filtered_limit_only_applies_for_that_purpose ___________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34fb560>
+
+    @pytest.mark.asyncio
+    async def test_purpose_filtered_limit_only_applies_for_that_purpose(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "enrichments-cap": {
+                    "scope": "actor",
+                    "window": "rolling-24h",
+                    "amount_usd": 0.20,
+                    "purpose": "enrichments",
+                }
+            }
+        )
+        # purpose=chat is unaffected by the enrichments cap
+>       await accountant.reserve(usd(1.00), actor_id="alice", purpose="chat")
+
+tests/test_accountant.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb3420a90>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+____________ test_model_filtered_limit_only_applies_for_that_model _____________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34568e0>
+
+    @pytest.mark.asyncio
+    async def test_model_filtered_limit_only_applies_for_that_model(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "gpt5-cap": {
+                    "scope": "actor",
+                    "window": "rolling-24h",
+                    "amount_usd": 0.20,
+                    "model_id": "gpt-5-pro",
+                }
+            }
+        )
+>       await accountant.reserve(usd(1.00), actor_id="alice", model_id="gpt-4o")
+
+tests/test_accountant.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb32954e0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+___________ test_no_matching_limits_inserts_row_but_does_not_reject ____________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3457b00>
+
+    @pytest.mark.asyncio
+    async def test_no_matching_limits_inserts_row_but_does_not_reject(make_datasette):
+        """An actor with no actor-scoped limit and no instance limit should not be blocked."""
+        datasette, accountant = await make_datasette(limits={})
+>       tx = await accountant.reserve(usd(100.0), actor_id="alice")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_accountant.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb3297100>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+________________ test_calendar_window_error_includes_reset_time ________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb324cc20>
+
+    @pytest.mark.asyncio
+    async def test_calendar_window_error_includes_reset_time(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "month": {"scope": "actor", "window": "calendar-month", "amount_usd": 0.10}
+            }
+        )
+>       await accountant.reserve(usd(0.10), actor_id="alice")
+
+tests/test_accountant.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb328c310>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+__________________ test_rolling_window_error_omits_reset_time __________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3455120>
+
+    @pytest.mark.asyncio
+    async def test_rolling_window_error_omits_reset_time(make_datasette):
+        _, accountant = await make_datasette(
+            limits={
+                "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 0.10}
+            }
+        )
+>       await accountant.reserve(usd(0.10), actor_id="alice")
+
+tests/test_accountant.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb3295f30>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+____________________ test_parallel_reservations_respect_cap ____________________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb3455da0>
+
+    @pytest.mark.asyncio
+    async def test_parallel_reservations_respect_cap(make_datasette):
+        """N parallel reservations of $0.10 each against a $0.50 cap → 5 succeed, rest fail."""
+        _, accountant = await make_datasette(
+            limits={"cap": {"scope": "actor", "window": "rolling-24h", "amount_usd": 0.50}}
+        )
+    
+        N = 8
+    
+        async def one():
+            try:
+                await accountant.reserve(usd(0.10), actor_id="alice")
+                return "ok"
+            except InsufficientBalanceError:
+                return "fail"
+    
+>       results = await asyncio.gather(*[one() for _ in range(N)])
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_concurrency.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_concurrency.py:22: in one
+    await accountant.reserve(usd(0.10), actor_id="alice")
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb32944f0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+--------------------------- Captured stderr teardown ---------------------------
+cannot start a transaction within a transaction
+____________ test_parallel_reservations_at_exact_cap_only_one_fails ____________
+
+make_datasette = <function make_datasette.<locals>._build at 0x7f8fb34f9da0>
+
+    @pytest.mark.asyncio
+    async def test_parallel_reservations_at_exact_cap_only_one_fails(make_datasette):
+        """6 parallel reservations of $0.10 against $0.50 cap → exactly 5 succeed."""
+        _, accountant = await make_datasette(
+            limits={"cap": {"scope": "actor", "window": "rolling-24h", "amount_usd": 0.50}}
+        )
+    
+        async def one():
+            try:
+                await accountant.reserve(usd(0.10), actor_id="alice")
+                return True
+            except InsufficientBalanceError:
+                return False
+    
+>       outcomes = await asyncio.gather(*[one() for _ in range(6)])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_concurrency.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_concurrency.py:44: in one
+    await accountant.reserve(usd(0.10), actor_id="alice")
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb3420a90>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+--------------------------- Captured stderr teardown ---------------------------
+cannot start a transaction within a transaction
+________________________ test_authorized_user_gets_json ________________________
+
+    @pytest.mark.asyncio
+    async def test_authorized_user_gets_json():
+        limits = {
+            "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00},
+            "monthly": {
+                "scope": "instance",
+                "window": "calendar-month",
+                "amount_usd": 50.0,
+            },
+        }
+        datasette = Datasette(memory=True, config=_config(limits=limits, allow_view_to="*"))
+        await datasette.invoke_startup()
+    
+        # Record one reservation so the running totals are not all zero.
+        accountant = LimitsAccountant(datasette)
+>       await accountant.reserve(usd(0.20), actor_id="alice", model_id="gpt-4o")
+
+tests/test_view.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb32f75b0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+________________ test_actor_scoped_usage_is_reported_per_actor _________________
+
+    @pytest.mark.asyncio
+    async def test_actor_scoped_usage_is_reported_per_actor():
+        limits = {
+            "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00},
+            "monthly": {
+                "scope": "instance",
+                "window": "calendar-month",
+                "amount_usd": 50.0,
+            },
+        }
+        datasette = Datasette(memory=True, config=_config(limits=limits, allow_view_to="*"))
+        await datasette.invoke_startup()
+    
+        accountant = LimitsAccountant(datasette)
+>       await accountant.reserve(usd(0.20), actor_id="alice")
+
+tests/test_view.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb32944f0>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+_____________ test_html_view_marks_actor_limit_usage_as_per_actor ______________
+
+    @pytest.mark.asyncio
+    async def test_html_view_marks_actor_limit_usage_as_per_actor():
+        limits = {
+            "daily": {"scope": "actor", "window": "rolling-24h", "amount_usd": 1.00},
+        }
+        datasette = Datasette(memory=True, config=_config(limits=limits, allow_view_to="*"))
+        await datasette.invoke_startup()
+        accountant = LimitsAccountant(datasette)
+>       await accountant.reserve(usd(0.20), actor_id="alice")
+
+tests/test_view.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:137: in reserve
+    await self.datasette.get_internal_database().execute_write_fn(_check_and_insert)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:360: in execute_write_fn
+    result = await self._send_to_write_thread(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:438: in _send_to_write_thread
+    return await reply_future
+           ^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:486: in _execute_writes
+    result = task.fn(conn)
+             ^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:841: in wrapped
+    gen.throw(e)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/events.py:254: in wrapper
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette/database.py:837: in wrapped
+    result = fn(conn)
+             ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+conn = <sqlite3.Connection object at 0x7f8fb32f7f10>
+
+    def _check_and_insert(conn):
+        # IMMEDIATE so the check and insert are atomic vs. other writers.
+>       conn.execute("BEGIN IMMEDIATE")
+E       sqlite3.OperationalError: cannot start a transaction within a transaction
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/G_0bV4Lypd5He3Yy/lib/python3.13/site-packages/datasette_llm_limits/accountant.py:93: OperationalError
+----------------------------- Captured stderr call -----------------------------
+cannot start a transaction within a transaction
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-limits/datasette-1.0a37/runs/20260716T223013Z-gh-29539713908-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_accountant.py::test_reserve_returns_tx_and_inserts_row - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_reserve_over_cap_raises_insufficient_balance - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_reserve_under_cap_succeeds_repeatedly - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_settle_updates_settled_columns - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_settling_under_reservation_frees_headroom - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_rollback_zeros_out_the_reservation - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_per_actor_isolation - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_anonymous_caller_bypasses_actor_scope_only - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_instance_limit_aggregates_across_actors - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_purpose_filtered_limit_only_applies_for_that_purpose - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_model_filtered_limit_only_applies_for_that_model - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_no_matching_limits_inserts_row_but_does_not_reject - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_calendar_window_error_includes_reset_time - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_accountant.py::test_rolling_window_error_omits_reset_time - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_concurrency.py::test_parallel_reservations_respect_cap - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_concurrency.py::test_parallel_reservations_at_exact_cap_only_one_fails - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_view.py::test_authorized_user_gets_json - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_view.py::test_actor_scoped_usage_is_reported_per_actor - sqlite3.OperationalError: cannot start a transaction within a transaction
+FAILED tests/test_view.py::test_html_view_marks_actor_limit_usage_as_per_actor - sqlite3.OperationalError: cannot start a transaction within a transaction
+======================== 19 failed, 40 passed in 1.58s =========================
