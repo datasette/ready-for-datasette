@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-leaflet",
+    "version": "0.2.2",
+    "repository": "simonw/datasette-leaflet",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/88/6e/444b1ded1cd8f71cd86f4461c06ee88be2bb0682b0d54aa942c323f91411/datasette-leaflet-0.2.2.tar.gz",
+      "sha256": "8fd4e634304be392ae6f7de770d4f22b95a37caecd676a35faeb6200da9423bc"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-leaflet",
+      "ref": "0.2.2",
+      "git_sha": "04ea172c684554cedd7e8efa40406b76ad4187d4"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260716T121515Z-gh-29497413246-a1",
+    "started_at": "2026-07-16T12:15:15Z",
+    "completed_at": "2026-07-16T12:15:21Z",
+    "duration_seconds": 5.888,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-leaflet @ file:///tmp/datasette-leaflet-3ny47vrl/datasette-leaflet-0.2.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet/datasette-1.0a37/runs/20260716T121515Z-gh-29497413246-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 6,
+    "passed": 2,
+    "failed": 4,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_leaflet.py::test_plugin_is_installed",
+    "tests/test_leaflet.py::test_static_assets[leaflet-v1.7.1.css]",
+    "tests/test_leaflet.py::test_static_assets[leaflet-v1.7.1.js]",
+    "tests/test_leaflet.py::test_static_assets[leaflet-v1.7.1.min.js]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-leaflet/datasette-1.0a37/runs/20260716T121515Z-gh-29497413246-a1/pytest.txt"
+  }
+}
