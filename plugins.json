@@ -280,6 +280,14 @@
     "latest_version": "0.0.1a4"
   },
   {
+    "name": "datasette-census-boundaries",
+    "github_repo": "eyeseast/datasette-census-boundaries",
+    "metadata_file": "setup.py",
+    "metadata_sha256": "3f50dd9fdd9c6a472acfed19de0053b133716e3553b4cb0132149b3300323316",
+    "metadata_etag": "\"04704cf9f777b745cc3506c57cda865d64518af63957207e05e3e58346d3d5b4\"",
+    "latest_version": null
+  },
+  {
     "name": "datasette-chatgpt-plugin",
     "github_repo": "simonw/datasette-chatgpt-plugin",
     "metadata_file": "setup.py",
@@ -745,6 +753,14 @@
   },
   {
     "name": "datasette-geojson",
+    "github_repo": "eyeseast/datasette-geojson",
+    "metadata_file": "setup.py",
+    "metadata_sha256": "49b490f171ae36c0392bfdc2ac4bc9491593194db38de812c256cbeace66befe",
+    "metadata_etag": "\"14f54e11371b0e1b2b27c369d8242ed20d28c8ae4ec21a3ad5b1a50c795e32cd\"",
+    "latest_version": "0.4.0"
+  },
+  {
+    "name": "datasette-geojson",
     "github_repo": "simonw/datasette-geojson",
     "metadata_file": "setup.py",
     "metadata_sha256": "888ef415a4d8ff045c1869b3eb588c51a792d9dc0d66ab3174ead5dab61cf337",
@@ -966,6 +982,14 @@
     "metadata_sha256": "1e899e452b81f1b361d3e4df1e49d73f47b334d7d025267097eb009565c50ded",
     "metadata_etag": "\"10ed765c4f4c6499603f4bd4a17f501cae7d499597c8d8e23e6c59c331e40c88\"",
     "latest_version": "0.1a1"
+  },
+  {
+    "name": "datasette-leaflet",
+    "github_repo": "eyeseast/datasette-leaflet",
+    "metadata_file": "setup.py",
+    "metadata_sha256": "5c6ec10f5e6022664d60de3e02b5983dfbb117f92cec577db52b8e87317e36af",
+    "metadata_etag": "\"f7881136149f59d0467a4ba75b2e8d7784efe4834423a4aeb703bb82c4804ce5\"",
+    "latest_version": "0.2.2"
   },
   {
     "name": "datasette-leaflet",
@@ -1414,6 +1438,14 @@
     "metadata_sha256": "2c2190c8ff471249679e40964a809cd17c6526cf0d6e8330e8af7f1d88ddeac8",
     "metadata_etag": "\"a55ca958b343ef85e646a2f9f72e55e8f2c9948477ecda42897bc986ea141b07\"",
     "latest_version": "0.1a5"
+  },
+  {
+    "name": "datasette-query-files",
+    "github_repo": "eyeseast/datasette-query-files",
+    "metadata_file": "setup.py",
+    "metadata_sha256": "d375c4fa397da2308fa062f1666ad0f3b4a6081675bdb550e5581903d3e77828",
+    "metadata_etag": "\"1b42edd6179ec34bb03a2d7149a4bacb29ee83a09637359dd30dd9a5833951d8\"",
+    "latest_version": "0.1.1"
   },
   {
     "name": "datasette-query-links",
