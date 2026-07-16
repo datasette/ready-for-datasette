@@ -1,0 +1,129 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm-embed @ file:///tmp/datasette-llm-embed-pd414wch/datasette-llm-embed-0.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm-embed @ file:///tmp/datasette-llm-embed-pd414wch/datasette-llm-embed-0.2.tar.gz
+Installed 50 packages in 48ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpvZmWu8/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-embed-pd414wch/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_llm_embed.py::test_llm_embed FAILED                           [ 25%]
+tests/test_llm_embed.py::test_llm_embed_cosine FAILED                    [ 50%]
+tests/test_llm_embed.py::test_llm_embed_uses_key FAILED                  [ 75%]
+tests/test_llm_embed.py::test_llm_embed_decode FAILED                    [100%]
+
+=================================== FAILURES ===================================
+________________________________ test_llm_embed ________________________________
+
+    @pytest.mark.asyncio
+    async def test_llm_embed():
+        ds = Datasette()
+        await ds.invoke_startup()
+        response = await ds.client.get(
+            "/_memory.json",
+            params={
+                "_shape": "array",
+                "sql": "select llm_embed('embed-demo', 'hello world') as e",
+            },
+        )
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_llm_embed.py:18: AssertionError
+____________________________ test_llm_embed_cosine _____________________________
+
+    @pytest.mark.asyncio
+    async def test_llm_embed_cosine():
+        ds = Datasette()
+        response = await ds.client.get(
+            "/_memory.json",
+            params={
+                "_shape": "array",
+                "sql": """
+                select llm_embed_cosine(
+                    llm_embed('embed-demo', 'hello world'),
+                    llm_embed('embed-demo', 'hello again')
+                ) as cosine""",
+            },
+        )
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_llm_embed.py:54: AssertionError
+___________________________ test_llm_embed_uses_key ____________________________
+
+    @pytest.mark.asyncio
+    async def test_llm_embed_uses_key():
+        ds = Datasette(
+            metadata={
+                "plugins": {
+                    "datasette-llm-embed": {
+                        "keys": {
+                            "embed-key-demo": "default-key",
+                            "aliased": "alias",
+                        }
+                    }
+                }
+            }
+        )
+        response = await ds.client.get(
+            "/_memory.json",
+            params={
+                "_shape": "array",
+                "sql": "select llm_embed('embed-key-demo', 'hello world') as e",
+            },
+        )
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_llm_embed.py:79: AssertionError
+____________________________ test_llm_embed_decode _____________________________
+
+    @pytest.mark.asyncio
+    async def test_llm_embed_decode():
+        ds = Datasette()
+        response = await ds.client.get(
+            "/_memory.json",
+            params={
+                "_shape": "array",
+                "_json": "decoded",
+                "sql": """
+                select llm_embed_decode(
+                    llm_embed('embed-demo', 'hello world')
+                ) as decoded""",
+            },
+        )
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_llm_embed.py:115: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-embed/datasette-1.0a37/runs/20260716T213137Z-gh-29536347848-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_llm_embed.py::test_llm_embed - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_llm_embed.py::test_llm_embed_cosine - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_llm_embed.py::test_llm_embed_uses_key - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_llm_embed.py::test_llm_embed_decode - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+============================== 4 failed in 0.15s ===============================
