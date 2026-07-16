@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-jsonschema-forms",
+    "version": "0.0.3",
+    "repository": "datasette/datasette-jsonschema-forms",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ae/97/3c9f0c4d884e5df5115ea123d48ed504b9ffa5e42951aaca6a21d03bab78/datasette_jsonschema_forms-0.0.3.tar.gz",
+      "sha256": "a70823a209d000e9ebb04d3cd5982ebbbe69ba7f831a3301c446d259090120a4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-jsonschema-forms",
+      "ref": "0.0.3",
+      "git_sha": "6e3800a10432f5d4fb2c340bb8ad3cfd77db7216"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260716T085850Z-gh-29485407174-a1",
+    "started_at": "2026-07-16T08:58:50Z",
+    "completed_at": "2026-07-16T08:58:56Z",
+    "duration_seconds": 6.646,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-jsonschema-forms[test] @ file:///tmp/datasette-jsonschema-forms-8kq0hu8x/datasette_jsonschema_forms-0.0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-jsonschema-forms/datasette-1.0a37/runs/20260716T085850Z-gh-29485407174-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_jsonschema_forms.py::test_permissions"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-jsonschema-forms/datasette-1.0a37/runs/20260716T085850Z-gh-29485407174-a1/pytest.txt"
+  }
+}

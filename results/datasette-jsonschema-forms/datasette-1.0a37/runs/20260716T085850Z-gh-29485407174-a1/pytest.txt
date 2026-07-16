@@ -1,0 +1,68 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-jsonschema-forms @ file:///tmp/datasette-jsonschema-forms-8kq0hu8x/datasette_jsonschema_forms-0.0.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-jsonschema-forms @ file:///tmp/datasette-jsonschema-forms-8kq0hu8x/datasette_jsonschema_forms-0.0.3.tar.gz
+Installed 41 packages in 22ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette_jsonschema_forms/internal_db.py:5: UserWarning: Field name "schema" in "NewFormParams" shadows an attribute in parent "BaseModel"
+  class NewFormParams(BaseModel):
+/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette_jsonschema_forms/contract.py:4: UserWarning: Field name "schema" in "UiFormParams" shadows an attribute in parent "BaseModel"
+  class UiFormParams(BaseModel):
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpeNFXUk/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a37', 'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-jsonschema-forms-8kq0hu8x/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a37, json-report-1.5.0, metadata-3.1.1, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_jsonschema_forms.py::test_plugin_is_installed PASSED          [ 50%]
+tests/test_jsonschema_forms.py::test_permissions FAILED                  [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_permissions _______________________________
+
+    @pytest.mark.asyncio
+    async def test_permissions():
+        datasette = Datasette(
+            memory=True,
+            config={"permissions": {PERMISSION_ACCESS_NAME: {"id": ["alex"]}}},
+        )
+    
+        response = await datasette.client.get("/-/jsonschema-forms")
+>       assert response.status_code == 403
+E       assert 500 == 403
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_jsonschema_forms.py:27: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette/app.py", line 3129, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/lZCJT_OMBF7PX4Mv/lib/python3.13/site-packages/datasette_jsonschema_forms/routes.py", line 15, in wrapper
+    result = await datasette.permission_allowed(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-jsonschema-forms/datasette-1.0a37/runs/20260716T085850Z-gh-29485407174-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_jsonschema_forms.py::test_permissions - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 1 failed, 1 passed in 0.13s ==========================
