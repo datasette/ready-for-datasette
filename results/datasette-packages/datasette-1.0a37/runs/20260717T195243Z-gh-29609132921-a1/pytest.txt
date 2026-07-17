@@ -1,0 +1,32 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-packages @ file:///tmp/datasette-packages-kjo86__j/datasette_packages-0.3.tar.gz
+warning: `build_system.requires = ["uv-build>=0.10.0,<0.11.0"]` does not contain the current uv version 0.11.29
+      Built datasette-packages @ file:///tmp/datasette-packages-kjo86__j/datasette_packages-0.3.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 44 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpzZTw8c/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-packages-kjo86__j/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_packages.py::test_html PASSED                                 [ 16%]
+tests/test_packages.py::test_json PASSED                                 [ 33%]
+tests/test_packages.py::test_package_detail PASSED                       [ 50%]
+tests/test_packages.py::test_package_detail_not_found PASSED             [ 66%]
+tests/test_packages.py::test_package_detail_readme PASSED                [ 83%]
+tests/test_packages.py::test_graphql PASSED                              [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-packages/datasette-1.0a37/runs/20260717T195243Z-gh-29609132921-a1/.pytest-report.json
+============================== 6 passed in 0.30s ===============================

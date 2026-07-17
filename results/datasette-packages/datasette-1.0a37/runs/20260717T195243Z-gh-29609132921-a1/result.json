@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-packages",
+    "version": "0.3",
+    "repository": "simonw/datasette-packages",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/5c/bf/b907eb51597d71497f2e9fccbc7eff4860da4bfd4f6a420d7ba21c51341b/datasette_packages-0.3.tar.gz",
+      "sha256": "07c610a95b7204bbeb04c8f7ebb3863399d2cadce11dd5a41c07e5bcb204948c"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-packages",
+      "ref": "0.3",
+      "git_sha": "953e0e636d5e6ceb3875fd92c8d23f7a8358c341"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260717T195243Z-gh-29609132921-a1",
+    "started_at": "2026-07-17T19:52:43Z",
+    "completed_at": "2026-07-17T19:52:49Z",
+    "duration_seconds": 5.327,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-packages @ file:///tmp/datasette-packages-kjo86__j/datasette_packages-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio>=1.0",
+      "--with",
+      "datasette-graphql>=2.1",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-packages/datasette-1.0a37/runs/20260717T195243Z-gh-29609132921-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest>=9.0",
+      "pytest-asyncio>=1.0",
+      "datasette-graphql>=2.1"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-packages/datasette-1.0a37/runs/20260717T195243Z-gh-29609132921-a1/pytest.txt"
+  }
+}
