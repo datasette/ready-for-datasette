@@ -1,0 +1,106 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-notebook @ file:///tmp/datasette-notebook-3wpmynuy/datasette-notebook-0.2a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-notebook @ file:///tmp/datasette-notebook-3wpmynuy/datasette-notebook-0.2a0.tar.gz
+Installed 42 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpwR5ziX/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-notebook-3wpmynuy/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 7 items
+
+tests/test_markup.py::test_render_markdown[# Hello-<h1>Hello</h1>] PASSED [ 14%]
+tests/test_markup.py::test_render_markdown[[[foo]]-<p><a href="/n/foo" rel="nofollow">foo</a></p>] PASSED [ 28%]
+tests/test_markup.py::test_render_markdown[[[foo/bar]]-<p><a href="/n/foo/bar" rel="nofollow">foo/bar</a></p>] PASSED [ 42%]
+tests/test_notebook.py::test_404_if_no_notebook_database FAILED          [ 57%]
+tests/test_notebook.py::test_successful_startup FAILED                   [ 71%]
+tests/test_notebook.py::test_menu_link[True] FAILED                      [ 85%]
+tests/test_notebook.py::test_menu_link[False] FAILED                     [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_404_if_no_notebook_database _______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_successful_startup ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________________ test_menu_link[True] _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________________ test_menu_link[False] _____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_notebook.py:6
+  /tmp/datasette-notebook-3wpmynuy/tagged-source/tests/test_notebook.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_notebook.py:14
+  /tmp/datasette-notebook-3wpmynuy/tagged-source/tests/test_notebook.py:14: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_notebook.py:24
+  /tmp/datasette-notebook-3wpmynuy/tagged-source/tests/test_notebook.py:24: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-notebook/datasette-1.0a37/runs/20260717T154720Z-gh-29593526647-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_notebook.py::test_404_if_no_notebook_database - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_notebook.py::test_successful_startup - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_notebook.py::test_menu_link[True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_notebook.py::test_menu_link[False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=================== 4 failed, 3 passed, 3 warnings in 0.07s ====================

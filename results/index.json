@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T14:20:17Z",
+  "generated_at": "2026-07-17T15:47:27Z",
   "results": [
     {
       "schema_version": 1,
@@ -14824,6 +14824,100 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-no-truncate/datasette-1.0a37/runs/20260717T142011Z-gh-29587540183-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-notebook",
+        "version": "0.2a0",
+        "repository": "simonw/datasette-notebook",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/c2/ae/a734db6a7fffc9fd60a35c75d5239de1995e24ca33b880cb7a1d27c0cd56/datasette-notebook-0.2a0.tar.gz",
+          "sha256": "e3746d5fa52672b1f777ad5d4a053eb22324924cc368a87690b5b7c0e600bfd4"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-notebook",
+          "ref": "0.2a0",
+          "git_sha": "a48c944af1feb57408d7f4a591be3f940edd9f0b"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260717T154720Z-gh-29593526647-a1",
+        "started_at": "2026-07-17T15:47:20Z",
+        "completed_at": "2026-07-17T15:47:27Z",
+        "duration_seconds": 6.918,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-notebook @ file:///tmp/datasette-notebook-3wpmynuy/datasette-notebook-0.2a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-notebook/datasette-1.0a37/runs/20260717T154720Z-gh-29593526647-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 7,
+        "passed": 3,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 3
+      },
+      "failing_tests": [
+        "tests/test_notebook.py::test_404_if_no_notebook_database",
+        "tests/test_notebook.py::test_menu_link[False]",
+        "tests/test_notebook.py::test_menu_link[True]",
+        "tests/test_notebook.py::test_successful_startup"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 2
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-notebook/datasette-1.0a37/runs/20260717T154720Z-gh-29593526647-a1/pytest.txt"
       }
     },
     {
