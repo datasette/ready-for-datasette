@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T16:52:58Z",
+  "generated_at": "2026-07-17T17:52:47Z",
   "results": [
     {
       "schema_version": 1,
@@ -15007,6 +15007,104 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-oauth/datasette-1.0a37/runs/20260717T165248Z-gh-29597859053-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-openai",
+        "version": "0.2",
+        "repository": "simonw/datasette-openai",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a5/d7/7d60ae26aca81a92d0d555b6739ea08f25671b165a9f186d8140c6b3ae5b/datasette-openai-0.2.tar.gz",
+          "sha256": "c5a626a9a211d48089cf604afb5528dcd4d95b67cf3bc37f21d22412c6bb2fa7"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-openai",
+          "ref": "0.2",
+          "git_sha": "6b895ea1d4af516f6fad244f0ed9ab6f1121d6a7"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260717T175241Z-gh-29601700613-a1",
+        "started_at": "2026-07-17T17:52:41Z",
+        "completed_at": "2026-07-17T17:52:47Z",
+        "duration_seconds": 6.577,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-openai @ file:///tmp/datasette-openai-8hiw3yw1/datasette-openai-0.2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-openai/datasette-1.0a37/runs/20260717T175241Z-gh-29601700613-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 8,
+        "passed": 0,
+        "failed": 8,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 4
+      },
+      "failing_tests": [
+        "tests/test_openai.py::test_openai_build_prompt",
+        "tests/test_openai.py::test_plugin_is_installed",
+        "tests/test_openai.py::test_simple_functions[openai_count_tokens-Hello world!-3]",
+        "tests/test_openai.py::test_simple_functions[openai_count_tokens-Hello world-2]",
+        "tests/test_openai.py::test_simple_functions[openai_strip_tags-<p>Hello world</p>-Hello world]",
+        "tests/test_openai.py::test_simple_functions[openai_strip_tags-Hello world-Hello world]",
+        "tests/test_openai.py::test_simple_functions[openai_tokenize-Hello world!-[\"Hello\", \"world\", \"!\"]]",
+        "tests/test_openai.py::test_simple_functions[openai_tokenize-Hello world-[\"Hello\", \"world\"]]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-openai/datasette-1.0a37/runs/20260717T175241Z-gh-29601700613-a1/pytest.txt"
       }
     },
     {
