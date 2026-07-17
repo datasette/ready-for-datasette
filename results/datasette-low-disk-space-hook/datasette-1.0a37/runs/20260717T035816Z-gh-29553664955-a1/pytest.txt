@@ -1,0 +1,93 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-low-disk-space-hook @ file:///tmp/datasette-low-disk-space-hook-nlp1jjzl/datasette-low-disk-space-hook-0.1.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-low-disk-space-hook @ file:///tmp/datasette-low-disk-space-hook-nlp1jjzl/datasette-low-disk-space-hook-0.1.tar.gz
+Installed 39 packages in 27ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpDs5Er1/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-low-disk-space-hook-nlp1jjzl/tagged-source
+configfile: pytest.ini
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 3 items
+
+tests/test_low_disk_space_hook.py::test_using_test_plugin FAILED         [ 33%]
+tests/test_low_disk_space_hook.py::test_using_test_asyncio_plugin FAILED [ 66%]
+tests/test_low_disk_space_hook.py::test_no_plugin FAILED                 [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_using_test_plugin ____________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_using_test_asyncio_plugin ________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_no_plugin ________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/m6JQwV_XGC_JQnvT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/m6JQwV_XGC_JQnvT/lib/python3.13/site-packages/_pytest/config/__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_low_disk_space_hook.py:10
+  /tmp/datasette-low-disk-space-hook-nlp1jjzl/tagged-source/tests/test_low_disk_space_hook.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_low_disk_space_hook.py:26
+  /tmp/datasette-low-disk-space-hook-nlp1jjzl/tagged-source/tests/test_low_disk_space_hook.py:26: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_low_disk_space_hook.py:45
+  /tmp/datasette-low-disk-space-hook-nlp1jjzl/tagged-source/tests/test_low_disk_space_hook.py:45: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-low-disk-space-hook/datasette-1.0a37/runs/20260717T035816Z-gh-29553664955-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_low_disk_space_hook.py::test_using_test_plugin - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_low_disk_space_hook.py::test_using_test_asyncio_plugin - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_low_disk_space_hook.py::test_no_plugin - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 3 failed, 4 warnings in 0.02s =========================

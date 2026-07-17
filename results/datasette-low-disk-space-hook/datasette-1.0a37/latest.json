@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-low-disk-space-hook",
+    "version": "0.1",
+    "repository": "simonw/datasette-low-disk-space-hook",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/1b/bd/ab3ca9e788665fdb0c4a0841c36bd6c3d6d5e279832b57f5a68bae9bd41e/datasette-low-disk-space-hook-0.1.tar.gz",
+      "sha256": "58604c0b94c62f4616538d0866d2d6b0880ee3d2e2d673cbdd5d4e494bab0c5d"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-low-disk-space-hook",
+      "ref": "0.1",
+      "git_sha": "86b571a3847a79ba15b48862d0dcbf9c779626f0"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260717T035816Z-gh-29553664955-a1",
+    "started_at": "2026-07-17T03:58:16Z",
+    "completed_at": "2026-07-17T03:58:22Z",
+    "duration_seconds": 6.035,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-low-disk-space-hook @ file:///tmp/datasette-low-disk-space-hook-nlp1jjzl/datasette-low-disk-space-hook-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-low-disk-space-hook/datasette-1.0a37/runs/20260717T035816Z-gh-29553664955-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 4
+  },
+  "failing_tests": [
+    "tests/test_low_disk_space_hook.py::test_no_plugin",
+    "tests/test_low_disk_space_hook.py::test_using_test_asyncio_plugin",
+    "tests/test_low_disk_space_hook.py::test_using_test_plugin"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-low-disk-space-hook/datasette-1.0a37/runs/20260717T035816Z-gh-29553664955-a1/pytest.txt"
+  }
+}
