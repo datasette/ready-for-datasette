@@ -1,0 +1,50 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-permissions-metadata @ file:///tmp/datasette-permissions-metadata-ysb5l7cj/datasette_permissions_metadata-0.1.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-permissions-metadata @ file:///tmp/datasette-permissions-metadata-ysb5l7cj/datasette_permissions_metadata-0.1.tar.gz
+Installed 40 packages in 24ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpBKWUsT/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-permissions-metadata-ysb5l7cj/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_permissions_metadata.py::test_plugin[False] PASSED            [ 50%]
+tests/test_permissions_metadata.py::test_plugin[True] FAILED             [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_plugin[True] _______________________________
+
+allowed = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("allowed", (False, True))
+    async def test_plugin(allowed):
+        metadata = {}
+        if allowed:
+            metadata = {"permissions": {"permissions-debug": {"id": "user"}}}
+        datasette = Datasette(metadata=metadata)
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "user"}}, "actor")}
+        response = await datasette.client.get("/-/permissions", cookies=cookies)
+        if allowed:
+>           assert response.status_code == 200
+E           assert 403 == 200
+E            +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_permissions_metadata.py:15: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-permissions-metadata/datasette-1.0a37/runs/20260717T212836Z-gh-29614819854-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_permissions_metadata.py::test_plugin[True] - assert 403 == 200
+ +  where 403 = <Response [403 Forbidden]>.status_code
+========================= 1 failed, 1 passed in 0.13s ==========================

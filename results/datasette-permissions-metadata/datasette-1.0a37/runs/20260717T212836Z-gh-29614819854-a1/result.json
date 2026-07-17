@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-permissions-metadata",
+    "version": "0.1",
+    "repository": "datasette/datasette-permissions-metadata",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/65/a4/a036709c971d3e45da01401ba5f979ff14a9854b115af5890af3b6d73e85/datasette_permissions_metadata-0.1.tar.gz",
+      "sha256": "55dd9465e58177d63299a5d522bda058a0608ee73f26a6767b0e50be9b52e328"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-permissions-metadata",
+      "ref": "0.1",
+      "git_sha": "f4de820c00deccdda0198a8d96ca1f6efbd030f3"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260717T212836Z-gh-29614819854-a1",
+    "started_at": "2026-07-17T21:28:36Z",
+    "completed_at": "2026-07-17T21:28:43Z",
+    "duration_seconds": 7.15,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-permissions-metadata @ file:///tmp/datasette-permissions-metadata-ysb5l7cj/datasette_permissions_metadata-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-permissions-metadata/datasette-1.0a37/runs/20260717T212836Z-gh-29614819854-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_permissions_metadata.py::test_plugin[True]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-permissions-metadata/datasette-1.0a37/runs/20260717T212836Z-gh-29614819854-a1/pytest.txt"
+  }
+}
