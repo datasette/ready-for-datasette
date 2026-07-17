@@ -1,0 +1,303 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-metadata-editable @ file:///tmp/datasette-metadata-editable-n_c3jikw/datasette_metadata_editable-0.2a3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading ruff (10.9MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading nh3 (1.6MiB)
+ Downloaded nh3
+ Downloaded pydantic-core
+ Downloaded ruff
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-metadata-editable @ file:///tmp/datasette-metadata-editable-n_c3jikw/datasette_metadata_editable-0.2a3.tar.gz
+Installed 45 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpTttU6R/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'syrupy': '5.5.3', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-metadata-editable-n_c3jikw/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, syrupy-5.5.3, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/test_metadata_editable.py::test_plugin_is_installed PASSED         [  9%]
+tests/test_metadata_editable.py::test_action_menus[/-/-/datasette-metadata-editable/edit] PASSED [ 18%]
+tests/test_metadata_editable.py::test_action_menus[/test_action_menus-/-/datasette-metadata-editable/edit?db=test_action_menus] PASSED [ 27%]
+tests/test_metadata_editable.py::test_action_menus[/test_action_menus/foo-/-/datasette-metadata-editable/edit?db=test_action_menus&amp;table=foo] PASSED [ 36%]
+tests/test_metadata_editable.py::test_basic FAILED                       [ 45%]
+tests/test_metadata_editable.py::test_edit_table FAILED                  [ 54%]
+tests/test_metadata_editable.py::test_metadata_does_not_cause_500_errors PASSED [ 63%]
+tests/test_metadata_editable.py::test_metadata_survives_server_restart FAILED [ 72%]
+tests/test_metadata_editable.py::test_migrations FAILED                  [ 81%]
+tests/test_metadata_editable.py::test_edit_history_is_recorded FAILED    [ 90%]
+tests/test_metadata_editable.py::test_edit_history_is_used_to_prefill_form FAILED [100%]
+
+=================================== FAILURES ===================================
+__________________________________ test_basic __________________________________
+
+    @pytest.mark.asyncio
+    async def test_basic():
+        datasette = Datasette(
+            memory=True,
+            config={"permissions": {"datasette-metadata-editable-edit": {"id": ["root"]}}},
+        )
+        await datasette.refresh_schemas()
+        assert (await datasette.get_instance_metadata()).get("title") is None
+    
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(
+            "/-/datasette-metadata-editable/edit", cookies=cookies
+        )
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_metadata_editable.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/NNQqqvkwbBQYv8Ce/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_______________________________ test_edit_table ________________________________
+
+    @pytest.mark.asyncio
+    async def test_edit_table():
+        datasette = Datasette(
+            memory=True,
+            config={"permissions": {"datasette-metadata-editable-edit": {"id": ["root"]}}},
+        )
+        await datasette.refresh_schemas()
+        db = datasette.add_memory_database("test-db-with-hyphens")
+        await db.execute_write(
+            "create table table_with_underscores (id integer primary key)"
+        )
+        metadata_before = (
+            await datasette.client.get(
+                "/test-db-with-hyphens/table_with_underscores.json?_extra=metadata"
+            )
+        ).json()
+        assert metadata_before["metadata"] == {"columns": {}}
+        # Now make the edit
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(
+            "/-/datasette-metadata-editable/edit", cookies=cookies
+        )
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_metadata_editable.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/NNQqqvkwbBQYv8Ce/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+____________________ test_metadata_survives_server_restart _____________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_metadata_survives_server_0')
+
+    @pytest.mark.asyncio
+    async def test_metadata_survives_server_restart(tmpdir):
+        internal = str(tmpdir / "internal.db")
+        one = str(tmpdir / "one.db")
+        two = str(tmpdir / "two.db")
+        for path in (internal, one, two):
+            sqlite_utils.Database(path).vacuum()
+        datasette = Datasette(
+            [one, two],
+            config={"permissions": {"datasette-metadata-editable-edit": {"id": ["root"]}}},
+            internal=internal,
+        )
+        await datasette.refresh_schemas()
+        db = datasette.get_database("one")
+        await db.execute_write("create table t(id integer primary key)")
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(
+            "/-/datasette-metadata-editable/edit", cookies=cookies
+        )
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_metadata_editable.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/NNQqqvkwbBQYv8Ce/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+_______________________________ test_migrations ________________________________
+
+    @pytest.mark.asyncio
+    async def test_migrations():
+        datasette = Datasette()
+        await datasette.refresh_schemas()
+        internal_db = datasette.get_internal_database()
+        await internal_db.execute_write_fn(
+            lambda conn: internal_migrations.m001_initialize_datasette_metadata_editable(
+                sqlite_utils.Database(conn)
+            )
+        )
+        internal_tables = await internal_db.table_names()
+>       assert set(internal_tables) == {
+            "catalog_databases",
+            "catalog_tables",
+            "catalog_columns",
+            "catalog_views",
+            "catalog_indexes",
+            "catalog_foreign_keys",
+            "metadata_instance",
+            "metadata_databases",
+            "metadata_resources",
+            "metadata_columns",
+            "datasette_metadata_editable_entries",
+        }
+E       AssertionError: assert {'catalog_indexes', 'catalog_views', 'catalog_databases', '_sqlite_migrations', 'metadata_columns', 'catalog_tables', 'datasette_metadata_editable_entries', 'catalog_columns', 'metadata_instance', 'catalog_foreign_keys', 'metadata_resources', 'column_types', 'metadata_databases', 'queries'} == {'catalog_indexes', 'catalog_views', 'catalog_databases', 'metadata_columns', 'catalog_tables', 'datasette_metadata_editable_entries', 'catalog_columns', 'metadata_instance', 'catalog_foreign_keys', 'metadata_resources', 'metadata_databases'}
+E         
+E         Extra items in the left set:
+E         '_sqlite_migrations'
+E         'column_types'
+E         'queries'
+E         
+E         Full diff:
+E           {
+E         +     '_sqlite_migrations',
+E               'catalog_columns',
+E               'catalog_databases',
+E               'catalog_foreign_keys',
+E               'catalog_indexes',
+E               'catalog_tables',
+E               'catalog_views',
+E         +     'column_types',
+E               'datasette_metadata_editable_entries',
+E               'metadata_columns',
+E               'metadata_databases',
+E               'metadata_instance',
+E               'metadata_resources',
+E         +     'queries',
+E           }
+
+tests/test_metadata_editable.py:256: AssertionError
+________________________ test_edit_history_is_recorded _________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_edit_history_is_recorded0')
+
+    @pytest.mark.asyncio
+    async def test_edit_history_is_recorded(tmpdir):
+        internal = str(tmpdir / "internal.db")
+        db_path = str(tmpdir / "test.db")
+        sqlite_utils.Database(db_path).vacuum()
+        datasette = Datasette(
+            [db_path],
+            config={"permissions": {"datasette-metadata-editable-edit": {"id": ["root"]}}},
+            internal=internal,
+        )
+        await datasette.refresh_schemas()
+        db = datasette.get_database("test")
+        await db.execute_write("create table t(id integer primary key)")
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+        response = await datasette.client.get(
+            "/-/datasette-metadata-editable/edit", cookies=cookies
+        )
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_metadata_editable.py:340: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/NNQqqvkwbBQYv8Ce/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+__________________ test_edit_history_is_used_to_prefill_form ___________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_edit_history_is_used_to_p0')
+
+    @pytest.mark.asyncio
+    async def test_edit_history_is_used_to_prefill_form(tmpdir):
+        internal = str(tmpdir / "internal.db")
+        db_path = str(tmpdir / "test.db")
+        sqlite_utils.Database(db_path).vacuum()
+        datasette = Datasette(
+            [db_path],
+            config={"permissions": {"datasette-metadata-editable-edit": {"id": ["root"]}}},
+            internal=internal,
+        )
+        await datasette.refresh_schemas()
+        db = datasette.get_database("test")
+        await db.execute_write("create table t(id integer primary key)")
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")}
+    
+        csrf_response = await datasette.client.get(
+            "/-/datasette-metadata-editable/edit", cookies=cookies
+        )
+>       csrftoken = csrf_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_metadata_editable.py:423: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/NNQqqvkwbBQYv8Ce/lib/python3.13/site-packages/httpx/_models.py:1216: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-metadata-editable/datasette-1.0a37/runs/20260717T101801Z-gh-29572978360-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_metadata_editable.py::test_basic - KeyError: 'ds_csrftoken'
+FAILED tests/test_metadata_editable.py::test_edit_table - KeyError: 'ds_csrftoken'
+FAILED tests/test_metadata_editable.py::test_metadata_survives_server_restart - KeyError: 'ds_csrftoken'
+FAILED tests/test_metadata_editable.py::test_migrations - AssertionError: assert {'catalog_indexes', 'catalog_views', 'catalog_databases', '_sqlite_migrations', 'metadata_columns', 'catalog_tables', 'datasette_metadata_editable_entries', 'catalog_columns', 'metadata_instance', 'catalog_foreign_keys', 'metadata_resources', 'column_types', 'metadata_databases', 'queries'} == {'catalog_indexes', 'catalog_views', 'catalog_databases', 'metadata_columns', 'catalog_tables', 'datasette_metadata_editable_entries', 'catalog_columns', 'metadata_instance', 'catalog_foreign_keys', 'metadata_resources', 'metadata_databases'}
+  
+  Extra items in the left set:
+  '_sqlite_migrations'
+  'column_types'
+  'queries'
+  
+  Full diff:
+    {
+  +     '_sqlite_migrations',
+        'catalog_columns',
+        'catalog_databases',
+        'catalog_foreign_keys',
+        'catalog_indexes',
+        'catalog_tables',
+        'catalog_views',
+  +     'column_types',
+        'datasette_metadata_editable_entries',
+        'metadata_columns',
+        'metadata_databases',
+        'metadata_instance',
+        'metadata_resources',
+  +     'queries',
+    }
+FAILED tests/test_metadata_editable.py::test_edit_history_is_recorded - KeyError: 'ds_csrftoken'
+FAILED tests/test_metadata_editable.py::test_edit_history_is_used_to_prefill_form - KeyError: 'ds_csrftoken'
+========================= 6 failed, 5 passed in 0.90s ==========================

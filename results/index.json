@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T08:30:00Z",
+  "generated_at": "2026-07-17T10:18:09Z",
   "results": [
     {
       "schema_version": 1,
@@ -14446,6 +14446,108 @@
         "pytest_output": "results/datasette-media/datasette-1.0a37/runs/20260717T082954Z-gh-29566605171-a1/pytest.txt"
       },
       "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-metadata-editable",
+        "version": "0.2a3",
+        "repository": "datasette/datasette-metadata-editable",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/fe/44/81b185ee3da8ce4daee64ede685b5a5657d911d296230e82498044f2b150/datasette_metadata_editable-0.2a3.tar.gz",
+          "sha256": "e352875920401a77799133d82790a3af14ee0d52c557f33a94cb2d5481af3434"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-metadata-editable",
+          "ref": "0.2a3",
+          "git_sha": "3f86294fee95dd54f9835f18e4d53fddb9912e52"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260717T101801Z-gh-29572978360-a1",
+        "started_at": "2026-07-17T10:18:01Z",
+        "completed_at": "2026-07-17T10:18:09Z",
+        "duration_seconds": 8.381,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-metadata-editable[test] @ file:///tmp/datasette-metadata-editable-n_c3jikw/datasette_metadata_editable-0.2a3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "ruff",
+          "--with",
+          "syrupy",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-metadata-editable/datasette-1.0a37/runs/20260717T101801Z-gh-29572978360-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 11,
+        "passed": 5,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_metadata_editable.py::test_basic",
+        "tests/test_metadata_editable.py::test_edit_history_is_recorded",
+        "tests/test_metadata_editable.py::test_edit_history_is_used_to_prefill_form",
+        "tests/test_metadata_editable.py::test_edit_table",
+        "tests/test_metadata_editable.py::test_metadata_survives_server_restart",
+        "tests/test_metadata_editable.py::test_migrations"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "ruff",
+          "syrupy"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-metadata-editable/datasette-1.0a37/runs/20260717T101801Z-gh-29572978360-a1/pytest.txt"
+      }
     },
     {
       "schema_version": 1,
