@@ -1,0 +1,79 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-oauth @ file:///tmp/datasette-oauth-td9glxg5/datasette_oauth-0.1a0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-oauth @ file:///tmp/datasette-oauth-td9glxg5/datasette_oauth-0.1a0.tar.gz
+Installed 40 packages in 22ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpGZYUvf/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-oauth-td9glxg5/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 54 items
+
+tests/test_oauth.py::test_plugin_is_installed PASSED                     [  1%]
+tests/test_oauth.py::test_startup_creates_tables PASSED                  [  3%]
+tests/test_oauth.py::test_register_client_requires_auth PASSED           [  5%]
+tests/test_oauth.py::test_register_client PASSED                         [  7%]
+tests/test_oauth.py::test_register_client_missing_fields PASSED          [  9%]
+tests/test_oauth.py::test_list_clients PASSED                            [ 11%]
+tests/test_oauth.py::test_list_clients_requires_auth PASSED              [ 12%]
+tests/test_oauth.py::test_clients_html_page PASSED                       [ 14%]
+tests/test_oauth.py::test_clients_html_page_requires_auth PASSED         [ 16%]
+tests/test_oauth.py::test_clients_html_requires_permission PASSED        [ 18%]
+tests/test_oauth.py::test_list_clients_requires_permission PASSED        [ 20%]
+tests/test_oauth.py::test_register_client_requires_permission PASSED     [ 22%]
+tests/test_oauth.py::test_edit_client_requires_permission PASSED         [ 24%]
+tests/test_oauth.py::test_delete_client_requires_permission PASSED       [ 25%]
+tests/test_oauth.py::test_authorize_get_shows_consent PASSED             [ 27%]
+tests/test_oauth.py::test_authorize_get_requires_auth PASSED             [ 29%]
+tests/test_oauth.py::test_authorize_get_invalid_client PASSED            [ 31%]
+tests/test_oauth.py::test_authorize_get_redirect_uri_mismatch PASSED     [ 33%]
+tests/test_oauth.py::test_authorize_post_approve PASSED                  [ 35%]
+tests/test_oauth.py::test_authorize_post_deny PASSED                     [ 37%]
+tests/test_oauth.py::test_authorize_post_partial_scopes PASSED           [ 38%]
+tests/test_oauth.py::test_token_exchange PASSED                          [ 40%]
+tests/test_oauth.py::test_token_exchange_wrong_secret PASSED             [ 42%]
+tests/test_oauth.py::test_token_exchange_code_reuse PASSED               [ 44%]
+tests/test_oauth.py::test_token_exchange_code_race_only_one_succeeds PASSED [ 46%]
+tests/test_oauth.py::test_token_exchange_redirect_uri_mismatch PASSED    [ 48%]
+tests/test_oauth.py::test_full_oauth_flow_with_restricted_token PASSED   [ 50%]
+tests/test_oauth.py::test_authorize_post_requires_auth PASSED            [ 51%]
+tests/test_oauth.py::test_scope_parsing PASSED                           [ 53%]
+tests/test_oauth.py::test_device_flow_initiate PASSED                    [ 55%]
+tests/test_oauth.py::test_device_flow_verify_requires_auth PASSED        [ 57%]
+tests/test_oauth.py::test_device_flow_verify_invalid_code PASSED         [ 59%]
+tests/test_oauth.py::test_device_flow_full PASSED                        [ 61%]
+tests/test_oauth.py::test_device_flow_deny PASSED                        [ 62%]
+tests/test_oauth.py::test_device_flow_code_reuse PASSED                  [ 64%]
+tests/test_oauth.py::test_device_flow_code_race_only_one_succeeds PASSED [ 66%]
+tests/test_oauth.py::test_device_verify_requires_oauth_device_tokens_permission PASSED [ 68%]
+tests/test_oauth.py::test_device_verify_post_requires_oauth_device_tokens_permission PASSED [ 70%]
+tests/test_oauth.py::test_device_verify_works_with_permission PASSED     [ 72%]
+tests/test_oauth.py::test_device_tokens_denied_for_root_by_default PASSED [ 74%]
+tests/test_oauth.py::test_device_tokens_allowed_for_root_with_plugin_config PASSED [ 75%]
+tests/test_oauth.py::test_delete_client PASSED                           [ 77%]
+tests/test_oauth.py::test_delete_client_requires_auth PASSED             [ 79%]
+tests/test_oauth.py::test_delete_client_wrong_owner PASSED               [ 81%]
+tests/test_oauth.py::test_delete_client_not_found PASSED                 [ 83%]
+tests/test_oauth.py::test_edit_client PASSED                             [ 85%]
+tests/test_oauth.py::test_edit_client_requires_auth PASSED               [ 87%]
+tests/test_oauth.py::test_edit_client_wrong_owner PASSED                 [ 88%]
+tests/test_oauth.py::test_edit_client_missing_fields PASSED              [ 90%]
+tests/test_oauth.py::test_edit_client_not_found PASSED                   [ 92%]
+tests/test_oauth.py::test_device_flow_no_scopes_gives_unrestricted_token PASSED [ 94%]
+tests/test_oauth.py::test_device_flow_custom_time_limit PASSED           [ 96%]
+tests/test_oauth.py::test_device_flow_disabled_by_default PASSED         [ 98%]
+tests/test_oauth.py::test_device_flow_enabled_with_setting PASSED        [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-oauth/datasette-1.0a37/runs/20260717T165248Z-gh-29597859053-a1/.pytest-report.json
+============================== 54 passed in 4.37s ==============================

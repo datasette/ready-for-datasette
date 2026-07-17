@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T15:47:27Z",
+  "generated_at": "2026-07-17T16:52:58Z",
   "results": [
     {
       "schema_version": 1,
@@ -14918,6 +14918,95 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-notebook/datasette-1.0a37/runs/20260717T154720Z-gh-29593526647-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-oauth",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-oauth",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a5/be/7a8fc5a85569c354ac43aaf4cb6d0defba28e8538a18c21a7708e6794873/datasette_oauth-0.1a0.tar.gz",
+          "sha256": "6a83f6fe80e843d60a863aa7f82d6c451549ea7368aa35af19e33a3ff70713df"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-oauth",
+          "ref": "0.1a0",
+          "git_sha": "317d5e2a4570e3fd1dae0398754178f29a1d3836"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260717T165248Z-gh-29597859053-a1",
+        "started_at": "2026-07-17T16:52:48Z",
+        "completed_at": "2026-07-17T16:52:58Z",
+        "duration_seconds": 9.814,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-oauth @ file:///tmp/datasette-oauth-td9glxg5/datasette_oauth-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-oauth/datasette-1.0a37/runs/20260717T165248Z-gh-29597859053-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 54,
+        "passed": 54,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-oauth/datasette-1.0a37/runs/20260717T165248Z-gh-29597859053-a1/pytest.txt"
       }
     },
     {
