@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T03:58:22Z",
+  "generated_at": "2026-07-17T06:11:52Z",
   "results": [
     {
       "schema_version": 1,
@@ -14269,6 +14269,92 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-low-disk-space-hook/datasette-1.0a37/runs/20260717T035816Z-gh-29553664955-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-mask-columns",
+        "version": "0.2.2",
+        "repository": "simonw/datasette-mask-columns",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/e3/43/2df25a9584e6f68d4cf72e5963101a48c6cc8dcf7d516f8f0170ef5e511c/datasette-mask-columns-0.2.2.tar.gz",
+          "sha256": "0386263bd751a79ebf2b1fa2d767fe4b2e68dee3153db937283fae8f91494630"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-mask-columns",
+          "ref": "0.2.2",
+          "git_sha": "0f11442b5c2cfd9a7ad99e9025574409c5e2f715"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a37",
+        "installed_version": "1.0a37"
+      },
+      "run": {
+        "id": "20260717T061145Z-gh-29559336656-a1",
+        "started_at": "2026-07-17T06:11:45Z",
+        "completed_at": "2026-07-17T06:11:52Z",
+        "duration_seconds": 6.916,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-mask-columns @ file:///tmp/datasette-mask-columns-vsas920l/datasette-mask-columns-0.2.2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a37",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mask-columns/datasette-1.0a37/runs/20260717T061145Z-gh-29559336656-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 1,
+        "passed": 0,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [
+        "tests/test_mask_columns.py::test_datasette_mask_columns"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-mask-columns/datasette-1.0a37/runs/20260717T061145Z-gh-29559336656-a1/pytest.txt"
       }
     },
     {

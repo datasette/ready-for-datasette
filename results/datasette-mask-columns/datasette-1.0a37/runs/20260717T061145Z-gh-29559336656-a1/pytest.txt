@@ -1,0 +1,47 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-mask-columns @ file:///tmp/datasette-mask-columns-vsas920l/datasette-mask-columns-0.2.2.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-mask-columns @ file:///tmp/datasette-mask-columns-vsas920l/datasette-mask-columns-0.2.2.tar.gz
+Installed 39 packages in 38ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpBuUJoC/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-mask-columns-vsas920l/tagged-source
+plugins: json-report-1.5.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+collecting ... collected 1 item
+
+tests/test_mask_columns.py::test_datasette_mask_columns FAILED           [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_datasette_mask_columns __________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_mask_columns.py:7
+  /tmp/datasette-mask-columns-vsas920l/tagged-source/tests/test_mask_columns.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mask-columns/datasette-1.0a37/runs/20260717T061145Z-gh-29559336656-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_mask_columns.py::test_datasette_mask_columns - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+========================= 1 failed, 1 warning in 0.01s =========================
