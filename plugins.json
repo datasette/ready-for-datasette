@@ -314,9 +314,9 @@
   {
     "name": "datasette-cluster-map",
     "github_repo": "simonw/datasette-cluster-map",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "5850262655a34ea32702d5ee77f8cc48bbaa16b8bcbc6f3e862f943c91d47389",
-    "metadata_etag": "\"7ed0bd1e247ec9ee3335ffc838f4791bea64b8dac3ada0b27f4bcac328948a51\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "c65a532f9294e4826b1f3789b5a319cdf47e0f013c0d7b5a957bf0399a21da28",
+    "metadata_etag": "\"dcff0255beaba7dd187b88beeef14232a7d4908d42b2a725701b3b8106d848d9\"",
     "latest_version": "0.18.2"
   },
   {
@@ -994,9 +994,9 @@
   {
     "name": "datasette-leaflet",
     "github_repo": "simonw/datasette-leaflet",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "5c6ec10f5e6022664d60de3e02b5983dfbb117f92cec577db52b8e87317e36af",
-    "metadata_etag": "\"f7881136149f59d0467a4ba75b2e8d7784efe4834423a4aeb703bb82c4804ce5\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "32b68e85a07680c5d0371f298fadd7a8fa5b2c3eddf9b0932794466a18bcc78f",
+    "metadata_etag": "\"562c2e15135fe235784cfe33b641992c15261b17de6c91ef77c08d96e335c954\"",
     "latest_version": "0.2.2"
   },
   {
@@ -1195,8 +1195,8 @@
     "name": "datasette-paper",
     "github_repo": "datasette/datasette-paper",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "46f1b52ad25616fcfc45d8f5f1b8404d2155cae6bf029a795212672c1e752af3",
-    "metadata_etag": "\"af4cb496c183c458c45bf0bd7e02833988ea06900de1958df1688633f0932baf\"",
+    "metadata_sha256": "9e97b2bff3e849eeacd38cc9242d455b11b9ca77e68bb5e6cad7fdedca3f6c34",
+    "metadata_etag": "\"f81e1b2ebed878ed068c2524252a207b54da8e735be127c1ff6f4aa67564e210\"",
     "latest_version": "0.0.2a12"
   },
   {
