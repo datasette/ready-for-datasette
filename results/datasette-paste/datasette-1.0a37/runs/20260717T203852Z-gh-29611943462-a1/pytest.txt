@@ -1,0 +1,102 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-paste @ file:///tmp/datasette-paste-18cuwb58/datasette-paste-0.1a5.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-paste @ file:///tmp/datasette-paste-18cuwb58/datasette-paste-0.1a5.tar.gz
+Installed 40 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp71q4g1/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'json-report': '1.5.0', 'asyncio': '1.4.0', 'metadata': '3.1.1', 'anyio': '4.14.2', 'datasette': '1.0a37'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-paste-18cuwb58/tagged-source
+configfile: pyproject.toml
+plugins: json-report-1.5.0, asyncio-1.4.0, metadata-3.1.1, anyio-4.14.2, datasette-1.0a37
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_paste.py::test_create_table_permissions FAILED                [100%]
+
+=================================== FAILURES ===================================
+________________________ test_create_table_permissions _________________________
+
+    @pytest.mark.asyncio
+    async def test_create_table_permissions():
+        datasette = Datasette()
+        datasette.add_memory_database("test")
+        anon_response = await datasette.client.get("/test")
+        assert anon_response.status_code == 200
+        fragment = ">Create table with pasted data"
+        assert fragment not in anon_response.text
+        root_response = await datasette.client.get(
+            "/test", cookies={"ds_actor": datasette.client.actor_cookie({"id": "root"})}
+        )
+>       assert root_response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_paste.py:16: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/app.py", line 2927, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/app.py", line 3103, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1178, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/views/base.py", line 74, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/views/database.py", line 230, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<41 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/app.py", line 2458, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/templates/database.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/templates/base.html", line 60, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/templates/database.html", line 25, in block 'content'
+    {% set action_links, action_title = database_actions(), "Database actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/views/database.py", line 178, in database_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette/utils/__init__.py", line 176, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette_paste/__init__.py", line 32, in inner
+    if not await can_paste(datasette, actor, database):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/QcW4CT8bROL2bdK2/lib/python3.13/site-packages/datasette_paste/__init__.py", line 50, in can_paste
+    can_create_table = await datasette.permission_allowed(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-paste/datasette-1.0a37/runs/20260717T203852Z-gh-29611943462-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_paste.py::test_create_table_permissions - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+============================== 1 failed in 0.16s ===============================

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-paste",
+    "version": "0.1a5",
+    "repository": "datasette/datasette-paste",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ef/21/2d66dbbf37b7db2c8ce7fd61ad428ec87f350ced4102e84bb254e5b274e6/datasette-paste-0.1a5.tar.gz",
+      "sha256": "4309c00a13b69fa6958b0f2bd4b753983e7f9dfe7c54dc59d639c0cc18dc356f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-paste",
+      "ref": "0.1a5",
+      "git_sha": "b2f4503eda11a8f1339a9e7aaae34734c6f7648f"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260717T203852Z-gh-29611943462-a1",
+    "started_at": "2026-07-17T20:38:52Z",
+    "completed_at": "2026-07-17T20:38:59Z",
+    "duration_seconds": 6.806,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-paste @ file:///tmp/datasette-paste-18cuwb58/datasette-paste-0.1a5.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-paste/datasette-1.0a37/runs/20260717T203852Z-gh-29611943462-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_paste.py::test_create_table_permissions"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-paste/datasette-1.0a37/runs/20260717T203852Z-gh-29611943462-a1/pytest.txt"
+  }
+}
