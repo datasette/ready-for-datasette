@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-mp3-audio",
+    "version": "0.2",
+    "repository": "simonw/datasette-mp3-audio",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/73/f0/b2722cf1c6d14107e417fb69a3b5b65b10a43238a1009682b71714545166/datasette-mp3-audio-0.2.tar.gz",
+      "sha256": "e2bde11a81a21fbc64935d1ddb03a49e26abd48adefd5e06c945571c913af0a8"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-mp3-audio",
+      "ref": "0.2",
+      "git_sha": "7206b759c7888c10cb823f10962fa8f393d61261"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260717T114304Z-gh-29577750539-a1",
+    "started_at": "2026-07-17T11:43:04Z",
+    "completed_at": "2026-07-17T11:43:11Z",
+    "duration_seconds": 6.375,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-mp3-audio @ file:///tmp/datasette-mp3-audio-wr66tc_k/datasette-mp3-audio-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mp3-audio/datasette-1.0a37/runs/20260717T114304Z-gh-29577750539-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_mp3_audio.py::test_mp3_audio[/has_slash.mp3-True]",
+    "tests/test_mp3_audio.py::test_mp3_audio[1-False]",
+    "tests/test_mp3_audio.py::test_mp3_audio[1.2-False]",
+    "tests/test_mp3_audio.py::test_mp3_audio[None-False]",
+    "tests/test_mp3_audio.py::test_mp3_audio[dog-False]",
+    "tests/test_mp3_audio.py::test_mp3_audio[http://blah/has_url.mp3-True]",
+    "tests/test_mp3_audio.py::test_mp3_audio[https://blah/has_url.mp3-True]",
+    "tests/test_mp3_audio.py::test_mp3_audio[no_slash.mp3-False]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-mp3-audio/datasette-1.0a37/runs/20260717T114304Z-gh-29577750539-a1/pytest.txt"
+  }
+}
