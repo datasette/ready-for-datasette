@@ -1,6 +1,6 @@
 [project]
 name = "ready-for-datasette"
-version = "0.1.0"
+version = "0.1"
 description = "Check whether a repository is ready to ship as a Datasette plugin"
 readme = "README.md"
 requires-python = ">=3.10"
