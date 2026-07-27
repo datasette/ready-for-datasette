@@ -150,14 +150,115 @@ cd "$project_dir"
 printf 'Running tests from %s\n' "$project_dir"
 printf 'Requested Datasette version: %s\n' "$datasette_version"
 
-# Project discovery installs the default `dev` dependency group used by recent
-# plugins. `.[test]` adds the optional test extra used by older plugins; uv only
-# warns if that extra is absent. Explicit pytest covers projects with neither.
+# `--no-project` below deliberately disables dependency groups, so extract a
+# conventional test group and pass its requirements into the same isolated
+# resolution. Also select a conventional test extra if the package has one.
+test_requirements="/work/test-requirements.txt"
+package_requirement="$(
+  uv run --isolated --no-project --quiet python - "$test_requirements" <<'PYTHON'
+import re
+import sys
+import tomllib
+from pathlib import Path
+
+
+CANDIDATES = ("test", "tests", "testing", "dev")
+output_path = Path(sys.argv[1])
+pyproject_path = Path("pyproject.toml")
+
+
+def normalized(name):
+    return re.sub(r"[-_.]+", "-", name).lower()
+
+
+def named_group(groups):
+    by_normalized_name = {
+        normalized(name): name for name in groups if isinstance(name, str)
+    }
+    return next(
+        (by_normalized_name[name] for name in CANDIDATES if name in by_normalized_name),
+        None,
+    )
+
+
+def expand_group(groups, name, resolving=()):
+    if name in resolving:
+        raise SystemExit("Dependency group cycle: " + " -> ".join((*resolving, name)))
+    value = groups.get(name)
+    if not isinstance(value, list):
+        raise SystemExit(f"Dependency group {name!r} is not an array")
+    dependencies = []
+    for item in value:
+        if isinstance(item, str):
+            dependencies.append(item)
+        elif isinstance(item, dict) and isinstance(item.get("include-group"), str):
+            included_name = item["include-group"]
+            if included_name not in groups:
+                by_normalized_name = {
+                    normalized(group_name): group_name
+                    for group_name in groups
+                    if isinstance(group_name, str)
+                }
+                included_name = by_normalized_name.get(
+                    normalized(included_name), included_name
+                )
+            dependencies.extend(
+                expand_group(groups, included_name, (*resolving, name))
+            )
+        else:
+            raise SystemExit(
+                f"Unsupported item in dependency group {name!r}: {item!r}"
+            )
+    return dependencies
+
+
+if pyproject_path.is_file():
+    with pyproject_path.open("rb") as file:
+        pyproject = tomllib.load(file)
+else:
+    pyproject = {}
+
+dependencies = []
+groups = pyproject.get("dependency-groups")
+if isinstance(groups, dict):
+    group_name = named_group(groups)
+    if group_name is not None:
+        dependencies = expand_group(groups, group_name)
+
+if not dependencies:
+    tool = pyproject.get("tool")
+    uv = tool.get("uv") if isinstance(tool, dict) else None
+    legacy = uv.get("dev-dependencies") if isinstance(uv, dict) else None
+    if isinstance(legacy, list) and all(isinstance(item, str) for item in legacy):
+        dependencies = legacy
+
+unique_dependencies = list(dict.fromkeys(dependencies))
+output_path.write_text(
+    "# Generated from the package's test dependency group\n"
+    + "".join(f"{dependency}\n" for dependency in unique_dependencies)
+)
+
+project = pyproject.get("project")
+optional = project.get("optional-dependencies") if isinstance(project, dict) else None
+extra = named_group(optional) if isinstance(optional, dict) else None
+print(f".[{extra}]" if extra is not None else ".")
+PYTHON
+)"
+
+printf 'Package requirement: %s\n' "$package_requirement"
+printf 'Additional test requirements:\n'
+sed 's/^/  /' "$test_requirements"
+
+# The package, its runtime dependencies, the exact Datasette version, and its
+# test dependencies are resolved together. There is no lower project
+# environment whose stale transitive dependencies can leak into the test run.
 uv run \
   --isolated \
+  --no-project \
   --prerelease allow \
-  --with ".[test]" \
+  --with "$package_requirement" \
   --with pytest \
   --with "datasette==$datasette_version" \
+  --with-requirements "$test_requirements" \
   python -m pytest -vv "$@"
 CONTAINER_SCRIPT

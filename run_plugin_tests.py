@@ -274,9 +274,10 @@ def download_sdist(
         digest = hashlib.sha256()
         request = Request(sdist.url, headers={"User-Agent": USER_AGENT})
         try:
-            with urlopen(request, timeout=timeout) as response, destination.open(
-                "wb"
-            ) as output:
+            with (
+                urlopen(request, timeout=timeout) as response,
+                destination.open("wb") as output,
+            ):
                 while True:
                     chunk = response.read(1024 * 1024)
                     if not chunk:
