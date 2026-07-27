@@ -472,6 +472,47 @@ def test_parse_package_names_normalizes_and_deduplicates():
         update_plugins.parse_package_names(" , , ")
 
 
+def test_discover_sources_does_not_inspect_skipped_repositories(monkeypatch):
+    repositories = [
+        {
+            "name": "datasette-skipped",
+            "full_name": "simonw/datasette-skipped",
+        },
+        {
+            "name": "datasette-included",
+            "full_name": "simonw/datasette-included",
+        },
+    ]
+    inspected = []
+    monkeypatch.setattr(
+        update_plugins,
+        "list_public_repositories",
+        lambda owner, client: repositories,
+    )
+
+    def inspect(repository, client, previous=None):
+        inspected.append(repository["name"])
+        return update_plugins.PluginSource(
+            name=repository["name"],
+            github_repo=repository["full_name"],
+            metadata_file="pyproject.toml",
+            metadata_sha256="hash",
+            metadata_etag=None,
+        )
+
+    monkeypatch.setattr(update_plugins, "inspect_repository", inspect)
+
+    sources = update_plugins.discover_sources(
+        ["simonw"],
+        object(),
+        workers=1,
+        skipped=frozenset({"datasette-skipped"}),
+    )
+
+    assert inspected == ["datasette-included"]
+    assert [source.name for source in sources] == ["datasette-included"]
+
+
 class TargetedClient:
     def __init__(self, json_responses, raw_responses=None):
         self.json_responses = json_responses
@@ -681,3 +722,103 @@ def test_main_writes_and_later_merges_exact_targeted_records(tmp_path, monkeypat
         == 0
     )
     assert json.loads(catalog.read_text())[0]["latest_version"] == "2.0"
+
+
+def test_main_omits_skipped_packages_without_fetching_them(tmp_path, monkeypatch):
+    catalog = tmp_path / "plugins.json"
+    selected = tmp_path / "named-plugins.json"
+    skip_file = tmp_path / "skip-these.txt"
+    catalog.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "datasette-skipped",
+                    "github_repo": "simonw/datasette-skipped",
+                    "metadata_file": "pyproject.toml",
+                    "metadata_sha256": "skipped-hash",
+                    "metadata_etag": None,
+                    "latest_version": "1.0",
+                },
+                {
+                    "name": "datasette-included",
+                    "github_repo": "simonw/datasette-included",
+                    "metadata_file": "pyproject.toml",
+                    "metadata_sha256": "included-hash",
+                    "metadata_etag": None,
+                    "latest_version": "2.0",
+                },
+            ]
+        )
+    )
+    skip_file.write_text("datasette-skipped\n")
+    client = TargetedClient({})
+    monkeypatch.setattr(update_plugins, "HttpClient", lambda **kwargs: client)
+
+    assert (
+        update_plugins.main(
+            [
+                "--output",
+                str(catalog),
+                "--skip-file",
+                str(skip_file),
+                "--package-names",
+                "datasette-skipped",
+                "--selected-output",
+                str(selected),
+            ]
+        )
+        == 0
+    )
+
+    assert [record["name"] for record in json.loads(catalog.read_text())] == [
+        "datasette-included"
+    ]
+    assert json.loads(selected.read_text()) == []
+    assert client.json_requests == []
+    assert client.raw_requests == []
+
+
+def test_merge_mode_does_not_reintroduce_a_skipped_package(tmp_path, monkeypatch):
+    catalog = tmp_path / "plugins.json"
+    incoming = tmp_path / "incoming.json"
+    skip_file = tmp_path / "skip-these.txt"
+    included = {
+        "name": "datasette-included",
+        "github_repo": "simonw/datasette-included",
+        "metadata_file": "pyproject.toml",
+        "metadata_sha256": "included-hash",
+        "metadata_etag": None,
+        "latest_version": "2.0",
+    }
+    skipped = {
+        "name": "datasette-skipped",
+        "github_repo": "simonw/datasette-skipped",
+        "metadata_file": "pyproject.toml",
+        "metadata_sha256": "skipped-hash",
+        "metadata_etag": None,
+        "latest_version": "1.0",
+    }
+    catalog.write_text(json.dumps([included]))
+    incoming.write_text(json.dumps([skipped]))
+    skip_file.write_text("datasette-skipped\n")
+    monkeypatch.setattr(
+        update_plugins,
+        "HttpClient",
+        lambda **kwargs: pytest.fail("merge mode must not construct an HTTP client"),
+    )
+
+    assert (
+        update_plugins.main(
+            [
+                "--output",
+                str(catalog),
+                "--skip-file",
+                str(skip_file),
+                "--merge-records",
+                str(incoming),
+            ]
+        )
+        == 0
+    )
+
+    assert json.loads(catalog.read_text()) == [included]

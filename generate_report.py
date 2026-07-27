@@ -14,6 +14,11 @@ from typing import Any, Mapping, Sequence
 from urllib.parse import quote
 
 from run_plugin_tests import normalize_package_name
+from skipped_plugins import (
+    DEFAULT_SKIP_FILE,
+    load_skipped_plugins,
+    without_skipped_records,
+)
 
 DEFAULT_REPOSITORY_URL = "https://github.com/datasette/ready-for-datasette"
 STATUS_LABELS = {
@@ -515,12 +520,17 @@ def generate_report(
     *,
     repository_url: str = DEFAULT_REPOSITORY_URL,
     generated_at: datetime | None = None,
+    skip_file: Path = DEFAULT_SKIP_FILE,
 ) -> list[dict[str, Any]]:
     plugins = _read_json(plugins_path)
     if not isinstance(plugins, list) or not all(
         isinstance(item, Mapping) for item in plugins
     ):
         raise ValueError(f"Expected {plugins_path} to contain an array of objects")
+    plugins = without_skipped_records(
+        plugins,
+        load_skipped_plugins(skip_file),
+    )
     latest_results = load_latest_results(results_dir)
     history = load_history(results_dir)
     rows = build_plugin_rows(
@@ -550,6 +560,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--plugins", type=Path, default=Path("plugins.json"))
     parser.add_argument("--results", type=Path, default=Path("results"))
     parser.add_argument("--output", type=Path, default=Path("site"))
+    parser.add_argument(
+        "--skip-file",
+        type=Path,
+        default=DEFAULT_SKIP_FILE,
+        help="Package names to exclude (default: skip-these.txt next to this script)",
+    )
     parser.add_argument("--repository-url", default=DEFAULT_REPOSITORY_URL)
     return parser
 
@@ -561,6 +577,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.results,
         args.output,
         repository_url=args.repository_url,
+        skip_file=args.skip_file,
     )
     print(f"Generated report for {len(rows)} plugins in {args.output}")
     return 0

@@ -297,6 +297,68 @@ def test_main_manual_plugins_override_history_and_limit(tmp_path, capsys):
     assert all(item["reason"] == "manual_request" for item in matrix["include"])
 
 
+def test_main_excludes_skipped_plugins_from_backlog_and_manual_requests(
+    tmp_path, capsys
+):
+    plugins = tmp_path / "plugins.json"
+    skip_file = tmp_path / "skip-these.txt"
+    plugins.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "datasette-skipped",
+                    "latest_version": "1.0",
+                    "github_repo": "simonw/datasette-skipped",
+                },
+                {
+                    "name": "datasette-included",
+                    "latest_version": "2.0",
+                    "github_repo": "simonw/datasette-included",
+                },
+            ]
+        )
+    )
+    skip_file.write_text("datasette-skipped\n")
+
+    assert (
+        select_test_matrix.main(
+            [
+                "--plugins",
+                str(plugins),
+                "--results",
+                str(tmp_path / "results"),
+                "--skip-file",
+                str(skip_file),
+                "--datasette-version",
+                "1.0a37",
+                "--limit",
+                "10",
+            ]
+        )
+        == 0
+    )
+    backlog = json.loads(capsys.readouterr().out)
+    assert [item["package"] for item in backlog["include"]] == ["datasette-included"]
+
+    assert (
+        select_test_matrix.main(
+            [
+                "--plugins",
+                str(plugins),
+                "--skip-file",
+                str(skip_file),
+                "--datasette-version",
+                "1.0a37",
+                "--plugin-names",
+                "datasette-skipped",
+            ]
+        )
+        == 0
+    )
+    manual = json.loads(capsys.readouterr().out)
+    assert manual == {"include": []}
+
+
 def test_workflow_exposes_manual_plugin_input_and_ten_job_matrix():
     workflow = (
         Path(__file__)

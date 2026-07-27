@@ -238,3 +238,39 @@ def test_generate_report_writes_flat_json_and_information_rich_html(tmp_path):
     assert 'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif' in html
     assert "letter-spacing: -." not in html
     assert (output_dir / ".nojekyll").exists()
+
+
+def test_generate_report_excludes_skipped_plugins(tmp_path):
+    plugins_path = tmp_path / "plugins.json"
+    skip_file = tmp_path / "skip-these.txt"
+    output_dir = tmp_path / "site"
+    plugins_path.write_text(
+        json.dumps(
+            [
+                {
+                    "name": "datasette-skipped",
+                    "github_repo": "example/datasette-skipped",
+                    "latest_version": "1.0",
+                },
+                {
+                    "name": "datasette-included",
+                    "github_repo": "example/datasette-included",
+                    "latest_version": "1.0",
+                },
+            ]
+        )
+    )
+    skip_file.write_text("datasette-skipped\n")
+
+    rows = generate_report.generate_report(
+        plugins_path,
+        tmp_path / "results",
+        output_dir,
+        skip_file=skip_file,
+    )
+
+    assert [row["name"] for row in rows] == ["datasette-included"]
+    assert [
+        row["name"] for row in json.loads((output_dir / "plugins.json").read_text())
+    ] == ["datasette-included"]
+    assert "datasette-skipped" not in (output_dir / "index.html").read_text()

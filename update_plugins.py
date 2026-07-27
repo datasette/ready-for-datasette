@@ -23,6 +23,11 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 from run_plugin_tests import github_repository, normalize_package_name
+from skipped_plugins import (
+    DEFAULT_SKIP_FILE,
+    load_skipped_plugins,
+    without_skipped_records,
+)
 
 DEFAULT_OWNERS = ("simonw", "dogsheep", "datasette", "asg017", "eyeseast")
 GITHUB_API = "https://api.github.com"
@@ -690,6 +695,7 @@ def discover_sources(
     previous_records: Sequence[Mapping[str, Any]] = (),
     *,
     workers: int = 16,
+    skipped: frozenset[str] = frozenset(),
 ) -> list[PluginSource]:
     previous_by_repo = {
         item["github_repo"]: item
@@ -712,6 +718,7 @@ def discover_sources(
                 isinstance(full_name, str)
                 and isinstance(name, str)
                 and name.startswith("datasette-")
+                and normalize_package_name(name) not in skipped
             ):
                 repositories[full_name] = repository
 
@@ -728,7 +735,10 @@ def discover_sources(
                 client,
                 previous_by_repo.get(repository.get("full_name")),
             )
-            if source is not None:
+            if (
+                source is not None
+                and normalize_package_name(source.name) not in skipped
+            ):
                 sources.append(source)
     else:
         with ThreadPoolExecutor(max_workers=workers) as executor:
@@ -743,7 +753,10 @@ def discover_sources(
             }
             for future in as_completed(futures):
                 source = future.result()
-                if source is not None:
+                if (
+                    source is not None
+                    and normalize_package_name(source.name) not in skipped
+                ):
                     sources.append(source)
     return sorted(sources, key=lambda item: (item.name.casefold(), item.github_repo))
 
@@ -786,6 +799,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="JSON file to update (default: plugins.json next to this script)",
     )
     parser.add_argument(
+        "--skip-file",
+        type=Path,
+        default=DEFAULT_SKIP_FILE,
+        help="Package names to exclude (default: skip-these.txt next to this script)",
+    )
+    parser.add_argument(
         "--workers",
         type=int,
         default=16,
@@ -821,7 +840,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.workers < 1:
         raise SystemExit("--workers must be at least 1")
-    previous_records = load_previous_records(args.output)
+    skipped = load_skipped_plugins(args.skip_file)
+    previous_records = without_skipped_records(
+        load_previous_records(args.output),
+        skipped,
+    )
 
     if args.merge_records:
         if args.package_names or args.selected_output or args.owners:
@@ -831,7 +854,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         updates = [
             _plugin_record(record)
-            for record in load_previous_records(args.merge_records)
+            for record in without_skipped_records(
+                load_previous_records(args.merge_records),
+                skipped,
+            )
         ]
         records = merge_plugin_records(previous_records, updates)
         write_plugins_json(records, args.output)
@@ -847,7 +873,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             raise SystemExit(
                 "--package-names cannot be combined with --owner or --refresh-pypi"
             )
-        packages = parse_package_names(args.package_names)
+        packages = [
+            package
+            for package in parse_package_names(args.package_names)
+            if package not in skipped
+        ]
         updates = refresh_named_plugins(packages, previous_records, client)
         records = merge_plugin_records(previous_records, updates)
         write_plugins_json(records, args.output)
@@ -867,6 +897,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         client,
         previous_records,
         workers=args.workers,
+        skipped=skipped,
     )
     records = add_versions(
         sources,

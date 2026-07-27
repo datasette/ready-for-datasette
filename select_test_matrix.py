@@ -15,6 +15,11 @@ from run_plugin_tests import (
     normalize_package_name,
     pypi_project,
 )
+from skipped_plugins import (
+    DEFAULT_SKIP_FILE,
+    load_skipped_plugins,
+    without_skipped_records,
+)
 
 TERMINAL_OUTCOMES = {
     "passed",
@@ -273,6 +278,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--plugins", type=Path, default=Path("plugins.json"))
     parser.add_argument("--results", type=Path, default=Path("results"))
+    parser.add_argument(
+        "--skip-file",
+        type=Path,
+        default=DEFAULT_SKIP_FILE,
+        help="Package names to exclude (default: skip-these.txt next to this script)",
+    )
     parser.add_argument("--limit", type=int, default=5)
     parser.add_argument(
         "--plugin-names",
@@ -292,13 +303,22 @@ def main(argv: Sequence[str] | None = None) -> int:
     datasette_version = args.datasette_version or latest_datasette_alpha(
         pypi_project("datasette")
     )
-    plugin_records = load_plugin_records(args.plugins)
+    skipped = load_skipped_plugins(args.skip_file)
+    plugin_records = without_skipped_records(
+        load_plugin_records(args.plugins),
+        skipped,
+    )
     plugins = released_plugins(plugin_records)
     repositories = plugin_repositories(plugin_records)
     if args.plugin_names:
+        requested_plugins = [
+            package
+            for package in parse_requested_plugins(args.plugin_names)
+            if package not in skipped
+        ]
         candidates = select_requested_plugins(
             plugins,
-            parse_requested_plugins(args.plugin_names),
+            requested_plugins,
             datasette_version,
             repositories=repositories,
         )

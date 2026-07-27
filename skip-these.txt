@@ -1,0 +1,2 @@
+# PyPI package names to exclude from discovery, testing, and reports.
+datasette-app-support
