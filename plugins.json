@@ -128,22 +128,6 @@
     "latest_version": "0.1"
   },
   {
-    "name": "datasette-app-support",
-    "github_repo": "asg017/datasette-app-support",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "e86a69e5a5d6f5a4c6d6913f32a16bc5544e2dfa9dee5a6b58397e1e183fe6ff",
-    "metadata_etag": "\"70f264dc084d44d7db4941601c8bf9bf20e5bbcf9fe264b4106e6c46cdf541ca\"",
-    "latest_version": "0.11.8"
-  },
-  {
-    "name": "datasette-app-support",
-    "github_repo": "simonw/datasette-app-support",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "e86a69e5a5d6f5a4c6d6913f32a16bc5544e2dfa9dee5a6b58397e1e183fe6ff",
-    "metadata_etag": "\"70f264dc084d44d7db4941601c8bf9bf20e5bbcf9fe264b4106e6c46cdf541ca\"",
-    "latest_version": "0.11.8"
-  },
-  {
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
@@ -1570,9 +1554,9 @@
   {
     "name": "datasette-rure",
     "github_repo": "simonw/datasette-rure",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "8f89e989e212463272d8d0eb6814259bdb2b540a322f28ee68a21265b7f32165",
-    "metadata_etag": "\"d5d94babba6b15b111f1175d574a8b0e927e92edf3ca2ffff20b554148b958d4\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "a007671d62d49dea2fb9b0eb987891d0e4b799e4d4d6365b59afd4abb9b82d5f",
+    "metadata_etag": "\"ebd752461ff246364effe5aee2d5606afc54b28b9aed1775ded308e66b3f0c99\"",
     "latest_version": "0.3"
   },
   {
