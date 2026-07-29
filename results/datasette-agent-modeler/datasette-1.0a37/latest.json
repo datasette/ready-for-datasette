@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-agent-modeler",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-agent-modeler",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/47/61/ba64566e5c77688fcd97a983476ceddc2715607ceb87a25cdfb1d78c6fbc/datasette_agent_modeler-0.1a0.tar.gz",
+      "sha256": "1bbd5e39c6735fcfe364f02c58cb3aac54e9c5fec3eeea57a61152bc3965f5de"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent-modeler",
+      "ref": "0.1a0",
+      "git_sha": "99844d7b5010bb33a2bb6a07cbd7c6c3dbcdf509"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a37",
+    "installed_version": "1.0a37"
+  },
+  "run": {
+    "id": "20260729T061728Z-gh-30427676906-a1",
+    "started_at": "2026-07-29T06:17:28Z",
+    "completed_at": "2026-07-29T06:17:34Z",
+    "duration_seconds": 6.598,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-agent-modeler @ file:///tmp/datasette-agent-modeler-6y5n2u18/datasette_agent_modeler-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a37",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-modeler/datasette-1.0a37/runs/20260729T061728Z-gh-30427676906-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 29,
+    "passed": 29,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent-modeler/datasette-1.0a37/runs/20260729T061728Z-gh-30427676906-a1/pytest.txt"
+  }
+}

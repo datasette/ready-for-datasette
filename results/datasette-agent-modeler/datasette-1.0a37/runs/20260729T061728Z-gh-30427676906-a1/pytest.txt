@@ -1,0 +1,58 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.2MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-agent-modeler @ file:///tmp/datasette-agent-modeler-6y5n2u18/datasette_agent_modeler-0.1a0.tar.gz
+Downloading openai (1.6MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-agent-modeler @ file:///tmp/datasette-agent-modeler-6y5n2u18/datasette_agent_modeler-0.1a0.tar.gz
+Installed 56 packages in 40ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpvA1Jsv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.14.2', 'asyncio': '1.4.0', 'datasette': '1.0a37', 'metadata': '3.1.1', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-agent-modeler-6y5n2u18/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.14.2, asyncio-1.4.0, datasette-1.0a37, metadata-3.1.1, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 29 items
+
+tests/test_agent_modeler.py::test_plugin_is_installed PASSED             [  3%]
+tests/test_agent_modeler.py::test_tools_are_registered_and_gated PASSED  [  6%]
+tests/test_agent_modeler.py::test_tools_filtered_by_permission PASSED    [ 10%]
+tests/test_agent_modeler.py::test_validate_object_defaults PASSED        [ 13%]
+tests/test_agent_modeler.py::test_auto_ids_do_not_collide PASSED         [ 17%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects0-type must be one of] PASSED [ 20%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects1-unknown fields] PASSED [ 24%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects2-unknown params] PASSED [ 27%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects3-positive number] PASSED [ 31%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects4-three numbers] PASSED [ 34%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects5-hex string] PASSED [ 37%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects6-between 0 and 1] PASSED [ 41%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects7-Duplicate object id] PASSED [ 44%]
+tests/test_agent_modeler.py::test_validate_document_errors[objects8-non-empty list] PASSED [ 48%]
+tests/test_agent_modeler.py::test_colors_are_normalized_lowercase PASSED [ 51%]
+tests/test_agent_modeler.py::test_apply_operations PASSED                [ 55%]
+tests/test_agent_modeler.py::test_update_object_type_change_resets_params PASSED [ 58%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations0-Unknown action] PASSED [ 62%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations1-No object with id] PASSED [ 65%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations2-non-empty 'changes'] PASSED [ 68%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations3-cannot change] PASSED [ 72%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations4-non-empty list] PASSED [ 75%]
+tests/test_agent_modeler.py::test_apply_operations_errors[operations5-must be an object] PASSED [ 79%]
+tests/test_agent_modeler.py::test_cannot_remove_last_object PASSED       [ 82%]
+tests/test_agent_modeler.py::test_create_edit_get_list_round_trip PASSED [ 86%]
+tests/test_agent_modeler.py::test_revision_history_is_preserved PASSED   [ 89%]
+tests/test_agent_modeler.py::test_tool_errors_returned_as_json PASSED    [ 93%]
+tests/test_agent_modeler.py::test_failed_edit_writes_nothing PASSED      [ 96%]
+tests/test_agent_modeler.py::test_list_models_empty PASSED               [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-modeler/datasette-1.0a37/runs/20260729T061728Z-gh-30427676906-a1/.pytest-report.json
+============================== 29 passed in 0.34s ==============================
