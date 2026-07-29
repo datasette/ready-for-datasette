@@ -1,0 +1,60 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.2MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-mcp @ file:///tmp/datasette-mcp-txt2nami/datasette_mcp-0.1a0.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-mcp @ file:///tmp/datasette-mcp-txt2nami/datasette_mcp-0.1a0.tar.gz
+Installed 58 packages in 42ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp5PlfhV/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.14.2', 'asyncio': '1.4.0', 'datasette': '1.0a37', 'metadata': '3.1.1', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-mcp-txt2nami/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.14.2, asyncio-1.4.0, datasette-1.0a37, metadata-3.1.1, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 33 items
+
+tests/test_mcp.py::test_plugin_is_installed PASSED                       [  3%]
+tests/test_mcp.py::test_server_exposes_exactly_three_read_only_tools PASSED [  6%]
+tests/test_mcp.py::test_default_tools_are_registered_by_plugin_hook PASSED [  9%]
+tests/test_mcp.py::test_another_plugin_can_register_an_mcp_tool PASSED   [ 12%]
+tests/test_mcp.py::test_list_databases PASSED                            [ 15%]
+tests/test_mcp.py::test_get_database_schema_includes_all_schema_object_types PASSED [ 18%]
+tests/test_mcp.py::test_execute_sql_returns_structured_rows PASSED       [ 21%]
+tests/test_mcp.py::test_execute_sql_delegates_to_datasette_database_execute PASSED [ 24%]
+tests/test_mcp.py::test_empty_database_has_empty_schema PASSED           [ 27%]
+tests/test_mcp.py::test_query_results_are_truncated_at_datasette_limit PASSED [ 30%]
+tests/test_mcp.py::test_missing_and_internal_databases_are_not_disclosed PASSED [ 33%]
+tests/test_mcp.py::test_database_visibility_permission_filters_list_and_schema PASSED [ 36%]
+tests/test_mcp.py::test_execute_sql_permission_is_enforced PASSED        [ 39%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[insert into authors(name) values ('Katherine')] PASSED [ 42%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[update authors set name = 'Katherine' where id = 1] PASSED [ 45%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[delete from authors] PASSED [ 48%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[create table forbidden(id integer)] PASSED [ 51%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[drop table authors] PASSED [ 54%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[alter table authors add column forbidden integer] PASSED [ 57%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[replace into authors(id, name) values (1, 'Katherine')] PASSED [ 60%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[attach database ':memory:' as forbidden] PASSED [ 63%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[detach database forbidden] PASSED [ 66%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[begin] PASSED [ 69%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[pragma user_version = 1] PASSED [ 72%]
+tests/test_mcp.py::test_execute_sql_rejects_multiple_statements PASSED   [ 75%]
+tests/test_mcp.py::test_execute_sql_rejects_missing_statement[] PASSED   [ 78%]
+tests/test_mcp.py::test_execute_sql_rejects_missing_statement[  -- no statement\n] PASSED [ 81%]
+tests/test_mcp.py::test_execute_sql_rejects_non_select_on_memory_database PASSED [ 84%]
+tests/test_mcp.py::test_mcp_streamable_http_endpoint PASSED              [ 87%]
+tests/test_mcp.py::test_mcp_endpoint_honors_datasette_base_url PASSED    [ 90%]
+tests/test_mcp.py::test_csrf_exemption_matches_only_the_mcp_endpoint PASSED [ 93%]
+tests/test_mcp.py::test_http_actor_is_used_for_database_permissions PASSED [ 96%]
+tests/test_mcp.py::test_mcp_session_manager_runs_once_per_asgi_lifespan PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mcp/datasette-1.0a37/runs/20260729T091122Z-gh-30438578593-a1/.pytest-report.json
+============================== 33 passed in 1.15s ==============================
