@@ -64,6 +64,14 @@
     "latest_version": "0.1a0"
   },
   {
+    "name": "datasette-agent-modeler",
+    "github_repo": "datasette/datasette-agent-modeler",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "d97675c98768bcd8c8599b58cfa098795ef894484b4049b546c56e3941442111",
+    "metadata_etag": "\"82ab76521741c0da9e25aac6ff742154385006c3ecc7e9ebc43ca71df2557db9\"",
+    "latest_version": "0.1a0"
+  },
+  {
     "name": "datasette-agent-openai-imagegen",
     "github_repo": "datasette/datasette-agent-openai-imagegen",
     "metadata_file": "pyproject.toml",
@@ -1094,6 +1102,14 @@
     "metadata_sha256": "bec3d6877b7f18ef5a4d69d9e167d531ba6c13bb68dc4e16f58187791841004e",
     "metadata_etag": "\"21dcdc664a797ad53a90f082b1124525fe3ff3c3ec904b98ae6306470ecd7fd8\"",
     "latest_version": "0.2.2"
+  },
+  {
+    "name": "datasette-mcp",
+    "github_repo": "datasette/datasette-mcp",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "89ca1d3b7c15fd441d798b584a1ecccf0ad0cc5e55e92713640c3c2a3bbccde9",
+    "metadata_etag": "\"bfa732821ffa515bd1e7c932e567c97d2a4f92e023fa6aa882958387c7649ff0\"",
+    "latest_version": "0.1a0"
   },
   {
     "name": "datasette-media",
