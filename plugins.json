@@ -1067,9 +1067,9 @@
     "name": "datasette-llm-limits",
     "github_repo": "datasette/datasette-llm-limits",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "c2c694eb639d9fa357af71bf61143e64938d15207bafc5b30a1ff51f0ffcf0e7",
-    "metadata_etag": "\"9148b852ef60cfb9a698352ef93c160d748256057c81a8bfd128907c9bf70562\"",
-    "latest_version": "0.1a1"
+    "metadata_sha256": "9daa131c4b9c39d4f79f998d57255d7c15a7d0110ec3265ab74d79ab04bdaed2",
+    "metadata_etag": "\"c0b0e9a2c2d2fa14825450f49e184acbd6731199ef89192d48d4a1158a1c6856\"",
+    "latest_version": "0.1a2"
   },
   {
     "name": "datasette-llm-usage",
