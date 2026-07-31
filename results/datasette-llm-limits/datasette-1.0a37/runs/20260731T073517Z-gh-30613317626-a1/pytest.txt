@@ -1,0 +1,89 @@
+Downloading cpython-3.13.14-linux-x86_64-gnu (download) (33.2MiB)
+ Downloaded cpython-3.13.14-linux-x86_64-gnu (download)
+   Building datasette-llm-limits @ file:///tmp/datasette-llm-limits-65vlfrye/datasette_llm_limits-0.1a2.tar.gz
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+Downloading openai (1.6MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm-limits @ file:///tmp/datasette-llm-limits-65vlfrye/datasette_llm_limits-0.1a2.tar.gz
+Installed 55 packages in 54ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpVpCnTv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.14', 'Platform': 'Linux-6.17.0-1020-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.14.2', 'asyncio': '1.4.0', 'datasette': '1.0a37', 'metadata': '3.1.1', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-limits-65vlfrye/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.14.2, asyncio-1.4.0, datasette-1.0a37, metadata-3.1.1, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 60 items
+
+tests/test_accountant.py::test_reserve_returns_tx_and_inserts_row PASSED [  1%]
+tests/test_accountant.py::test_reserve_disables_datasette_outer_transaction PASSED [  3%]
+tests/test_accountant.py::test_reserve_over_cap_raises_insufficient_balance PASSED [  5%]
+tests/test_accountant.py::test_reserve_under_cap_succeeds_repeatedly PASSED [  6%]
+tests/test_accountant.py::test_settle_updates_settled_columns PASSED     [  8%]
+tests/test_accountant.py::test_settling_under_reservation_frees_headroom PASSED [ 10%]
+tests/test_accountant.py::test_rollback_zeros_out_the_reservation PASSED [ 11%]
+tests/test_accountant.py::test_per_actor_isolation PASSED                [ 13%]
+tests/test_accountant.py::test_anonymous_caller_bypasses_actor_scope_only PASSED [ 15%]
+tests/test_accountant.py::test_instance_limit_aggregates_across_actors PASSED [ 16%]
+tests/test_accountant.py::test_purpose_filtered_limit_only_applies_for_that_purpose PASSED [ 18%]
+tests/test_accountant.py::test_model_filtered_limit_only_applies_for_that_model PASSED [ 20%]
+tests/test_accountant.py::test_no_matching_limits_inserts_row_but_does_not_reject PASSED [ 21%]
+tests/test_accountant.py::test_calendar_window_error_includes_reset_time PASSED [ 23%]
+tests/test_accountant.py::test_rolling_window_error_omits_reset_time PASSED [ 25%]
+tests/test_concurrency.py::test_parallel_reservations_respect_cap PASSED [ 26%]
+tests/test_concurrency.py::test_parallel_reservations_at_exact_cap_only_one_fails PASSED [ 28%]
+tests/test_config.py::test_parse_minimal_actor_limit PASSED              [ 30%]
+tests/test_config.py::test_parse_instance_limit_with_purpose_and_model PASSED [ 31%]
+tests/test_config.py::test_parse_empty_returns_empty_list PASSED         [ 33%]
+tests/test_config.py::test_unknown_scope_or_window_rejected[scope-team] PASSED [ 35%]
+tests/test_config.py::test_unknown_scope_or_window_rejected[window-rolling-1h] PASSED [ 36%]
+tests/test_config.py::test_non_positive_amount_rejected[0] PASSED        [ 38%]
+tests/test_config.py::test_non_positive_amount_rejected[-1] PASSED       [ 40%]
+tests/test_config.py::test_non_positive_amount_rejected[-0.5] PASSED     [ 41%]
+tests/test_config.py::test_unknown_field_rejected PASSED                 [ 43%]
+tests/test_config.py::test_missing_required_field_rejected PASSED        [ 45%]
+tests/test_config.py::test_instance_scope_matches_anonymous_caller PASSED [ 46%]
+tests/test_config.py::test_actor_scope_skips_when_actor_id_is_none PASSED [ 48%]
+tests/test_config.py::test_actor_scope_matches_when_actor_id_present PASSED [ 50%]
+tests/test_config.py::test_purpose_filter_only_matches_when_purpose_matches PASSED [ 51%]
+tests/test_config.py::test_model_id_filter_only_matches_when_model_matches PASSED [ 53%]
+tests/test_hook_integration.py::test_plugin_registers_a_limits_accountant PASSED [ 55%]
+tests/test_llm_limits.py::test_plugin_is_installed PASSED                [ 56%]
+tests/test_storage.py::test_startup_creates_llm_limits_tx_table PASSED   [ 58%]
+tests/test_storage.py::test_llm_limits_tx_has_expected_columns PASSED    [ 60%]
+tests/test_storage.py::test_startup_is_idempotent PASSED                 [ 61%]
+tests/test_storage.py::test_invalid_config_fails_at_startup PASSED       [ 63%]
+tests/test_view.py::test_anonymous_user_denied PASSED                    [ 65%]
+tests/test_view.py::test_user_without_permission_denied PASSED           [ 66%]
+tests/test_view.py::test_authorized_user_gets_html PASSED                [ 68%]
+tests/test_view.py::test_menu_link_visible_to_authorized_user PASSED     [ 70%]
+tests/test_view.py::test_menu_link_hidden_from_unauthorized_user PASSED  [ 71%]
+tests/test_view.py::test_authorized_user_gets_json PASSED                [ 73%]
+tests/test_view.py::test_actor_scoped_usage_is_reported_per_actor PASSED [ 75%]
+tests/test_view.py::test_html_view_lists_configured_limits PASSED        [ 76%]
+tests/test_view.py::test_html_view_marks_actor_limit_usage_as_per_actor PASSED [ 78%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-24h-delta0] PASSED [ 80%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-7d-delta1] PASSED [ 81%]
+tests/test_windows.py::test_rolling_windows_subtract_their_duration[rolling-30d-delta2] PASSED [ 83%]
+tests/test_windows.py::test_calendar_day_starts_at_utc_midnight PASSED   [ 85%]
+tests/test_windows.py::test_calendar_week_starts_on_monday_at_midnight_utc PASSED [ 86%]
+tests/test_windows.py::test_calendar_week_on_a_monday_returns_that_monday PASSED [ 88%]
+tests/test_windows.py::test_calendar_month_starts_on_day_1_utc_midnight PASSED [ 90%]
+tests/test_windows.py::test_unknown_window_raises_value_error PASSED     [ 91%]
+tests/test_windows.py::test_window_reset_is_none_for_rolling_windows PASSED [ 93%]
+tests/test_windows.py::test_window_reset_calendar_day_is_next_midnight_utc PASSED [ 95%]
+tests/test_windows.py::test_window_reset_calendar_week_is_next_monday_midnight_utc PASSED [ 96%]
+tests/test_windows.py::test_window_reset_calendar_month_is_first_of_next_month PASSED [ 98%]
+tests/test_windows.py::test_window_reset_calendar_month_crosses_year PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-limits/datasette-1.0a37/runs/20260731T073517Z-gh-30613317626-a1/.pytest-report.json
+============================== 60 passed in 1.06s ==============================

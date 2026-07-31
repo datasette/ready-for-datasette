@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-29T09:11:31Z",
+  "generated_at": "2026-07-31T07:35:24Z",
   "results": [
     {
       "schema_version": 1,
@@ -13974,18 +13974,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-llm-limits",
-        "version": "0.1a1",
+        "version": "0.1a2",
         "repository": "datasette/datasette-llm-limits",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/ab/df/fee71e40dfc7201e534746dc982126c8e3ec962c5bcdf7098813402d2bd8/datasette_llm_limits-0.1a1.tar.gz",
-          "sha256": "4b10f8a83d68e83e342ec3b1878a1af4c100471c679e4d4fc4b8b284e4393a05"
+          "url": "https://files.pythonhosted.org/packages/db/a6/686de4e106c33805cb292c1f29a0583de757a3a823be23ede771d9c6c64f/datasette_llm_limits-0.1a2.tar.gz",
+          "sha256": "eb08f70c87b252c356278b2738dc518d1e38aa1fb48ff990a36e3bfcf27c84fd"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-llm-limits",
-          "ref": "0.1a1",
-          "git_sha": "bdc2f7145a2cd6b7fdbd8f23edbb95d4e6e35e20"
+          "ref": "0.1a2",
+          "git_sha": "c083b1d9fa5a714f2ac7942591fc917a3b82f2f1"
         }
       },
       "datasette": {
@@ -13993,13 +13993,13 @@
         "installed_version": "1.0a37"
       },
       "run": {
-        "id": "20260716T223013Z-gh-29539713908-a1",
-        "started_at": "2026-07-16T22:30:13Z",
-        "completed_at": "2026-07-16T22:30:21Z",
-        "duration_seconds": 7.735,
+        "id": "20260731T073517Z-gh-30613317626-a1",
+        "started_at": "2026-07-31T07:35:17Z",
+        "completed_at": "2026-07-31T07:35:24Z",
+        "duration_seconds": 7.255,
         "python_version": "3.13",
         "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
-        "pytest_exit_code": 1,
+        "pytest_exit_code": 0,
         "command": [
           "uv",
           "run",
@@ -14011,7 +14011,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-llm-limits @ file:///tmp/datasette-llm-limits-73u6z4d5/datasette_llm_limits-0.1a1.tar.gz",
+          "datasette-llm-limits @ file:///tmp/datasette-llm-limits-65vlfrye/datasette_llm_limits-0.1a2.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -14023,15 +14023,15 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-limits/datasette-1.0a37/runs/20260716T223013Z-gh-29539713908-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm-limits/datasette-1.0a37/runs/20260731T073517Z-gh-30613317626-a1/.pytest-report.json"
         ]
       },
-      "passed": false,
-      "outcome": "test_failures",
+      "passed": true,
+      "outcome": "passed",
       "counts": {
-        "collected": 59,
-        "passed": 40,
-        "failed": 19,
+        "collected": 60,
+        "passed": 60,
+        "failed": 0,
         "errors": 0,
         "skipped": 0,
         "xfailed": 0,
@@ -14039,27 +14039,7 @@
         "deselected": 0,
         "warnings": 0
       },
-      "failing_tests": [
-        "tests/test_accountant.py::test_anonymous_caller_bypasses_actor_scope_only",
-        "tests/test_accountant.py::test_calendar_window_error_includes_reset_time",
-        "tests/test_accountant.py::test_instance_limit_aggregates_across_actors",
-        "tests/test_accountant.py::test_model_filtered_limit_only_applies_for_that_model",
-        "tests/test_accountant.py::test_no_matching_limits_inserts_row_but_does_not_reject",
-        "tests/test_accountant.py::test_per_actor_isolation",
-        "tests/test_accountant.py::test_purpose_filtered_limit_only_applies_for_that_purpose",
-        "tests/test_accountant.py::test_reserve_over_cap_raises_insufficient_balance",
-        "tests/test_accountant.py::test_reserve_returns_tx_and_inserts_row",
-        "tests/test_accountant.py::test_reserve_under_cap_succeeds_repeatedly",
-        "tests/test_accountant.py::test_rollback_zeros_out_the_reservation",
-        "tests/test_accountant.py::test_rolling_window_error_omits_reset_time",
-        "tests/test_accountant.py::test_settle_updates_settled_columns",
-        "tests/test_accountant.py::test_settling_under_reservation_frees_headroom",
-        "tests/test_concurrency.py::test_parallel_reservations_at_exact_cap_only_one_fails",
-        "tests/test_concurrency.py::test_parallel_reservations_respect_cap",
-        "tests/test_view.py::test_actor_scoped_usage_is_reported_per_actor",
-        "tests/test_view.py::test_authorized_user_gets_json",
-        "tests/test_view.py::test_html_view_marks_actor_limit_usage_as_per_actor"
-      ],
+      "failing_tests": [],
       "error_tests": [],
       "test_environment": {
         "package_extra": null,
@@ -14075,7 +14055,7 @@
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-llm-limits/datasette-1.0a37/runs/20260716T223013Z-gh-29539713908-a1/pytest.txt"
+        "pytest_output": "results/datasette-llm-limits/datasette-1.0a37/runs/20260731T073517Z-gh-30613317626-a1/pytest.txt"
       }
     },
     {
