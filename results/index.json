@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-31T07:35:24Z",
+  "generated_at": "2026-08-01T07:04:28Z",
   "results": [
     {
       "schema_version": 1,
@@ -692,18 +692,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-agent",
-        "version": "0.3a0",
+        "version": "0.4a0",
         "repository": "datasette/datasette-agent",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/c5/63/9b32d25eadadf661f0f427e616609ac21aaaf33b0bc9afce4a17ec99f0df/datasette_agent-0.3a0.tar.gz",
-          "sha256": "ac1ff02e15fcfb0c890a941db3a07a5aebd7046ce7e0287cdc91e7f0d9f5dd4e"
+          "url": "https://files.pythonhosted.org/packages/fc/ce/072e1ed44f62c2fbac9313dbfda6e9853e68589dcc68f9889cd6384eecc2/datasette_agent-0.4a0.tar.gz",
+          "sha256": "8da0e2aad1b146dcaa11ee999bcb7ff565f5f60cc493ccb948dbf173f4a9ee8c"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-agent",
-          "ref": "0.3a0",
-          "git_sha": "476f0e0ecff011efe292d034b5934c45331f73a9"
+          "ref": "0.4a0",
+          "git_sha": "1cb8200cb3c8452eeef96f54d25e2826017bb7ba"
         }
       },
       "datasette": {
@@ -711,12 +711,12 @@
         "installed_version": "1.0a37"
       },
       "run": {
-        "id": "20260714T164616Z-local-358851",
-        "started_at": "2026-07-14T16:46:16Z",
-        "completed_at": "2026-07-14T16:46:31Z",
-        "duration_seconds": 15.772,
+        "id": "20260801T070354Z-gh-30688954584-a1",
+        "started_at": "2026-08-01T07:03:54Z",
+        "completed_at": "2026-08-01T07:04:28Z",
+        "duration_seconds": 34.501,
         "python_version": "3.13",
-        "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 0,
         "command": [
           "uv",
@@ -729,7 +729,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-agent @ file:///private/var/folders/fd/ybj4pxxn0y9flj782z4b72r80000gn/T/datasette-agent-kf4e4k7j/datasette_agent-0.3a0.tar.gz",
+          "datasette-agent @ file:///tmp/datasette-agent-4rk2o4i9/datasette_agent-0.4a0.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -745,14 +745,14 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/private/tmp/ready-for-datasette-a37/datasette-agent/datasette-1.0a37/runs/20260714T164616Z-local-358851/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a37/runs/20260801T070354Z-gh-30688954584-a1/.pytest-report.json"
         ]
       },
       "passed": true,
       "outcome": "passed",
       "counts": {
-        "collected": 203,
-        "passed": 203,
+        "collected": 243,
+        "passed": 243,
         "failed": 0,
         "errors": 0,
         "skipped": 0,
@@ -774,12 +774,12 @@
         ]
       },
       "test_inventory": {
-        "pypi_sdist": 9,
-        "release_tag": 9
+        "pypi_sdist": 10,
+        "release_tag": 10
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-agent/datasette-1.0a37/runs/20260714T164616Z-local-358851/pytest.txt"
+        "pytest_output": "results/datasette-agent/datasette-1.0a37/runs/20260801T070354Z-gh-30688954584-a1/pytest.txt"
       }
     },
     {
