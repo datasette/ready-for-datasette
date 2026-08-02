@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-01T07:04:28Z",
+  "generated_at": "2026-08-02T07:08:40Z",
   "results": [
     {
       "schema_version": 1,
@@ -3042,18 +3042,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-apps",
-        "version": "0.1a4",
+        "version": "0.2a0",
         "repository": "datasette/datasette-apps",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/4d/5f/56d1054df381c8052f3441dd37e10c2ddc187971963cf464ed9d26a35d28/datasette_apps-0.1a4.tar.gz",
-          "sha256": "273c65b1aa5594b4a49752bba41bd4f645ed6be1308c7e21bc6112fafed99ae0"
+          "url": "https://files.pythonhosted.org/packages/5e/db/87ac8a3b2ecd06fdf51ac18b45145712d2fb44d6df6ca2fceec744a2c2b2/datasette_apps-0.2a0.tar.gz",
+          "sha256": "153eaa6a43eeb4aea3d1eef28ef90445f0990c2498b2446b0a2c403c880970ea"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-apps",
-          "ref": "0.1a4",
-          "git_sha": "5f888e2c67bf869dd984dccc76625cee10bb13c7"
+          "ref": "0.2a0",
+          "git_sha": "f39519bfa89f84e0d5a0f72661f66b5b20232120"
         }
       },
       "datasette": {
@@ -3061,12 +3061,12 @@
         "installed_version": "1.0a37"
       },
       "run": {
-        "id": "20260715T060155Z-gh-29393019258-a1",
-        "started_at": "2026-07-15T06:01:55Z",
-        "completed_at": "2026-07-15T06:02:24Z",
-        "duration_seconds": 29.446,
+        "id": "20260802T070759Z-gh-30737196404-a1",
+        "started_at": "2026-08-02T07:07:59Z",
+        "completed_at": "2026-08-02T07:08:40Z",
+        "duration_seconds": 41.654,
         "python_version": "3.13",
-        "platform": "Linux-6.17.0-1018-azure-x86_64-with-glibc2.39",
+        "platform": "Linux-6.17.0-1020-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 1,
         "command": [
           "uv",
@@ -3079,7 +3079,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-apps @ file:///tmp/datasette-apps-igtvzs8k/datasette_apps-0.1a4.tar.gz",
+          "datasette-apps @ file:///tmp/datasette-apps-cs5icw64/datasette_apps-0.2a0.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -3087,21 +3087,23 @@
           "--with",
           "datasette==1.0a37",
           "--with",
+          "datasette-agent>=0.4a0",
+          "--with",
           "playwright>=1.60.0",
           "--with",
           "pytest-asyncio",
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a37/runs/20260715T060155Z-gh-29393019258-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a37/runs/20260802T070759Z-gh-30737196404-a1/.pytest-report.json"
         ]
       },
       "passed": false,
       "outcome": "test_failures",
       "counts": {
-        "collected": 186,
-        "passed": 177,
-        "failed": 9,
+        "collected": 216,
+        "passed": 204,
+        "failed": 12,
         "errors": 0,
         "skipped": 0,
         "xfailed": 0,
@@ -3112,11 +3114,14 @@
       "failing_tests": [
         "tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data",
         "tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe",
+        "tests/test_playwright.py::test_debug_harness_reports_app_errors_and_unserializable_result",
+        "tests/test_playwright.py::test_debug_harness_runs_script_in_hidden_app_frame",
         "tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet",
         "tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel",
         "tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal",
         "tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal",
         "tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel",
+        "tests/test_playwright.py::test_long_iframe_link_url_does_not_overflow_confirmation_modal",
         "tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin",
         "tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages"
       ],
@@ -3125,18 +3130,19 @@
         "package_extra": null,
         "dependency_source": "dependency-groups.dev",
         "dependencies": [
+          "datasette-agent>=0.4a0",
           "playwright>=1.60.0",
           "pytest",
           "pytest-asyncio"
         ]
       },
       "test_inventory": {
-        "pypi_sdist": 16,
-        "release_tag": 16
+        "pypi_sdist": 18,
+        "release_tag": 18
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-apps/datasette-1.0a37/runs/20260715T060155Z-gh-29393019258-a1/pytest.txt"
+        "pytest_output": "results/datasette-apps/datasette-1.0a37/runs/20260802T070759Z-gh-30737196404-a1/pytest.txt"
       }
     },
     {
