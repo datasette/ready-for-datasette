@@ -139,9 +139,9 @@
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "e7d0c1db954445e047cb9c93123975b5875ca4e1eacc0f4fe092f3ba8d1781dd",
-    "metadata_etag": "\"28e55441e1ced41063fc48a0077951de5fa938e62214f316d2e70e435adaf811\"",
-    "latest_version": "0.1a4"
+    "metadata_sha256": "a5121331ed47021e2135316f94c877b9fbe142fb493af909ac50bd6e848f2cce",
+    "metadata_etag": "\"659347ec7b57bc809bacb1ac91f718dd31508007a0cd800831dc3dce792ff028\"",
+    "latest_version": "0.2a0"
   },
   {
     "name": "datasette-atom",
