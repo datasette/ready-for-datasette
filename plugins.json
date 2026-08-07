@@ -195,8 +195,8 @@
     "name": "datasette-auth-tokens",
     "github_repo": "simonw/datasette-auth-tokens",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "fe273b64ebfccfd18e8b0d497faf9078d6dfcaf883c511ddc6a7b63b96d7357c",
-    "metadata_etag": "\"d469bc084fe4ff7b1b28cb3b3dd6dd8c43f8488782082db65bbdf476ed3bceea\"",
+    "metadata_sha256": "205011f787d2a7ea31e7c1f54eee072cafb4d313ee5d926fc10cdd93cc4e117a",
+    "metadata_etag": "\"343e5f94cff47be366baa4e556f5d89649739d9a11deb14ad1655805f04931db\"",
     "latest_version": "0.3"
   },
   {
