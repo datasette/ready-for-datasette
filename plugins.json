@@ -1379,8 +1379,8 @@
     "name": "datasette-public",
     "github_repo": "datasette/datasette-public",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "0476ee6e8a0aa7bf9968dbccf1b799741a3877c5ce0c6d0987da6f03ed60c676",
-    "metadata_etag": "\"e1164c7a68034cdc94e93f0acae2998f46896a151441d2d715d9cedb5a5d0031\"",
+    "metadata_sha256": "e5b553be407554c7513b97bfdb6cd5238cbb10fcb48da4fafdac4b72d5707431",
+    "metadata_etag": "\"c9006710f91ad3fdd188ae19fbf2080b97a076f01e5fd2f9ddb81311c8d11f4d\"",
     "latest_version": "0.2.3"
   },
   {
@@ -1962,9 +1962,9 @@
   {
     "name": "datasette-upload-dbs",
     "github_repo": "simonw/datasette-upload-dbs",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "d2a83e05fc3783ee8aa1517104c79267ecff412541959c4f5279a1d235992e12",
-    "metadata_etag": "\"7052f475a2f70112792e8503fabdcaa1c1630d6196e55179962e39d7a9f8184c\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "f32e9628a228ea0f82d816f17f5f64a19241c75d9e1127579ea2a7d866ba88b9",
+    "metadata_etag": "\"f2cec623306f3ed581561ca0c39d247f62773b08754f79e5c4a6ffec34eed103\"",
     "latest_version": "0.3.2"
   },
   {
