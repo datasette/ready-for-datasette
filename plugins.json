@@ -1107,9 +1107,9 @@
     "name": "datasette-mcp",
     "github_repo": "datasette/datasette-mcp",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "89ca1d3b7c15fd441d798b584a1ecccf0ad0cc5e55e92713640c3c2a3bbccde9",
-    "metadata_etag": "\"bfa732821ffa515bd1e7c932e567c97d2a4f92e023fa6aa882958387c7649ff0\"",
-    "latest_version": "0.1a0"
+    "metadata_sha256": "1e8b1856a27435960d4ab5ad747199f74edbb1ad90b1d0b6f4c0ac24c24001d5",
+    "metadata_etag": "\"61f4a9430e76acf48b3b12bddab99a11bdbcf01d040616a42b6e7591ac23315e\"",
+    "latest_version": "0.2"
   },
   {
     "name": "datasette-media",
