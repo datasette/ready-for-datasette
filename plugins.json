@@ -1184,6 +1184,38 @@
     "latest_version": "0.1"
   },
   {
+    "name": "datasette-otel-otlp",
+    "github_repo": "datasette/datasette-otel-otlp",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "3b45221f581c94d771ac79af32f36fb2c8fffe78108772f2989bbfb64c7889a7",
+    "metadata_etag": "\"0333b2b7b7cec053fd07b05791f4abb07e1680649391dff2f63d1ca0dd836eb6\"",
+    "latest_version": null
+  },
+  {
+    "name": "datasette-otel-parquet",
+    "github_repo": "datasette/datasette-otel-parquet",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "c0f00aed7bf3888995be7e429b103a5e4d35628a23c57df325f9064cd0aa79f0",
+    "metadata_etag": "\"0bee141fdfe4b365dedded1f5034efaaddb8be191f6b6b725d6624f2b7b38c5b\"",
+    "latest_version": null
+  },
+  {
+    "name": "datasette-otel-prometheus",
+    "github_repo": "datasette/datasette-otel-prometheus",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "9291c7c1007d5efd412415b9a4556ab687c98def4c49110f83be78084a3f8670",
+    "metadata_etag": "\"fd5119c4e64c45c1fbb23b2594d93b8f4e0e1fed918c26557eaea15a1aa9ecec\"",
+    "latest_version": null
+  },
+  {
+    "name": "datasette-otel-receiver",
+    "github_repo": "datasette/datasette-otel-receiver",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "99e475b339c454525d96ec5efb6f410b5e4f7691c05a1390e891be6704d54b12",
+    "metadata_etag": "\"1c0752b0a5c62794e6c2c73ec61bd63171665be059740a601fcade5d99e90d48\"",
+    "latest_version": null
+  },
+  {
     "name": "datasette-packages",
     "github_repo": "simonw/datasette-packages",
     "metadata_file": "pyproject.toml",
