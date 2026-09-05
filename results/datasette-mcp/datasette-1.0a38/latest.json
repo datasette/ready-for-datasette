@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-mcp",
+    "version": "0.2",
+    "repository": "datasette/datasette-mcp",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ce/6f/a32a7473a9ef5b2c7dd964911b496b069bfdee229df8c0345f8d1366850f/datasette_mcp-0.2.tar.gz",
+      "sha256": "caf0a4054289766066fdf5d1f667bd00bb178d63c0d87cacf409c69e71a1f325"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-mcp",
+      "ref": "0.2",
+      "git_sha": "55f1ed1b74c570e07348f5395b6d88234af69775"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a38",
+    "installed_version": "1.0a38"
+  },
+  "run": {
+    "id": "20260905T182235Z-gh-33981384000-a1",
+    "started_at": "2026-09-05T18:22:35Z",
+    "completed_at": "2026-09-05T18:22:48Z",
+    "duration_seconds": 12.753,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-mcp @ file:///tmp/datasette-mcp-9ivverhv/datasette_mcp-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a38",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mcp/datasette-1.0a38/runs/20260905T182235Z-gh-33981384000-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 33,
+    "passed": 33,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-mcp/datasette-1.0a38/runs/20260905T182235Z-gh-33981384000-a1/pytest.txt"
+  }
+}
