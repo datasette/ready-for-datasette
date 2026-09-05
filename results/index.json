@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-05T19:27:41Z",
+  "generated_at": "2026-09-05T21:27:55Z",
   "results": [
     {
       "schema_version": 1,
@@ -11839,6 +11839,97 @@
       "schema_version": 1,
       "runner_version": 2,
       "package": {
+        "name": "datasette-hashed-urls",
+        "version": "0.4",
+        "repository": "simonw/datasette-hashed-urls",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/be/ac/f991e3c41f6e935968c0ba5def91571ed69c97273568b77dadc488141ec3/datasette-hashed-urls-0.4.tar.gz",
+          "sha256": "f6f9d69f9a4bd65947489b9a10f8143882abee444e24013bbc1cd430932c1358"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-hashed-urls",
+          "ref": "0.4",
+          "git_sha": "2f9f02618c7bce23c19ec5509ebe9680ed6c6626"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a38",
+        "installed_version": "1.0a38"
+      },
+      "run": {
+        "id": "20260905T212746Z-gh-33993102482-a1",
+        "started_at": "2026-09-05T21:27:46Z",
+        "completed_at": "2026-09-05T21:27:52Z",
+        "duration_seconds": 5.911,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-hashed-urls @ file:///tmp/datasette-hashed-urls-zc71komc/datasette-hashed-urls-0.4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a38",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-hashed-urls/datasette-1.0a38/runs/20260905T212746Z-gh-33993102482-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_hashed_urls.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-hashed-urls/datasette-1.0a38/runs/20260905T212746Z-gh-33993102482-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
         "name": "datasette-haversine",
         "version": "0.2.1",
         "repository": "simonw/datasette-haversine",
@@ -12650,6 +12741,97 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-indieauth/datasette-1.0a37/runs/20260714T164703Z-local-659f18/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-indieauth",
+        "version": "1.2.2",
+        "repository": "simonw/datasette-indieauth",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/34/41/3106cfe6586f927e1baf803ebf305b902aa92d2b153b30ee5dfa5239531b/datasette-indieauth-1.2.2.tar.gz",
+          "sha256": "9e12803cf5ccda49441b59e4e3732221fec2a6ef4f98fb0233ef9ed4a4ec802c"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-indieauth",
+          "ref": "1.2.2",
+          "git_sha": "55b8eefa35aff9d7819fa040abf4f897aee28836"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a38",
+        "installed_version": "1.0a38"
+      },
+      "run": {
+        "id": "20260905T212749Z-gh-33993102482-a1",
+        "started_at": "2026-09-05T21:27:49Z",
+        "completed_at": "2026-09-05T21:27:55Z",
+        "duration_seconds": 5.258,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-indieauth @ file:///tmp/datasette-indieauth-hu462kc2/datasette-indieauth-1.2.2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a38",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-indieauth/datasette-1.0a38/runs/20260905T212749Z-gh-33993102482-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 48,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_indieauth.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 2
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-indieauth/datasette-1.0a38/runs/20260905T212749Z-gh-33993102482-a1/pytest.txt"
       }
     },
     {
