@@ -1184,11 +1184,11 @@
     "latest_version": "0.1"
   },
   {
-    "name": "datasette-otel-otlp",
-    "github_repo": "datasette/datasette-otel-otlp",
+    "name": "datasette-otel-otlp-exporter",
+    "github_repo": "datasette/datasette-otel-otlp-exporter",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "3b45221f581c94d771ac79af32f36fb2c8fffe78108772f2989bbfb64c7889a7",
-    "metadata_etag": "\"0333b2b7b7cec053fd07b05791f4abb07e1680649391dff2f63d1ca0dd836eb6\"",
+    "metadata_sha256": "1d0e58f08aa3ebf95d23195ad1b7abd1de07e00509a455e0c0cb184583d1be6a",
+    "metadata_etag": "\"e2126aefb5b6ab498a73ff40a2f42a1f959682ecdb73455c27200518e14cc2bf\"",
     "latest_version": null
   },
   {
@@ -1208,11 +1208,11 @@
     "latest_version": null
   },
   {
-    "name": "datasette-otel-receiver",
+    "name": "datasette-otel-viewer",
     "github_repo": "datasette/datasette-otel-viewer",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "99e475b339c454525d96ec5efb6f410b5e4f7691c05a1390e891be6704d54b12",
-    "metadata_etag": "\"1c0752b0a5c62794e6c2c73ec61bd63171665be059740a601fcade5d99e90d48\"",
+    "metadata_sha256": "a1fe54c79d86caafc93d6a9d73a2046a05defd21ea24f633bf6f2121b962ff05",
+    "metadata_etag": "\"821ed189e3ae49e722559d17b78191f9d46425754da6f9a6f57523609efc5a48\"",
     "latest_version": null
   },
   {
