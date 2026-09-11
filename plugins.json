@@ -1426,10 +1426,10 @@
   {
     "name": "datasette-publish-fly",
     "github_repo": "simonw/datasette-publish-fly",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "1fa4e168631304909c1e5c47894a49d33763b0fa5e1b4c2105c3961b44ab9266",
-    "metadata_etag": "\"7c71f52266e34862093acb53152d100eb4c2196dd3c6d1ba1280bbff494a4537\"",
-    "latest_version": "1.3.1"
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "832b72d31a22036f8ed04c7cb052fae6f5e017b520883803c87b585f829337e5",
+    "metadata_etag": "\"69eb86ee2d60b7e118abcfe29c3c55e25d3c14b818a0619facafa4b1d57501a2\"",
+    "latest_version": "1.4"
   },
   {
     "name": "datasette-publish-vercel",
