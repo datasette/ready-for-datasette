@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-05T21:27:55Z",
+  "generated_at": "2026-09-11T01:18:41Z",
   "results": [
     {
       "schema_version": 1,
@@ -4955,6 +4955,97 @@
       "schema_version": 1,
       "runner_version": 2,
       "package": {
+        "name": "datasette-block",
+        "version": "0.1.1",
+        "repository": "simonw/datasette-block",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/8b/36/b75da8cc429975d7a01d8e3262f18ddf974cea0f335cb5f890fb6e45151e/datasette-block-0.1.1.tar.gz",
+          "sha256": "d5334ade62c61b53b72143de9c6edfbf8ef9712bd6d5b318685e7e63cebdfa60"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-block",
+          "ref": "0.1.1",
+          "git_sha": "2c071fe71a6ad2fc4d4d397aa69aceda35eb3758"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a39",
+        "installed_version": "1.0a39"
+      },
+      "run": {
+        "id": "20260911T011834Z-gh-34550122800-a1",
+        "started_at": "2026-09-11T01:18:34Z",
+        "completed_at": "2026-09-11T01:18:41Z",
+        "duration_seconds": 7.307,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-block @ file:///tmp/datasette-block-ohuyzihg/datasette-block-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a39",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-block/datasette-1.0a39/runs/20260911T011834Z-gh-34550122800-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_block.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-block/datasette-1.0a39/runs/20260911T011834Z-gh-34550122800-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
         "name": "datasette-block-robots",
         "version": "1.1",
         "repository": "simonw/datasette-block-robots",
@@ -8736,6 +8827,92 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-edit-schema/datasette-1.0a38/runs/20260905T192700Z-gh-33987121065-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-edit-schema",
+        "version": "0.7.1",
+        "repository": "simonw/datasette-edit-schema",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/5c/b5/d1398bf4f856585bddebeae6f3439d46d477e062e6db146095b74d89178f/datasette-edit-schema-0.7.1.tar.gz",
+          "sha256": "e7de83533bbb441ed0f392b2cae9a2871931be917f69cbad1d60c79cac1dbe08"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-edit-schema",
+          "ref": "0.7.1",
+          "git_sha": "1e48732e0a3e88d0b02e2eb03ef51c690d74b988"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a39",
+        "installed_version": "1.0a39"
+      },
+      "run": {
+        "id": "20260911T011833Z-gh-34550122800-a1",
+        "started_at": "2026-09-11T01:18:33Z",
+        "completed_at": "2026-09-11T01:18:41Z",
+        "duration_seconds": 8.081,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-edit-schema @ file:///tmp/datasette-edit-schema-n3f95lv_/datasette-edit-schema-0.7.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a39",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-edit-schema/datasette-1.0a39/runs/20260911T011833Z-gh-34550122800-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "runner_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_edit_schema.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 2
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-edit-schema/datasette-1.0a39/runs/20260911T011833Z-gh-34550122800-a1/pytest.txt"
       }
     },
     {
