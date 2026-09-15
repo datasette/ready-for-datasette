@@ -1227,9 +1227,9 @@
     "name": "datasette-paper",
     "github_repo": "datasette/datasette-paper",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "05819f93a67209bf28afa2077c47ed9adfa070209ecd23cb0a0fc5421052a0f2",
-    "metadata_etag": "\"738ae8eb8f0aa1464c687d6778d45272a4247bf51864d099c6669643223b6feb\"",
-    "latest_version": "0.0.2a14"
+    "metadata_sha256": "160233d36c9987df489655978e293f8b4e85f78d32b37907af1ce57d664e81bd",
+    "metadata_etag": "\"fff0b4ed58beff3044225c492023e0bb5eb7b9a40dfae9b4c0823e0daa148af0\"",
+    "latest_version": "0.0.2a15"
   },
   {
     "name": "datasette-paste",
