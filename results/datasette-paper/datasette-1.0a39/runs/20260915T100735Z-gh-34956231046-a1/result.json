@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-paper",
+    "version": "0.0.2a15",
+    "repository": "datasette/datasette-paper",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/d4/26/14e8e39bdb13751910bfc79bb5fbcafe7dcd40975499e7f6d67c0011a4e1/datasette_paper-0.0.2a15.tar.gz",
+      "sha256": "239c90206ebd39502d60343ea7674c74c4b7d1ac44e6bb8a1a72cfb80bab0ddf"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-paper",
+      "ref": "0.0.2a15",
+      "git_sha": "951c980ef2de590a7cf9ae74856c83317b134488"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a39",
+    "installed_version": "1.0a39"
+  },
+  "run": {
+    "id": "20260915T100735Z-gh-34956231046-a1",
+    "started_at": "2026-09-15T10:07:35Z",
+    "completed_at": "2026-09-15T10:08:58Z",
+    "duration_seconds": 83.347,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-paper @ file:///tmp/datasette-paper-thrqybr0/datasette_paper-0.0.2a15.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a39",
+      "--with",
+      "datasette-agent",
+      "--with",
+      "datasette-debug-gotham>=0.1.0a3",
+      "--with",
+      "datasette-sidebar>=0.0.1a3",
+      "--with",
+      "llm-openrouter>=0.7",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff==0.15.12",
+      "--with",
+      "solite>=0.0.1a36",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-paper/datasette-1.0a39/runs/20260915T100735Z-gh-34956231046-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1191,
+    "passed": 1191,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "datasette-agent",
+      "datasette-debug-gotham>=0.1.0a3",
+      "datasette-sidebar>=0.0.1a3",
+      "llm-openrouter>=0.7",
+      "pytest",
+      "pytest-asyncio",
+      "ruff==0.15.12",
+      "solite>=0.0.1a36"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 58,
+    "release_tag": 62
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-paper/datasette-1.0a39/runs/20260915T100735Z-gh-34956231046-a1/pytest.txt"
+  }
+}
