@@ -1227,9 +1227,9 @@
     "name": "datasette-paper",
     "github_repo": "datasette/datasette-paper",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "160233d36c9987df489655978e293f8b4e85f78d32b37907af1ce57d664e81bd",
-    "metadata_etag": "\"fff0b4ed58beff3044225c492023e0bb5eb7b9a40dfae9b4c0823e0daa148af0\"",
-    "latest_version": "0.0.2a15"
+    "metadata_sha256": "f66d0b52003bcf68b0fd4282513acc840e885079a102a9d0d7c3ce28c2e272a2",
+    "metadata_etag": "\"b423d0f30784181497f51d34f08996c6749b9009f61072cbace661f629195a9a\"",
+    "latest_version": "0.0.2a17"
   },
   {
     "name": "datasette-paste",
@@ -2011,9 +2011,9 @@
     "name": "datasette-user-profiles",
     "github_repo": "datasette/datasette-user-profiles",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "b35d20810ef8799908bbf65cf867bd591c35ed5e3e5744910f76c3bc57d5ebc3",
-    "metadata_etag": "\"df1290ce9f32afa4caf9d52fa84c90ee08fe93023d3771dbbed39fc83d651e3b\"",
-    "latest_version": "0.1.0a9"
+    "metadata_sha256": "d026c1b3e7b1ee128894cc06060fb81ebe64ae5389dde6a378f0a81ea880ccc0",
+    "metadata_etag": "\"c0cc96cff55eae6e719f2200481b4111e8b3c463d2d2acfbbfacc3c7a6ca717b\"",
+    "latest_version": "0.1.0a10"
   },
   {
     "name": "datasette-vega",
