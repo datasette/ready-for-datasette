@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T10:08:58Z",
+  "generated_at": "2026-09-16T06:43:53Z",
   "results": [
     {
       "schema_version": 1,
@@ -16542,18 +16542,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-paper",
-        "version": "0.0.2a15",
+        "version": "0.0.2a17",
         "repository": "datasette/datasette-paper",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/d4/26/14e8e39bdb13751910bfc79bb5fbcafe7dcd40975499e7f6d67c0011a4e1/datasette_paper-0.0.2a15.tar.gz",
-          "sha256": "239c90206ebd39502d60343ea7674c74c4b7d1ac44e6bb8a1a72cfb80bab0ddf"
+          "url": "https://files.pythonhosted.org/packages/37/4b/95636ac9b4922b1c0bbcc75a1b30d829da7d8eec3f47842968aa61da28fa/datasette_paper-0.0.2a17.tar.gz",
+          "sha256": "25ce8413a609645d5cdc7478a9de590da39f9d30ecf18e58a1292ca8210dfe06"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-paper",
-          "ref": "0.0.2a15",
-          "git_sha": "951c980ef2de590a7cf9ae74856c83317b134488"
+          "ref": "0.0.2a17",
+          "git_sha": "f3cd720ef8befb2344ba5ba35f3fa62237866cef"
         }
       },
       "datasette": {
@@ -16561,10 +16561,10 @@
         "installed_version": "1.0a39"
       },
       "run": {
-        "id": "20260915T100735Z-gh-34956231046-a1",
-        "started_at": "2026-09-15T10:07:35Z",
-        "completed_at": "2026-09-15T10:08:58Z",
-        "duration_seconds": 83.347,
+        "id": "20260916T064222Z-gh-35064907583-a1",
+        "started_at": "2026-09-16T06:42:22Z",
+        "completed_at": "2026-09-16T06:43:53Z",
+        "duration_seconds": 91.596,
         "python_version": "3.13",
         "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 0,
@@ -16579,7 +16579,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-paper @ file:///tmp/datasette-paper-thrqybr0/datasette_paper-0.0.2a15.tar.gz",
+          "datasette-paper @ file:///tmp/datasette-paper-4i666_ih/datasette_paper-0.0.2a17.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -16603,14 +16603,14 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-paper/datasette-1.0a39/runs/20260915T100735Z-gh-34956231046-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-paper/datasette-1.0a39/runs/20260916T064222Z-gh-35064907583-a1/.pytest-report.json"
         ]
       },
       "passed": true,
       "outcome": "passed",
       "counts": {
-        "collected": 1191,
-        "passed": 1191,
+        "collected": 1237,
+        "passed": 1237,
         "failed": 0,
         "errors": 0,
         "skipped": 0,
@@ -16641,7 +16641,7 @@
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-paper/datasette-1.0a39/runs/20260915T100735Z-gh-34956231046-a1/pytest.txt"
+        "pytest_output": "results/datasette-paper/datasette-1.0a39/runs/20260916T064222Z-gh-35064907583-a1/pytest.txt"
       }
     },
     {
