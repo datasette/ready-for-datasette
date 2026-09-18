@@ -411,8 +411,8 @@
     "name": "datasette-cron",
     "github_repo": "datasette/datasette-cron",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "d6a1273898bdb407748439f6332fc164e6fa43e92deafcc75d0d27e8208e9d88",
-    "metadata_etag": "\"f527181430d437af5ed80b922b7576125ff3fdb0c110babcb48e30d7f6bd48ab\"",
+    "metadata_sha256": "3b5a3ce22a2796dd51b32416a50ed14d8e61e209b656fed552bffd3d816c7bdc",
+    "metadata_etag": "\"149385914e40c3638e23310424b3f16e0e2b114df002997f85eed2c99ad6ebe0\"",
     "latest_version": "0.0.1a2"
   },
   {
@@ -1299,8 +1299,8 @@
     "name": "datasette-plot",
     "github_repo": "datasette/datasette-plot",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "b31f37a661845c0b51851862f69d6a7b2ddf77d6844d386f7214457dd32c46ee",
-    "metadata_etag": "\"92e32f625e600358bb20fa464d141ca441761271e6807d5e2214d3d86a8db9e3\"",
+    "metadata_sha256": "a863a8e8bf6af5ede0c63df88a0d5fb01236e55c64be3ef02b3fbe6829f5672b",
+    "metadata_etag": "\"a28cbfe0475c29f850f997ae9368b8e4f607f141d6a6f4af46244ad49c54f9d7\"",
     "latest_version": "0.1.0"
   },
   {
