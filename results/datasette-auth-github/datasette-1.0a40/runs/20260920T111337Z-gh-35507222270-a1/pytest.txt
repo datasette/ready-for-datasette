@@ -1,0 +1,50 @@
+Downloading cpython-3.13.15-linux-x86_64-gnu (download) (33.2MiB)
+ Downloaded cpython-3.13.15-linux-x86_64-gnu (download)
+   Building datasette-auth-github @ file:///tmp/datasette-auth-github-xpv7tjzb/datasette_auth_github-1.0.tar.gz
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-auth-github @ file:///tmp/datasette-auth-github-xpv7tjzb/datasette_auth_github-1.0.tar.gz
+Installed 44 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpc3H4j0/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.15', 'Platform': 'Linux-6.17.0-1022-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.15.1', 'metadata': '3.1.1', 'httpx': '0.36.2', 'json-report': '1.5.0', 'datasette': '1.0a40', 'asyncio': '1.4.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-auth-github-xpv7tjzb/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.15.1, metadata-3.1.1, httpx-0.36.2, json-report-1.5.0, datasette-1.0a40, asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_datasette_auth_github.py::test_ds_fixture PASSED              [  4%]
+tests/test_datasette_auth_github.py::test_github_auth_start PASSED       [  8%]
+tests/test_datasette_auth_github.py::test_github_auth_callback PASSED    [ 12%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[default-http] PASSED [ 16%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[default-https] PASSED [ 20%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[default-https-proxy] PASSED [ 24%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[custom-http] PASSED [ 28%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[custom-https] PASSED [ 32%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[custom-https-proxy] PASSED [ 36%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[session-only-http] PASSED [ 40%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[session-only-https] PASSED [ 44%]
+tests/test_datasette_auth_github.py::test_callback_cookie_attributes[session-only-https-proxy] PASSED [ 48%]
+tests/test_datasette_auth_github.py::test_callback_cookie_expiration[default] PASSED [ 52%]
+tests/test_datasette_auth_github.py::test_callback_cookie_expiration[custom] PASSED [ 56%]
+tests/test_datasette_auth_github.py::test_callback_cookie_expiration[session-only] PASSED [ 60%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[True] PASSED [ 64%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[False] PASSED [ 68%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[0] PASSED [ 72%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[-1] PASSED [ 76%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[3600] PASSED [ 80%]
+tests/test_datasette_auth_github.py::test_invalid_login_max_age[1.5] PASSED [ 84%]
+tests/test_datasette_auth_github.py::test_sign_in_with_github_button PASSED [ 88%]
+tests/test_datasette_auth_github.py::test_database_access_permissions[False-expected_databases0] PASSED [ 92%]
+tests/test_datasette_auth_github.py::test_database_access_permissions[True-expected_databases1] PASSED [ 96%]
+tests/test_datasette_auth_github.py::test_github_enterprise_host PASSED  [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-auth-github/datasette-1.0a40/runs/20260920T111337Z-gh-35507222270-a1/.pytest-report.json
+============================== 25 passed in 0.83s ==============================
