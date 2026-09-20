@@ -163,9 +163,9 @@
     "name": "datasette-auth-github",
     "github_repo": "simonw/datasette-auth-github",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "19641db4d66e881d34843272bc9b3be4f644ac8b04bcbeb3aefff30ce217c52c",
-    "metadata_etag": "\"224ee014f246926ef7dbee5dd5ab3b6320d3ddd3da20c1a7517082fe9b87ff3b\"",
-    "latest_version": "0.14"
+    "metadata_sha256": "96039fdb1e25e42eb1683222eca45ba29850dc5ba9dda582d4a7f320ba105c64",
+    "metadata_etag": "\"bda7aa1d3c591feaeb67ca438ebec26ed45dff3648a1f2fa8a1f94c9d31bdbb7\"",
+    "latest_version": "1.0"
   },
   {
     "name": "datasette-auth-passwords",
@@ -659,9 +659,9 @@
     "name": "datasette-explain",
     "github_repo": "simonw/datasette-explain",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "08b363bbce61e546b1455b98a28d8f49ce13a8909e8527a440ee2adf91b0a250",
-    "metadata_etag": "\"a4e856b9f553eff0513d77934bc22842c2436e330eaa1777eb6f857195e6cd6a\"",
-    "latest_version": "0.2.1"
+    "metadata_sha256": "b2078790db962c4bc60807115739af09f2e52d0cecb7674e7ae66caa0e954301",
+    "metadata_etag": "\"184b29f7323461d797cdb27630c08eddb11d2985852778447e1792e8d2a301a7\"",
+    "latest_version": "0.2.2"
   },
   {
     "name": "datasette-export",
