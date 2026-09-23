@@ -1315,8 +1315,8 @@
     "name": "datasette-plugin-router",
     "github_repo": "datasette/datasette-plugin-router",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "9a6220edb35f203d63c8648666b2d48ea80caa7ce6460dbcffe3fd19e4bbf7a7",
-    "metadata_etag": "\"57a91f7657ea9ad52c28e68738b41c1dc7a2b81ee950ec00c7f4a781e65cfce9\"",
+    "metadata_sha256": "e7e48d37a89b8d66b133c26b98288c465255b5dc5a5fbb77e90a9ef54ffcd9cf",
+    "metadata_etag": "\"86470607df6fb1fa616c35a32355a1f63fb9e30d33767337b7936091783eb850\"",
     "latest_version": "0.0.1a6"
   },
   {
