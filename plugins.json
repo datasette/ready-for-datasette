@@ -1184,36 +1184,36 @@
     "latest_version": "0.1"
   },
   {
+    "name": "datasette-otel-file-exporter",
+    "github_repo": "datasette/datasette-otel-file-exporter",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "1b6afb6eab3fb411049dd0ef78e3458f7869359075c3d26f28ba18158e4d88a1",
+    "metadata_etag": "\"1a2458e07d485933c8faddaab590a7502aad7f95153a339b98c6033de617d350\"",
+    "latest_version": "0.1.0a1"
+  },
+  {
     "name": "datasette-otel-otlp-exporter",
     "github_repo": "datasette/datasette-otel-otlp-exporter",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "1d0e58f08aa3ebf95d23195ad1b7abd1de07e00509a455e0c0cb184583d1be6a",
-    "metadata_etag": "\"e2126aefb5b6ab498a73ff40a2f42a1f959682ecdb73455c27200518e14cc2bf\"",
-    "latest_version": null
-  },
-  {
-    "name": "datasette-otel-parquet",
-    "github_repo": "datasette/datasette-otel-file-exporter",
-    "metadata_file": "pyproject.toml",
-    "metadata_sha256": "c0f00aed7bf3888995be7e429b103a5e4d35628a23c57df325f9064cd0aa79f0",
-    "metadata_etag": "\"0bee141fdfe4b365dedded1f5034efaaddb8be191f6b6b725d6624f2b7b38c5b\"",
-    "latest_version": null
+    "metadata_sha256": "e8b8a108c6dda5f99e6b659c74ca5a0b2e9d843d59183756f5e61d9824109f19",
+    "metadata_etag": "\"6e62c53ae829c193a5fc72759658e7446d9f1f0232a90e70988d2982e57aabfd\"",
+    "latest_version": "0.1.0a1"
   },
   {
     "name": "datasette-otel-prometheus",
     "github_repo": "datasette/datasette-otel-prometheus",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "9291c7c1007d5efd412415b9a4556ab687c98def4c49110f83be78084a3f8670",
-    "metadata_etag": "\"fd5119c4e64c45c1fbb23b2594d93b8f4e0e1fed918c26557eaea15a1aa9ecec\"",
-    "latest_version": null
+    "metadata_sha256": "85be9fe24777c34e4d33ce55824935ca9fb2469e1883d0c5fc21238c63f6f411",
+    "metadata_etag": "\"c5832604089ff57dd2a7ef79bee1b8fa387bcbd38505a74ea4157ac24d909b4c\"",
+    "latest_version": "0.1.0a1"
   },
   {
     "name": "datasette-otel-viewer",
     "github_repo": "datasette/datasette-otel-viewer",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "a1fe54c79d86caafc93d6a9d73a2046a05defd21ea24f633bf6f2121b962ff05",
-    "metadata_etag": "\"821ed189e3ae49e722559d17b78191f9d46425754da6f9a6f57523609efc5a48\"",
-    "latest_version": null
+    "metadata_sha256": "d58dd99a3264b098a299a5d43ad6c984178167fcee12d52bd8144bca02b2062c",
+    "metadata_etag": "\"d53ff1554be9108de05078e32ad621a94c476e5f13f1ac619b39a35c410145ff\"",
+    "latest_version": "0.1.0a1"
   },
   {
     "name": "datasette-packages",
