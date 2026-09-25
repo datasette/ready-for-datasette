@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-otel-otlp-exporter",
+    "version": "0.1.0a1",
+    "repository": "datasette/datasette-otel-otlp-exporter",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/b0/46/5c804e36f20758f35afbc122da0b93177d452ca202ecba8b2bdb92f8025d/datasette_otel_otlp_exporter-0.1.0a1.tar.gz",
+      "sha256": "66f76e60a77af37bd4972e89bbbcdf54579bf69202874c5c397dacf6809df410"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-otel-otlp-exporter",
+      "ref": "0.1.0a1",
+      "git_sha": "d9199479f248cb068c964b7334329f9b3ba903e7"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a41",
+    "installed_version": "1.0a41"
+  },
+  "run": {
+    "id": "20260925T121252Z-gh-36133613301-a1",
+    "started_at": "2026-09-25T12:12:52Z",
+    "completed_at": "2026-09-25T12:13:16Z",
+    "duration_seconds": 24.116,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-otel-otlp-exporter @ file:///tmp/datasette-otel-otlp-exporter-vqfwygxb/datasette_otel_otlp_exporter-0.1.0a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a41",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "opentelemetry-proto",
+      "--with",
+      "ruff>=0.16.8",
+      "--with",
+      "ty>=0.0.84",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-otlp-exporter/datasette-1.0a41/runs/20260925T121252Z-gh-36133613301-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 40,
+    "passed": 39,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "opentelemetry-proto",
+      "ruff>=0.16.8",
+      "ty>=0.0.84"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 5,
+    "release_tag": 6
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-otel-otlp-exporter/datasette-1.0a41/runs/20260925T121252Z-gh-36133613301-a1/pytest.txt"
+  }
+}

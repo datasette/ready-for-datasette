@@ -1,0 +1,69 @@
+Downloading cpython-3.13.15-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.15-linux-x86_64-gnu (download)
+   Building datasette-otel-otlp-exporter @ file:///tmp/datasette-otel-otlp-exporter-vqfwygxb/datasette_otel_otlp_exporter-0.1.0a1.tar.gz
+Downloading pydantic-core (2.0MiB)
+Downloading ty (13.5MiB)
+Downloading ruff (9.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pygments
+ Downloaded pip
+ Downloaded pydantic-core
+ Downloaded ruff
+ Downloaded ty
+      Built datasette-otel-otlp-exporter @ file:///tmp/datasette-otel-otlp-exporter-vqfwygxb/datasette_otel_otlp_exporter-0.1.0a1.tar.gz
+Installed 54 packages in 40ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbX6qsK/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.15', 'Platform': 'Linux-6.17.0-1022-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a41', 'metadata': '3.1.1', 'json-report': '1.5.0', 'anyio': '4.15.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-otel-otlp-exporter-vqfwygxb/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a41, metadata-3.1.1, json-report-1.5.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 40 items
+
+tests/test_config.py::test_empty_config_is_valid PASSED                  [  2%]
+tests/test_config.py::test_full_config PASSED                            [  5%]
+tests/test_config.py::test_numbers_coerce_to_strings PASSED              [  7%]
+tests/test_config.py::test_invalid_config[raw0-sample_rate: Extra inputs are not permitted] PASSED [ 10%]
+tests/test_config.py::test_invalid_config[raw1-service_name: Extra inputs are not permitted] PASSED [ 12%]
+tests/test_config.py::test_invalid_config[raw2-sample_ratio: Extra inputs are not permitted] PASSED [ 15%]
+tests/test_config.py::test_invalid_config[raw3-endpiont: Extra inputs are not permitted] PASSED [ 17%]
+tests/test_config.py::test_invalid_config[raw4-endpoint: must be an http:// or https://] PASSED [ 20%]
+tests/test_config.py::test_invalid_config[raw5-endpoint: must be an http:// or https://] PASSED [ 22%]
+tests/test_config.py::test_invalid_config[raw6-headers: Input should be a valid dictionary] PASSED [ 25%]
+tests/test_config.py::test_invalid_config[raw7-headers.x-key: Input should be] PASSED [ 27%]
+tests/test_config.py::test_invalid_config[raw8-preset: Extra inputs are not permitted] PASSED [ 30%]
+tests/test_config.py::test_invalid_config[raw9-grafana_cloud.regoin: Extra inputs are not permitted] PASSED [ 32%]
+tests/test_config.py::test_every_problem_is_reported PASSED              [ 35%]
+tests/test_config.py::test_typo_fails_startup PASSED                     [ 37%]
+tests/test_datasette_otel_otlp_exporter.py::test_plugin_is_installed PASSED [ 40%]
+tests/test_export.py::test_export_happens PASSED                         [ 42%]
+tests/test_export.py::test_headers_reach_the_wire PASSED                 [ 45%]
+tests/test_export.py::test_headers_env_substitution PASSED               [ 47%]
+tests/test_export.py::test_dormant_without_endpoint PASSED               [ 50%]
+tests/test_export.py::test_endpoint_path_appended PASSED                 [ 52%]
+tests/test_import_time.py::test_installs_own_provider PASSED             [ 55%]
+tests/test_import_time.py::test_otel_service_name PASSED                 [ 57%]
+tests/test_import_time.py::test_otel_resource_attributes_service_name PASSED [ 60%]
+tests/test_import_time.py::test_otel_traces_sampler PASSED               [ 62%]
+tests/test_import_time.py::test_attaches_to_existing_sdk_provider PASSED [ 65%]
+tests/test_import_time.py::test_attached_dormant_leaves_owner_recording PASSED [ 67%]
+tests/test_import_time.py::test_non_sdk_provider_is_left_alone PASSED    [ 70%]
+tests/test_import_time.py::test_file_exporter_first_both_export SKIPPEDsette_otel_file_exporter') [ 72%]
+tests/test_presets.py::test_resolver_region_and_auth PASSED              [ 75%]
+tests/test_presets.py::test_resolver_endpoint_override_in_options PASSED [ 77%]
+tests/test_presets.py::test_resolver_no_preset_is_none PASSED            [ 80%]
+tests/test_presets.py::test_missing_fields_are_named PASSED              [ 82%]
+tests/test_presets.py::test_missing_region_and_endpoint PASSED           [ 85%]
+tests/test_presets.py::test_api_token_not_in_repr PASSED                 [ 87%]
+tests/test_presets.py::test_preset_configures_the_exporter PASSED        [ 90%]
+tests/test_presets.py::test_explicit_endpoint_beats_preset_headers_survive PASSED [ 92%]
+tests/test_presets.py::test_explicit_headers_merge_over_preset PASSED    [ 95%]
+tests/test_presets.py::test_env_endpoint_beats_preset PASSED             [ 97%]
+tests/test_presets.py::test_missing_fields_fail_startup_even_with_env_endpoint PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-otlp-exporter/datasette-1.0a41/runs/20260925T121252Z-gh-36133613301-a1/.pytest-report.json
+======================== 39 passed, 1 skipped in 16.88s ========================
