@@ -1,0 +1,97 @@
+Downloading cpython-3.13.15-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.15-linux-x86_64-gnu (download)
+   Building datasette-otel-file-exporter @ file:///tmp/datasette-otel-file-exporter-plltjz5u/datasette_otel_file_exporter-0.1.0a1.tar.gz
+Downloading obstore (5.3MiB)
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+Downloading ty (13.5MiB)
+Downloading duckdb (23.1MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pyarrow (47.8MiB)
+Downloading ruff (9.9MiB)
+ Downloaded pydantic-core
+ Downloaded obstore
+ Downloaded pygments
+ Downloaded pip
+ Downloaded ruff
+ Downloaded ty
+ Downloaded duckdb
+ Downloaded pyarrow
+      Built datasette-otel-file-exporter @ file:///tmp/datasette-otel-file-exporter-plltjz5u/datasette_otel_file_exporter-0.1.0a1.tar.gz
+Installed 48 packages in 269ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpxkNdt5/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.15', 'Platform': 'Linux-6.17.0-1022-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a41', 'metadata': '3.1.1', 'json-report': '1.5.0', 'anyio': '4.15.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-otel-file-exporter-plltjz5u/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a41, metadata-3.1.1, json-report-1.5.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 62 items / 1 skipped
+
+tests/test_export.py::test_end_to_end[ndjson] PASSED                     [  1%]
+tests/test_export.py::test_end_to_end[parquet] PASSED                    [  3%]
+tests/test_export.py::test_default_format_is_ndjson PASSED               [  4%]
+tests/test_export.py::test_parquet_schema_contract PASSED                [  6%]
+tests/test_export.py::test_ndjson_schema_contract PASSED                 [  8%]
+tests/test_export.py::test_dormant_without_path PASSED                   [  9%]
+tests/test_export.py::test_config_knobs_reach_the_exporter PASSED        [ 11%]
+tests/test_export.py::test_unusable_path_does_not_break_serving PASSED   [ 12%]
+tests/test_export.py::test_unknown_format_fails_startup PASSED           [ 14%]
+tests/test_export.py::test_parquet_without_pyarrow_fails_startup PASSED  [ 16%]
+tests/test_export.py::test_url_without_obstore_fails_startup PASSED      [ 17%]
+tests/test_export.py::test_url_via_obstore_from_url PASSED               [ 19%]
+tests/test_export.py::test_path_and_url_mutually_exclusive PASSED        [ 20%]
+tests/test_export.py::test_sigint_flushes_the_tail PASSED                [ 22%]
+tests/test_export.py::test_base_install_needs_no_extras PASSED           [ 24%]
+tests/test_export.py::test_exporter_records_its_own_writes[ndjson] PASSED [ 25%]
+tests/test_export.py::test_exporter_records_its_own_writes[parquet] PASSED [ 27%]
+tests/test_export.py::test_idle_server_stops_writing PASSED              [ 29%]
+tests/test_export.py::test_url_config_resolves_env_secrets PASSED        [ 30%]
+tests/test_export.py::test_url_config_without_url PASSED                 [ 32%]
+tests/test_exporter_unit.py::test_no_file_before_either_trigger PASSED   [ 33%]
+tests/test_exporter_unit.py::test_interval_roll[ndjson] PASSED           [ 35%]
+tests/test_exporter_unit.py::test_interval_roll[parquet] PASSED          [ 37%]
+tests/test_exporter_unit.py::test_max_spans_roll PASSED                  [ 38%]
+tests/test_exporter_unit.py::test_force_flush_writes_remainder PASSED    [ 40%]
+tests/test_exporter_unit.py::test_shutdown_writes_remainder PASSED       [ 41%]
+tests/test_exporter_unit.py::test_background_flusher_rolls_while_idle PASSED [ 43%]
+tests/test_exporter_unit.py::test_key_layout_hour_partitions[ndjson] PASSED [ 45%]
+tests/test_exporter_unit.py::test_key_layout_hour_partitions[parquet] PASSED [ 46%]
+tests/test_exporter_unit.py::test_write_failure_drops_batch_logs_once PASSED [ 48%]
+tests/test_exporter_unit.py::test_round_trip_fidelity[ndjson] PASSED     [ 50%]
+tests/test_exporter_unit.py::test_round_trip_fidelity[parquet] PASSED    [ 51%]
+tests/test_exporter_unit.py::test_ndjson_line_shape PASSED               [ 53%]
+tests/test_exporter_unit.py::test_ndjson_is_deterministic PASSED         [ 54%]
+tests/test_exporter_unit.py::TestFormatChecks::test_unknown_format PASSED [ 56%]
+tests/test_exporter_unit.py::TestFormatChecks::test_parquet_without_pyarrow PASSED [ 58%]
+tests/test_exporter_unit.py::TestFormatChecks::test_ndjson_needs_nothing PASSED [ 59%]
+tests/test_exporter_unit.py::TestLocalDirectoryStore::test_put_creates_partitions_atomically PASSED [ 61%]
+tests/test_exporter_unit.py::TestLocalDirectoryStore::test_root_created PASSED [ 62%]
+tests/test_exporter_unit.py::TestLocalDirectoryStore::test_unusable_root_raises PASSED [ 64%]
+tests/test_exporter_unit.py::TestBuildStore::test_path_is_local PASSED   [ 66%]
+tests/test_exporter_unit.py::TestBuildStore::test_url_without_obstore PASSED [ 67%]
+tests/test_exporter_unit.py::TestBuildStoreEndpointFallback::test_s3_fallback_applies PASSED [ 69%]
+tests/test_exporter_unit.py::TestBuildStoreEndpointFallback::test_standard_var_wins_by_omission PASSED [ 70%]
+tests/test_exporter_unit.py::TestBuildStoreEndpointFallback::test_no_vars_no_kwarg PASSED [ 72%]
+tests/test_exporter_unit.py::TestUrlConfig::test_passed_to_obstore PASSED [ 74%]
+tests/test_exporter_unit.py::TestUrlConfig::test_beats_tigris_fallback PASSED [ 75%]
+tests/test_exporter_unit.py::TestUrlConfig::test_unset_env_keys_dropped PASSED [ 77%]
+tests/test_exporter_unit.py::TestUrlConfig::test_must_be_mapping PASSED  [ 79%]
+tests/test_plugin_installed.py::test_plugin_is_installed PASSED          [ 80%]
+tests/test_self_telemetry.py::test_flush_span_describes_the_file PASSED  [ 82%]
+tests/test_self_telemetry.py::test_format_attribute[ndjson] PASSED       [ 83%]
+tests/test_self_telemetry.py::test_format_attribute[parquet] PASSED      [ 85%]
+tests/test_self_telemetry.py::test_every_trigger_is_named PASSED         [ 87%]
+tests/test_self_telemetry.py::test_own_spans_never_roll_a_file_of_their_own PASSED [ 88%]
+tests/test_self_telemetry.py::test_force_flush_skips_self_only_buffer_but_shutdown_writes_it PASSED [ 90%]
+tests/test_self_telemetry.py::test_outage_leaves_exactly_one_own_span_buffered PASSED [ 91%]
+tests/test_self_telemetry.py::test_outage_evidence_lands_after_recovery PASSED [ 93%]
+tests/test_self_telemetry.py::test_local_store_scheme PASSED             [ 95%]
+tests/test_self_telemetry.py::test_url_store_is_one_request_per_file PASSED [ 96%]
+tests/test_self_telemetry.py::test_metrics_through_the_api_meter PASSED  [ 98%]
+tests/test_self_telemetry.py::test_emitted_spans_match_the_registry PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-file-exporter/datasette-1.0a41/runs/20260925T064156Z-gh-36104014472-a1/.pytest-report.json
+======================== 62 passed, 1 skipped in 17.92s ========================

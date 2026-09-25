@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-24T23:33:11Z",
+  "generated_at": "2026-09-25T06:42:20Z",
   "results": [
     {
       "schema_version": 1,
@@ -17324,6 +17324,110 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-os-info/datasette-1.0a37/runs/20260717T184518Z-gh-29604969806-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-otel-file-exporter",
+        "version": "0.1.0a1",
+        "repository": "datasette/datasette-otel-file-exporter",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/30/d9/5fba855b2928f79ea30017e96a353834a4b1d216c3127cb75b5f5bce448a/datasette_otel_file_exporter-0.1.0a1.tar.gz",
+          "sha256": "e83e2f116470a94c4d725abb5a73135b216e6361701ea0657de690d54e98ddf4"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-otel-file-exporter",
+          "ref": "0.1.0a1",
+          "git_sha": "e343a67d305f0b6bb0ccde5f3abc2cd9cf29a49d"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a41",
+        "installed_version": "1.0a41"
+      },
+      "run": {
+        "id": "20260925T064156Z-gh-36104014472-a1",
+        "started_at": "2026-09-25T06:41:56Z",
+        "completed_at": "2026-09-25T06:42:20Z",
+        "duration_seconds": 24.001,
+        "python_version": "3.13",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-otel-file-exporter @ file:///tmp/datasette-otel-file-exporter-plltjz5u/datasette_otel_file_exporter-0.1.0a1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a41",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "duckdb",
+          "--with",
+          "pyarrow>=17",
+          "--with",
+          "obstore>=0.11",
+          "--with",
+          "ruff>=0.16.8",
+          "--with",
+          "ty>=0.0.84",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-file-exporter/datasette-1.0a41/runs/20260925T064156Z-gh-36104014472-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 62,
+        "passed": 62,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "duckdb",
+          "pyarrow>=17",
+          "obstore>=0.11",
+          "ruff>=0.16.8",
+          "ty>=0.0.84"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 5,
+        "release_tag": 6
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-otel-file-exporter/datasette-1.0a41/runs/20260925T064156Z-gh-36104014472-a1/pytest.txt"
       }
     },
     {
