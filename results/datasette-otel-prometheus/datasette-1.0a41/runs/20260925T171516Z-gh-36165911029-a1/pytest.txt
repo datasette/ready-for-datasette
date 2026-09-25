@@ -1,0 +1,47 @@
+Downloading cpython-3.13.15-linux-x86_64-gnu (download) (33.4MiB)
+ Downloaded cpython-3.13.15-linux-x86_64-gnu (download)
+   Building datasette-otel-prometheus @ file:///tmp/datasette-otel-prometheus-3qgu1b0t/datasette_otel_prometheus-0.1.0a1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading ruff (9.9MiB)
+Downloading ty (13.5MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded ruff
+ Downloaded ty
+      Built datasette-otel-prometheus @ file:///tmp/datasette-otel-prometheus-3qgu1b0t/datasette_otel_prometheus-0.1.0a1.tar.gz
+Installed 47 packages in 21ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp8H6hoa/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.15', 'Platform': 'Linux-6.17.0-1022-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.6.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a41', 'metadata': '3.1.1', 'json-report': '1.5.0', 'anyio': '4.15.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-otel-prometheus-3qgu1b0t/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a41, metadata-3.1.1, json-report-1.5.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_datasette_otel_prometheus.py::test_plugin_is_installed PASSED [  5%]
+tests/test_datasette_otel_prometheus.py::test_counter_and_histogram_appear_in_exposition PASSED [ 11%]
+tests/test_datasette_otel_prometheus.py::test_proxy_meter_rebinds_to_late_installed_provider PASSED [ 16%]
+tests/test_datasette_otel_prometheus.py::test_config_defaults PASSED     [ 22%]
+tests/test_datasette_otel_prometheus.py::test_invalid_config_raises_startup_error[plugin_config0-prot: Extra inputs are not permitted] PASSED [ 27%]
+tests/test_datasette_otel_prometheus.py::test_invalid_config_raises_startup_error[plugin_config1-port: Input should be a valid integer] PASSED [ 33%]
+tests/test_datasette_otel_prometheus.py::test_invalid_config_raises_startup_error[plugin_config2-port: Input should be greater than or equal to 1] PASSED [ 38%]
+tests/test_datasette_otel_prometheus.py::test_invalid_config_raises_startup_error[plugin_config3-port: Input should be less than or equal to 65535] PASSED [ 44%]
+tests/test_datasette_otel_prometheus.py::test_invalid_config_raises_startup_error[plugin_config4-host: Input should be a valid string] PASSED [ 50%]
+tests/test_datasette_otel_prometheus.py::test_no_listener_without_port PASSED [ 55%]
+tests/test_datasette_otel_prometheus.py::test_no_metrics_route_on_datasette_port PASSED [ 61%]
+tests/test_datasette_otel_prometheus.py::test_port_not_bound_until_background_tasks_launch PASSED [ 66%]
+tests/test_datasette_otel_prometheus.py::test_listener_closes_on_shutdown PASSED [ 72%]
+tests/test_datasette_otel_prometheus.py::test_port_in_use_crashes_task_with_clear_message PASSED [ 77%]
+tests/test_datasette_otel_prometheus.py::test_service_name_defaults_to_datasette PASSED [ 83%]
+tests/test_datasette_otel_prometheus.py::test_otel_service_name_env PASSED [ 88%]
+tests/test_datasette_otel_prometheus.py::test_otel_resource_attributes_service_name PASSED [ 94%]
+tests/test_datasette_otel_prometheus.py::test_foreign_provider_serves_empty_registry PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-prometheus/datasette-1.0a41/runs/20260925T171516Z-gh-36165911029-a1/.pytest-report.json
+============================== 18 passed in 6.26s ==============================

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-otel-prometheus",
+    "version": "0.1.0a1",
+    "repository": "datasette/datasette-otel-prometheus",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/20/da/7cda8d30b7c7ca2da8b29319547d1fbb4d8fa48568386c8325e65c44ee77/datasette_otel_prometheus-0.1.0a1.tar.gz",
+      "sha256": "a8f1cd2458b25e92d9244108adc15e2fa0c249a36e3fda74320353d2a5555d30"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-otel-prometheus",
+      "ref": "0.1.0a1",
+      "git_sha": "a258f82c5b9f717ec013e60c08062b2fdd106a2e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a41",
+    "installed_version": "1.0a41"
+  },
+  "run": {
+    "id": "20260925T171516Z-gh-36165911029-a1",
+    "started_at": "2026-09-25T17:15:16Z",
+    "completed_at": "2026-09-25T17:15:28Z",
+    "duration_seconds": 12.598,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-otel-prometheus @ file:///tmp/datasette-otel-prometheus-3qgu1b0t/datasette_otel_prometheus-0.1.0a1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a41",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff>=0.16.8",
+      "--with",
+      "ty>=0.0.84",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-otel-prometheus/datasette-1.0a41/runs/20260925T171516Z-gh-36165911029-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 18,
+    "passed": 18,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff>=0.16.8",
+      "ty>=0.0.84"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-otel-prometheus/datasette-1.0a41/runs/20260925T171516Z-gh-36165911029-a1/pytest.txt"
+  }
+}
