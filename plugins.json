@@ -411,8 +411,8 @@
     "name": "datasette-cron",
     "github_repo": "datasette/datasette-cron",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "3b5a3ce22a2796dd51b32416a50ed14d8e61e209b656fed552bffd3d816c7bdc",
-    "metadata_etag": "\"149385914e40c3638e23310424b3f16e0e2b114df002997f85eed2c99ad6ebe0\"",
+    "metadata_sha256": "658aa94ec0308f3cbfda311f6bc06a2de9a664627c28f95cbe639a9d75dd86cb",
+    "metadata_etag": "\"21451f4eb25e8bee979236c979754d0e4b04bc8a2dddff040a9f21879b648e9a\"",
     "latest_version": "0.0.1a2"
   },
   {
