@@ -1019,9 +1019,9 @@
     "name": "datasette-libfec",
     "github_repo": "datasette/datasette-libfec",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "baf641eae08680f2e32c4a0d71fb6996d214cfc5ff9ad55e86eaea1310279c46",
-    "metadata_etag": "\"a1594b9e357eebc96f9ee5aee8054e2e97c5f0259711de15c64a277be00845e0\"",
-    "latest_version": "0.0.1a22"
+    "metadata_sha256": "80d358518e337f298c10920634a6699ea35ddc9597f236270344ca5930731e96",
+    "metadata_etag": "\"96a8f20c89fb5d04846ee8532173679476807aff74cde6c02d4442c6df3e438c\"",
+    "latest_version": "0.0.1a23"
   },
   {
     "name": "datasette-litestream",
