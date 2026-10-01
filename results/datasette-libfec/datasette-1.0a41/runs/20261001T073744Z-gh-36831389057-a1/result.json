@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-libfec",
+    "version": "0.0.1a23",
+    "repository": "datasette/datasette-libfec",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/02/72/561c3f3052eeb927aced338f49aad50390f1c4d01367131cd4a5aff22b98/datasette_libfec-0.0.1a23.tar.gz",
+      "sha256": "be963aecf10c411738d7dc860f78e9a3c4f75e14c6162c448ff35764424d6eca"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-libfec",
+      "ref": "0.0.1a23",
+      "git_sha": "3d5dd9f3fab50fb51951644dd9d794e66a2e9772"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a41",
+    "installed_version": "1.0a41"
+  },
+  "run": {
+    "id": "20261001T073744Z-gh-36831389057-a1",
+    "started_at": "2026-10-01T07:37:44Z",
+    "completed_at": "2026-10-01T07:37:52Z",
+    "duration_seconds": 8.113,
+    "python_version": "3.13",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-libfec @ file:///tmp/datasette-libfec-kp_sifml/datasette_libfec-0.0.1a23.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a41",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff>=0.15.0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-libfec/datasette-1.0a41/runs/20261001T073744Z-gh-36831389057-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 34,
+    "passed": 34,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff>=0.15.0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-libfec/datasette-1.0a41/runs/20261001T073744Z-gh-36831389057-a1/pytest.txt"
+  }
+}
