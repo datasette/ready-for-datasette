@@ -155,8 +155,8 @@
     "name": "datasette-atom",
     "github_repo": "simonw/datasette-atom",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "ed69f10d4a3bddc25e428a7dd093d0124a7c3eb3e96d70813c33920b818f01b7",
-    "metadata_etag": "\"3e7ee506f406077ce7c48cf0af1fbf27c8ce429bd9f2d52c96b699da1dd5028a\"",
+    "metadata_sha256": "8c8d2d5796bc91752e33614305f22dd4e615d1c8935123200b068b0ac8a89823",
+    "metadata_etag": "\"74849917844fac48ce6577664a76c30b8356cf8e99522849dbae8abfc307b4ef\"",
     "latest_version": "0.9"
   },
   {
