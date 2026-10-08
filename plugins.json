@@ -784,6 +784,22 @@
     "latest_version": "0.1"
   },
   {
+    "name": "datasette-google-credentials",
+    "github_repo": "datasette/datasette-google-credentials",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "82b59f50a03248bee6448f33e16c03c496d88056545233c58cc7c8407a3f7b35",
+    "metadata_etag": "\"78799366a753658a46df82f4f4e217e2e35d7eed116ccc19c536bdb38864ab94\"",
+    "latest_version": null
+  },
+  {
+    "name": "datasette-google-sheets",
+    "github_repo": "datasette/datasette-google-sheets",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "148467e1405f01bd96edd0c75f25743ed274af4919da8e55ca37f619a53c3dcd",
+    "metadata_etag": "\"8cba20e585f959d9c50be17d317cad5ae0cc64cbb69c35721dcbec38a5372774\"",
+    "latest_version": null
+  },
+  {
     "name": "datasette-granian",
     "github_repo": "simonw/datasette-granian",
     "metadata_file": "setup.py",
@@ -1027,9 +1043,9 @@
     "name": "datasette-libfec",
     "github_repo": "datasette/datasette-libfec",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "80d358518e337f298c10920634a6699ea35ddc9597f236270344ca5930731e96",
-    "metadata_etag": "\"96a8f20c89fb5d04846ee8532173679476807aff74cde6c02d4442c6df3e438c\"",
-    "latest_version": "0.0.1a23"
+    "metadata_sha256": "b44e866444a466d6fef565d309acd1954b6d2b90a5dd9617354e7c34168d1f87",
+    "metadata_etag": "\"53ab43bc1fb613e3dc2bb53e7a4af646f547d5e4d6d4917d04b2e4402ae3ee38\"",
+    "latest_version": "0.0.1a24"
   },
   {
     "name": "datasette-litestream",
