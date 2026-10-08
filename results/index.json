@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-01T07:37:52Z",
+  "generated_at": "2026-10-08T13:20:58Z",
   "results": [
     {
       "schema_version": 1,
@@ -15477,18 +15477,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-libfec",
-        "version": "0.0.1a23",
+        "version": "0.0.1a24",
         "repository": "datasette/datasette-libfec",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/02/72/561c3f3052eeb927aced338f49aad50390f1c4d01367131cd4a5aff22b98/datasette_libfec-0.0.1a23.tar.gz",
-          "sha256": "be963aecf10c411738d7dc860f78e9a3c4f75e14c6162c448ff35764424d6eca"
+          "url": "https://files.pythonhosted.org/packages/8c/00/a596efd2bb69b8e5f60b9c52c223324f3059a04149d8b83d32adc8256f42/datasette_libfec-0.0.1a24.tar.gz",
+          "sha256": "553b799755f33f4a0e4c4b2ff781f50cec0cdc0d4c07755660fb6220b626b3a9"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-libfec",
-          "ref": "0.0.1a23",
-          "git_sha": "3d5dd9f3fab50fb51951644dd9d794e66a2e9772"
+          "ref": "0.0.1a24",
+          "git_sha": "84c76013275197d06cf352155fdbb59c60cb9845"
         }
       },
       "datasette": {
@@ -15496,10 +15496,10 @@
         "installed_version": "1.0a41"
       },
       "run": {
-        "id": "20261001T073744Z-gh-36831389057-a1",
-        "started_at": "2026-10-01T07:37:44Z",
-        "completed_at": "2026-10-01T07:37:52Z",
-        "duration_seconds": 8.113,
+        "id": "20261008T132052Z-gh-37783589028-a1",
+        "started_at": "2026-10-08T13:20:52Z",
+        "completed_at": "2026-10-08T13:20:58Z",
+        "duration_seconds": 6.812,
         "python_version": "3.13",
         "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 0,
@@ -15514,7 +15514,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-libfec @ file:///tmp/datasette-libfec-kp_sifml/datasette_libfec-0.0.1a23.tar.gz",
+          "datasette-libfec @ file:///tmp/datasette-libfec-d1wnz6k_/datasette_libfec-0.0.1a24.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -15528,7 +15528,7 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-libfec/datasette-1.0a41/runs/20261001T073744Z-gh-36831389057-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-libfec/datasette-1.0a41/runs/20261008T132052Z-gh-37783589028-a1/.pytest-report.json"
         ]
       },
       "passed": true,
@@ -15561,7 +15561,7 @@
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-libfec/datasette-1.0a41/runs/20261001T073744Z-gh-36831389057-a1/pytest.txt"
+        "pytest_output": "results/datasette-libfec/datasette-1.0a41/runs/20261008T132052Z-gh-37783589028-a1/pytest.txt"
       }
     },
     {
