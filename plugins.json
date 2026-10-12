@@ -1371,9 +1371,9 @@
     "name": "datasette-ports",
     "github_repo": "datasette/datasette-ports",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "ea11756d266e3fe57d9c77c53de3a14947cfa769aad738c95c6d6b032deec89d",
-    "metadata_etag": "\"48c6ac6705c3acf37ad6068ddc54f6bcfc3fe18f98e2749e58c1320676a8bd08\"",
-    "latest_version": "0.3"
+    "metadata_sha256": "5a0e1b7dee117c75e93d20d7dde06a1e6d74b0ab6b9b8741ba124103ae561ab3",
+    "metadata_etag": "\"b07acaf4b8c17a4f360df991934754f1f7b8c23a54f9605259a5d48756065e52\"",
+    "latest_version": "0.4"
   },
   {
     "name": "datasette-preact",
