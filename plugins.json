@@ -1347,8 +1347,8 @@
     "name": "datasette-plugin-template-demo",
     "github_repo": "simonw/datasette-plugin-template-demo",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "5e2b6fea2db3db07082cf5c5a92d08b09a52b79329e296691a1ee3af29a275ea",
-    "metadata_etag": "\"9a0a02a3f9e33ac080fb5d8e0e9a6f2157f73d2efdf9e521dc792e66fd4ab36d\"",
+    "metadata_sha256": "3f79baf157316c29d251dcf5bac1ead033e6b360cd04b42dd39ed19907723587",
+    "metadata_etag": "\"62f582335904e2d07989d55d0c4d65897201138962b9de756f83f8c28ca479bc\"",
     "latest_version": "0.1"
   },
   {
