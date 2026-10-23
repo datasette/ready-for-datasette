@@ -1,0 +1,82 @@
+Downloading cpython-3.13.17-linux-x86_64-gnu (download) (33.7MiB)
+ Downloaded cpython-3.13.17-linux-x86_64-gnu (download)
+   Building datasette-mcp @ file:///tmp/datasette-mcp-0xftatja/datasette_mcp-0.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.1MiB)
+Downloading cryptography (4.5MiB)
+Downloading pip (1.7MiB)
+ Downloaded pydantic-core
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-mcp @ file:///tmp/datasette-mcp-0xftatja/datasette_mcp-0.3.tar.gz
+Installed 56 packages in 37ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.17, pytest-9.1.1, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpjTI15g/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.17', 'Platform': 'Linux-6.17.0-1022-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.1.1', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '1.4.0', 'datasette': '1.0a41', 'metadata': '3.1.1', 'json-report': '1.5.0', 'anyio': '4.15.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-mcp-0xftatja/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, datasette-1.0a41, metadata-3.1.1, json-report-1.5.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 55 items
+
+tests/test_mcp.py::test_plugin_is_installed PASSED                       [  1%]
+tests/test_mcp.py::test_server_exposes_exactly_three_read_only_tools PASSED [  3%]
+tests/test_mcp.py::test_default_tools_are_registered_by_plugin_hook PASSED [  5%]
+tests/test_mcp.py::test_another_plugin_can_register_an_mcp_tool PASSED   [  7%]
+tests/test_mcp.py::test_list_databases PASSED                            [  9%]
+tests/test_mcp.py::test_get_database_schema_includes_all_schema_object_types PASSED [ 10%]
+tests/test_mcp.py::test_execute_sql_returns_structured_rows PASSED       [ 12%]
+tests/test_mcp.py::test_execute_sql_delegates_to_datasette_database_execute PASSED [ 14%]
+tests/test_mcp.py::test_empty_database_has_empty_schema PASSED           [ 16%]
+tests/test_mcp.py::test_query_results_are_truncated_at_datasette_limit PASSED [ 18%]
+tests/test_mcp.py::test_missing_and_internal_databases_are_not_disclosed PASSED [ 20%]
+tests/test_mcp.py::test_database_visibility_permission_filters_list_and_schema PASSED [ 21%]
+tests/test_mcp.py::test_execute_sql_permission_is_enforced PASSED        [ 23%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[insert into authors(name) values ('Katherine')] PASSED [ 25%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[update authors set name = 'Katherine' where id = 1] PASSED [ 27%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[delete from authors] PASSED [ 29%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[create table forbidden(id integer)] PASSED [ 30%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[drop table authors] PASSED [ 32%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[alter table authors add column forbidden integer] PASSED [ 34%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[replace into authors(id, name) values (1, 'Katherine')] PASSED [ 36%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[attach database ':memory:' as forbidden] PASSED [ 38%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[detach database forbidden] PASSED [ 40%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[begin] PASSED [ 41%]
+tests/test_mcp.py::test_execute_sql_rejects_non_read_only_operations[pragma user_version = 1] PASSED [ 43%]
+tests/test_mcp.py::test_execute_sql_rejects_multiple_statements PASSED   [ 45%]
+tests/test_mcp.py::test_execute_sql_rejects_missing_statement[] PASSED   [ 47%]
+tests/test_mcp.py::test_execute_sql_rejects_missing_statement[  -- no statement\n] PASSED [ 49%]
+tests/test_mcp.py::test_execute_sql_rejects_non_select_on_memory_database PASSED [ 50%]
+tests/test_mcp.py::test_mcp_streamable_http_endpoint PASSED              [ 52%]
+tests/test_mcp.py::test_mcp_endpoint_honors_datasette_base_url PASSED    [ 54%]
+tests/test_mcp.py::test_csrf_exemption_matches_only_the_mcp_endpoint PASSED [ 56%]
+tests/test_mcp.py::test_http_actor_is_used_for_database_permissions PASSED [ 58%]
+tests/test_mcp.py::test_mcp_session_manager_runs_once_per_asgi_lifespan PASSED [ 60%]
+tests/test_mcp.py::test_canned_query_tools_disabled_by_default PASSED    [ 61%]
+tests/test_mcp.py::test_canned_query_tools_registered_when_enabled PASSED [ 63%]
+tests/test_mcp.py::test_list_canned_queries PASSED                       [ 65%]
+tests/test_mcp.py::test_execute_canned_query PASSED                      [ 67%]
+tests/test_mcp.py::test_read_and_write_canned_query_tools_are_not_interchangeable PASSED [ 69%]
+tests/test_mcp.py::test_execute_writable_canned_query PASSED             [ 70%]
+tests/test_mcp.py::test_writable_canned_query_rejected_for_immutable_database PASSED [ 72%]
+tests/test_mcp.py::test_canned_queries_hidden_with_database PASSED       [ 74%]
+tests/test_mcp.py::test_canned_query_permissions_use_http_actor PASSED   [ 76%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[empty-key-error-execute_canned_query-author_by_name] PASSED [ 78%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[empty-key-error-execute_writable_canned_query-add_author] PASSED [ 80%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[named-key-error-execute_canned_query-author_by_name] PASSED [ 81%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[named-key-error-execute_writable_canned_query-add_author] PASSED [ 83%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[zero-key-error-execute_canned_query-author_by_name] PASSED [ 85%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[zero-key-error-execute_writable_canned_query-add_author] PASSED [ 87%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[private-details-execute_canned_query-author_by_name] PASSED [ 89%]
+tests/test_mcp.py::test_parameter_preparation_errors_reach_client[private-details-execute_writable_canned_query-add_author] PASSED [ 90%]
+tests/test_mcp.py::test_missing_actor_parameter_reports_error_before_execution[no-actor-read] PASSED [ 92%]
+tests/test_mcp.py::test_missing_actor_parameter_reports_error_before_execution[no-actor-write] PASSED [ 94%]
+tests/test_mcp.py::test_missing_actor_parameter_reports_error_before_execution[missing-actor-field-read] PASSED [ 96%]
+tests/test_mcp.py::test_missing_actor_parameter_reports_error_before_execution[missing-actor-field-write] PASSED [ 98%]
+tests/test_mcp.py::test_untrusted_stored_queries_require_sql_permissions PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-mcp/datasette-1.0a41/runs/20261023T063556Z-gh-39912448936-a1/.pytest-report.json
+============================== 55 passed in 3.48s ==============================
