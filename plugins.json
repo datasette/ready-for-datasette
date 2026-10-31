@@ -27,8 +27,8 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "2c842d0613169565c93ae39669811835c25c9f5ca612ab65d5f29106e78de900",
-    "metadata_etag": "\"b7131d81ee6dcc99fdb19d161e25f078c9011fa3c2306d9598c178d88f9f8fc0\"",
+    "metadata_sha256": "84c7d7653d4b93bc434dc654f58f92fd389184c37baba359beb044de9ba3b0dd",
+    "metadata_etag": "\"62bc922fa699e3ce6c5e3bfb1dc2b2f80fd611c4c88fdffa32e3dba9cb49b7f8\"",
     "latest_version": "0.4a0"
   },
   {
