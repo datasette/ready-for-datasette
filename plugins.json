@@ -27,8 +27,8 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "84c7d7653d4b93bc434dc654f58f92fd389184c37baba359beb044de9ba3b0dd",
-    "metadata_etag": "\"62bc922fa699e3ce6c5e3bfb1dc2b2f80fd611c4c88fdffa32e3dba9cb49b7f8\"",
+    "metadata_sha256": "94811a5f9308a733e14a13de771f0aa7047c0a2c29079718a7f6808b6c80029e",
+    "metadata_etag": "\"fe06fe4ab3372b69d8bbf3c2c4021373e05edcb6856e2c3526689c13d6d401da\"",
     "latest_version": "0.4a0"
   },
   {
@@ -139,8 +139,8 @@
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "a5121331ed47021e2135316f94c877b9fbe142fb493af909ac50bd6e848f2cce",
-    "metadata_etag": "\"659347ec7b57bc809bacb1ac91f718dd31508007a0cd800831dc3dce792ff028\"",
+    "metadata_sha256": "3795f8cfeb41398c96f9ffed5c9a8d1ce2797103d9e59741515a084f4a352995",
+    "metadata_etag": "\"7b6c886af7e780bfa0dfa5ed1d49818a953aaf842e2a1b49b4d9fd80e24c5c62\"",
     "latest_version": "0.2a0"
   },
   {
@@ -1059,9 +1059,9 @@
     "name": "datasette-llm",
     "github_repo": "datasette/datasette-llm",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "3072e8ed2fca176c89b49d53950d6fe55d8904dcfc164c0aa4626048cbd28076",
-    "metadata_etag": "\"7e403d32fc5c0000900e49dbbf181a879872e39469a860623a504279e733a7af\"",
-    "latest_version": "0.1a8"
+    "metadata_sha256": "f349be64c1d9a2620185c77395c6d2a0686e14991c3809ccebb04ca17fafac20",
+    "metadata_etag": "\"b78302af225f707f67f4e5af28d75fbe5a10f604550d238c398e06a15653a005\"",
+    "latest_version": "0.1a9"
   },
   {
     "name": "datasette-llm",
@@ -1069,7 +1069,7 @@
     "metadata_file": "pyproject.toml",
     "metadata_sha256": "c338bf261017a7557d56a210c39372065b622459461cf8430b15cd376ef24971",
     "metadata_etag": "\"466274e4bf647bce30d8c4d2e93b86f64436978ae0623f5bf38289c2ed9751fe\"",
-    "latest_version": "0.1a8"
+    "latest_version": "0.1a9"
   },
   {
     "name": "datasette-llm-accountant",
