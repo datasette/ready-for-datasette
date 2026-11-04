@@ -27,9 +27,9 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "94811a5f9308a733e14a13de771f0aa7047c0a2c29079718a7f6808b6c80029e",
-    "metadata_etag": "\"fe06fe4ab3372b69d8bbf3c2c4021373e05edcb6856e2c3526689c13d6d401da\"",
-    "latest_version": "0.4a0"
+    "metadata_sha256": "4d1af81748e4328e48c078efd86a59d68187947f7a947bd3ce63b41a8cfd59ce",
+    "metadata_etag": "\"9b272c9f08d5e99e79e1e8708302300785fee4232252149fa18923c06e5eab6e\"",
+    "latest_version": "0.5a0"
   },
   {
     "name": "datasette-agent-actor-memory",
@@ -139,9 +139,9 @@
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "3795f8cfeb41398c96f9ffed5c9a8d1ce2797103d9e59741515a084f4a352995",
-    "metadata_etag": "\"7b6c886af7e780bfa0dfa5ed1d49818a953aaf842e2a1b49b4d9fd80e24c5c62\"",
-    "latest_version": "0.2a0"
+    "metadata_sha256": "c15e5456989846b8586c0d7e4d4d4b9df17faa41ed8382a1f0f1c28b092b5344",
+    "metadata_etag": "\"a55c62bcc56a1aef1d9bc6e5902901fb984bba630e20586de5c993b94fcab95a\"",
+    "latest_version": "0.3a0"
   },
   {
     "name": "datasette-atom",
