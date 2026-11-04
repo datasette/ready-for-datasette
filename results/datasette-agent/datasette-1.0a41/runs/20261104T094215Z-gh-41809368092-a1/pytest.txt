@@ -1,0 +1,2305 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.8MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-agent @ file:///tmp/datasette-agent-xved9x3w/datasette_agent-0.5a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.1MiB)
+Downloading playwright (46.2MiB)
+Downloading openai (2.3MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded cryptography
+ Downloaded pip
+ Downloaded openai
+ Downloaded playwright
+      Built datasette-agent @ file:///tmp/datasette-agent-xved9x3w/datasette_agent-0.5a0.tar.gz
+Installed 63 packages in 65ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpeGyQAI/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1014-aws-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'metadata': '3.1.1', 'json-report': '1.5.0', 'inline-snapshot': '0.36.1', 'asyncio': '1.4.1.post1', 'datasette': '1.0a41'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-agent-xved9x3w/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, metadata-3.1.1, json-report-1.5.0, inline-snapshot-0.36.1, asyncio-1.4.1.post1, datasette-1.0a41
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 407 items
+
+tests/test_agent.py::test_plugin_is_installed PASSED                     [  0%]
+tests/test_agent.py::test_system_prompt_documents_display_modes PASSED   [  0%]
+tests/test_agent.py::test_system_prompt_warns_against_repeating_rendered_tables PASSED [  0%]
+tests/test_agent.py::test_system_prompt_does_not_change_with_schema_or_actor PASSED [  0%]
+tests/test_agent.py::test_agent_permission_denied PASSED                 [  1%]
+tests/test_agent.py::test_agent_index PASSED                             [  1%]
+tests/test_agent.py::test_agent_index_paginates_own_conversations PASSED [  1%]
+tests/test_agent.py::test_agent_index_searches_own_conversation_titles PASSED [  1%]
+tests/test_agent.py::test_agent_patterns PASSED                          [  2%]
+tests/test_agent.py::test_agent_patterns_require_view_instance[/-/patterns/agent] PASSED [  2%]
+tests/test_agent.py::test_agent_patterns_require_view_instance[/-/patterns/agent/markdown] PASSED [  2%]
+tests/test_agent.py::test_menu_link_added_for_users_with_permission PASSED [  2%]
+tests/test_agent.py::test_menu_link_hidden_without_permission PASSED     [  3%]
+tests/test_agent.py::test_homepage_action_added_for_users_with_permission PASSED [  3%]
+tests/test_agent.py::test_homepage_action_hidden_without_permission PASSED [  3%]
+tests/test_agent.py::test_jump_section_script_added_for_users_with_permission PASSED [  3%]
+tests/test_agent.py::test_jump_section_script_hidden_without_permission PASSED [  4%]
+tests/test_agent.py::test_create_conversation PASSED                     [  4%]
+tests/test_agent.py::test_conversation_page PASSED                       [  4%]
+tests/test_agent.py::test_conversation_page_skips_whitespace_only_assistant_text PASSED [  4%]
+tests/test_agent.py::test_conversation_page_shows_chat_form_for_user_chat PASSED [  5%]
+tests/test_agent.py::test_conversation_page_hides_chat_form_for_background_agent PASSED [  5%]
+tests/test_agent.py::test_conversation_poll_returns_status_and_count PASSED [  5%]
+tests/test_agent.py::test_conversation_poll_user_chat_has_null_agent_status PASSED [  5%]
+tests/test_agent.py::test_conversation_poll_requires_permission PASSED   [  6%]
+tests/test_agent.py::test_conversation_poll_not_found PASSED             [  6%]
+tests/test_agent.py::test_background_conversation_page_includes_poll_url PASSED [  6%]
+tests/test_agent.py::test_user_conversation_page_does_not_include_poll_url PASSED [  6%]
+tests/test_agent.py::test_conversation_not_found PASSED                  [  7%]
+tests/test_agent.py::test_conversation_actor_scoping PASSED              [  7%]
+tests/test_agent.py::test_stream_endpoint PASSED                         [  7%]
+tests/test_agent.py::test_stream_endpoint_headers PASSED                 [  7%]
+tests/test_agent.py::test_messages_persisted PASSED                      [  8%]
+tests/test_agent.py::test_reasoning_streams_and_persists PASSED          [  8%]
+tests/test_agent.py::test_system_prompt_is_first_message PASSED          [  8%]
+tests/test_agent.py::test_empty_reasoning_chunks_are_not_streamed PASSED [  8%]
+tests/test_agent.py::test_tool_call_arguments_stream_before_tool_call PASSED [  9%]
+tests/test_agent.py::test_conversation_title_auto_set PASSED             [  9%]
+tests/test_agent.py::test_agent_index_shows_conversations PASSED         [  9%]
+tests/test_agent.py::test_default_tools_registered PASSED                [  9%]
+tests/test_agent.py::test_describe_table_handles_foreign_keys PASSED     [ 10%]
+tests/test_agent.py::test_describe_table_tool PASSED                     [ 10%]
+tests/test_agent.py::test_list_databases_and_tables_shape PASSED         [ 10%]
+tests/test_agent.py::test_sql_query_unknown_database PASSED              [ 10%]
+tests/test_agent.py::test_agent_tools_command PASSED                     [ 11%]
+tests/test_agent.py::test_agent_tools_command_descriptions PASSED        [ 11%]
+tests/test_agent.py::test_agent_tools_command_json PASSED                [ 11%]
+tests/test_agent.py::test_chat_command_with_prompt PASSED                [ 11%]
+tests/test_agent.py::test_chat_command_interactive PASSED                [ 12%]
+tests/test_agent.py::test_chat_command_shows_tool_calls PASSED           [ 12%]
+tests/test_agent.py::test_chat_command_root_option_uses_root_actor PASSED [ 12%]
+tests/test_agent.py::test_chat_command_yes_option_auto_approves_without_root PASSED [ 12%]
+tests/test_agent.py::test_chat_command_unsafe_combines_root_and_yes PASSED [ 13%]
+tests/test_agent.py::test_chat_command_unsafe_can_execute_write_sql PASSED [ 13%]
+tests/test_agent.py::test_terminal_question_displays_raw_html_without_text PASSED [ 13%]
+tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[] ERROR [ 13%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-keyboard] ERROR [ 14%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-middle] ERROR [ 14%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Control] ERROR [ 14%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Meta] ERROR [ 14%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Shift] ERROR [ 14%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Alt] ERROR [ 15%]
+tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[] ERROR [ 15%]
+tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[] ERROR [ 15%]
+tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[] ERROR [ 15%]
+tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[] ERROR [ 16%]
+tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[] ERROR [ 16%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent?x=1] ERROR [ 16%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent#top] ERROR [ 16%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/versions/../agent] ERROR [ 17%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/%61gent] ERROR [ 17%]
+tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[/prefix] ERROR [ 17%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-keyboard] ERROR [ 17%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-middle] ERROR [ 18%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Control] ERROR [ 18%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Meta] ERROR [ 18%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Shift] ERROR [ 18%]
+tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Alt] ERROR [ 19%]
+tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[/prefix] ERROR [ 19%]
+tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[/prefix] ERROR [ 19%]
+tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[/prefix] ERROR [ 19%]
+tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[/prefix] ERROR [ 20%]
+tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[/prefix] ERROR [ 20%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent?x=1] ERROR [ 20%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent#top] ERROR [ 20%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/versions/../agent] ERROR [ 21%]
+tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/%61gent] ERROR [ 21%]
+tests/test_background_agent.py::test_background_agents_table_created PASSED [ 21%]
+tests/test_background_agent.py::test_start_background_agent PASSED       [ 21%]
+tests/test_background_agent.py::test_get_background_agent_status PASSED  [ 22%]
+tests/test_background_agent.py::test_background_agent_creates_conversation PASSED [ 22%]
+tests/test_background_agent.py::test_background_agent_writes_messages_to_db PASSED [ 22%]
+tests/test_background_agent.py::test_tool_results_inserted_before_next_assistant PASSED [ 22%]
+tests/test_background_agent.py::test_background_agent_completes PASSED   [ 23%]
+tests/test_background_agent.py::test_background_tools_registered PASSED  [ 23%]
+tests/test_background_agent.py::test_background_permission_action_registered PASSED [ 23%]
+tests/test_background_agent.py::test_background_tools_declare_required_permission PASSED [ 23%]
+tests/test_background_agent.py::test_filter_tools_drops_unauthorised PASSED [ 24%]
+tests/test_background_agent.py::test_filter_tools_keeps_authorised PASSED [ 24%]
+tests/test_background_agent.py::test_context_var_exists PASSED           [ 24%]
+tests/test_background_agent.py::test_pending_notification_created_on_completion PASSED [ 24%]
+tests/test_background_agent.py::test_api_create_background_agent PASSED  [ 25%]
+tests/test_background_agent.py::test_api_background_agent_status PASSED  [ 25%]
+tests/test_background_agent.py::test_background_index_page PASSED        [ 25%]
+tests/test_background_agent.py::test_background_index_requires_permission PASSED [ 25%]
+tests/test_background_agent.py::test_background_index_requires_background_permission PASSED [ 26%]
+tests/test_background_agent.py::test_api_create_background_agent_requires_background_permission PASSED [ 26%]
+tests/test_background_agent.py::test_api_background_agent_status_requires_background_permission PASSED [ 26%]
+tests/test_background_agent.py::test_api_cancel_background_agent_requires_background_permission PASSED [ 26%]
+tests/test_background_agent.py::test_notification_prepended_to_user_message PASSED [ 27%]
+tests/test_background_agent.py::test_reconcile_marks_running_rows_as_error PASSED [ 27%]
+tests/test_background_agent.py::test_reconcile_runs_on_datasette_startup PASSED [ 27%]
+tests/test_background_agent.py::test_cancel_endpoint_marks_row_as_error PASSED [ 27%]
+tests/test_background_agent.py::test_cancel_endpoint_requires_permission PASSED [ 28%]
+tests/test_background_agent.py::test_cancel_endpoint_unknown_agent PASSED [ 28%]
+tests/test_background_agent.py::test_cancel_endpoint_other_actor_forbidden PASSED [ 28%]
+tests/test_background_agent.py::test_cancel_endpoint_no_op_on_completed PASSED [ 28%]
+tests/test_background_agent.py::test_background_index_shows_stop_button_for_active_agents PASSED [ 28%]
+tests/test_background_agent.py::test_cancel_endpoint_cancels_in_flight_task PASSED [ 29%]
+tests/test_browser_tasks.py::test_browser_task_records_pending_and_raises PASSED [ 29%]
+tests/test_browser_tasks.py::test_browser_task_re_raise_does_not_duplicate_row PASSED [ 29%]
+tests/test_browser_tasks.py::test_browser_task_replay_returns_result PASSED [ 29%]
+tests/test_browser_tasks.py::test_browser_task_sequential_tasks_replay_in_order PASSED [ 30%]
+tests/test_browser_tasks.py::test_consumed_tasks_do_not_replay PASSED    [ 30%]
+tests/test_browser_tasks.py::test_different_call_keys_do_not_share_results PASSED [ 30%]
+tests/test_browser_tasks.py::test_browser_task_unsupported_context PASSED [ 30%]
+tests/test_browser_tasks.py::test_browser_task_callback PASSED           [ 31%]
+tests/test_browser_tasks.py::test_browser_task_async_callback PASSED     [ 31%]
+tests/test_browser_tasks.py::test_browser_task_callback_explicit_outcome_preserved PASSED [ 31%]
+tests/test_browser_tasks.py::test_task_id_placeholder_substituted_in_html PASSED [ 31%]
+tests/test_browser_tasks.py::test_browser_task_timeout_is_capped PASSED  [ 32%]
+tests/test_browser_tasks.py::test_browser_task_overdue_pending_expires_on_reexecute PASSED [ 32%]
+tests/test_browser_tasks.py::test_browser_task_suspends_turn PASSED      [ 32%]
+tests/test_browser_tasks.py::test_sibling_tool_results_survive_suspension PASSED [ 32%]
+tests/test_browser_tasks.py::test_claim_returns_payload_exactly_once PASSED [ 33%]
+tests/test_browser_tasks.py::test_claim_permissions PASSED               [ 33%]
+tests/test_browser_tasks.py::test_claim_past_deadline_expires PASSED     [ 33%]
+tests/test_browser_tasks.py::test_complete_resumes_tool_and_continues_chain PASSED [ 33%]
+tests/test_browser_tasks.py::test_complete_error_envelope_reaches_tool PASSED [ 34%]
+tests/test_browser_tasks.py::test_complete_without_claim_allowed PASSED  [ 34%]
+tests/test_browser_tasks.py::test_complete_first_write_wins PASSED       [ 34%]
+tests/test_browser_tasks.py::test_complete_validates_body PASSED         [ 34%]
+tests/test_browser_tasks.py::test_complete_oversized_result_rejected PASSED [ 35%]
+tests/test_browser_tasks.py::test_complete_past_deadline_expires_and_rejects PASSED [ 35%]
+tests/test_browser_tasks.py::test_complete_permissions PASSED            [ 35%]
+tests/test_browser_tasks.py::test_cancel_resumes_with_cancelled_envelope PASSED [ 35%]
+tests/test_browser_tasks.py::test_cancel_running_task PASSED             [ 36%]
+tests/test_browser_tasks.py::test_cancel_terminal_task_rejected PASSED   [ 36%]
+tests/test_browser_tasks.py::test_conversation_page_embeds_pending_tasks PASSED [ 36%]
+tests/test_browser_tasks.py::test_conversation_page_without_pending_tasks PASSED [ 36%]
+tests/test_browser_tasks.py::test_completed_task_html_not_replayed_on_page PASSED [ 37%]
+tests/test_browser_tasks.py::test_conversation_page_converts_overdue_tasks PASSED [ 37%]
+tests/test_browser_tasks.py::test_resume_unsticks_expired_task PASSED    [ 37%]
+tests/test_browser_tasks.py::test_resume_refuses_while_task_still_pending PASSED [ 37%]
+tests/test_browser_tasks.py::test_resume_refuses_when_not_suspended PASSED [ 38%]
+tests/test_browser_tasks.py::test_resume_permissions PASSED              [ 38%]
+tests/test_browser_tasks.py::test_conversation_page_flags_resume_needed PASSED [ 38%]
+tests/test_browser_tasks.py::test_conversation_page_no_resume_flag_normally PASSED [ 38%]
+tests/test_browser_tasks.py::test_context_defaults_to_no_browser_task_support PASSED [ 39%]
+tests/test_export_markdown.py::test_user_and_assistant_messages PASSED   [ 39%]
+tests/test_export_markdown.py::test_tool_call_and_result PASSED          [ 39%]
+tests/test_export_markdown.py::test_html_widget_in_tool_result PASSED    [ 39%]
+tests/test_export_markdown.py::test_create_artifact PASSED               [ 40%]
+tests/test_export_markdown.py::test_concurrent_tool_calls_paired_correctly PASSED [ 40%]
+tests/test_export_markdown.py::test_tool_result_error_string PASSED      [ 40%]
+tests/test_export_markdown.py::test_empty_assistant_message_skipped PASSED [ 40%]
+tests/test_filters.py::test_format_datetime_strips_microseconds_and_timezone PASSED [ 41%]
+tests/test_filters.py::test_format_datetime_without_microseconds PASSED  [ 41%]
+tests/test_filters.py::test_format_datetime_naive_isoformat PASSED       [ 41%]
+tests/test_filters.py::test_format_datetime_passthrough_for_garbage PASSED [ 41%]
+tests/test_filters.py::test_format_datetime_passthrough_for_empty PASSED [ 42%]
+tests/test_filters.py::test_format_recent_datetime_uses_local_day PASSED [ 42%]
+tests/test_filters.py::test_extract_edit_sql_url_for_non_html_result PASSED [ 42%]
+tests/test_filters.py::test_extract_edit_sql_url_for_html_result PASSED  [ 42%]
+tests/test_messages.py::test_combine_tool_messages_pairs_results_by_id PASSED [ 42%]
+tests/test_messages.py::test_combine_tool_messages_pairs_by_name_without_ids PASSED [ 43%]
+tests/test_messages.py::test_strip_internal_keys_removes_underscore_prefixed PASSED [ 43%]
+tests/test_messages.py::test_strip_internal_keys_removes_arbitrary_underscore_keys PASSED [ 43%]
+tests/test_messages.py::test_strip_internal_keys_preserves_non_underscore_keys PASSED [ 43%]
+tests/test_messages.py::test_strip_internal_keys_returns_original_when_nothing_to_strip PASSED [ 44%]
+tests/test_messages.py::test_strip_internal_keys_non_json_passthrough PASSED [ 44%]
+tests/test_messages.py::test_strip_internal_keys_non_dict_passthrough PASSED [ 44%]
+tests/test_messages.py::test_shrink_json_value[abcdef-abc... (truncated)-True] PASSED [ 44%]
+tests/test_messages.py::test_shrink_json_value[abc-abc-False] PASSED     [ 45%]
+tests/test_messages.py::test_shrink_json_value[--False] PASSED           [ 45%]
+tests/test_messages.py::test_shrink_json_value[value3-expected3-True] PASSED [ 45%]
+tests/test_messages.py::test_shrink_json_value[value4-expected4-True] PASSED [ 45%]
+tests/test_messages.py::test_shrink_json_value[value5-expected5-True] PASSED [ 46%]
+tests/test_messages.py::test_shrink_json_value[value6-expected6-False] PASSED [ 46%]
+tests/test_messages.py::test_shrink_json_value[value7-expected7-True] PASSED [ 46%]
+tests/test_messages.py::test_shrink_json_value[value8-expected8-True] PASSED [ 46%]
+tests/test_messages.py::test_shrink_json_value[value9-expected9-True] PASSED [ 47%]
+tests/test_messages.py::test_shrink_json_value[value10-expected10-True] PASSED [ 47%]
+tests/test_messages.py::test_shrink_json_value[value11-expected11-False] PASSED [ 47%]
+tests/test_messages.py::test_shrink_json_value[42-42-False] PASSED       [ 47%]
+tests/test_messages.py::test_shrink_json_value[False-False-False] PASSED [ 48%]
+tests/test_messages.py::test_shrink_json_value[None-None-False] PASSED   [ 48%]
+tests/test_messages.py::test_prepare_tool_output_for_model_keeps_large_html_side_channel_out PASSED [ 48%]
+tests/test_messages.py::test_prepare_tool_output_for_model_recursively_truncates_to_valid_json PASSED [ 48%]
+tests/test_messages.py::test_prepare_tool_output_for_model_truncates_nested_strings PASSED [ 49%]
+tests/test_models.py::test_get_agent_models_filters_to_tool_capable_and_orders_default_first PASSED [ 49%]
+tests/test_models.py::test_get_agent_models_without_default_configured PASSED [ 49%]
+tests/test_models.py::test_get_agent_models_respects_purpose_blocklist PASSED [ 49%]
+tests/test_models.py::test_models_api PASSED                             [ 50%]
+tests/test_models.py::test_models_api_requires_permission PASSED         [ 50%]
+tests/test_models.py::test_index_renders_model_picker_when_several_models PASSED [ 50%]
+tests/test_models.py::test_index_pins_single_model_without_a_picker PASSED [ 50%]
+tests/test_models.py::test_index_without_any_models_omits_picker PASSED  [ 51%]
+tests/test_models.py::test_create_conversation_stores_chosen_model PASSED [ 51%]
+tests/test_models.py::test_create_conversation_without_model_leaves_it_unset PASSED [ 51%]
+tests/test_models.py::test_create_conversation_accepts_empty_body PASSED [ 51%]
+tests/test_models.py::test_create_conversation_rejects_unavailable_model[gpt-4-Model not available: gpt-4] PASSED [ 52%]
+tests/test_models.py::test_create_conversation_rejects_unavailable_model[no-such-model-Model not available: no-such-model] PASSED [ 52%]
+tests/test_models.py::test_create_conversation_rejects_unavailable_model[-model must be a non-empty string] PASSED [ 52%]
+tests/test_models.py::test_create_conversation_rejects_unavailable_model[42-model must be a non-empty string] PASSED [ 52%]
+tests/test_models.py::test_create_conversation_rejects_invalid_json PASSED [ 53%]
+tests/test_models.py::test_chat_runs_on_the_chosen_model PASSED          [ 53%]
+tests/test_models.py::test_chat_without_chosen_model_pins_the_default PASSED [ 53%]
+tests/test_models.py::test_every_turn_reuses_the_pinned_model PASSED     [ 53%]
+tests/test_models.py::test_conversation_page_shows_pinned_model PASSED   [ 54%]
+tests/test_models.py::test_conversation_page_has_no_badge_before_model_resolved PASSED [ 54%]
+tests/test_panel.py::test_show_in_panel_registered PASSED                [ 54%]
+tests/test_panel.py::test_show_in_panel_opens_page PASSED                [ 54%]
+tests/test_panel.py::test_show_in_panel_keys_hidden_from_model PASSED    [ 55%]
+tests/test_panel.py::test_show_in_panel_reports_missing_page PASSED      [ 55%]
+tests/test_panel.py::test_show_in_panel_rejects_non_local_paths[https://example.com/] PASSED [ 55%]
+tests/test_panel.py::test_show_in_panel_rejects_non_local_paths[//example.com/data] PASSED [ 55%]
+tests/test_panel.py::test_show_in_panel_rejects_non_local_paths[data/items] PASSED [ 56%]
+tests/test_panel.py::test_show_in_panel_rejects_non_local_paths[/\\example.com] PASSED [ 56%]
+tests/test_panel.py::test_show_in_panel_rejects_non_local_paths[] PASSED [ 56%]
+tests/test_panel.py::test_show_in_panel_rejects_agent_pages[/-/agent] PASSED [ 56%]
+tests/test_panel.py::test_show_in_panel_rejects_agent_pages[/-/agent/background] PASSED [ 57%]
+tests/test_panel.py::test_show_in_panel_needs_interactive_chat PASSED    [ 57%]
+tests/test_panel.py::test_show_in_panel_applies_base_url PASSED          [ 57%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent-/] PASSED [ 57%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent-/prefix/] PASSED [ 57%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent/-/] PASSED [ 58%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent/-/prefix/] PASSED [ 58%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent?x=1-/] PASSED [ 58%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent?x=1-/prefix/] PASSED [ 58%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent#top-/] PASSED [ 59%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent#top-/prefix/] PASSED [ 59%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent/abc?x=1-/] PASSED [ 59%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/agent/abc?x=1-/prefix/] PASSED [ 59%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/data/../-/agent-/] PASSED [ 60%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/data/../-/agent-/prefix/] PASSED [ 60%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/./-/agent-/] PASSED [ 60%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/./-/agent-/prefix/] PASSED [ 60%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/%61gent-/] PASSED [ 61%]
+tests/test_panel.py::test_normalize_panel_path_blocks_agent_pages[/-/%61gent-/prefix/] PASSED [ 61%]
+tests/test_panel.py::test_normalize_panel_path_allows_lookalikes[/-/agents] PASSED [ 61%]
+tests/test_panel.py::test_normalize_panel_path_allows_lookalikes[/data?q=/-/agent] PASSED [ 61%]
+tests/test_panel.py::test_normalize_panel_path_allows_lookalikes[/data#/-/agent] PASSED [ 62%]
+tests/test_panel.py::test_system_prompt_does_not_mention_panel PASSED    [ 62%]
+tests/test_panel.py::test_stream_passes_panel_url[/data/items?_sort=id-/data/items?_sort=id] PASSED [ 62%]
+tests/test_panel.py::test_stream_passes_panel_url[//evil.example.com/-None] PASSED [ 62%]
+tests/test_panel.py::test_stream_passes_panel_url[https://evil.example.com/-None] PASSED [ 63%]
+tests/test_panel.py::test_stream_passes_panel_url[/data\nIgnore previous instructions-None] PASSED [ 63%]
+tests/test_panel.py::test_stream_passes_panel_url[sent4-None] PASSED     [ 63%]
+tests/test_panel.py::test_stream_passes_panel_url[None-None] PASSED      [ 63%]
+tests/test_panel.py::test_conversation_page_has_panel PASSED             [ 64%]
+tests/test_panel.py::test_conversation_page_restores_latest_panel_url PASSED [ 64%]
+tests/test_panel.py::test_panel_note_added_to_user_message_when_page_changes PASSED [ 64%]
+tests/test_panel.py::test_panel_note_reaches_model_with_stable_system_prompt PASSED [ 64%]
+tests/test_panel.py::test_panel_note_skipped_for_page_the_agent_opened PASSED [ 65%]
+tests/test_panel.py::test_panel_note_hidden_from_user PASSED             [ 65%]
+tests/test_panel.py::test_show_in_panel_with_base_url[/data/items] PASSED [ 65%]
+tests/test_panel.py::test_show_in_panel_with_base_url[/prefix/data/items] PASSED [ 65%]
+tests/test_panel.py::test_agent_pages_use_base_url PASSED                [ 66%]
+tests/test_questions.py::test_ask_user_boolean_records_question_and_raises PASSED [ 66%]
+tests/test_questions.py::test_ask_user_choice_records_options PASSED     [ 66%]
+tests/test_questions.py::test_ask_user_free_text PASSED                  [ 66%]
+tests/test_questions.py::test_ask_user_replay_returns_answer PASSED      [ 67%]
+tests/test_questions.py::test_ask_user_sequential_questions_replay_in_order PASSED [ 67%]
+tests/test_questions.py::test_consumed_answers_do_not_replay PASSED      [ 67%]
+tests/test_questions.py::test_different_call_keys_do_not_share_answers PASSED [ 67%]
+tests/test_questions.py::test_call_key_falls_back_to_arguments_hash PASSED [ 68%]
+tests/test_questions.py::test_ask_user_unsupported_context PASSED        [ 68%]
+tests/test_questions.py::test_ask_user_auto_approve_boolean PASSED       [ 68%]
+tests/test_questions.py::test_ask_user_auto_approve_does_not_answer_choices PASSED [ 68%]
+tests/test_questions.py::test_ask_user_text_displays_as_escaped_html PASSED [ 69%]
+tests/test_questions.py::test_ask_user_options_and_free_text_are_exclusive PASSED [ 69%]
+tests/test_questions.py::test_context_injected_into_tools_that_declare_it PASSED [ 69%]
+tests/test_questions.py::test_context_defaults_to_no_question_support PASSED [ 69%]
+tests/test_questions.py::test_ask_user_suspends_turn PASSED              [ 70%]
+tests/test_questions.py::test_sibling_tool_results_survive_suspension PASSED [ 70%]
+tests/test_questions.py::test_answer_resumes_tool_and_continues_chain PASSED [ 70%]
+tests/test_questions.py::test_answer_false_reaches_tool PASSED           [ 70%]
+tests/test_questions.py::test_multi_question_tool_asks_again_on_resume PASSED [ 71%]
+tests/test_questions.py::test_answer_validation PASSED                   [ 71%]
+tests/test_questions.py::test_answer_permissions PASSED                  [ 71%]
+tests/test_questions.py::test_conversation_page_shows_pending_question PASSED [ 71%]
+tests/test_questions.py::test_conversation_page_without_pending_question PASSED [ 71%]
+tests/test_questions.py::test_answered_question_disappears_from_page PASSED [ 72%]
+tests/test_questions.py::test_ask_user_html_stored_and_raised PASSED     [ 72%]
+tests/test_questions.py::test_question_html_reaches_sse_and_page PASSED  [ 72%]
+tests/test_references.py::test_references_api_requires_permission PASSED [ 72%]
+tests/test_references.py::test_references_api_search PASSED              [ 73%]
+tests/test_references.py::test_references_api_empty_query_lists_everything PASSED [ 73%]
+tests/test_references.py::test_references_api_hides_forbidden_tables PASSED [ 73%]
+tests/test_references.py::test_references_api_escapes_like_wildcards PASSED [ 73%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref0-/prefix/demo/items] PASSED [ 74%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref1-/prefix/demo/has~2Fslash] PASSED [ 74%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref2-/prefix/demo/top_items] PASSED [ 74%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref3-/prefix/demo] PASSED [ 74%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref4-None] PASSED [ 75%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref5-/prefix/demo/items] PASSED [ 75%]
+tests/test_references.py::test_reference_urls_use_datasette_urls[ref6-/prefix/demo] PASSED [ 75%]
+tests/test_references.py::test_builtin_id_round_trip PASSED              [ 75%]
+tests/test_references.py::test_references_api_results_include_url_and_label PASSED [ 76%]
+tests/test_references.py::test_normalize_references PASSED               [ 76%]
+tests/test_references.py::test_prepare_references PASSED                 [ 76%]
+tests/test_references.py::test_prepare_references_nothing_valid PASSED   [ 76%]
+tests/test_references.py::test_plugin_reference_type PASSED              [ 77%]
+tests/test_references.py::test_broken_plugin_search_does_not_break_others PASSED [ 77%]
+tests/test_references.py::test_plugin_reference_type_sync_search PASSED  [ 77%]
+tests/test_references.py::test_stream_with_references PASSED             [ 77%]
+tests/test_references.py::test_flatten_attaches_references_to_user_text PASSED [ 78%]
+tests/test_references.py::test_describe_query_tool PASSED                [ 78%]
+tests/test_references.py::test_describe_table_tool_handles_views PASSED  [ 78%]
+tests/test_references.py::test_plugin_reference_context PASSED           [ 78%]
+tests/test_save_query.py::test_save_query_tool_is_registered PASSED      [ 79%]
+tests/test_save_query.py::test_save_query_read_only_flow PASSED          [ 79%]
+tests/test_save_query.py::test_save_query_declined PASSED                [ 79%]
+tests/test_save_query.py::test_save_query_write_query PASSED             [ 79%]
+tests/test_save_query.py::test_save_query_invalid_sql_skips_question PASSED [ 80%]
+tests/test_save_query.py::test_save_query_duplicate_name_skips_question PASSED [ 80%]
+tests/test_save_query.py::test_save_query_requires_store_query_permission PASSED [ 80%]
+tests/test_save_query.py::test_save_query_unknown_database PASSED        [ 80%]
+tests/test_save_query.py::test_save_query_with_base_url PASSED           [ 81%]
+tests/test_schema.py::test_ensure_tables_once_per_database PASSED        [ 81%]
+tests/test_schema.py::test_concurrent_ensure_tables PASSED               [ 81%]
+tests/test_schema.py::test_ensure_tables_retries_failed_migration PASSED [ 81%]
+tests/test_sql_tools.py::test_sql_query_model_mode_default PASSED        [ 82%]
+tests/test_sql_tools.py::test_sql_query_both_mode_returns_rows_and_html PASSED [ 82%]
+tests/test_sql_tools.py::test_sql_query_user_mode_hides_rows_from_model PASSED [ 82%]
+tests/test_sql_tools.py::test_sql_query_user_mode_preserves_large_user_visible_payload PASSED [ 82%]
+tests/test_sql_tools.py::test_sql_query_user_mode_strips_to_summary_for_model PASSED [ 83%]
+tests/test_sql_tools.py::test_sql_query_shows_single_row_to_model_without_count[user] PASSED [ 83%]
+tests/test_sql_tools.py::test_sql_query_shows_single_row_to_model_without_count[both] PASSED [ 83%]
+tests/test_sql_tools.py::test_sql_query_both_mode_counts_rows_when_model_copy_is_cut PASSED [ 83%]
+tests/test_sql_tools.py::test_sql_query_user_mode_says_how_to_read_hidden_rows PASSED [ 84%]
+tests/test_sql_tools.py::test_sql_query_has_more_rows[model] PASSED      [ 84%]
+tests/test_sql_tools.py::test_sql_query_has_more_rows[both] PASSED       [ 84%]
+tests/test_sql_tools.py::test_sql_query_has_more_rows[user] PASSED       [ 84%]
+tests/test_sql_tools.py::test_sql_query_display_appears_in_input_schema PASSED [ 85%]
+tests/test_sql_tools.py::test_sql_query_invalid_display_falls_back_to_model PASSED [ 85%]
+tests/test_sql_tools.py::test_sql_query_includes_query_ms[None] PASSED   [ 85%]
+tests/test_sql_tools.py::test_sql_query_includes_query_ms[model] PASSED  [ 85%]
+tests/test_sql_tools.py::test_sql_query_includes_query_ms[both] PASSED   [ 85%]
+tests/test_sql_tools.py::test_sql_query_includes_query_ms[user] PASSED   [ 86%]
+tests/test_sql_tools.py::test_sql_query_error_includes_edit_sql_url PASSED [ 86%]
+tests/test_sql_tools.py::test_render_rows_html_table_shape PASSED        [ 86%]
+tests/test_sql_tools.py::test_render_rows_html_truncated_marker PASSED   [ 86%]
+tests/test_sql_tools.py::test_sql_result_cells_preserve_whitespace PASSED [ 87%]
+tests/test_sql_tools.py::test_render_rows_html_escapes_html_in_cells PASSED [ 87%]
+tests/test_sql_tools.py::test_list_databases_includes_underscore_db_when_permitted PASSED [ 87%]
+tests/test_sql_tools.py::test_list_databases_hides_dbs_without_execute_sql PASSED [ 87%]
+tests/test_sql_tools.py::test_list_databases_and_tables_keeps_every_database_when_too_long PASSED [ 88%]
+tests/test_sql_tools.py::test_list_tables_tool_requires_database PASSED  [ 88%]
+tests/test_sql_tools.py::test_list_tables_returns_tables_for_one_database PASSED [ 88%]
+tests/test_sql_tools.py::test_list_tables_unknown_database_lists_only_permitted PASSED [ 88%]
+tests/test_sql_tools.py::test_list_tables_permission_denied PASSED       [ 89%]
+tests/test_sql_tools.py::test_list_tables_too_long_says_how_to_find_the_rest PASSED [ 89%]
+tests/test_sql_tools.py::test_execute_write_sql_tool_is_registered PASSED [ 89%]
+tests/test_sql_tools.py::test_execute_write_sql_approves_and_executes_batch[False] PASSED [ 89%]
+tests/test_sql_tools.py::test_execute_write_sql_approves_and_executes_batch[True] PASSED [ 90%]
+tests/test_sql_tools.py::test_execute_write_sql_declined_does_not_execute PASSED [ 90%]
+tests/test_sql_tools.py::test_execute_write_sql_permission_denied_skips_question PASSED [ 90%]
+tests/test_sql_tools.py::test_execute_write_sql_read_only_sql_skips_question PASSED [ 90%]
+tests/test_sql_tools.py::test_execute_write_sql_drop_table_warning_includes_row_count PASSED [ 91%]
+tests/test_sql_tools.py::test_execute_write_sql_stops_after_first_endpoint_failure PASSED [ 91%]
+tests/test_sql_tools.py::test_execute_write_sql_posts_to_execute_write_with_actor PASSED [ 91%]
+tests/test_sql_tools.py::test_normalize_write_parameter_types[False] PASSED [ 91%]
+tests/test_sql_tools.py::test_normalize_write_parameter_types[True] PASSED [ 92%]
+tests/test_sql_tools.py::test_normalize_write_missing_or_null_params[statement0] PASSED [ 92%]
+tests/test_sql_tools.py::test_normalize_write_missing_or_null_params[statement1] PASSED [ 92%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[id=1-params must be an array or object] PASSED [ 92%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params1-must be a string, number, boolean or null] PASSED [ 93%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params2-duplicate parameter: id] PASSED [ 93%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params3-must include a non-empty name and value] PASSED [ 93%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params4-must include a non-empty name and value] PASSED [ 93%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params5-must include a non-empty name and value] PASSED [ 94%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params6-must include a non-empty name and value] PASSED [ 94%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params7-must be a string, number, boolean or null] PASSED [ 94%]
+tests/test_sql_tools.py::test_normalize_write_parameters_rejects_invalid_entries[params8-must be a string, number, boolean or null] PASSED [ 94%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[False-model] PASSED [ 95%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[False-both] PASSED [ 95%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[False-user] PASSED [ 95%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[True-model] PASSED [ 95%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[True-both] PASSED [ 96%]
+tests/test_sql_tools.py::test_sql_query_bound_parameters[True-user] PASSED [ 96%]
+tests/test_sql_tools.py::test_sql_query_invalid_parameters[params0-duplicate parameter] PASSED [ 96%]
+tests/test_sql_tools.py::test_sql_query_invalid_parameters[params1-must be a string, number, boolean or null] PASSED [ 96%]
+tests/test_sql_tools.py::test_sql_query_invalid_parameters[params2-must include a non-empty name and value] PASSED [ 97%]
+tests/test_sql_tools.py::test_sql_query_invalid_parameters[params3-binding parameter] PASSED [ 97%]
+tests/test_sql_tools.py::test_sql_tools_share_parameter_schema PASSED    [ 97%]
+tests/test_stop.py::test_stop_while_model_is_streaming PASSED            [ 97%]
+tests/test_stop.py::test_stop_lets_a_running_tool_finish PASSED          [ 98%]
+tests/test_stop.py::test_stop_with_no_running_turn PASSED                [ 98%]
+tests/test_stop.py::test_stop_only_by_owner PASSED                       [ 98%]
+tests/test_stop.py::test_stop_requires_post PASSED                       [ 98%]
+tests/test_stop.py::test_index_marks_running_conversations PASSED        [ 99%]
+tests/test_stop.py::test_second_turn_rejected_while_running PASSED       [ 99%]
+tests/test_stop.py::test_page_opened_mid_turn_can_watch_it PASSED        [ 99%]
+tests/test_stop.py::test_watch_asks_stale_pages_to_reload PASSED         [ 99%]
+tests/test_stop.py::test_running_api_lists_only_your_running_conversations PASSED [100%]
+
+═══════════════════════════════ inline-snapshot ════════════════════════════════
+INFO: CI run was detected because environment variable "CI" was defined. 
+inline-snapshot runs with --inline-snapshot=disable by default in CI. This means
+that tests with snapshots will continue to run, but snapshot(x) will only return
+x and inline-snapshot will not be able to fix snapshots or generate reports. You
+can change this by using --inline-snapshot=report for example.
+
+
+
+==================================== ERRORS ====================================
+______ ERROR at setup of test_saved_external_link_requires_confirmation[] ______
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-keyboard] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-middle] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-Control] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-Meta] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-Shift] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[-Alt] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+___ ERROR at setup of test_internal_links_keep_panel_and_native_navigation[] ___
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_____ ERROR at setup of test_raw_urls_and_saved_reasoning_are_protected[] ______
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_streamed_links_are_protected_before_receiving_a_href[] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+___ ERROR at setup of test_long_url_fits_dialog_and_keeps_actions_visible[] ____
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+__________ ERROR at setup of test_executable_link_scheme_cannot_run[] __________
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_______ ERROR at setup of test_panel_refuses_agent_pages[-/-/agent?x=1] ________
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_______ ERROR at setup of test_panel_refuses_agent_pages[-/-/agent#top] ________
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+___ ERROR at setup of test_panel_refuses_agent_pages[-/-/versions/../agent] ____
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+________ ERROR at setup of test_panel_refuses_agent_pages[-/-/%61gent] _________
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+__ ERROR at setup of test_saved_external_link_requires_confirmation[/prefix] ___
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-keyboard] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-middle] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-Control] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-Meta] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-Shift] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_external_link_gestures_cannot_bypass_confirmation[/prefix-Alt] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_internal_links_keep_panel_and_native_navigation[/prefix] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+__ ERROR at setup of test_raw_urls_and_saved_reasoning_are_protected[/prefix] __
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_streamed_links_are_protected_before_receiving_a_href[/prefix] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_long_url_fits_dialog_and_keeps_actions_visible[/prefix] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+______ ERROR at setup of test_executable_link_scheme_cannot_run[/prefix] _______
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+____ ERROR at setup of test_panel_refuses_agent_pages[/prefix-/-/agent?x=1] ____
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+____ ERROR at setup of test_panel_refuses_agent_pages[/prefix-/-/agent#top] ____
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_ ERROR at setup of test_panel_refuses_agent_pages[/prefix-/-/versions/../agent] _
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+_____ ERROR at setup of test_panel_refuses_agent_pages[/prefix-/-/%61gent] _____
+
+    @pytest.fixture(scope="module")
+    def browser():
+        with playwright.sync_playwright() as driver:
+>           browser = driver.chromium.launch()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_agent_links_browser.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/sync_api/_generated.py:4103: in launch
+    self._sync(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_browser_type.py:101: in launch
+    await self._channel.send(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:78: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f1550472660>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f15504a3d80>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        parsed_st = _attach_api_call_information(
+            getattr(task, "__pw_stack__", None) or _capture_stack_trace(),
+            is_internal,
+            title,
+        )
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+E           ╔════════════════════════════════════════════════════════════╗
+E           ║ Looks like Playwright was just installed or updated.       ║
+E           ║ Please run the following command to download new browsers: ║
+E           ║                                                            ║
+E           ║     playwright install                                     ║
+E           ║                                                            ║
+E           ║ <3 Playwright Team                                         ║
+E           ╚════════════════════════════════════════════════════════════╝
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Prt-UfIzNN6OPZJA/lib/python3.13/site-packages/playwright/_impl/_connection.py:636: Error
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a41/runs/20261104T094215Z-gh-41809368092-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-keyboard] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-middle] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Control] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Meta] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Shift] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Alt] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent?x=1] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent#top] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/versions/../agent] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/%61gent] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-keyboard] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-middle] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Control] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Meta] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Shift] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Alt] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[/prefix] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent?x=1] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent#top] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/versions/../agent] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ERROR tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/%61gent] - playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+======================= 375 passed, 32 errors in 15.86s ========================
