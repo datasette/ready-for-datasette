@@ -1059,9 +1059,9 @@
     "name": "datasette-llm",
     "github_repo": "datasette/datasette-llm",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "f349be64c1d9a2620185c77395c6d2a0686e14991c3809ccebb04ca17fafac20",
-    "metadata_etag": "\"b78302af225f707f67f4e5af28d75fbe5a10f604550d238c398e06a15653a005\"",
-    "latest_version": "0.1a9"
+    "metadata_sha256": "d1b82a16df11696d1f2a0cd13efb26c69579dd9d53ba2bcd3810261c685e2a68",
+    "metadata_etag": "\"8176997b6ff4b89787f5c7e30dd02df5e99e52f4ad740cb6118bc26eca67c902\"",
+    "latest_version": "0.1a10"
   },
   {
     "name": "datasette-llm",
@@ -1069,7 +1069,7 @@
     "metadata_file": "pyproject.toml",
     "metadata_sha256": "c338bf261017a7557d56a210c39372065b622459461cf8430b15cd376ef24971",
     "metadata_etag": "\"466274e4bf647bce30d8c4d2e93b86f64436978ae0623f5bf38289c2ed9751fe\"",
-    "latest_version": "0.1a9"
+    "latest_version": "0.1a10"
   },
   {
     "name": "datasette-llm-accountant",
