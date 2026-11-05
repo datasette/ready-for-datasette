@@ -1,0 +1,104 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.8MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-llm @ file:///tmp/datasette-llm-nw4ppsy3/datasette_llm-0.1a10.tar.gz
+Downloading cryptography (4.5MiB)
+Downloading openai (2.3MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded cryptography
+ Downloaded pip
+ Downloaded openai
+      Built datasette-llm @ file:///tmp/datasette-llm-nw4ppsy3/datasette_llm-0.1a10.tar.gz
+Installed 53 packages in 47ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpQTsNus/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1017-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'asyncio': '1.4.1.post1', 'metadata': '3.1.1', 'datasette': '1.0a41', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64'}
+rootdir: /tmp/datasette-llm-nw4ppsy3/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, asyncio-1.4.1.post1, metadata-3.1.1, datasette-1.0a41, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 75 items
+
+tests/test_llm.py::test_plugin_is_installed PASSED                       [  1%]
+tests/test_llm.py::test_model PASSED                                     [  2%]
+tests/test_llm.py::test_model_with_purpose PASSED                        [  4%]
+tests/test_llm.py::test_llm_prompt_context_hook PASSED                   [  5%]
+tests/test_llm.py::test_llm_prompt_context_hook_tracks_chain_responses PASSED [  6%]
+tests/test_llm.py::test_llm_prompt_context_chain_exits_after_responses PASSED [  8%]
+tests/test_llm.py::test_multiple_context_hooks PASSED                    [  9%]
+tests/test_llm.py::test_hook_can_block_prompt PASSED                     [ 10%]
+tests/test_llm.py::test_streaming_response PASSED                        [ 12%]
+tests/test_llm.py::test_group_basic PASSED                               [ 13%]
+tests/test_llm.py::test_group_forces_completion PASSED                   [ 14%]
+tests/test_llm.py::test_group_passes_to_hooks PASSED                     [ 16%]
+tests/test_llm.py::test_models_returns_available_models PASSED           [ 17%]
+tests/test_llm.py::test_models_filtered_by_config PASSED                 [ 18%]
+tests/test_llm.py::test_models_blocked_by_config PASSED                  [ 20%]
+tests/test_llm.py::test_default_model_from_config PASSED                 [ 21%]
+tests/test_llm.py::test_purpose_specific_model PASSED                    [ 22%]
+tests/test_llm.py::test_model_not_found_error PASSED                     [ 24%]
+tests/test_llm.py::test_group_without_model_id PASSED                    [ 25%]
+tests/test_llm.py::test_llm_filter_models_hook PASSED                    [ 26%]
+tests/test_llm.py::test_llm_default_model_hook PASSED                    [ 28%]
+tests/test_llm.py::test_register_llm_purposes PASSED                     [ 29%]
+tests/test_llm.py::test_register_llm_purposes_deduplication PASSED       [ 30%]
+tests/test_llm.py::test_register_llm_purposes_no_plugins PASSED          [ 32%]
+tests/test_llm.py::test_llm_default_model_hook_async PASSED              [ 33%]
+tests/test_llm.py::test_purpose_specific_models_filter PASSED            [ 34%]
+tests/test_llm.py::test_purpose_specific_blocked_models PASSED           [ 36%]
+tests/test_llm.py::test_purpose_models_overrides_global_models PASSED    [ 37%]
+tests/test_llm.py::test_purpose_blocked_models_overrides_global PASSED   [ 38%]
+tests/test_llm.py::test_purpose_default_model_automatically_in_models_list PASSED [ 40%]
+tests/test_llm.py::test_global_default_model_automatically_in_models_list PASSED [ 41%]
+tests/test_llm.py::test_global_models_order_matches_config PASSED        [ 42%]
+tests/test_llm.py::test_default_model_is_first PASSED                    [ 44%]
+tests/test_llm.py::test_purpose_default_model_is_first PASSED            [ 45%]
+tests/test_llm.py::test_purpose_models_order_then_global_order PASSED    [ 46%]
+tests/test_llm.py::test_purpose_models_order_with_default PASSED         [ 48%]
+tests/test_llm.py::test_purpose_models_order_with_blocked PASSED         [ 49%]
+tests/test_llm.py::test_global_default_used_when_no_purpose_default PASSED [ 50%]
+tests/test_llm.py::test_purpose_model_dict_with_key PASSED               [ 52%]
+tests/test_llm.py::test_purpose_models_list_dict_with_key PASSED         [ 53%]
+tests/test_llm.py::test_default_model_dict_with_key PASSED               [ 54%]
+tests/test_llm.py::test_purpose_key_overrides_default_key PASSED         [ 56%]
+tests/test_llm.py::test_purpose_models_list_key_takes_priority_over_purpose_model_key PASSED [ 57%]
+tests/test_llm.py::test_same_provider_different_keys_in_models_list PASSED [ 58%]
+tests/test_llm.py::test_model_dict_no_key_field PASSED                   [ 60%]
+tests/test_llm.py::test_sort_models_with_dict_refs PASSED                [ 61%]
+tests/test_llm.py::test_filter_models_with_dict_refs PASSED              [ 62%]
+tests/test_llm.py::test_resolve_model_id_with_dict_default PASSED        [ 64%]
+tests/test_llm.py::test_resolve_model_id_with_dict_purpose_model PASSED  [ 65%]
+tests/test_llm.py::test_group_uses_purpose_key PASSED                    [ 66%]
+tests/test_llm.py::test_custom_key_secrets_auto_registered PASSED        [ 68%]
+tests/test_llm.py::test_default_model_options_applied PASSED             [ 69%]
+tests/test_llm.py::test_default_model_options_overridden_by_kwargs PASSED [ 70%]
+tests/test_llm.py::test_falls_back_to_llm_default_model PASSED           [ 72%]
+tests/test_llm.py::test_config_default_model_beats_llm_default PASSED    [ 73%]
+tests/test_llm.py::test_llm_default_model_respects_filters[plugin_config0] PASSED [ 74%]
+tests/test_llm.py::test_llm_default_model_respects_filters[plugin_config1] PASSED [ 76%]
+tests/test_llm.py::test_llm_builtin_default_used_when_key_available PASSED [ 77%]
+tests/test_llm.py::test_llm_default_model_is_first_in_models PASSED      [ 78%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config0-supported0-expected0-False] PASSED [ 80%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config0-supported0-expected0-True] PASSED [ 81%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config1-supported1-expected1-False] PASSED [ 82%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config1-supported1-expected1-True] PASSED [ 84%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config2-supported2-expected2-False] PASSED [ 85%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config2-supported2-expected2-True] PASSED [ 86%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config3-supported3-expected3-False] PASSED [ 88%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config3-supported3-expected3-True] PASSED [ 89%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config4-supported4-expected4-False] PASSED [ 90%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config4-supported4-expected4-True] PASSED [ 92%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config5-supported5-expected5-False] PASSED [ 93%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config5-supported5-expected5-True] PASSED [ 94%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config6-None-expected6-False] PASSED [ 96%]
+tests/test_model_filter_composition.py::test_model_filter_preserves_config[config6-None-expected6-True] PASSED [ 97%]
+tests/test_model_filter_composition.py::test_model_filters_intersect_independent_of_registration_order[False] PASSED [ 98%]
+tests/test_model_filter_composition.py::test_model_filters_intersect_independent_of_registration_order[True] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/.pytest-report.json
+============================== 75 passed in 0.78s ==============================

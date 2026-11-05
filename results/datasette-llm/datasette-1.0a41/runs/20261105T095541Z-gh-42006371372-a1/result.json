@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-llm",
+    "version": "0.1a10",
+    "repository": "datasette/datasette-llm",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/cb/e2/c6fe460d402947b6fc94bf34a7cc04409b950aec37c9a9a627213b28f25c/datasette_llm-0.1a10.tar.gz",
+      "sha256": "8c7f1338e20506660b3ed337c956591d118bbe5e812ff965a8e06a88813f4d53"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-llm",
+      "ref": "0.1a10",
+      "git_sha": "c96b03ed7d35968ffe28acb6799494aa962f396f"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a41",
+    "installed_version": "1.0a41"
+  },
+  "run": {
+    "id": "20261105T095541Z-gh-42006371372-a1",
+    "started_at": "2026-11-05T09:55:41Z",
+    "completed_at": "2026-11-05T09:55:47Z",
+    "duration_seconds": 5.781,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-llm @ file:///tmp/datasette-llm-nw4ppsy3/datasette_llm-0.1a10.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a41",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "llm-echo>=0.5a0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 75,
+    "passed": 75,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "llm-echo>=0.5a0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/pytest.txt"
+  }
+}

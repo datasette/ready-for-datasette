@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T09:42:58Z",
+  "generated_at": "2026-11-05T09:55:47Z",
   "results": [
     {
       "schema_version": 1,
@@ -15996,18 +15996,18 @@
       "runner_version": 2,
       "package": {
         "name": "datasette-llm",
-        "version": "0.1a9",
+        "version": "0.1a10",
         "repository": "datasette/datasette-llm",
         "source": {
           "type": "pypi_sdist",
-          "url": "https://files.pythonhosted.org/packages/af/8f/832257cc36129e4fca2879f65c5b3ca035e16c7e9fae34b9d2c0050df7d8/datasette_llm-0.1a9.tar.gz",
-          "sha256": "a5b470b107a9b49f145c32b5e97be11d13321d0702dfb3d27696e30732e58c5f"
+          "url": "https://files.pythonhosted.org/packages/cb/e2/c6fe460d402947b6fc94bf34a7cc04409b950aec37c9a9a627213b28f25c/datasette_llm-0.1a10.tar.gz",
+          "sha256": "8c7f1338e20506660b3ed337c956591d118bbe5e812ff965a8e06a88813f4d53"
         },
         "test_suite": {
           "type": "github_release_tag",
           "repository": "datasette/datasette-llm",
-          "ref": "0.1a9",
-          "git_sha": "9db9d614ac2d4a7ec4c2ec3ad4cc39ae00e6fc56"
+          "ref": "0.1a10",
+          "git_sha": "c96b03ed7d35968ffe28acb6799494aa962f396f"
         }
       },
       "datasette": {
@@ -16015,10 +16015,10 @@
         "installed_version": "1.0a41"
       },
       "run": {
-        "id": "20261101T093640Z-gh-41293856730-a1",
-        "started_at": "2026-11-01T09:36:40Z",
-        "completed_at": "2026-11-01T09:36:46Z",
-        "duration_seconds": 6.426,
+        "id": "20261105T095541Z-gh-42006371372-a1",
+        "started_at": "2026-11-05T09:55:41Z",
+        "completed_at": "2026-11-05T09:55:47Z",
+        "duration_seconds": 5.781,
         "python_version": "3.13",
         "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
         "pytest_exit_code": 0,
@@ -16033,7 +16033,7 @@
           "allow",
           "--no-progress",
           "--with",
-          "datasette-llm @ file:///tmp/datasette-llm-s9lz5xu5/datasette_llm-0.1a9.tar.gz",
+          "datasette-llm @ file:///tmp/datasette-llm-nw4ppsy3/datasette_llm-0.1a10.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -16047,14 +16047,14 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a41/runs/20261101T093640Z-gh-41293856730-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/.pytest-report.json"
         ]
       },
       "passed": true,
       "outcome": "passed",
       "counts": {
-        "collected": 59,
-        "passed": 59,
+        "collected": 75,
+        "passed": 75,
         "failed": 0,
         "errors": 0,
         "skipped": 0,
@@ -16075,12 +16075,12 @@
         ]
       },
       "test_inventory": {
-        "pypi_sdist": 1,
-        "release_tag": 2
+        "pypi_sdist": 2,
+        "release_tag": 3
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-llm/datasette-1.0a41/runs/20261101T093640Z-gh-41293856730-a1/pytest.txt"
+        "pytest_output": "results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/pytest.txt"
       }
     },
     {
