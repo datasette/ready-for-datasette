@@ -1,0 +1,52 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-leaflet @ file:///tmp/datasette-leaflet-gs5w4tpx/datasette_leaflet-0.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-leaflet @ file:///tmp/datasette-leaflet-gs5w4tpx/datasette_leaflet-0.3.tar.gz
+Installed 44 packages in 39ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/80SWjIgwgDIA5UwB/lib/python3.13/site-packages/pytest_asyncio/plugin.py:290: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpCOOdJS/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1019-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '2.0.0a1', 'metadata': '3.1.1', 'datasette': '1.0a42', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+Datasette: 1.0a42
+rootdir: /tmp/datasette-leaflet-gs5w4tpx/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-2.0.0a1, metadata-3.1.1, datasette-1.0a42, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 22 items
+
+tests/test_leaflet.py::test_plugin_is_installed PASSED                   [  4%]
+tests/test_leaflet.py::test_static_assets[leaflet-v1.9.4.js] PASSED      [  9%]
+tests/test_leaflet.py::test_static_assets[leaflet-v1.9.4.min.js] PASSED  [ 13%]
+tests/test_leaflet.py::test_static_assets[leaflet-v1.9.4.css] PASSED     [ 18%]
+tests/test_leaflet.py::test_extra_template_vars PASSED                   [ 22%]
+tests/test_leaflet.py::test_extra_body_script PASSED                     [ 27%]
+tests/test_leaflet.py::test_tile_referrer_policy_setting[config0-"strict-origin-when-cross-origin"] PASSED [ 31%]
+tests/test_leaflet.py::test_tile_referrer_policy_setting[config1-"strict-origin-when-cross-origin"] PASSED [ 36%]
+tests/test_leaflet.py::test_tile_referrer_policy_setting[config2-"origin"] PASSED [ 40%]
+tests/test_leaflet.py::test_tile_referrer_policy_setting[config3-false] PASSED [ 45%]
+tests/test_leaflet.py::test_tile_referrer_policy_setting[config4-"\\u003c/script>"] PASSED [ 50%]
+tests/test_leaflet.py::test_bundled_javascript_sets_default_tile_referrer_policy[leaflet-v1.9.4.js] PASSED [ 54%]
+tests/test_leaflet.py::test_bundled_javascript_sets_default_tile_referrer_policy[leaflet-v1.9.4.min.js] PASSED [ 59%]
+tests/test_leaflet.py::test_update_leaflet_uses_the_same_default PASSED  [ 63%]
+tests/test_playwright.py::test_datasette_leaflet_urls_are_injected SKIPPED [ 68%]
+tests/test_playwright.py::test_javascript_url_can_be_imported_as_a_module SKIPPED [ 72%]
+tests/test_playwright.py::test_importing_the_module_sets_a_global_l SKIPPED [ 77%]
+tests/test_playwright.py::test_tiles_send_the_site_origin_as_referer SKIPPED [ 81%]
+tests/test_playwright.py::test_referrer_policy_layer_option_overrides_the_default SKIPPED [ 86%]
+tests/test_playwright.py::test_tile_referrer_policy_setting_can_turn_it_off SKIPPED [ 90%]
+tests/test_playwright.py::test_default_tile_referrer_policy_is_inherited_by_wms_layers SKIPPED [ 95%]
+tests/test_playwright.py::test_minified_build_has_the_same_tile_referrer_policy SKIPPED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet/datasette-1.0a42/runs/20261114T080025Z-gh-43573682812-a1/.pytest-report.json
+======================== 14 passed, 8 skipped in 0.19s =========================

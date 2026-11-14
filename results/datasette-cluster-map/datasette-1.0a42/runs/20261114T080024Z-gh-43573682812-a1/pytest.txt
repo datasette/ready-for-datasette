@@ -1,0 +1,598 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-cluster-map @ file:///tmp/datasette-cluster-map-9iq9og9b/datasette_cluster_map-0.19.tar.gz
+warning: `build_system.requires = ["uv-build>=0.9.18,<0.12.0"]` does not contain the current uv version 0.13.8
+      Built datasette-cluster-map @ file:///tmp/datasette-cluster-map-9iq9og9b/datasette_cluster_map-0.19.tar.gz
+Downloading pygments (1.2MiB)
+Downloading playwright (51.0MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded playwright
+Installed 51 packages in 18ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/pytest_asyncio/plugin.py:290: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpVxbDSP/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1019-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '2.0.0a1', 'metadata': '3.1.1', 'datasette': '1.0a42', 'playwright': '0.10.0', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+Datasette: 1.0a42
+rootdir: /tmp/datasette-cluster-map-9iq9og9b/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-2.0.0a1, metadata-3.1.1, datasette-1.0a42, playwright-0.10.0, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 41 items
+
+tests/test_cluster_map.py::test_plugin_config[config0-places-expected_fragments0] PASSED [  2%]
+tests/test_cluster_map.py::test_plugin_config[config1-places-expected_fragments1] PASSED [  4%]
+tests/test_cluster_map.py::test_plugin_config[config2-places-expected_fragments2] PASSED [  7%]
+tests/test_cluster_map.py::test_plugin_config[config3-places_lat_lng-expected_fragments3] PASSED [  9%]
+tests/test_cluster_map.py::test_plugin_config[config4-places_lat_lng-expected_fragments4] PASSED [ 12%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/-False] PASSED [ 14%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test-False] PASSED [ 17%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test?sql=select+1+-+1;-False] PASSED [ 19%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test?sql=select+*+from+places;-True] PASSED [ 21%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/-/settings-False] PASSED [ 24%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test/dogs-False] PASSED [ 26%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test/places-True] PASSED [ 29%]
+tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test/places_caps-True] PASSED [ 31%]
+tests/test_cluster_map.py::test_plugin_is_installed PASSED               [ 34%]
+tests/test_cluster_map.py::test_respects_base_url PASSED                 [ 36%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input0-expected0] PASSED [ 39%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input1-expected1] PASSED [ 41%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input2-expected2] PASSED [ 43%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input3-expected3] PASSED [ 46%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input4-expected4] PASSED [ 48%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input5-expected5] PASSED [ 51%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input6-expected6] PASSED [ 53%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input7-expected7] PASSED [ 56%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input8-expected8] PASSED [ 58%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input9-expected9] PASSED [ 60%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input10-expected10] PASSED [ 63%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input11-expected11] PASSED [ 65%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input12-expected12] PASSED [ 68%]
+tests/test_cluster_map.py::test_location_columns_from_columns[input13-expected13] PASSED [ 70%]
+tests/test_playwright.py::test_markers_are_displayed[chromium-foo_latitude_foo_longitude] ERROR [ 73%]
+tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lng] ERROR [ 75%]
+tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lon] ERROR [ 78%]
+tests/test_playwright.py::test_markers_are_displayed[chromium-lat_long] ERROR [ 80%]
+tests/test_playwright.py::test_markers_are_displayed[chromium-latitude_longitude] ERROR [ 82%]
+tests/test_playwright.py::test_markers_are_displayed_for_sql_query[chromium] ERROR [ 85%]
+tests/test_playwright.py::test_load_all_paginates_through_table[chromium] ERROR [ 87%]
+tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] ERROR [ 90%]
+tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] ERROR [ 92%]
+tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium] ERROR [ 95%]
+tests/test_playwright.py::test_tiles_send_origin_as_referer[chromium] ERROR [ 97%]
+tests/test_playwright.py::test_tile_referrer_policy_can_be_disabled[chromium] ERROR [100%]
+
+==================================== ERRORS ====================================
+_ ERROR at setup of test_markers_are_displayed[chromium-foo_latitude_foo_longitude] _
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+fixturedef = <FixtureDef argname='ds_server' scope='session' baseid='tests'>
+request = <SubRequest 'ds_server' for <Function test_markers_are_displayed[chromium-foo_latitude_foo_longitude]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/pytest_asyncio/plugin.py:921: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:94: in ds_server
+    yield from _serve(ds_db_path, 8126)
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________ ERROR at setup of test_markers_are_displayed[chromium-lat_lng] ________
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________ ERROR at setup of test_markers_are_displayed[chromium-lat_lon] ________
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_______ ERROR at setup of test_markers_are_displayed[chromium-lat_long] ________
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+__ ERROR at setup of test_markers_are_displayed[chromium-latitude_longitude] ___
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_____ ERROR at setup of test_markers_are_displayed_for_sql_query[chromium] _____
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______ ERROR at setup of test_load_all_paginates_through_table[chromium] _______
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] _
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] _
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+___ ERROR at setup of test_map_appears_once_a_location_has_loaded[chromium] ____
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________ ERROR at setup of test_tiles_send_origin_as_referer[chromium] _________
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path):
+>       yield from _serve(ds_db_path, 8126)
+
+tests/conftest.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8126/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+____ ERROR at setup of test_tile_referrer_policy_can_be_disabled[chromium] _____
+
+url = 'http://localhost:8127/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+fixturedef = <FixtureDef argname='ds_server_no_referrer_policy' scope='session' baseid='tests'>
+request = <SubRequest 'ds_server_no_referrer_policy' for <Function test_tile_referrer_policy_can_be_disabled[chromium]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/pytest_asyncio/plugin.py:921: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:111: in ds_server_no_referrer_policy
+    yield from _serve(ds_db_path, 8127, "--metadata", str(metadata_path))
+tests/conftest.py:85: in _serve
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8127/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YJ4rIvf7ieOi4DNK/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a42/runs/20261114T080024Z-gh-43573682812-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_playwright.py::test_markers_are_displayed[chromium-foo_latitude_foo_longitude] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lng] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lon] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_markers_are_displayed[chromium-lat_long] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_markers_are_displayed[chromium-latitude_longitude] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_markers_are_displayed_for_sql_query[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_load_all_paginates_through_table[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_tiles_send_origin_as_referer[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_tile_referrer_policy_can_be_disabled[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+======================== 29 passed, 12 errors in 1.79s =========================

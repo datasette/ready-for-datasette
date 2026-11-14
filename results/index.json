@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T09:38:27Z",
+  "generated_at": "2026-11-14T08:00:31Z",
   "results": [
     {
       "schema_version": 1,
@@ -6929,6 +6929,123 @@
         "pytest_output": "results/datasette-cluster-map/datasette-1.0a37/runs/20260714T164658Z-local-40bad8/pytest.txt"
       },
       "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-cluster-map",
+        "version": "0.19",
+        "repository": "simonw/datasette-cluster-map",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/28/13/e6cc65d249a1f0f25342db1bda8899066664d38066c90254f1375ca4e11b/datasette_cluster_map-0.19.tar.gz",
+          "sha256": "0e54158564d314782c371dc2095189c825933cc357b7ba737f044d80f8e91fdf"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-cluster-map",
+          "ref": "0.19",
+          "git_sha": "ca513469392a4facd267267728cd7ab0252a7583"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261114T080024Z-gh-43573682812-a1",
+        "started_at": "2026-11-14T08:00:24Z",
+        "completed_at": "2026-11-14T08:00:30Z",
+        "duration_seconds": 5.707,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-cluster-map @ file:///tmp/datasette-cluster-map-9iq9og9b/datasette_cluster_map-0.19.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-playwright",
+          "--with",
+          "httpx",
+          "--with",
+          "sqlite-utils",
+          "--with",
+          "nest-asyncio",
+          "--with",
+          "datasette-test",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a42/runs/20261114T080024Z-gh-43573682812-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 41,
+        "passed": 29,
+        "failed": 0,
+        "errors": 12,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_playwright.py::test_load_all_paginates_through_table[chromium]",
+        "tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium]",
+        "tests/test_playwright.py::test_markers_are_displayed[chromium-foo_latitude_foo_longitude]",
+        "tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lng]",
+        "tests/test_playwright.py::test_markers_are_displayed[chromium-lat_lon]",
+        "tests/test_playwright.py::test_markers_are_displayed[chromium-lat_long]",
+        "tests/test_playwright.py::test_markers_are_displayed[chromium-latitude_longitude]",
+        "tests/test_playwright.py::test_markers_are_displayed_for_sql_query[chromium]",
+        "tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations]",
+        "tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations]",
+        "tests/test_playwright.py::test_tile_referrer_policy_can_be_disabled[chromium]",
+        "tests/test_playwright.py::test_tiles_send_origin_as_referer[chromium]"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-playwright",
+          "httpx",
+          "sqlite-utils",
+          "nest-asyncio",
+          "datasette-test"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-cluster-map/datasette-1.0a42/runs/20261114T080024Z-gh-43573682812-a1/pytest.txt"
+      }
     },
     {
       "schema_version": 1,
@@ -15789,6 +15906,98 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-leaflet/datasette-1.0a37/runs/20260716T121515Z-gh-29497413246-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-leaflet",
+        "version": "0.3",
+        "repository": "simonw/datasette-leaflet",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/73/28/338cefc12c9e4d1c95f52073b26998824a78c4682cbfd25b9fb4991d92a6/datasette_leaflet-0.3.tar.gz",
+          "sha256": "81fc3112e2c49f77c8b2c1a2a57abc64a6b7127594e8eddcb23f0f4e1b1e5175"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-leaflet",
+          "ref": "0.3",
+          "git_sha": "a334ef496513b90d1ecee526ff9f9703d1d2216a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261114T080025Z-gh-43573682812-a1",
+        "started_at": "2026-11-14T08:00:25Z",
+        "completed_at": "2026-11-14T08:00:31Z",
+        "duration_seconds": 5.778,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-leaflet @ file:///tmp/datasette-leaflet-gs5w4tpx/datasette_leaflet-0.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "datasette-test",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet/datasette-1.0a42/runs/20261114T080025Z-gh-43573682812-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 22,
+        "passed": 14,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 8,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "datasette-test"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-leaflet/datasette-1.0a42/runs/20261114T080025Z-gh-43573682812-a1/pytest.txt"
       }
     },
     {

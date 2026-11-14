@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-leaflet",
+    "version": "0.3",
+    "repository": "simonw/datasette-leaflet",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/73/28/338cefc12c9e4d1c95f52073b26998824a78c4682cbfd25b9fb4991d92a6/datasette_leaflet-0.3.tar.gz",
+      "sha256": "81fc3112e2c49f77c8b2c1a2a57abc64a6b7127594e8eddcb23f0f4e1b1e5175"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-leaflet",
+      "ref": "0.3",
+      "git_sha": "a334ef496513b90d1ecee526ff9f9703d1d2216a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a42",
+    "installed_version": "1.0a42"
+  },
+  "run": {
+    "id": "20261114T080025Z-gh-43573682812-a1",
+    "started_at": "2026-11-14T08:00:25Z",
+    "completed_at": "2026-11-14T08:00:31Z",
+    "duration_seconds": 5.778,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-leaflet @ file:///tmp/datasette-leaflet-gs5w4tpx/datasette_leaflet-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a42",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-leaflet/datasette-1.0a42/runs/20261114T080025Z-gh-43573682812-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 22,
+    "passed": 14,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 8,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-leaflet/datasette-1.0a42/runs/20261114T080025Z-gh-43573682812-a1/pytest.txt"
+  }
+}
