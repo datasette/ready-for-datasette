@@ -315,9 +315,9 @@
     "name": "datasette-cluster-map",
     "github_repo": "simonw/datasette-cluster-map",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "c65a532f9294e4826b1f3789b5a319cdf47e0f013c0d7b5a957bf0399a21da28",
-    "metadata_etag": "\"dcff0255beaba7dd187b88beeef14232a7d4908d42b2a725701b3b8106d848d9\"",
-    "latest_version": "0.18.2"
+    "metadata_sha256": "4ee1b263f9461032106adae0086fc5cbdd9036d6ab585be1b5523026a81965ab",
+    "metadata_etag": "\"da3b1a4ce47bdb79258b2247ffa833eb4a76df8e7c22f07446ccabd4af95584c\"",
+    "latest_version": "0.19"
   },
   {
     "name": "datasette-codespaces",
@@ -1005,15 +1005,15 @@
     "metadata_file": "setup.py",
     "metadata_sha256": "5c6ec10f5e6022664d60de3e02b5983dfbb117f92cec577db52b8e87317e36af",
     "metadata_etag": "\"f7881136149f59d0467a4ba75b2e8d7784efe4834423a4aeb703bb82c4804ce5\"",
-    "latest_version": "0.2.2"
+    "latest_version": "0.3"
   },
   {
     "name": "datasette-leaflet",
     "github_repo": "simonw/datasette-leaflet",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "32b68e85a07680c5d0371f298fadd7a8fa5b2c3eddf9b0932794466a18bcc78f",
-    "metadata_etag": "\"562c2e15135fe235784cfe33b641992c15261b17de6c91ef77c08d96e335c954\"",
-    "latest_version": "0.2.2"
+    "metadata_sha256": "e8d93ab908c9221e06e38e1532b754ed9ab3aff04ee988f1cf8d22e8fdf3fc15",
+    "metadata_etag": "\"ba38977bbaf5d803143a6e0be33463ead471db2661a41ed4b1b70f3739ff43e3\"",
+    "latest_version": "0.3"
   },
   {
     "name": "datasette-leaflet-freedraw",
@@ -2042,9 +2042,9 @@
   {
     "name": "datasette-vega",
     "github_repo": "simonw/datasette-vega",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "dd09fb34482e1a6474c14a131a4d5fb075b079f1730e6a0c3818a82d0607a9ac",
-    "metadata_etag": "\"d5ab2eec50b8183817811da499f7c65722d71e93e4efcfeba94a66db45b50230\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "7c06116c5e52608475cc3e55efd81b6dba583e3d7ccad61e5331aa4e89ddfd12",
+    "metadata_etag": "\"e47f11ff84f778e46bafc26ca6ce5fec9d034c83bdee4c178aaecd747bb7eed2\"",
     "latest_version": "0.6.2"
   },
   {
