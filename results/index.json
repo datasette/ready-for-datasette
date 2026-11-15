@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-14T08:00:31Z",
+  "generated_at": "2026-11-15T09:59:09Z",
   "results": [
     {
       "schema_version": 1,
@@ -911,6 +911,139 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-agent/datasette-1.0a41/runs/20261104T094215Z-gh-41809368092-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-agent",
+        "version": "0.6a0",
+        "repository": "datasette/datasette-agent",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/fd/20/7591930e74554a3ce6c54bd01ffbc419d57f1d95b6fcb2b41bf9110fecf7/datasette_agent-0.6a0.tar.gz",
+          "sha256": "b09f1d40b23955081032aaab61d8e2a9ef81c2fe2e1b8a3eafd72989eb07321e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-agent",
+          "ref": "0.6a0",
+          "git_sha": "e99003df19add48940603f9db606c8d50ebdc924"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261115T095754Z-gh-43701730056-a1",
+        "started_at": "2026-11-15T09:57:54Z",
+        "completed_at": "2026-11-15T09:58:27Z",
+        "duration_seconds": 33.105,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-agent @ file:///tmp/datasette-agent-g2mi9jb4/datasette_agent-0.6a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "llm-echo>=0.5a0",
+          "--with",
+          "inline-snapshot",
+          "--with",
+          "playwright",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 442,
+        "passed": 408,
+        "failed": 0,
+        "errors": 34,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[/prefix]",
+        "tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Alt]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Control]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Meta]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Shift]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-keyboard]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-middle]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Alt]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Control]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Meta]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Shift]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-keyboard]",
+        "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-middle]",
+        "tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[/prefix]",
+        "tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[]",
+        "tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[/prefix]",
+        "tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[]",
+        "tests/test_agent_links_browser.py::test_panel_hides_datasette_header_and_footer[/prefix]",
+        "tests/test_agent_links_browser.py::test_panel_hides_datasette_header_and_footer[]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/%61gent]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent#top]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent?x=1]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/versions/../agent]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/%61gent]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent#top]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent?x=1]",
+        "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/versions/../agent]",
+        "tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[/prefix]",
+        "tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[]",
+        "tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[/prefix]",
+        "tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[]",
+        "tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[/prefix]",
+        "tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[]"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "llm-echo>=0.5a0",
+          "inline-snapshot",
+          "playwright"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 16,
+        "release_tag": 17
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-agent/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
       }
     },
     {
@@ -3382,6 +3515,123 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-apps/datasette-1.0a41/runs/20261104T094213Z-gh-41809368092-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-apps",
+        "version": "0.4a0",
+        "repository": "datasette/datasette-apps",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/8b/86/b6d9510a3002905b31b7fd6980cbd0b114f98f05da791de98f61ba113856/datasette_apps-0.4a0.tar.gz",
+          "sha256": "0e9b83ed0245357924fbd202450ce1558249f5396a74c61040d882155af1e731"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-apps",
+          "ref": "0.4a0",
+          "git_sha": "0bc28df17f45373824a3ca632398a55e8af4b912"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261115T095754Z-gh-43701730056-a1",
+        "started_at": "2026-11-15T09:57:54Z",
+        "completed_at": "2026-11-15T09:59:09Z",
+        "duration_seconds": 75.355,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-apps @ file:///tmp/datasette-apps-_9oymi42/datasette_apps-0.4a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "datasette-agent>=0.5a0",
+          "--with",
+          "playwright>=1.60.0",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 296,
+        "passed": 275,
+        "failed": 21,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_playwright.py::test_app_fragment_links_update_the_page_url",
+        "tests/test_playwright.py::test_app_starts_with_the_fragment_the_page_was_opened_with",
+        "tests/test_playwright.py::test_app_without_fragment_starts_at_home",
+        "tests/test_playwright.py::test_browser_back_button_steps_through_app_fragments",
+        "tests/test_playwright.py::test_changing_the_page_fragment_updates_the_app",
+        "tests/test_playwright.py::test_csp_allowlisted_origin_can_receive_exfiltrated_data",
+        "tests/test_playwright.py::test_datasette_query_bridge_returns_data_to_iframe",
+        "tests/test_playwright.py::test_debug_harness_reports_app_errors_and_unserializable_result",
+        "tests/test_playwright.py::test_debug_harness_runs_script_in_hidden_app_frame",
+        "tests/test_playwright.py::test_fullscreen_parent_bridge_ui_uses_plugin_stylesheet",
+        "tests/test_playwright.py::test_history_push_state_with_a_fragment_sets_the_fragment",
+        "tests/test_playwright.py::test_history_replace_state_can_clear_the_fragment",
+        "tests/test_playwright.py::test_history_replace_state_does_not_add_a_history_entry",
+        "tests/test_playwright.py::test_iframe_errors_render_in_parent_error_panel",
+        "tests/test_playwright.py::test_iframe_hash_link_click_runs_app_handler_without_parent_modal",
+        "tests/test_playwright.py::test_iframe_link_click_shows_parent_confirmation_modal",
+        "tests/test_playwright.py::test_iframe_logs_render_below_iframe_in_collapsed_parent_log_panel",
+        "tests/test_playwright.py::test_link_to_a_fragment_in_another_app_navigates_without_a_modal",
+        "tests/test_playwright.py::test_long_iframe_link_url_does_not_overflow_confirmation_modal",
+        "tests/test_playwright.py::test_malicious_apps_cannot_exfiltrate_to_external_origin",
+        "tests/test_playwright.py::test_replaced_iframe_document_cannot_use_global_query_messages"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "datasette-agent>=0.5a0",
+          "playwright>=1.60.0",
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 22,
+        "release_tag": 22
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-apps/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
       }
     },
     {
@@ -8063,6 +8313,101 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-copyable/datasette-1.0a37/runs/20260714T170333Z-gh-29352150622-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-copyable",
+        "version": "0.3.3",
+        "repository": "simonw/datasette-copyable",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/5f/c3/33f4b062eec3f42dc998c85aaedcff618e17e063f8b2c72c4884504f9957/datasette_copyable-0.3.3.tar.gz",
+          "sha256": "579a85963015a5b7f87b6cabcd63ce401065ee83f2ab5b34fe1c1515191167cf"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-copyable",
+          "ref": "0.3.3",
+          "git_sha": "41e6c97d57ba7ac58cc6725692b84f33f1b4b883"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261115T095754Z-gh-43701730056-a1",
+        "started_at": "2026-11-15T09:57:54Z",
+        "completed_at": "2026-11-15T09:57:58Z",
+        "duration_seconds": 4.387,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-copyable @ file:///tmp/datasette-copyable-4h8agqm1/datasette_copyable-0.3.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "httpx",
+          "--with",
+          "sqlite-utils",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-copyable/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 8,
+        "passed": 8,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "httpx",
+          "sqlite-utils"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-copyable/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
       }
     },
     {
@@ -16644,6 +16989,101 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-llm/datasette-1.0a41/runs/20261105T095541Z-gh-42006371372-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-llm",
+        "version": "0.1a11",
+        "repository": "datasette/datasette-llm",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/c9/60/c4488fa2b82027490f48ea2d1ebf98833c62948cf2386342734619ed8ba5/datasette_llm-0.1a11.tar.gz",
+          "sha256": "b055f30cb58549b6c8505c303cb040f12c9d37861eed216c72ecc1bc45221d03"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-llm",
+          "ref": "0.1a11",
+          "git_sha": "29992358f1119977c394b64ec6cfab6e6d44e5fd"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a42",
+        "installed_version": "1.0a42"
+      },
+      "run": {
+        "id": "20261115T095754Z-gh-43701730056-a1",
+        "started_at": "2026-11-15T09:57:54Z",
+        "completed_at": "2026-11-15T09:58:02Z",
+        "duration_seconds": 8.287,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-llm @ file:///tmp/datasette-llm-qrxq1qtm/datasette_llm-0.1a11.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a42",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "llm-echo>=0.5a0",
+          "--with",
+          "httpx2-pytest>=2",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-llm/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 215,
+        "passed": 215,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "llm-echo>=0.5a0",
+          "httpx2-pytest>=2"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 4,
+        "release_tag": 5
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-llm/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
       }
     },
     {

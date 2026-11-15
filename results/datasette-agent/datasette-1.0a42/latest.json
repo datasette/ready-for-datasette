@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-agent",
+    "version": "0.6a0",
+    "repository": "datasette/datasette-agent",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/fd/20/7591930e74554a3ce6c54bd01ffbc419d57f1d95b6fcb2b41bf9110fecf7/datasette_agent-0.6a0.tar.gz",
+      "sha256": "b09f1d40b23955081032aaab61d8e2a9ef81c2fe2e1b8a3eafd72989eb07321e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent",
+      "ref": "0.6a0",
+      "git_sha": "e99003df19add48940603f9db606c8d50ebdc924"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a42",
+    "installed_version": "1.0a42"
+  },
+  "run": {
+    "id": "20261115T095754Z-gh-43701730056-a1",
+    "started_at": "2026-11-15T09:57:54Z",
+    "completed_at": "2026-11-15T09:58:27Z",
+    "duration_seconds": 33.105,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-agent @ file:///tmp/datasette-agent-g2mi9jb4/datasette_agent-0.6a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a42",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "llm-echo>=0.5a0",
+      "--with",
+      "inline-snapshot",
+      "--with",
+      "playwright",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 442,
+    "passed": 408,
+    "failed": 0,
+    "errors": 34,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[/prefix]",
+    "tests/test_agent_links_browser.py::test_executable_link_scheme_cannot_run[]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Alt]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Control]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Meta]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-Shift]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-keyboard]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[-middle]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Alt]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Control]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Meta]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-Shift]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-keyboard]",
+    "tests/test_agent_links_browser.py::test_external_link_gestures_cannot_bypass_confirmation[/prefix-middle]",
+    "tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[/prefix]",
+    "tests/test_agent_links_browser.py::test_internal_links_keep_panel_and_native_navigation[]",
+    "tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[/prefix]",
+    "tests/test_agent_links_browser.py::test_long_url_fits_dialog_and_keeps_actions_visible[]",
+    "tests/test_agent_links_browser.py::test_panel_hides_datasette_header_and_footer[/prefix]",
+    "tests/test_agent_links_browser.py::test_panel_hides_datasette_header_and_footer[]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/%61gent]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent#top]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/agent?x=1]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[-/-/versions/../agent]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/%61gent]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent#top]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/agent?x=1]",
+    "tests/test_agent_links_browser.py::test_panel_refuses_agent_pages[/prefix-/-/versions/../agent]",
+    "tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[/prefix]",
+    "tests/test_agent_links_browser.py::test_raw_urls_and_saved_reasoning_are_protected[]",
+    "tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[/prefix]",
+    "tests/test_agent_links_browser.py::test_saved_external_link_requires_confirmation[]",
+    "tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[/prefix]",
+    "tests/test_agent_links_browser.py::test_streamed_links_are_protected_before_receiving_a_href[]"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "llm-echo>=0.5a0",
+      "inline-snapshot",
+      "playwright"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 16,
+    "release_tag": 17
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
+  }
+}

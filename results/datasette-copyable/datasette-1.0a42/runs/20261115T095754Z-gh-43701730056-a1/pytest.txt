@@ -1,0 +1,38 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-copyable @ file:///tmp/datasette-copyable-4h8agqm1/datasette_copyable-0.3.3.tar.gz
+warning: `build_system.requires = ["uv-build>=0.11.0,<0.12.0"]` does not contain the current uv version 0.13.8
+      Built datasette-copyable @ file:///tmp/datasette-copyable-4h8agqm1/datasette_copyable-0.3.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 42 packages in 24ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/Ed2ykqAkt5rF48hO/lib/python3.13/site-packages/pytest_asyncio/plugin.py:290: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpzblPSz/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1019-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '2.0.0a1', 'metadata': '3.1.1', 'datasette': '1.0a42', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-copyable-4h8agqm1/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-2.0.0a1, metadata-3.1.1, datasette-1.0a42, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_copyable.py::test_plugin_is_installed PASSED                  [ 12%]
+tests/test_copyable.py::test_plugin_adds_copyable_extension PASSED       [ 25%]
+tests/test_copyable.py::test_copyable_page_tsv PASSED                    [ 37%]
+tests/test_copyable.py::test_raw_page_tsv PASSED                         [ 50%]
+tests/test_copyable.py::test_copyable_page_github PASSED                 [ 62%]
+tests/test_copyable.py::test_raw_page_github PASSED                      [ 75%]
+tests/test_copyable.py::test_raw_page_tsv_with_labels PASSED             [ 87%]
+tests/test_copyable.py::test_copyable_page_github_with_labels PASSED     [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-copyable/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json
+============================== 8 passed in 0.25s ===============================

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-copyable",
+    "version": "0.3.3",
+    "repository": "simonw/datasette-copyable",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/5f/c3/33f4b062eec3f42dc998c85aaedcff618e17e063f8b2c72c4884504f9957/datasette_copyable-0.3.3.tar.gz",
+      "sha256": "579a85963015a5b7f87b6cabcd63ce401065ee83f2ab5b34fe1c1515191167cf"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-copyable",
+      "ref": "0.3.3",
+      "git_sha": "41e6c97d57ba7ac58cc6725692b84f33f1b4b883"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a42",
+    "installed_version": "1.0a42"
+  },
+  "run": {
+    "id": "20261115T095754Z-gh-43701730056-a1",
+    "started_at": "2026-11-15T09:57:54Z",
+    "completed_at": "2026-11-15T09:57:58Z",
+    "duration_seconds": 4.387,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-copyable @ file:///tmp/datasette-copyable-4h8agqm1/datasette_copyable-0.3.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a42",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "httpx",
+      "--with",
+      "sqlite-utils",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-copyable/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "httpx",
+      "sqlite-utils"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-copyable/datasette-1.0a42/runs/20261115T095754Z-gh-43701730056-a1/pytest.txt"
+  }
+}
