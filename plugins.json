@@ -27,9 +27,9 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "4d1af81748e4328e48c078efd86a59d68187947f7a947bd3ce63b41a8cfd59ce",
-    "metadata_etag": "\"9b272c9f08d5e99e79e1e8708302300785fee4232252149fa18923c06e5eab6e\"",
-    "latest_version": "0.5a0"
+    "metadata_sha256": "a3d0a084213797e38302c16cbe95e0633fb147ea663a7c8e15ea41f18b8e8c90",
+    "metadata_etag": "\"8d493a68af44672f61ec8b41285e44ba751157fdce7c4a66e4d82f3c6a999705\"",
+    "latest_version": "0.6a0"
   },
   {
     "name": "datasette-agent-actor-memory",
@@ -139,9 +139,9 @@
     "name": "datasette-apps",
     "github_repo": "datasette/datasette-apps",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "c15e5456989846b8586c0d7e4d4d4b9df17faa41ed8382a1f0f1c28b092b5344",
-    "metadata_etag": "\"a55c62bcc56a1aef1d9bc6e5902901fb984bba630e20586de5c993b94fcab95a\"",
-    "latest_version": "0.3a0"
+    "metadata_sha256": "55452d7c3b6c93d94b748fbf3af49ba0f918a834935072c5133cfc7cab658fc2",
+    "metadata_etag": "\"9d771bd079b958ac802ea3f6f2b58609d54acacc1eb7e31f67706e5fa043c697\"",
+    "latest_version": "0.4a0"
   },
   {
     "name": "datasette-atom",
@@ -386,10 +386,10 @@
   {
     "name": "datasette-copyable",
     "github_repo": "simonw/datasette-copyable",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "13501a5f3959f879f56952402c3d68d93449e19f00b15d40b8e1d31f5472973d",
-    "metadata_etag": "\"c68eef737444f950bc87af1d797659f05159f5a4a06a7c928bb3256873d882bb\"",
-    "latest_version": "0.3.2"
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "bfda16f23b308ce9536e785b635645b9f2a996177cbb1766ca4bc2112f384617",
+    "metadata_etag": "\"58922060c2865f0705e7eb0f9d04cbed3ba4ad3eafbf28439798369ffae3d754\"",
+    "latest_version": "0.3.3"
   },
   {
     "name": "datasette-cors",
@@ -1059,9 +1059,9 @@
     "name": "datasette-llm",
     "github_repo": "datasette/datasette-llm",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "d1b82a16df11696d1f2a0cd13efb26c69579dd9d53ba2bcd3810261c685e2a68",
-    "metadata_etag": "\"8176997b6ff4b89787f5c7e30dd02df5e99e52f4ad740cb6118bc26eca67c902\"",
-    "latest_version": "0.1a10"
+    "metadata_sha256": "a3dad5c4b6f24d86afff2ace9c3c32f4af41d199bd79b5ae343fb08f55cf06ff",
+    "metadata_etag": "\"21faa777400280d6a96517525191e202fc9aa3f5366faabad71bb648812d1768\"",
+    "latest_version": "0.1a11"
   },
   {
     "name": "datasette-llm",
@@ -1069,7 +1069,7 @@
     "metadata_file": "pyproject.toml",
     "metadata_sha256": "c338bf261017a7557d56a210c39372065b622459461cf8430b15cd376ef24971",
     "metadata_etag": "\"466274e4bf647bce30d8c4d2e93b86f64436978ae0623f5bf38289c2ed9751fe\"",
-    "latest_version": "0.1a10"
+    "latest_version": "0.1a11"
   },
   {
     "name": "datasette-llm-accountant",
@@ -2043,9 +2043,9 @@
     "name": "datasette-vega",
     "github_repo": "simonw/datasette-vega",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "7c06116c5e52608475cc3e55efd81b6dba583e3d7ccad61e5331aa4e89ddfd12",
-    "metadata_etag": "\"e47f11ff84f778e46bafc26ca6ce5fec9d034c83bdee4c178aaecd747bb7eed2\"",
-    "latest_version": "0.6.2"
+    "metadata_sha256": "8a05ba27721e868be59484150d5b66433e80891da85045a1e60b91fdf6c3a4dd",
+    "metadata_etag": "\"b3979d626aacfdc1a6acfa66a4b9bc9d28581a11ba58fd761e38e2d39bccd3d1\"",
+    "latest_version": "0.7"
   },
   {
     "name": "datasette-verify",
