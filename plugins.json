@@ -27,8 +27,8 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "a3d0a084213797e38302c16cbe95e0633fb147ea663a7c8e15ea41f18b8e8c90",
-    "metadata_etag": "\"8d493a68af44672f61ec8b41285e44ba751157fdce7c4a66e4d82f3c6a999705\"",
+    "metadata_sha256": "b8c4bd74bebf44836790b301672eebc89d6e5f0fd8bd47e5e5d6f5722e440a12",
+    "metadata_etag": "\"9acc5cfc90022e31052171ca9e921099b472cbcbd463364ddffe8191c7b9e44f\"",
     "latest_version": "0.6a0"
   },
   {
@@ -475,9 +475,9 @@
     "name": "datasette-debug-gotham",
     "github_repo": "datasette/datasette-debug-gotham",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "5bd3dd222e5ab86bb06b320e4ead992b95e3443d956c5331c422a0c1227814e2",
-    "metadata_etag": "\"6ff29180a2e21d7215354aa3c04b8f389e2f09845112d3c741cbb2286053cae7\"",
-    "latest_version": "0.1.0a3"
+    "metadata_sha256": "bfb50f380335a5079e48ecfad788cbaf477efa71a3caab9c371f8676227c02cc",
+    "metadata_etag": "\"6ac96edb5d860f69dd91ca98fafc8423909c988d68a45df98ba2fcccb34a7854\"",
+    "latest_version": "0.1.0a4"
   },
   {
     "name": "datasette-debug-permissions",
@@ -1120,6 +1120,14 @@
     "latest_version": "0.1"
   },
   {
+    "name": "datasette-maplibre",
+    "github_repo": "datasette/datasette-maplibre",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "fd01bd5a7af9cec71c6a6758d1639bc58dae56fccce9c2cfdaf153fab776f45d",
+    "metadata_etag": "\"710577a6b3fec66d1e011e8aee00b75a53c1e6da8a4927b4174d34a3e46e59bc\"",
+    "latest_version": "0.1a0"
+  },
+  {
     "name": "datasette-mask-columns",
     "github_repo": "simonw/datasette-mask-columns",
     "metadata_file": "setup.py",
@@ -1682,9 +1690,9 @@
   {
     "name": "datasette-seaborn",
     "github_repo": "simonw/datasette-seaborn",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "a27e50368ce9931d0a033509df8b8d7bd14631096bd3c021bc14adb5798801e8",
-    "metadata_etag": "\"aa3eaad8bd6897bddc1c79df1a26b771b014b00e633cd9d46549349396f30c2c\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "09172c33f69a1b0bee87ad5a31ebd107ec423d8eb2323df145516f1294d9d6e4",
+    "metadata_etag": "\"b7233115642c6738c719d08665ab24d0796208e22d101f44d50f6d7fc08be5bf\"",
     "latest_version": "0.2a0"
   },
   {
