@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-debug-gotham",
+    "version": "0.1.0a4",
+    "repository": "datasette/datasette-debug-gotham",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/84/bb/fac3fafaf68a1ff44fd29e04bea68e8e6266f0c6db5e990f5ada6baa552e/datasette_debug_gotham-0.1.0a4.tar.gz",
+      "sha256": "ec5f390315fd8d1f983b98faab1e8a10805f784c854e3e4ea941691398d1566f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-debug-gotham",
+      "ref": "0.1.0a4",
+      "git_sha": "d66df0cb1fb1fa2d564be84a63a7dc50114e5117"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a43",
+    "installed_version": "1.0a43"
+  },
+  "run": {
+    "id": "20261116T173100Z-gh-43919131073-a1",
+    "started_at": "2026-11-16T17:31:00Z",
+    "completed_at": "2026-11-16T17:31:07Z",
+    "duration_seconds": 6.457,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-debug-gotham @ file:///tmp/datasette-debug-gotham-suxbytmk/datasette_debug_gotham-0.1.0a4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a43",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-acl>=0.5a1",
+      "--with",
+      "datasette-acl-share @ https://github.com/datasette/datasette-acl-share/releases/download/0.0.1a2/datasette_acl_share-0.0.1a2-py3-none-any.whl",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-gotham/datasette-1.0a43/runs/20261116T173100Z-gh-43919131073-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-acl>=0.5a1",
+      "datasette-acl-share @ https://github.com/datasette/datasette-acl-share/releases/download/0.0.1a2/datasette_acl_share-0.0.1a2-py3-none-any.whl"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-debug-gotham/datasette-1.0a43/runs/20261116T173100Z-gh-43919131073-a1/pytest.txt"
+  }
+}

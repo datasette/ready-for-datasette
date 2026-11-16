@@ -1,0 +1,33 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-debug-gotham @ file:///tmp/datasette-debug-gotham-suxbytmk/datasette_debug_gotham-0.1.0a4.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-debug-gotham @ file:///tmp/datasette-debug-gotham-suxbytmk/datasette_debug_gotham-0.1.0a4.tar.gz
+Installed 55 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpiztUQR/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1019-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '2.0.0a1', 'metadata': '3.1.1', 'anyio': '4.16.0', 'json-report': '1.5.0', 'datasette': '1.0a43'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-debug-gotham-suxbytmk/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-2.0.0a1, metadata-3.1.1, anyio-4.16.0, json-report-1.5.0, datasette-1.0a43
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 8 items
+
+tests/test_debug_gotham.py::test_plugin_is_installed PASSED              [ 12%]
+tests/test_debug_gotham.py::test_seeds_actors_into_user_profiles PASSED  [ 25%]
+tests/test_debug_gotham.py::test_actor_cookie[cookies0-clark] PASSED     [ 37%]
+tests/test_debug_gotham.py::test_actor_cookie[cookies1-selina] PASSED    [ 50%]
+tests/test_debug_gotham.py::test_actor_cookie[cookies2-None] PASSED      [ 62%]
+tests/test_debug_gotham.py::test_actor_cookie[cookies3-None] PASSED      [ 75%]
+tests/test_debug_gotham.py::test_actor_cookie[cookies4-None] PASSED      [ 87%]
+tests/test_debug_gotham.py::test_switcher_offers_signed_out PASSED       [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-debug-gotham/datasette-1.0a43/runs/20261116T173100Z-gh-43919131073-a1/.pytest-report.json
+============================== 8 passed in 0.71s ===============================
