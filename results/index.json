@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-16T17:31:07Z",
+  "generated_at": "2026-11-17T00:58:21Z",
   "results": [
     {
       "schema_version": 1,
@@ -18096,6 +18096,141 @@
       ],
       "artifacts": {
         "pytest_output": "results/datasette-low-disk-space-hook/datasette-1.0a37/runs/20260717T035816Z-gh-29553664955-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-maplibre",
+        "version": "0.1a0",
+        "repository": "datasette/datasette-maplibre",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/7b/44/5cf42d81fcb69efee67c850b2485003fc67e3100f10f1be7c3372f360993/datasette_maplibre-0.1a0.tar.gz",
+          "sha256": "7cd53e830d1d65002bc7a6c0a889ef3c912d2ac83bd2d4cfbafbc3b35b970404"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-maplibre",
+          "ref": "0.1a0",
+          "git_sha": "55d1c07c90677e90f3ee35e4ce3733d601942cd7"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a43",
+        "installed_version": "1.0a43"
+      },
+      "run": {
+        "id": "20261117T005812Z-gh-43991843513-a1",
+        "started_at": "2026-11-17T00:58:12Z",
+        "completed_at": "2026-11-17T00:58:21Z",
+        "duration_seconds": 8.388,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-maplibre @ file:///tmp/datasette-maplibre-5tsmexsd/datasette_maplibre-0.1a0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a43",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-playwright",
+          "--with",
+          "httpx",
+          "--with",
+          "nest-asyncio",
+          "--with",
+          "datasette-test",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-maplibre/datasette-1.0a43/runs/20261117T005812Z-gh-43991843513-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 73,
+        "passed": 40,
+        "failed": 0,
+        "errors": 33,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_playwright.py::test_click_point_shows_popup_and_marks_table_row[chromium]",
+        "tests/test_playwright.py::test_color_by_category[chromium]",
+        "tests/test_playwright.py::test_color_by_number[chromium]",
+        "tests/test_playwright.py::test_download_geojson[chromium]",
+        "tests/test_playwright.py::test_filter_to_this_area[chromium]",
+        "tests/test_playwright.py::test_geojson_cells[chromium]",
+        "tests/test_playwright.py::test_globe_button[chromium]",
+        "tests/test_playwright.py::test_globe_can_be_set_by_a_link[chromium]",
+        "tests/test_playwright.py::test_hovering_table_row_highlights_it_on_the_map[chromium]",
+        "tests/test_playwright.py::test_load_all_paginates_through_table[chromium]",
+        "tests/test_playwright.py::test_loading_more_rows_does_not_move_a_map_that_has_been_moved[chromium]",
+        "tests/test_playwright.py::test_long_geojson_on_a_row_page_is_not_collapsed[chromium]",
+        "tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium]",
+        "tests/test_playwright.py::test_map_is_fitted_to_all_rows_as_they_load[chromium]",
+        "tests/test_playwright.py::test_map_position_is_kept_in_the_url[chromium]",
+        "tests/test_playwright.py::test_no_filter_button_for_sql_queries[chromium]",
+        "tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations]",
+        "tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations]",
+        "tests/test_playwright.py::test_overview_map_of_shapes_crossing_the_antimeridian[chromium]",
+        "tests/test_playwright.py::test_points_and_shapes_on_one_map[chromium]",
+        "tests/test_playwright.py::test_points_are_displayed[chromium-/data/two_points]",
+        "tests/test_playwright.py::test_points_are_displayed[chromium-/data?sql=select+*+from+two_points]",
+        "tests/test_playwright.py::test_popup_escapes_html[chromium]",
+        "tests/test_playwright.py::test_row_page[chromium]",
+        "tests/test_playwright.py::test_says_when_the_map_has_more_rows_than_the_table[chromium]",
+        "tests/test_playwright.py::test_scrolling_the_page_does_not_zoom_the_map[chromium]",
+        "tests/test_playwright.py::test_shape_crossing_the_antimeridian[chromium]",
+        "tests/test_playwright.py::test_single_geojson_cell_has_no_overview_map[chromium]",
+        "tests/test_playwright.py::test_toolbar_state_can_be_set_by_a_link[chromium]",
+        "tests/test_playwright.py::test_toolbar_state_is_kept_in_the_url[chromium]",
+        "tests/test_playwright.py::test_view_can_be_switched[chromium]",
+        "tests/test_playwright.py::test_view_is_configurable[chromium]",
+        "tests/test_playwright.py::test_world_is_not_repeated_side_by_side[chromium]"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-playwright",
+          "httpx",
+          "nest-asyncio",
+          "datasette-test"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-maplibre/datasette-1.0a43/runs/20261117T005812Z-gh-43991843513-a1/pytest.txt"
       }
     },
     {

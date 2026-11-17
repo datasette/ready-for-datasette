@@ -1,0 +1,2744 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-maplibre @ file:///tmp/datasette-maplibre-5tsmexsd/datasette_maplibre-0.1a0.tar.gz
+      Built datasette-maplibre @ file:///tmp/datasette-maplibre-5tsmexsd/datasette_maplibre-0.1a0.tar.gz
+Downloading playwright (51.0MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded playwright
+Installed 50 packages in 34ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp1PnFzn/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1019-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'asyncio': '2.0.0a1', 'metadata': '3.1.1', 'playwright': '0.10.0', 'anyio': '4.16.0', 'json-report': '1.5.0', 'datasette': '1.0a43'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+Datasette: 1.0a43
+rootdir: /tmp/datasette-maplibre-5tsmexsd/tagged-source
+configfile: pyproject.toml
+plugins: asyncio-2.0.0a1, metadata-3.1.1, playwright-0.10.0, anyio-4.16.0, json-report-1.5.0, datasette-1.0a43
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 73 items
+
+tests/test_maplibre.py::test_location_columns_from_columns[columns0-expected0] PASSED [  1%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns1-expected1] PASSED [  2%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns2-expected2] PASSED [  4%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns3-expected3] PASSED [  5%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns4-expected4] PASSED [  6%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns5-expected5] PASSED [  8%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns6-expected6] PASSED [  9%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns7-expected7] PASSED [ 10%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns8-expected8] PASSED [ 12%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns9-expected9] PASSED [ 13%]
+tests/test_maplibre.py::test_location_columns_from_columns[columns10-expected10] PASSED [ 15%]
+tests/test_maplibre.py::test_render_cell[-False] PASSED                  [ 16%]
+tests/test_maplibre.py::test_render_cell[3-False] PASSED                 [ 17%]
+tests/test_maplibre.py::test_render_cell[None-False] PASSED              [ 19%]
+tests/test_maplibre.py::test_render_cell[blob-False] PASSED              [ 20%]
+tests/test_maplibre.py::test_render_cell[{not-json-False] PASSED         [ 21%]
+tests/test_maplibre.py::test_render_cell[{}-False] PASSED                [ 23%]
+tests/test_maplibre.py::test_render_cell[[1, 2]-False] PASSED            [ 24%]
+tests/test_maplibre.py::test_render_cell[{"type": "Bad"}-False] PASSED   [ 26%]
+tests/test_maplibre.py::test_render_cell[{"type": {"type": "string"}}-False] PASSED [ 27%]
+tests/test_maplibre.py::test_render_cell[{"type": "Polygon"}-True] PASSED [ 28%]
+tests/test_maplibre.py::test_render_cell[{"type": "FeatureCollection"}-True] PASSED [ 30%]
+tests/test_maplibre.py::test_render_cell_rounds_floats PASSED            [ 31%]
+tests/test_maplibre.py::test_default_config_on_table_page PASSED         [ 32%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data/places-True] PASSED [ 34%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data/places/1-True] PASSED [ 35%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data?sql=select+*+from+places-True] PASSED [ 36%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data?sql=select+latitude+as+lat,+longitude+as+lng+from+places-True] PASSED [ 38%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data/plain-False] PASSED [ 39%]
+tests/test_maplibre.py::test_location_columns_detected_per_page[/data?sql=select+name+from+places-False] PASSED [ 41%]
+tests/test_maplibre.py::test_no_script_on_pages_without_columns PASSED   [ 42%]
+tests/test_maplibre.py::test_configured_columns PASSED                   [ 43%]
+tests/test_maplibre.py::test_table_level_configuration PASSED            [ 45%]
+tests/test_maplibre.py::test_style_configuration[https://example.com/style.json] PASSED [ 46%]
+tests/test_maplibre.py::test_style_configuration[style1] PASSED          [ 47%]
+tests/test_maplibre.py::test_config_cannot_break_out_of_script_tag PASSED [ 49%]
+tests/test_maplibre.py::test_static_assets[datasette-maplibre.js] PASSED [ 50%]
+tests/test_maplibre.py::test_static_assets[maplibre-gl.mjs] PASSED       [ 52%]
+tests/test_maplibre.py::test_static_assets[maplibre-gl-worker.mjs] PASSED [ 53%]
+tests/test_maplibre.py::test_static_assets[maplibre-gl.css] PASSED       [ 54%]
+tests/test_playwright.py::test_points_are_displayed[chromium-/data/two_points] ERROR [ 56%]
+tests/test_playwright.py::test_points_are_displayed[chromium-/data?sql=select+*+from+two_points] ERROR [ 57%]
+tests/test_playwright.py::test_row_page[chromium] ERROR                  [ 58%]
+tests/test_playwright.py::test_load_all_paginates_through_table[chromium] ERROR [ 60%]
+tests/test_playwright.py::test_loading_more_rows_does_not_move_a_map_that_has_been_moved[chromium] ERROR [ 61%]
+tests/test_playwright.py::test_map_is_fitted_to_all_rows_as_they_load[chromium] ERROR [ 63%]
+tests/test_playwright.py::test_scrolling_the_page_does_not_zoom_the_map[chromium] ERROR [ 64%]
+tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] ERROR [ 65%]
+tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] ERROR [ 67%]
+tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium] ERROR [ 68%]
+tests/test_playwright.py::test_view_can_be_switched[chromium] ERROR      [ 69%]
+tests/test_playwright.py::test_view_is_configurable[chromium] ERROR      [ 71%]
+tests/test_playwright.py::test_globe_button[chromium] ERROR              [ 72%]
+tests/test_playwright.py::test_globe_can_be_set_by_a_link[chromium] ERROR [ 73%]
+tests/test_playwright.py::test_color_by_category[chromium] ERROR         [ 75%]
+tests/test_playwright.py::test_color_by_number[chromium] ERROR           [ 76%]
+tests/test_playwright.py::test_filter_to_this_area[chromium] ERROR       [ 78%]
+tests/test_playwright.py::test_no_filter_button_for_sql_queries[chromium] ERROR [ 79%]
+tests/test_playwright.py::test_click_point_shows_popup_and_marks_table_row[chromium] ERROR [ 80%]
+tests/test_playwright.py::test_popup_escapes_html[chromium] ERROR        [ 82%]
+tests/test_playwright.py::test_hovering_table_row_highlights_it_on_the_map[chromium] ERROR [ 83%]
+tests/test_playwright.py::test_download_geojson[chromium] ERROR          [ 84%]
+tests/test_playwright.py::test_map_position_is_kept_in_the_url[chromium] ERROR [ 86%]
+tests/test_playwright.py::test_toolbar_state_is_kept_in_the_url[chromium] ERROR [ 87%]
+tests/test_playwright.py::test_toolbar_state_can_be_set_by_a_link[chromium] ERROR [ 89%]
+tests/test_playwright.py::test_world_is_not_repeated_side_by_side[chromium] ERROR [ 90%]
+tests/test_playwright.py::test_says_when_the_map_has_more_rows_than_the_table[chromium] ERROR [ 91%]
+tests/test_playwright.py::test_geojson_cells[chromium] ERROR             [ 93%]
+tests/test_playwright.py::test_single_geojson_cell_has_no_overview_map[chromium] ERROR [ 94%]
+tests/test_playwright.py::test_long_geojson_on_a_row_page_is_not_collapsed[chromium] ERROR [ 95%]
+tests/test_playwright.py::test_points_and_shapes_on_one_map[chromium] ERROR [ 97%]
+tests/test_playwright.py::test_shape_crossing_the_antimeridian[chromium] ERROR [ 98%]
+tests/test_playwright.py::test_overview_map_of_shapes_crossing_the_antimeridian[chromium] ERROR [100%]
+
+==================================== ERRORS ====================================
+____ ERROR at setup of test_points_are_displayed[chromium-/data/two_points] ____
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+fixturedef = <FixtureDef argname='ds_server' scope='session' baseid='tests'>
+request = <SubRequest 'ds_server' for <Function test_points_are_displayed[chromium-/data/two_points]>>
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -> object | None:
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+>               return (yield)
+                        ^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/pytest_asyncio/plugin.py:921: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:174: in ds_server
+    wait_until_responds(url + "/")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_points_are_displayed[chromium-/data?sql=select+*+from+two_points] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+__________________ ERROR at setup of test_row_page[chromium] ___________________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______ ERROR at setup of test_load_all_paginates_through_table[chromium] _______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_loading_more_rows_does_not_move_a_map_that_has_been_moved[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+___ ERROR at setup of test_map_is_fitted_to_all_rows_as_they_load[chromium] ____
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+__ ERROR at setup of test_scrolling_the_page_does_not_zoom_the_map[chromium] ___
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+___ ERROR at setup of test_map_appears_once_a_location_has_loaded[chromium] ____
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+____________ ERROR at setup of test_view_can_be_switched[chromium] _____________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+____________ ERROR at setup of test_view_is_configurable[chromium] _____________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________________ ERROR at setup of test_globe_button[chromium] _________________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_________ ERROR at setup of test_globe_can_be_set_by_a_link[chromium] __________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______________ ERROR at setup of test_color_by_category[chromium] ______________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_______________ ERROR at setup of test_color_by_number[chromium] _______________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_____________ ERROR at setup of test_filter_to_this_area[chromium] _____________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______ ERROR at setup of test_no_filter_button_for_sql_queries[chromium] _______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_click_point_shows_popup_and_marks_table_row[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_____________ ERROR at setup of test_popup_escapes_html[chromium] ______________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_hovering_table_row_highlights_it_on_the_map[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______________ ERROR at setup of test_download_geojson[chromium] _______________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_______ ERROR at setup of test_map_position_is_kept_in_the_url[chromium] _______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+______ ERROR at setup of test_toolbar_state_is_kept_in_the_url[chromium] _______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_____ ERROR at setup of test_toolbar_state_can_be_set_by_a_link[chromium] ______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_____ ERROR at setup of test_world_is_not_repeated_side_by_side[chromium] ______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_says_when_the_map_has_more_rows_than_the_table[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________________ ERROR at setup of test_geojson_cells[chromium] ________________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+___ ERROR at setup of test_single_geojson_cell_has_no_overview_map[chromium] ___
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_long_geojson_on_a_row_page_is_not_collapsed[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+________ ERROR at setup of test_points_and_shapes_on_one_map[chromium] _________
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_______ ERROR at setup of test_shape_crossing_the_antimeridian[chromium] _______
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+_ ERROR at setup of test_overview_map_of_shapes_crossing_the_antimeridian[chromium] _
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+>               httpx.get(url)
+                ^^^^^^^^^
+E               AttributeError: module 'httpx' has no attribute 'get'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:48: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+ds_db_path = '/tmp/pytest-of-runner/pytest-0/tmp0/data.db'
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x76331c06ee00>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    def ds_server(ds_db_path, tmp_path_factory):
+        config_path = tmp_path_factory.mktemp("config") / "datasette.json"
+        config_path.write_text(
+            json.dumps(
+                {
+                    "plugins": {
+                        "datasette-maplibre": {
+                            "style": EMPTY_STYLE,
+                            "max_cell_maps": 2,
+                        }
+                    },
+                    "databases": {
+                        "data": {
+                            "tables": {
+                                "two_points": {
+                                    "plugins": {"datasette-maplibre": {"view": "points"}}
+                                }
+                            }
+                        }
+                    },
+                }
+            )
+        )
+        port = 8146
+        process = Popen(
+            [
+                sys.executable,
+                "-m",
+                "datasette",
+                "--port",
+                str(port),
+                "--setting",
+                "max_returned_rows",
+                "10",
+                "--config",
+                str(config_path),
+                str(ds_db_path),
+            ],
+            stdout=PIPE,
+        )
+        url = "http://localhost:{}".format(port)
+        try:
+>           wait_until_responds(url + "/")
+
+tests/conftest.py:174: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 'http://localhost:8146/', timeout = 5.0
+
+    def wait_until_responds(url: str, timeout: float = 5.0):
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                httpx.get(url)
+                return
+>           except httpx.ConnectError:
+                   ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sDFFe31aky-2TyV0/lib/python3.13/site-packages/datasette_test/__init__.py:50: AttributeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-maplibre/datasette-1.0a43/runs/20261117T005812Z-gh-43991843513-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_playwright.py::test_points_are_displayed[chromium-/data/two_points] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_points_are_displayed[chromium-/data?sql=select+*+from+two_points] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_row_page[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_load_all_paginates_through_table[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_loading_more_rows_does_not_move_a_map_that_has_been_moved[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_map_is_fitted_to_all_rows_as_they_load[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_scrolling_the_page_does_not_zoom_the_map[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data/no_locations] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_map_appears_once_a_location_has_loaded[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_view_can_be_switched[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_view_is_configurable[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_globe_button[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_globe_can_be_set_by_a_link[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_color_by_category[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_color_by_number[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_filter_to_this_area[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_no_filter_button_for_sql_queries[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_click_point_shows_popup_and_marks_table_row[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_popup_escapes_html[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_hovering_table_row_highlights_it_on_the_map[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_download_geojson[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_map_position_is_kept_in_the_url[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_toolbar_state_is_kept_in_the_url[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_toolbar_state_can_be_set_by_a_link[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_world_is_not_repeated_side_by_side[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_says_when_the_map_has_more_rows_than_the_table[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_geojson_cells[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_single_geojson_cell_has_no_overview_map[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_long_geojson_on_a_row_page_is_not_collapsed[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_points_and_shapes_on_one_map[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_shape_crossing_the_antimeridian[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+ERROR tests/test_playwright.py::test_overview_map_of_shapes_crossing_the_antimeridian[chromium] - AttributeError: module 'httpx' has no attribute 'ConnectError'. Did you mean: 'Connection'?
+======================== 40 passed, 33 errors in 2.38s =========================
