@@ -1,0 +1,41 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-arrows @ file:///tmp/datasette-arrows-mamv3x8c/datasette_arrows-0.1a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading pyarrow (52.5MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded pyarrow
+      Built datasette-arrows @ file:///tmp/datasette-arrows-mamv3x8c/datasette_arrows-0.1a0.tar.gz
+Installed 42 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpEW02IG/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'asyncio': '2.0.0a1', 'json-report': '1.5.0', 'datasette': '1.0a43', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-arrows-mamv3x8c/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, asyncio-2.0.0a1, json-report-1.5.0, datasette-1.0a43, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+tests/test_arrows.py::test_plugin_is_installed PASSED                    [  7%]
+tests/test_arrows.py::test_table_page PASSED                             [ 14%]
+tests/test_arrows.py::test_stream_all_rows PASSED                        [ 21%]
+tests/test_arrows.py::test_stream_respects_filters_and_sort PASSED       [ 28%]
+tests/test_arrows.py::test_view PASSED                                   [ 35%]
+tests/test_arrows.py::test_empty_table_uses_declared_types PASSED        [ 42%]
+tests/test_arrows.py::test_sql_query PASSED                              [ 50%]
+tests/test_arrows.py::test_sql_query_mixed_types_become_strings PASSED   [ 57%]
+tests/test_arrows.py::test_sql_error PASSED                              [ 64%]
+tests/test_arrows.py::test_row_page PASSED                               [ 71%]
+tests/test_arrows.py::test_labels PASSED                                 [ 78%]
+tests/test_arrows.py::test_first_page_fits_wider_type PASSED             [ 85%]
+tests/test_arrows.py::test_later_page_that_does_not_fit_fails PASSED     [ 92%]
+tests/test_arrows.py::test_export_dialog_lists_arrow PASSED              [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-arrows/datasette-1.0a43/runs/20261119T122829Z-gh-44524149846-a1/.pytest-report.json
+============================== 14 passed in 0.58s ==============================
