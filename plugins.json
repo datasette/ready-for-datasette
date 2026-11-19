@@ -144,6 +144,14 @@
     "latest_version": "0.4a0"
   },
   {
+    "name": "datasette-arrows",
+    "github_repo": "datasette/datasette-arrows",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "4e46ee05661fb8e35fc17dbfc887625f6f1e1b6ff233ad599b8c07aa59e3f242",
+    "metadata_etag": "\"a9f506eb3658c339a79d396cfed0708f173bcfdaa82c5120a84ba40c58062d27\"",
+    "latest_version": "0.1a0"
+  },
+  {
     "name": "datasette-atom",
     "github_repo": "asg017/datasette-atom",
     "metadata_file": "pyproject.toml",
