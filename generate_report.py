@@ -26,6 +26,7 @@ STATUS_LABELS = {
     "not_ready": "Tests failing",
     "test_error": "Test environment error",
     "no_tests": "No tests found",
+    "no_sdist": "No sdist",
     "outdated": "Retest needed",
     "untested": "Not tested",
     "unreleased": "Not released",
@@ -33,8 +34,9 @@ STATUS_LABELS = {
 STATUS_DESCRIPTIONS = {
     "ready": "The latest release passed against the tested Datasette alpha.",
     "not_ready": "The latest release completed its suite with test failures.",
-    "test_error": "The suite could not produce a reliable compatibility verdict, or the release has no source distribution to test.",
+    "test_error": "The suite could not produce a reliable compatibility verdict.",
     "no_tests": "Pytest did not discover any tests in the released source.",
+    "no_sdist": "The release has no source distribution on PyPI, so its tests cannot be run.",
     "outdated": "A previous release was tested; the current release still needs a run.",
     "untested": "The released package has not reached the scoreboard yet.",
     "unreleased": "The repository does not currently have a PyPI release.",
@@ -112,6 +114,8 @@ def _status(
         return "not_ready"
     if outcome == "no_tests":
         return "no_tests"
+    if outcome == "no_sdist":
+        return "no_sdist"
     return "test_error"
 
 
@@ -688,7 +692,7 @@ HTML_TEMPLATE = """<!doctype html>
     .progress-track { display: flex; height: 20px; overflow: hidden; background: var(--blue-pale); border: 2px solid var(--blue); border-radius: 999px; }
     .progress-segment { display: block; min-width: 3px; }
     .progress-copy { display: flex; justify-content: space-between; margin-top: 10px; color: var(--muted); font-size: 13px; }
-    .legend { display: grid; grid-template-columns: repeat(7, minmax(95px, 1fr)); gap: 8px; margin-top: 22px; }
+    .legend { display: grid; grid-template-columns: repeat(8, minmax(95px, 1fr)); gap: 8px; margin-top: 22px; }
     .legend-item { display: flex; gap: 9px; align-items: center; padding: 10px; text-align: left; color: var(--muted); background: var(--blue-pale); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
     .legend-item:hover { border-color: var(--blue); }
     .legend-item strong { display: block; color: var(--ink); font-size: 19px; line-height: 1; }
@@ -698,6 +702,7 @@ HTML_TEMPLATE = """<!doctype html>
     .status-not_ready, .legend-dot.status-not_ready, .progress-segment.status-not_ready { --status: var(--red); }
     .status-test_error, .legend-dot.status-test_error, .progress-segment.status-test_error { --status: var(--orange); }
     .status-no_tests, .legend-dot.status-no_tests, .progress-segment.status-no_tests { --status: var(--purple); }
+    .status-no_sdist, .legend-dot.status-no_sdist, .progress-segment.status-no_sdist { --status: #a8558f; }
     .status-outdated, .legend-dot.status-outdated, .progress-segment.status-outdated { --status: #147a91; }
     .status-untested, .legend-dot.status-untested, .progress-segment.status-untested { --status: #9b998f; }
     .status-unreleased, .legend-dot.status-unreleased, .progress-segment.status-unreleased { --status: #d4d1c4; }
@@ -856,7 +861,7 @@ HTML_TEMPLATE = """<!doctype html>
     const sort = document.getElementById("sort");
     const resultCount = document.getElementById("result-count");
     const empty = document.getElementById("empty");
-    const statusOrder = {test_error: 0, not_ready: 1, no_tests: 2, outdated: 3, ready: 4, untested: 5, unreleased: 6};
+    const statusOrder = {test_error: 0, not_ready: 1, no_tests: 2, no_sdist: 3, outdated: 4, ready: 5, untested: 6, unreleased: 7};
 
     function refresh() {
       const query = search.value.trim().toLowerCase();

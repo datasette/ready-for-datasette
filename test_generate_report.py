@@ -274,3 +274,21 @@ def test_generate_report_excludes_skipped_plugins(tmp_path):
         row["name"] for row in json.loads((output_dir / "plugins.json").read_text())
     ] == ["datasette-included"]
     assert "datasette-skipped" not in (output_dir / "index.html").read_text()
+
+
+def test_build_plugin_rows_marks_wheel_only_release_as_no_sdist():
+    plugin = {
+        "name": "datasette-wheel-only",
+        "github_repo": "example/datasette-wheel-only",
+        "latest_version": "0.1",
+    }
+    result = make_result(
+        "datasette-wheel-only", "0.1", "1.0a44", "no_sdist", "2026-11-23T04:00:00Z"
+    )
+    result["package"]["source"] = None
+
+    row = generate_report.build_plugin_rows([plugin], [result], [result])[0]
+
+    assert row["status"] == "no_sdist"
+    assert row["status_label"] == "No sdist"
+    assert row["sdist_url"] is None
