@@ -3,32 +3,32 @@
   "runner_version": 2,
   "package": {
     "name": "datasette-remote-metadata",
-    "version": "0.1",
+    "version": "0.2",
     "repository": "simonw/datasette-remote-metadata",
     "source": {
       "type": "pypi_sdist",
-      "url": "https://files.pythonhosted.org/packages/eb/9c/4f9fb6d35732958af98566cdfbdf3b965e820b47e03d3bc88432faf310da/datasette-remote-metadata-0.1.tar.gz",
-      "sha256": "eaa2a2205eb700cfcfbb342813d1a454208e221324b5cee09cb686b03314a046"
+      "url": "https://files.pythonhosted.org/packages/ea/98/ad6980842fbb5f5af17539378f60c80ebc7fc15bf0e96e47a3ddd9a0820d/datasette_remote_metadata-0.2.tar.gz",
+      "sha256": "5e8b1ce03817bf601401a32e42ca0b2bea5344e29baefce46b7893e5a38d9ccd"
     },
     "test_suite": {
       "type": "github_release_tag",
       "repository": "simonw/datasette-remote-metadata",
-      "ref": "0.1",
-      "git_sha": "81ba9b4cb61fe6972b6f40ca9b08ea66b967ff9b"
+      "ref": "0.2",
+      "git_sha": "b1fac7d906bda2de5f80a8f5a4f9e59445275044"
     }
   },
   "datasette": {
     "requested_version": "1.0a44",
-    "installed_version": null
+    "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261123T051045Z-gh-45116103831-a1",
-    "started_at": "2026-11-23T05:10:45Z",
-    "completed_at": "2026-11-23T05:10:50Z",
-    "duration_seconds": 5.547,
+    "id": "20261123T055222Z-gh-45120424876-a1",
+    "started_at": "2026-11-23T05:52:22Z",
+    "completed_at": "2026-11-23T05:52:30Z",
+    "duration_seconds": 7.913,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
-    "pytest_exit_code": 3,
+    "pytest_exit_code": 0,
     "command": [
       "uv",
       "run",
@@ -40,24 +40,28 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-remote-metadata @ file:///tmp/datasette-remote-metadata-5hy645rh/datasette-remote-metadata-0.1.tar.gz",
+      "datasette-remote-metadata @ file:///tmp/datasette-remote-metadata-se5p_9m5/datasette_remote_metadata-0.2.tar.gz",
       "--with",
       "pytest",
       "--with",
       "pytest-json-report",
       "--with",
       "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-httpx2>=1.0.0",
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remote-metadata/datasette-1.0a44/runs/20261123T051045Z-gh-45116103831-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remote-metadata/datasette-1.0a44/runs/20261123T055222Z-gh-45120424876-a1/.pytest-report.json"
     ]
   },
-  "passed": false,
-  "outcome": "install_error",
+  "passed": true,
+  "outcome": "passed",
   "counts": {
-    "collected": 0,
-    "passed": 0,
+    "collected": 9,
+    "passed": 9,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
@@ -70,21 +74,19 @@
   "error_tests": [],
   "test_environment": {
     "package_extra": null,
-    "dependency_source": null,
-    "dependencies": []
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-httpx2>=1.0.0"
+    ]
   },
   "test_inventory": {
-    "pypi_sdist": 0,
+    "pypi_sdist": 1,
     "release_tag": 1
   },
-  "warnings": [
-    {
-      "code": "tests_missing_from_sdist",
-      "message": "The exact release tag contains tests, but the PyPI sdist does not."
-    }
-  ],
+  "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-remote-metadata/datasette-1.0a44/runs/20261123T051045Z-gh-45116103831-a1/pytest.txt"
-  },
-  "detail": "uv or pytest exited before producing a JSON test report"
+    "pytest_output": "results/datasette-remote-metadata/datasette-1.0a44/runs/20261123T055222Z-gh-45120424876-a1/pytest.txt"
+  }
 }

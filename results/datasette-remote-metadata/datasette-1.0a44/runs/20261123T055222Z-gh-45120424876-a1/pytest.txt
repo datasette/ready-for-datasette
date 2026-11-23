@@ -1,0 +1,38 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-remote-metadata @ file:///tmp/datasette-remote-metadata-se5p_9m5/datasette_remote_metadata-0.2.tar.gz
+      Built datasette-remote-metadata @ file:///tmp/datasette-remote-metadata-se5p_9m5/datasette_remote_metadata-0.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded pip
+Installed 45 packages in 27ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/BPRAEj7HFs4iFu0R/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpzE9YH0/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'respx': '0.23.1', 'httpx2': '1.0.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-remote-metadata-se5p_9m5/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, respx-0.23.1, httpx2-1.0.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 9 items
+
+tests/test_remote_metadata.py::test_remote_metadata PASSED               [ 11%]
+tests/test_remote_metadata.py::test_ttl PASSED                           [ 22%]
+tests/test_remote_metadata.py::test_headers PASSED                       [ 33%]
+tests/test_remote_metadata.py::test_cachebust[True] PASSED               [ 44%]
+tests/test_remote_metadata.py::test_cachebust[False] PASSED              [ 55%]
+tests/test_remote_metadata.py::test_fails_if_error_on_startup PASSED     [ 66%]
+tests/test_remote_metadata.py::test_table_and_column_metadata PASSED     [ 77%]
+tests/test_remote_metadata.py::test_refresh_picks_up_changes PASSED      [ 88%]
+tests/test_remote_metadata.py::test_non_string_values PASSED             [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remote-metadata/datasette-1.0a44/runs/20261123T055222Z-gh-45120424876-a1/.pytest-report.json
+============================== 9 passed in 3.19s ===============================
