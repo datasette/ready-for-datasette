@@ -1,0 +1,33 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-plugin-router @ file:///tmp/datasette-plugin-router-7l82vbb_/datasette_plugin_router-0.0.1a6.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-plugin-router @ file:///tmp/datasette-plugin-router-7l82vbb_/datasette_plugin_router-0.0.1a6.tar.gz
+Installed 48 packages in 16ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpOd6kYC/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'syrupy': '7.0.3', 'asyncio': '2.0.0a1', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-plugin-router-7l82vbb_/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, syrupy-7.0.3, asyncio-2.0.0a1, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_plugin_router.py::test_plugin_is_installed PASSED             [ 16%]
+tests/test_plugin_router.py::test_spec PASSED                            [ 33%]
+tests/test_plugin_router.py::test_nested_pydantic_models_openapi PASSED  [ 50%]
+tests/test_plugin_router.py::test_int_url_var_param PASSED               [ 66%]
+tests/test_plugin_router.py::test_annotated_body_syntax PASSED           [ 83%]
+tests/test_plugin_router.py::test_body_validation_returns_400 PASSED     [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plugin-router/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/.pytest-report.json
+--------------------------- snapshot report summary ----------------------------
+1 snapshot passed.
+============================== 6 passed in 0.24s ===============================

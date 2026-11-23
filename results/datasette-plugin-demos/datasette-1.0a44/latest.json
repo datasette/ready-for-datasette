@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-plugin-demos",
+    "version": "0.4",
+    "repository": "simonw/datasette-plugin-demos",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/56/04/b9fb40f14234b40b4de9bd2e606e6ad58f66ac46fc05b78aaab9e6db3c81/datasette-plugin-demos-0.4.tar.gz",
+      "sha256": "e545742f5a77f5aacf7b77a4c3346423908da88deb487bb2cea636cbd78299ca"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-plugin-demos",
+      "ref": "0.4",
+      "git_sha": "b860714fb37f9c5f29f90176bdb968deb7c7fd04"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T042914Z-gh-45112094249-a1",
+    "started_at": "2026-11-23T04:29:14Z",
+    "completed_at": "2026-11-23T04:29:19Z",
+    "duration_seconds": 5.844,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-plugin-demos @ file:///tmp/datasette-plugin-demos-q6p7qv34/datasette-plugin-demos-0.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plugin-demos/datasette-1.0a44/runs/20261123T042914Z-gh-45112094249-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_plugin_demos.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-plugin-demos/datasette-1.0a44/runs/20261123T042914Z-gh-45112094249-a1/pytest.txt"
+  }
+}

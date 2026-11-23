@@ -1,0 +1,50 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-pins @ file:///tmp/datasette-pins-0ckcay_2/datasette_pins-0.1a7.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading ruff (10.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded ruff
+      Built datasette-pins @ file:///tmp/datasette-pins-0ckcay_2/datasette_pins-0.1a7.tar.gz
+Installed 42 packages in 16ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/qr6s7lzCslpEIQPz/lib/python3.13/site-packages/pytest_asyncio/plugin.py:290: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp8orFb4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '2.0.0a1', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-pins-0ckcay_2/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-2.0.0a1, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 19 items
+
+tests/test_pins.py::test_plugin_is_installed PASSED                      [  5%]
+tests/test_pins.py::test_permissions PASSED                              [ 10%]
+tests/test_pins.py::test_action_buttons_visibility_by_actor[table-/test/items] PASSED [ 15%]
+tests/test_pins.py::test_action_buttons_visibility_by_actor[view-/test/items_view] PASSED [ 21%]
+tests/test_pins.py::test_action_buttons_visibility_by_actor[database-/test] PASSED [ 26%]
+tests/test_pins.py::test_action_buttons_visibility_by_actor[query-/test/test_query] PASSED [ 31%]
+tests/test_pins.py::test_action_buttons_hidden_for_read_only_user[table-/test/items] PASSED [ 36%]
+tests/test_pins.py::test_action_buttons_hidden_for_read_only_user[view-/test/items_view] PASSED [ 42%]
+tests/test_pins.py::test_action_buttons_hidden_for_read_only_user[database-/test] PASSED [ 47%]
+tests/test_pins.py::test_action_buttons_hidden_for_read_only_user[query-/test/test_query] PASSED [ 52%]
+tests/test_pins.py::test_unpin_button_appears_after_pinning[table-/test/items-post_data0] PASSED [ 57%]
+tests/test_pins.py::test_unpin_button_appears_after_pinning[view-/test/items_view-post_data1] PASSED [ 63%]
+tests/test_pins.py::test_unpin_button_appears_after_pinning[database-/test-post_data2] PASSED [ 68%]
+tests/test_pins.py::test_unpin_button_appears_after_pinning[query-/test/test_query-post_data3] PASSED [ 73%]
+tests/test_pins.py::test_pin_functionality_by_actor[table-test-items] PASSED [ 78%]
+tests/test_pins.py::test_pin_functionality_by_actor[view-test-items_view] PASSED [ 84%]
+tests/test_pins.py::test_pin_functionality_by_actor[database-test-None] PASSED [ 89%]
+tests/test_pins.py::test_pin_functionality_by_actor[canned_query-test-test_query] PASSED [ 94%]
+tests/test_pins.py::test_unpin_functionality_by_actor PASSED             [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pins/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/.pytest-report.json
+============================== 19 passed in 1.81s ==============================

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-plot",
+    "version": "0.1.0",
+    "repository": "datasette/datasette-plot",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/b9/ae/adecc1443dc08784c4d0349b595e9ecd1bfef4c06390a5950dea83f691bd/datasette-plot-0.1.0.tar.gz",
+      "sha256": "f53de0a222b9daa00e31727ec153eee33c20595cc7bcf67ccd780f5a2da4a268"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-plot",
+      "ref": "0.1.0",
+      "git_sha": "fa8a51bc2e220092a05462d8d24b77cb36dfb170"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T042913Z-gh-45112094249-a1",
+    "started_at": "2026-11-23T04:29:13Z",
+    "completed_at": "2026-11-23T04:29:20Z",
+    "duration_seconds": 7.032,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "allow",
+      "--no-progress",
+      "--with",
+      "datasette-plot @ file:///tmp/datasette-plot-fiqxazzo/datasette-plot-0.1.0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plot/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-plot/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/pytest.txt"
+  }
+}

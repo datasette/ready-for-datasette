@@ -1,0 +1,132 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-placekey @ file:///tmp/datasette-placekey-e85keyf8/datasette-placekey-0.1.tar.gz
+Downloading shapely (2.2MiB)
+Downloading botocore (16.1MiB)
+Downloading h3 (1.0MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading numpy (15.0MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pandas (11.4MiB)
+   Building ratelimit==2.2.1
+ Downloaded h3
+ Downloaded pygments
+ Downloaded pip
+ Downloaded pydantic-core
+ Downloaded shapely
+ Downloaded numpy
+ Downloaded pandas
+ Downloaded botocore
+      Built datasette-placekey @ file:///tmp/datasette-placekey-e85keyf8/datasette-placekey-0.1.tar.gz
+      Built ratelimit==2.2.1
+Installed 54 packages in 88ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpfttfIL/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-placekey-e85keyf8/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 10 items
+
+tests/test_placekey.py::test_placekey[geo_to_placekey(33.0896104,129.7900839)-@6nh-nhh-kvf] PASSED [ 10%]
+tests/test_placekey.py::test_placekey[placekey_to_geo_latitude('@6nh-nhh-kvf')-expected1] PASSED [ 20%]
+tests/test_placekey.py::test_placekey[placekey_to_geo_longitude('@6nh-nhh-kvf')-expected2] PASSED [ 30%]
+tests/test_placekey.py::test_placekey[placekey_to_h3('@6nh-nhh-kvf')-8a30d94e4c87fff] PASSED [ 40%]
+tests/test_placekey.py::test_placekey[h3_to_placekey('8a30d94e4c87fff')-@6nh-nhh-kvf] PASSED [ 50%]
+tests/test_placekey.py::test_placekey[placekey_format_is_valid('@6nh-nhh-kvf')-1] PASSED [ 60%]
+tests/test_placekey.py::test_placekey[placekey_format_is_valid('@6nh-nhh-kv')-0] PASSED [ 70%]
+tests/test_placekey.py::test_placekey_json[placekey_to_geo('@6nh-nhh-kvf')-expected0] PASSED [ 80%]
+tests/test_placekey.py::test_placekey_json[placekey_to_geojson('@6nh-nhh-kvf')-expected1] FAILED [ 90%]
+tests/test_placekey.py::test_placekey_to_wkt PASSED                      [100%]
+
+=================================== FAILURES ===================================
+______ test_placekey_json[placekey_to_geojson('@6nh-nhh-kvf')-expected1] _______
+
+conn = <sqlite3.Connection object at 0x7c26f8f41b70>
+sql = "placekey_to_geojson('@6nh-nhh-kvf')"
+expected = {'type': 'Polygon', 'coordinates': [[[129.7895236455708 ± 1.3e-04, 33.09039125030504 ± 3.3e-05], [129.78940092277236 ±...908448236134 ± 1.3e-04, 33.0903089445816 ± 3.3e-05], [129.7902455956758 ± 1.3e-04, 33.09063726622521 ± 3.3e-05], ...]]}
+
+    @pytest.mark.parametrize(
+        "sql,expected",
+        (
+            (
+                "placekey_to_geo('@6nh-nhh-kvf')",
+                [pytest.approx(33.090062930797316), pytest.approx(129.79012287161294)],
+            ),
+            (
+                "placekey_to_geojson('@6nh-nhh-kvf')",
+                {
+                    "type": "Polygon",
+                    "coordinates": [
+                        [
+                            [
+                                pytest.approx(129.7895236455708),
+                                pytest.approx(33.09039125030504),
+                            ],
+                            [
+                                pytest.approx(129.78940092277236),
+                                pytest.approx(33.08981691255207),
+                            ],
+                            [
+                                pytest.approx(129.79000014788863),
+                                pytest.approx(33.08948858933029),
+                            ],
+                            [
+                                pytest.approx(129.7907220986247),
+                                pytest.approx(33.0897346054397),
+                            ],
+                            [
+                                pytest.approx(129.7908448236134),
+                                pytest.approx(33.0903089445816),
+                            ],
+                            [
+                                pytest.approx(129.7902455956758),
+                                pytest.approx(33.09063726622521),
+                            ],
+                            [
+                                pytest.approx(129.7895236455708),
+                                pytest.approx(33.09039125030504),
+                            ],
+                        ]
+                    ],
+                },
+            ),
+        ),
+    )
+    def test_placekey_json(conn, sql, expected):
+>       result = conn.execute("select " + sql).fetchone()[0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       sqlite3.OperationalError: user-defined function raised exception
+
+tests/test_placekey.py:84: OperationalError
+=============================== warnings summary ===============================
+tests/test_placekey.py::test_placekey_json[placekey_to_geojson('@6nh-nhh-kvf')-expected1]
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/PG1_k7o9rdu9xIZS/lib/python3.13/site-packages/_pytest/unraisableexception.py:63: PytestUnraisableExceptionWarning: Exception ignored in: <function prepare_connection.<locals>.<lambda> at 0x7c26f9312b60>
+  
+  Traceback (most recent call last):
+    File "/home/runner/work/_temp/setup-uv-cache/archive-v0/PG1_k7o9rdu9xIZS/lib/python3.13/site-packages/datasette_placekey/__init__.py", line 28, in <lambda>
+      lambda pk: json.dumps(placekey.placekey_to_geojson(pk)),
+                 ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/__init__.py", line 235, in dumps
+      return _default_encoder.encode(obj)
+             ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/encoder.py", line 202, in encode
+      chunks = self.iterencode(o, _one_shot=True)
+    File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/encoder.py", line 263, in iterencode
+      return _iterencode(o, 0)
+    File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/json/encoder.py", line 182, in default
+      raise TypeError(f'Object of type {o.__class__.__name__} '
+                      f'is not JSON serializable')
+  TypeError: Object of type Polygon is not JSON serializable
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-placekey/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_placekey.py::test_placekey_json[placekey_to_geojson('@6nh-nhh-kvf')-expected1] - sqlite3.OperationalError: user-defined function raised exception
+==================== 1 failed, 9 passed, 1 warning in 0.06s ====================

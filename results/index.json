@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23T04:27:40Z",
+  "generated_at": "2026-11-23T04:29:20Z",
   "results": [
     {
       "schema_version": 1,
@@ -21026,6 +21026,464 @@
         "pytest_output": "results/datasette-permissions-sql/datasette-1.0a44/runs/20261123T042739Z-gh-45111939515-a1/pytest.txt"
       },
       "detail": "PyPI release has no non-yanked source distribution"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-pins",
+        "version": "0.1a7",
+        "repository": "datasette/datasette-pins",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ab/34/66d00c2a458c166ebe0a3b89f54907652e62ad9ebb1e0dd31a90d9e8d1f1/datasette_pins-0.1a7.tar.gz",
+          "sha256": "ccff76448c2adf8754f670fc77bdfb5de3903805afcbc9d5f26545b1097c8f5e"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-pins",
+          "ref": "0.1a7",
+          "git_sha": "d865b27098b525ab6f39e8799abdb168428d7ae2"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T042912Z-gh-45112094249-a1",
+        "started_at": "2026-11-23T04:29:12Z",
+        "completed_at": "2026-11-23T04:29:19Z",
+        "duration_seconds": 6.809,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-pins[test] @ file:///tmp/datasette-pins-0ckcay_2/datasette_pins-0.1a7.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "ruff",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pins/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 19,
+        "passed": 19,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "ruff"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-pins/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-placekey",
+        "version": "0.1",
+        "repository": "simonw/datasette-placekey",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/3d/c3/12b594c1dfbe2d07db65d8953347424e9f704a8757b3ae0dbf539cc815d3/datasette-placekey-0.1.tar.gz",
+          "sha256": "d21a846bf99e9ba2cdcf43466722c9963e9a32329f37e95142e2a974fe16649b"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-placekey",
+          "ref": "0.1",
+          "git_sha": "7bf3497bcec6c4cd7b351cfb87d76b6877ca910a"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T042912Z-gh-45112094249-a1",
+        "started_at": "2026-11-23T04:29:12Z",
+        "completed_at": "2026-11-23T04:29:19Z",
+        "duration_seconds": 7.137,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-placekey @ file:///tmp/datasette-placekey-e85keyf8/datasette-placekey-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-placekey/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 10,
+        "passed": 9,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [
+        "tests/test_placekey.py::test_placekey_json[placekey_to_geojson('@6nh-nhh-kvf')-expected1]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-placekey/datasette-1.0a44/runs/20261123T042912Z-gh-45112094249-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-plot",
+        "version": "0.1.0",
+        "repository": "datasette/datasette-plot",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/b9/ae/adecc1443dc08784c4d0349b595e9ecd1bfef4c06390a5950dea83f691bd/datasette-plot-0.1.0.tar.gz",
+          "sha256": "f53de0a222b9daa00e31727ec153eee33c20595cc7bcf67ccd780f5a2da4a268"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-plot",
+          "ref": "0.1.0",
+          "git_sha": "fa8a51bc2e220092a05462d8d24b77cb36dfb170"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T042913Z-gh-45112094249-a1",
+        "started_at": "2026-11-23T04:29:13Z",
+        "completed_at": "2026-11-23T04:29:20Z",
+        "duration_seconds": 7.032,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-plot @ file:///tmp/datasette-plot-fiqxazzo/datasette-plot-0.1.0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "ruff",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plot/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 1,
+        "passed": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "ruff"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-plot/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-plugin-demos",
+        "version": "0.4",
+        "repository": "simonw/datasette-plugin-demos",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/56/04/b9fb40f14234b40b4de9bd2e606e6ad58f66ac46fc05b78aaab9e6db3c81/datasette-plugin-demos-0.4.tar.gz",
+          "sha256": "e545742f5a77f5aacf7b77a4c3346423908da88deb487bb2cea636cbd78299ca"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-plugin-demos",
+          "ref": "0.4",
+          "git_sha": "b860714fb37f9c5f29f90176bdb968deb7c7fd04"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T042914Z-gh-45112094249-a1",
+        "started_at": "2026-11-23T04:29:14Z",
+        "completed_at": "2026-11-23T04:29:19Z",
+        "duration_seconds": 5.844,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 2,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-plugin-demos @ file:///tmp/datasette-plugin-demos-q6p7qv34/datasette-plugin-demos-0.4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plugin-demos/datasette-1.0a44/runs/20261123T042914Z-gh-45112094249-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "collection_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [
+        "tests/test_plugin_demos.py"
+      ],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-plugin-demos/datasette-1.0a44/runs/20261123T042914Z-gh-45112094249-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-plugin-router",
+        "version": "0.0.1a6",
+        "repository": "datasette/datasette-plugin-router",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/13/0e/d789da73a00aaecba667c53736a1354865de5903a4cb125ac284ffc74c5d/datasette_plugin_router-0.0.1a6.tar.gz",
+          "sha256": "6d6601f260d969a91fb6b66f587f2eb0daa1a2f89f8b15a46ad35fb08a51aae1"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-plugin-router",
+          "ref": "0.0.1a6",
+          "git_sha": "1631b4004eaaeb370b35ee1071a5eeb17ed15661"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T042913Z-gh-45112094249-a1",
+        "started_at": "2026-11-23T04:29:13Z",
+        "completed_at": "2026-11-23T04:29:19Z",
+        "duration_seconds": 6.556,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "allow",
+          "--no-progress",
+          "--with",
+          "datasette-plugin-router @ file:///tmp/datasette-plugin-router-7l82vbb_/datasette_plugin_router-0.0.1a6.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "syrupy>=5.0.0",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-plugin-router/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 6,
+        "passed": 6,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "syrupy>=5.0.0"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-plugin-router/datasette-1.0a44/runs/20261123T042913Z-gh-45112094249-a1/pytest.txt"
+      }
     }
   ]
 }
