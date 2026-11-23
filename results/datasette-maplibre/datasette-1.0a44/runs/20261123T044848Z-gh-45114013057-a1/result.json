@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-maplibre",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-maplibre",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/7b/44/5cf42d81fcb69efee67c850b2485003fc67e3100f10f1be7c3372f360993/datasette_maplibre-0.1a0.tar.gz",
+      "sha256": "7cd53e830d1d65002bc7a6c0a889ef3c912d2ac83bd2d4cfbafbc3b35b970404"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-maplibre",
+      "ref": "0.1a0",
+      "git_sha": "55d1c07c90677e90f3ee35e4ce3733d601942cd7"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T044848Z-gh-45114013057-a1",
+    "started_at": "2026-11-23T04:48:48Z",
+    "completed_at": "2026-11-23T04:49:33Z",
+    "duration_seconds": 45.503,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-maplibre @ file:///tmp/datasette-maplibre-fgddhdk9/datasette_maplibre-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-playwright",
+      "--with",
+      "httpx",
+      "--with",
+      "nest-asyncio",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-maplibre/datasette-1.0a44/runs/20261123T044848Z-gh-45114013057-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 73,
+    "passed": 73,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-playwright",
+      "httpx",
+      "nest-asyncio",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-maplibre/datasette-1.0a44/runs/20261123T044848Z-gh-45114013057-a1/pytest.txt"
+  }
+}

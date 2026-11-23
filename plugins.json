@@ -29,7 +29,7 @@
     "metadata_file": "pyproject.toml",
     "metadata_sha256": "b8c4bd74bebf44836790b301672eebc89d6e5f0fd8bd47e5e5d6f5722e440a12",
     "metadata_etag": "\"9acc5cfc90022e31052171ca9e921099b472cbcbd463364ddffe8191c7b9e44f\"",
-    "latest_version": "0.6a0"
+    "latest_version": "0.7a0"
   },
   {
     "name": "datasette-agent-actor-memory",

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-cluster-map",
+    "version": "0.19",
+    "repository": "simonw/datasette-cluster-map",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/28/13/e6cc65d249a1f0f25342db1bda8899066664d38066c90254f1375ca4e11b/datasette_cluster_map-0.19.tar.gz",
+      "sha256": "0e54158564d314782c371dc2095189c825933cc357b7ba737f044d80f8e91fdf"
+    },
+    "test_suite": {
+      "type": "pypi_sdist",
+      "repository": null,
+      "ref": null,
+      "git_sha": null
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T044852Z-gh-45114013057-a1",
+    "started_at": "2026-11-23T04:48:52Z",
+    "completed_at": "2026-11-23T04:50:09Z",
+    "duration_seconds": 77.546,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-cluster-map @ file:///tmp/datasette-cluster-map-vyn2w6nm/datasette_cluster_map-0.19.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-playwright",
+      "--with",
+      "httpx",
+      "--with",
+      "sqlite-utils",
+      "--with",
+      "nest-asyncio",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a44/runs/20261123T044852Z-gh-45114013057-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 41,
+    "passed": 37,
+    "failed": 4,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_cluster_map.py::test_plugin_only_on_tables_or_queries_with_columns[/test?sql=select+*+from+places;-True]",
+    "tests/test_cluster_map.py::test_respects_base_url",
+    "tests/test_playwright.py::test_markers_are_displayed_for_sql_query[chromium]",
+    "tests/test_playwright.py::test_no_map_if_no_rows_have_a_location[chromium-/data?sql=select+*+from+no_locations]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-playwright",
+      "httpx",
+      "sqlite-utils",
+      "nest-asyncio",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 0
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-cluster-map/datasette-1.0a44/runs/20261123T044852Z-gh-45114013057-a1/pytest.txt"
+  }
+}
