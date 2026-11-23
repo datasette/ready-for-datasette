@@ -1,0 +1,50 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-query-links @ file:///tmp/datasette-query-links-rmw7r2i1/datasette-query-links-0.1.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-query-links @ file:///tmp/datasette-query-links-rmw7r2i1/datasette-query-links-0.1.2.tar.gz
+Installed 39 packages in 27ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp5UFo9B/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-query-links-rmw7r2i1/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting tests/test_query_links.py __________________
+ImportError while importing test module '/tmp/datasette-query-links-rmw7r2i1/tagged-source/tests/test_query_links.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/E7yiDPIuZ96Klxlo/lib/python3.13/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/E7yiDPIuZ96Klxlo/lib/python3.13/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1404: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1369: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1340: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/E7yiDPIuZ96Klxlo/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_query_links.py:1: in <module>
+    from bs4 import BeautifulSoup as Soup
+E   ModuleNotFoundError: No module named 'bs4'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-query-links/datasette-1.0a44/runs/20261123T050817Z-gh-45115852940-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_query_links.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.11s ===============================

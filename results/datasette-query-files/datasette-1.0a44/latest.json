@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-query-files",
+    "version": "0.1.1",
+    "repository": "eyeseast/datasette-query-files",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/72/60/7b7e3466023744720fa446713dbb93a7987c778d77b5828796dd14484d63/datasette-query-files-0.1.1.tar.gz",
+      "sha256": "dfcd8880fb6b1126545a1fb21448e228963596ea877754527e7cb4edf95baad8"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "eyeseast/datasette-query-files",
+      "ref": "v0.1.1",
+      "git_sha": "ea4cf949b260fe5700de63cea0eaf4cd3821d767"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050818Z-gh-45115852940-a1",
+    "started_at": "2026-11-23T05:08:18Z",
+    "completed_at": "2026-11-23T05:08:25Z",
+    "duration_seconds": 6.493,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-query-files @ file:///tmp/datasette-query-files-4hvnafs0/datasette-query-files-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-query-files/datasette-1.0a44/runs/20261123T050818Z-gh-45115852940-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_query_files.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-query-files/datasette-1.0a44/runs/20261123T050818Z-gh-45115852940-a1/pytest.txt"
+  }
+}

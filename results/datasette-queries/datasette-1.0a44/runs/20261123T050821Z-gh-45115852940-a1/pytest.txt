@@ -1,0 +1,879 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-queries @ file:///tmp/datasette-queries-uiidq75p/datasette_queries-0.1.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-queries @ file:///tmp/datasette-queries-uiidq75p/datasette_queries-0.1.2.tar.gz
+Installed 41 packages in 24ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpJJAQL9/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-queries-uiidq75p/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_queries.py::test_save_query[True] FAILED                      [ 14%]
+tests/test_queries.py::test_save_query_name_collision_with_table_or_view[table-fruits] FAILED [ 28%]
+tests/test_queries.py::test_save_query_name_collision_with_table_or_view[view-animals] FAILED [ 42%]
+tests/test_queries.py::test_delete_permissions[unauthenticated-False] FAILED [ 57%]
+tests/test_queries.py::test_delete_permissions[no_permission-False] FAILED [ 71%]
+tests/test_queries.py::test_delete_permissions[authenticated-True] FAILED [ 85%]
+tests/test_queries.py::test_delete_permissions[authenticated_query_not_in_db-False] FAILED [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_save_query[True] _____________________________
+
+self = <datasette.app.DatasetteRouter object at 0x7ac5b89fde80>
+scope = {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'GET', ...}
+receive = <function ASGITransport.handle_async_request.<locals>.receive at 0x7ac5b89b19e0>
+send = <function DatasetteRouter.route_path.<locals>.send at 0x7ac5b89b00e0>
+path = '/data/-/query'
+
+    async def route_path(self, scope, receive, send, path):
+        # Strip off base_url if present before routing
+        base_url = self.ds.setting("base_url")
+        if base_url != "/" and path.startswith(base_url):
+            path = "/" + path[len(base_url) :]
+            scope = dict(scope, route_path=path)
+        request = Request(
+            scope,
+            receive,
+            max_post_body_bytes=self.ds.setting("max_post_body_bytes"),
+        )
+        match, view = resolve_routes(self.routes, path)
+        is_static = view is favicon or getattr(view, "_datasette_static", False)
+        original_send = send
+    
+        async def send(message):
+            if message["type"] == "http.response.start" and not (
+                is_static and message["status"] in (200, 304)
+            ):
+                # Decide privacy after rendering, including for streaming responses
+                # and error handlers. A public primary resource can still include
+                # private labels, actor navigation, or cookie-dependent content.
+                headers = list(message.get("headers", []))
+                personalized = (
+                    request.actor is not None
+                    or "cookie" in request.headers
+                    or "authorization" in request.headers
+                    or any(key.lower() == b"set-cookie" for key, _ in headers)
+                )
+                if personalized:
+                    headers = [
+                        (key, value)
+                        for key, value in headers
+                        if key.lower() != b"cache-control"
+                    ]
+                    headers.append((b"cache-control", b"private, no-store"))
+    
+                # Anonymous responses must not be reused for credentialed requests.
+                # Preserve any additional variation specified by views or plugins.
+                vary = [
+                    part.strip()
+                    for key, value in headers
+                    if key.lower() == b"vary"
+                    for part in value.split(b",")
+                    if part.strip()
+                ]
+                if b"*" not in vary:
+                    for name in (b"Cookie", b"Authorization"):
+                        if name.lower() not in {part.lower() for part in vary}:
+                            vary.append(name)
+                headers = [(k, v) for k, v in headers if k.lower() != b"vary"]
+                headers.append((b"vary", b", ".join(vary)))
+                message = dict(message, headers=headers)
+            await original_send(message)
+    
+        # Populate request_messages if ds_messages cookie is present
+        try:
+            request._messages = self.ds.unsign(
+                request.cookies.get("ds_messages", ""), "messages"
+            )
+        except BadSignature:
+            pass
+    
+        scope_modifications = {}
+        # Apply force_https_urls, if set
+        if (
+            self.ds.setting("force_https_urls")
+            and scope["type"] == "http"
+            and scope.get("scheme") != "https"
+        ):
+            scope_modifications["scheme"] = "https"
+        # Handle authentication
+        default_actor = scope.get("actor") or None
+        actor = None
+        token_error = None
+        results = pm.hook.actor_from_request(datasette=self.ds, request=request)
+        for result in results:
+            try:
+                result = await await_me_maybe(result)
+            except TokenInvalid as ex:
+                # A presented token was recognized but rejected - fail the
+                # request with a 401 even if another credential is valid,
+                # but keep awaiting the remaining coroutines first
+                if token_error is None:
+                    token_error = ex
+                continue
+            if result and actor is None:
+                actor = result
+                # Don't break — we must await all coroutines to avoid
+                # "coroutine was never awaited" warnings
+        if token_error is not None:
+            return await self.handle_401(request, send, token_error)
+        scope_modifications["actor"] = actor or default_actor
+        scope = dict(scope, **scope_modifications)
+        request.scope = scope
+    
+        if match is None:
+            return await self.handle_404(request, send)
+    
+        # Now the route is known, add it to the request span
+        span = request_span(scope)
+        if span is not None:
+            route = match.re.pattern
+            span.set_attribute(HTTP_ROUTE, route)
+            span.update_name(f"{clamp_http_method(request.method)} {route}")
+    
+        new_scope = dict(scope, url_route={"kwargs": match.groupdict()})
+        request.scope = new_scope
+        response_started = False
+    
+        async def tracking_send(message):
+            nonlocal response_started
+            if message["type"] == "http.response.start":
+                response_started = True
+            await send(message)
+    
+        try:
+>           response = await view(request, send)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3557: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3746: in async_view_for_class
+    return await async_call_with_supported_arguments(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py:1495: in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/base.py:95: in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/database.py:1088: in get
+    await datasette.render_template(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:2849: in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py:1318: in render_async
+    return self.environment.handle_exception()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py:942: in handle_exception
+    raise rewrite_traceback_stack(source=source)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html:1: in top-level template code
+    {% extends "base.html" %}
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/base.html:41: in top-level template code
+    {% block content %}
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html:44: in block 'content'
+    {% if stored_query %}{{ top_stored_query() }}{% else %}{{ top_query() }}{% endif %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/async_utils.py:68: in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py:1887: in inner
+    html = await await_me_maybe(hook)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py:295: in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    async def inner():
+>       if sql and await datasette.permission_allowed(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            request.actor, "datasette-queries"
+        ):
+E       AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py:196: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_save_query_True_0')
+authed = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("authed", (True,))
+    async def test_save_query(tmpdir, authed):
+        db_path = str(tmpdir / "data.db")
+        sqlite_utils.Database(db_path).vacuum()
+        datasette = Datasette(
+            [db_path], config={"permissions": {"datasette-queries": {"id": "*"}}}, pdb=True
+        )
+        cookies = {}
+        if authed:
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user"})}
+>       response = await datasette.client.get(
+            "/data/-/query?sql=select+21", cookies=cookies
+        )
+
+tests/test_queries.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3889: in get
+    return await self._request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3886: in _request
+    return await getattr(client, method)(self._fix(path), **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1945: in get
+    return await self.request(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1629: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1812: in send
+    response = await self._send_handling_auth(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1840: in _send_handling_auth
+    response = await self._send_handling_redirects(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1875: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_client.py:1909: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/httpx2/_transports/asgi.py:162: in handle_async_request
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/telemetry.py:245: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/asgi.py:755: in __call__
+    return await self.asgi(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/asgi.py:340: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/csrf.py:110: in __call__
+    await self.app(scope, receive, send)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3435: in __call__
+    return await self.route_path(scope, receive, send, path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3582: in route_path
+    return await self.handle_exception(request, send, exception)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py:3711: in handle_exception
+    response = await await_me_maybe(hook)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py:295: in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/handle_exception.py:31: in inner
+    pdb.post_mortem(exception.__traceback__)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/pdb.py:2406: in post_mortem
+    return _post_mortem(t, Pdb())
+           ^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/pdb.py:2425: in _post_mortem
+    pdb_instance.interaction(None, t)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/pdb.py:643: in interaction
+    self._cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/pdb.py:529: in _cmdloop
+    self.cmdloop()
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/cmd.py:134: in cmdloop
+    line = input(self.prompt)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_pytest.capture.DontReadFromInput object at 0x7ac5b9c75940>, size = -1
+
+    def read(self, size: int = -1) -> str:
+>       raise OSError(
+            "pytest: reading from stdin while output is captured!  Consider using `-s`."
+        )
+E       OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/_pytest/capture.py:229: OSError
+----------------------------- Captured stdout call -----------------------------
+> /home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py(196)inner()
+-> if sql and await datasette.permission_allowed(
+(Pdb) 
+_______ test_save_query_name_collision_with_table_or_view[table-fruits] ________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_save_query_name_collision0')
+object_type = 'table', original_slug = 'fruits'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "object_type, original_slug",
+        (
+            ("table", "fruits"),
+            ("view", "animals"),
+        ),
+    )
+    async def test_save_query_name_collision_with_table_or_view(
+        tmpdir, object_type, original_slug
+    ):
+        # Create a database file that already contains either a table or a view that
+        # will clash with the query name we try to save
+        db_path = str(tmpdir / "data.db")
+        db = sqlite_utils.Database(db_path)
+    
+        if object_type == "table":
+            # Create a table called "fruits"
+            db[original_slug].insert({"id": 1})
+        else:
+            # Create a view called "animals"
+            db.conn.execute(f"create view {original_slug} as select 1 as one")
+            db.conn.commit()
+    
+        # Spin up Datasette with the plugin enabled and the required permission
+        datasette = Datasette(
+            [db_path], config={"permissions": {"datasette-queries": {"id": "*"}}}
+        )
+    
+        # Authenticate so that we are allowed to save a query
+        cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user"})}
+    
+        # Hit the canned-query page to obtain a CSRF token
+        r1 = await datasette.client.get(f"/data/-/query?sql=select+1", cookies=cookies)
+        csrftoken = r1.cookies.get("ds_csrftoken")
+        cookies["ds_csrftoken"] = csrftoken
+    
+        # Attempt to save a query using a slug that clashes with the existing table/view
+        r2 = await datasette.client.post(
+            "/-/save-query",
+            data={
+                "sql": "select 1",
+                "url": original_slug,
+                "database": "data",
+                "csrftoken": csrftoken,
+            },
+            cookies=cookies,
+        )
+        # We should be redirected after a successful save
+>       assert r2.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_queries.py:134: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3746, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/base.py", line 95, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/database.py", line 1088, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<67 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 2849, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/base.html", line 41, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 44, in block 'content'
+    {% if stored_query %}{{ top_stored_query() }}{% else %}{{ top_query() }}{% endif %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1887, in inner
+    html = await await_me_maybe(hook)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py", line 196, in inner
+    if sql and await datasette.permission_allowed(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py", line 114, in save_query
+    if not await datasette.permission_allowed(request.actor, "datasette-queries"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______ test_save_query_name_collision_with_table_or_view[view-animals] ________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_save_query_name_collision1')
+object_type = 'view', original_slug = 'animals'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "object_type, original_slug",
+        (
+            ("table", "fruits"),
+            ("view", "animals"),
+        ),
+    )
+    async def test_save_query_name_collision_with_table_or_view(
+        tmpdir, object_type, original_slug
+    ):
+        # Create a database file that already contains either a table or a view that
+        # will clash with the query name we try to save
+        db_path = str(tmpdir / "data.db")
+        db = sqlite_utils.Database(db_path)
+    
+        if object_type == "table":
+            # Create a table called "fruits"
+            db[original_slug].insert({"id": 1})
+        else:
+            # Create a view called "animals"
+            db.conn.execute(f"create view {original_slug} as select 1 as one")
+            db.conn.commit()
+    
+        # Spin up Datasette with the plugin enabled and the required permission
+        datasette = Datasette(
+            [db_path], config={"permissions": {"datasette-queries": {"id": "*"}}}
+        )
+    
+        # Authenticate so that we are allowed to save a query
+        cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user"})}
+    
+        # Hit the canned-query page to obtain a CSRF token
+        r1 = await datasette.client.get(f"/data/-/query?sql=select+1", cookies=cookies)
+        csrftoken = r1.cookies.get("ds_csrftoken")
+        cookies["ds_csrftoken"] = csrftoken
+    
+        # Attempt to save a query using a slug that clashes with the existing table/view
+        r2 = await datasette.client.post(
+            "/-/save-query",
+            data={
+                "sql": "select 1",
+                "url": original_slug,
+                "database": "data",
+                "csrftoken": csrftoken,
+            },
+            cookies=cookies,
+        )
+        # We should be redirected after a successful save
+>       assert r2.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_queries.py:134: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3746, in async_view_for_class
+    return await async_call_with_supported_arguments(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/base.py", line 95, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/database.py", line 1088, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<67 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 2849, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/base.html", line 41, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 44, in block 'content'
+    {% if stored_query %}{{ top_stored_query() }}{% else %}{{ top_query() }}{% endif %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1887, in inner
+    html = await await_me_maybe(hook)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py", line 196, in inner
+    if sql and await datasette.permission_allowed(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py", line 114, in save_query
+    if not await datasette.permission_allowed(request.actor, "datasette-queries"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________ test_delete_permissions[unauthenticated-False] ________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_delete_permissions_unauth0')
+scenario = 'unauthenticated', can_delete = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "scenario,can_delete",
+        (
+            ("unauthenticated", False),
+            ("no_permission", False),
+            ("authenticated", True),
+            ("authenticated_query_not_in_db", False),
+        ),
+    )
+    async def test_delete_permissions(tmpdir, scenario, can_delete):
+        db_path = str(tmpdir / "data.db")
+        internal_path = str(tmpdir / "internal.db")
+        sqlite_utils.Database(db_path).vacuum()
+    
+        datasette = Datasette(
+            [db_path],
+            internal=internal_path,
+            config={
+                "databases": {"data": {"queries": {"from-config": {"sql": "select 1"}}}},
+                "permissions": {"datasette-queries": {"id": "user1"}},
+            },
+        )
+        await datasette.invoke_startup()
+    
+        cookies = {}
+        if scenario == "no_permission":
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user2"})}
+        elif scenario in ("authenticated", "authenticated_query_not_in_db"):
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user1"})}
+    
+        # Create a query to delete
+        if scenario != "authenticated_query_not_in_db":
+            await datasette.get_internal_database().execute_write(
+                """
+                insert into _datasette_queries (slug, database, title, description, sql, actor, created_at)
+                values ('test-query', 'data', '', '', 'select 1', 'user1', :created_at)
+                """,
+                {"created_at": int(time.time())},
+            )
+    
+        query_to_delete = "test-query"
+        if scenario == "authenticated_query_not_in_db":
+            query_to_delete = "from-config"
+    
+        # Check if the delete button is shown
+        response = await datasette.client.get(
+            f"/data/{query_to_delete}",
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/test_queries.py:224: AssertionError
+_________________ test_delete_permissions[no_permission-False] _________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_delete_permissions_no_per0')
+scenario = 'no_permission', can_delete = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "scenario,can_delete",
+        (
+            ("unauthenticated", False),
+            ("no_permission", False),
+            ("authenticated", True),
+            ("authenticated_query_not_in_db", False),
+        ),
+    )
+    async def test_delete_permissions(tmpdir, scenario, can_delete):
+        db_path = str(tmpdir / "data.db")
+        internal_path = str(tmpdir / "internal.db")
+        sqlite_utils.Database(db_path).vacuum()
+    
+        datasette = Datasette(
+            [db_path],
+            internal=internal_path,
+            config={
+                "databases": {"data": {"queries": {"from-config": {"sql": "select 1"}}}},
+                "permissions": {"datasette-queries": {"id": "user1"}},
+            },
+        )
+        await datasette.invoke_startup()
+    
+        cookies = {}
+        if scenario == "no_permission":
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user2"})}
+        elif scenario in ("authenticated", "authenticated_query_not_in_db"):
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user1"})}
+    
+        # Create a query to delete
+        if scenario != "authenticated_query_not_in_db":
+            await datasette.get_internal_database().execute_write(
+                """
+                insert into _datasette_queries (slug, database, title, description, sql, actor, created_at)
+                values ('test-query', 'data', '', '', 'select 1', 'user1', :created_at)
+                """,
+                {"created_at": int(time.time())},
+            )
+    
+        query_to_delete = "test-query"
+        if scenario == "authenticated_query_not_in_db":
+            query_to_delete = "from-config"
+    
+        # Check if the delete button is shown
+        response = await datasette.client.get(
+            f"/data/{query_to_delete}",
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/test_queries.py:224: AssertionError
+_________________ test_delete_permissions[authenticated-True] __________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_delete_permissions_authen0')
+scenario = 'authenticated', can_delete = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "scenario,can_delete",
+        (
+            ("unauthenticated", False),
+            ("no_permission", False),
+            ("authenticated", True),
+            ("authenticated_query_not_in_db", False),
+        ),
+    )
+    async def test_delete_permissions(tmpdir, scenario, can_delete):
+        db_path = str(tmpdir / "data.db")
+        internal_path = str(tmpdir / "internal.db")
+        sqlite_utils.Database(db_path).vacuum()
+    
+        datasette = Datasette(
+            [db_path],
+            internal=internal_path,
+            config={
+                "databases": {"data": {"queries": {"from-config": {"sql": "select 1"}}}},
+                "permissions": {"datasette-queries": {"id": "user1"}},
+            },
+        )
+        await datasette.invoke_startup()
+    
+        cookies = {}
+        if scenario == "no_permission":
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user2"})}
+        elif scenario in ("authenticated", "authenticated_query_not_in_db"):
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user1"})}
+    
+        # Create a query to delete
+        if scenario != "authenticated_query_not_in_db":
+            await datasette.get_internal_database().execute_write(
+                """
+                insert into _datasette_queries (slug, database, title, description, sql, actor, created_at)
+                values ('test-query', 'data', '', '', 'select 1', 'user1', :created_at)
+                """,
+                {"created_at": int(time.time())},
+            )
+    
+        query_to_delete = "test-query"
+        if scenario == "authenticated_query_not_in_db":
+            query_to_delete = "from-config"
+    
+        # Check if the delete button is shown
+        response = await datasette.client.get(
+            f"/data/{query_to_delete}",
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/test_queries.py:224: AssertionError
+_________ test_delete_permissions[authenticated_query_not_in_db-False] _________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_delete_permissions_authen1')
+scenario = 'authenticated_query_not_in_db', can_delete = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "scenario,can_delete",
+        (
+            ("unauthenticated", False),
+            ("no_permission", False),
+            ("authenticated", True),
+            ("authenticated_query_not_in_db", False),
+        ),
+    )
+    async def test_delete_permissions(tmpdir, scenario, can_delete):
+        db_path = str(tmpdir / "data.db")
+        internal_path = str(tmpdir / "internal.db")
+        sqlite_utils.Database(db_path).vacuum()
+    
+        datasette = Datasette(
+            [db_path],
+            internal=internal_path,
+            config={
+                "databases": {"data": {"queries": {"from-config": {"sql": "select 1"}}}},
+                "permissions": {"datasette-queries": {"id": "user1"}},
+            },
+        )
+        await datasette.invoke_startup()
+    
+        cookies = {}
+        if scenario == "no_permission":
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user2"})}
+        elif scenario in ("authenticated", "authenticated_query_not_in_db"):
+            cookies = {"ds_actor": datasette.client.actor_cookie({"id": "user1"})}
+    
+        # Create a query to delete
+        if scenario != "authenticated_query_not_in_db":
+            await datasette.get_internal_database().execute_write(
+                """
+                insert into _datasette_queries (slug, database, title, description, sql, actor, created_at)
+                values ('test-query', 'data', '', '', 'select 1', 'user1', :created_at)
+                """,
+                {"created_at": int(time.time())},
+            )
+    
+        query_to_delete = "test-query"
+        if scenario == "authenticated_query_not_in_db":
+            query_to_delete = "from-config"
+    
+        # Check if the delete button is shown
+        response = await datasette.client.get(
+            f"/data/{query_to_delete}",
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_queries.py:224: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Checking permissions for {'id': 'user1'} on data
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/table.py", line 2022, in table_view_traced
+    resolved = await datasette.resolve_table(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3266, in resolve_table
+    raise TableNotFound(db.name, table_name)
+datasette.utils.asgi.TableNotFound: Table not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/table.py", line 1984, in table_view
+    response = await table_view_traced(datasette, request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/table.py", line 2030, in table_view_traced
+    return await QueryView()(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/base.py", line 95, in __call__
+    return await handler(request, datasette)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/database.py", line 1088, in get
+    await datasette.render_template(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<67 lines>...
+    ),
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/app.py", line 2849, in render_template
+    return await template.render_async(template_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 1318, in render_async
+    return self.environment.handle_exception()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/base.html", line 41, in top-level template code
+    {% block content %}
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/templates/query.html", line 41, in block 'content'
+    {% set action_links, action_title = query_actions(), "Query actions" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/jinja2/async_utils.py", line 68, in auto_await
+    return await t.cast("t.Awaitable[V]", value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/views/database.py", line 1081, in query_actions
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oPCVAYvXiwXdqEsa/lib/python3.13/site-packages/datasette_queries/__init__.py", line 219, in inner
+    if not await datasette.permission_allowed(actor, "datasette-queries"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-queries/datasette-1.0a44/runs/20261123T050821Z-gh-45115852940-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_queries.py::test_save_query[True] - OSError: pytest: reading from stdin while output is captured!  Consider using `-s`.
+FAILED tests/test_queries.py::test_save_query_name_collision_with_table_or_view[table-fruits] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_queries.py::test_save_query_name_collision_with_table_or_view[view-animals] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_queries.py::test_delete_permissions[unauthenticated-False] - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+FAILED tests/test_queries.py::test_delete_permissions[no_permission-False] - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+FAILED tests/test_queries.py::test_delete_permissions[authenticated-True] - assert 404 == 200
+ +  where 404 = <Response [404 Not Found]>.status_code
+FAILED tests/test_queries.py::test_delete_permissions[authenticated_query_not_in_db-False] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+============================== 7 failed in 0.84s ===============================

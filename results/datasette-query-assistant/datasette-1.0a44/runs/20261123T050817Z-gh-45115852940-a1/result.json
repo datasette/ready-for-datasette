@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-query-assistant",
+    "version": "0.1a5",
+    "repository": "datasette/datasette-query-assistant",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/55/1b/d7eb6671f13b272227670ab2ad8fb948cdc2a0f08e561f621da303dba504/datasette_query_assistant-0.1a5.tar.gz",
+      "sha256": "0f3c871ab23cbd77c2cc2953a0614db6d31aee57a6921f8c0f3a1e75a4b89b14"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-query-assistant",
+      "ref": "0.1a5",
+      "git_sha": "ee588baa5b9958a381f6a13a14affd484f4165ca"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050817Z-gh-45115852940-a1",
+    "started_at": "2026-11-23T05:08:17Z",
+    "completed_at": "2026-11-23T05:08:23Z",
+    "duration_seconds": 6.452,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-query-assistant[test] @ file:///tmp/datasette-query-assistant-oq59uqd2/datasette_query_assistant-0.1a5.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "llm-openai-plugin",
+      "--with",
+      "inline-snapshot",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-recording",
+      "--with",
+      "sqlite-utils",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-query-assistant/datasette-1.0a44/runs/20261123T050817Z-gh-45115852940-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 1,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_query_assistant.py::test_database_assistant_page",
+    "tests/test_query_assistant.py::test_table_assistant_page"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "llm-openai-plugin",
+      "inline-snapshot",
+      "pytest",
+      "pytest-asyncio",
+      "pytest-recording",
+      "sqlite-utils"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-query-assistant/datasette-1.0a44/runs/20261123T050817Z-gh-45115852940-a1/pytest.txt"
+  }
+}

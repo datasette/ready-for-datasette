@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-queries",
+    "version": "0.1.2",
+    "repository": "datasette/datasette-queries",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/d2/ef/7c46e2df865fc2fa2763c220b9e425088ffa21303451d4d798c16ebcc942/datasette_queries-0.1.2.tar.gz",
+      "sha256": "b71d5e6a78e7a251989369b59a7e0745deafbe1a484388fd80eea71f80411d81"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-queries",
+      "ref": "0.1.2",
+      "git_sha": "348b069b3d6b7fb334909e8428b0974fd5acaa60"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050821Z-gh-45115852940-a1",
+    "started_at": "2026-11-23T05:08:21Z",
+    "completed_at": "2026-11-23T05:08:29Z",
+    "duration_seconds": 7.081,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-queries[test] @ file:///tmp/datasette-queries-uiidq75p/datasette_queries-0.1.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-queries/datasette-1.0a44/runs/20261123T050821Z-gh-45115852940-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 7,
+    "passed": 0,
+    "failed": 7,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_queries.py::test_delete_permissions[authenticated-True]",
+    "tests/test_queries.py::test_delete_permissions[authenticated_query_not_in_db-False]",
+    "tests/test_queries.py::test_delete_permissions[no_permission-False]",
+    "tests/test_queries.py::test_delete_permissions[unauthenticated-False]",
+    "tests/test_queries.py::test_save_query[True]",
+    "tests/test_queries.py::test_save_query_name_collision_with_table_or_view[table-fruits]",
+    "tests/test_queries.py::test_save_query_name_collision_with_table_or_view[view-animals]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-queries/datasette-1.0a44/runs/20261123T050821Z-gh-45115852940-a1/pytest.txt"
+  }
+}

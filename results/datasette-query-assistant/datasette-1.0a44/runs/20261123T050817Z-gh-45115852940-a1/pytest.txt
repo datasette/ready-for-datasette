@@ -1,0 +1,106 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-query-assistant @ file:///tmp/datasette-query-assistant-oq59uqd2/datasette_query_assistant-0.1a5.tar.gz
+Downloading openai (2.3MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded openai
+      Built datasette-query-assistant @ file:///tmp/datasette-query-assistant-oq59uqd2/datasette_query_assistant-0.1a5.tar.gz
+Installed 58 packages in 53ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ByBoo9x5htJfdr9T/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpAPspr4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'recording': '0.15.0', 'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'inline-snapshot': '0.37.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-query-assistant-oq59uqd2/tagged-source
+configfile: pyproject.toml
+plugins: recording-0.15.0, anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, inline-snapshot-0.37.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/test_query_assistant.py::test_get_related_tables PASSED            [ 33%]
+tests/test_query_assistant.py::test_database_assistant_page FAILED       [ 66%]
+tests/test_query_assistant.py::test_table_assistant_page FAILED          [100%]
+
+═══════════════════════════════ inline-snapshot ════════════════════════════════
+INFO: CI run was detected because environment variable "CI" was defined. 
+inline-snapshot runs with --inline-snapshot=disable by default in CI. This means
+that tests with snapshots will continue to run, but snapshot(x) will only return
+x and inline-snapshot will not be able to fix snapshots or generate reports. You
+can change this by using --inline-snapshot=report for example.
+
+
+
+=================================== FAILURES ===================================
+_________________________ test_database_assistant_page _________________________
+
+datasette = <datasette.app.Datasette object at 0x7e325d5e2120>
+
+    @pytest.mark.asyncio
+    @pytest.mark.vcr()
+    async def test_database_assistant_page(datasette):
+        response = await datasette.client.get("/test/-/assistant")
+        assert response.status_code == 200
+        assert "Query assistant for test" in response.text
+        assert (
+            "<pre>CREATE TABLE foo (id integer primary key, name text)</pre>"
+            in response.text
+        )
+        # Submit the form
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_query_assistant.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ByBoo9x5htJfdr9T/lib/python3.13/site-packages/httpx2/_models.py:1229: KeyError
+__________________________ test_table_assistant_page ___________________________
+
+datasette = <datasette.app.Datasette object at 0x7e325d101e50>
+
+    @pytest.mark.asyncio
+    async def test_table_assistant_page(datasette):
+        response = await datasette.client.get("/test/-/assistant?table=foo")
+        assert response.status_code == 200
+        assert "Query assistant for foo" in response.text
+        assert (
+            "<pre>CREATE TABLE foo (id integer primary key, name text)</pre>"
+            in response.text
+        )
+        # Submit the form
+>       csrftoken = response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_query_assistant.py:83: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ByBoo9x5htJfdr9T/lib/python3.13/site-packages/httpx2/_models.py:1229: KeyError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-query-assistant/datasette-1.0a44/runs/20261123T050817Z-gh-45115852940-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_query_assistant.py::test_database_assistant_page - KeyError: 'ds_csrftoken'
+FAILED tests/test_query_assistant.py::test_table_assistant_page - KeyError: 'ds_csrftoken'
+========================= 2 failed, 1 passed in 0.29s ==========================
