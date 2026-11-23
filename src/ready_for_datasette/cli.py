@@ -660,44 +660,6 @@ def check_workflow_obsolete_references(
         reporter.skip("Workflows do not reference setup.py", "No workflows were found.")
 
 
-def check_git_remote(repo: Path, reporter: Reporter) -> None:
-    if not (repo / ".git").exists():
-        reporter.skip(
-            "Git origin uses GitHub SSH URLs",
-            "The repository path has no .git directory.",
-        )
-        return
-    fetch = run_command(["git", "remote", "get-url", "origin"], cwd=repo)
-    push = run_command(["git", "remote", "get-url", "--push", "origin"], cwd=repo)
-    if not fetch.succeeded or not push.succeeded:
-        output = "\n".join(part for part in (fetch.output, push.output) if part.strip())
-        reporter.fail(
-            "Git origin uses GitHub SSH URLs",
-            output or "Could not read both fetch and push URLs for origin.",
-            fix="Configure an origin remote for the repository.",
-        )
-        return
-    fetch_url = fetch.output.strip()
-    push_url = push.output.strip()
-    invalid = [
-        url for url in (fetch_url, push_url) if not url.startswith("git@github.com:")
-    ]
-    if invalid:
-        reporter.fail(
-            "Git origin uses GitHub SSH URLs",
-            f"Fetch URL: {fetch_url}\nPush URL:  {push_url}",
-            fix=(
-                "Change origin to the equivalent git@github.com:OWNER/REPOSITORY.git "
-                "URL without changing the owner or repository name."
-            ),
-        )
-    else:
-        reporter.pass_(
-            "Git origin uses GitHub SSH URLs",
-            f"Fetch: {fetch_url}\nPush:  {push_url}",
-        )
-
-
 def wheel_metadata(path: Path) -> tuple[str, str]:
     with zipfile.ZipFile(path) as archive:
         bad_member = archive.testzip()
@@ -961,7 +923,6 @@ def check_command(argv: Sequence[str]) -> int:
 
     pyproject, _ = check_packaging_files(repo, reporter)
     check_pyproject_metadata(pyproject, reporter)
-    check_git_remote(repo, reporter)
 
     workflows, workflow_paths = load_workflows(repo, reporter)
     if workflows:
