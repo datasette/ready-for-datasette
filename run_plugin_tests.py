@@ -568,12 +568,49 @@ def build_pytest_command(
     return command
 
 
-def run_and_capture(command: Sequence[str], cwd: Path, output: Path) -> int:
+PLAYWRIGHT_REQUIREMENTS = {"playwright", "pytest-playwright", "pytest-playwright-asyncio"}
+
+
+def uses_playwright(test_dependencies: Sequence[str]) -> bool:
+    for requirement in test_dependencies:
+        match = re.match(r"\s*([A-Za-z0-9_.-]+)", requirement)
+        if match and _normalized_dependency_name(match.group(1)) in PLAYWRIGHT_REQUIREMENTS:
+            return True
+    return False
+
+
+def playwright_install_command(
+    pytest_command: Sequence[str], *, with_deps: bool
+) -> list[str]:
+    """Reuse the pytest command's uv environment to install Chromium.
+
+    Running ``playwright install`` with the exact same ``--with`` requirements
+    means the downloaded browser build matches the Playwright version the tests
+    will import.
+    """
+    for index, part in enumerate(pytest_command):
+        if part == "pytest" and pytest_command[index - 1] != "--with":
+            prefix = list(pytest_command[:index])
+            break
+    else:
+        raise ValueError("Could not find the pytest entry point in the command")
+    return [
+        *prefix,
+        "playwright",
+        "install",
+        *(["--with-deps"] if with_deps else []),
+        "chromium",
+    ]
+
+
+def run_and_capture(
+    command: Sequence[str], cwd: Path, output: Path, *, append: bool = False
+) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     environment = os.environ.copy()
     environment["PYTHONDONTWRITEBYTECODE"] = "1"
     environment["PYTHONUNBUFFERED"] = "1"
-    with output.open("wb") as log:
+    with output.open("ab" if append else "wb") as log:
         process = subprocess.Popen(
             command,
             cwd=cwd,
@@ -1074,15 +1111,37 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
                 + ", ".join(test_dependencies),
                 file=sys.stderr,
             )
-        print("$ " + " ".join(command), file=sys.stderr)
-        pytest_exit_code = run_and_capture(
-            command, source_directory, paths.pytest_output
-        )
+        install_failed = False
+        if uses_playwright(test_dependencies):
+            # Linux CI runners need system libraries too; installing them uses
+            # sudo, which is only appropriate on disposable CI machines.
+            install_command = playwright_install_command(
+                command, with_deps=bool(os.environ.get("GITHUB_ACTIONS"))
+            )
+            print("$ " + " ".join(install_command), file=sys.stderr)
+            install_exit_code = run_and_capture(
+                install_command, source_directory, paths.pytest_output
+            )
+            install_failed = install_exit_code != 0
+        if install_failed:
+            pytest_exit_code = install_exit_code
+        else:
+            print("$ " + " ".join(command), file=sys.stderr)
+            pytest_exit_code = run_and_capture(
+                command,
+                source_directory,
+                paths.pytest_output,
+                append=uses_playwright(test_dependencies),
+            )
 
-    report = load_json_report(report_path)
+    report = None if install_failed else load_json_report(report_path)
     if report is None:
         summary = empty_summary("install_error")
-        detail = "uv or pytest exited before producing a JSON test report"
+        detail = (
+            "playwright install chromium failed"
+            if install_failed
+            else "uv or pytest exited before producing a JSON test report"
+        )
     else:
         summary = summarize_pytest_report(report, pytest_exit_code)
         detail = None

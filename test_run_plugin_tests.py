@@ -543,3 +543,33 @@ def test_execute_records_wheel_only_release_as_no_sdist(tmp_path, monkeypatch):
     assert result["package"]["source"] is None
     assert "non-yanked source distribution" in result["detail"]
     assert json.loads(paths.result.read_text()) == result
+
+
+def test_uses_playwright_detects_playwright_test_dependencies():
+    assert run_plugin_tests.uses_playwright(["pytest", "pytest-playwright>=0.5"])
+    assert run_plugin_tests.uses_playwright(["Playwright"])
+    assert not run_plugin_tests.uses_playwright(["pytest", "httpx"])
+
+
+def test_playwright_install_command_reuses_the_pytest_environment(tmp_path):
+    command = run_plugin_tests.build_pytest_command(
+        "datasette-example",
+        tmp_path / "datasette-example-1.0.tar.gz",
+        "1.0a44",
+        tmp_path / "report.json",
+        test_dependencies=("pytest", "pytest-playwright"),
+    )
+
+    install = run_plugin_tests.playwright_install_command(command, with_deps=True)
+
+    pytest_index = command.index("-vv") - 1
+    assert install == [
+        *command[:pytest_index],
+        "playwright",
+        "install",
+        "--with-deps",
+        "chromium",
+    ]
+    assert "--with-deps" not in run_plugin_tests.playwright_install_command(
+        command, with_deps=False
+    )

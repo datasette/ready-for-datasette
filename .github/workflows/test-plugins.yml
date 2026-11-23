@@ -84,6 +84,18 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
 
+      # Playwright browser builds are large; share them between jobs and runs.
+      # The directory is versioned per browser build, so restoring the most
+      # recent cache and letting `playwright install` add anything missing is
+      # safe.
+      - name: Restore Playwright browsers
+        id: playwright-restore
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-
+          restore-keys: playwright-${{ runner.os }}-
+
       - name: Run released plugin tests
         run: >-
           uv run --no-project python run_plugin_tests.py
@@ -92,6 +104,27 @@ jobs:
           --datasette-version "${{ matrix.datasette_version }}"
           --repository "${{ matrix.repository }}"
           --results-dir staged-results
+
+      - name: Compute Playwright cache key
+        id: playwright-key
+        if: ${{ always() }}
+        run: |
+          dir="$HOME/.cache/ms-playwright"
+          if [ -d "$dir" ] && [ -n "$(ls -A "$dir")" ]; then
+            hash=$(ls "$dir" | sort | sha256sum | cut -c1-16)
+            echo "key=playwright-${{ runner.os }}-$hash" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Save Playwright browsers
+        if: >-
+          ${{ always()
+          && steps.playwright-key.outputs.key != ''
+          && steps.playwright-key.outputs.key != steps.playwright-restore.outputs.cache-matched-key }}
+        continue-on-error: true
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ steps.playwright-key.outputs.key }}
 
       - name: Upload test result
         if: ${{ always() }}
