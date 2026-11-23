@@ -650,27 +650,14 @@ HTML_TEMPLATE = """<!doctype html>
       position: relative;
       z-index: 1;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 22px 0;
       border-bottom: 1px solid rgba(255,255,255,0.16);
     }
-    .brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-weight: 800; }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      color: var(--blue);
-      background: #fff;
-      border-radius: 7px 7px 7px 1px;
-      font: 900 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-      transform: rotate(-2deg);
-    }
     .top-links { display: flex; gap: 22px; }
     .top-links a { color: #fff; font-size: 14px; font-weight: 700; }
     .hero-content { position: relative; z-index: 1; max-width: 1000px; padding: 70px 0 76px; }
-    .eyebrow { margin: 0 0 14px; color: #fff; font: 800 12px/1.2 ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
     h1 { margin: 0; max-width: 900px; font-size: clamp(48px, 8vw, 106px); line-height: 1; letter-spacing: .005em; }
     h1 span { color: #fff; }
     .lede { max-width: 760px; margin: 28px 0 0; color: rgba(255,255,255,.9); font-size: clamp(18px, 2vw, 24px); letter-spacing: .018em; }
@@ -791,11 +778,9 @@ HTML_TEMPLATE = """<!doctype html>
   <header class="hero">
     <div class="wrap">
       <nav class="topbar" aria-label="Main navigation">
-        <a class="brand" href="./"><span class="brand-mark">DS</span><span>ready-for-datasette</span></a>
         <div class="top-links"><a href="#scoreboard">Scoreboard</a><a href="plugins.json">Download flat JSON</a></div>
       </nav>
       <div class="hero-content">
-        <p class="eyebrow">The community compatibility scoreboard</p>
         <h1>Ready for <span>Datasette 1.0?</span></h1>
         <p class="lede">Tracking every known Datasette plugin, one released package and one repeatable pytest run at a time.</p>
         <div class="hero-facts"><span>Target: Datasette @@TARGET@@</span><span>Generated @@GENERATED@@</span><span>Source: released PyPI artifacts</span></div>
