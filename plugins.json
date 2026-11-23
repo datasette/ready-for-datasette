@@ -1445,7 +1445,7 @@
     "metadata_file": "setup.py",
     "metadata_sha256": "261537df1d4b5ad606c50fbddd0d14deeca177e2b58fe71d787109f793ad8137",
     "metadata_etag": "\"08fa4c41a4ac3aed7a20489838d9d8e95aef1e017cd831d2b5ca267bc1aa1af1\"",
-    "latest_version": "0.2"
+    "latest_version": "0.2.1"
   },
   {
     "name": "datasette-public",

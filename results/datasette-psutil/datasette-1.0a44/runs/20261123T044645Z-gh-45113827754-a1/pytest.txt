@@ -1,0 +1,26 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-psutil @ file:///tmp/datasette-psutil-_rm8b0jh/datasette_psutil-0.2.1.tar.gz
+      Built datasette-psutil @ file:///tmp/datasette-psutil-_rm8b0jh/datasette_psutil-0.2.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 41 packages in 25ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmphfVkBF/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-psutil-_rm8b0jh/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_psutil.py::test_datasette_psutil PASSED                       [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-psutil/datasette-1.0a44/runs/20261123T044645Z-gh-45113827754-a1/.pytest-report.json
+============================== 1 passed in 0.07s ===============================
