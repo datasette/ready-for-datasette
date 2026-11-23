@@ -675,6 +675,7 @@ HTML_TEMPLATE = """<!doctype html>
     .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
     .section-heading h2 { margin: 0; font-size: 27px; letter-spacing: .01em; }
     .section-heading p { max-width: 670px; margin: 5px 0 0; color: var(--muted); }
+    .section-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
     .section-heading .kicker { color: var(--blue); font: 800 11px/1.3 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
     .progress-track { display: flex; height: 20px; overflow: hidden; background: var(--blue-pale); border: 2px solid var(--blue); border-radius: 999px; }
     .progress-segment { display: block; min-width: 3px; }
@@ -778,7 +779,7 @@ HTML_TEMPLATE = """<!doctype html>
   <header class="hero">
     <div class="wrap">
       <nav class="topbar" aria-label="Main navigation">
-        <div class="top-links"><a href="#scoreboard">Scoreboard</a><a href="plugins.json">Download flat JSON</a></div>
+        <div class="top-links"><a href="#scoreboard">Scoreboard</a><a href="https://lite.datasette.io/?json=https://datasette.github.io/ready-for-datasette/plugins.json&amp;install=datasette-charts#/data/plugins">Explore in Datasette Lite</a><a href="plugins.json">Download flat JSON</a></div>
       </nav>
       <div class="hero-content">
         <h1>Ready for <span>Datasette 1.0?</span></h1>
@@ -816,7 +817,7 @@ HTML_TEMPLATE = """<!doctype html>
     </div>
 
     <section class="section" id="scoreboard" aria-labelledby="scoreboard-title">
-      <div class="section-heading"><div><span class="kicker">All plugins</span><h2 id="scoreboard-title">Compatibility scoreboard</h2><p>Search package names, failures, owners, and outcomes. Open “Inspect” for test sources, exact failures, warning counts, and raw pytest output.</p></div><a href="plugins.json">Download flat JSON →</a></div>
+      <div class="section-heading"><div><span class="kicker">All plugins</span><h2 id="scoreboard-title">Compatibility scoreboard</h2><p>Search package names, failures, owners, and outcomes. Open “Inspect” for test sources, exact failures, warning counts, and raw pytest output.</p></div><div class="section-links"><a href="https://lite.datasette.io/?json=https://datasette.github.io/ready-for-datasette/plugins.json&amp;install=datasette-charts#/data/plugins">Explore in Datasette Lite →</a><a href="plugins.json">Download flat JSON →</a></div></div>
       <div class="filters">
         <input class="control search" id="search" type="search" placeholder="Search @@TOTAL@@ plugins" aria-label="Search plugins">
         <select class="control" id="status-filter" aria-label="Filter by status"><option value="">Every status</option>@@STATUS_OPTIONS@@</select>
