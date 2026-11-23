@@ -869,15 +869,27 @@ HTML_TEMPLATE = """<!doctype html>
       resultCount.textContent = `Showing ${visible.length} of ${rows.length} plugins`;
       empty.hidden = visible.length !== 0;
     }
+    function setExpanded(row, open) {
+      row.querySelector(".inspect-toggle").setAttribute("aria-expanded", String(open));
+      row.classList.toggle("expanded", open);
+      detailRow(row).hidden = !open;
+    }
     body.addEventListener("click", event => {
       const toggle = event.target.closest(".inspect-toggle");
       if (!toggle) return;
       const row = toggle.closest("tr");
-      const open = toggle.getAttribute("aria-expanded") !== "true";
-      toggle.setAttribute("aria-expanded", String(open));
-      row.classList.toggle("expanded", open);
-      detailRow(row).hidden = !open;
+      setExpanded(row, toggle.getAttribute("aria-expanded") !== "true");
     });
+    function openFromHash() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const row = id && rows.find(r => r.id === id);
+      if (!row) return;
+      if (row.hidden) { search.value = ""; statusFilter.value = ""; ownerFilter.value = ""; refresh(); }
+      setExpanded(row, true);
+      row.scrollIntoView();
+    }
+    window.addEventListener("hashchange", openFromHash);
+    openFromHash();
     [search, statusFilter, ownerFilter, sort].forEach(control => control.addEventListener("input", refresh));
     document.getElementById("clear").addEventListener("click", () => { search.value = ""; statusFilter.value = ""; ownerFilter.value = ""; sort.value = "name"; refresh(); search.focus(); });
     document.querySelectorAll("[data-filter-status]").forEach(button => button.addEventListener("click", () => { statusFilter.value = button.dataset.filterStatus; refresh(); document.getElementById("scoreboard").scrollIntoView(); }));
