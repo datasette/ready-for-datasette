@@ -538,8 +538,11 @@ def build_pytest_command(
         "--no-project",
         "--python",
         python_version,
+        # Only use pre-releases when explicitly requested (the pinned Datasette
+        # alpha) or when no stable release exists. "allow" pulled in packages
+        # such as httpx 1.0.dev, whose API differs from the stable release.
         "--prerelease",
-        "allow",
+        "if-necessary",
         "--no-progress",
         "--with",
         package_requirement,

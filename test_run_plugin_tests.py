@@ -284,6 +284,8 @@ def test_build_pytest_command_pins_datasette_and_writes_json_report(tmp_path):
     assert "pytest-json-report" in command
     assert f"--json-report-file={report_path}" in command
     assert command[-2:] == ["tests/test_api.py", "-x"]
+    prerelease = command.index("--prerelease")
+    assert command[prerelease + 1] == "if-necessary"
 
 
 def test_build_pytest_command_does_not_invent_an_extra_and_adds_declared_deps(
