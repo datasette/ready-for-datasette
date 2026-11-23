@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23T06:21:21Z",
+  "generated_at": "2026-11-23T16:05:02Z",
   "results": [
     {
       "schema_version": 1,
@@ -24548,6 +24548,471 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-remove-database/datasette-1.0a44/runs/20261123T062056Z-gh-45123434373-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-render-binary",
+        "version": "0.3.1",
+        "repository": "simonw/datasette-render-binary",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/76/27/c9647be933c44de89611a2a42e40a52976aa77a1f5d3e5e7c9251c904295/datasette-render-binary-0.3.1.tar.gz",
+          "sha256": "bbb82d4b4c0004dcf80296317ef6e338cb5129508b798f014ac305d3e3d7a8b5"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-render-binary",
+          "ref": "0.3.1",
+          "git_sha": "b9efb24abe192e7652582731db57e97941753a1e"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T160455Z-gh-45212337621-a1",
+        "started_at": "2026-11-23T16:04:55Z",
+        "completed_at": "2026-11-23T16:05:01Z",
+        "duration_seconds": 6.148,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-render-binary @ file:///tmp/datasette-render-binary-4w2song_/datasette-render-binary-0.3.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-binary/datasette-1.0a44/runs/20261123T160455Z-gh-45212337621-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 3,
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 2
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-render-binary/datasette-1.0a44/runs/20261123T160455Z-gh-45212337621-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-render-html",
+        "version": "1.0",
+        "repository": "simonw/datasette-render-html",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/76/32/87bb45b4f790041575429fdf04681c6ef5a4104c4d710054c83a2b9391a9/datasette-render-html-1.0.tar.gz",
+          "sha256": "8e7a9ab21caed72cf42ebef4cecb0e84a6d2068e4681b4eeddfc48c5379949ab"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-render-html",
+          "ref": "1.0",
+          "git_sha": "a2a1114d3fbc6b7b2960a3b916aa3afc9aedb6bf"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T160453Z-gh-45212337621-a1",
+        "started_at": "2026-11-23T16:04:53Z",
+        "completed_at": "2026-11-23T16:05:02Z",
+        "duration_seconds": 8.935,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-render-html @ file:///tmp/datasette-render-html-hh904d8f/datasette-render-html-1.0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-html/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 3,
+        "passed": 3,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-render-html/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-render-image-tags",
+        "version": "0.1",
+        "repository": "simonw/datasette-render-image-tags",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a9/4d/5ba009e3a72e6a95a2f3baa70fff10832a101df3767ceba87432f41f7e26/datasette-render-image-tags-0.1.tar.gz",
+          "sha256": "54c389e867d3339579cfa72e2fd88497855f815f503fdb42e12137676811c40d"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-render-image-tags",
+          "ref": "0.1",
+          "git_sha": "3acf0563b77b2659b1f8b155b5af8844824ff404"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T160455Z-gh-45212337621-a1",
+        "started_at": "2026-11-23T16:04:55Z",
+        "completed_at": "2026-11-23T16:05:02Z",
+        "duration_seconds": 6.889,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-render-image-tags @ file:///tmp/datasette-render-image-tags-tppo7n_v/datasette-render-image-tags-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-image-tags/datasette-1.0a44/runs/20261123T160455Z-gh-45212337621-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 11,
+        "passed": 0,
+        "failed": 11,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [
+        "tests/test_render_image_tags.py::test_mp3_audio[ https://blah/has_url.gif -True]",
+        "tests/test_render_image_tags.py::test_mp3_audio[1-False]",
+        "tests/test_render_image_tags.py::test_mp3_audio[1.2-False]",
+        "tests/test_render_image_tags.py::test_mp3_audio[None-False]",
+        "tests/test_render_image_tags.py::test_mp3_audio[dog-False]",
+        "tests/test_render_image_tags.py::test_mp3_audio[http://blah/has_url.jpg-True]",
+        "tests/test_render_image_tags.py::test_mp3_audio[https://blah/has_url.gif-True]",
+        "tests/test_render_image_tags.py::test_mp3_audio[https://blah/has_url.jpeg-True]",
+        "tests/test_render_image_tags.py::test_mp3_audio[https://blah/has_url.mp3-False]",
+        "tests/test_render_image_tags.py::test_mp3_audio[https://blah/has_url.png-True]",
+        "tests/test_render_image_tags.py::test_mp3_audio[noprotocol.jpg-False]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-render-image-tags/datasette-1.0a44/runs/20261123T160455Z-gh-45212337621-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-render-images",
+        "version": "0.4",
+        "repository": "simonw/datasette-render-images",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/5d/fb/b81a7b969764620f35f5a9720a0fe69bedde34e18bc3dd6382e5e9aff6cf/datasette-render-images-0.4.tar.gz",
+          "sha256": "384ea7b7acad8f015df246d2847d5f9d4e0b98dbb20bb011c9722d27f1f8c8d4"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-render-images",
+          "ref": "0.4",
+          "git_sha": "30b7fc52274298826552bc4fcd76afc02da08110"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T160453Z-gh-45212337621-a1",
+        "started_at": "2026-11-23T16:04:53Z",
+        "completed_at": "2026-11-23T16:04:59Z",
+        "duration_seconds": 6.093,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-render-images @ file:///tmp/datasette-render-images-gre1vixo/datasette-render-images-0.4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-images/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 11,
+        "passed": 11,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-render-images/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-render-markdown",
+        "version": "2.2.1",
+        "repository": "simonw/datasette-render-markdown",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/4f/99/3074dc4a0129d2dbe12f8492daa392c47d927b380e9d96ffd781b22f887b/datasette-render-markdown-2.2.1.tar.gz",
+          "sha256": "97eca47769ad81a1d225a0c32efe50a2f6f54fbeaa97b883855dd0591ba5b8f5"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-render-markdown",
+          "ref": "2.2.1",
+          "git_sha": "65051d4db2681438e4b1bd2442b8ad5a98979a6d"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261123T160453Z-gh-45212337621-a1",
+        "started_at": "2026-11-23T16:04:53Z",
+        "completed_at": "2026-11-23T16:04:59Z",
+        "duration_seconds": 6.309,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-render-markdown @ file:///tmp/datasette-render-markdown-m08uc4xj/datasette-render-markdown-2.2.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-markdown/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 27,
+        "passed": 15,
+        "failed": 12,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 5
+      },
+      "failing_tests": [
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag[input1-expected1]",
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag[input2-expected2]",
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag[input3-<p><a href=\"https://www.example.com/\" rel=\"nofollow\">Example</a></p>\\n<p>Paragraph</p>]",
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag[{% markdown %}\\n# Data analysis with SQLite and Python\\n\"example\" and 'example'\\n{% endmarkdown %}-<h1>Data analysis with SQLite and Python</h1>\\n<p>\"example\" and 'example'</p>]",
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown %}-expected_error0]",
+        "tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown foo=\"bar\" %}{% endmarkdown %}-Unknown attribute 'foo']",
+        "tests/test_render_markdown.py::test_render_markdown_default_pattern",
+        "tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata0]",
+        "tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata1]",
+        "tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata2]",
+        "tests/test_render_markdown.py::test_render_template_function",
+        "tests/test_render_markdown.py::test_render_template_function_with_extensions"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 2,
+        "release_tag": 3
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-render-markdown/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/pytest.txt"
       }
     }
   ]

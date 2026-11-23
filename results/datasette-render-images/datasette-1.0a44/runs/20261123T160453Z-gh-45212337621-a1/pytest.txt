@@ -1,0 +1,34 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-render-images @ file:///tmp/datasette-render-images-gre1vixo/datasette-render-images-0.4.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-render-images @ file:///tmp/datasette-render-images-gre1vixo/datasette-render-images-0.4.tar.gz
+Installed 39 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpGyo0o6/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-render-images-gre1vixo/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 11 items
+
+test_datasette_render_images.py::test_render_cell[hello-None] PASSED     [  9%]
+test_datasette_render_images.py::test_render_cell[1-None] PASSED         [ 18%]
+test_datasette_render_images.py::test_render_cell[True-None] PASSED      [ 27%]
+test_datasette_render_images.py::test_render_cell[GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x01D\x00;-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">] PASSED [ 36%]
+test_datasette_render_images.py::test_render_cell[GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\xff\xff\xff!\xf9\x04\x01\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x01D\x00;-None] PASSED [ 45%]
+test_datasette_render_images.py::test_render_cell[\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x00\x00\x00\x00:~\x9bU\x00\x00\x00\nIDATx\x9cc\xfa\x0f\x00\x01\x05\x01\x02\xcf\xa0.\xcd\x00\x00\x00\x00IEND\xaeB`\x82-expected5] PASSED [ 54%]
+test_datasette_render_images.py::test_render_cell[\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x00\x00\x00\x00:~\x9bU\x00\x00\x00\nIDATx\x9cc\xfa\x0f\x00\x01\x05\x01\x02\xcf\xa0.\xcd\x00\x00\x00\x00IEND\xaeB`\x82-None] PASSED [ 63%]
+test_datasette_render_images.py::test_render_cell[input7-expected7] PASSED [ 72%]
+test_datasette_render_images.py::test_render_cell[input8-None] PASSED    [ 81%]
+test_datasette_render_images.py::test_render_cell_maximum_image_size PASSED [ 90%]
+test_datasette_render_images.py::test_render_cell_different_size_limit PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-images/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/.pytest-report.json
+============================== 11 passed in 0.02s ==============================

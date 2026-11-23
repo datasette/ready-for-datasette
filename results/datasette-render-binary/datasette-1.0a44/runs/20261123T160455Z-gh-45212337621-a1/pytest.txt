@@ -1,0 +1,26 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-render-binary @ file:///tmp/datasette-render-binary-4w2song_/datasette-render-binary-0.3.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-render-binary @ file:///tmp/datasette-render-binary-4w2song_/datasette-render-binary-0.3.1.tar.gz
+Installed 40 packages in 33ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpUNWBjQ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-render-binary-4w2song_/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 3 items
+
+tests/test_render_binary.py::test_render_cell_not_binary PASSED          [ 33%]
+tests/test_render_binary.py::test_render_cell_no_suggestion PASSED       [ 66%]
+tests/test_render_binary.py::test_render_cell_gif_with_suggestion PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-binary/datasette-1.0a44/runs/20261123T160455Z-gh-45212337621-a1/.pytest-report.json
+============================== 3 passed in 0.01s ===============================

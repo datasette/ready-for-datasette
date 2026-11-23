@@ -1,0 +1,481 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-render-markdown @ file:///tmp/datasette-render-markdown-m08uc4xj/datasette-render-markdown-2.2.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded pygments
+      Built datasette-render-markdown @ file:///tmp/datasette-render-markdown-m08uc4xj/datasette-render-markdown-2.2.1.tar.gz
+Installed 42 packages in 55ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpjR2tAW/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-render-markdown-m08uc4xj/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 27 items
+
+tests/test_markdown_jinja_tag.py::test_render_template_tag[{% markdown %}\n# Data analysis with SQLite and Python\n"example" and 'example'\n{% endmarkdown %}-<h1>Data analysis with SQLite and Python</h1>\n<p>"example" and 'example'</p>] FAILED [  3%]
+tests/test_markdown_jinja_tag.py::test_render_template_tag[input1-expected1] FAILED [  7%]
+tests/test_markdown_jinja_tag.py::test_render_template_tag[input2-expected2] FAILED [ 11%]
+tests/test_markdown_jinja_tag.py::test_render_template_tag[input3-<p><a href="https://www.example.com/" rel="nofollow">Example</a></p>\n<p>Paragraph</p>] FAILED [ 14%]
+tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown %}-expected_error0] FAILED [ 18%]
+tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown foo="bar" %}{% endmarkdown %}-Unknown attribute 'foo'] FAILED [ 22%]
+tests/test_render_markdown.py::test_render_cell_not_str[1] PASSED        [ 25%]
+tests/test_render_markdown.py::test_render_cell_not_str[1.1] PASSED      [ 29%]
+tests/test_render_markdown.py::test_render_cell_not_str[binary] PASSED   [ 33%]
+tests/test_render_markdown.py::test_render_cell_no_markdown_suffix PASSED [ 37%]
+tests/test_render_markdown.py::test_render_template_function FAILED      [ 40%]
+tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata0] FAILED [ 44%]
+tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata1] FAILED [ 48%]
+tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata2] FAILED [ 51%]
+tests/test_render_markdown.py::test_render_markdown_default_pattern FAILED [ 55%]
+tests/test_render_markdown.py::test_render_markdown_default_pattern_disabled_if_empty_list PASSED [ 59%]
+tests/test_render_markdown.py::test_explicit_column[metadata0] PASSED    [ 62%]
+tests/test_render_markdown.py::test_explicit_column[metadata1] PASSED    [ 66%]
+tests/test_render_markdown.py::test_explicit_column[metadata2] PASSED    [ 70%]
+tests/test_render_markdown.py::test_miscellaneous_markup[-<div style="white-space: normal"></div>] PASSED [ 74%]
+tests/test_render_markdown.py::test_miscellaneous_markup[# Heading-<div style="white-space: normal"><h1>Heading</h1></div>] PASSED [ 77%]
+tests/test_render_markdown.py::test_miscellaneous_markup[![Alt text](https://www.example.com/blah.png)-expected2] PASSED [ 81%]
+tests/test_render_markdown.py::test_miscellaneous_markup[[This & That](https://www.example.com/)-expected3] PASSED [ 85%]
+tests/test_render_markdown.py::test_miscellaneous_markup[None-None] PASSED [ 88%]
+tests/test_render_markdown.py::test_extensions PASSED                    [ 92%]
+tests/test_render_markdown.py::test_render_template_function_with_extensions FAILED [ 96%]
+tests/test_render_markdown.py::test_render_markdown_no_linkify_inside_code_blocks PASSED [100%]
+
+=================================== FAILURES ===================================
+_ test_render_template_tag[{% markdown %}\n# Data analysis with SQLite and Python\n"example" and 'example'\n{% endmarkdown %}-<h1>Data analysis with SQLite and Python</h1>\n<p>"example" and 'example'</p>] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_render_template_tag[input1-expected1] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_render_template_tag[input2-expected2] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_render_template_tag[input3-<p><a href="https://www.example.com/" rel="nofollow">Example</a></p>\n<p>Paragraph</p>] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______ test_render_template_tag_errors[{% markdown %}-expected_error0] ________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_render_template_tag_errors[{% markdown foo="bar" %}{% endmarkdown %}-Unknown attribute 'foo'] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________ test_render_template_function _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________ test_render_markdown_metadata_patterns[metadata0] _______________
+
+metadata = {'databases': {'mydatabase': {'tables': {'mytable': {'plugins': {'datasette-render-markdown': {...}}}}}}}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            # Table level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "tables": {
+                            "mytable": {
+                                "plugins": {
+                                    "datasette-render-markdown": {
+                                        "patterns": ["*_md"],
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            # Database level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "plugins": {
+                            "datasette-render-markdown": {
+                                "patterns": ["*_md"],
+                            }
+                        }
+                    }
+                }
+            },
+            # Global level
+            {
+                "plugins": {
+                    "datasette-render-markdown": {
+                        "patterns": ["*_md"],
+                    }
+                }
+            },
+        ],
+    )
+    def test_render_markdown_metadata_patterns(metadata):
+        expected = '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>'
+        input = "# Hello there\n* one\n*two\n*three"
+        actual = render_cell(
+            input,
+            column="demo_md",
+            table="mytable",
+            database="mydatabase",
+            datasette=Datasette(metadata=metadata),
+        )
+>       assert expected == actual
+E       assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+E         
+E           <div style="white-space: normal"><h1>Hello there</h1>
+E           <ul>
+E           <li>one
+E         - *two
+E         + <em>two
+E         - *three</li>
+E         ? ^
+E         + </em>three</li>
+E         ? ^^^^^
+E           </ul></div>
+
+tests/test_render_markdown.py:112: AssertionError
+______________ test_render_markdown_metadata_patterns[metadata1] _______________
+
+metadata = {'databases': {'mydatabase': {'plugins': {'datasette-render-markdown': {'patterns': ['*_md']}}}}}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            # Table level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "tables": {
+                            "mytable": {
+                                "plugins": {
+                                    "datasette-render-markdown": {
+                                        "patterns": ["*_md"],
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            # Database level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "plugins": {
+                            "datasette-render-markdown": {
+                                "patterns": ["*_md"],
+                            }
+                        }
+                    }
+                }
+            },
+            # Global level
+            {
+                "plugins": {
+                    "datasette-render-markdown": {
+                        "patterns": ["*_md"],
+                    }
+                }
+            },
+        ],
+    )
+    def test_render_markdown_metadata_patterns(metadata):
+        expected = '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>'
+        input = "# Hello there\n* one\n*two\n*three"
+        actual = render_cell(
+            input,
+            column="demo_md",
+            table="mytable",
+            database="mydatabase",
+            datasette=Datasette(metadata=metadata),
+        )
+>       assert expected == actual
+E       assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+E         
+E           <div style="white-space: normal"><h1>Hello there</h1>
+E           <ul>
+E           <li>one
+E         - *two
+E         + <em>two
+E         - *three</li>
+E         ? ^
+E         + </em>three</li>
+E         ? ^^^^^
+E           </ul></div>
+
+tests/test_render_markdown.py:112: AssertionError
+______________ test_render_markdown_metadata_patterns[metadata2] _______________
+
+metadata = {'plugins': {'datasette-render-markdown': {'patterns': ['*_md']}}}
+
+    @pytest.mark.parametrize(
+        "metadata",
+        [
+            # Table level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "tables": {
+                            "mytable": {
+                                "plugins": {
+                                    "datasette-render-markdown": {
+                                        "patterns": ["*_md"],
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            # Database level
+            {
+                "databases": {
+                    "mydatabase": {
+                        "plugins": {
+                            "datasette-render-markdown": {
+                                "patterns": ["*_md"],
+                            }
+                        }
+                    }
+                }
+            },
+            # Global level
+            {
+                "plugins": {
+                    "datasette-render-markdown": {
+                        "patterns": ["*_md"],
+                    }
+                }
+            },
+        ],
+    )
+    def test_render_markdown_metadata_patterns(metadata):
+        expected = '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>'
+        input = "# Hello there\n* one\n*two\n*three"
+        actual = render_cell(
+            input,
+            column="demo_md",
+            table="mytable",
+            database="mydatabase",
+            datasette=Datasette(metadata=metadata),
+        )
+>       assert expected == actual
+E       assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+E         
+E           <div style="white-space: normal"><h1>Hello there</h1>
+E           <ul>
+E           <li>one
+E         - *two
+E         + <em>two
+E         - *three</li>
+E         ? ^
+E         + </em>three</li>
+E         ? ^^^^^
+E           </ul></div>
+
+tests/test_render_markdown.py:112: AssertionError
+_____________________ test_render_markdown_default_pattern _____________________
+
+    def test_render_markdown_default_pattern():
+        expected = '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li><a href="https://www.example.com/" rel="nofollow">one</a>\n<em>two\n</em>three</li>\n</ul></div>'
+        input = "# Hello there\n* [one](https://www.example.com/)\n*two\n*three"
+        actual = render_cell(
+            input,
+            column="demo_markdown",
+            table="mytable",
+            database="mydatabase",
+            datasette=Datasette([]),
+        )
+>       assert expected == actual
+E       assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li><a href="https://www.example.com/" rel="nofollow">one</a>\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li><a href="https://www.example.com/" rel="nofollow">one</a>\n*two\n*three</li>\n</ul></div>')
+E         
+E           <div style="white-space: normal"><h1>Hello there</h1>
+E           <ul>
+E           <li><a href="https://www.example.com/" rel="nofollow">one</a>
+E         - *two
+E         + <em>two
+E         - *three</li>
+E         ? ^
+E         + </em>three</li>
+E         ? ^^^^^
+E           </ul></div>
+
+tests/test_render_markdown.py:136: AssertionError
+________________ test_render_template_function_with_extensions _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/bO7HXYNoeC9bWwhe/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/bO7HXYNoeC9bWwhe/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_markdown_jinja_tag.py:6
+  /tmp/datasette-render-markdown-m08uc4xj/tagged-source/tests/test_markdown_jinja_tag.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_markdown_jinja_tag.py:104
+  /tmp/datasette-render-markdown-m08uc4xj/tagged-source/tests/test_markdown_jinja_tag.py:104: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_render_markdown.py:34
+  /tmp/datasette-render-markdown-m08uc4xj/tagged-source/tests/test_render_markdown.py:34: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_render_markdown.py:307
+  /tmp/datasette-render-markdown-m08uc4xj/tagged-source/tests/test_render_markdown.py:307: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-render-markdown/datasette-1.0a44/runs/20261123T160453Z-gh-45212337621-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag[{% markdown %}\n# Data analysis with SQLite and Python\n"example" and 'example'\n{% endmarkdown %}-<h1>Data analysis with SQLite and Python</h1>\n<p>"example" and 'example'</p>] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag[input1-expected1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag[input2-expected2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag[input3-<p><a href="https://www.example.com/" rel="nofollow">Example</a></p>\n<p>Paragraph</p>] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown %}-expected_error0] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_markdown_jinja_tag.py::test_render_template_tag_errors[{% markdown foo="bar" %}{% endmarkdown %}-Unknown attribute 'foo'] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_render_markdown.py::test_render_template_function - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata0] - assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+  
+    <div style="white-space: normal"><h1>Hello there</h1>
+    <ul>
+    <li>one
+  - *two
+  + <em>two
+  - *three</li>
+  ? ^
+  + </em>three</li>
+  ? ^^^^^
+    </ul></div>
+FAILED tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata1] - assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+  
+    <div style="white-space: normal"><h1>Hello there</h1>
+    <ul>
+    <li>one
+  - *two
+  + <em>two
+  - *three</li>
+  ? ^
+  + </em>three</li>
+  ? ^^^^^
+    </ul></div>
+FAILED tests/test_render_markdown.py::test_render_markdown_metadata_patterns[metadata2] - assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li>one\n*two\n*three</li>\n</ul></div>')
+  
+    <div style="white-space: normal"><h1>Hello there</h1>
+    <ul>
+    <li>one
+  - *two
+  + <em>two
+  - *three</li>
+  ? ^
+  + </em>three</li>
+  ? ^^^^^
+    </ul></div>
+FAILED tests/test_render_markdown.py::test_render_markdown_default_pattern - assert '<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li><a href="https://www.example.com/" rel="nofollow">one</a>\n<em>two\n</em>three</li>\n</ul></div>' == Markup('<div style="white-space: normal"><h1>Hello there</h1>\n<ul>\n<li><a href="https://www.example.com/" rel="nofollow">one</a>\n*two\n*three</li>\n</ul></div>')
+  
+    <div style="white-space: normal"><h1>Hello there</h1>
+    <ul>
+    <li><a href="https://www.example.com/" rel="nofollow">one</a>
+  - *two
+  + <em>two
+  - *three</li>
+  ? ^
+  + </em>three</li>
+  ? ^^^^^
+    </ul></div>
+FAILED tests/test_render_markdown.py::test_render_template_function_with_extensions - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+================== 12 failed, 15 passed, 5 warnings in 0.17s ===================
