@@ -22,10 +22,10 @@
     "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261123T061939Z-gh-45123308278-a1",
-    "started_at": "2026-11-23T06:19:39Z",
-    "completed_at": "2026-11-23T06:19:45Z",
-    "duration_seconds": 5.585,
+    "id": "20261123T062056Z-gh-45123434373-a1",
+    "started_at": "2026-11-23T06:20:56Z",
+    "completed_at": "2026-11-23T06:21:07Z",
+    "duration_seconds": 11.451,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
     "pytest_exit_code": 1,
@@ -40,7 +40,7 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-remove-database[test] @ file:///tmp/datasette-remove-database-sv91f_w_/datasette_remove_database-0.1a2.tar.gz",
+      "datasette-remove-database[test] @ file:///tmp/datasette-remove-database-fu_z_oqy/datasette_remove_database-0.1a2.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -52,7 +52,7 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remove-database/datasette-1.0a44/runs/20261123T061939Z-gh-45123308278-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remove-database/datasette-1.0a44/runs/20261123T062056Z-gh-45123434373-a1/.pytest-report.json"
     ]
   },
   "passed": false,
@@ -91,6 +91,6 @@
   },
   "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-remove-database/datasette-1.0a44/runs/20261123T061939Z-gh-45123308278-a1/pytest.txt"
+    "pytest_output": "results/datasette-remove-database/datasette-1.0a44/runs/20261123T062056Z-gh-45123434373-a1/pytest.txt"
   }
 }

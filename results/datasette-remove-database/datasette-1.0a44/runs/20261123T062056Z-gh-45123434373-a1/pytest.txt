@@ -1,0 +1,333 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-remove-database @ file:///tmp/datasette-remove-database-fu_z_oqy/datasette_remove_database-0.1a2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-remove-database @ file:///tmp/datasette-remove-database-fu_z_oqy/datasette_remove_database-0.1a2.tar.gz
+Installed 40 packages in 27ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpauuKxk/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-remove-database-fu_z_oqy/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 10 items
+
+tests/test_remove_database.py::test_remove_database[True-True] FAILED    [ 10%]
+tests/test_remove_database.py::test_remove_database[True-False] FAILED   [ 20%]
+tests/test_remove_database.py::test_remove_database[False-True] FAILED   [ 30%]
+tests/test_remove_database.py::test_remove_database[False-False] FAILED  [ 40%]
+tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-None-False-403-Permission denied-] PASSED [ 50%]
+tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-False-200->Remove database: one<-The following files will be deleted] FAILED [ 60%]
+tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-True-200-The following files will be deleted-] FAILED [ 70%]
+tests/test_remove_database.py::test_remove_database_permissions[/one-None-False-200-one->Remove database] PASSED [ 80%]
+tests/test_remove_database.py::test_remove_database_permissions[/one-root-False-200->Remove database-and delete the database file] PASSED [ 90%]
+tests/test_remove_database.py::test_remove_database_permissions[/one-root-True-200-and delete the database file-] PASSED [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_remove_database[True-True] ________________________
+
+ds = <datasette.app.Datasette object at 0x7f7be895c980>
+delete_configured = True, enable_wal = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("delete_configured", (True, False))
+    @pytest.mark.parametrize("enable_wal", (True, False))
+    async def test_remove_database(ds, delete_configured, enable_wal):
+        if delete_configured:
+            ds.config["plugins"] = {"datasette-remove-database": {"delete": True}}
+        if enable_wal:
+            one_path = ds._db_paths[0]
+            sqlite_utils.Database(one_path).enable_wal()
+        # Should start with two databases
+>       assert await dbs(ds) == {"one", "two"}
+               ^^^^^^^^^^^^^
+
+tests/test_remove_database.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ds = <datasette.app.Datasette object at 0x7f7be895c980>
+
+    async def dbs(ds) -> set:
+        databases = (await ds.client.get("/-/databases.json")).json()
+>       return {db["name"] for db in databases}
+                ^^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_remove_database.py:24: TypeError
+_______________________ test_remove_database[True-False] _______________________
+
+ds = <datasette.app.Datasette object at 0x7f7be894b750>
+delete_configured = False, enable_wal = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("delete_configured", (True, False))
+    @pytest.mark.parametrize("enable_wal", (True, False))
+    async def test_remove_database(ds, delete_configured, enable_wal):
+        if delete_configured:
+            ds.config["plugins"] = {"datasette-remove-database": {"delete": True}}
+        if enable_wal:
+            one_path = ds._db_paths[0]
+            sqlite_utils.Database(one_path).enable_wal()
+        # Should start with two databases
+>       assert await dbs(ds) == {"one", "two"}
+               ^^^^^^^^^^^^^
+
+tests/test_remove_database.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ds = <datasette.app.Datasette object at 0x7f7be894b750>
+
+    async def dbs(ds) -> set:
+        databases = (await ds.client.get("/-/databases.json")).json()
+>       return {db["name"] for db in databases}
+                ^^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_remove_database.py:24: TypeError
+_______________________ test_remove_database[False-True] _______________________
+
+ds = <datasette.app.Datasette object at 0x7f7be89be0d0>
+delete_configured = True, enable_wal = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("delete_configured", (True, False))
+    @pytest.mark.parametrize("enable_wal", (True, False))
+    async def test_remove_database(ds, delete_configured, enable_wal):
+        if delete_configured:
+            ds.config["plugins"] = {"datasette-remove-database": {"delete": True}}
+        if enable_wal:
+            one_path = ds._db_paths[0]
+            sqlite_utils.Database(one_path).enable_wal()
+        # Should start with two databases
+>       assert await dbs(ds) == {"one", "two"}
+               ^^^^^^^^^^^^^
+
+tests/test_remove_database.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ds = <datasette.app.Datasette object at 0x7f7be89be0d0>
+
+    async def dbs(ds) -> set:
+        databases = (await ds.client.get("/-/databases.json")).json()
+>       return {db["name"] for db in databases}
+                ^^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_remove_database.py:24: TypeError
+______________________ test_remove_database[False-False] _______________________
+
+ds = <datasette.app.Datasette object at 0x7f7be89bca50>
+delete_configured = False, enable_wal = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("delete_configured", (True, False))
+    @pytest.mark.parametrize("enable_wal", (True, False))
+    async def test_remove_database(ds, delete_configured, enable_wal):
+        if delete_configured:
+            ds.config["plugins"] = {"datasette-remove-database": {"delete": True}}
+        if enable_wal:
+            one_path = ds._db_paths[0]
+            sqlite_utils.Database(one_path).enable_wal()
+        # Should start with two databases
+>       assert await dbs(ds) == {"one", "two"}
+               ^^^^^^^^^^^^^
+
+tests/test_remove_database.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+ds = <datasette.app.Datasette object at 0x7f7be89bca50>
+
+    async def dbs(ds) -> set:
+        databases = (await ds.client.get("/-/databases.json")).json()
+>       return {db["name"] for db in databases}
+                ^^^^^^^^^^
+E       TypeError: string indices must be integers, not 'str'
+
+tests/test_remove_database.py:24: TypeError
+_ test_remove_database_permissions[/-/remove-database/one-root-False-200->Remove database: one<-The following files will be deleted] _
+
+ds = <datasette.app.Datasette object at 0x7f7be89bead0>
+path = '/-/remove-database/one', actor = 'root', delete_enabled = False
+expected_status = 200, expected_fragment = '>Remove database: one<'
+not_fragment = 'The following files will be deleted'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,actor,delete_enabled,expected_status,expected_fragment,not_fragment",
+        (
+            # Permission denied for anonymous user
+            ("/-/remove-database/one", None, False, 403, "Permission denied", ""),
+            # root user gets page
+            (
+                "/-/remove-database/one",
+                "root",
+                False,
+                200,
+                ">Remove database: one<",
+                "The following files will be deleted",
+            ),
+            # if delete is on they get that extra message:
+            (
+                "/-/remove-database/one",
+                "root",
+                True,
+                200,
+                "The following files will be deleted",
+                "",
+            ),
+            # anonymous user cannot see Remove database link
+            ("/one", None, False, 200, "one", ">Remove database"),
+            # root user can see Remove database link
+            (
+                "/one",
+                "root",
+                False,
+                200,
+                ">Remove database",
+                "and delete the database file",
+            ),
+            # root user sees "and delete ..." if delete is turned on
+            ("/one", "root", True, 200, "and delete the database file", ""),
+        ),
+    )
+    async def test_remove_database_permissions(
+        ds, path, actor, delete_enabled, expected_status, expected_fragment, not_fragment
+    ):
+        # Check permissions and visibility of menu items
+        ds.config["plugins"] = {"datasette-remove-database": {"delete": delete_enabled}}
+        cookies = {}
+        if actor:
+            cookies["ds_actor"] = ds.client.actor_cookie({"id": actor})
+        response = await ds.client.get(path, cookies=cookies)
+>       assert response.status_code == expected_status
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_remove_database.py:115: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette_remove_database/__init__.py", line 48, in remove_database
+    await datasette.render_template(
+    ...<7 lines>...
+    )
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 2751, in render_template
+    template = self.get_jinja_environment(request).select_template(templates)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/jinja2/environment.py", line 1070, in select_template
+    raise TemplatesNotFound(names)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplatesNotFound: none of the templates given were found: remove_database.html
+_ test_remove_database_permissions[/-/remove-database/one-root-True-200-The following files will be deleted-] _
+
+ds = <datasette.app.Datasette object at 0x7f7be89bd310>
+path = '/-/remove-database/one', actor = 'root', delete_enabled = True
+expected_status = 200, expected_fragment = 'The following files will be deleted'
+not_fragment = ''
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,actor,delete_enabled,expected_status,expected_fragment,not_fragment",
+        (
+            # Permission denied for anonymous user
+            ("/-/remove-database/one", None, False, 403, "Permission denied", ""),
+            # root user gets page
+            (
+                "/-/remove-database/one",
+                "root",
+                False,
+                200,
+                ">Remove database: one<",
+                "The following files will be deleted",
+            ),
+            # if delete is on they get that extra message:
+            (
+                "/-/remove-database/one",
+                "root",
+                True,
+                200,
+                "The following files will be deleted",
+                "",
+            ),
+            # anonymous user cannot see Remove database link
+            ("/one", None, False, 200, "one", ">Remove database"),
+            # root user can see Remove database link
+            (
+                "/one",
+                "root",
+                False,
+                200,
+                ">Remove database",
+                "and delete the database file",
+            ),
+            # root user sees "and delete ..." if delete is turned on
+            ("/one", "root", True, 200, "and delete the database file", ""),
+        ),
+    )
+    async def test_remove_database_permissions(
+        ds, path, actor, delete_enabled, expected_status, expected_fragment, not_fragment
+    ):
+        # Check permissions and visibility of menu items
+        ds.config["plugins"] = {"datasette-remove-database": {"delete": delete_enabled}}
+        cookies = {}
+        if actor:
+            cookies["ds_actor"] = ds.client.actor_cookie({"id": actor})
+        response = await ds.client.get(path, cookies=cookies)
+>       assert response.status_code == expected_status
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_remove_database.py:115: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette_remove_database/__init__.py", line 48, in remove_database
+    await datasette.render_template(
+    ...<7 lines>...
+    )
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/datasette/app.py", line 2751, in render_template
+    template = self.get_jinja_environment(request).select_template(templates)
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/GG7V4ubUZukhgieB/lib/python3.13/site-packages/jinja2/environment.py", line 1070, in select_template
+    raise TemplatesNotFound(names)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.TemplatesNotFound: none of the templates given were found: remove_database.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remove-database/datasette-1.0a44/runs/20261123T062056Z-gh-45123434373-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_remove_database.py::test_remove_database[True-True] - TypeError: string indices must be integers, not 'str'
+FAILED tests/test_remove_database.py::test_remove_database[True-False] - TypeError: string indices must be integers, not 'str'
+FAILED tests/test_remove_database.py::test_remove_database[False-True] - TypeError: string indices must be integers, not 'str'
+FAILED tests/test_remove_database.py::test_remove_database[False-False] - TypeError: string indices must be integers, not 'str'
+FAILED tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-False-200->Remove database: one<-The following files will be deleted] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-True-200-The following files will be deleted-] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 6 failed, 4 passed in 0.66s ==========================

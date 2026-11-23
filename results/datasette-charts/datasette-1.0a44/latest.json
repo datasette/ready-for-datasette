@@ -22,10 +22,10 @@
     "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261123T061938Z-gh-45123308278-a1",
-    "started_at": "2026-11-23T06:19:38Z",
-    "completed_at": "2026-11-23T06:19:48Z",
-    "duration_seconds": 9.375,
+    "id": "20261123T062054Z-gh-45123434373-a1",
+    "started_at": "2026-11-23T06:20:54Z",
+    "completed_at": "2026-11-23T06:21:04Z",
+    "duration_seconds": 10.494,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
     "pytest_exit_code": 0,
@@ -40,7 +40,7 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-charts @ file:///tmp/datasette-charts-5f7rcj42/datasette_charts-0.1a0.tar.gz",
+      "datasette-charts @ file:///tmp/datasette-charts-l_v8g0q8/datasette_charts-0.1a0.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -52,7 +52,7 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-charts/datasette-1.0a44/runs/20261123T061938Z-gh-45123308278-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-charts/datasette-1.0a44/runs/20261123T062054Z-gh-45123434373-a1/.pytest-report.json"
     ]
   },
   "passed": true,
@@ -84,6 +84,6 @@
   },
   "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-charts/datasette-1.0a44/runs/20261123T061938Z-gh-45123308278-a1/pytest.txt"
+    "pytest_output": "results/datasette-charts/datasette-1.0a44/runs/20261123T062054Z-gh-45123434373-a1/pytest.txt"
   }
 }

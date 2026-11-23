@@ -22,10 +22,10 @@
     "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261123T061940Z-gh-45123308278-a1",
-    "started_at": "2026-11-23T06:19:40Z",
-    "completed_at": "2026-11-23T06:20:14Z",
-    "duration_seconds": 34.552,
+    "id": "20261123T062057Z-gh-45123434373-a1",
+    "started_at": "2026-11-23T06:20:57Z",
+    "completed_at": "2026-11-23T06:21:21Z",
+    "duration_seconds": 24.244,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
     "pytest_exit_code": 0,
@@ -40,7 +40,7 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-cluster-map @ file:///tmp/datasette-cluster-map-5p46229o/datasette_cluster_map-0.19.1.tar.gz",
+      "datasette-cluster-map @ file:///tmp/datasette-cluster-map-eav082kp/datasette_cluster_map-0.19.1.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -62,7 +62,7 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a44/runs/20261123T061940Z-gh-45123308278-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a44/runs/20261123T062057Z-gh-45123434373-a1/.pytest-report.json"
     ]
   },
   "passed": true,
@@ -99,6 +99,6 @@
   },
   "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-cluster-map/datasette-1.0a44/runs/20261123T061940Z-gh-45123308278-a1/pytest.txt"
+    "pytest_output": "results/datasette-cluster-map/datasette-1.0a44/runs/20261123T062057Z-gh-45123434373-a1/pytest.txt"
   }
 }

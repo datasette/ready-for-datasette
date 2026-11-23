@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-agent-charts",
+    "version": "0.1a3",
+    "repository": "datasette/datasette-agent-charts",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/2b/a8/c2356f12061511d24d6f057c1499117efdb7d5ce536d4a09e9ab591903e5/datasette_agent_charts-0.1a3.tar.gz",
+      "sha256": "36afc5b7e6c596d1f274ac01b6e5dabbaabd5d02fdc56da5d83dc58b36bd855c"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-agent-charts",
+      "ref": "0.1a3",
+      "git_sha": "935ac95bfc9e292a1b1e567f0d4fe3f88508b5ce"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T062054Z-gh-45123434373-a1",
+    "started_at": "2026-11-23T06:20:54Z",
+    "completed_at": "2026-11-23T06:21:00Z",
+    "duration_seconds": 5.984,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-agent-charts @ file:///tmp/datasette-agent-charts-e3kqrke4/datasette_agent_charts-0.1a3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent-charts/datasette-1.0a44/runs/20261123T062054Z-gh-45123434373-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 14,
+    "passed": 14,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-agent-charts/datasette-1.0a44/runs/20261123T062054Z-gh-45123434373-a1/pytest.txt"
+  }
+}
