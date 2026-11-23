@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-23T04:55:47Z",
+  "generated_at": "2026-11-23T05:02:54Z",
   "results": [
     {
       "schema_version": 1,
@@ -7886,10 +7886,10 @@
           "sha256": "0e54158564d314782c371dc2095189c825933cc357b7ba737f044d80f8e91fdf"
         },
         "test_suite": {
-          "type": "pypi_sdist",
-          "repository": null,
-          "ref": null,
-          "git_sha": null
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-cluster-map",
+          "ref": "0.19",
+          "git_sha": "ca513469392a4facd267267728cd7ab0252a7583"
         }
       },
       "datasette": {
@@ -7897,12 +7897,12 @@
         "installed_version": "1.0a44"
       },
       "run": {
-        "id": "20261123T044852Z-gh-45114013057-a1",
-        "started_at": "2026-11-23T04:48:52Z",
-        "completed_at": "2026-11-23T04:50:09Z",
-        "duration_seconds": 77.546,
+        "id": "20261123T050152Z-gh-45115223352-a1",
+        "started_at": "2026-11-23T05:01:52Z",
+        "completed_at": "2026-11-23T05:02:54Z",
+        "duration_seconds": 61.295,
         "python_version": "3.13",
-        "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
         "pytest_exit_code": 1,
         "command": [
           "uv",
@@ -7915,7 +7915,7 @@
           "if-necessary",
           "--no-progress",
           "--with",
-          "datasette-cluster-map @ file:///tmp/datasette-cluster-map-vyn2w6nm/datasette_cluster_map-0.19.tar.gz",
+          "datasette-cluster-map @ file:///tmp/datasette-cluster-map-t8jigvep/datasette_cluster_map-0.19.tar.gz",
           "--with",
           "pytest",
           "--with",
@@ -7937,7 +7937,7 @@
           "pytest",
           "-vv",
           "--json-report",
-          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a44/runs/20261123T044852Z-gh-45114013057-a1/.pytest-report.json"
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-cluster-map/datasette-1.0a44/runs/20261123T050152Z-gh-45115223352-a1/.pytest-report.json"
         ]
       },
       "passed": false,
@@ -7975,11 +7975,11 @@
       },
       "test_inventory": {
         "pypi_sdist": 3,
-        "release_tag": 0
+        "release_tag": 3
       },
       "warnings": [],
       "artifacts": {
-        "pytest_output": "results/datasette-cluster-map/datasette-1.0a44/runs/20261123T044852Z-gh-45114013057-a1/pytest.txt"
+        "pytest_output": "results/datasette-cluster-map/datasette-1.0a44/runs/20261123T050152Z-gh-45115223352-a1/pytest.txt"
       }
     },
     {
