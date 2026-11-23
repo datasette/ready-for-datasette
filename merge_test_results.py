@@ -190,10 +190,90 @@ def merge_results(incoming_dir: Path, results_dir: Path) -> list[Path]:
     return merged
 
 
+OUTCOME_LABELS = {
+    "passed": "passed",
+    "test_failures": "test failures",
+    "collection_error": "collection error",
+    "no_tests": "no tests",
+    "install_error": "install error",
+    "runner_error": "runner error",
+}
+
+
+def _describe_result(result: Mapping[str, Any]) -> str:
+    package = result.get("package") or {}
+    datasette = result.get("datasette") or {}
+    counts = result.get("counts") or {}
+    outcome = str(result.get("outcome") or "unknown")
+    label = OUTCOME_LABELS.get(outcome, outcome.replace("_", " "))
+    line = (
+        f"- {package.get('name', 'unknown')} {package.get('version', '?')}"
+        f" on Datasette {datasette.get('requested_version', '?')}: {label}"
+    )
+    count_parts = [
+        f"{counts[key]} {key}"
+        for key in ("passed", "failed", "errors", "skipped")
+        if isinstance(counts.get(key), int) and counts[key]
+    ]
+    if count_parts:
+        line += f" ({', '.join(count_parts)})"
+    return line
+
+
+def commit_message(results: Sequence[Mapping[str, Any]]) -> str:
+    """Build a commit message summarizing a batch of merged results."""
+    names: list[str] = []
+    for result in results:
+        name = str((result.get("package") or {}).get("name", "unknown"))
+        if name not in names:
+            names.append(name)
+    title = "Test results: " + ", ".join(names) if names else "Record plugin test results"
+
+    tally: dict[str, int] = {}
+    for result in results:
+        outcome = str(result.get("outcome") or "unknown")
+        tally[outcome] = tally.get(outcome, 0) + 1
+    summary = ", ".join(
+        f"{count} {OUTCOME_LABELS.get(outcome, outcome.replace('_', ' '))}"
+        for outcome, count in sorted(
+            tally.items(), key=lambda item: (item[0] != "passed", item[0])
+        )
+    )
+    run_word = "run" if len(results) == 1 else "runs"
+    lines = [title, "", f"{len(results)} {run_word}: {summary}", ""]
+    lines.extend(_describe_result(result) for result in results)
+
+    for result in results:
+        name = (result.get("package") or {}).get("name", "unknown")
+        failing = list(result.get("failing_tests") or []) + list(
+            result.get("error_tests") or []
+        )
+        warnings = [
+            w.get("message") or w.get("code")
+            for w in result.get("warnings") or []
+            if isinstance(w, Mapping)
+        ]
+        if not failing and not warnings:
+            continue
+        lines.extend(["", f"{name}:"])
+        for test in failing[:10]:
+            lines.append(f"  - {test}")
+        if len(failing) > 10:
+            lines.append(f"  - ...and {len(failing) - 10} more")
+        for warning in warnings:
+            lines.append(f"  - Warning: {warning}")
+    return "\n".join(lines) + "\n"
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("incoming", type=Path)
     parser.add_argument("--results", type=Path, default=Path("results"))
+    parser.add_argument(
+        "--commit-message",
+        type=Path,
+        help="Write a commit message summarizing the merged results to this file",
+    )
     return parser
 
 
@@ -202,6 +282,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     merged = merge_results(args.incoming, args.results)
     for directory in merged:
         print(directory)
+    if args.commit_message is not None:
+        results = [_read_object(directory / "result.json") for directory in merged]
+        args.commit_message.write_text(commit_message(results), encoding="utf-8")
     return 0
 
 

@@ -134,7 +134,8 @@ jobs:
             uv run --no-project python update_plugins.py \
               --merge-records incoming-results/named-plugin-metadata/named-plugins.json
           fi
-          uv run --no-project python merge_test_results.py incoming-results
+          uv run --no-project python merge_test_results.py incoming-results \
+            --commit-message "$RUNNER_TEMP/commit-message.txt"
 
       - name: Commit and push results
         run: |
@@ -145,7 +146,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Record plugin test results"
+          git commit -F "$RUNNER_TEMP/commit-message.txt"
           git push
 
   publish:

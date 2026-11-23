@@ -113,3 +113,53 @@ def test_merge_results_refuses_conflicting_immutable_run(tmp_path):
 
     with pytest.raises(FileExistsError, match="Conflicting immutable run"):
         merge_test_results.merge_results(incoming, results)
+
+
+def test_main_writes_commit_message_listing_plugins_and_results(tmp_path):
+    incoming = tmp_path / "incoming"
+    results = tmp_path / "results"
+    passing = make_result(
+        "datasette-alpha", "1.0", "1.0a44", "run-a", "2026-07-13T12:00:00Z"
+    )
+    passing["counts"] = {"passed": 12, "skipped": 1}
+    failing = make_result(
+        "datasette-beta",
+        "0.3",
+        "1.0a44",
+        "run-b",
+        "2026-07-13T12:01:00Z",
+        outcome="test_failures",
+    )
+    failing["counts"] = {"passed": 4, "failed": 2}
+    failing["failing_tests"] = ["tests/test_beta.py::test_one"]
+    failing["warnings"] = [{"code": "x", "message": "Something odd"}]
+    stage_result(incoming / "a", passing)
+    stage_result(incoming / "b", failing)
+    message_path = tmp_path / "message.txt"
+
+    assert (
+        merge_test_results.main(
+            [
+                str(incoming),
+                "--results",
+                str(results),
+                "--commit-message",
+                str(message_path),
+            ]
+        )
+        == 0
+    )
+
+    assert message_path.read_text() == (
+        "Test results: datasette-alpha, datasette-beta\n"
+        "\n"
+        "2 runs: 1 passed, 1 test failures\n"
+        "\n"
+        "- datasette-alpha 1.0 on Datasette 1.0a44: passed (12 passed, 1 skipped)\n"
+        "- datasette-beta 0.3 on Datasette 1.0a44: test failures"
+        " (4 passed, 2 failed)\n"
+        "\n"
+        "datasette-beta:\n"
+        "  - tests/test_beta.py::test_one\n"
+        "  - Warning: Something odd\n"
+    )
