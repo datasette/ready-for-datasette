@@ -241,6 +241,9 @@ def build_plugin_rows(
             "metadata_etag": _string(plugin.get("metadata_etag")),
             "released": latest_version is not None,
             "latest_version": latest_version,
+            "latest_version_published_at": _string(
+                plugin.get("latest_version_published_at")
+            ),
             "status": status,
             "status_label": STATUS_LABELS[status],
             "status_description": STATUS_DESCRIPTIONS[status],
@@ -408,6 +411,14 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
         if tested_version and tested_version != row["latest_version"]
         else ""
     )
+    published_at = row["latest_version_published_at"]
+    published_note = (
+        f'<time class="subtle" datetime="{_e(published_at)}" '
+        f'title="Published to PyPI {_e(_format_timestamp(published_at))}">'
+        f"released {_e(published_at[:10])}</time>"
+        if published_at
+        else ""
+    )
     return f"""
       <tr id="{_e(row['page_anchor'])}" data-status="{_e(row['status'])}" data-owner="{_e(row['owner'] or '')}"
           data-search="{_e(search)}" data-name="{_e(row['name'])}"
@@ -421,7 +432,7 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
           <button class="inspect-toggle" type="button" aria-expanded="false"
                   aria-controls="{_e(row['page_anchor'])}-details">Inspect</button>
         </td>
-        <td class="version-cell"><strong>{_e(latest_version)}</strong>{version_note}</td>
+        <td class="version-cell"><strong>{_e(latest_version)}</strong>{published_note}{version_note}</td>
         <td><strong>{_e(datasette_version)}</strong></td>
         <td><div class="counts">{counts}</div></td>
         <td><time datetime="{_e(row['last_tested_at'] or '')}">{_e(_format_timestamp(row['last_tested_at']))}</time></td>

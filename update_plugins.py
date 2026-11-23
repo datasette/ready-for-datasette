@@ -16,6 +16,7 @@ import tokenize
 import tomllib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 from urllib.error import HTTPError, URLError
@@ -69,6 +70,7 @@ class PluginRecord:
     metadata_sha256: str
     metadata_etag: str | None
     latest_version: str | None
+    latest_version_published_at: str | None = None
 
 
 class HttpClient:
@@ -451,18 +453,51 @@ def inspect_repository(
     )
 
 
-def latest_pypi_version(name: str, client: HttpClient) -> str | None:
+def release_published_at(payload: Mapping[str, Any]) -> str | None:
+    """Earliest upload time of the files in the latest release, as ISO 8601 UTC."""
+    files = payload.get("urls")
+    if not isinstance(files, list):
+        return None
+    times: list[datetime] = []
+    for item in files:
+        if not isinstance(item, Mapping):
+            continue
+        value = item.get("upload_time_iso_8601")
+        if not isinstance(value, str):
+            continue
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        times.append(parsed.astimezone(timezone.utc))
+    if not times:
+        return None
+    return min(times).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def latest_pypi_release(
+    name: str, client: HttpClient
+) -> tuple[str | None, str | None]:
+    """Return (latest version, when that version was published) from PyPI."""
     url = f"{PYPI_API}/{quote(name, safe='')}/json"
     payload = client.get_json(url)
     if payload is None:
-        return None
+        return None, None
     if not isinstance(payload, Mapping):
         raise FetchError(f"Expected a JSON object from {url}")
     info = payload.get("info")
     if not isinstance(info, Mapping):
-        return None
+        return None, None
     version = info.get("version")
-    return version if isinstance(version, str) and version else None
+    if not (isinstance(version, str) and version):
+        return None, None
+    return version, release_published_at(payload)
+
+
+def latest_pypi_version(name: str, client: HttpClient) -> str | None:
+    return latest_pypi_release(name, client)[0]
 
 
 def parse_package_names(value: str) -> list[str]:
@@ -501,6 +536,9 @@ def _plugin_record(record: Mapping[str, Any]) -> PluginRecord:
         raise ValueError(f"Invalid plugin metadata ETag: {metadata_etag!r}")
     if latest_version is not None and not isinstance(latest_version, str):
         raise ValueError(f"Invalid plugin version: {latest_version!r}")
+    published_at = record.get("latest_version_published_at")
+    if published_at is not None and not isinstance(published_at, str):
+        raise ValueError(f"Invalid plugin publish date: {published_at!r}")
     return PluginRecord(
         name=values["name"],
         github_repo=values["github_repo"],
@@ -508,6 +546,7 @@ def _plugin_record(record: Mapping[str, Any]) -> PluginRecord:
         metadata_sha256=values["metadata_sha256"],
         metadata_etag=metadata_etag,
         latest_version=latest_version,
+        latest_version_published_at=published_at,
     )
 
 
@@ -558,6 +597,7 @@ def refresh_named_plugins(
             or not version
         ):
             raise FetchError(f"PyPI returned incomplete project metadata for {package}")
+        published_at = release_published_at(payload)
         normalized_name = normalize_package_name(published_name)
 
         previous_matches = previous_by_name.get(normalized_name, [])
@@ -572,6 +612,7 @@ def refresh_named_plugins(
                         metadata_sha256=record.metadata_sha256,
                         metadata_etag=record.metadata_etag,
                         latest_version=version,
+                        latest_version_published_at=published_at,
                     )
                 )
             continue
@@ -607,6 +648,7 @@ def refresh_named_plugins(
                 metadata_sha256=source.metadata_sha256,
                 metadata_etag=source.metadata_etag,
                 latest_version=version,
+                latest_version_published_at=published_at,
             )
         )
 
@@ -645,7 +687,7 @@ def add_versions(
         for item in previous_records
         if isinstance(item.get("github_repo"), str)
     }
-    versions: dict[PluginSource, str | None] = {}
+    versions: dict[PluginSource, tuple[str | None, str | None]] = {}
     to_fetch: list[PluginSource] = []
 
     for source in sources:
@@ -657,19 +699,21 @@ def add_versions(
         )
         if unchanged and not refresh_pypi:
             cached_version = previous.get("latest_version")
+            cached_published_at = previous.get("latest_version_published_at")
             versions[source] = (
-                cached_version if isinstance(cached_version, str) else None
+                cached_version if isinstance(cached_version, str) else None,
+                cached_published_at if isinstance(cached_published_at, str) else None,
             )
         else:
             to_fetch.append(source)
 
     if workers == 1:
         for source in to_fetch:
-            versions[source] = latest_pypi_version(source.name, client)
+            versions[source] = latest_pypi_release(source.name, client)
     else:
         with ThreadPoolExecutor(max_workers=workers) as executor:
             future_sources = {
-                executor.submit(latest_pypi_version, source.name, client): source
+                executor.submit(latest_pypi_release, source.name, client): source
                 for source in to_fetch
             }
             for future in as_completed(future_sources):
@@ -683,7 +727,8 @@ def add_versions(
             metadata_file=source.metadata_file,
             metadata_sha256=source.metadata_sha256,
             metadata_etag=source.metadata_etag,
-            latest_version=versions[source],
+            latest_version=versions[source][0],
+            latest_version_published_at=versions[source][1],
         )
         for source in sources
     ]

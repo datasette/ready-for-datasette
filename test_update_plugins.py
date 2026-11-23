@@ -345,6 +345,36 @@ def test_latest_pypi_version(payload, expected):
     assert update_plugins.latest_pypi_version("datasette-example", client) == expected
 
 
+@pytest.mark.parametrize(
+    ("files", "expected"),
+    (
+        (
+            [
+                {"upload_time_iso_8601": "2026-11-23T05:00:58.787468Z"},
+                {"upload_time_iso_8601": "2026-11-23T05:00:57.702692Z"},
+            ],
+            "2026-11-23T05:00:57Z",
+        ),
+        ([], None),
+        ([{"upload_time_iso_8601": "not a date"}], None),
+    ),
+)
+def test_latest_pypi_release_uses_earliest_file_upload(files, expected):
+    client = JsonClient(
+        {
+            "https://pypi.org/pypi/datasette-example/json": {
+                "info": {"version": "1.2.3"},
+                "urls": files,
+            }
+        }
+    )
+
+    assert update_plugins.latest_pypi_release("datasette-example", client) == (
+        "1.2.3",
+        expected,
+    )
+
+
 def test_add_versions_reuses_pypi_metadata_when_packaging_hash_is_unchanged():
     source = update_plugins.PluginSource(
         name="datasette-cached",
@@ -361,6 +391,7 @@ def test_add_versions_reuses_pypi_metadata_when_packaging_hash_is_unchanged():
             "metadata_sha256": "same-hash",
             "metadata_etag": '"same-etag"',
             "latest_version": "4.2.0",
+            "latest_version_published_at": "2026-01-02T03:04:05Z",
         }
     ]
     client = JsonClient({})
@@ -375,6 +406,7 @@ def test_add_versions_reuses_pypi_metadata_when_packaging_hash_is_unchanged():
             metadata_sha256="same-hash",
             metadata_etag='"same-etag"',
             latest_version="4.2.0",
+            latest_version_published_at="2026-01-02T03:04:05Z",
         )
     ]
     assert client.requested == []
@@ -405,7 +437,14 @@ def test_add_versions_fetches_pypi_for_changes_or_an_explicit_refresh(
         }
     ]
     pypi_url = "https://pypi.org/pypi/datasette-current/json"
-    client = JsonClient({pypi_url: {"info": {"version": "2.0"}}})
+    client = JsonClient(
+        {
+            pypi_url: {
+                "info": {"version": "2.0"},
+                "urls": [{"upload_time_iso_8601": "2026-05-06T07:08:09.123Z"}],
+            }
+        }
+    )
 
     records = update_plugins.add_versions(
         [source],
@@ -416,6 +455,7 @@ def test_add_versions_fetches_pypi_for_changes_or_an_explicit_refresh(
     )
 
     assert records[0].latest_version == "2.0"
+    assert records[0].latest_version_published_at == "2026-05-06T07:08:09Z"
     assert client.requested == [(pypi_url, False)]
 
 
@@ -437,6 +477,7 @@ def test_write_plugins_json_is_sorted_and_has_a_trailing_newline(tmp_path):
             metadata_sha256="aaa",
             metadata_etag='"etag-aaa"',
             latest_version="2.0",
+            latest_version_published_at="2026-01-02T03:04:05Z",
         ),
     ]
 
@@ -450,6 +491,7 @@ def test_write_plugins_json_is_sorted_and_has_a_trailing_newline(tmp_path):
             "metadata_sha256": "aaa",
             "metadata_etag": '"etag-aaa"',
             "latest_version": "2.0",
+            "latest_version_published_at": "2026-01-02T03:04:05Z",
         },
         {
             "name": "datasette-zebra",
@@ -458,6 +500,7 @@ def test_write_plugins_json_is_sorted_and_has_a_trailing_newline(tmp_path):
             "metadata_sha256": "bbb",
             "metadata_etag": '"etag-bbb"',
             "latest_version": None,
+            "latest_version_published_at": None,
         },
     ]
     assert output.read_bytes().endswith(b"\n")
@@ -821,4 +864,6 @@ def test_merge_mode_does_not_reintroduce_a_skipped_package(tmp_path, monkeypatch
         == 0
     )
 
-    assert json.loads(catalog.read_text()) == [included]
+    assert json.loads(catalog.read_text()) == [
+        {**included, "latest_version_published_at": None}
+    ]

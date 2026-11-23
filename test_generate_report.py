@@ -166,6 +166,28 @@ def test_build_plugin_rows_marks_an_old_release_for_retesting():
     assert row["tested_latest_release"] is False
 
 
+def test_latest_version_publish_date_is_in_rows_and_html():
+    plugin = {
+        "name": "datasette-example",
+        "github_repo": "example/datasette-example",
+        "latest_version": "2.0",
+        "latest_version_published_at": "2026-11-23T05:00:57Z",
+    }
+    undated = {
+        "name": "datasette-undated",
+        "github_repo": "example/datasette-undated",
+        "latest_version": "1.0",
+    }
+
+    rows = generate_report.build_plugin_rows([plugin, undated], [], [])
+    html = generate_report.render_html(rows, datetime(2026, 11, 23, tzinfo=UTC))
+
+    assert rows[0]["latest_version_published_at"] == "2026-11-23T05:00:57Z"
+    assert rows[1]["latest_version_published_at"] is None
+    assert 'datetime="2026-11-23T05:00:57Z"' in html
+    assert "released 2026-11-23" in html
+
+
 def test_build_plugin_rows_preserves_duplicate_projects_from_different_repositories():
     plugins = [
         {
