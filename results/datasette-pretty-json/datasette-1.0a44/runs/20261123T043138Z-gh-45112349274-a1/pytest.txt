@@ -1,0 +1,27 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-pretty-json @ file:///tmp/datasette-pretty-json-jjvbcs91/datasette-pretty-json-0.3.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-pretty-json @ file:///tmp/datasette-pretty-json-jjvbcs91/datasette-pretty-json-0.3.tar.gz
+Installed 39 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpSqCpNO/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-pretty-json-jjvbcs91/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 4 items
+
+tests/test_datasette_pretty_json.py::test_render_cell[blah-None] PASSED  [ 25%]
+tests/test_datasette_pretty_json.py::test_render_cell[1.34-None] PASSED  [ 50%]
+tests/test_datasette_pretty_json.py::test_render_cell[{"foo": {"bar": 1}}-<pre style="white-space: pre-wrap">{\n    &#34;foo&#34;: {\n        &#34;bar&#34;: 1\n    }\n}</pre>] PASSED [ 75%]
+tests/test_datasette_pretty_json.py::test_render_cell[[{"foo": {"bar": 1}}]-expected3] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pretty-json/datasette-1.0a44/runs/20261123T043138Z-gh-45112349274-a1/.pytest-report.json
+============================== 4 passed in 0.01s ===============================

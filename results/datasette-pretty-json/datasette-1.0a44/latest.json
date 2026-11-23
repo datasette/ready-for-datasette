@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-pretty-json",
+    "version": "0.3",
+    "repository": "simonw/datasette-pretty-json",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ec/b8/e28e5bb7d1ca06f3ece1cefb4a130d49a271c26f70c6eab858e03c8efc87/datasette-pretty-json-0.3.tar.gz",
+      "sha256": "f23ef3eae6c0df13305368f716e5cb385050d8fbeceb6d0ebcf6618d60f2ddaf"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-pretty-json",
+      "ref": "0.3",
+      "git_sha": "9e5d80a5025aba9408b472b4ccc8b4fdc3586bac"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T043138Z-gh-45112349274-a1",
+    "started_at": "2026-11-23T04:31:38Z",
+    "completed_at": "2026-11-23T04:31:44Z",
+    "duration_seconds": 6.424,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-pretty-json @ file:///tmp/datasette-pretty-json-jjvbcs91/datasette-pretty-json-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pretty-json/datasette-1.0a44/runs/20261123T043138Z-gh-45112349274-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-pretty-json/datasette-1.0a44/runs/20261123T043138Z-gh-45112349274-a1/pytest.txt"
+  }
+}

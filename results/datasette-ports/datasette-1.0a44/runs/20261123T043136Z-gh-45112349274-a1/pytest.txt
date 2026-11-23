@@ -1,0 +1,45 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-ports @ file:///tmp/datasette-ports-8d_44xtf/datasette_ports-0.4.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded pygments
+      Built datasette-ports @ file:///tmp/datasette-ports-8d_44xtf/datasette_ports-0.4.tar.gz
+Installed 43 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpntH7fv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-ports-8d_44xtf/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/test_ports.py::test_plugin_is_installed PASSED                     [  5%]
+tests/test_ports.py::test_probe_port_database_formats[list] PASSED       [ 10%]
+tests/test_ports.py::test_probe_port_database_formats[wrapped-list] PASSED [ 15%]
+tests/test_ports.py::test_probe_port_database_formats[empty-list] PASSED [ 20%]
+tests/test_ports.py::test_probe_port_database_formats[wrapped-empty-list] PASSED [ 25%]
+tests/test_ports.py::test_probe_port_database_formats[missing-databases] PASSED [ 30%]
+tests/test_ports.py::test_probe_port_database_formats[null-databases] PASSED [ 35%]
+tests/test_ports.py::test_probe_port_database_formats[non-list-databases] PASSED [ 40%]
+tests/test_ports.py::test_probe_port_database_formats[invalid-response] PASSED [ 45%]
+tests/test_ports.py::test_ports_command PASSED                           [ 50%]
+tests/test_ports.py::test_ports_no_plugins_line_when_empty PASSED        [ 55%]
+tests/test_ports.py::test_ports_json_output PASSED                       [ 60%]
+tests/test_ports.py::test_ports_json_empty PASSED                        [ 65%]
+tests/test_ports.py::test_ports_no_instances PASSED                      [ 70%]
+tests/test_ports.py::test_ports_all_non_datasette PASSED                 [ 75%]
+tests/test_ports.py::test_parse_lsof PASSED                              [ 80%]
+tests/test_ports.py::test_parse_lsof_wildcard PASSED                     [ 85%]
+tests/test_ports.py::test_cwd_resolves_relative_paths PASSED             [ 90%]
+tests/test_ports.py::test_no_cwd_leaves_paths_as_is PASSED               [ 95%]
+tests/test_ports.py::test_parse_lsof_empty PASSED                        [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ports/datasette-1.0a44/runs/20261123T043136Z-gh-45112349274-a1/.pytest-report.json
+============================== 20 passed in 0.22s ==============================

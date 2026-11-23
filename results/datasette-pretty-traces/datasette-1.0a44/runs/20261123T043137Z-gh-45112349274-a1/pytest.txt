@@ -1,0 +1,145 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-pretty-traces @ file:///tmp/datasette-pretty-traces-zlubt3hz/datasette_pretty_traces-0.7.tar.gz
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-pretty-traces @ file:///tmp/datasette-pretty-traces-zlubt3hz/datasette_pretty_traces-0.7.tar.gz
+Installed 40 packages in 35ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/vfYu_4jKYYhDcw3W/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp2UoIaN/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-pretty-traces-zlubt3hz/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_pretty_traces.py::test_script_included_conditions[False-False-False] FAILED [ 16%]
+tests/test_pretty_traces.py::test_script_included_conditions[False-True-False] FAILED [ 33%]
+tests/test_pretty_traces.py::test_script_included_conditions[True-False-False] FAILED [ 50%]
+tests/test_pretty_traces.py::test_script_included_conditions[True-True-True] FAILED [ 66%]
+tests/test_pretty_traces.py::test_does_not_break_pages_with_no_request PASSED [ 83%]
+tests/test_pretty_traces.py::test_pretty_traces_demo_route PASSED        [100%]
+
+=================================== FAILURES ===================================
+______________ test_script_included_conditions[False-False-False] ______________
+
+trace_debug = False, _trace = False, expected = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "trace_debug,_trace,expected",
+        (
+            (False, False, False),
+            (False, True, False),
+            (True, False, False),
+            (True, True, True),
+        ),
+    )
+    async def test_script_included_conditions(trace_debug, _trace, expected):
+        datasette = Datasette([], memory=True, settings={"trace_debug": trace_debug})
+        path = "/_memory?sql=select+1"
+        if _trace:
+            path += "&_trace=1"
+        response = await datasette.client.get(path)
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_pretty_traces.py:24: AssertionError
+______________ test_script_included_conditions[False-True-False] _______________
+
+trace_debug = False, _trace = True, expected = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "trace_debug,_trace,expected",
+        (
+            (False, False, False),
+            (False, True, False),
+            (True, False, False),
+            (True, True, True),
+        ),
+    )
+    async def test_script_included_conditions(trace_debug, _trace, expected):
+        datasette = Datasette([], memory=True, settings={"trace_debug": trace_debug})
+        path = "/_memory?sql=select+1"
+        if _trace:
+            path += "&_trace=1"
+        response = await datasette.client.get(path)
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_pretty_traces.py:24: AssertionError
+______________ test_script_included_conditions[True-False-False] _______________
+
+trace_debug = True, _trace = False, expected = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "trace_debug,_trace,expected",
+        (
+            (False, False, False),
+            (False, True, False),
+            (True, False, False),
+            (True, True, True),
+        ),
+    )
+    async def test_script_included_conditions(trace_debug, _trace, expected):
+        datasette = Datasette([], memory=True, settings={"trace_debug": trace_debug})
+        path = "/_memory?sql=select+1"
+        if _trace:
+            path += "&_trace=1"
+        response = await datasette.client.get(path)
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_pretty_traces.py:24: AssertionError
+_______________ test_script_included_conditions[True-True-True] ________________
+
+trace_debug = True, _trace = True, expected = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "trace_debug,_trace,expected",
+        (
+            (False, False, False),
+            (False, True, False),
+            (True, False, False),
+            (True, True, True),
+        ),
+    )
+    async def test_script_included_conditions(trace_debug, _trace, expected):
+        datasette = Datasette([], memory=True, settings={"trace_debug": trace_debug})
+        path = "/_memory?sql=select+1"
+        if _trace:
+            path += "&_trace=1"
+        response = await datasette.client.get(path)
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <Response [302 Found]>.status_code
+
+tests/test_pretty_traces.py:24: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pretty-traces/datasette-1.0a44/runs/20261123T043137Z-gh-45112349274-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_pretty_traces.py::test_script_included_conditions[False-False-False] - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_pretty_traces.py::test_script_included_conditions[False-True-False] - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_pretty_traces.py::test_script_included_conditions[True-False-False] - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+FAILED tests/test_pretty_traces.py::test_script_included_conditions[True-True-True] - assert 302 == 200
+ +  where 302 = <Response [302 Found]>.status_code
+========================= 4 failed, 2 passed in 0.27s ==========================
