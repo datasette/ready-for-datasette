@@ -412,14 +412,18 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
           <a class="plugin-name" href="{_e(row['github_url'] or row['pypi_url'])}">{_e(row['name'])}</a>
           <span class="owner">{_e(row['github_repo'] or 'Repository unavailable')}</span>
         </td>
-        <td><span class="status status-{_e(row['status'])}"><span></span>{_e(row['status_label'])}</span></td>
+        <td class="status-cell">
+          <span class="status status-{_e(row['status'])}"><span></span>{_e(row['status_label'])}</span>
+          <button class="inspect-toggle" type="button" aria-expanded="false"
+                  aria-controls="{_e(row['page_anchor'])}-details">Inspect</button>
+        </td>
         <td class="version-cell"><strong>{_e(latest_version)}</strong>{version_note}</td>
         <td><strong>{_e(datasette_version)}</strong></td>
         <td><div class="counts">{counts}</div></td>
         <td><time datetime="{_e(row['last_tested_at'] or '')}">{_e(_format_timestamp(row['last_tested_at']))}</time></td>
-        <td class="details-cell">
-          <details>
-            <summary>Inspect</summary>
+      </tr>
+      <tr class="detail-row" id="{_e(row['page_anchor'])}-details" hidden>
+        <td colspan="6">
             <div class="details-panel">
               <p class="status-explanation">{_e(row['status_description'])}</p>
               <dl>
@@ -438,7 +442,6 @@ def _plugin_table_row(row: Mapping[str, Any]) -> str:
               {details_html}
               <div class="detail-links">{' · '.join(links)}</div>
             </div>
-          </details>
         </td>
       </tr>"""
 
@@ -731,12 +734,15 @@ HTML_TEMPLATE = """<!doctype html>
     .count.fail { color: var(--red); background: #feeae8; }
     .count.error { color: var(--orange); background: #fff0dc; }
     td time { color: var(--muted); font-size: 11px; white-space: nowrap; }
-    details { position: relative; }
-    summary { color: var(--blue); font-weight: 750; cursor: pointer; }
-    .details-cell { min-width: 90px; }
-    .details-panel { min-width: 570px; max-width: 680px; margin-top: 10px; padding: 17px; background: var(--blue-pale); border: 1px solid var(--line); border-radius: 8px; }
+    .inspect-toggle { display: block; margin-top: 8px; padding: 0; color: var(--blue); background: none; border: 0; font: inherit; font-weight: 750; cursor: pointer; }
+    .inspect-toggle::before { content: "▸ "; }
+    .inspect-toggle[aria-expanded="true"]::before { content: "▾ "; }
+    tr.expanded td { border-bottom: 0; }
+    tbody tr.detail-row:hover { background: none; }
+    .detail-row > td { padding-top: 0; }
+    .details-panel { padding: 17px; background: var(--blue-pale); border: 1px solid var(--line); border-radius: 8px; }
     .status-explanation { margin: 0 0 13px; font-weight: 650; }
-    dl { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 0; }
+    dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 0; }
     dl div { padding: 7px; background: #fff; border: 1px solid var(--line); border-radius: 5px; }
     dt { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
     dd { margin: 3px 0 0; font: 700 11px/1.3 ui-monospace, monospace; overflow-wrap: anywhere; }
@@ -831,7 +837,7 @@ HTML_TEMPLATE = """<!doctype html>
       <p class="result-count" id="result-count">Showing @@TOTAL@@ of @@TOTAL@@ plugins</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Plugin</th><th>Status</th><th>Latest release</th><th>Datasette</th><th>Test counts</th><th>Last checked</th><th>Evidence</th></tr></thead>
+          <thead><tr><th>Plugin</th><th>Status</th><th>Latest release</th><th>Datasette</th><th>Test counts</th><th>Last checked</th></tr></thead>
           <tbody id="plugin-rows">@@TABLE_ROWS@@</tbody>
         </table>
         <div class="empty" id="empty" hidden>No plugins match these filters.</div>
@@ -842,7 +848,8 @@ HTML_TEMPLATE = """<!doctype html>
   <footer><div class="wrap"><span>Built from public PyPI releases and immutable pytest logs.</span><span><a href="plugins.json">Flat plugin data</a> · <a href="https://github.com/datasette/ready-for-datasette">Source on GitHub</a></span></div></footer>
   <script>
     const body = document.getElementById("plugin-rows");
-    const rows = Array.from(body.querySelectorAll("tr"));
+    const rows = Array.from(body.querySelectorAll("tr[data-name]"));
+    const detailRow = row => document.getElementById(row.id + "-details");
     const search = document.getElementById("search");
     const statusFilter = document.getElementById("status-filter");
     const ownerFilter = document.getElementById("owner-filter");
@@ -858,6 +865,8 @@ HTML_TEMPLATE = """<!doctype html>
       let visible = rows.filter(row => {
         const show = (!query || row.dataset.search.includes(query)) && (!status || row.dataset.status === status) && (!owner || row.dataset.owner === owner);
         row.hidden = !show;
+        const toggle = row.querySelector(".inspect-toggle");
+        detailRow(row).hidden = !show || toggle.getAttribute("aria-expanded") !== "true";
         return show;
       });
       visible.sort((a, b) => {
@@ -865,10 +874,19 @@ HTML_TEMPLATE = """<!doctype html>
         if (sort.value === "status") return statusOrder[a.dataset.status] - statusOrder[b.dataset.status] || a.dataset.name.localeCompare(b.dataset.name);
         return a.dataset.name.localeCompare(b.dataset.name);
       });
-      visible.forEach(row => body.appendChild(row));
+      visible.forEach(row => { body.appendChild(row); body.appendChild(detailRow(row)); });
       resultCount.textContent = `Showing ${visible.length} of ${rows.length} plugins`;
       empty.hidden = visible.length !== 0;
     }
+    body.addEventListener("click", event => {
+      const toggle = event.target.closest(".inspect-toggle");
+      if (!toggle) return;
+      const row = toggle.closest("tr");
+      const open = toggle.getAttribute("aria-expanded") !== "true";
+      toggle.setAttribute("aria-expanded", String(open));
+      row.classList.toggle("expanded", open);
+      detailRow(row).hidden = !open;
+    });
     [search, statusFilter, ownerFilter, sort].forEach(control => control.addEventListener("input", refresh));
     document.getElementById("clear").addEventListener("click", () => { search.value = ""; statusFilter.value = ""; ownerFilter.value = ""; sort.value = "name"; refresh(); search.focus(); });
     document.querySelectorAll("[data-filter-status]").forEach(button => button.addEventListener("click", () => { statusFilter.value = button.dataset.filterStatus; refresh(); document.getElementById("scoreboard").scrollIntoView(); }));
