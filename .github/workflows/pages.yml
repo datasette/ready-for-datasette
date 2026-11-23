@@ -1,0 +1,63 @@
+name: Publish report
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - generate_report.py
+      - skipped_plugins.py
+      - skip-these.txt
+      - plugins.json
+      - results/**
+      - .github/workflows/pages.yml
+  # Commits pushed by other workflows using GITHUB_TOKEN do not trigger push
+  # events, so also publish whenever those workflows finish.
+  workflow_run:
+    workflows:
+      - Test plugins
+      - Update plugins
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out latest results
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Generate progress report
+        run: uv run --no-project python generate_report.py --output _site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
