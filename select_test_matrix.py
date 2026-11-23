@@ -27,6 +27,7 @@ TERMINAL_OUTCOMES = {
     "collection_error",
     "no_tests",
     "install_error",
+    "no_sdist",
 }
 MAX_TESTS = 10
 OWNER_PRIORITY = {"datasette": 0, "dogsheep": 1, "simonw": 2, "asg017": 3}

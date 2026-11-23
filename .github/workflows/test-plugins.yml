@@ -5,8 +5,9 @@ on:
     branches:
       - main
   schedule:
-    # GitHub Actions schedules use UTC. Offset from the nightly metadata refresh.
-    - cron: "*/11 * * * *"
+    # GitHub Actions schedules use UTC. Hourly, offset from the top of the hour
+    # and from the nightly metadata refresh at 01:30.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       limit:

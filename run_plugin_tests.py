@@ -53,7 +53,7 @@ class Sdist:
 @dataclass(frozen=True)
 class ReleasedSource:
     repository: str | None
-    sdist: Sdist
+    sdist: Sdist | None
     test_suite: TestSuiteSource
 
 
@@ -663,6 +663,9 @@ def summarize_pytest_report(
         outcome = "collection_error"
     elif pytest_exit_code == 1:
         outcome = "test_failures"
+    elif pytest_exit_code == 2 and error_tests:
+        # Pytest exits with 2 ("interrupted") when test modules fail to import.
+        outcome = "collection_error"
     else:
         outcome = "runner_error"
     return {
@@ -831,11 +834,15 @@ def _build_result(
             "name": package_name,
             "version": package_version,
             "repository": source.repository,
-            "source": {
-                "type": "pypi_sdist",
-                "url": source.sdist.url,
-                "sha256": source.sdist.sha256,
-            },
+            "source": (
+                {
+                    "type": "pypi_sdist",
+                    "url": source.sdist.url,
+                    "sha256": source.sdist.sha256,
+                }
+                if source.sdist is not None
+                else None
+            ),
             "test_suite": {
                 "type": source.test_suite.kind,
                 "repository": source.test_suite.repository,
@@ -896,7 +903,11 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
         )
     package_name = normalize_package_name(package_name_value)
     package_extra = published_test_extra(info_value)
-    sdist = select_sdist(package_payload)
+    try:
+        sdist: Sdist | None = select_sdist(package_payload)
+    except ValueError as ex:
+        sdist = None
+        no_sdist_detail = str(ex)
 
     if args.datasette_version:
         datasette_version = args.datasette_version
@@ -912,7 +923,7 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     source = ReleasedSource(
         repository=repository,
         sdist=sdist,
-        test_suite=TestSuiteSource(kind="pypi_sdist"),
+        test_suite=TestSuiteSource(kind="pypi_sdist" if sdist else "none"),
     )
 
     run_id = make_run_id(started)
@@ -921,6 +932,28 @@ def execute(args: argparse.Namespace) -> tuple[dict[str, Any], ResultPaths]:
     )
     paths.run_directory.mkdir(parents=True, exist_ok=False)
     paths.pytest_output.touch()
+
+    if sdist is None:
+        # Wheel-only releases cannot be tested from source; record that as a
+        # result so the selector stops picking this release.
+        result = _build_result(
+            package_name=package_name,
+            package_version=package_version,
+            source=source,
+            datasette_version=datasette_version,
+            python_version=args.python_version,
+            run_id=run_id,
+            started=started,
+            completed=datetime.now(UTC),
+            pytest_exit_code=None,
+            command=[],
+            summary=empty_summary("no_sdist"),
+            paths=paths,
+            detail=no_sdist_detail,
+            package_extra=package_extra,
+        )
+        store_result(paths, result)
+        return result, paths
 
     report_path = paths.run_directory / ".pytest-report.json"
     test_inventory = {"pypi_sdist": 0, "release_tag": 0}

@@ -163,3 +163,24 @@ def test_main_writes_commit_message_listing_plugins_and_results(tmp_path):
         "  - tests/test_beta.py::test_one\n"
         "  - Warning: Something odd\n"
     )
+
+
+def test_main_succeeds_without_writing_a_message_when_nothing_to_merge(tmp_path):
+    incoming = tmp_path / "incoming"
+    incoming.mkdir()
+    message_path = tmp_path / "message.txt"
+
+    assert (
+        merge_test_results.main(
+            [
+                str(incoming),
+                "--results",
+                str(tmp_path / "results"),
+                "--commit-message",
+                str(message_path),
+            ]
+        )
+        == 0
+    )
+    assert not message_path.exists()
+    assert not (tmp_path / "results").exists()

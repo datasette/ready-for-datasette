@@ -467,7 +467,13 @@ def test_load_json_report_returns_none_when_uv_failed_before_pytest(tmp_path):
 
 @pytest.mark.parametrize(
     ("outcome", "expected_exit_code"),
-    (("passed", 0), ("test_failures", 0), ("install_error", 0), ("runner_error", 1)),
+    (
+        ("passed", 0),
+        ("test_failures", 0),
+        ("install_error", 0),
+        ("no_sdist", 0),
+        ("runner_error", 1),
+    ),
 )
 def test_main_only_fails_for_runner_errors(
     outcome, expected_exit_code, tmp_path, monkeypatch
@@ -482,3 +488,56 @@ def test_main_only_fails_for_runner_errors(
     )
 
     assert run_plugin_tests.main(["datasette-example"]) == expected_exit_code
+
+
+def test_summarize_pytest_report_treats_interrupted_import_errors_as_collection_errors():
+    summary = run_plugin_tests.summarize_pytest_report(
+        {
+            "summary": {"total": 0},
+            "tests": [],
+            "collectors": [{"nodeid": "tests/test_block.py", "outcome": "failed"}],
+        },
+        pytest_exit_code=2,
+    )
+
+    assert summary["outcome"] == "collection_error"
+    assert summary["error_tests"] == ["tests/test_block.py"]
+
+
+def test_execute_records_wheel_only_release_as_no_sdist(tmp_path, monkeypatch):
+    payload = {
+        "info": {"name": "datasette-wheel-only", "version": "0.1"},
+        "urls": [
+            {
+                "packagetype": "bdist_wheel",
+                "url": "https://files.pythonhosted.org/example.whl",
+                "digests": {"sha256": "wheel-sha"},
+                "yanked": False,
+            }
+        ],
+    }
+    monkeypatch.setattr(
+        run_plugin_tests, "pypi_project", lambda name, version=None: payload
+    )
+    monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
+    args = run_plugin_tests.parse_arguments(
+        [
+            "datasette-wheel-only",
+            "--package-version",
+            "0.1",
+            "--datasette-version",
+            "1.0a44",
+            "--repository",
+            "simonw/datasette-wheel-only",
+            "--results-dir",
+            str(tmp_path / "results"),
+        ]
+    )
+
+    result, paths = run_plugin_tests.execute(args)
+
+    assert result["outcome"] == "no_sdist"
+    assert result["passed"] is False
+    assert result["package"]["source"] is None
+    assert "non-yanked source distribution" in result["detail"]
+    assert json.loads(paths.result.read_text()) == result

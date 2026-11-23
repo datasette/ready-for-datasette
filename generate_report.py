@@ -33,7 +33,7 @@ STATUS_LABELS = {
 STATUS_DESCRIPTIONS = {
     "ready": "The latest release passed against the tested Datasette alpha.",
     "not_ready": "The latest release completed its suite with test failures.",
-    "test_error": "The suite could not produce a reliable compatibility verdict.",
+    "test_error": "The suite could not produce a reliable compatibility verdict, or the release has no source distribution to test.",
     "no_tests": "Pytest did not discover any tests in the released source.",
     "outdated": "A previous release was tested; the current release still needs a run.",
     "untested": "The released package has not reached the scoreboard yet.",

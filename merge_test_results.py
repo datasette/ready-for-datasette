@@ -152,7 +152,7 @@ def merge_results(incoming_dir: Path, results_dir: Path) -> list[Path]:
     results_dir = Path(results_dir)
     staged_results = sorted(incoming_dir.rglob("result.json"))
     if not staged_results:
-        raise ValueError(f"No result.json files found under {incoming_dir}")
+        return []
 
     merged: list[Path] = []
     for source_result in staged_results:
@@ -196,6 +196,7 @@ OUTCOME_LABELS = {
     "collection_error": "collection error",
     "no_tests": "no tests",
     "install_error": "install error",
+    "no_sdist": "no source distribution",
     "runner_error": "runner error",
 }
 
@@ -280,6 +281,9 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     merged = merge_results(args.incoming, args.results)
+    if not merged:
+        print(f"No result.json files found under {args.incoming}; nothing to merge")
+        return 0
     for directory in merged:
         print(directory)
     if args.commit_message is not None:
