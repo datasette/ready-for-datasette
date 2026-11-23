@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-remote-actors",
+    "version": "0.1a7",
+    "repository": "datasette/datasette-remote-actors",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a1/a7/7dbe3f5122187365dddc1965b44968407a5eb87be7b9fdf887e7bd438342/datasette_remote_actors-0.1a7.tar.gz",
+      "sha256": "fb3d1958b22078a9e5cb89620b9c52b7b034706c2ca41ec74a713b77951782bc"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-remote-actors",
+      "ref": "0.1a7",
+      "git_sha": "820453aaa5ebdc17ae4beeeafe43bd7f6088b959"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T051045Z-gh-45116103831-a1",
+    "started_at": "2026-11-23T05:10:45Z",
+    "completed_at": "2026-11-23T05:10:51Z",
+    "duration_seconds": 6.13,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-remote-actors[test] @ file:///tmp/datasette-remote-actors-zh1_1w44/datasette_remote_actors-0.1a7.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-httpx",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-profiles>=0.1a3",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remote-actors/datasette-1.0a44/runs/20261123T051045Z-gh-45116103831-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 18,
+    "passed": 18,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-httpx",
+      "pytest-asyncio",
+      "datasette-profiles>=0.1a3"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-remote-actors/datasette-1.0a44/runs/20261123T051045Z-gh-45116103831-a1/pytest.txt"
+  }
+}

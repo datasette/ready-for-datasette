@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-redirect-to-https",
+    "version": "0.2",
+    "repository": "simonw/datasette-redirect-to-https",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/eb/89/73df25db5bffd367545399ad2a3dfd824f946ba480f277e8564c8536b554/datasette-redirect-to-https-0.2.tar.gz",
+      "sha256": "522bbf1b159eacf065d64d2913f91ffe9dcd5adc66ee229dcb5c7dc1509822bc"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-redirect-to-https",
+      "ref": "0.2",
+      "git_sha": "7f1fdae3f51d211c24fe67b20ecb927e041c7f79"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T051042Z-gh-45116103831-a1",
+    "started_at": "2026-11-23T05:10:42Z",
+    "completed_at": "2026-11-23T05:10:48Z",
+    "duration_seconds": 6.4,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-redirect-to-https @ file:///tmp/datasette-redirect-to-https-seglyrq3/datasette-redirect-to-https-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-redirect-to-https/datasette-1.0a44/runs/20261123T051042Z-gh-45116103831-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_redirect_to_https.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-redirect-to-https/datasette-1.0a44/runs/20261123T051042Z-gh-45116103831-a1/pytest.txt"
+  }
+}

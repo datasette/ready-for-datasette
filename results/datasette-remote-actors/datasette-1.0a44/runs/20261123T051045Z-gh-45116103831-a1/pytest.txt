@@ -1,0 +1,47 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-remote-actors @ file:///tmp/datasette-remote-actors-zh1_1w44/datasette_remote_actors-0.1a7.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-remote-actors @ file:///tmp/datasette-remote-actors-zh1_1w44/datasette_remote_actors-0.1a7.tar.gz
+Installed 46 packages in 26ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/8TOIPj3dGc3gOi1w/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmptN7lrP/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'httpx': '0.36.2', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-remote-actors-zh1_1w44/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, httpx-0.36.2, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 18 items
+
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids0-False-False] PASSED [  5%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids0-False-True] PASSED [ 11%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids0-True-False] PASSED [ 16%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids0-True-True] PASSED [ 22%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids1-False-False] PASSED [ 27%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids1-False-True] PASSED [ 33%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids1-True-False] PASSED [ 38%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_0-ids1-True-True] PASSED [ 44%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids0-False-False] PASSED [ 50%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids0-False-True] PASSED [ 55%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids0-True-False] PASSED [ 61%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids0-True-True] PASSED [ 66%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids1-False-False] PASSED [ 72%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids1-False-True] PASSED [ 77%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids1-True-False] PASSED [ 83%]
+tests/test_datasette_remote_actors.py::test_remote_actors[1_1-ids1-True-True] PASSED [ 88%]
+tests/test_datasette_remote_actors.py::test_remote_actors_datasette_profiles[1_0] PASSED [ 94%]
+tests/test_datasette_remote_actors.py::test_remote_actors_datasette_profiles[1_1] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remote-actors/datasette-1.0a44/runs/20261123T051045Z-gh-45116103831-a1/.pytest-report.json
+============================== 18 passed in 0.28s ==============================

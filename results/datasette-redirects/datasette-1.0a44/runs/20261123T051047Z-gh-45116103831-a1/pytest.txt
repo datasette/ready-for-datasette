@@ -1,0 +1,39 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-redirects @ file:///tmp/datasette-redirects-aspm6pc0/datasette_redirects-0.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-redirects @ file:///tmp/datasette-redirects-aspm6pc0/datasette_redirects-0.1.tar.gz
+Installed 45 packages in 13ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpq7nar3/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'asyncio': '1.5.0', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-redirects-aspm6pc0/tagged-source
+configfile: pyproject.toml
+plugins: metadata-3.1.1, asyncio-1.5.0, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 14 items
+
+tests/test_redirects.py::test_plugin_is_installed PASSED                 [  7%]
+tests/test_redirects.py::test_redirects[/foo-301-https://example.com/] PASSED [ 14%]
+tests/test_redirects.py::test_redirects[/foo/-301-https://example.com/] PASSED [ 21%]
+tests/test_redirects.py::test_redirects[/old-page-301-https://example.com/new-page] PASSED [ 28%]
+tests/test_redirects.py::test_redirects[/old-page/-301-https://example.com/new-page] PASSED [ 35%]
+tests/test_redirects.py::test_redirects[/temp-302-/somewhere-else] PASSED [ 42%]
+tests/test_redirects.py::test_redirects[/temp/-302-/somewhere-else] PASSED [ 50%]
+tests/test_redirects.py::test_redirects[/with-slash-301-https://example.com/slashed] PASSED [ 57%]
+tests/test_redirects.py::test_redirects[/with-slash/-301-https://example.com/slashed] PASSED [ 64%]
+tests/test_redirects.py::test_no_redirect_for_unknown_paths[/unknown] PASSED [ 71%]
+tests/test_redirects.py::test_no_redirect_for_unknown_paths[/bar] PASSED [ 78%]
+tests/test_redirects.py::test_no_redirect_for_unknown_paths[/foobar] PASSED [ 85%]
+tests/test_redirects.py::test_no_redirect_for_unknown_paths[/foo/extra] PASSED [ 92%]
+tests/test_redirects.py::test_no_config PASSED                           [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-redirects/datasette-1.0a44/runs/20261123T051047Z-gh-45116103831-a1/.pytest-report.json
+============================== 14 passed in 0.33s ==============================
