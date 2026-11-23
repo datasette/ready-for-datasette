@@ -12,6 +12,7 @@ import sys
 import tarfile
 import tempfile
 import textwrap
+import urllib.request
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
@@ -27,11 +28,15 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 only
 
 
 ALPHA_DATASETTE = "1.0a37"
-REQUIRED_PYTHON_VERSIONS = {"3.10", "3.11", "3.12", "3.13", "3.14"}
-CURRENT_ACTION_REFS = {
-    "actions/checkout": "v7",
-    "actions/setup-python": "v6",
-}
+REQUIRED_PYTHON_VERSION = "3.15"
+OBSOLETE_PYTHON_VERSION = "3.10"
+PYTHON_MATRIX_CHECK = (
+    f"Test jobs cover Python {REQUIRED_PYTHON_VERSION} "
+    f"and not Python {OBSOLETE_PYTHON_VERSION}"
+)
+ACTION_VERSIONS_URL = "https://simonw.github.io/actions-latest/versions.txt"
+ACTION_VERSIONS_CHECK = "GitHub Actions use current stable versions"
+REQUIRED_ACTIONS = ("actions/checkout", "actions/setup-python")
 TRUSTED_PUBLISHING_ACTION = "pypa/gh-action-pypi-publish@release/v1"
 VERSION_MARKER = "CHECK_DATASETTE_VERSION="
 
@@ -493,88 +498,127 @@ def check_workflow_python_matrix(
         if "test" in name.lower() or re.search(r"\bpytest\b", run_text):
             candidates.append((path, name, matrix_python_versions(job)))
 
-    incomplete = [
-        candidate
-        for candidate in candidates
-        if not REQUIRED_PYTHON_VERSIONS.issubset(candidate[2])
-    ]
-    if candidates and not incomplete:
-        details = []
-        for path, name, versions in candidates:
-            details.append(
-                f"{path.relative_to(repo)} job {name!r}: " + ", ".join(sorted(versions))
-            )
-        reporter.pass_(
-            "A test job covers Python 3.10 through 3.14",
-            "\n".join(details),
+    if not candidates:
+        reporter.fail(
+            PYTHON_MATRIX_CHECK,
+            "No test job was found.",
+            fix=(
+                "Add a test job with a python-version matrix that includes "
+                f'"{REQUIRED_PYTHON_VERSION}".'
+            ),
         )
         return
 
-    observed = []
-    for path, name, versions in incomplete:
+    problems: list[str] = []
+    details: list[str] = []
+    for path, name, versions in candidates:
+        location = f"{path.relative_to(repo)} job {name!r}"
         rendered = (
-            ", ".join(sorted(versions)) if versions else "no python-version matrix"
+            ", ".join(sorted(versions, key=version_sort_key))
+            if versions
+            else "no python-version matrix"
         )
-        observed.append(f"{path.relative_to(repo)} job {name!r}: {rendered}")
-    reporter.fail(
-        "A test job covers Python 3.10 through 3.14",
-        (
-            "Every test job must have a python-version matrix containing all required "
-            "versions: 3.10, 3.11, 3.12, 3.13, and 3.14.\n"
-            + (
-                "Observed:\n" + indent("\n".join(observed), 2)
-                if observed
-                else "No test job was found."
+        details.append(f"{location}: {rendered}")
+        if REQUIRED_PYTHON_VERSION not in versions:
+            problems.append(
+                f"{location} does not test Python {REQUIRED_PYTHON_VERSION} "
+                f"({rendered})"
             )
-        ),
-        fix=(
-            "Add a test job matrix with quoted version strings "
-            '["3.10", "3.11", "3.12", "3.13", "3.14"].'
-        ),
+        if OBSOLETE_PYTHON_VERSION in versions:
+            problems.append(
+                f"{location} still tests Python {OBSOLETE_PYTHON_VERSION} ({rendered})"
+            )
+
+    if problems:
+        reporter.fail(
+            PYTHON_MATRIX_CHECK,
+            "\n".join(f"- {problem}" for problem in problems),
+            fix=(
+                f'Add "{REQUIRED_PYTHON_VERSION}" to every test job\'s python-version '
+                f'matrix and remove "{OBSOLETE_PYTHON_VERSION}". Quote the version '
+                "strings."
+            ),
+        )
+    else:
+        reporter.pass_(PYTHON_MATRIX_CHECK, "\n".join(details))
+
+
+def version_sort_key(version: str) -> tuple[int, Any]:
+    try:
+        return (0, Version(version))
+    except InvalidVersion:
+        return (1, version)
+
+
+def parse_action_versions(text: str) -> dict[str, str]:
+    versions: dict[str, str] = {}
+    for line in text.splitlines():
+        action, separator, ref = line.strip().partition("@")
+        if separator and action and ref:
+            versions[action] = ref
+    return versions
+
+
+def fetch_action_versions() -> dict[str, str]:
+    request = urllib.request.Request(
+        ACTION_VERSIONS_URL, headers={"User-Agent": "ready-for-datasette"}
     )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        text = response.read().decode("utf-8")
+    versions = parse_action_versions(text)
+    if not versions:
+        raise ValueError("no action@version lines were found")
+    return versions
 
 
 def check_action_versions(
     workflows: list[tuple[Path, dict[str, Any]]], repo: Path, reporter: Reporter
 ) -> None:
-    observed: dict[str, list[tuple[Path, str, str]]] = {
-        action: [] for action in CURRENT_ACTION_REFS
-    }
-    for path, job_name, job, _ in iter_jobs(workflows):
-        for use in job_uses(job):
-            action, separator, ref = use.partition("@")
-            if separator and action in observed:
-                observed[action].append((path, job_name, ref))
+    try:
+        current = fetch_action_versions()
+    except (OSError, ValueError) as error:
+        reporter.fail(
+            ACTION_VERSIONS_CHECK,
+            f"Could not load current versions from {ACTION_VERSIONS_URL}: {error}",
+            fix="Check network access and re-run.",
+        )
+        return
 
     problems: list[str] = []
     details: list[str] = []
-    for action, expected in CURRENT_ACTION_REFS.items():
-        uses = observed[action]
-        if not uses:
-            problems.append(f"{action}@{expected} is not used")
-            continue
-        for path, job_name, actual in uses:
+    used: set[str] = set()
+    for path, job_name, job, _ in iter_jobs(workflows):
+        for use in job_uses(job):
+            name, separator, actual = use.partition("@")
+            # actions/cache/restore is versioned with actions/cache
+            action = "/".join(name.split("/")[:2])
+            expected = current.get(action)
+            if not separator or expected is None:
+                continue
+            used.add(action)
             location = f"{path.relative_to(repo)} job {job_name!r}"
-            details.append(f"{location}: {action}@{actual}")
+            details.append(f"{location}: {name}@{actual}")
             if actual != expected:
                 problems.append(
-                    f"{location} uses {action}@{actual}; expected {action}@{expected}"
+                    f"{location} uses {name}@{actual}; expected {name}@{expected}"
                 )
+    for action in REQUIRED_ACTIONS:
+        if action not in used:
+            expected = current.get(action)
+            problems.append(
+                f"{action}@{expected} is not used"
+                if expected
+                else f"{action} is not used"
+            )
 
     if problems:
         reporter.fail(
-            "Core GitHub Actions use current stable versions",
+            ACTION_VERSIONS_CHECK,
             "\n".join(f"- {problem}" for problem in problems),
-            fix=(
-                "Update every checkout and setup-python step. The expected current "
-                "versions are actions/checkout@v7 and actions/setup-python@v6."
-            ),
+            fix=("Update each step to the version listed at " f"{ACTION_VERSIONS_URL}"),
         )
     else:
-        reporter.pass_(
-            "Core GitHub Actions use current stable versions",
-            "\n".join(details),
-        )
+        reporter.pass_(ACTION_VERSIONS_CHECK, "\n".join(details))
 
 
 def effective_permissions(job: dict[str, Any], workflow: dict[str, Any]) -> Any:
@@ -930,13 +974,8 @@ def check_command(argv: Sequence[str]) -> int:
         check_action_versions(workflows, repo, reporter)
         check_trusted_publishing(workflows, repo, reporter)
     else:
-        reporter.skip(
-            "A test job covers Python 3.10 through 3.14", "No valid workflows loaded."
-        )
-        reporter.skip(
-            "Core GitHub Actions use current stable versions",
-            "No valid workflows loaded.",
-        )
+        reporter.skip(PYTHON_MATRIX_CHECK, "No valid workflows loaded.")
+        reporter.skip(ACTION_VERSIONS_CHECK, "No valid workflows loaded.")
         reporter.skip(
             "Publishing uses PyPI trusted publishing", "No valid workflows loaded."
         )
