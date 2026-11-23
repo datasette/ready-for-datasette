@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-remove-database",
+    "version": "0.1a2",
+    "repository": "datasette/datasette-remove-database",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/46/fd/ddd8b1f64614a09456349ec5a30ef690b95ceff6bab13347196a7f7acba3/datasette_remove_database-0.1a2.tar.gz",
+      "sha256": "926d1cce985253d5eee147081abbfa9ed0541e9c82140ef1ca40e3f370cfa0dd"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-remove-database",
+      "ref": "0.1a2",
+      "git_sha": "a63e9609e9c9291644ed3abc614cf0ef639e1d9c"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T061939Z-gh-45123308278-a1",
+    "started_at": "2026-11-23T06:19:39Z",
+    "completed_at": "2026-11-23T06:19:45Z",
+    "duration_seconds": 5.585,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-remove-database[test] @ file:///tmp/datasette-remove-database-sv91f_w_/datasette_remove_database-0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-remove-database/datasette-1.0a44/runs/20261123T061939Z-gh-45123308278-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 10,
+    "passed": 4,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_remove_database.py::test_remove_database[False-False]",
+    "tests/test_remove_database.py::test_remove_database[False-True]",
+    "tests/test_remove_database.py::test_remove_database[True-False]",
+    "tests/test_remove_database.py::test_remove_database[True-True]",
+    "tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-False-200->Remove database: one<-The following files will be deleted]",
+    "tests/test_remove_database.py::test_remove_database_permissions[/-/remove-database/one-root-True-200-The following files will be deleted-]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-remove-database/datasette-1.0a44/runs/20261123T061939Z-gh-45123308278-a1/pytest.txt"
+  }
+}
