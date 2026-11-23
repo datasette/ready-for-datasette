@@ -1775,9 +1775,9 @@
   {
     "name": "datasette-remote-metadata",
     "github_repo": "simonw/datasette-remote-metadata",
-    "metadata_file": "setup.py",
-    "metadata_sha256": "20ce096029dec0bcf659c53a9058a56f70c13da1125d9647748687cb21561daa",
-    "metadata_etag": "\"0b80ed8dbb784298ab15a9d8cef925a6914643591b43af65836a2ac9744c78aa\"",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "fa07335422540d2f0e5660207b1f18ff74328cc6ffc929ae84f30be1ed6b5b2e",
+    "metadata_etag": "\"444b6decaec60785aa777dd6ffaee428b466942f0ee6d6881b293b78eca25a40\"",
     "latest_version": "0.2",
     "latest_version_published_at": "2026-11-23T05:51:28Z"
   },
