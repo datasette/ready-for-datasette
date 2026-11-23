@@ -1,0 +1,288 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-publish-vercel @ file:///tmp/datasette-publish-vercel-6d3dwtc8/datasette-publish-vercel-0.14.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-publish-vercel @ file:///tmp/datasette-publish-vercel-6d3dwtc8/datasette-publish-vercel-0.14.2.tar.gz
+Installed 39 packages in 24ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpLlXfWo/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 16 items
+
+tests/test_publish_vercel.py::test_publish_vercel_requires_vercel_cli PASSED [  6%]
+tests/test_publish_vercel.py::test_publish_vercel_requires_project PASSED [ 12%]
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[ABC] PASSED [ 18%]
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[-boo] PASSED [ 25%]
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[too-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-long] PASSED [ 31%]
+tests/test_publish_vercel.py::test_publish_vercel[vercel] PASSED         [ 37%]
+tests/test_publish_vercel.py::test_publish_vercel[now] PASSED            [ 43%]
+tests/test_publish_vercel.py::test_publish_vercel_public PASSED          [ 50%]
+tests/test_publish_vercel.py::test_publish_vercel_token PASSED           [ 56%]
+tests/test_publish_vercel.py::test_publish_vercel_generate ERROR         [ 62%]
+tests/test_publish_vercel.py::test_publish_vercel_static ERROR           [ 68%]
+tests/test_publish_vercel.py::test_publish_vercel_requirements ERROR     [ 75%]
+tests/test_publish_vercel.py::test_help_in_readme PASSED                 [ 81%]
+tests/test_publish_vercel.py::test_generate_vercel_json PASSED           [ 87%]
+tests/test_publish_vercel.py::test_vercel_json_errors FAILED             [ 93%]
+tests/test_publish_vercel.py::test_custom_vercel_json PASSED             [100%]
+
+==================================== ERRORS ====================================
+________________ ERROR at setup of test_publish_vercel_generate ________________
+
+mock_run = <MagicMock name='run' id='125869038006160'>
+mock_which = <MagicMock name='which' id='125869038005152'>
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x727a2cc7dae0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    @mock.patch("shutil.which")
+    @mock.patch("datasette_publish_vercel.run")
+    def generated_app_dir(mock_run, mock_which, tmp_path_factory):
+        appdir = os.path.join(tmp_path_factory.mktemp("generated-app"), "app")
+        mock_which.return_value = True
+        mock_run.return_value = mock.Mock(0)
+        runner = CliRunner()
+        with runner.isolated_filesystem():
+            open("test.db", "w").write("data")
+            static_dir = pathlib.Path(".") / "static"
+            static_dir.mkdir()
+            (static_dir / "my.css").write_text("body { color: red }")
+            result = runner.invoke(
+                cli.cli,
+                [
+                    "publish",
+                    "vercel",
+                    "test.db",
+                    "--project",
+                    "foo",
+                    "--public",
+                    "--static",
+                    "static:static",
+                    "--setting",
+                    "default_page_size",
+                    "10",
+                    "--setting",
+                    "sql_time_limit_ms",
+                    "2000",
+                    "--setting",
+                    "allow_download",
+                    "0",
+                    "--crossdb",
+                    "--generate-dir",
+                    appdir,
+                ],
+            )
+>           assert result.exit_code == 0, result.output
+E           AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+E             Try 'cli publish vercel --help' for help.
+E             
+E             Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+E             
+E           assert 2 == 0
+E            +  where 2 = <Result SystemExit(2)>.exit_code
+
+tests/test_publish_vercel.py:206: AssertionError
+_________________ ERROR at setup of test_publish_vercel_static _________________
+
+mock_run = <MagicMock name='run' id='125869038006160'>
+mock_which = <MagicMock name='which' id='125869038005152'>
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x727a2cc7dae0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    @mock.patch("shutil.which")
+    @mock.patch("datasette_publish_vercel.run")
+    def generated_app_dir(mock_run, mock_which, tmp_path_factory):
+        appdir = os.path.join(tmp_path_factory.mktemp("generated-app"), "app")
+        mock_which.return_value = True
+        mock_run.return_value = mock.Mock(0)
+        runner = CliRunner()
+        with runner.isolated_filesystem():
+            open("test.db", "w").write("data")
+            static_dir = pathlib.Path(".") / "static"
+            static_dir.mkdir()
+            (static_dir / "my.css").write_text("body { color: red }")
+            result = runner.invoke(
+                cli.cli,
+                [
+                    "publish",
+                    "vercel",
+                    "test.db",
+                    "--project",
+                    "foo",
+                    "--public",
+                    "--static",
+                    "static:static",
+                    "--setting",
+                    "default_page_size",
+                    "10",
+                    "--setting",
+                    "sql_time_limit_ms",
+                    "2000",
+                    "--setting",
+                    "allow_download",
+                    "0",
+                    "--crossdb",
+                    "--generate-dir",
+                    appdir,
+                ],
+            )
+>           assert result.exit_code == 0, result.output
+E           AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+E             Try 'cli publish vercel --help' for help.
+E             
+E             Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+E             
+E           assert 2 == 0
+E            +  where 2 = <Result SystemExit(2)>.exit_code
+
+tests/test_publish_vercel.py:206: AssertionError
+______________ ERROR at setup of test_publish_vercel_requirements ______________
+
+mock_run = <MagicMock name='run' id='125869038006160'>
+mock_which = <MagicMock name='which' id='125869038005152'>
+tmp_path_factory = TempPathFactory(_given_basetemp=None, _trace=<pluggy._tracing.TagTracerSub object at 0x727a2cc7dae0>, _basetemp=PosixPath('/tmp/pytest-of-runner/pytest-0'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="session")
+    @mock.patch("shutil.which")
+    @mock.patch("datasette_publish_vercel.run")
+    def generated_app_dir(mock_run, mock_which, tmp_path_factory):
+        appdir = os.path.join(tmp_path_factory.mktemp("generated-app"), "app")
+        mock_which.return_value = True
+        mock_run.return_value = mock.Mock(0)
+        runner = CliRunner()
+        with runner.isolated_filesystem():
+            open("test.db", "w").write("data")
+            static_dir = pathlib.Path(".") / "static"
+            static_dir.mkdir()
+            (static_dir / "my.css").write_text("body { color: red }")
+            result = runner.invoke(
+                cli.cli,
+                [
+                    "publish",
+                    "vercel",
+                    "test.db",
+                    "--project",
+                    "foo",
+                    "--public",
+                    "--static",
+                    "static:static",
+                    "--setting",
+                    "default_page_size",
+                    "10",
+                    "--setting",
+                    "sql_time_limit_ms",
+                    "2000",
+                    "--setting",
+                    "allow_download",
+                    "0",
+                    "--crossdb",
+                    "--generate-dir",
+                    appdir,
+                ],
+            )
+>           assert result.exit_code == 0, result.output
+E           AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+E             Try 'cli publish vercel --help' for help.
+E             
+E             Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+E             
+E           assert 2 == 0
+E            +  where 2 = <Result SystemExit(2)>.exit_code
+
+tests/test_publish_vercel.py:206: AssertionError
+=================================== FAILURES ===================================
+___________________________ test_vercel_json_errors ____________________________
+
+tmpdir = local('/tmp/pytest-of-runner/pytest-0/test_vercel_json_errors0')
+
+    def test_vercel_json_errors(tmpdir):
+        bad_json = tmpdir / "bad.json"
+        bad_json.write_text("{", "utf-8")
+        runner = CliRunner()
+        result = runner.invoke(
+            cli.cli,
+            ["publish", "vercel", "--project", "foo", "--vercel-json", str(bad_json)],
+        )
+        assert result.exit_code == 1
+>       assert result.output == "Error: --vercel-json contents must be valid JSON\n"
+E       AssertionError: assert 'Publishing to Vercel requires vercel to be installed and configured\nFollow the instructions at https://vercel.com/download\n' == 'Error: --vercel-json contents must be valid JSON\n'
+E         
+E         - Error: --vercel-json contents must be valid JSON
+E         + Publishing to Vercel requires vercel to be installed and configured
+E         + Follow the instructions at https://vercel.com/download
+
+tests/test_publish_vercel.py:334: AssertionError
+=============================== warnings summary ===============================
+tests/test_publish_vercel.py::test_publish_vercel_requires_vercel_cli
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:17: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel_requires_project
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:30: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[ABC]
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[-boo]
+tests/test_publish_vercel.py::test_publish_vercel_invalid_project_name[too-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-longtoo-long]
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:42: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel[vercel]
+tests/test_publish_vercel.py::test_publish_vercel[now]
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:61: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel_public
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:90: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel_token
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:129: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_publish_vercel_generate
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:176: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+tests/test_publish_vercel.py::test_custom_vercel_json
+  /tmp/datasette-publish-vercel-6d3dwtc8/tagged-source/tests/test_publish_vercel.py:364: DeprecationWarning: 'isolated_filesystem' is deprecated and will be removed in Click 9.0. Use 'tempfile.TemporaryDirectory' or pytest's 'tmp_path' fixture with absolute paths instead.
+    with runner.isolated_filesystem():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-publish-vercel/datasette-1.0a44/runs/20261123T050436Z-gh-45115491225-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_publish_vercel.py::test_vercel_json_errors - AssertionError: assert 'Publishing to Vercel requires vercel to be installed and configured\nFollow the instructions at https://vercel.com/download\n' == 'Error: --vercel-json contents must be valid JSON\n'
+  
+  - Error: --vercel-json contents must be valid JSON
+  + Publishing to Vercel requires vercel to be installed and configured
+  + Follow the instructions at https://vercel.com/download
+ERROR tests/test_publish_vercel.py::test_publish_vercel_generate - AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+  Try 'cli publish vercel --help' for help.
+  
+  Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+  
+assert 2 == 0
+ +  where 2 = <Result SystemExit(2)>.exit_code
+ERROR tests/test_publish_vercel.py::test_publish_vercel_static - AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+  Try 'cli publish vercel --help' for help.
+  
+  Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+  
+assert 2 == 0
+ +  where 2 = <Result SystemExit(2)>.exit_code
+ERROR tests/test_publish_vercel.py::test_publish_vercel_requirements - AssertionError: Usage: cli publish vercel [OPTIONS] [FILES]...
+  Try 'cli publish vercel --help' for help.
+  
+  Error: Invalid value for '--setting': allow_download is not a valid option (--help-config to see all)
+  
+assert 2 == 0
+ +  where 2 = <Result SystemExit(2)>.exit_code
+============= 1 failed, 12 passed, 11 warnings, 3 errors in 0.21s ==============

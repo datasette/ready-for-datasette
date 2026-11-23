@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-pyinstrument",
+    "version": "0.1",
+    "repository": "simonw/datasette-pyinstrument",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/70/52/8e68e873803bdd89527d9eecc3ed5289129f66e89b6c635da2fcda7b254e/datasette-pyinstrument-0.1.tar.gz",
+      "sha256": "d3068afc5888529d0d8fcb952adacd28a9defc782b076f07e8d411ca6c2cf148"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-pyinstrument",
+      "ref": "0.1",
+      "git_sha": "d030b7f57d76c4d8edfc5da7ec426e1067e65dfc"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050447Z-gh-45115491225-a1",
+    "started_at": "2026-11-23T05:04:47Z",
+    "completed_at": "2026-11-23T05:04:52Z",
+    "duration_seconds": 5.16,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-pyinstrument @ file:///tmp/datasette-pyinstrument-6ui2kct_/datasette-pyinstrument-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-pyinstrument/datasette-1.0a44/runs/20261123T050447Z-gh-45115491225-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_pyinstrument.py::test_plugin_is_installed",
+    "tests/test_pyinstrument.py::test_pyinstrument[False]",
+    "tests/test_pyinstrument.py::test_pyinstrument[True]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-pyinstrument/datasette-1.0a44/runs/20261123T050447Z-gh-45115491225-a1/pytest.txt"
+  }
+}

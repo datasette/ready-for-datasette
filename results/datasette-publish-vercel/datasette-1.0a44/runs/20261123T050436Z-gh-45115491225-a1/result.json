@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-publish-vercel",
+    "version": "0.14.2",
+    "repository": "simonw/datasette-publish-vercel",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/39/1c/7f889259343dff08094f3bca5f34bbefc03613cbdaafcb89e40993b3c2a6/datasette-publish-vercel-0.14.2.tar.gz",
+      "sha256": "9632bbed0012941bf171510ea39d79ae8db0977d99300f1c36b176ea00cc05d5"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-publish-vercel",
+      "ref": "0.14.2",
+      "git_sha": "1559d979b4e3b1f2f83c51c3c0c10192ff9a6d0c"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050436Z-gh-45115491225-a1",
+    "started_at": "2026-11-23T05:04:36Z",
+    "completed_at": "2026-11-23T05:04:42Z",
+    "duration_seconds": 5.986,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-publish-vercel @ file:///tmp/datasette-publish-vercel-6d3dwtc8/datasette-publish-vercel-0.14.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-publish-vercel/datasette-1.0a44/runs/20261123T050436Z-gh-45115491225-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 16,
+    "passed": 12,
+    "failed": 1,
+    "errors": 3,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 11
+  },
+  "failing_tests": [
+    "tests/test_publish_vercel.py::test_vercel_json_errors"
+  ],
+  "error_tests": [
+    "tests/test_publish_vercel.py::test_publish_vercel_generate",
+    "tests/test_publish_vercel.py::test_publish_vercel_requirements",
+    "tests/test_publish_vercel.py::test_publish_vercel_static"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 3
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-publish-vercel/datasette-1.0a44/runs/20261123T050436Z-gh-45115491225-a1/pytest.txt"
+  }
+}

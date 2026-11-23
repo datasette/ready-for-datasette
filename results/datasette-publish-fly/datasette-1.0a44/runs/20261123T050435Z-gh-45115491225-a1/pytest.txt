@@ -1,0 +1,54 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-publish-fly @ file:///tmp/datasette-publish-fly-o7tnr0cr/datasette_publish_fly-1.4.tar.gz
+warning: `build_system.requires = ["uv-build>=0.11.0,<0.12.0"]` does not contain the current uv version 0.13.9
+      Built datasette-publish-fly @ file:///tmp/datasette-publish-fly-o7tnr0cr/datasette_publish_fly-1.4.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 41 packages in 37ms
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/_pytest/main.py", line 329, in wrap_session
+INTERNALERROR>     config._do_configure()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/_pytest/config/__init__.py", line 1370, in _do_configure
+INTERNALERROR>     self.hook.pytest_configure.call_historic(kwargs=dict(config=self))
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/pluggy/_caller.py", line 222, in call_historic
+INTERNALERROR>     res = self._hookexec(self.name, self._hookimpls.copy(), kwargs, False)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/pluggy/_manager.py", line 183, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/pluggy/_execution.py", line 195, in _multicall
+INTERNALERROR>     raise exception
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/pluggy/_execution.py", line 147, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 53, in pytest_configure
+INTERNALERROR>     _install_tracking()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 38, in _install_tracking
+INTERNALERROR>     from datasette.app import Datasette
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 185, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/datasette/app.py", line 51, in <module>
+INTERNALERROR>     from .plugins import DEFAULT_PLUGINS, get_plugins, pm
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 185, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/datasette/plugins.py", line 67, in <module>
+INTERNALERROR>     pm.load_setuptools_entrypoints("datasette")
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/Bv3_6h4GRZGxivP6/lib/python3.13/site-packages/pluggy/_manager.py", line 521, in load_setuptools_entrypoints
+INTERNALERROR>     plugin = ep.load()
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py", line 179, in load
+INTERNALERROR>     module = import_module(match.group('module'))
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py", line 88, in import_module
+INTERNALERROR>     return _bootstrap._gcd_import(name[level:], package, level)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/tmp/datasette-publish-fly-o7tnr0cr/tagged-source/datasette_publish_fly/__init__.py", line 15, in <module>
+INTERNALERROR>     import httpx
+INTERNALERROR> ModuleNotFoundError: No module named 'httpx'

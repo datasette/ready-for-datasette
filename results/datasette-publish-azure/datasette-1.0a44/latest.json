@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-publish-azure",
+    "version": "0.1a0",
+    "repository": "simonw/datasette-publish-azure",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/fd/f5/dbab1ef2ef449c70386c8bd66aadc7d5b98e71ae8509a2383716aa27d514/datasette-publish-azure-0.1a0.tar.gz",
+      "sha256": "d25e65de3595f09d28835a26891c731a50410d263251e12fa717fcb2ec2832f4"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-publish-azure",
+      "ref": "0.1a0",
+      "git_sha": "707c9cb83b7e886dbc26130c7e86f854888ffd01"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050439Z-gh-45115491225-a1",
+    "started_at": "2026-11-23T05:04:39Z",
+    "completed_at": "2026-11-23T05:04:45Z",
+    "duration_seconds": 6.312,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-publish-azure @ file:///tmp/datasette-publish-azure-_illi6o1/datasette-publish-azure-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-publish-azure/datasette-1.0a44/runs/20261123T050439Z-gh-45115491225-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_publish_azure.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-publish-azure/datasette-1.0a44/runs/20261123T050439Z-gh-45115491225-a1/pytest.txt"
+  }
+}

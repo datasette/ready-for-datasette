@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-publish-fly",
+    "version": "1.4",
+    "repository": "simonw/datasette-publish-fly",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a2/93/af93c520bcdda876b30f8ec28f422a49c18b39eaaea48c0ae16d880d44ba/datasette_publish_fly-1.4.tar.gz",
+      "sha256": "4919ae7db23b5955a8570b3e05d7a386151a9e32c88077b3ee8f971955d457a3"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-publish-fly",
+      "ref": "1.4",
+      "git_sha": "a14b34ade8965ffeb2afc25026ce77bd9b76f640"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261123T050435Z-gh-45115491225-a1",
+    "started_at": "2026-11-23T05:04:35Z",
+    "completed_at": "2026-11-23T05:04:39Z",
+    "duration_seconds": 4.047,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-publish-fly[test] @ file:///tmp/datasette-publish-fly-o7tnr0cr/datasette_publish_fly-1.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-mock",
+      "--with",
+      "cogapp",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-publish-fly/datasette-1.0a44/runs/20261123T050435Z-gh-45115491225-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-mock",
+      "cogapp"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 6,
+    "release_tag": 6
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-publish-fly/datasette-1.0a44/runs/20261123T050435Z-gh-45115491225-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

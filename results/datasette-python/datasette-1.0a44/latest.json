@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-python",
+    "version": "0.1",
+    "repository": "datasette/datasette-python",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/41/6d/d2ecdff0c86894fc4984c8623d0397da37ab5cfec180610b4b30014a46ca/datasette_python-0.1.tar.gz",
+      "sha256": "132d5d2143a3c77a37c9b0f85bfdf69ad9b161fadd04abb2c4f305f436db3a9b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-python",
+      "ref": "0.1",
+      "git_sha": "0a1f7429ae99167b0c315b7df8acb1bad2b7b437"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T050446Z-gh-45115491225-a1",
+    "started_at": "2026-11-23T05:04:46Z",
+    "completed_at": "2026-11-23T05:04:51Z",
+    "duration_seconds": 5.082,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-python[test] @ file:///tmp/datasette-python-2u01l0ug/datasette_python-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-python/datasette-1.0a44/runs/20261123T050446Z-gh-45115491225-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-python/datasette-1.0a44/runs/20261123T050446Z-gh-45115491225-a1/pytest.txt"
+  }
+}
