@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-apps",
+    "version": "0.4a0",
+    "repository": "datasette/datasette-apps",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/8b/86/b6d9510a3002905b31b7fd6980cbd0b114f98f05da791de98f61ba113856/datasette_apps-0.4a0.tar.gz",
+      "sha256": "0e9b83ed0245357924fbd202450ce1558249f5396a74c61040d882155af1e731"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-apps",
+      "ref": "0.4a0",
+      "git_sha": "0bc28df17f45373824a3ca632398a55e8af4b912"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T045421Z-gh-45114520187-a1",
+    "started_at": "2026-11-23T04:54:21Z",
+    "completed_at": "2026-11-23T04:55:47Z",
+    "duration_seconds": 85.834,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-apps @ file:///tmp/datasette-apps-6tiok6p7/datasette_apps-0.4a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "datasette-agent>=0.5a0",
+      "--with",
+      "playwright>=1.60.0",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-apps/datasette-1.0a44/runs/20261123T045421Z-gh-45114520187-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 296,
+    "passed": 296,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "datasette-agent>=0.5a0",
+      "playwright>=1.60.0",
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 22,
+    "release_tag": 22
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-apps/datasette-1.0a44/runs/20261123T045421Z-gh-45114520187-a1/pytest.txt"
+  }
+}
