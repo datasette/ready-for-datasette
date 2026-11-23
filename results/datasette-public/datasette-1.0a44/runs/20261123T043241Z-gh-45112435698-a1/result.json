@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-public",
+    "version": "0.2.3",
+    "repository": "datasette/datasette-public",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a2/da/0294a83be720bc8fb4d362d629055307a64edf5ac25365552019713f1358/datasette-public-0.2.3.tar.gz",
+      "sha256": "8c138d82aeecc5f9107f75f118f16329d96e66ee733a1c2bb675185fa1442c89"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-public",
+      "ref": "0.2.3",
+      "git_sha": "4bfd46b5bc1a44e9d7f0c5f9ba4a5ad356f03208"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T043241Z-gh-45112435698-a1",
+    "started_at": "2026-11-23T04:32:41Z",
+    "completed_at": "2026-11-23T04:32:48Z",
+    "duration_seconds": 6.833,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-public @ file:///tmp/datasette-public-8vv5nk0t/datasette-public-0.2.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-public/datasette-1.0a44/runs/20261123T043241Z-gh-45112435698-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 16,
+    "passed": 0,
+    "failed": 16,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 6
+  },
+  "failing_tests": [
+    "tests/test_public.py::test_error_if_database_is_immutable",
+    "tests/test_public.py::test_plugin_creates_table[None]",
+    "tests/test_public.py::test_plugin_creates_table[data2]",
+    "tests/test_public.py::test_public_table[False-False-False-False]",
+    "tests/test_public.py::test_public_table[False-False-True-True]",
+    "tests/test_public.py::test_public_table[False-True-False-True]",
+    "tests/test_public.py::test_public_table[False-True-True-True]",
+    "tests/test_public.py::test_public_table[True-False-False-False]",
+    "tests/test_public.py::test_public_table[True-False-True-True]",
+    "tests/test_public.py::test_public_table[True-True-False-True]",
+    "tests/test_public.py::test_public_table[True-True-True-True]",
+    "tests/test_public.py::test_ui_for_editing_table_privacy[False-False]",
+    "tests/test_public.py::test_ui_for_editing_table_privacy[False-True]",
+    "tests/test_public.py::test_ui_for_editing_table_privacy[True-False]",
+    "tests/test_public.py::test_ui_for_editing_table_privacy[True-True]",
+    "tests/test_public.py::test_where_is_denied"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-public/datasette-1.0a44/runs/20261123T043241Z-gh-45112435698-a1/pytest.txt"
+  }
+}

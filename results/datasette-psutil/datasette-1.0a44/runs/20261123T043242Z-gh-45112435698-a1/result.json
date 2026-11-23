@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-psutil",
+    "version": "0.2",
+    "repository": "simonw/datasette-psutil",
+    "source": null,
+    "test_suite": {
+      "type": "none",
+      "repository": null,
+      "ref": null,
+      "git_sha": null
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261123T043242Z-gh-45112435698-a1",
+    "started_at": "2026-11-23T04:32:42Z",
+    "completed_at": "2026-11-23T04:32:42Z",
+    "duration_seconds": 0.151,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": null,
+    "command": []
+  },
+  "passed": false,
+  "outcome": "no_sdist",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {},
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-psutil/datasette-1.0a44/runs/20261123T043242Z-gh-45112435698-a1/pytest.txt"
+  },
+  "detail": "PyPI release has no non-yanked source distribution"
+}

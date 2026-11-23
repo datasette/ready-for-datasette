@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-proxy-url",
+    "version": "0.1.1",
+    "repository": "datasette/datasette-proxy-url",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/3d/2e/6efa198f7cdab54d4ecefb49f3eac6d478d491d0027f245757282d21a177/datasette-proxy-url-0.1.1.tar.gz",
+      "sha256": "017ef6425282562cef4db154e8e8d0c7db1ae030fbc1b40e04884c2d29de33d0"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-proxy-url",
+      "ref": "0.1.1",
+      "git_sha": "6aa8c581f82a6c58622af330cfbb4ec518e8151e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261123T043241Z-gh-45112435698-a1",
+    "started_at": "2026-11-23T04:32:41Z",
+    "completed_at": "2026-11-23T04:32:48Z",
+    "duration_seconds": 6.748,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-proxy-url @ file:///tmp/datasette-proxy-url-zjkqodie/datasette-proxy-url-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-httpx",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-proxy-url/datasette-1.0a44/runs/20261123T043241Z-gh-45112435698-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-httpx",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-proxy-url/datasette-1.0a44/runs/20261123T043241Z-gh-45112435698-a1/pytest.txt"
+  }
+}
