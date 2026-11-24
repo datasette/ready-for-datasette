@@ -1,0 +1,176 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-scan @ file:///tmp/datasette-scan-00ieviz5/datasette_scan-0.1.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+Downloading sqlite-scanner (2.0MiB)
+ Downloaded pygments
+ Downloaded pip
+ Downloaded sqlite-scanner
+      Built datasette-scan @ file:///tmp/datasette-scan-00ieviz5/datasette_scan-0.1.1.tar.gz
+Installed 41 packages in 9ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpIqvmLd/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'asyncio': '1.5.0', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-scan-00ieviz5/tagged-source
+configfile: pyproject.toml
+plugins: metadata-3.1.1, asyncio-1.5.0, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 19 items
+
+tests/test_scan.py::test_plugin_is_installed PASSED                      [  5%]
+tests/test_scan.py::test_scan_command_exists PASSED                      [ 10%]
+tests/test_scan.py::test_scan_has_serve_options PASSED                   [ 15%]
+tests/test_scan.py::test_scan_has_scan_interval_option PASSED            [ 21%]
+tests/test_scan.py::test_scan_directories_finds_sqlite_files PASSED      [ 26%]
+tests/test_scan.py::test_scan_default_scans_current_directory PASSED     [ 31%]
+tests/test_scan.py::test_scan_serves_discovered_files FAILED             [ 36%]
+tests/test_scan.py::test_scan_explicit_file_args FAILED                  [ 42%]
+tests/test_scan.py::test_scan_mixed_files_and_dirs FAILED                [ 47%]
+tests/test_scan.py::test_scan_error_when_binary_missing PASSED           [ 52%]
+tests/test_scan.py::test_scan_passes_port_option PASSED                  [ 57%]
+tests/test_scan.py::test_rescan_adds_new_databases PASSED                [ 63%]
+tests/test_scan.py::test_rescan_does_not_duplicate PASSED                [ 68%]
+tests/test_scan.py::test_validate_databases_accepts_good_files PASSED    [ 73%]
+tests/test_scan.py::test_validate_databases_skips_corrupted PASSED       [ 78%]
+tests/test_scan.py::test_validate_databases_skips_truncated PASSED       [ 84%]
+tests/test_scan.py::test_scan_skips_corrupted_and_serves_good FAILED     [ 89%]
+tests/test_scan.py::test_scan_warns_about_skipped_files PASSED           [ 94%]
+tests/test_scan.py::test_scan_defaults_nolock FAILED                     [100%]
+
+=================================== FAILURES ===================================
+______________________ test_scan_serves_discovered_files _______________________
+
+tmp_with_dbs = PosixPath('/tmp/pytest-of-runner/pytest-0/test_scan_serves_discovered_fi0')
+
+    def test_scan_serves_discovered_files(tmp_with_dbs):
+        """scan should discover files and serve them via Datasette."""
+        runner = CliRunner()
+        result = runner.invoke(
+            cli,
+            ["scan", str(tmp_with_dbs), "--get", "/.json"],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        data = json.loads(result.output)
+        db_names = set(data.keys())
+>       assert "one" in db_names
+E       AssertionError: assert 'one' in {'total', 'queries', 'totals', 'database_filter', 'private', 'previous_url', 'q', 'items', 'queries_total', 'next_url', 'metadata', 'unstable', 'ok', 'databases'}
+
+tests/test_scan.py:100: AssertionError
+_________________________ test_scan_explicit_file_args _________________________
+
+tmp_with_dbs = PosixPath('/tmp/pytest-of-runner/pytest-0/test_scan_explicit_file_args0')
+
+    def test_scan_explicit_file_args(tmp_with_dbs):
+        """Explicit file arguments should be passed through directly."""
+        db_path = str(tmp_with_dbs / "one.db")
+        runner = CliRunner()
+        result = runner.invoke(
+            cli,
+            ["scan", db_path, "--get", "/.json"],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        data = json.loads(result.output)
+>       assert "one" in data
+E       assert 'one' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'one', 'private': False, 'tables': 1, 'views': 0, 'url': '/one', 'size': 8192}], 'items': [{'database': 'one', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/one/t'}], 'queries': [], 'total': 1, 'queries_total': 0, 'totals': {'databases': 1, 'tables': 1, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+
+tests/test_scan.py:115: AssertionError
+________________________ test_scan_mixed_files_and_dirs ________________________
+
+tmp_with_dbs = PosixPath('/tmp/pytest-of-runner/pytest-0/test_scan_mixed_files_and_dirs0')
+
+    def test_scan_mixed_files_and_dirs(tmp_with_dbs):
+        """Mix of explicit files and directories should work."""
+        # Create an extra database outside the scanned dir
+        extra_db = tmp_with_dbs / "extra" / "standalone.db"
+        extra_db.parent.mkdir()
+        conn = sqlite3.connect(str(extra_db))
+        conn.execute("CREATE TABLE t (id INTEGER PRIMARY KEY)")
+        conn.close()
+    
+        runner = CliRunner()
+        result = runner.invoke(
+            cli,
+            [
+                "scan",
+                str(tmp_with_dbs / "subdir"),  # directory - will find two.db
+                str(extra_db),  # explicit file
+                "--get",
+                "/.json",
+            ],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        data = json.loads(result.output)
+        db_names = set(data.keys())
+>       assert "two" in db_names
+E       AssertionError: assert 'two' in {'total', 'queries', 'totals', 'database_filter', 'private', 'previous_url', 'q', 'items', 'queries_total', 'next_url', 'metadata', 'unstable', 'ok', 'databases'}
+
+tests/test_scan.py:142: AssertionError
+__________________ test_scan_skips_corrupted_and_serves_good ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_scan_skips_corrupted_and_0')
+
+    def test_scan_skips_corrupted_and_serves_good(tmp_path):
+        """scan should skip corrupted files and serve only valid ones."""
+        good = tmp_path / "good.db"
+        conn = sqlite3.connect(str(good))
+        conn.execute("CREATE TABLE t (id INTEGER PRIMARY KEY)")
+        conn.close()
+    
+        corrupted = tmp_path / "corrupted.db"
+        data = bytearray(good.read_bytes())
+        for i in range(100, 200):
+            data[i] = 0xFF
+        corrupted.write_bytes(data)
+    
+        runner = CliRunner()
+        result = runner.invoke(
+            cli,
+            ["scan", str(tmp_path), "--get", "/.json"],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        # Output may contain warning lines before the JSON; extract JSON part
+        lines = result.output.strip().splitlines()
+        json_lines = [l for l in lines if not l.startswith("Skipping ")]
+        data = json.loads("\n".join(json_lines))
+>       assert "good" in data
+E       assert 'good' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'good', 'private': False, 'tables': 1, 'views': 0, 'url': '/good', 'size': 8192}], 'items': [{'database': 'good', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/good/t'}], 'queries': [], 'total': 1, 'queries_total': 0, 'totals': {'databases': 1, 'tables': 1, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+
+tests/test_scan.py:270: AssertionError
+__________________________ test_scan_defaults_nolock ___________________________
+
+tmp_with_dbs = PosixPath('/tmp/pytest-of-runner/pytest-0/test_scan_defaults_nolock0')
+
+    def test_scan_defaults_nolock(tmp_with_dbs):
+        """scan should pass --nolock by default to handle locked databases."""
+        # We can verify this by checking that the nolock kwarg is True
+        # when delegated to serve. We'll test indirectly: scan a directory
+        # and confirm it works (nolock doesn't break anything for unlocked files).
+        runner = CliRunner()
+        result = runner.invoke(
+            cli,
+            ["scan", str(tmp_with_dbs), "--get", "/.json"],
+            catch_exceptions=False,
+        )
+        assert result.exit_code == 0
+        data = json.loads(result.output)
+>       assert "one" in data
+E       assert 'one' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'one', 'private': False, 'tables': 1, 'views': 0, 'url': '/one', 'size': 8192}, {'name': 'two', 'private': False, 'tables': 1, 'views': 0, 'url': '/two', 'size': 8192}], 'items': [{'database': 'one', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/one/t'}, {'database': 'two', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/two/t'}], 'queries': [], 'total': 2, 'queries_total': 0, 'totals': {'databases': 2, 'tables': 2, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+
+tests/test_scan.py:310: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-scan/datasette-1.0a44/runs/20261124T135136Z-gh-45407701205-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_scan.py::test_scan_serves_discovered_files - AssertionError: assert 'one' in {'total', 'queries', 'totals', 'database_filter', 'private', 'previous_url', 'q', 'items', 'queries_total', 'next_url', 'metadata', 'unstable', 'ok', 'databases'}
+FAILED tests/test_scan.py::test_scan_explicit_file_args - assert 'one' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'one', 'private': False, 'tables': 1, 'views': 0, 'url': '/one', 'size': 8192}], 'items': [{'database': 'one', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/one/t'}], 'queries': [], 'total': 1, 'queries_total': 0, 'totals': {'databases': 1, 'tables': 1, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+FAILED tests/test_scan.py::test_scan_mixed_files_and_dirs - AssertionError: assert 'two' in {'total', 'queries', 'totals', 'database_filter', 'private', 'previous_url', 'q', 'items', 'queries_total', 'next_url', 'metadata', 'unstable', 'ok', 'databases'}
+FAILED tests/test_scan.py::test_scan_skips_corrupted_and_serves_good - assert 'good' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'good', 'private': False, 'tables': 1, 'views': 0, 'url': '/good', 'size': 8192}], 'items': [{'database': 'good', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/good/t'}], 'queries': [], 'total': 1, 'queries_total': 0, 'totals': {'databases': 1, 'tables': 1, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+FAILED tests/test_scan.py::test_scan_defaults_nolock - assert 'one' in {'ok': True, 'unstable': "This API is not part of Datasette's stable interface and may change at any time", 'databases': [{'name': 'one', 'private': False, 'tables': 1, 'views': 0, 'url': '/one', 'size': 8192}, {'name': 'two', 'private': False, 'tables': 1, 'views': 0, 'url': '/two', 'size': 8192}], 'items': [{'database': 'one', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/one/t'}, {'database': 'two', 'name': 't', 'type': 'table', 'private': False, 'title': None, 'description': None, 'columns': ['id'], 'matched_columns': [], 'column_count': 1, 'linked_tables': [], 'has_fts': False, 'count': 0, 'count_truncated': False, 'url': '/two/t'}], 'queries': [], 'total': 2, 'queries_total': 0, 'totals': {'databases': 2, 'tables': 2, 'views': 0}, 'q': '', 'database_filter': None, 'previous_url': None, 'next_url': None, 'metadata': {}, 'private': False}
+========================= 5 failed, 14 passed in 0.43s =========================

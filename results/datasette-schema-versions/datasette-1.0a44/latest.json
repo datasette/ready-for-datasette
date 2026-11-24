@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-schema-versions",
+    "version": "0.3",
+    "repository": "simonw/datasette-schema-versions",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/01/11/d1880a2193a3ff96534226146d403e0873a2fa0238c7be645b694f3f3fea/datasette-schema-versions-0.3.tar.gz",
+      "sha256": "5ac4d3e7dadc987b2d2b5975466edf51679978a1b1946a3dc319c92db647f13e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-schema-versions",
+      "ref": "0.3",
+      "git_sha": "d93d5253cc5a690590671d5183a15936ba06b2d5"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T135126Z-gh-45407701205-a1",
+    "started_at": "2026-11-24T13:51:26Z",
+    "completed_at": "2026-11-24T13:51:30Z",
+    "duration_seconds": 4.578,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-schema-versions @ file:///tmp/datasette-schema-versions-0kpyftxp/datasette-schema-versions-0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-schema-versions/datasette-1.0a44/runs/20261124T135126Z-gh-45407701205-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_schema_versions.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-schema-versions/datasette-1.0a44/runs/20261124T135126Z-gh-45407701205-a1/pytest.txt"
+  }
+}

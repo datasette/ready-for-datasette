@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-scan",
+    "version": "0.1.1",
+    "repository": "simonw/datasette-scan",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ce/70/564aafe9fb96b64bb8a9865dd9f9aac6d94df8c8a196c1124c1a368bbee0/datasette_scan-0.1.1.tar.gz",
+      "sha256": "d1bb466856e2dfc791923d18960515bbf67e60afc1415255a64701a8254f6ee8"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-scan",
+      "ref": "0.1.1",
+      "git_sha": "1a2b6d1e6b04c8cd05f5676ff7daa877efd99f08"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T135136Z-gh-45407701205-a1",
+    "started_at": "2026-11-24T13:51:36Z",
+    "completed_at": "2026-11-24T13:51:42Z",
+    "duration_seconds": 6.055,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-scan @ file:///tmp/datasette-scan-00ieviz5/datasette_scan-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-scan/datasette-1.0a44/runs/20261124T135136Z-gh-45407701205-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 19,
+    "passed": 14,
+    "failed": 5,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_scan.py::test_scan_defaults_nolock",
+    "tests/test_scan.py::test_scan_explicit_file_args",
+    "tests/test_scan.py::test_scan_mixed_files_and_dirs",
+    "tests/test_scan.py::test_scan_serves_discovered_files",
+    "tests/test_scan.py::test_scan_skips_corrupted_and_serves_good"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-scan/datasette-1.0a44/runs/20261124T135136Z-gh-45407701205-a1/pytest.txt"
+  }
+}

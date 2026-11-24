@@ -3,18 +3,18 @@
   "runner_version": 2,
   "package": {
     "name": "datasette-agent",
-    "version": "0.7a0",
+    "version": "0.7a1",
     "repository": "datasette/datasette-agent",
     "source": {
       "type": "pypi_sdist",
-      "url": "https://files.pythonhosted.org/packages/fe/29/df91ead433e28d9b0e350efaa1bc028026cfb72a19011b51f0d13738ba83/datasette_agent-0.7a0.tar.gz",
-      "sha256": "a5263bcfc58f1e2c7c42de678fec670c098681f3b96ea76bff4245fbce8758ab"
+      "url": "https://files.pythonhosted.org/packages/4d/f9/03169496f6e404e39589224c466933881e2d3fa28f5eb3d543b39ea3cac1/datasette_agent-0.7a1.tar.gz",
+      "sha256": "213729d4a7ed577b04c8ea3c4829c646b50a5110dca8e3a537045801abd696b8"
     },
     "test_suite": {
       "type": "github_release_tag",
       "repository": "datasette/datasette-agent",
-      "ref": "0.7a0",
-      "git_sha": "30652bbd18d9b97be65579e0e32e5e8262911266"
+      "ref": "0.7a1",
+      "git_sha": "323825c2c5851161249ed321058092a9d629ffcc"
     }
   },
   "datasette": {
@@ -22,10 +22,10 @@
     "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261123T044845Z-gh-45114013057-a1",
-    "started_at": "2026-11-23T04:48:45Z",
-    "completed_at": "2026-11-23T04:50:05Z",
-    "duration_seconds": 79.727,
+    "id": "20261124T135130Z-gh-45407701205-a1",
+    "started_at": "2026-11-24T13:51:30Z",
+    "completed_at": "2026-11-24T13:52:39Z",
+    "duration_seconds": 69.131,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
     "pytest_exit_code": 0,
@@ -40,7 +40,7 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-agent @ file:///tmp/datasette-agent-fwqc9_cm/datasette_agent-0.7a0.tar.gz",
+      "datasette-agent @ file:///tmp/datasette-agent-wd6ufhrs/datasette_agent-0.7a1.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -58,14 +58,14 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a44/runs/20261123T044845Z-gh-45114013057-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-agent/datasette-1.0a44/runs/20261124T135130Z-gh-45407701205-a1/.pytest-report.json"
     ]
   },
   "passed": true,
   "outcome": "passed",
   "counts": {
-    "collected": 444,
-    "passed": 444,
+    "collected": 448,
+    "passed": 448,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
@@ -93,6 +93,6 @@
   },
   "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-agent/datasette-1.0a44/runs/20261123T044845Z-gh-45114013057-a1/pytest.txt"
+    "pytest_output": "results/datasette-agent/datasette-1.0a44/runs/20261124T135130Z-gh-45407701205-a1/pytest.txt"
   }
 }

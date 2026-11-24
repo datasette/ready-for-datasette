@@ -1,0 +1,75 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-scale-to-zero @ file:///tmp/datasette-scale-to-zero-xamz8bj9/datasette_scale_to_zero-0.3.2.tar.gz
+warning: `build_system.requires = ["uv-build>=0.9.18,<0.10.0"]` does not contain the current uv version 0.13.9
+      Built datasette-scale-to-zero @ file:///tmp/datasette-scale-to-zero-xamz8bj9/datasette_scale_to_zero-0.3.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 46 packages in 26ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/ZlsENtZlw2LoB8U-/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpgHWCai/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'httpx': '0.36.2', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-scale-to-zero-xamz8bj9/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, httpx-0.36.2, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 39 items
+
+tests/test_scale_to_zero.py::test_plugin_configuration[duration-1] PASSED [  2%]
+tests/test_scale_to_zero.py::test_plugin_configuration[duration-2] PASSED [  5%]
+tests/test_scale_to_zero.py::test_plugin_configuration[duration-3min] PASSED [  7%]
+tests/test_scale_to_zero.py::test_plugin_configuration[duration-dog] PASSED [ 10%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max_age-1] PASSED [ 12%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max_age-2] PASSED [ 15%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max_age-3min] PASSED [ 17%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max_age-dog] PASSED [ 20%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max-age-1] PASSED [ 23%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max-age-2] PASSED [ 25%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max-age-3min] PASSED [ 28%]
+tests/test_scale_to_zero.py::test_plugin_configuration[max-age-dog] PASSED [ 30%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config0-shutdown_url must be a string] PASSED [ 33%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config1-shutdown_url must start with http] PASSED [ 35%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config2-shutdown_headers must be a dictionary] PASSED [ 38%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config3-shutdown_method must be a string] PASSED [ 41%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config4-shutdown_method must be one of GET, POST, PUT, DELETE, PATCH] PASSED [ 43%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config5-shutdown_body must be a string] PASSED [ 46%]
+tests/test_scale_to_zero.py::test_invalid_configurations[config6-Invalid datasette-scale-to-zero configuration keys: bad, keys] PASSED [ 48%]
+tests/test_scale_to_zero.py::test_shutdown_url_can_be_none_or_blank[config0] PASSED [ 51%]
+tests/test_scale_to_zero.py::test_shutdown_url_can_be_none_or_blank[config1] PASSED [ 53%]
+tests/test_scale_to_zero.py::test_get_config[duration-None-None] PASSED  [ 56%]
+tests/test_scale_to_zero.py::test_get_config[duration-1s-1] PASSED       [ 58%]
+tests/test_scale_to_zero.py::test_get_config[duration-1m-60] PASSED      [ 61%]
+tests/test_scale_to_zero.py::test_get_config[duration-1h-3600] PASSED    [ 64%]
+tests/test_scale_to_zero.py::test_get_config[duration-10m-600] PASSED    [ 66%]
+tests/test_scale_to_zero.py::test_get_config[max_age-None-None] PASSED   [ 69%]
+tests/test_scale_to_zero.py::test_get_config[max_age-1s-1] PASSED        [ 71%]
+tests/test_scale_to_zero.py::test_get_config[max_age-1m-60] PASSED       [ 74%]
+tests/test_scale_to_zero.py::test_get_config[max_age-1h-3600] PASSED     [ 76%]
+tests/test_scale_to_zero.py::test_get_config[max_age-10m-600] PASSED     [ 79%]
+tests/test_scale_to_zero.py::test_plugin_disabled_when_no_duration_or_max_age[config0] PASSED [ 82%]
+tests/test_scale_to_zero.py::test_plugin_disabled_when_no_duration_or_max_age[config1] PASSED [ 84%]
+tests/test_scale_to_zero.py::test_plugin_disabled_when_no_duration_or_max_age[config2] PASSED [ 87%]
+tests/test_scale_to_zero.py::test_plugin_disabled_when_no_duration_or_max_age[config3] PASSED [ 89%]
+tests/test_scale_to_zero.py::test_records_last_asgi PASSED               [ 92%]
+tests/test_scale_to_zero.py::test_server_quits[duration] PASSED          [ 94%]
+tests/test_scale_to_zero.py::test_server_quits[max_age] PASSED           [ 97%]
+tests/test_scale_to_zero.py::test_shutdown_pings_shutdown_url PASSED     [100%]
+
+=============================== warnings summary ===============================
+tests/test_scale_to_zero.py::test_shutdown_pings_shutdown_url
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/ZlsENtZlw2LoB8U-/lib/python3.13/site-packages/httpx/_models.py:408: DeprecationWarning: Use 'content=<...>' to upload raw bytes/text content.
+    headers, stream = encode_request(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-scale-to-zero/datasette-1.0a44/runs/20261124T135128Z-gh-45407701205-a1/.pytest-report.json
+======================== 39 passed, 1 warning in 7.16s =========================

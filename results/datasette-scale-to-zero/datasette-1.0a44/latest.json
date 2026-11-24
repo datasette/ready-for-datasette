@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-scale-to-zero",
+    "version": "0.3.2",
+    "repository": "simonw/datasette-scale-to-zero",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/d4/45/b8d59d4f4b9ed9fd5337bda954fcac65647eeca3cda6610a7180526f4220/datasette_scale_to_zero-0.3.2.tar.gz",
+      "sha256": "457d97d389df85b5e5666d050f1f102cdeaa61714d781db82d0287519fd26736"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-scale-to-zero",
+      "ref": "0.3.2",
+      "git_sha": "f8ad9bbcf77c28df2e0b7d8e2f871fe08bfc9f5a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T135128Z-gh-45407701205-a1",
+    "started_at": "2026-11-24T13:51:28Z",
+    "completed_at": "2026-11-24T13:51:40Z",
+    "duration_seconds": 12.21,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-scale-to-zero @ file:///tmp/datasette-scale-to-zero-xamz8bj9/datasette_scale_to_zero-0.3.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test",
+      "--with",
+      "pytest-httpx",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-scale-to-zero/datasette-1.0a44/runs/20261124T135128Z-gh-45407701205-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 39,
+    "passed": 39,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test",
+      "pytest-httpx"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-scale-to-zero/datasette-1.0a44/runs/20261124T135128Z-gh-45407701205-a1/pytest.txt"
+  }
+}
