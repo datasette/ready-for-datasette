@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-search-all",
+    "version": "1.1.4",
+    "repository": "simonw/datasette-search-all",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/33/3d/2111599e89583f9415b8e1e89f4b57f2dd41833f95ab023ea54157c9e636/datasette_search_all-1.1.4.tar.gz",
+      "sha256": "371de80eff4f2f0e5ba70cc8efcdd68c1089ebf03d743febced250012d678911"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-search-all",
+      "ref": "1.1.4",
+      "git_sha": "23194fc17c7755bc37cd8c9322043de8fc608216"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261124T233006Z-gh-45510428279-a1",
+    "started_at": "2026-11-24T23:30:06Z",
+    "completed_at": "2026-11-24T23:30:11Z",
+    "duration_seconds": 5.647,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 4,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-search-all[test] @ file:///tmp/datasette-search-all-yh8984hq/datasette_search_all-1.1.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-search-all/datasette-1.0a44/runs/20261124T233006Z-gh-45510428279-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 3
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-search-all/datasette-1.0a44/runs/20261124T233006Z-gh-45510428279-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

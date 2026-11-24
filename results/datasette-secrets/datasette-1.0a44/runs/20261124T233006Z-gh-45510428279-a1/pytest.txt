@@ -1,0 +1,489 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-secrets @ file:///tmp/datasette-secrets-1j5oscfy/datasette_secrets-0.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading cryptography (4.5MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded cryptography
+ Downloaded pip
+      Built datasette-secrets @ file:///tmp/datasette-secrets-1j5oscfy/datasette_secrets-0.2.tar.gz
+Installed 48 packages in 28ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpp6ozNg/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-secrets-1j5oscfy/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/test_secrets.py::test_generate_command PASSED                      [  9%]
+tests/test_secrets.py::test_permissions[None-/-/secrets-GET-None] FAILED [ 18%]
+tests/test_secrets.py::test_permissions[None-/-/secrets/EXAMPLE_SECRET-GET-None] FAILED [ 27%]
+tests/test_secrets.py::test_permissions[admin-/-/secrets-GET-None] FAILED [ 36%]
+tests/test_secrets.py::test_permissions[admin-/-/secrets/EXAMPLE_SECRET-GET-None] FAILED [ 45%]
+tests/test_secrets.py::test_permissions[other-/-/secrets-GET-None] FAILED [ 54%]
+tests/test_secrets.py::test_permissions[other-/-/secrets/EXAMPLE_SECRET-GET-None] FAILED [ 63%]
+tests/test_secrets.py::test_set_secret FAILED                            [ 72%]
+tests/test_secrets.py::test_get_secret FAILED                            [ 81%]
+tests/test_secrets.py::test_if_not_configured PASSED                     [ 90%]
+tests/test_secrets.py::test_secret_index_page FAILED                     [100%]
+
+=================================== FAILURES ===================================
+__________________ test_permissions[None-/-/secrets-GET-None] __________________
+
+ds = <datasette_test.Datasette object at 0x76c815f8ea50>, path = '/-/secrets'
+verb = 'GET', data = None, user = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+            assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+        else:
+>           assert response.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_secrets.py:133: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 168, in secrets_index
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_permissions[None-/-/secrets/EXAMPLE_SECRET-GET-None] ___________
+
+ds = <datasette_test.Datasette object at 0x76c815d47b10>
+path = '/-/secrets/EXAMPLE_SECRET', verb = 'GET', data = None, user = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+            assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+        else:
+>           assert response.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_secrets.py:133: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 228, in secrets_update
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_________________ test_permissions[admin-/-/secrets-GET-None] __________________
+
+ds = <datasette_test.Datasette object at 0x76c815f12ad0>, path = '/-/secrets'
+verb = 'GET', data = None, user = 'admin'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+>           assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+E           assert '<a href="/-/secrets">Manage secrets</a>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+E            +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+
+tests/test_secrets.py:131: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 168, in secrets_index
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_permissions[admin-/-/secrets/EXAMPLE_SECRET-GET-None] __________
+
+ds = <datasette_test.Datasette object at 0x76c815f11bd0>
+path = '/-/secrets/EXAMPLE_SECRET', verb = 'GET', data = None, user = 'admin'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+>           assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+E           assert '<a href="/-/secrets">Manage secrets</a>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+E            +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+
+tests/test_secrets.py:131: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 228, in secrets_update
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_________________ test_permissions[other-/-/secrets-GET-None] __________________
+
+ds = <datasette_test.Datasette object at 0x76c815f10e10>, path = '/-/secrets'
+verb = 'GET', data = None, user = 'other'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+            assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+        else:
+>           assert response.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_secrets.py:133: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 168, in secrets_index
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_permissions[other-/-/secrets/EXAMPLE_SECRET-GET-None] __________
+
+ds = <datasette_test.Datasette object at 0x76c815e78f50>
+path = '/-/secrets/EXAMPLE_SECRET', verb = 'GET', data = None, user = 'other'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,verb,data",
+        (
+            ("/-/secrets", "GET", None),
+            ("/-/secrets/EXAMPLE_SECRET", "GET", None),
+        ),
+    )
+    @pytest.mark.parametrize("user", (None, "admin", "other"))
+    async def test_permissions(ds, path, verb, data, user):
+        method = ds.client.get if verb == "GET" else ds.client.post
+        kwargs = {}
+        if user:
+            kwargs["cookies"] = {
+                "ds_actor": actor_cookie(ds, {"id": user}),
+            }
+        if data:
+            kwargs["data"] = data
+        response = await method(path, **kwargs)
+        if user == "admin":
+            assert response.status_code != 403
+            # And check they have the menu item too
+            assert '<a href="/-/secrets">Manage secrets</a>' in response.text
+        else:
+>           assert response.status_code == 403
+E           assert 500 == 403
+E            +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_secrets.py:133: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 228, in secrets_update
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______________________________ test_set_secret ________________________________
+
+ds = <datasette_test.Datasette object at 0x76c815e7a5d0>
+use_actors_plugin = None
+
+    @pytest.mark.asyncio
+    async def test_set_secret(ds, use_actors_plugin):
+        cookies = {"ds_actor": actor_cookie(ds, {"id": "admin"})}
+        get_response = await ds.client.get("/-/secrets/EXAMPLE_SECRET", cookies=cookies)
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_secrets.py:141: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/httpx2/_models.py:1229: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 228, in secrets_update
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______________________________ test_get_secret ________________________________
+
+ds = <datasette_test.Datasette object at 0x76c815e791d0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x76c815eecb90>
+
+    @pytest.mark.asyncio
+    async def test_get_secret(ds, monkeypatch):
+        # First set it manually
+        cookies = {"ds_actor": actor_cookie(ds, {"id": "admin"})}
+        get_response = await ds.client.get("/-/secrets/EXAMPLE_SECRET", cookies=cookies)
+>       csrftoken = get_response.cookies["ds_csrftoken"]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_secrets.py:228: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Cookies[]>, name = 'ds_csrftoken'
+
+    def __getitem__(self, name: str) -> str:
+        value = self.get(name)
+        if value is None:
+>           raise KeyError(name)
+E           KeyError: 'ds_csrftoken'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/httpx2/_models.py:1229: KeyError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 228, in secrets_update
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+____________________________ test_secret_index_page ____________________________
+
+ds = <datasette_test.Datasette object at 0x76c815e78e10>
+register_multiple_secrets = None
+
+    @pytest.mark.asyncio
+    async def test_secret_index_page(ds, register_multiple_secrets):
+        response = await ds.client.get(
+            "/-/secrets",
+            cookies={
+                "ds_actor": actor_cookie(ds, {"id": "admin"}),
+            },
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_secrets.py:304: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/YlmhRcDGWUmE3X5H/lib/python3.13/site-packages/datasette_secrets/__init__.py", line 168, in secrets_index
+    if not await datasette.permission_allowed(request.actor, "manage-secrets"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-secrets/datasette-1.0a44/runs/20261124T233006Z-gh-45510428279-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_secrets.py::test_permissions[None-/-/secrets-GET-None] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_secrets.py::test_permissions[None-/-/secrets/EXAMPLE_SECRET-GET-None] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_secrets.py::test_permissions[admin-/-/secrets-GET-None] - assert '<a href="/-/secrets">Manage secrets</a>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+ +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+FAILED tests/test_secrets.py::test_permissions[admin-/-/secrets/EXAMPLE_SECRET-GET-None] - assert '<a href="/-/secrets">Manage secrets</a>' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+ +  where '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;Datasette&#39; object has no attribute &#39;permission_allowed&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>' = <Response [500 Internal Server Error]>.text
+FAILED tests/test_secrets.py::test_permissions[other-/-/secrets-GET-None] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_secrets.py::test_permissions[other-/-/secrets/EXAMPLE_SECRET-GET-None] - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_secrets.py::test_set_secret - KeyError: 'ds_csrftoken'
+FAILED tests/test_secrets.py::test_get_secret - KeyError: 'ds_csrftoken'
+FAILED tests/test_secrets.py::test_secret_index_page - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 9 failed, 2 passed in 0.67s ==========================

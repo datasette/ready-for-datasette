@@ -1,0 +1,15 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-search-all @ file:///tmp/datasette-search-all-yh8984hq/datasette_search_all-1.1.4.tar.gz
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-search-all @ file:///tmp/datasette-search-all-yh8984hq/datasette_search_all-1.1.4.tar.gz
+Installed 41 packages in 26ms
+ImportError while loading conftest '/tmp/datasette-search-all-yh8984hq/tagged-source/tests/conftest.py'.
+tests/conftest.py:7: in <module>
+    import httpx
+E   ModuleNotFoundError: No module named 'httpx'

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-secrets",
+    "version": "0.2",
+    "repository": "datasette/datasette-secrets",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/f3/c7/8b9b3fbe357d103f98d575721694331604ec81fa8deaa506d310e76cadcd/datasette_secrets-0.2.tar.gz",
+      "sha256": "5727ecb4be6e385ad44ba7c1b30f80e8fc3036fbcc184518c6b3e0a830c53b91"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-secrets",
+      "ref": "0.2",
+      "git_sha": "95a3364ea9d410b707f62d6f25cd063a1ded5f71"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T233006Z-gh-45510428279-a1",
+    "started_at": "2026-11-24T23:30:06Z",
+    "completed_at": "2026-11-24T23:30:12Z",
+    "duration_seconds": 6.288,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-secrets @ file:///tmp/datasette-secrets-1j5oscfy/datasette_secrets-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test>=0.3.2",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-secrets/datasette-1.0a44/runs/20261124T233006Z-gh-45510428279-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 11,
+    "passed": 2,
+    "failed": 9,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_secrets.py::test_get_secret",
+    "tests/test_secrets.py::test_permissions[None-/-/secrets-GET-None]",
+    "tests/test_secrets.py::test_permissions[None-/-/secrets/EXAMPLE_SECRET-GET-None]",
+    "tests/test_secrets.py::test_permissions[admin-/-/secrets-GET-None]",
+    "tests/test_secrets.py::test_permissions[admin-/-/secrets/EXAMPLE_SECRET-GET-None]",
+    "tests/test_secrets.py::test_permissions[other-/-/secrets-GET-None]",
+    "tests/test_secrets.py::test_permissions[other-/-/secrets/EXAMPLE_SECRET-GET-None]",
+    "tests/test_secrets.py::test_secret_index_page",
+    "tests/test_secrets.py::test_set_secret"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test>=0.3.2"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-secrets/datasette-1.0a44/runs/20261124T233006Z-gh-45510428279-a1/pytest.txt"
+  }
+}

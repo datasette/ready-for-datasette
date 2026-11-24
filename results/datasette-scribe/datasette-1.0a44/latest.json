@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-scribe",
+    "version": "0.2a2",
+    "repository": "datasette/datasette-scribe",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/40/1d/4bd1b7ac0317970361b44301d85bdacafd650a5086c7a5c672e0f16a1794/datasette_scribe-0.2a2.tar.gz",
+      "sha256": "eb751b0a66b24acde59f15daaa5c766cbf0001c1ec73db5860edfd6eaea4af79"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-scribe",
+      "ref": "0.2a2",
+      "git_sha": "32b87e17cda23f249a824b4e301acad1f7eda587"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261124T233003Z-gh-45510428279-a1",
+    "started_at": "2026-11-24T23:30:03Z",
+    "completed_at": "2026-11-24T23:30:07Z",
+    "duration_seconds": 4.485,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-scribe[test] @ file:///tmp/datasette-scribe-dba7tp1w/datasette_scribe-0.2a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "ruff>=0.15.0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-scribe/datasette-1.0a44/runs/20261124T233003Z-gh-45510428279-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "ruff>=0.15.0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-scribe/datasette-1.0a44/runs/20261124T233003Z-gh-45510428279-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

@@ -1,0 +1,65 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-scribe @ file:///tmp/datasette-scribe-dba7tp1w/datasette_scribe-0.2a2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading ruff (10.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded ruff
+      Built datasette-scribe @ file:///tmp/datasette-scribe-dba7tp1w/datasette_scribe-0.2a2.tar.gz
+Installed 50 packages in 18ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+INTERNALERROR> Traceback (most recent call last):
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/_pytest/main.py", line 329, in wrap_session
+INTERNALERROR>     config._do_configure()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/_pytest/config/__init__.py", line 1370, in _do_configure
+INTERNALERROR>     self.hook.pytest_configure.call_historic(kwargs=dict(config=self))
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pluggy/_caller.py", line 222, in call_historic
+INTERNALERROR>     res = self._hookexec(self.name, self._hookimpls.copy(), kwargs, False)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pluggy/_manager.py", line 183, in _hookexec
+INTERNALERROR>     return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pluggy/_execution.py", line 195, in _multicall
+INTERNALERROR>     raise exception
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pluggy/_execution.py", line 147, in _multicall
+INTERNALERROR>     res = hook_impl.function(*args)
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 53, in pytest_configure
+INTERNALERROR>     _install_tracking()
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette/_pytest_plugin.py", line 38, in _install_tracking
+INTERNALERROR>     from datasette.app import Datasette
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 185, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette/app.py", line 51, in <module>
+INTERNALERROR>     from .plugins import DEFAULT_PLUGINS, get_plugins, pm
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/_pytest/assertion/rewrite.py", line 185, in exec_module
+INTERNALERROR>     exec(co, module.__dict__)
+INTERNALERROR>     ~~~~^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette/plugins.py", line 67, in <module>
+INTERNALERROR>     pm.load_setuptools_entrypoints("datasette")
+INTERNALERROR>     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/pluggy/_manager.py", line 521, in load_setuptools_entrypoints
+INTERNALERROR>     plugin = ep.load()
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py", line 179, in load
+INTERNALERROR>     module = import_module(match.group('module'))
+INTERNALERROR>   File "/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py", line 88, in import_module
+INTERNALERROR>     return _bootstrap._gcd_import(name[level:], package, level)
+INTERNALERROR>            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette_scribe/__init__.py", line 6, in <module>
+INTERNALERROR>     from .routes import pages, api_transcriptions, api_speakers, api_collections
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette_scribe/routes/__init__.py", line 1, in <module>
+INTERNALERROR>     from . import pages, api_transcriptions, api_speakers, api_collections
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette_scribe/routes/api_transcriptions.py", line 15, in <module>
+INTERNALERROR>     from ..voxtral_api import transcribe
+INTERNALERROR>   File "/home/runner/work/_temp/setup-uv-cache/archive-v0/TFlmLUEWjjGykriK/lib/python3.13/site-packages/datasette_scribe/voxtral_api.py", line 1, in <module>
+INTERNALERROR>     import httpx
+INTERNALERROR> ModuleNotFoundError: No module named 'httpx'
