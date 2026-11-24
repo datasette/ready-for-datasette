@@ -30,10 +30,10 @@
     "name": "datasette-agent",
     "github_repo": "datasette/datasette-agent",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "3c542cde6ac1fd4cd0e1293c762a22a7786898e6a064a15060dcd4cb1d3d2ee5",
-    "metadata_etag": "\"bd7b6de6354e1195f8fb6e51dfe4349c9b25292d37d957d0d3b68e926760f2d1\"",
-    "latest_version": "0.7a0",
-    "latest_version_published_at": "2026-11-23T02:40:13Z"
+    "metadata_sha256": "deca8e7a7c51e52ff84f2cbd0d28def038a29723eebc3abd9fdb5c48d9220cc5",
+    "metadata_etag": "\"d56e29ae9e7917af56e10a745181e4c48aaea85a375e8f496fa87c8d5db56894\"",
+    "latest_version": "0.7a1",
+    "latest_version_published_at": "2026-11-24T03:47:19Z"
   },
   {
     "name": "datasette-agent-actor-memory",
@@ -336,10 +336,10 @@
     "name": "datasette-charts",
     "github_repo": "datasette/datasette-charts",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "43050026f6c27f152c2560220737c71eba026149edec22bf62b4ea5f18e812aa",
-    "metadata_etag": "\"803a864cda839bd6aa9b1377c054255d7454a98642c9f6a9cf4f9a7cb90706ec\"",
-    "latest_version": "0.1a0",
-    "latest_version_published_at": "2026-11-23T00:38:21Z"
+    "metadata_sha256": "1f5a1999dfa16dd0095e76a3cf39b62e59408c112ae3f43674d7d1dbd6018d0d",
+    "metadata_etag": "\"5786df1b9f9cf670a4e03c01f76a3fc4fba126bfc16847ef479f1256fe9c71df\"",
+    "latest_version": "0.2a1",
+    "latest_version_published_at": "2026-11-24T06:08:21Z"
   },
   {
     "name": "datasette-chatgpt-plugin",
