@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-rure",
+    "version": "0.3",
+    "repository": "simonw/datasette-rure",
+    "source": null,
+    "test_suite": {
+      "type": "none",
+      "repository": null,
+      "ref": null,
+      "git_sha": null
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261124T025607Z-gh-45315878230-a1",
+    "started_at": "2026-11-24T02:56:07Z",
+    "completed_at": "2026-11-24T02:56:07Z",
+    "duration_seconds": 0.287,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": null,
+    "command": []
+  },
+  "passed": false,
+  "outcome": "no_sdist",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {},
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-rure/datasette-1.0a44/runs/20261124T025607Z-gh-45315878230-a1/pytest.txt"
+  },
+  "detail": "PyPI release has no non-yanked source distribution"
+}

@@ -1,0 +1,169 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sandstorm-support @ file:///tmp/datasette-sandstorm-support-j1ycfw3h/datasette-sandstorm-support-0.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded pip
+      Built datasette-sandstorm-support @ file:///tmp/datasette-sandstorm-support-j1ycfw3h/datasette-sandstorm-support-0.2.tar.gz
+Installed 39 packages in 16ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbtJUXw/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sandstorm-support-j1ycfw3h/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 8 items
+
+tests/test_sandstorm_support.py::test_actor_from_headers[headers0-None] FAILED [ 12%]
+tests/test_sandstorm_support.py::test_actor_from_headers[headers1-expected1] FAILED [ 25%]
+tests/test_sandstorm_support.py::test_actor_from_headers[headers2-expected2] FAILED [ 37%]
+tests/test_sandstorm_support.py::test_permissions[upload-csvs-edit-True] FAILED [ 50%]
+tests/test_sandstorm_support.py::test_permissions[upload-csvs-read-False] FAILED [ 62%]
+tests/test_sandstorm_support.py::test_permissions[upload-dbs-edit-True] FAILED [ 75%]
+tests/test_sandstorm_support.py::test_permissions[upload-dbs-read-False] FAILED [ 87%]
+tests/test_sandstorm_support.py::test_permissions[something-random-edit-False] FAILED [100%]
+
+=================================== FAILURES ===================================
+____________________ test_actor_from_headers[headers0-None] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_actor_from_headers[headers1-expected1] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_actor_from_headers[headers2-expected2] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_permissions[upload-csvs-edit-True] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_permissions[upload-csvs-read-False] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_permissions[upload-dbs-edit-True] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_permissions[upload-dbs-read-False] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________ test_permissions[something-random-edit-False] _________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/1bfGr0ye528cCbow/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/1bfGr0ye528cCbow/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_sandstorm_support.py:10
+  /tmp/datasette-sandstorm-support-j1ycfw3h/tagged-source/tests/test_sandstorm_support.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_sandstorm_support.py:41
+  /tmp/datasette-sandstorm-support-j1ycfw3h/tagged-source/tests/test_sandstorm_support.py:41: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sandstorm-support/datasette-1.0a44/runs/20261124T025605Z-gh-45315878230-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sandstorm_support.py::test_actor_from_headers[headers0-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_actor_from_headers[headers1-expected1] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_actor_from_headers[headers2-expected2] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_permissions[upload-csvs-edit-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_permissions[upload-csvs-read-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_permissions[upload-dbs-edit-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_permissions[upload-dbs-read-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sandstorm_support.py::test_permissions[something-random-edit-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 8 failed, 3 warnings in 0.03s =========================

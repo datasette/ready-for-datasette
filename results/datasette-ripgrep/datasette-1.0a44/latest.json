@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-ripgrep",
+    "version": "0.8.2",
+    "repository": "simonw/datasette-ripgrep",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/af/78/9673d5fa9464e8fbcef3d9fde53d0d0025dc69e0a5f889efa7a549d3d8d2/datasette-ripgrep-0.8.2.tar.gz",
+      "sha256": "a785627b08f6288f10f0f94dcfe5c40502b6b5614f8fd844f824236e165f3bdf"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-ripgrep",
+      "ref": "0.8.2",
+      "git_sha": "d796e14a5823cc803b5a176cf73e98bf82f3e097"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T025607Z-gh-45315878230-a1",
+    "started_at": "2026-11-24T02:56:07Z",
+    "completed_at": "2026-11-24T02:56:12Z",
+    "duration_seconds": 4.915,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-ripgrep @ file:///tmp/datasette-ripgrep-7ljmnffi/datasette-ripgrep-0.8.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ripgrep/datasette-1.0a44/runs/20261124T025607Z-gh-45315878230-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 29,
+    "passed": 0,
+    "failed": 20,
+    "errors": 0,
+    "skipped": 9,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 10
+  },
+  "failing_tests": [
+    "tests/test_ripgrep.py::test_configuration[False]",
+    "tests/test_ripgrep.py::test_configuration[True]",
+    "tests/test_ripgrep.py::test_menu_link",
+    "tests/test_ripgrep.py::test_permissions[metadata0-False-/-/ripgrep-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata1-True-/-/ripgrep-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata10-False-/-/ripgrep/view/one.txt-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata11-True-/-/ripgrep/view/one.txt-200]",
+    "tests/test_ripgrep.py::test_permissions[metadata2-False-/-/ripgrep/view/one.txt-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata3-True-/-/ripgrep/view/one.txt-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata4-False-/-/ripgrep-200]",
+    "tests/test_ripgrep.py::test_permissions[metadata5-True-/-/ripgrep-200]",
+    "tests/test_ripgrep.py::test_permissions[metadata6-False-/-/ripgrep/view/one.txt-200]",
+    "tests/test_ripgrep.py::test_permissions[metadata7-True-/-/ripgrep/view/one.txt-200]",
+    "tests/test_ripgrep.py::test_permissions[metadata8-False-/-/ripgrep-403]",
+    "tests/test_ripgrep.py::test_permissions[metadata9-True-/-/ripgrep-200]",
+    "tests/test_ripgrep.py::test_plugin_is_installed",
+    "tests/test_ripgrep.py::test_view_file",
+    "tests/test_ripgrep.py::test_view_file_errors[..%2F..%2F..%2Ftmp%2Fblah.txt-403-File must be inside path directory]",
+    "tests/test_ripgrep.py::test_view_file_errors[three.txt-404-File not found: three.txt]",
+    "tests/test_ripgrep.py::test_view_file_with_curlies"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-ripgrep/datasette-1.0a44/runs/20261124T025607Z-gh-45315878230-a1/pytest.txt"
+  }
+}

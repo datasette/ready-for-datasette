@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sandstorm-support",
+    "version": "0.2",
+    "repository": "simonw/datasette-sandstorm-support",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a7/2b/e9563e1273c58f3ea4313f7531aaecedfd8ae368459767e432adc45e17b3/datasette-sandstorm-support-0.2.tar.gz",
+      "sha256": "9f54c9ddc5e2a8fcc330e536a6a197ee60a029b1c38e1f5af80e077950a838ce"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-sandstorm-support",
+      "ref": "0.2",
+      "git_sha": "9d2eafe1345c4aa1ae6355d511286801be8be8ff"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261124T025605Z-gh-45315878230-a1",
+    "started_at": "2026-11-24T02:56:05Z",
+    "completed_at": "2026-11-24T02:56:10Z",
+    "duration_seconds": 4.942,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sandstorm-support @ file:///tmp/datasette-sandstorm-support-j1ycfw3h/datasette-sandstorm-support-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sandstorm-support/datasette-1.0a44/runs/20261124T025605Z-gh-45315878230-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 8,
+    "passed": 0,
+    "failed": 8,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 3
+  },
+  "failing_tests": [
+    "tests/test_sandstorm_support.py::test_actor_from_headers[headers0-None]",
+    "tests/test_sandstorm_support.py::test_actor_from_headers[headers1-expected1]",
+    "tests/test_sandstorm_support.py::test_actor_from_headers[headers2-expected2]",
+    "tests/test_sandstorm_support.py::test_permissions[something-random-edit-False]",
+    "tests/test_sandstorm_support.py::test_permissions[upload-csvs-edit-True]",
+    "tests/test_sandstorm_support.py::test_permissions[upload-csvs-read-False]",
+    "tests/test_sandstorm_support.py::test_permissions[upload-dbs-edit-True]",
+    "tests/test_sandstorm_support.py::test_permissions[upload-dbs-read-False]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-sandstorm-support/datasette-1.0a44/runs/20261124T025605Z-gh-45315878230-a1/pytest.txt"
+  }
+}

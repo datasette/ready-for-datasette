@@ -1,0 +1,398 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-ripgrep @ file:///tmp/datasette-ripgrep-7ljmnffi/datasette-ripgrep-0.8.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-ripgrep @ file:///tmp/datasette-ripgrep-7ljmnffi/datasette-ripgrep-0.8.2.tar.gz
+Installed 39 packages in 10ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpucuT2q/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-ripgrep-7ljmnffi/tagged-source
+configfile: pytest.ini
+plugins: metadata-3.1.1, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+collecting ... collected 29 items
+
+tests/test_ripgrep.py::test_plugin_is_installed FAILED                   [  3%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=est-est-expected_fragments0-unexpected_fragments0] SKIPPED [  6%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=EST-EST-expected_fragments1-unexpected_fragments1] SKIPPED [ 10%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=EST&ignore=on-EST-expected_fragments2-unexpected_fragments2] SKIPPED [ 13%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=.test-.test-expected_fragments3-unexpected_fragments3] SKIPPED [ 17%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=.test&literal=on-.test-expected_fragments4-unexpected_fragments4] SKIPPED [ 20%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=test&glob=two.txt-test-expected_fragments5-unexpected_fragments5] SKIPPED [ 24%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=test&glob=!two.txt-test-expected_fragments6-unexpected_fragments6] SKIPPED [ 27%]
+tests/test_ripgrep.py::test_ripgrep_search[pattern=YYY-YYY-expected_fragments7-unexpected_fragments7] SKIPPED [ 31%]
+tests/test_ripgrep.py::test_ripgrep_pattern_not_treated_as_flag SKIPPED  [ 34%]
+tests/test_ripgrep.py::test_view_file FAILED                             [ 37%]
+tests/test_ripgrep.py::test_view_file_errors[three.txt-404-File not found: three.txt] FAILED [ 41%]
+tests/test_ripgrep.py::test_view_file_errors[..%2F..%2F..%2Ftmp%2Fblah.txt-403-File must be inside path directory] FAILED [ 44%]
+tests/test_ripgrep.py::test_view_file_with_curlies FAILED                [ 48%]
+tests/test_ripgrep.py::test_menu_link FAILED                             [ 51%]
+tests/test_ripgrep.py::test_permissions[metadata0-False-/-/ripgrep-403] FAILED [ 55%]
+tests/test_ripgrep.py::test_permissions[metadata1-True-/-/ripgrep-403] FAILED [ 58%]
+tests/test_ripgrep.py::test_permissions[metadata2-False-/-/ripgrep/view/one.txt-403] FAILED [ 62%]
+tests/test_ripgrep.py::test_permissions[metadata3-True-/-/ripgrep/view/one.txt-403] FAILED [ 65%]
+tests/test_ripgrep.py::test_permissions[metadata4-False-/-/ripgrep-200] FAILED [ 68%]
+tests/test_ripgrep.py::test_permissions[metadata5-True-/-/ripgrep-200] FAILED [ 72%]
+tests/test_ripgrep.py::test_permissions[metadata6-False-/-/ripgrep/view/one.txt-200] FAILED [ 75%]
+tests/test_ripgrep.py::test_permissions[metadata7-True-/-/ripgrep/view/one.txt-200] FAILED [ 79%]
+tests/test_ripgrep.py::test_permissions[metadata8-False-/-/ripgrep-403] FAILED [ 82%]
+tests/test_ripgrep.py::test_permissions[metadata9-True-/-/ripgrep-200] FAILED [ 86%]
+tests/test_ripgrep.py::test_permissions[metadata10-False-/-/ripgrep/view/one.txt-403] FAILED [ 89%]
+tests/test_ripgrep.py::test_permissions[metadata11-True-/-/ripgrep/view/one.txt-200] FAILED [ 93%]
+tests/test_ripgrep.py::test_configuration[True] FAILED                   [ 96%]
+tests/test_ripgrep.py::test_configuration[False] FAILED                  [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_view_file ________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________ test_view_file_errors[three.txt-404-File not found: three.txt] ________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_view_file_errors[..%2F..%2F..%2Ftmp%2Fblah.txt-403-File must be inside path directory] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_view_file_with_curlies __________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_menu_link ________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata0-False-/-/ripgrep-403] _______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata1-True-/-/ripgrep-403] ________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________ test_permissions[metadata2-False-/-/ripgrep/view/one.txt-403] _________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________ test_permissions[metadata3-True-/-/ripgrep/view/one.txt-403] _________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata4-False-/-/ripgrep-200] _______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata5-True-/-/ripgrep-200] ________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________ test_permissions[metadata6-False-/-/ripgrep/view/one.txt-200] _________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________ test_permissions[metadata7-True-/-/ripgrep/view/one.txt-200] _________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata8-False-/-/ripgrep-403] _______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________ test_permissions[metadata9-True-/-/ripgrep-200] ________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________ test_permissions[metadata10-False-/-/ripgrep/view/one.txt-403] ________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________ test_permissions[metadata11-True-/-/ripgrep/view/one.txt-200] _________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________________ test_configuration[True] ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________________ test_configuration[False] ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/o8p7hIp_h1cP-4Du/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/o8p7hIp_h1cP-4Du/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_ripgrep.py:37
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:37: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:45
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:45: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:151
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:151: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:168
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:168: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:185
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:185: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:199
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:199: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:206
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:206: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:213
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:213: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_ripgrep.py:256
+  /tmp/datasette-ripgrep-7ljmnffi/tagged-source/tests/test_ripgrep.py:256: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-ripgrep/datasette-1.0a44/runs/20261124T025607Z-gh-45315878230-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_ripgrep.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_view_file - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_view_file_errors[three.txt-404-File not found: three.txt] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_view_file_errors[..%2F..%2F..%2Ftmp%2Fblah.txt-403-File must be inside path directory] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_view_file_with_curlies - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_menu_link - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata0-False-/-/ripgrep-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata1-True-/-/ripgrep-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata2-False-/-/ripgrep/view/one.txt-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata3-True-/-/ripgrep/view/one.txt-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata4-False-/-/ripgrep-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata5-True-/-/ripgrep-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata6-False-/-/ripgrep/view/one.txt-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata7-True-/-/ripgrep/view/one.txt-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata8-False-/-/ripgrep-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata9-True-/-/ripgrep-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata10-False-/-/ripgrep/view/one.txt-403] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_permissions[metadata11-True-/-/ripgrep/view/one.txt-200] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_configuration[True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_ripgrep.py::test_configuration[False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+================== 20 failed, 9 skipped, 10 warnings in 0.06s ==================

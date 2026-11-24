@@ -1,0 +1,127 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (33.9MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-saved-queries @ file:///tmp/datasette-saved-queries-02abifcd/datasette-saved-queries-0.2.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-saved-queries @ file:///tmp/datasette-saved-queries-02abifcd/datasette-saved-queries-0.2.2.tar.gz
+Installed 39 packages in 10ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbslsqU/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-saved-queries-02abifcd/tagged-source
+plugins: metadata-3.1.1, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+collecting ... collected 5 items
+
+tests/test_saved_queries.py::test_plugin_is_installed FAILED             [ 20%]
+tests/test_saved_queries.py::test_table_created FAILED                   [ 40%]
+tests/test_saved_queries.py::test_save_query FAILED                      [ 60%]
+tests/test_saved_queries.py::test_save_query_authenticated_actor FAILED  [ 80%]
+tests/test_saved_queries.py::test_dont_crash_on_immutable_database FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_plugin_is_installed ___________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________________ test_table_created ______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________________ test_save_query ________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_save_query_authenticated_actor ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_dont_crash_on_immutable_database _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_saved_queries.py:18
+  /tmp/datasette-saved-queries-02abifcd/tagged-source/tests/test_saved_queries.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_saved_queries.py:26
+  /tmp/datasette-saved-queries-02abifcd/tagged-source/tests/test_saved_queries.py:26: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_saved_queries.py:33
+  /tmp/datasette-saved-queries-02abifcd/tagged-source/tests/test_saved_queries.py:33: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_saved_queries.py:61
+  /tmp/datasette-saved-queries-02abifcd/tagged-source/tests/test_saved_queries.py:61: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_saved_queries.py:89
+  /tmp/datasette-saved-queries-02abifcd/tagged-source/tests/test_saved_queries.py:89: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-saved-queries/datasette-1.0a44/runs/20261124T025614Z-gh-45315878230-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_saved_queries.py::test_plugin_is_installed - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_saved_queries.py::test_table_created - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_saved_queries.py::test_save_query - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_saved_queries.py::test_save_query_authenticated_actor - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_saved_queries.py::test_dont_crash_on_immutable_database - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 5 failed, 5 warnings in 0.04s =========================
