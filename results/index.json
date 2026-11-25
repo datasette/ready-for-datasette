@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-25T08:45:38Z",
+  "generated_at": "2026-11-25T19:23:01Z",
   "results": [
     {
       "schema_version": 1,
@@ -26605,6 +26605,468 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-showboat/datasette-1.0a44/runs/20261125T084431Z-gh-45578884197-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-sidebar",
+        "version": "0.0.1a3",
+        "repository": "datasette/datasette-sidebar",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/fd/0c/c6e195f8e1c3899907218628394498f1a4313b67aa22fdea093c275261d2/datasette_sidebar-0.0.1a3.tar.gz",
+          "sha256": "77386f586fa6696416042972eca677b51d6f5edccc4163ce8cc223ca3ea8ffbd"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-sidebar",
+          "ref": "0.0.1a3",
+          "git_sha": "b25c9fb9aae28df42ea0dd660ed63feafa74ee82"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261125T192253Z-gh-45684549093-a1",
+        "started_at": "2026-11-25T19:22:53Z",
+        "completed_at": "2026-11-25T19:23:00Z",
+        "duration_seconds": 6.445,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-sidebar @ file:///tmp/datasette-sidebar-0_1rzkg3/datasette_sidebar-0.0.1a3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "ruff>=0.15.0",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sidebar/datasette-1.0a44/runs/20261125T192253Z-gh-45684549093-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 7,
+        "passed": 7,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "ruff>=0.15.0"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-sidebar/datasette-1.0a44/runs/20261125T192253Z-gh-45684549093-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-simple-html",
+        "version": "0.2",
+        "repository": "simonw/datasette-simple-html",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/63/d0/5862c7090f9faf1c5e193b44cbbbd0bb3f5facb667d93b98cab03205eac7/datasette-simple-html-0.2.tar.gz",
+          "sha256": "09c05feff154d40415b61eb4adb7be8d473cb21f32563c10a961c19dcfcb8089"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-simple-html",
+          "ref": "0.2",
+          "git_sha": "7ae1e2d693ea69d88ae11acf26ed81bd0026121c"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261125T192252Z-gh-45684549093-a1",
+        "started_at": "2026-11-25T19:22:52Z",
+        "completed_at": "2026-11-25T19:22:58Z",
+        "duration_seconds": 5.717,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-simple-html @ file:///tmp/datasette-simple-html-w1rp63z8/datasette-simple-html-0.2.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-simple-html/datasette-1.0a44/runs/20261125T192252Z-gh-45684549093-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 6,
+        "passed": 0,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 2
+      },
+      "failing_tests": [
+        "tests/test_simple_html.py::test_simple_html[html_escape-<p>foo</p>-&lt;p&gt;foo&lt;/p&gt;]",
+        "tests/test_simple_html.py::test_simple_html[html_escape-None-None]",
+        "tests/test_simple_html.py::test_simple_html[html_strip_tags-<p>foo</p>-foo]",
+        "tests/test_simple_html.py::test_simple_html[html_strip_tags-None-None]",
+        "tests/test_simple_html.py::test_simple_html[html_unescape-&lt;p&gt;You&#x27;ll&lt;/p&gt;-<p>You'll</p>]",
+        "tests/test_simple_html.py::test_simple_html[html_unescape-None-None]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-simple-html/datasette-1.0a44/runs/20261125T192252Z-gh-45684549093-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-sitemap",
+        "version": "1.0",
+        "repository": "simonw/datasette-sitemap",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a0/37/1a11539c93177adfcc59ba7885a07102eacd3cfd7b797f98835e8a894caa/datasette-sitemap-1.0.tar.gz",
+          "sha256": "1c8d5d47da63f921d45f71e80cafadf52be11aedf2777f4c5cc65fa23618dd09"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-sitemap",
+          "ref": "1.0",
+          "git_sha": "a825654faa4b4802c3bf9ccff4c15bbffe04b224"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261125T192250Z-gh-45684549093-a1",
+        "started_at": "2026-11-25T19:22:50Z",
+        "completed_at": "2026-11-25T19:22:56Z",
+        "duration_seconds": 6.126,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-sitemap @ file:///tmp/datasette-sitemap-fdkbze0j/datasette-sitemap-1.0.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sitemap/datasette-1.0a44/runs/20261125T192250Z-gh-45684549093-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 16,
+        "passed": 0,
+        "failed": 15,
+        "errors": 0,
+        "skipped": 1,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 5
+      },
+      "failing_tests": [
+        "tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path union select '/2' as path-None-expected_paths4-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path-None-expected_paths2-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[None-select 'nopath' as nopath-None-None-SQL query must return a path column]",
+        "tests/test_sitemap.py::test_datasette_sitemap[None-select 'path' as path-None-None-Path &#39;path&#39; must start with /]",
+        "tests/test_sitemap.py::test_datasette_sitemap[None-select path from urls-two-expected_paths3-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[None-sql5-None-expected_paths5-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path union select '/2' as path-None-expected_paths4-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path-None-expected_paths2-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'nopath' as nopath-None-None-SQL query must return a path column]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'path' as path-None-None-Path &#39;path&#39; must start with /]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select path from urls-two-expected_paths3-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap[http://example.com-sql5-None-expected_paths5-None]",
+        "tests/test_sitemap.py::test_datasette_sitemap_robots_txt[None]",
+        "tests/test_sitemap.py::test_datasette_sitemap_robots_txt[http://example.com]",
+        "tests/test_sitemap.py::test_extra_paths_plugin_hook"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-sitemap/datasette-1.0a44/runs/20261125T192250Z-gh-45684549093-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-socrata",
+        "version": "0.3.1",
+        "repository": "simonw/datasette-socrata",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/0c/c8/701ce846e94df332f2ddb25925141d80d8fd701c2653e98ad2b70ad60339/datasette-socrata-0.3.1.tar.gz",
+          "sha256": "63b7ef72a2687972d44b20f82a11168df7bbfaabe44cf21226cfc1c47e21d0dc"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-socrata",
+          "ref": "0.3.1",
+          "git_sha": "b353d44e805ac02f4524dcdebdaaf7d036ccc0a9"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": null
+      },
+      "run": {
+        "id": "20261125T192254Z-gh-45684549093-a1",
+        "started_at": "2026-11-25T19:22:54Z",
+        "completed_at": "2026-11-25T19:22:59Z",
+        "duration_seconds": 4.992,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 3,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-socrata @ file:///tmp/datasette-socrata-qe2q74tx/datasette-socrata-0.3.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-socrata/datasette-1.0a44/runs/20261125T192254Z-gh-45684549093-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "install_error",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-socrata/datasette-1.0a44/runs/20261125T192254Z-gh-45684549093-a1/pytest.txt"
+      },
+      "detail": "uv or pytest exited before producing a JSON test report"
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-spotify-embed",
+        "version": "0.1.3",
+        "repository": "simonw/datasette-spotify-embed",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/9b/40/df646794fce73a4ee74ca3a899ef9a3126c6478c17fafac6ef8617d26b1a/datasette-spotify-embed-0.1.3.tar.gz",
+          "sha256": "fd642c2069dea6cea639d92a13c75a7c9ad7caea56a65a940726c6fab8b0b75d"
+        },
+        "test_suite": {
+          "type": "pypi_sdist",
+          "repository": null,
+          "ref": null,
+          "git_sha": null
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261125T192256Z-gh-45684549093-a1",
+        "started_at": "2026-11-25T19:22:56Z",
+        "completed_at": "2026-11-25T19:23:01Z",
+        "duration_seconds": 4.869,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 5,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-spotify-embed @ file:///tmp/datasette-spotify-embed-v9gp4z0o/datasette-spotify-embed-0.1.3.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-spotify-embed/datasette-1.0a44/runs/20261125T192256Z-gh-45684549093-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "no_tests",
+      "counts": {
+        "collected": 0,
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 0
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-spotify-embed/datasette-1.0a44/runs/20261125T192256Z-gh-45684549093-a1/pytest.txt"
       }
     }
   ]

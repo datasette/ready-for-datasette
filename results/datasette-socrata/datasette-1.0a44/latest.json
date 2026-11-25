@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-socrata",
+    "version": "0.3.1",
+    "repository": "simonw/datasette-socrata",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/0c/c8/701ce846e94df332f2ddb25925141d80d8fd701c2653e98ad2b70ad60339/datasette-socrata-0.3.1.tar.gz",
+      "sha256": "63b7ef72a2687972d44b20f82a11168df7bbfaabe44cf21226cfc1c47e21d0dc"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-socrata",
+      "ref": "0.3.1",
+      "git_sha": "b353d44e805ac02f4524dcdebdaaf7d036ccc0a9"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": null
+  },
+  "run": {
+    "id": "20261125T192254Z-gh-45684549093-a1",
+    "started_at": "2026-11-25T19:22:54Z",
+    "completed_at": "2026-11-25T19:22:59Z",
+    "duration_seconds": 4.992,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 3,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-socrata @ file:///tmp/datasette-socrata-qe2q74tx/datasette-socrata-0.3.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-socrata/datasette-1.0a44/runs/20261125T192254Z-gh-45684549093-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "install_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-socrata/datasette-1.0a44/runs/20261125T192254Z-gh-45684549093-a1/pytest.txt"
+  },
+  "detail": "uv or pytest exited before producing a JSON test report"
+}

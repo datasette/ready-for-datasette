@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-simple-html",
+    "version": "0.2",
+    "repository": "simonw/datasette-simple-html",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/63/d0/5862c7090f9faf1c5e193b44cbbbd0bb3f5facb667d93b98cab03205eac7/datasette-simple-html-0.2.tar.gz",
+      "sha256": "09c05feff154d40415b61eb4adb7be8d473cb21f32563c10a961c19dcfcb8089"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-simple-html",
+      "ref": "0.2",
+      "git_sha": "7ae1e2d693ea69d88ae11acf26ed81bd0026121c"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261125T192252Z-gh-45684549093-a1",
+    "started_at": "2026-11-25T19:22:52Z",
+    "completed_at": "2026-11-25T19:22:58Z",
+    "duration_seconds": 5.717,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-simple-html @ file:///tmp/datasette-simple-html-w1rp63z8/datasette-simple-html-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-simple-html/datasette-1.0a44/runs/20261125T192252Z-gh-45684549093-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 6,
+    "passed": 0,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 2
+  },
+  "failing_tests": [
+    "tests/test_simple_html.py::test_simple_html[html_escape-<p>foo</p>-&lt;p&gt;foo&lt;/p&gt;]",
+    "tests/test_simple_html.py::test_simple_html[html_escape-None-None]",
+    "tests/test_simple_html.py::test_simple_html[html_strip_tags-<p>foo</p>-foo]",
+    "tests/test_simple_html.py::test_simple_html[html_strip_tags-None-None]",
+    "tests/test_simple_html.py::test_simple_html[html_unescape-&lt;p&gt;You&#x27;ll&lt;/p&gt;-<p>You'll</p>]",
+    "tests/test_simple_html.py::test_simple_html[html_unescape-None-None]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-simple-html/datasette-1.0a44/runs/20261125T192252Z-gh-45684549093-a1/pytest.txt"
+  }
+}

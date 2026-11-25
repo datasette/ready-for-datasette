@@ -1,0 +1,290 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sitemap @ file:///tmp/datasette-sitemap-fdkbze0j/datasette-sitemap-1.0.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-sitemap @ file:///tmp/datasette-sitemap-fdkbze0j/datasette-sitemap-1.0.tar.gz
+Installed 39 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpa63GQJ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sitemap-fdkbze0j/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 16 items
+
+tests/test_sitemap.py::test_datasette_sitemap[None-select 'nopath' as nopath-None-None-SQL query must return a path column] FAILED [  6%]
+tests/test_sitemap.py::test_datasette_sitemap[None-select 'path' as path-None-None-Path &#39;path&#39; must start with /] FAILED [ 12%]
+tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path-None-expected_paths2-None] FAILED [ 18%]
+tests/test_sitemap.py::test_datasette_sitemap[None-select path from urls-two-expected_paths3-None] FAILED [ 25%]
+tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path union select '/2' as path-None-expected_paths4-None] FAILED [ 31%]
+tests/test_sitemap.py::test_datasette_sitemap[None-sql5-None-expected_paths5-None] FAILED [ 37%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'nopath' as nopath-None-None-SQL query must return a path column] FAILED [ 43%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'path' as path-None-None-Path &#39;path&#39; must start with /] FAILED [ 50%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path-None-expected_paths2-None] FAILED [ 56%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select path from urls-two-expected_paths3-None] FAILED [ 62%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path union select '/2' as path-None-expected_paths4-None] FAILED [ 68%]
+tests/test_sitemap.py::test_datasette_sitemap[http://example.com-sql5-None-expected_paths5-None] FAILED [ 75%]
+tests/test_sitemap.py::test_datasette_sitemap_robots_txt[None] FAILED    [ 81%]
+tests/test_sitemap.py::test_datasette_sitemap_robots_txt[http://example.com] FAILED [ 87%]
+tests/test_sitemap.py::test_robots_txt_if_no_block_robots_plugin SKIPPED [ 93%]
+tests/test_sitemap.py::test_extra_paths_plugin_hook FAILED               [100%]
+
+=================================== FAILURES ===================================
+_ test_datasette_sitemap[None-select 'nopath' as nopath-None-None-SQL query must return a path column] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[None-select 'path' as path-None-None-Path &#39;path&#39; must start with /] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__ test_datasette_sitemap[None-select '/' as path-None-expected_paths2-None] ___
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[None-select path from urls-two-expected_paths3-None] __
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[None-select '/' as path union select '/2' as path-None-expected_paths4-None] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________ test_datasette_sitemap[None-sql5-None-expected_paths5-None] __________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[http://example.com-select 'nopath' as nopath-None-None-SQL query must return a path column] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[http://example.com-select 'path' as path-None-None-Path &#39;path&#39; must start with /] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[http://example.com-select '/' as path-None-expected_paths2-None] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[http://example.com-select path from urls-two-expected_paths3-None] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_datasette_sitemap[http://example.com-select '/' as path union select '/2' as path-None-expected_paths4-None] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__ test_datasette_sitemap[http://example.com-sql5-None-expected_paths5-None] ___
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_datasette_sitemap_robots_txt[None] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________ test_datasette_sitemap_robots_txt[http://example.com] _____________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________________ test_extra_paths_plugin_hook _________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/DTxvPXEI9m0wd8Tm/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/DTxvPXEI9m0wd8Tm/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_sitemap.py:17
+  /tmp/datasette-sitemap-fdkbze0j/tagged-source/tests/test_sitemap.py:17: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_sitemap.py:93
+  /tmp/datasette-sitemap-fdkbze0j/tagged-source/tests/test_sitemap.py:93: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_sitemap.py:110
+  /tmp/datasette-sitemap-fdkbze0j/tagged-source/tests/test_sitemap.py:110: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_sitemap.py:126
+  /tmp/datasette-sitemap-fdkbze0j/tagged-source/tests/test_sitemap.py:126: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sitemap/datasette-1.0a44/runs/20261125T192250Z-gh-45684549093-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-select 'nopath' as nopath-None-None-SQL query must return a path column] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-select 'path' as path-None-None-Path &#39;path&#39; must start with /] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path-None-expected_paths2-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-select path from urls-two-expected_paths3-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-select '/' as path union select '/2' as path-None-expected_paths4-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[None-sql5-None-expected_paths5-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'nopath' as nopath-None-None-SQL query must return a path column] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select 'path' as path-None-None-Path &#39;path&#39; must start with /] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path-None-expected_paths2-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select path from urls-two-expected_paths3-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-select '/' as path union select '/2' as path-None-expected_paths4-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap[http://example.com-sql5-None-expected_paths5-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap_robots_txt[None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_datasette_sitemap_robots_txt[http://example.com] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_sitemap.py::test_extra_paths_plugin_hook - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+================== 15 failed, 1 skipped, 5 warnings in 0.06s ===================

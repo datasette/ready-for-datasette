@@ -1,0 +1,133 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-simple-html @ file:///tmp/datasette-simple-html-w1rp63z8/datasette-simple-html-0.2.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pygments
+ Downloaded pip
+ Downloaded pydantic-core
+      Built datasette-simple-html @ file:///tmp/datasette-simple-html-w1rp63z8/datasette-simple-html-0.2.tar.gz
+Installed 39 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpXQaiZ9/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-simple-html-w1rp63z8/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 6 items
+
+tests/test_simple_html.py::test_simple_html[html_strip_tags-<p>foo</p>-foo] FAILED [ 16%]
+tests/test_simple_html.py::test_simple_html[html_escape-<p>foo</p>-&lt;p&gt;foo&lt;/p&gt;] FAILED [ 33%]
+tests/test_simple_html.py::test_simple_html[html_unescape-&lt;p&gt;You&#x27;ll&lt;/p&gt;-<p>You'll</p>] FAILED [ 50%]
+tests/test_simple_html.py::test_simple_html[html_strip_tags-None-None] FAILED [ 66%]
+tests/test_simple_html.py::test_simple_html[html_escape-None-None] FAILED [ 83%]
+tests/test_simple_html.py::test_simple_html[html_unescape-None-None] FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________ test_simple_html[html_strip_tags-<p>foo</p>-foo] _______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______ test_simple_html[html_escape-<p>foo</p>-&lt;p&gt;foo&lt;/p&gt;] ________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_simple_html[html_unescape-&lt;p&gt;You&#x27;ll&lt;/p&gt;-<p>You'll</p>] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________________ test_simple_html[html_strip_tags-None-None] __________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_simple_html[html_escape-None-None] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_simple_html[html_unescape-None-None] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/mEuyTy4UbXlTF0ld/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/mEuyTy4UbXlTF0ld/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_simple_html.py:5
+  /tmp/datasette-simple-html-w1rp63z8/tagged-source/tests/test_simple_html.py:5: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-simple-html/datasette-1.0a44/runs/20261125T192252Z-gh-45684549093-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_simple_html.py::test_simple_html[html_strip_tags-<p>foo</p>-foo] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_simple_html.py::test_simple_html[html_escape-<p>foo</p>-&lt;p&gt;foo&lt;/p&gt;] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_simple_html.py::test_simple_html[html_unescape-&lt;p&gt;You&#x27;ll&lt;/p&gt;-<p>You'll</p>] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_simple_html.py::test_simple_html[html_strip_tags-None-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_simple_html.py::test_simple_html[html_escape-None-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_simple_html.py::test_simple_html[html_unescape-None-None] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 6 failed, 2 warnings in 0.02s =========================
