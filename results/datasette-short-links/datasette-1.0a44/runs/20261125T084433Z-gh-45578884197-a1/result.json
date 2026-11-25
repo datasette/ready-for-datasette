@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-short-links",
+    "version": "0.0.1a5",
+    "repository": "datasette/datasette-short-links",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/7b/7c/f7880cac64ea0f30cade79d5d8a66643a9f277db4c10ff98a4fd02a4ad1d/datasette-short-links-0.0.1a5.tar.gz",
+      "sha256": "66cfbc916d8d8cf97978c0b787f8a9925519c6eb39d8a2056e7d03e16f9c1623"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-short-links",
+      "ref": "0.0.1a5",
+      "git_sha": "468c3e25dbe06a8dcba8edda59bc16a18e126a51"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261125T084433Z-gh-45578884197-a1",
+    "started_at": "2026-11-25T08:44:33Z",
+    "completed_at": "2026-11-25T08:44:39Z",
+    "duration_seconds": 5.85,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-short-links @ file:///tmp/datasette-short-links-7fpsff9d/datasette-short-links-0.0.1a5.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-short-links/datasette-1.0a44/runs/20261125T084433Z-gh-45578884197-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 7,
+    "passed": 1,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_short_links.py::test_admin_actor_names",
+    "tests/test_short_links.py::test_admin_page",
+    "tests/test_short_links.py::test_link_basic",
+    "tests/test_short_links.py::test_link_basic_with_base_url",
+    "tests/test_short_links.py::test_link_loop",
+    "tests/test_short_links.py::test_link_view_instance"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-short-links/datasette-1.0a44/runs/20261125T084433Z-gh-45578884197-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,64 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-showboat @ file:///tmp/datasette-showboat-ndjafs08/datasette_showboat-0.1a2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-showboat @ file:///tmp/datasette-showboat-ndjafs08/datasette_showboat-0.1a2.tar.gz
+Installed 40 packages in 121ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbKN3GC/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-showboat-ndjafs08/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 39 items
+
+tests/test_showboat.py::test_plugin_is_installed PASSED                  [  2%]
+tests/test_showboat.py::test_table_created_on_startup PASSED             [  5%]
+tests/test_showboat.py::test_receive_init PASSED                         [  7%]
+tests/test_showboat.py::test_receive_note PASSED                         [ 10%]
+tests/test_showboat.py::test_receive_exec PASSED                         [ 12%]
+tests/test_showboat.py::test_receive_exec_with_backticks PASSED          [ 15%]
+tests/test_showboat.py::test_receive_image PASSED                        [ 17%]
+tests/test_showboat.py::test_receive_pop PASSED                          [ 20%]
+tests/test_showboat.py::test_receive_requires_post PASSED                [ 23%]
+tests/test_showboat.py::test_receive_missing_fields PASSED               [ 25%]
+tests/test_showboat.py::test_receive_unknown_command PASSED              [ 28%]
+tests/test_showboat.py::test_token_auth PASSED                           [ 30%]
+tests/test_showboat.py::test_document_json PASSED                        [ 33%]
+tests/test_showboat.py::test_document_json_polling_after PASSED          [ 35%]
+tests/test_showboat.py::test_document_json_with_image PASSED             [ 38%]
+tests/test_showboat.py::test_image_endpoint_serves_png PASSED            [ 41%]
+tests/test_showboat.py::test_image_endpoint_serves_jpeg PASSED           [ 43%]
+tests/test_showboat.py::test_image_endpoint_not_found PASSED             [ 46%]
+tests/test_showboat.py::test_image_endpoint_permission_denied PASSED     [ 48%]
+tests/test_showboat.py::test_document_json_pop_included PASSED           [ 51%]
+tests/test_showboat.py::test_document_viewer_page PASSED                 [ 53%]
+tests/test_showboat.py::test_index_page PASSED                           [ 56%]
+tests/test_showboat.py::test_index_page_with_token PASSED                [ 58%]
+tests/test_showboat.py::test_index_page_empty PASSED                     [ 61%]
+tests/test_showboat.py::test_anonymous_denied_by_default PASSED          [ 64%]
+tests/test_showboat.py::test_showboat_permission_granted PASSED          [ 66%]
+tests/test_showboat.py::test_receive_still_works_anonymous PASSED        [ 69%]
+tests/test_showboat.py::test_menu_links_shown_for_root PASSED            [ 71%]
+tests/test_showboat.py::test_menu_links_hidden_for_anonymous PASSED      [ 74%]
+tests/test_showboat.py::test_render_markdown_exec PASSED                 [ 76%]
+tests/test_showboat.py::test_document_markdown_basic PASSED              [ 79%]
+tests/test_showboat.py::test_document_markdown_content_disposition PASSED [ 82%]
+tests/test_showboat.py::test_document_markdown_with_exec PASSED          [ 84%]
+tests/test_showboat.py::test_document_markdown_with_pop PASSED           [ 87%]
+tests/test_showboat.py::test_document_markdown_permission_denied PASSED  [ 89%]
+tests/test_showboat.py::test_document_markdown_empty PASSED              [ 92%]
+tests/test_showboat.py::test_document_viewer_has_download_link PASSED    [ 94%]
+tests/test_showboat.py::test_document_markdown_includes_id_comment PASSED [ 97%]
+tests/test_showboat.py::test_document_markdown_multiple_pops PASSED      [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-showboat/datasette-1.0a44/runs/20261125T084431Z-gh-45578884197-a1/.pytest-report.json
+============================== 39 passed in 1.92s ==============================

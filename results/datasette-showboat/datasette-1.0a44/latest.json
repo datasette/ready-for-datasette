@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-showboat",
+    "version": "0.1a2",
+    "repository": "simonw/datasette-showboat",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/eb/9b/5f7392f0502f920e4740aaf96babb218d44a1e778f99e77978b483b61c77/datasette_showboat-0.1a2.tar.gz",
+      "sha256": "0d8d29b3c2b03392b2511a02b07a19b09bcf228007d3378a7c606cbe55762151"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-showboat",
+      "ref": "0.1a2",
+      "git_sha": "7fc013633ff348c133cfdf150ddb5e7fd63f4656"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261125T084431Z-gh-45578884197-a1",
+    "started_at": "2026-11-25T08:44:31Z",
+    "completed_at": "2026-11-25T08:44:38Z",
+    "duration_seconds": 7.349,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-showboat @ file:///tmp/datasette-showboat-ndjafs08/datasette_showboat-0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-showboat/datasette-1.0a44/runs/20261125T084431Z-gh-45578884197-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 39,
+    "passed": 39,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-showboat/datasette-1.0a44/runs/20261125T084431Z-gh-45578884197-a1/pytest.txt"
+  }
+}

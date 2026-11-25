@@ -1,0 +1,319 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-short-links @ file:///tmp/datasette-short-links-7fpsff9d/datasette-short-links-0.0.1a5.tar.gz
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-short-links @ file:///tmp/datasette-short-links-7fpsff9d/datasette-short-links-0.0.1a5.tar.gz
+Installed 41 packages in 23ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpi6ycVv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-short-links-7fpsff9d/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_short_links.py::test_plugin_is_installed PASSED               [ 14%]
+tests/test_short_links.py::test_link_basic FAILED                        [ 28%]
+tests/test_short_links.py::test_link_loop FAILED                         [ 42%]
+tests/test_short_links.py::test_link_basic_with_base_url FAILED          [ 57%]
+tests/test_short_links.py::test_admin_page FAILED                        [ 71%]
+tests/test_short_links.py::test_admin_actor_names FAILED                 [ 85%]
+tests/test_short_links.py::test_link_view_instance FAILED                [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_link_basic ________________________________
+
+    @pytest.mark.asyncio
+    async def test_link_basic():
+        datasette = Datasette(memory=True)
+        response = await datasette.client.post(
+            "/-/datasette-short-links/claim",
+            json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+            cookies={"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_short_links.py:26: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________________ test_link_loop ________________________________
+
+    @pytest.mark.asyncio
+    async def test_link_loop():
+        datasette = Datasette(memory=True)
+        response = await datasette.client.post(
+            "/-/datasette-short-links/claim",
+            json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+            cookies={"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_short_links.py:95: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+________________________ test_link_basic_with_base_url _________________________
+
+    @pytest.mark.asyncio
+    async def test_link_basic_with_base_url():
+        datasette = Datasette(memory=True, settings={"base_url": "/based_url/"})
+        response = await datasette.client.post(
+            "/-/datasette-short-links/claim",
+            json={"path": "_memory.json", "querystring": "?sql=select+1;"},
+            cookies={"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_short_links.py:120: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______________________________ test_admin_page ________________________________
+
+    @pytest.mark.asyncio
+    async def test_admin_page():
+        # only the root user and jasmine should be able to see the admin page
+        datasette = Datasette(
+            memory=True, metadata={"permissions": {"short-links-admin": {"id": "jasmine"}}}
+        )
+        response = await datasette.client.get(
+            "/-/datasette-short-links/admin",
+        )
+>       assert response.status_code == 403
+E       assert 500 == 403
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_short_links.py:143: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 259, in route_admin
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+____________________________ test_admin_actor_names ____________________________
+
+    @pytest.mark.asyncio
+    async def test_admin_actor_names():
+        class ActorsFromIdsPlugin:
+            __name__ = "ActorsFromIdsPlugin"
+    
+            @hookimpl
+            def actors_from_ids(self, datasette, actor_ids):
+                return {
+                    "1": {"id": "1", "name": "Alex"},
+                    "2": {"id": "2"},
+                    "3": None,
+                }
+    
+        try:
+            pm.register(ActorsFromIdsPlugin(), name="ActorsFromIdsPlugin")
+            datasette = Datasette(memory=True)
+            actors2 = await datasette.actors_from_ids(["1", "2", "3"])
+            print(actors2)
+            assert actors2 == {
+                "1": {"id": "1", "name": "Alex"},
+                "2": {"id": "2"},
+                "3": None,
+            }
+    
+            await datasette.client.post(
+                "/-/datasette-short-links/claim",
+                json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+                cookies={"ds_actor": datasette.sign({"a": {"id": "1"}}, "actor")},
+            )
+            await datasette.client.post(
+                "/-/datasette-short-links/claim",
+                json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+                cookies={"ds_actor": datasette.sign({"a": {"id": "2"}}, "actor")},
+            )
+            await datasette.client.post(
+                "/-/datasette-short-links/claim",
+                json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+                cookies={"ds_actor": datasette.sign({"a": {"id": "3"}}, "actor")},
+            )
+    
+            all_links = await link_all(datasette)
+>           assert len(all_links) == 3
+E           assert 0 == 3
+E            +  where 0 = len([])
+
+tests/test_short_links.py:205: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{'1': {'id': '1', 'name': 'Alex'}, '2': {'id': '2'}, '3': None}
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________________ test_link_view_instance ____________________________
+
+    @pytest.mark.asyncio
+    async def test_link_view_instance():
+        # only the root user has view-instance permissions!
+        datasette = Datasette(memory=True, metadata={"allow": {"id": "root"}})
+        response = await datasette.client.post(
+            "/-/datasette-short-links/claim",
+            json={"path": "/_memory.json", "querystring": "?sql=select+1;"},
+            cookies={"ds_actor": datasette.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_short_links.py:231: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/dOf-pZnVsxqGP92b/lib/python3.13/site-packages/datasette_short_links/__init__.py", line 206, in route_claim
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-short-links/datasette-1.0a44/runs/20261125T084433Z-gh-45578884197-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_short_links.py::test_link_basic - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_short_links.py::test_link_loop - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_short_links.py::test_link_basic_with_base_url - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_short_links.py::test_admin_page - assert 500 == 403
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_short_links.py::test_admin_actor_names - assert 0 == 3
+ +  where 0 = len([])
+FAILED tests/test_short_links.py::test_link_view_instance - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 6 failed, 1 passed in 0.28s ==========================
