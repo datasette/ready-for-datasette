@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sql-comments-metadata",
+    "version": "0.0.1a2",
+    "repository": "datasette/datasette-sql-comments-metadata",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/82/52/ea9c2cc87bf840613ac0f0fc7e2c859204ab72d3406b3af81160f10f643f/datasette_sql_comments_metadata-0.0.1a2.tar.gz",
+      "sha256": "f3c5ecb57c7c750b6a486030f4f7a1e4d28285c2aefb9d1c516b0c99cdc435e5"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-sql-comments-metadata",
+      "ref": "0.0.1a2",
+      "git_sha": "08f42c5260dba44b676d2327835095e4b5963a46"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T025320Z-gh-45745330608-a1",
+    "started_at": "2026-11-26T02:53:20Z",
+    "completed_at": "2026-11-26T02:53:26Z",
+    "duration_seconds": 6.036,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sql-comments-metadata @ file:///tmp/datasette-sql-comments-metadata-2sdbb5rb/datasette_sql_comments_metadata-0.0.1a2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sql-comments-metadata/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 21,
+    "passed": 15,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_sql_comments_metadata.py::test_column_only_no_table_description",
+    "tests/test_sql_comments_metadata.py::test_does_not_override_existing_metadata",
+    "tests/test_sql_comments_metadata.py::test_multiple_databases",
+    "tests/test_sql_comments_metadata.py::test_multiple_tables",
+    "tests/test_sql_comments_metadata.py::test_no_comments_no_metadata",
+    "tests/test_sql_comments_metadata.py::test_table_description_from_sql_comments"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-sql-comments-metadata/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/pytest.txt"
+  }
+}

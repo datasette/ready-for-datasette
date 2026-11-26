@@ -1,0 +1,224 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sql-comments-metadata @ file:///tmp/datasette-sql-comments-metadata-2sdbb5rb/datasette_sql_comments_metadata-0.0.1a2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-sql-comments-metadata @ file:///tmp/datasette-sql-comments-metadata-2sdbb5rb/datasette_sql_comments_metadata-0.0.1a2.tar.gz
+Installed 40 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbhLLMb/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sql-comments-metadata-2sdbb5rb/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 21 items
+
+tests/test_sql_comments_metadata.py::TestParseTableDescription::test_basic_table_description PASSED [  4%]
+tests/test_sql_comments_metadata.py::TestParseTableDescription::test_multiline_table_description PASSED [  9%]
+tests/test_sql_comments_metadata.py::TestParseTableDescription::test_no_table_description PASSED [ 14%]
+tests/test_sql_comments_metadata.py::TestParseTableDescription::test_table_tags PASSED [ 19%]
+tests/test_sql_comments_metadata.py::TestParseColumnDescription::test_single_column_description PASSED [ 23%]
+tests/test_sql_comments_metadata.py::TestParseColumnDescription::test_multiline_column_description PASSED [ 28%]
+tests/test_sql_comments_metadata.py::TestParseColumnDescription::test_column_tags PASSED [ 33%]
+tests/test_sql_comments_metadata.py::TestParseColumnDescription::test_multiple_columns PASSED [ 38%]
+tests/test_sql_comments_metadata.py::TestParseColumnDescription::test_column_without_description PASSED [ 42%]
+tests/test_sql_comments_metadata.py::TestParseEdgeCases::test_non_doc_comments_ignored PASSED [ 47%]
+tests/test_sql_comments_metadata.py::TestParseEdgeCases::test_quoted_column_name_brackets PASSED [ 52%]
+tests/test_sql_comments_metadata.py::TestParseEdgeCases::test_empty_create_table PASSED [ 57%]
+tests/test_sql_comments_metadata.py::TestParseEdgeCases::test_table_with_references PASSED [ 61%]
+tests/test_sql_comments_metadata.py::TestParseEdgeCases::test_full_example PASSED [ 66%]
+tests/test_sql_comments_metadata.py::test_plugin_is_installed PASSED     [ 71%]
+tests/test_sql_comments_metadata.py::test_table_description_from_sql_comments FAILED [ 76%]
+tests/test_sql_comments_metadata.py::test_no_comments_no_metadata FAILED [ 80%]
+tests/test_sql_comments_metadata.py::test_multiple_tables FAILED         [ 85%]
+tests/test_sql_comments_metadata.py::test_multiple_databases FAILED      [ 90%]
+tests/test_sql_comments_metadata.py::test_does_not_override_existing_metadata FAILED [ 95%]
+tests/test_sql_comments_metadata.py::test_column_only_no_table_description FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________ test_table_description_from_sql_comments ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_table_description_from_sq0')
+
+    @pytest.mark.asyncio
+    async def test_table_description_from_sql_comments(tmp_path):
+        db_path = _create_db(
+            tmp_path,
+            "test.db",
+            [
+                """CREATE TABLE students(
+      --! All students at Foo University.
+      --- The student ID.
+      student_id text primary key,
+      --- Full name.
+      name text
+    )"""
+            ],
+        )
+        datasette = Datasette([db_path])
+        response = await datasette.client.get("/test/students")
+        assert response.status_code == 200
+        # Check metadata was loaded
+>       meta = datasette.metadata(database="test", table="students", fallback=False)
+               ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:235: AttributeError
+_________________________ test_no_comments_no_metadata _________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_no_comments_no_metadata0')
+
+    @pytest.mark.asyncio
+    async def test_no_comments_no_metadata(tmp_path):
+        db_path = _create_db(
+            tmp_path,
+            "plain.db",
+            ["CREATE TABLE items(id integer primary key, name text)"],
+        )
+        datasette = Datasette([db_path])
+        response = await datasette.client.get("/plain/items")
+        assert response.status_code == 200
+>       meta = datasette.metadata(database="plain", table="items", fallback=False)
+               ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:251: AttributeError
+_____________________________ test_multiple_tables _____________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_multiple_tables0')
+
+    @pytest.mark.asyncio
+    async def test_multiple_tables(tmp_path):
+        db_path = _create_db(
+            tmp_path,
+            "multi.db",
+            [
+                """CREATE TABLE alpha(
+      --! First table.
+      --- The ID.
+      id text primary key
+    )""",
+                """CREATE TABLE beta(
+      --! Second table.
+      --- The key.
+      key text primary key
+    )""",
+            ],
+        )
+        datasette = Datasette([db_path])
+        await datasette.client.get("/")
+>       meta_alpha = datasette.metadata(database="multi", table="alpha", fallback=False)
+                     ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:276: AttributeError
+___________________________ test_multiple_databases ____________________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_multiple_databases0')
+
+    @pytest.mark.asyncio
+    async def test_multiple_databases(tmp_path):
+        db1 = _create_db(
+            tmp_path,
+            "db1.db",
+            [
+                """CREATE TABLE t1(
+      --! Table in db1.
+      id text primary key
+    )"""
+            ],
+        )
+        db2 = _create_db(
+            tmp_path,
+            "db2.db",
+            [
+                """CREATE TABLE t2(
+      --! Table in db2.
+      id text primary key
+    )"""
+            ],
+        )
+        datasette = Datasette([db1, db2])
+        await datasette.client.get("/")
+>       assert datasette.metadata(database="db1", table="t1", fallback=False)["description"] == "Table in db1."
+               ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:306: AttributeError
+___________________ test_does_not_override_existing_metadata ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_does_not_override_existin0')
+
+    @pytest.mark.asyncio
+    async def test_does_not_override_existing_metadata(tmp_path):
+        db_path = _create_db(
+            tmp_path,
+            "existing.db",
+            [
+                """CREATE TABLE items(
+      --! Description from SQL comment.
+      id text primary key
+    )"""
+            ],
+        )
+        datasette = Datasette(
+            [db_path],
+            metadata={
+                "databases": {
+                    "existing": {
+                        "tables": {
+                            "items": {
+                                "description": "Manually set description."
+                            }
+                        }
+                    }
+                }
+            },
+        )
+        await datasette.client.get("/")
+>       meta = datasette.metadata(database="existing", table="items", fallback=False)
+               ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:337: AttributeError
+____________________ test_column_only_no_table_description _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_column_only_no_table_desc0')
+
+    @pytest.mark.asyncio
+    async def test_column_only_no_table_description(tmp_path):
+        db_path = _create_db(
+            tmp_path,
+            "colonly.db",
+            [
+                """CREATE TABLE t(
+      --- The primary key.
+      id text primary key,
+      --- A name field.
+      name text
+    )"""
+            ],
+        )
+        datasette = Datasette([db_path])
+        await datasette.client.get("/")
+>       meta = datasette.metadata(database="colonly", table="t", fallback=False)
+               ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Datasette' object has no attribute 'metadata'
+
+tests/test_sql_comments_metadata.py:357: AttributeError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sql-comments-metadata/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sql_comments_metadata.py::test_table_description_from_sql_comments - AttributeError: 'Datasette' object has no attribute 'metadata'
+FAILED tests/test_sql_comments_metadata.py::test_no_comments_no_metadata - AttributeError: 'Datasette' object has no attribute 'metadata'
+FAILED tests/test_sql_comments_metadata.py::test_multiple_tables - AttributeError: 'Datasette' object has no attribute 'metadata'
+FAILED tests/test_sql_comments_metadata.py::test_multiple_databases - AttributeError: 'Datasette' object has no attribute 'metadata'
+FAILED tests/test_sql_comments_metadata.py::test_does_not_override_existing_metadata - AttributeError: 'Datasette' object has no attribute 'metadata'
+FAILED tests/test_sql_comments_metadata.py::test_column_only_no_table_description - AttributeError: 'Datasette' object has no attribute 'metadata'
+========================= 6 failed, 15 passed in 0.69s =========================

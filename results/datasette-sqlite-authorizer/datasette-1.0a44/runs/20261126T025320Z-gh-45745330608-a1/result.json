@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sqlite-authorizer",
+    "version": "0.2",
+    "repository": "datasette/datasette-sqlite-authorizer",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/be/a0/60248eafcbbd6dc44dd87d0f1f3260b0890203270c2d0b3eb1457dcf51c4/datasette-sqlite-authorizer-0.2.tar.gz",
+      "sha256": "cd4aec28e9bc86fc1856b88190e2ddd36b2796a321f7286448f861f0d51ffa0d"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-sqlite-authorizer",
+      "ref": "0.2",
+      "git_sha": "f223e450a23d44e99ecf20b1c93bd98e29f6eec3"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T025320Z-gh-45745330608-a1",
+    "started_at": "2026-11-26T02:53:20Z",
+    "completed_at": "2026-11-26T02:53:28Z",
+    "duration_seconds": 7.439,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sqlite-authorizer @ file:///tmp/datasette-sqlite-authorizer-7oyd6n46/datasette-sqlite-authorizer-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-authorizer/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 25,
+    "passed": 21,
+    "failed": 4,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_sqlite_authorizer.py::test_debug_actions",
+    "tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-alter table protected rename to protected2]",
+    "tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-alter table protected rename to protected2]",
+    "tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-alter table protected rename to protected2]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-sqlite-authorizer/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/pytest.txt"
+  }
+}

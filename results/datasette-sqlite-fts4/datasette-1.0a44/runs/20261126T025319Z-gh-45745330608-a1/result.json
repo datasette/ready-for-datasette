@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sqlite-fts4",
+    "version": "0.3.2",
+    "repository": "simonw/datasette-sqlite-fts4",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/af/16/244439b829e3b4388a53df831699f909335bedadbab73e15e17302325e0b/datasette-sqlite-fts4-0.3.2.tar.gz",
+      "sha256": "fdc3d07089bde33b4c6af24916f1e0b8b637a945e7013449f9dc104390bb255c"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-sqlite-fts4",
+      "ref": "0.3.2",
+      "git_sha": "7e46394c63f75536a9dce3796ed03734a7d1e9ee"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T025319Z-gh-45745330608-a1",
+    "started_at": "2026-11-26T02:53:19Z",
+    "completed_at": "2026-11-26T02:53:24Z",
+    "duration_seconds": 4.689,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sqlite-fts4 @ file:///tmp/datasette-sqlite-fts4-m5m6qk_w/datasette-sqlite-fts4-0.3.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-fts4/datasette-1.0a44/runs/20261126T025319Z-gh-45745330608-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_datasette_sqlite_fts4.py::test_sqlite_fts4"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-sqlite-fts4/datasette-1.0a44/runs/20261126T025319Z-gh-45745330608-a1/pytest.txt"
+  }
+}

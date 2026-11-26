@@ -1,0 +1,315 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sqlite-authorizer @ file:///tmp/datasette-sqlite-authorizer-7oyd6n46/datasette-sqlite-authorizer-0.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-sqlite-authorizer @ file:///tmp/datasette-sqlite-authorizer-7oyd6n46/datasette-sqlite-authorizer-0.2.tar.gz
+Installed 45 packages in 19ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpA1FPGn/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+SQLite: 3.54.1
+rootdir: /tmp/datasette-sqlite-authorizer-7oyd6n46/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-delete from protected] PASSED [  4%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-delete from protected where id = 1] PASSED [  8%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-update protected set name = 'foo'] PASSED [ 12%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-drop table protected] PASSED [ 16%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-insert into protected (name) values ('two')] PASSED [ 20%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-True-alter table protected rename to protected2] PASSED [ 24%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-delete from protected] PASSED [ 28%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-delete from protected where id = 1] PASSED [ 32%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-update protected set name = 'foo'] PASSED [ 36%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-drop table protected] PASSED [ 40%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-insert into protected (name) values ('two')] PASSED [ 44%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-alter table protected rename to protected2] FAILED [ 48%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-delete from protected] PASSED [ 52%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-delete from protected where id = 1] PASSED [ 56%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-update protected set name = 'foo'] PASSED [ 60%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-drop table protected] PASSED [ 64%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-insert into protected (name) values ('two')] PASSED [ 68%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-alter table protected rename to protected2] FAILED [ 72%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-delete from protected] PASSED [ 76%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-delete from protected where id = 1] PASSED [ 80%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-update protected set name = 'foo'] PASSED [ 84%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-drop table protected] PASSED [ 88%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-insert into protected (name) values ('two')] PASSED [ 92%]
+tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-alter table protected rename to protected2] FAILED [ 96%]
+tests/test_sqlite_authorizer.py::test_debug_actions FAILED               [100%]
+
+=================================== FAILURES ===================================
+_ test_read_only_tables[None-False-alter table protected rename to protected2] _
+
+sql = 'alter table protected rename to protected2', configured = False
+db_paths = ['/tmp/pytest-of-runner/pytest-0/test_read_only_tables_None_Fal5/test1.db', '/tmp/pytest-of-runner/pytest-0/test_read_only_tables_None_Fal5/test2.db']
+test1_only = None
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql",
+        (
+            "delete from protected",
+            "delete from protected where id = 1",
+            "update protected set name = 'foo'",
+            "drop table protected",
+            "insert into protected (name) values ('two')",
+            "alter table protected rename to protected2",
+        ),
+    )
+    @pytest.mark.parametrize("configured", (True, False))
+    @pytest.mark.parametrize("test1_only", (None, "test1"))
+    async def test_read_only_tables(sql, configured, db_paths, test1_only):
+        plugin_config = {}
+        if configured:
+            rule = {
+                "table": "protected",
+            }
+            if test1_only:
+                rule["database"] = "test1"
+            plugin_config = {"datasette-sqlite-authorizer": {"read_only_tables": [rule]}}
+    
+        datasette = Datasette(db_paths, plugin_config=plugin_config)
+        db = datasette.get_database("test1")
+        if configured:
+            # SQL should not be allowed
+            with pytest.raises(Exception):
+                await db.execute_write(sql)
+    
+            if test1_only:
+                # SQL should be allowed on test2
+                db2 = datasette.get_database("test2")
+                await db2.execute_write(sql)
+            else:
+                # SQL should not be allowed on test2
+                db2 = datasette.get_database("test2")
+                with pytest.raises(Exception):
+                    await db2.execute_write(sql)
+    
+        else:
+            # SQL should be allowed
+>           await db.execute_write(sql)
+
+tests/test_sqlite_authorizer.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:358: in execute_write
+    results = await self._execute_write_fn(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:521: in _execute_write_fn
+    await self.ds.track_event(event)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <datasette_test.Datasette object at 0x7f6d582bbed0>
+event = RenameTableEvent(created=datetime.datetime(2026, 11, 26, 2, 53, 27, 601857, tzinfo=datetime.timezone.utc), actor=None, database='test1', old_table='protected', new_table='protected2')
+
+    async def track_event(self, event: Event):
+        assert isinstance(
+>           event, self.event_classes
+                   ^^^^^^^^^^^^^^^^^^
+        ), f"Invalid event type: {type(event)}"
+E       AttributeError: 'Datasette' object has no attribute 'event_classes'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/app.py:1743: AttributeError
+_ test_read_only_tables[test1-True-alter table protected rename to protected2] _
+
+sql = 'alter table protected rename to protected2', configured = True
+db_paths = ['/tmp/pytest-of-runner/pytest-0/test_read_only_tables_test1_Tr5/test1.db', '/tmp/pytest-of-runner/pytest-0/test_read_only_tables_test1_Tr5/test2.db']
+test1_only = 'test1'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql",
+        (
+            "delete from protected",
+            "delete from protected where id = 1",
+            "update protected set name = 'foo'",
+            "drop table protected",
+            "insert into protected (name) values ('two')",
+            "alter table protected rename to protected2",
+        ),
+    )
+    @pytest.mark.parametrize("configured", (True, False))
+    @pytest.mark.parametrize("test1_only", (None, "test1"))
+    async def test_read_only_tables(sql, configured, db_paths, test1_only):
+        plugin_config = {}
+        if configured:
+            rule = {
+                "table": "protected",
+            }
+            if test1_only:
+                rule["database"] = "test1"
+            plugin_config = {"datasette-sqlite-authorizer": {"read_only_tables": [rule]}}
+    
+        datasette = Datasette(db_paths, plugin_config=plugin_config)
+        db = datasette.get_database("test1")
+        if configured:
+            # SQL should not be allowed
+            with pytest.raises(Exception):
+                await db.execute_write(sql)
+    
+            if test1_only:
+                # SQL should be allowed on test2
+                db2 = datasette.get_database("test2")
+>               await db2.execute_write(sql)
+
+tests/test_sqlite_authorizer.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:358: in execute_write
+    results = await self._execute_write_fn(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:521: in _execute_write_fn
+    await self.ds.track_event(event)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <datasette_test.Datasette object at 0x7f6d58299d10>
+event = RenameTableEvent(created=datetime.datetime(2026, 11, 26, 2, 53, 27, 752276, tzinfo=datetime.timezone.utc), actor=None, database='test2', old_table='protected', new_table='protected2')
+
+    async def track_event(self, event: Event):
+        assert isinstance(
+>           event, self.event_classes
+                   ^^^^^^^^^^^^^^^^^^
+        ), f"Invalid event type: {type(event)}"
+E       AttributeError: 'Datasette' object has no attribute 'event_classes'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/app.py:1743: AttributeError
+----------------------------- Captured stderr call -----------------------------
+not authorized
+_ test_read_only_tables[test1-False-alter table protected rename to protected2] _
+
+sql = 'alter table protected rename to protected2', configured = False
+db_paths = ['/tmp/pytest-of-runner/pytest-0/test_read_only_tables_test1_Fa5/test1.db', '/tmp/pytest-of-runner/pytest-0/test_read_only_tables_test1_Fa5/test2.db']
+test1_only = 'test1'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "sql",
+        (
+            "delete from protected",
+            "delete from protected where id = 1",
+            "update protected set name = 'foo'",
+            "drop table protected",
+            "insert into protected (name) values ('two')",
+            "alter table protected rename to protected2",
+        ),
+    )
+    @pytest.mark.parametrize("configured", (True, False))
+    @pytest.mark.parametrize("test1_only", (None, "test1"))
+    async def test_read_only_tables(sql, configured, db_paths, test1_only):
+        plugin_config = {}
+        if configured:
+            rule = {
+                "table": "protected",
+            }
+            if test1_only:
+                rule["database"] = "test1"
+            plugin_config = {"datasette-sqlite-authorizer": {"read_only_tables": [rule]}}
+    
+        datasette = Datasette(db_paths, plugin_config=plugin_config)
+        db = datasette.get_database("test1")
+        if configured:
+            # SQL should not be allowed
+            with pytest.raises(Exception):
+                await db.execute_write(sql)
+    
+            if test1_only:
+                # SQL should be allowed on test2
+                db2 = datasette.get_database("test2")
+                await db2.execute_write(sql)
+            else:
+                # SQL should not be allowed on test2
+                db2 = datasette.get_database("test2")
+                with pytest.raises(Exception):
+                    await db2.execute_write(sql)
+    
+        else:
+            # SQL should be allowed
+>           await db.execute_write(sql)
+
+tests/test_sqlite_authorizer.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:358: in execute_write
+    results = await self._execute_write_fn(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/database.py:521: in _execute_write_fn
+    await self.ds.track_event(event)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <datasette_test.Datasette object at 0x7f6d58298550>
+event = RenameTableEvent(created=datetime.datetime(2026, 11, 26, 2, 53, 27, 884144, tzinfo=datetime.timezone.utc), actor=None, database='test1', old_table='protected', new_table='protected2')
+
+    async def track_event(self, event: Event):
+        assert isinstance(
+>           event, self.event_classes
+                   ^^^^^^^^^^^^^^^^^^
+        ), f"Invalid event type: {type(event)}"
+E       AttributeError: 'Datasette' object has no attribute 'event_classes'
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/rbuGdr2koK9fVcqm/lib/python3.13/site-packages/datasette/app.py:1743: AttributeError
+______________________________ test_debug_actions ______________________________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x7f6d58397230>
+
+    @pytest.mark.asyncio
+    async def test_debug_actions(capsys):
+        datasette = Datasette(
+            plugin_config={
+                "datasette-sqlite-authorizer": {
+                    "debug_actions": [
+                        "SQLITE_SELECT",
+                        "SQLITE_CREATE",
+                        "SQLITE_INSERT",
+                        "SQLITE_DELETE",
+                    ]
+                }
+            }
+        )
+        db = datasette.add_memory_database("test_debug_actions")
+        await db.execute("select 1")
+        await db.execute_write("create table foo (id integer primary key)")
+        await db.execute_write("insert into foo (id) values (1)")
+        await db.execute_write("delete from foo where id = 1")
+        captured = capsys.readouterr().err
+>       assert captured == (
+            'authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, '
+            '"db_name": null, "trigger_name": null, "result": "OK"}\n'
+            'authorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, '
+            '"db_name": "main", "trigger_name": null, "result": "OK"}\n'
+            'authorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, '
+            '"db_name": "main", "trigger_name": null, "result": "OK"}\n'
+            'authorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, '
+            '"db_name": "main", "trigger_name": null, "result": "OK"}\n'
+        )
+E       assert 'authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\n' == 'authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\n'
+E         
+E         + authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+E           authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+E           authorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+E         + authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+E           authorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+E           authorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+
+tests/test_sqlite_authorizer.py:89: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-authorizer/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sqlite_authorizer.py::test_read_only_tables[None-False-alter table protected rename to protected2] - AttributeError: 'Datasette' object has no attribute 'event_classes'
+FAILED tests/test_sqlite_authorizer.py::test_read_only_tables[test1-True-alter table protected rename to protected2] - AttributeError: 'Datasette' object has no attribute 'event_classes'
+FAILED tests/test_sqlite_authorizer.py::test_read_only_tables[test1-False-alter table protected rename to protected2] - AttributeError: 'Datasette' object has no attribute 'event_classes'
+FAILED tests/test_sqlite_authorizer.py::test_debug_actions - assert 'authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\n' == 'authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\nauthorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}\n'
+  
+  + authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+    authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+    authorizer: {"action": "SQLITE_INSERT", "arg1": "sqlite_master", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+  + authorizer: {"action": "SQLITE_SELECT", "arg1": null, "arg2": null, "db_name": null, "trigger_name": null, "result": "OK"}
+    authorizer: {"action": "SQLITE_INSERT", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+    authorizer: {"action": "SQLITE_DELETE", "arg1": "foo", "arg2": null, "db_name": "main", "trigger_name": null, "result": "OK"}
+========================= 4 failed, 21 passed in 0.59s =========================

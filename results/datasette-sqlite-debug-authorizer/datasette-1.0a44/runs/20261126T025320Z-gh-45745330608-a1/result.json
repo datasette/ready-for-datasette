@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sqlite-debug-authorizer",
+    "version": "0.1.1",
+    "repository": "datasette/datasette-sqlite-debug-authorizer",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/13/95/b9d4f0013aad8b3663157e8539219673bafb826db1c335c39dce4a5f1293/datasette-sqlite-debug-authorizer-0.1.1.tar.gz",
+      "sha256": "ec5b16f87c93ee758ed9b76655e8a69aea115c054df75cf6c33629b3ccc70fee"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-sqlite-debug-authorizer",
+      "ref": "0.1.1",
+      "git_sha": "2c37cd662f0828059d112b155e31e61ef3d17a9e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T025320Z-gh-45745330608-a1",
+    "started_at": "2026-11-26T02:53:20Z",
+    "completed_at": "2026-11-26T02:53:26Z",
+    "duration_seconds": 5.848,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1016-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sqlite-debug-authorizer @ file:///tmp/datasette-sqlite-debug-authorizer-p8567bpf/datasette-sqlite-debug-authorizer-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-debug-authorizer/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_sqlite_debug_authorizer.py::test_select"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-sqlite-debug-authorizer/datasette-1.0a44/runs/20261126T025320Z-gh-45745330608-a1/pytest.txt"
+  }
+}

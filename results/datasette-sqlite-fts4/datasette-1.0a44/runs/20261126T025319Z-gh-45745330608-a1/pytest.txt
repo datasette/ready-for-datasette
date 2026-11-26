@@ -1,0 +1,47 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sqlite-fts4 @ file:///tmp/datasette-sqlite-fts4-m5m6qk_w/datasette-sqlite-fts4-0.3.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded pygments
+      Built datasette-sqlite-fts4 @ file:///tmp/datasette-sqlite-fts4-m5m6qk_w/datasette-sqlite-fts4-0.3.2.tar.gz
+Installed 39 packages in 16ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpPmtqJ4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sqlite-fts4-m5m6qk_w/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 1 item
+
+tests/test_datasette_sqlite_fts4.py::test_sqlite_fts4 FAILED             [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_sqlite_fts4 _______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_datasette_sqlite_fts4.py:6
+  /tmp/datasette-sqlite-fts4-m5m6qk_w/tagged-source/tests/test_datasette_sqlite_fts4.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-fts4/datasette-1.0a44/runs/20261126T025319Z-gh-45745330608-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_sqlite_fts4.py::test_sqlite_fts4 - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+========================= 1 failed, 1 warning in 0.01s =========================
