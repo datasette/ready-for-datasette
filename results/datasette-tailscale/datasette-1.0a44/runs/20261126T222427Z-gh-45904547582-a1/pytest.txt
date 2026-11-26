@@ -1,0 +1,34 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-tailscale @ file:///tmp/datasette-tailscale-c__kq2o5/datasette_tailscale-0.1a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading tailscale-py (4.7MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded tailscale-py
+      Built datasette-tailscale @ file:///tmp/datasette-tailscale-c__kq2o5/datasette_tailscale-0.1a0.tar.gz
+Installed 41 packages in 22ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpWCiEQL/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-tailscale-c__kq2o5/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 7 items
+
+tests/test_tailscale.py::test_plugin_is_installed PASSED                 [ 14%]
+tests/test_tailscale.py::test_command_registered PASSED                  [ 28%]
+tests/test_tailscale.py::test_inherits_serve_options_minus_overrides PASSED [ 42%]
+tests/test_tailscale.py::test_no_host_or_port_options_exposed PASSED     [ 57%]
+tests/test_tailscale.py::test_our_options_use_ts_prefix PASSED           [ 71%]
+tests/test_tailscale.py::test_proxy_bridges_to_loopback PASSED           [ 85%]
+tests/test_tailscale.py::test_proxy_handles_unreachable_backend PASSED   [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tailscale/datasette-1.0a44/runs/20261126T222427Z-gh-45904547582-a1/.pytest-report.json
+============================== 7 passed in 0.17s ===============================

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-table-diagram",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-table-diagram",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/7c/c9/d003dee45bf493c87143f9c61afc6e2668c7f965f905bbf54c9b468faeac/datasette_table_diagram-0.1a0.tar.gz",
+      "sha256": "8c80fe62cd30833571422082bc16c2d871432c65f27234a72605bd8d73824390"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-table-diagram",
+      "ref": "0.1a0",
+      "git_sha": "934d51cb2b8a0d7279b9f3f820505f072906bb64"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T222429Z-gh-45904547582-a1",
+    "started_at": "2026-11-26T22:24:29Z",
+    "completed_at": "2026-11-26T22:24:36Z",
+    "duration_seconds": 7.203,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-table-diagram @ file:///tmp/datasette-table-diagram-frch1gu2/datasette_table_diagram-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-table-diagram/datasette-1.0a44/runs/20261126T222429Z-gh-45904547582-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 11,
+    "passed": 5,
+    "failed": 6,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_table_diagram.py::test_foreign_keys_filtered_by_table_permissions",
+    "tests/test_table_diagram.py::test_mermaid_text_structure",
+    "tests/test_table_diagram.py::test_only_visible_tables_in_diagram",
+    "tests/test_table_diagram.py::test_reserved_word_table_names",
+    "tests/test_table_diagram.py::test_table_diagram_page",
+    "tests/test_table_diagram.py::test_view_database_permission_granted_with_actor"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-table-diagram/datasette-1.0a44/runs/20261126T222429Z-gh-45904547582-a1/pytest.txt"
+  }
+}

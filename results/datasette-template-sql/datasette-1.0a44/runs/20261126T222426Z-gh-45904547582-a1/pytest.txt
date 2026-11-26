@@ -1,0 +1,33 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-template-sql @ file:///tmp/datasette-template-sql-fypr2nm4/datasette_template_sql-1.0.3.tar.gz
+warning: `build_system.requires = ["uv-build>=0.9.18,<0.12.0"]` does not contain the current uv version 0.13.10
+      Built datasette-template-sql @ file:///tmp/datasette-template-sql-fypr2nm4/datasette_template_sql-1.0.3.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 40 packages in 21ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/bcYtcvWwZLYF6YZ7/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpBTqvGy/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-template-sql-fypr2nm4/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/test_template_sql.py::test_sql_against_named_database PASSED       [ 33%]
+tests/test_template_sql.py::test_sql_against_default_database PASSED     [ 66%]
+tests/test_template_sql.py::test_sql_with_arguments PASSED               [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-template-sql/datasette-1.0a44/runs/20261126T222426Z-gh-45904547582-a1/.pytest-report.json
+============================== 3 passed in 0.24s ===============================

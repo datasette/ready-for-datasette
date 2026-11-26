@@ -1,0 +1,265 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-table-diagram @ file:///tmp/datasette-table-diagram-frch1gu2/datasette_table_diagram-0.1a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-table-diagram @ file:///tmp/datasette-table-diagram-frch1gu2/datasette_table_diagram-0.1a0.tar.gz
+Installed 40 packages in 19ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpaaKkb4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-table-diagram-frch1gu2/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/test_table_diagram.py::test_plugin_is_installed PASSED             [  9%]
+tests/test_table_diagram.py::test_database_action_menu PASSED            [ 18%]
+tests/test_table_diagram.py::test_table_diagram_page FAILED              [ 27%]
+tests/test_table_diagram.py::test_table_diagram_not_found PASSED         [ 36%]
+tests/test_table_diagram.py::test_mermaid_text_structure FAILED          [ 45%]
+tests/test_table_diagram.py::test_reserved_word_table_names FAILED       [ 54%]
+tests/test_table_diagram.py::test_view_database_permission_denied PASSED [ 63%]
+tests/test_table_diagram.py::test_database_action_hidden_without_permission PASSED [ 72%]
+tests/test_table_diagram.py::test_view_database_permission_granted_with_actor FAILED [ 81%]
+tests/test_table_diagram.py::test_only_visible_tables_in_diagram FAILED  [ 90%]
+tests/test_table_diagram.py::test_foreign_keys_filtered_by_table_permissions FAILED [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_table_diagram_page ____________________________
+
+ds = <datasette.app.Datasette object at 0x737d03f6e350>
+
+    @pytest.mark.asyncio
+    async def test_table_diagram_page(ds):
+        response = await ds.client.get("/-/table-diagram/test")
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_table_diagram.py:67: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+_________________________ test_mermaid_text_structure __________________________
+
+ds = <datasette.app.Datasette object at 0x737d03e70e10>
+
+    @pytest.mark.asyncio
+    async def test_mermaid_text_structure(ds):
+        response = await ds.client.get("/-/table-diagram/test")
+        text = response.text
+        # Entity names quoted, attribute names bare
+>       assert '"authors" ||--o{ "books" : author_id' in text
+E       assert '"authors" ||--o{ "books" : author_id' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;table_from&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+
+tests/test_table_diagram.py:96: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+________________________ test_reserved_word_table_names ________________________
+
+ds = <datasette.app.Datasette object at 0x737d03e71310>
+
+    @pytest.mark.asyncio
+    async def test_reserved_word_table_names(ds):
+        response = await ds.client.get("/-/table-diagram/test")
+        text = response.text
+        # Reserved word table name should be quoted
+>       assert '"select"' in text
+E       assert '"select"' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;table_from&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+
+tests/test_table_diagram.py:105: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+_______________ test_view_database_permission_granted_with_actor _______________
+
+    @pytest.mark.asyncio
+    async def test_view_database_permission_granted_with_actor():
+        """Diagram route works for actor with view-database permission."""
+        db_path = create_test_db()
+        datasette = Datasette(
+            [str(db_path)],
+            config={"databases": {"test": {"allow": {"id": "allowed"}}}},
+        )
+        await datasette.client.get("/")
+        cookies = {"ds_actor": datasette.sign({"a": {"id": "allowed"}}, "actor")}
+        response = await datasette.client.get("/-/table-diagram/test", cookies=cookies)
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_table_diagram.py:160: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+_____________________ test_only_visible_tables_in_diagram ______________________
+
+    @pytest.mark.asyncio
+    async def test_only_visible_tables_in_diagram():
+        """Only tables the actor has view-table permission for appear."""
+        db_path = create_test_db()
+        datasette = Datasette(
+            [str(db_path)],
+            config={
+                "databases": {
+                    "test": {
+                        "tables": {
+                            "chapters": {"allow": False},
+                            "tags": {"allow": False},
+                            "select": {"allow": False},
+                            "123_starts_with_digits": {"allow": False},
+                        }
+                    }
+                }
+            },
+        )
+        await datasette.client.get("/")
+        response = await datasette.client.get("/-/table-diagram/test")
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_table_diagram.py:185: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+_______________ test_foreign_keys_filtered_by_table_permissions ________________
+
+    @pytest.mark.asyncio
+    async def test_foreign_keys_filtered_by_table_permissions():
+        """FK relationships involving hidden tables are excluded."""
+        db_path = create_test_db()
+        datasette = Datasette(
+            [str(db_path)],
+            config={
+                "databases": {
+                    "test": {
+                        "tables": {
+                            "authors": {"allow": False},
+                        }
+                    }
+                }
+            },
+        )
+        await datasette.client.get("/")
+        response = await datasette.client.get("/-/table-diagram/test")
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_table_diagram.py:214: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/oxPHgfjRsPOD2dBW/lib/python3.13/site-packages/datasette_table_diagram/__init__.py", line 101, in table_diagram_view
+    fk_columns = {(fk["table_from"], fk["column_from"]) for fk in foreign_keys}
+                   ~~^^^^^^^^^^^^^^
+KeyError: 'table_from'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-table-diagram/datasette-1.0a44/runs/20261126T222429Z-gh-45904547582-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_table_diagram.py::test_table_diagram_page - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_table_diagram.py::test_mermaid_text_structure - assert '"authors" ||--o{ "books" : author_id' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;table_from&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+FAILED tests/test_table_diagram.py::test_reserved_word_table_names - assert '"select"' in '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>Error 500</title>\n    <link rel="stylesheet" href="/-/static/app.css?_hash=03047cda1f96">\n    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">\n\n<script>window.datasetteVersion = \'\';\nwindow.datasetteRecentContext = {"actor": null, "base": "/"};</script>\n<script src="/-/static/recent.js?_hash=f659b325d17f" defer></script>\n<script src="/-/static/modal.js?_hash=13e02645790e" defer></script>\n<script src="/-/static/copy-button.js?_hash=d78005e03e5d" defer></script>\n<script src="/-/static/menus.js?_hash=4b6d092d1d83" defer></script>\n<script src="/-/static/datasette-manager.js?_hash=b3990b4a4160" defer></script>\n</head>\n<body class="">\n\n<div class="not-footer">\n<header class="hd app-header"><nav>\n        \n    <details class="nav-menu" data-datasette-menu>\n        <summary aria-haspopup="menu" aria-expanded="false" aria-controls="app-menu-panel"><svg aria-labelledby="nav-menu-svg-title" role="img"\n            fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"\n            viewBox="0 0 16 16" width="16" height="16">\n                <title id="nav-menu-svg-title">Menu</title>\n                <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>\n        </svg></summary>\n        <div class="nav-menu-inner datasette-menu" id="app-menu-panel" role="menu" aria-label="App menu">\n            \n            <ul role="none">\n                <li role="none"><button type="button" class="button-as-link" role="menuitem" data-navigation-search-open aria-haspopup="dialog" aria-expanded="false" aria-keyshortcuts="/">Jump to... <kbd class="keyboard-shortcut" aria-hidden="true" title="Keyboard shortcut: press / to open Jump to">/</kbd></button></li>\n                \n            </ul>\n            \n        </div>\n    </details>\n    \n</nav></header>\n\n\n\n\n\n<section class="content">\n\n\n<h1>Error 500</h1>\n\n<div style="padding: 1em; margin: 1em 0; border: 3px solid red;">&#39;table_from&#39;</div>\n\n\n</section>\n</div>\n<footer class="ft">Powered by <a href="https://datasette.io/" title="Datasette v">Datasette</a>\n\n</footer>\n\n\n\n\n<script src="/-/static/navigation-search.js?_hash=7c2b74feb65c" defer></script>\n<navigation-search url="/-/jump"></navigation-search>\n</body>\n</html>'
+FAILED tests/test_table_diagram.py::test_view_database_permission_granted_with_actor - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_table_diagram.py::test_only_visible_tables_in_diagram - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_table_diagram.py::test_foreign_keys_filtered_by_table_permissions - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+========================= 6 failed, 5 passed in 2.12s ==========================

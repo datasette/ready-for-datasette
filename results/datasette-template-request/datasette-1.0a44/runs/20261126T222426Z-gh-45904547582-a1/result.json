@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-template-request",
+    "version": "0.1",
+    "repository": "simonw/datasette-template-request",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/b8/6e/6f35e338e6278c796c83eada47fd97c8c9b7cb3dced07029f091c82aff94/datasette-template-request-0.1.tar.gz",
+      "sha256": "37e1ce795d635ca8c9df72ccd1abb8704b062bcf39f3d8f5aa5edb9e1b136f66"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-template-request",
+      "ref": "0.1",
+      "git_sha": "b379518cffbd0879010babc7d16fb5cbce550432"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T222426Z-gh-45904547582-a1",
+    "started_at": "2026-11-26T22:24:26Z",
+    "completed_at": "2026-11-26T22:24:32Z",
+    "duration_seconds": 5.464,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-template-request @ file:///tmp/datasette-template-request-dpmujkvy/datasette-template-request-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-template-request/datasette-1.0a44/runs/20261126T222426Z-gh-45904547582-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 1,
+    "passed": 0,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_template_request.py::test_plugin_is_installed"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-template-request/datasette-1.0a44/runs/20261126T222426Z-gh-45904547582-a1/pytest.txt"
+  }
+}

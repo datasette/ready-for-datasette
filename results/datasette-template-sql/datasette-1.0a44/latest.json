@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-template-sql",
+    "version": "1.0.3",
+    "repository": "simonw/datasette-template-sql",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/9a/1d/2100b87eced750f4ce0643d84b90cfd3c77ceae6a7d5902b4d820062e448/datasette_template_sql-1.0.3.tar.gz",
+      "sha256": "c31c96be9cbf10423a55089d3180cf2379debf1c4ac155ba2d95e55be7c02910"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-template-sql",
+      "ref": "1.0.3",
+      "git_sha": "70395fb245051df5499e10fba596c255b50c8b74"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T222426Z-gh-45904547582-a1",
+    "started_at": "2026-11-26T22:24:26Z",
+    "completed_at": "2026-11-26T22:24:30Z",
+    "duration_seconds": 3.795,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-template-sql @ file:///tmp/datasette-template-sql-fypr2nm4/datasette_template_sql-1.0.3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio>=0.21",
+      "--with",
+      "sqlite-utils>=3.0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-template-sql/datasette-1.0a44/runs/20261126T222426Z-gh-45904547582-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest>=9.0",
+      "pytest-asyncio>=0.21",
+      "sqlite-utils>=3.0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 2
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-template-sql/datasette-1.0a44/runs/20261126T222426Z-gh-45904547582-a1/pytest.txt"
+  }
+}

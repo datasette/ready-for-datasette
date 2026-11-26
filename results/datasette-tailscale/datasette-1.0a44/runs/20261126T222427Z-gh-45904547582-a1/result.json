@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-tailscale",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-tailscale",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/9e/2e/3eb0ccd0bdb570ae50418c4960e56f4f47fe2de82c84abcced6e5f81d25d/datasette_tailscale-0.1a0.tar.gz",
+      "sha256": "c4e464ad3fb9422a67294c49a8a770e9576c4b05257bcb32668a4e5f9b5fd901"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-tailscale",
+      "ref": "0.1a0",
+      "git_sha": "58ef0c1bfade882b273523b274a01df00fb5e12a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T222427Z-gh-45904547582-a1",
+    "started_at": "2026-11-26T22:24:27Z",
+    "completed_at": "2026-11-26T22:24:32Z",
+    "duration_seconds": 5.347,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-tailscale @ file:///tmp/datasette-tailscale-c__kq2o5/datasette_tailscale-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tailscale/datasette-1.0a44/runs/20261126T222427Z-gh-45904547582-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-tailscale/datasette-1.0a44/runs/20261126T222427Z-gh-45904547582-a1/pytest.txt"
+  }
+}
