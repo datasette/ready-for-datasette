@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-sqlite-history-json",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-sqlite-history-json",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/af/ef/de322d5902e7bebfc9906cd047005ff824c52177b5af5819f99b04a1512f/datasette_sqlite_history_json-0.1a0.tar.gz",
+      "sha256": "a7bba6b30620c0079745e8fb546deaf83285eec167de19c9426b59378124513e"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-sqlite-history-json",
+      "ref": "0.1a0",
+      "git_sha": "700b426bf096819c2dfca9841e253c63668be4aa"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T124509Z-gh-45822520945-a1",
+    "started_at": "2026-11-26T12:45:09Z",
+    "completed_at": "2026-11-26T12:45:14Z",
+    "duration_seconds": 5.304,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-sqlite-history-json @ file:///tmp/datasette-sqlite-history-json-82iwgy32/datasette_sqlite_history_json-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-history-json/datasette-1.0a44/runs/20261126T124509Z-gh-45822520945-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 23,
+    "passed": 21,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_sqlite_history_json.py::test_disable_tracking_post",
+    "tests/test_sqlite_history_json.py::test_enable_tracking_post"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-sqlite-history-json/datasette-1.0a44/runs/20261126T124509Z-gh-45822520945-a1/pytest.txt"
+  }
+}

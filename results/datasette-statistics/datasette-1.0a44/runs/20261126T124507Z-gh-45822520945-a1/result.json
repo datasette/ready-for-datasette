@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-statistics",
+    "version": "0.2.1",
+    "repository": "simonw/datasette-statistics",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/f8/17/f9ca64f1b86305c35226c71eb43b373143f7a8020c2bb72384cea16f4760/datasette-statistics-0.2.1.tar.gz",
+      "sha256": "4bc1f8ccbd0ff106527d3435dc1bf9daba7f952ba4022cfe21cdf4f8e7f010b7"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-statistics",
+      "ref": "0.2.1",
+      "git_sha": "d5d53539bd22033e92678460d2d92a5a21a6f66a"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261126T124507Z-gh-45822520945-a1",
+    "started_at": "2026-11-26T12:45:07Z",
+    "completed_at": "2026-11-26T12:45:13Z",
+    "duration_seconds": 6.173,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-statistics @ file:///tmp/datasette-statistics-v88uwklf/datasette-statistics-0.2.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-mock",
+      "--with",
+      "sqlite-utils",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-statistics/datasette-1.0a44/runs/20261126T124507Z-gh-45822520945-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 9,
+    "passed": 7,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_statistics.py::test_statistic_functions[statistics_stdev-expected7]",
+    "tests/test_statistics.py::test_statistic_functions[statistics_variance-expected8]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-mock",
+      "sqlite-utils"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-statistics/datasette-1.0a44/runs/20261126T124507Z-gh-45822520945-a1/pytest.txt"
+  }
+}

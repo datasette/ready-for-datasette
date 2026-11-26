@@ -1,0 +1,103 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sqlite-history-json @ file:///tmp/datasette-sqlite-history-json-82iwgy32/datasette_sqlite_history_json-0.1a0.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-sqlite-history-json @ file:///tmp/datasette-sqlite-history-json-82iwgy32/datasette_sqlite_history_json-0.1a0.tar.gz
+Installed 41 packages in 42ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpCDARJh/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1018-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'datasette': '1.0a44', 'json-report': '1.5.0', 'anyio': '4.16.0', 'asyncio': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sqlite-history-json-82iwgy32/tagged-source
+configfile: pyproject.toml
+plugins: metadata-3.1.1, datasette-1.0a44, json-report-1.5.0, anyio-4.16.0, asyncio-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 23 items
+
+tests/test_sqlite_history_json.py::test_plugin_is_installed PASSED       [  4%]
+tests/test_sqlite_history_json.py::test_enable_tracking_requires_permission PASSED [  8%]
+tests/test_sqlite_history_json.py::test_enable_tracking_get PASSED       [ 13%]
+tests/test_sqlite_history_json.py::test_enable_tracking_post FAILED      [ 17%]
+tests/test_sqlite_history_json.py::test_disable_tracking_requires_permission PASSED [ 21%]
+tests/test_sqlite_history_json.py::test_disable_tracking_post FAILED     [ 26%]
+tests/test_sqlite_history_json.py::test_sqlite_history_view_requires_view_table PASSED [ 30%]
+tests/test_sqlite_history_json.py::test_table_history_api PASSED         [ 34%]
+tests/test_sqlite_history_json.py::test_table_history_api_operation_filter PASSED [ 39%]
+tests/test_sqlite_history_json.py::test_table_history_api_pagination PASSED [ 43%]
+tests/test_sqlite_history_json.py::test_row_history_api PASSED           [ 47%]
+tests/test_sqlite_history_json.py::test_row_history_api_compound_pk PASSED [ 52%]
+tests/test_sqlite_history_json.py::test_table_history_page PASSED        [ 56%]
+tests/test_sqlite_history_json.py::test_row_history_page PASSED          [ 60%]
+tests/test_sqlite_history_json.py::test_table_history_404_for_untracked PASSED [ 65%]
+tests/test_sqlite_history_json.py::test_row_history_404_for_untracked PASSED [ 69%]
+tests/test_sqlite_history_json.py::test_table_actions_enable PASSED      [ 73%]
+tests/test_sqlite_history_json.py::test_table_actions_view_history_and_disable PASSED [ 78%]
+tests/test_sqlite_history_json.py::test_table_actions_no_manage_for_immutable PASSED [ 82%]
+tests/test_sqlite_history_json.py::test_table_actions_not_shown_for_audit_tables PASSED [ 86%]
+tests/test_sqlite_history_json.py::test_database_not_found PASSED        [ 91%]
+tests/test_sqlite_history_json.py::test_row_history_state_reconstruction PASSED [ 95%]
+tests/test_sqlite_history_json.py::test_history_after_disable PASSED     [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_enable_tracking_post ___________________________
+
+ds = <datasette.app.Datasette object at 0x7f50cf5ad810>
+db_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_enable_tracking_post0/test.db')
+
+    @pytest.mark.asyncio
+    async def test_enable_tracking_post(ds, db_path):
+        cookies = _root_cookies(ds)
+        # Get CSRF token
+        csrf = await _csrftoken(ds, "/-/history-json/test/items/-/enable", cookies)
+        cookies["ds_csrftoken"] = csrf
+        response = await ds.client.post(
+            "/-/history-json/test/items/-/enable",
+            data={"csrftoken": csrf},
+            cookies=cookies,
+            follow_redirects=False,
+        )
+>       assert response.status_code == 302
+E       assert 403 == 302
+E        +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_sqlite_history_json.py:90: AssertionError
+__________________________ test_disable_tracking_post __________________________
+
+ds = <datasette.app.Datasette object at 0x7f50cf5ae5d0>
+db_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_disable_tracking_post0/test.db')
+
+    @pytest.mark.asyncio
+    async def test_disable_tracking_post(ds, db_path):
+        # First enable tracking
+        conn = sqlite3.connect(str(db_path))
+        sqlite_history_json.enable_tracking(conn, "items")
+        conn.commit()
+        conn.close()
+    
+        cookies = _root_cookies(ds)
+        csrf = await _csrftoken(ds, "/-/history-json/test/items/-/disable", cookies)
+        cookies["ds_csrftoken"] = csrf
+        response = await ds.client.post(
+            "/-/history-json/test/items/-/disable",
+            data={"csrftoken": csrf},
+            cookies=cookies,
+            follow_redirects=False,
+        )
+>       assert response.status_code == 302
+E       assert 403 == 302
+E        +  where 403 = <Response [403 Forbidden]>.status_code
+
+tests/test_sqlite_history_json.py:146: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-history-json/datasette-1.0a44/runs/20261126T124509Z-gh-45822520945-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sqlite_history_json.py::test_enable_tracking_post - assert 403 == 302
+ +  where 403 = <Response [403 Forbidden]>.status_code
+FAILED tests/test_sqlite_history_json.py::test_disable_tracking_post - assert 403 == 302
+ +  where 403 = <Response [403 Forbidden]>.status_code
+========================= 2 failed, 21 passed in 1.01s =========================

@@ -1,0 +1,118 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-statistics @ file:///tmp/datasette-statistics-v88uwklf/datasette-statistics-0.2.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-statistics @ file:///tmp/datasette-statistics-v88uwklf/datasette-statistics-0.2.1.tar.gz
+Installed 41 packages in 73ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/iWzj6AAfZ9gzJtTO/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmp1iZFW0/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'mock': '3.17.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-statistics-v88uwklf/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, mock-3.17.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 9 items
+
+tests/test_statistics.py::test_statistic_functions[statistics_mean-expected0] PASSED [ 11%]
+tests/test_statistics.py::test_statistic_functions[statistics_median-expected1] PASSED [ 22%]
+tests/test_statistics.py::test_statistic_functions[statistics_median_low-expected2] PASSED [ 33%]
+tests/test_statistics.py::test_statistic_functions[statistics_median_high-expected3] PASSED [ 44%]
+tests/test_statistics.py::test_statistic_functions[statistics_mode-15] PASSED [ 55%]
+tests/test_statistics.py::test_statistic_functions[statistics_pstdev-expected5] PASSED [ 66%]
+tests/test_statistics.py::test_statistic_functions[statistics_pvariance-expected6] PASSED [ 77%]
+tests/test_statistics.py::test_statistic_functions[statistics_stdev-expected7] FAILED [ 88%]
+tests/test_statistics.py::test_statistic_functions[statistics_variance-expected8] FAILED [100%]
+
+=================================== FAILURES ===================================
+_____________ test_statistic_functions[statistics_stdev-expected7] _____________
+
+db = <Database: test (mutable, memory, size=0)>, function = 'statistics_stdev'
+expected = 2.0015643334421376 ± 2.0e-06
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "function,expected",
+        (
+            ("statistics_mean", pytest.approx(12.777777777777779)),
+            ("statistics_median", pytest.approx(13.0)),
+            ("statistics_median_low", pytest.approx(13.0)),
+            ("statistics_median_high", pytest.approx(13.0)),
+            ("statistics_mode", 15),
+            ("statistics_pstdev", pytest.approx(1.987615979999813)),
+            ("statistics_pvariance", pytest.approx(3.950617283950617)),
+            ("statistics_stdev", pytest.approx(2.0015643334421376)),
+            ("statistics_variance", pytest.approx(4.0)),
+        ),
+    )
+    async def test_statistic_functions(db, function, expected):
+        if function == "statistics_geometric_mean" and sys.version_info[:2] < (3, 8):
+            return
+    
+        for column in ("integers", "floats", "strings"):
+            result = await db.execute("select {}({}) from numbers".format(function, column))
+>           assert result.single_value() == expected
+E           assert 2.1081851067789197 == 2.0015643334421376 ± 2.0e-06
+E             
+E             comparison failed
+E             Obtained: 2.1081851067789197
+E             Expected: 2.0015643334421376 ± 2.0e-06
+
+tests/test_statistics.py:45: AssertionError
+___________ test_statistic_functions[statistics_variance-expected8] ____________
+
+db = <Database: test (mutable, memory, size=0)>
+function = 'statistics_variance', expected = 4.0 ± 4.0e-06
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "function,expected",
+        (
+            ("statistics_mean", pytest.approx(12.777777777777779)),
+            ("statistics_median", pytest.approx(13.0)),
+            ("statistics_median_low", pytest.approx(13.0)),
+            ("statistics_median_high", pytest.approx(13.0)),
+            ("statistics_mode", 15),
+            ("statistics_pstdev", pytest.approx(1.987615979999813)),
+            ("statistics_pvariance", pytest.approx(3.950617283950617)),
+            ("statistics_stdev", pytest.approx(2.0015643334421376)),
+            ("statistics_variance", pytest.approx(4.0)),
+        ),
+    )
+    async def test_statistic_functions(db, function, expected):
+        if function == "statistics_geometric_mean" and sys.version_info[:2] < (3, 8):
+            return
+    
+        for column in ("integers", "floats", "strings"):
+            result = await db.execute("select {}({}) from numbers".format(function, column))
+>           assert result.single_value() == expected
+E           assert 4.444444444444445 == 4.0 ± 4.0e-06
+E             
+E             comparison failed
+E             Obtained: 4.444444444444445
+E             Expected: 4.0 ± 4.0e-06
+
+tests/test_statistics.py:45: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-statistics/datasette-1.0a44/runs/20261126T124507Z-gh-45822520945-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_statistics.py::test_statistic_functions[statistics_stdev-expected7] - assert 2.1081851067789197 == 2.0015643334421376 ± 2.0e-06
+  
+  comparison failed
+  Obtained: 2.1081851067789197
+  Expected: 2.0015643334421376 ± 2.0e-06
+FAILED tests/test_statistics.py::test_statistic_functions[statistics_variance-expected8] - assert 4.444444444444445 == 4.0 ± 4.0e-06
+  
+  comparison failed
+  Obtained: 4.444444444444445
+  Expected: 4.0 ± 4.0e-06
+========================= 2 failed, 7 passed in 0.09s ==========================

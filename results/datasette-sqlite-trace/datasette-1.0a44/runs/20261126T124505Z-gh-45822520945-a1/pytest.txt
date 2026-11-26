@@ -1,0 +1,50 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-sqlite-trace @ file:///tmp/datasette-sqlite-trace-a16x8vp7/datasette-sqlite-trace-0.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-sqlite-trace @ file:///tmp/datasette-sqlite-trace-a16x8vp7/datasette-sqlite-trace-0.1.tar.gz
+Installed 40 packages in 19ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/A1XrNppsjcDHt1jG/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpnArCyQ/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-sqlite-trace-a16x8vp7/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_sqlite_trace.py::test_sqlite_trace FAILED                     [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_sqlite_trace _______________________________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x7b04da95c1a0>
+
+    @pytest.mark.asyncio
+    async def test_sqlite_trace(capsys):
+        ds = Datasette()
+        response = await ds.client.get("/")
+        assert response.status_code == 200
+        # Should have printed stuff to stderr
+        captured = capsys.readouterr()
+>       assert "select name from sqlite_master where type='table'" in captured.err
+E       assert "select name from sqlite_master where type='table'" in 'select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n'
+E        +  where 'select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n' = CaptureResult(out='', err='select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n').err
+
+tests/test_sqlite_trace.py:12: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-sqlite-trace/datasette-1.0a44/runs/20261126T124505Z-gh-45822520945-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_sqlite_trace.py::test_sqlite_trace - assert "select name from sqlite_master where type='table'" in 'select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n'
+ +  where 'select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n' = CaptureResult(out='', err='select name, sql from sqlite_master where type=\'table\' order by name\nPRAGMA schema_version\nselect * from sqlite_master WHERE type = \'table\'\nselect name, sql from sqlite_master where type = \'table\'\nselect 1 from sqlite_master where tbl_name = "geometry_columns"\nselect * from sqlite_master WHERE type = \'view\'\nPRAGMA schema_version\nselect name, sql from sqlite_master where type = \'table\'\n').err
+============================== 1 failed in 0.13s ===============================
