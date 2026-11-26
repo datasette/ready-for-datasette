@@ -336,10 +336,10 @@
     "name": "datasette-charts",
     "github_repo": "datasette/datasette-charts",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "1f5a1999dfa16dd0095e76a3cf39b62e59408c112ae3f43674d7d1dbd6018d0d",
-    "metadata_etag": "\"5786df1b9f9cf670a4e03c01f76a3fc4fba126bfc16847ef479f1256fe9c71df\"",
-    "latest_version": "0.2a1",
-    "latest_version_published_at": "2026-11-24T06:08:21Z"
+    "metadata_sha256": "335c0d6077e75d6d791df23bf5b3397af6687bf309c5b44934a324eded608e23",
+    "metadata_etag": "\"2d9512dfbb7960aedd23a4858e47c83deb7afab7be3415f80dbba0a8bb7c9c41\"",
+    "latest_version": "0.3a0",
+    "latest_version_published_at": "2026-11-25T18:17:59Z"
   },
   {
     "name": "datasette-chatgpt-plugin",
