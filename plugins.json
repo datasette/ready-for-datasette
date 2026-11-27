@@ -1299,10 +1299,10 @@
     "name": "datasette-mcp",
     "github_repo": "datasette/datasette-mcp",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "9cbcd7077886117ad6fa025e9416a0edbea388e231ed0b78c61ce9beae63adc7",
-    "metadata_etag": "\"8d3a499a56555cbde242bea45a8f96a9a8c7ce2173f79a5210b3d2edd9d65dbf\"",
-    "latest_version": "0.3",
-    "latest_version_published_at": "2026-10-22T21:25:14Z"
+    "metadata_sha256": "b02f90a9dc456e8bdd91a74fa3ca585e1647139a5a2278286ad6aa8a1389cc4f",
+    "metadata_etag": "\"3ac00b9318953c08c37588e5d97bcf911eee8dda7e2ed8441cda1c477564ead3\"",
+    "latest_version": "0.4",
+    "latest_version_published_at": "2026-11-27T00:27:08Z"
   },
   {
     "name": "datasette-media",
