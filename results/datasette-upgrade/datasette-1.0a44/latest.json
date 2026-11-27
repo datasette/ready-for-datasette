@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-upgrade",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-upgrade",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/3e/7b/9ae415fd465718776dafe80cd900691da4bc275ca6a0984adda59cef0048/datasette-upgrade-0.1a0.tar.gz",
+      "sha256": "d2e3a32164550928a58bccbf0b058b39a4a6e80bf7d3fb616a3213f60a65d3f0"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-upgrade",
+      "ref": "0.1a0",
+      "git_sha": "dad66149de86db14618652c32081174b864641de"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T233009Z-gh-46082800101-a1",
+    "started_at": "2026-11-27T23:30:09Z",
+    "completed_at": "2026-11-27T23:30:15Z",
+    "duration_seconds": 5.674,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-upgrade @ file:///tmp/datasette-upgrade-qwq3ball/datasette-upgrade-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-upgrade/datasette-1.0a44/runs/20261127T233009Z-gh-46082800101-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-upgrade/datasette-1.0a44/runs/20261127T233009Z-gh-46082800101-a1/pytest.txt"
+  }
+}

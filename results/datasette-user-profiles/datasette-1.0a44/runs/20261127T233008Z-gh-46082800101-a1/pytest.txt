@@ -1,0 +1,70 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-user-profiles @ file:///tmp/datasette-user-profiles-50fmk2er/datasette_user_profiles-0.1.0a10.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading ruff (10.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded pip
+ Downloaded ruff
+      Built datasette-user-profiles @ file:///tmp/datasette-user-profiles-50fmk2er/datasette_user_profiles-0.1.0a10.tar.gz
+Installed 53 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpHlXDCd/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-user-profiles-50fmk2er/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 43 items
+
+tests/test_seed.py::test_seeds_insert_new_profiles PASSED                [  2%]
+tests/test_seed.py::test_dict_seeds_and_id_alias_accepted PASSED         [  4%]
+tests/test_seed.py::test_async_callable_seed_form PASSED                 [  6%]
+tests/test_seed.py::test_fill_missing_does_not_clobber_user_value PASSED [  9%]
+tests/test_seed.py::test_seed_is_idempotent PASSED                       [ 11%]
+tests/test_seed.py::test_seed_photo_from_data_url_and_not_clobbered PASSED [ 13%]
+tests/test_seed.py::test_seed_photo_from_raw_bytes PASSED                [ 16%]
+tests/test_seed.py::test_seeded_profiles_resolve_via_helper PASSED       [ 18%]
+tests/test_seed.py::test_failing_seed_impl_does_not_break_startup PASSED [ 20%]
+tests/test_user_profiles.py::test_plugin_is_installed PASSED             [ 23%]
+tests/test_user_profiles.py::test_search_indexes_created_and_idempotent PASSED [ 25%]
+tests/test_user_profiles.py::test_search_empty_q_returns_recent PASSED   [ 27%]
+tests/test_user_profiles.py::test_search_matches_display_name_and_email PASSED [ 30%]
+tests/test_user_profiles.py::test_search_prefix_matches_rank_first PASSED [ 32%]
+tests/test_user_profiles.py::test_search_limit_respected PASSED          [ 34%]
+tests/test_user_profiles.py::test_search_limit_capped_at_50 PASSED       [ 37%]
+tests/test_user_profiles.py::test_search_result_shape PASSED             [ 39%]
+tests/test_user_profiles.py::test_search_email_can_be_omitted PASSED     [ 41%]
+tests/test_user_profiles.py::test_search_unauthenticated_blocked PASSED  [ 44%]
+tests/test_user_profiles.py::test_search_forbidden_actor_blocked PASSED  [ 46%]
+tests/test_user_profiles.py::test_resolve_happy_path PASSED              [ 48%]
+tests/test_user_profiles.py::test_resolve_unknown_ids_omitted PASSED     [ 51%]
+tests/test_user_profiles.py::test_resolve_email_can_be_omitted PASSED    [ 53%]
+tests/test_user_profiles.py::test_resolve_empty_ids_returns_empty_results PASSED [ 55%]
+tests/test_user_profiles.py::test_resolve_duplicate_ids_collapse PASSED  [ 58%]
+tests/test_user_profiles.py::test_resolve_unauthenticated_blocked PASSED [ 60%]
+tests/test_user_profiles.py::test_resolve_forbidden_actor_blocked PASSED [ 62%]
+tests/test_user_profiles.py::test_resolve_profile_actors_returns_known_users_only PASSED [ 65%]
+tests/test_user_profiles.py::test_resolve_profile_actors_coerces_numeric_ids_to_strings PASSED [ 67%]
+tests/test_user_profiles.py::test_resolve_profile_actors_empty_list PASSED [ 69%]
+tests/test_user_profiles.py::test_plugin_does_not_own_actors_from_ids_hook PASSED [ 72%]
+tests/test_user_profiles.py::test_no_hard_dependency_on_acl PASSED       [ 74%]
+tests/test_user_profiles.py::test_valid_actors_returns_seeded_users PASSED [ 76%]
+tests/test_user_profiles.py::test_valid_actors_falls_back_to_actor_id_when_no_display_name PASSED [ 79%]
+tests/test_user_profiles.py::test_editable_fields_defaults_all_true PASSED [ 81%]
+tests/test_user_profiles.py::test_editable_fields_honours_overrides PASSED [ 83%]
+tests/test_user_profiles.py::test_update_changes_all_fields_by_default PASSED [ 86%]
+tests/test_user_profiles.py::test_update_omitted_fields_are_kept PASSED  [ 88%]
+tests/test_user_profiles.py::test_update_preserves_locked_field PASSED   [ 90%]
+tests/test_user_profiles.py::test_update_locked_avatar_not_written PASSED [ 93%]
+tests/test_user_profiles.py::test_locked_avatar_rejects_photo_upload PASSED [ 95%]
+tests/test_user_profiles.py::test_locked_avatar_rejects_photo_delete PASSED [ 97%]
+tests/test_user_profiles.py::test_edit_page_exposes_editable_map PASSED  [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-user-profiles/datasette-1.0a44/runs/20261127T233008Z-gh-46082800101-a1/.pytest-report.json
+============================== 43 passed in 1.48s ==============================

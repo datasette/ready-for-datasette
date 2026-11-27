@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-upload-csvs",
+    "version": "0.9.1",
+    "repository": "simonw/datasette-upload-csvs",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/33/49/57574ea0f351ff3ce8217d2d88c5dbeceb81b7163df857a27dcbfa4e0fea/datasette-upload-csvs-0.9.1.tar.gz",
+      "sha256": "7f9b99439503a9bc27ada2a2c53bca9b2c59b9a1662780ed5000e8403eea62fb"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-upload-csvs",
+      "ref": "0.9.1",
+      "git_sha": "e50461b12b4af2502ad94e3bdaca55593e70264b"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T233009Z-gh-46082800101-a1",
+    "started_at": "2026-11-27T23:30:09Z",
+    "completed_at": "2026-11-27T23:30:14Z",
+    "duration_seconds": 5.044,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-upload-csvs @ file:///tmp/datasette-upload-csvs-62b4s7l5/datasette-upload-csvs-0.9.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-upload-csvs/datasette-1.0a44/runs/20261127T233009Z-gh-46082800101-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_datasette_upload_csvs.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-upload-csvs/datasette-1.0a44/runs/20261127T233009Z-gh-46082800101-a1/pytest.txt"
+  }
+}

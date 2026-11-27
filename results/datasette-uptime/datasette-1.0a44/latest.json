@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-uptime",
+    "version": "0.1.1",
+    "repository": "datasette/datasette-uptime",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/b0/73/8cbb8d928b87ec8eb8bd7c9ae2f13595a75a2eb0c08b1d39fc53c1ad0283/datasette-uptime-0.1.1.tar.gz",
+      "sha256": "b6f621c8e8b2ce3f135491b1ce3bf6b8307b6d5c3ac0764f2bc42c3ef6debc00"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-uptime",
+      "ref": "0.1.1",
+      "git_sha": "2e651d3850fb8ddc28649cf7d453481d744f2fad"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T233011Z-gh-46082800101-a1",
+    "started_at": "2026-11-27T23:30:11Z",
+    "completed_at": "2026-11-27T23:30:17Z",
+    "duration_seconds": 5.915,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-uptime @ file:///tmp/datasette-uptime-iv0r2qn9/datasette-uptime-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-uptime/datasette-1.0a44/runs/20261127T233011Z-gh-46082800101-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-uptime/datasette-1.0a44/runs/20261127T233011Z-gh-46082800101-a1/pytest.txt"
+  }
+}

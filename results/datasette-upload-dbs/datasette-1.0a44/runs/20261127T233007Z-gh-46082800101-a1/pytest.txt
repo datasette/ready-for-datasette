@@ -1,0 +1,377 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-upload-dbs @ file:///tmp/datasette-upload-dbs-jifj8j1_/datasette_upload_dbs-0.3.2.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-upload-dbs @ file:///tmp/datasette-upload-dbs-jifj8j1_/datasette_upload_dbs-0.3.2.tar.gz
+Installed 40 packages in 17ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpXeejS3/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-upload-dbs-jifj8j1_/tagged-source
+configfile: pytest.ini
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 20 items
+
+tests/test_upload_dbs.py::test_menu[True] FAILED                         [  5%]
+tests/test_upload_dbs.py::test_menu[False] FAILED                        [ 10%]
+tests/test_upload_dbs.py::test_redirect FAILED                           [ 15%]
+tests/test_upload_dbs.py::test_databases_loaded_on_startup[False] FAILED [ 20%]
+tests/test_upload_dbs.py::test_databases_loaded_on_startup[True] FAILED  [ 25%]
+tests/test_upload_dbs.py::test_errors[False-False-Permission denied for upload-dbs] FAILED [ 30%]
+tests/test_upload_dbs.py::test_errors[False-True-Permission denied for upload-dbs] FAILED [ 35%]
+tests/test_upload_dbs.py::test_errors[True-False-datasette-upload-dbs plugin has not been correctly configured] FAILED [ 40%]
+tests/test_upload_dbs.py::test_invalid_files[True-bad_bytes-File is not a valid SQLite database (invalid header)] FAILED [ 45%]
+tests/test_upload_dbs.py::test_invalid_files[True-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] FAILED [ 50%]
+tests/test_upload_dbs.py::test_invalid_files[False-bad_bytes-File is not a valid SQLite database (invalid header)] FAILED [ 55%]
+tests/test_upload_dbs.py::test_invalid_files[False-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] FAILED [ 60%]
+tests/test_upload_dbs.py::test_upload[temp.db-None-/temp-True] FAILED    [ 65%]
+tests/test_upload_dbs.py::test_upload[temp.db-None-/temp-False] FAILED   [ 70%]
+tests/test_upload_dbs.py::test_upload[.db-None-/d41d8c-True] FAILED      [ 75%]
+tests/test_upload_dbs.py::test_upload[.db-None-/d41d8c-False] FAILED     [ 80%]
+tests/test_upload_dbs.py::test_upload[temp.db-custom-/custom-True] FAILED [ 85%]
+tests/test_upload_dbs.py::test_upload[temp.db-custom-/custom-False] FAILED [ 90%]
+tests/test_upload_dbs.py::test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-True] FAILED [ 95%]
+tests/test_upload_dbs.py::test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-False] FAILED [100%]
+
+=================================== FAILURES ===================================
+_______________________________ test_menu[True] ________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_______________________________ test_menu[False] _______________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+________________________________ test_redirect _________________________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_databases_loaded_on_startup[False] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_databases_loaded_on_startup[True] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________ test_errors[False-False-Permission denied for upload-dbs] ___________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________ test_errors[False-True-Permission denied for upload-dbs] ___________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_errors[True-False-datasette-upload-dbs plugin has not been correctly configured] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_invalid_files[True-bad_bytes-File is not a valid SQLite database (invalid header)] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_invalid_files[True-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_invalid_files[False-bad_bytes-File is not a valid SQLite database (invalid header)] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_invalid_files[False-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_upload[temp.db-None-/temp-True] _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+____________________ test_upload[temp.db-None-/temp-False] _____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________________ test_upload[.db-None-/d41d8c-True] ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_____________________ test_upload[.db-None-/d41d8c-False] ______________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+___________________ test_upload[temp.db-custom-/custom-True] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________________ test_upload[temp.db-custom-/custom-False] ___________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+__________ test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-True] __________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_________ test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-False] __________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/F66YlKRRmrsuQMl_/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/F66YlKRRmrsuQMl_/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/test_upload_dbs.py:7
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_upload_dbs.py:24
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:24: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_upload_dbs.py:32
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:32: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_upload_dbs.py:58
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:58: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_upload_dbs.py:84
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:84: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_upload_dbs.py:121
+  /tmp/datasette-upload-dbs-jifj8j1_/tagged-source/tests/test_upload_dbs.py:121: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-upload-dbs/datasette-1.0a44/runs/20261127T233007Z-gh-46082800101-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_upload_dbs.py::test_menu[True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_menu[False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_redirect - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_databases_loaded_on_startup[False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_databases_loaded_on_startup[True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_errors[False-False-Permission denied for upload-dbs] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_errors[False-True-Permission denied for upload-dbs] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_errors[True-False-datasette-upload-dbs plugin has not been correctly configured] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_invalid_files[True-bad_bytes-File is not a valid SQLite database (invalid header)] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_invalid_files[True-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_invalid_files[False-bad_bytes-File is not a valid SQLite database (invalid header)] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_invalid_files[False-SQLite format 3\x00invalid-File is not a valid SQLite database (file is not a database)] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-None-/temp-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-None-/temp-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[.db-None-/d41d8c-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[.db-None-/d41d8c-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-custom-/custom-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-custom-/custom-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_upload_dbs.py::test_upload[temp.db-a + b + c ~ d-/a--b--c--d-26e27e-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+======================== 20 failed, 7 warnings in 0.04s ========================
