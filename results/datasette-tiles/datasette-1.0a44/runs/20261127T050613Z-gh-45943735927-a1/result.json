@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-tiles",
+    "version": "0.6.1",
+    "repository": "simonw/datasette-tiles",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a8/f4/0ae203f1e2cd29e6d96c5992747615715d2ccfe8d780125a4434b7bd1d28/datasette-tiles-0.6.1.tar.gz",
+      "sha256": "2f11c57200541c3bd9dd5a165d9c15580b8656fac966af50ba8e45853cf9f7fb"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-tiles",
+      "ref": "0.6.1",
+      "git_sha": "b6c831a74924c5e935c8dd978c181f2dc4c63158"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T050613Z-gh-45943735927-a1",
+    "started_at": "2026-11-27T05:06:13Z",
+    "completed_at": "2026-11-27T05:06:20Z",
+    "duration_seconds": 7.646,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-tiles @ file:///tmp/datasette-tiles-j1hj8wp4/datasette-tiles-0.6.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tiles/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 32,
+    "passed": 0,
+    "failed": 5,
+    "errors": 27,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 12
+  },
+  "failing_tests": [
+    "tests/test_tiles.py::test_detect_mtiles_databases[1--False]",
+    "tests/test_tiles.py::test_detect_mtiles_databases[2-CREATE TABLE foo (id integer primary key)-False]",
+    "tests/test_tiles.py::test_detect_mtiles_databases[3-CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);-True]",
+    "tests/test_tiles.py::test_detect_mtiles_databases[4-CREATE TABLE tiles (zoom_level integer, tile_row integer, tile_data blob);-False]",
+    "tests/test_tiles.py::test_detect_mtiles_databases[5-create_table4-True]"
+  ],
+  "error_tests": [
+    "tests/test_tiles.py::test_database_and_column_action_menus[/:memory:-False]",
+    "tests/test_tiles.py::test_database_and_column_action_menus[/basemap-True]",
+    "tests/test_tiles.py::test_database_and_column_action_menus[/basemap/grids-False]",
+    "tests/test_tiles.py::test_database_and_column_action_menus[/basemap/tiles-True]",
+    "tests/test_tiles.py::test_tile[/-/tiles/basemap/3/6/5.png-200]",
+    "tests/test_tiles.py::test_tile[/-/tiles/basemap/4/10/8.png-200]",
+    "tests/test_tiles.py::test_tile[/-/tiles/basemap/8/6/5.png-404]",
+    "tests/test_tiles.py::test_tile_404s[/-/tiles-stack/10/10/10.png]",
+    "tests/test_tiles.py::test_tile_404s[/-/tiles/basemap/10/10/10.png]",
+    "tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/3/6/2.png-/-/tiles-tms/basemap/3/6/5.png]",
+    "tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/4/10/7.png-/-/tiles-tms/basemap/4/10/8.png]",
+    "tests/test_tiles.py::test_tiles_explorer",
+    "tests/test_tiles.py::test_tiles_explorer_no_javascript",
+    "tests/test_tiles.py::test_tiles_index",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/1/1.png-tms:world:2/1/1]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/1.png-tms:city1:2/2/1]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/2.png-tms:country:2/2/2]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/3/3.png-tms:city2:2/3/3]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/3/3/3.png-PNG]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/1/2.png-tms:world:2/1/1]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/1.png-tms:country:2/2/2]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/2.png-tms:city1:2/2/1]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/3/0.png-tms:city2:2/3/3]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/3/3/4.png-PNG]",
+    "tests/test_tiles_stack.py::test_ds_tiles_stack_order",
+    "tests/test_tiles_stack.py::test_tiles_stack_explorer",
+    "tests/test_tiles_stack.py::test_tiles_stack_order_setting"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 3
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-tiles/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/pytest.txt"
+  }
+}

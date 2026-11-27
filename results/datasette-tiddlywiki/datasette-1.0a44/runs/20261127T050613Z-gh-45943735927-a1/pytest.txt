@@ -1,0 +1,44 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-tiddlywiki @ file:///tmp/datasette-tiddlywiki-hr1bfcax/datasette-tiddlywiki-0.2.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded pip
+      Built datasette-tiddlywiki @ file:///tmp/datasette-tiddlywiki-hr1bfcax/datasette-tiddlywiki-0.2.tar.gz
+Installed 39 packages in 24ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpIs67Ui/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-tiddlywiki-hr1bfcax/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting tests/test_tiddlywiki.py ___________________
+tests/test_tiddlywiki.py:9: in <module>
+    @pytest.fixture
+     ^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/hnlGAwd2jk197i5y/lib/python3.13/site-packages/_pytest/fixtures.py:1609: in fixture
+    return fixture_marker(fixture_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/hnlGAwd2jk197i5y/lib/python3.13/site-packages/_pytest/fixtures.py:1444: in __call__
+    fail(
+E   Failed: Marks cannot be applied to fixtures.
+E   See docs: https://docs.pytest.org/en/stable/deprecations.html#applying-a-mark-to-a-fixture-function
+=============================== warnings summary ===============================
+tests/test_tiddlywiki.py:10
+  /tmp/datasette-tiddlywiki-hr1bfcax/tagged-source/tests/test_tiddlywiki.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tiddlywiki/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_tiddlywiki.py - Failed: Marks cannot be applied to fixtures.
+See docs: https://docs.pytest.org/en/stable/deprecations.html#applying-a-mark-to-a-fixture-function
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+========================= 1 warning, 1 error in 0.12s ==========================

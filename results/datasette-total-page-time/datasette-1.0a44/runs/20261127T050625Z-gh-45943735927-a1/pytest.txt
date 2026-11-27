@@ -1,0 +1,58 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-total-page-time @ file:///tmp/datasette-total-page-time-izo47cj2/datasette-total-page-time-0.1.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-total-page-time @ file:///tmp/datasette-total-page-time-izo47cj2/datasette-total-page-time-0.1.tar.gz
+Installed 39 packages in 11ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpI2BlA4/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-total-page-time-izo47cj2/tagged-source
+configfile: pytest.ini
+plugins: metadata-3.1.1, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+collecting ... collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+________________ ERROR collecting tests/test_total_page_time.py ________________
+ImportError while importing test module '/tmp/datasette-total-page-time-izo47cj2/tagged-source/tests/test_total_page_time.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/runner/work/_temp/setup-uv-cache/archive-v0/c86vLXuoTGm5eM8F/lib/python3.13/site-packages/_pytest/python.py:528: in importtestmodule
+    mod = import_path(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/c86vLXuoTGm5eM8F/lib/python3.13/site-packages/_pytest/pathlib.py:640: in import_path
+    importlib.import_module(module_name)
+/home/runner/work/_temp/uv-python-dir/cpython-3.13.18-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1404: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1369: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1340: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:935: in _load_unlocked
+    ???
+/home/runner/work/_temp/setup-uv-cache/archive-v0/c86vLXuoTGm5eM8F/lib/python3.13/site-packages/_pytest/assertion/rewrite.py:185: in exec_module
+    exec(co, module.__dict__)
+tests/test_total_page_time.py:3: in <module>
+    import pytest_asyncio
+E   ModuleNotFoundError: No module named 'pytest_asyncio'
+=============================== warnings summary ===============================
+../../../home/runner/work/_temp/setup-uv-cache/archive-v0/c86vLXuoTGm5eM8F/lib/python3.13/site-packages/_pytest/config/__init__.py:1636
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/c86vLXuoTGm5eM8F/lib/python3.13/site-packages/_pytest/config/__init__.py:1636: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-total-page-time/datasette-1.0a44/runs/20261127T050625Z-gh-45943735927-a1/.pytest-report.json
+=========================== short test summary info ============================
+ERROR tests/test_total_page_time.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+========================= 1 warning, 1 error in 0.09s ==========================

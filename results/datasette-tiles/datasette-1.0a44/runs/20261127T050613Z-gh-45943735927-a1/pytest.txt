@@ -1,0 +1,3246 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-tiles @ file:///tmp/datasette-tiles-j1hj8wp4/datasette-tiles-0.6.1.tar.gz
+Downloading pip (1.9MiB)
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-tiles @ file:///tmp/datasette-tiles-j1hj8wp4/datasette-tiles-0.6.1.tar.gz
+Installed 40 packages in 39ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbMBovC/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-tiles-j1hj8wp4/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, json-report-1.5.0, metadata-3.1.1
+collecting ... collected 32 items
+
+tests/test_tiles.py::test_tile[/-/tiles/basemap/3/6/5.png-200] ERROR     [  3%]
+tests/test_tiles.py::test_tile[/-/tiles/basemap/4/10/8.png-200] ERROR    [  6%]
+tests/test_tiles.py::test_tile[/-/tiles/basemap/8/6/5.png-404] ERROR     [  9%]
+tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/3/6/2.png-/-/tiles-tms/basemap/3/6/5.png] ERROR [ 12%]
+tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/4/10/7.png-/-/tiles-tms/basemap/4/10/8.png] ERROR [ 15%]
+tests/test_tiles.py::test_tiles_index ERROR                              [ 18%]
+tests/test_tiles.py::test_tiles_explorer ERROR                           [ 21%]
+tests/test_tiles.py::test_tiles_explorer_no_javascript ERROR             [ 25%]
+tests/test_tiles.py::test_detect_mtiles_databases[1--False] FAILED       [ 28%]
+tests/test_tiles.py::test_detect_mtiles_databases[2-CREATE TABLE foo (id integer primary key)-False] FAILED [ 31%]
+tests/test_tiles.py::test_detect_mtiles_databases[3-CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);-True] FAILED [ 34%]
+tests/test_tiles.py::test_detect_mtiles_databases[4-CREATE TABLE tiles (zoom_level integer, tile_row integer, tile_data blob);-False] FAILED [ 37%]
+tests/test_tiles.py::test_detect_mtiles_databases[5-create_table4-True] FAILED [ 40%]
+tests/test_tiles.py::test_database_and_column_action_menus[/:memory:-False] ERROR [ 43%]
+tests/test_tiles.py::test_database_and_column_action_menus[/basemap-True] ERROR [ 46%]
+tests/test_tiles.py::test_database_and_column_action_menus[/basemap/grids-False] ERROR [ 50%]
+tests/test_tiles.py::test_database_and_column_action_menus[/basemap/tiles-True] ERROR [ 53%]
+tests/test_tiles.py::test_tile_404s[/-/tiles/basemap/10/10/10.png] ERROR [ 56%]
+tests/test_tiles.py::test_tile_404s[/-/tiles-stack/10/10/10.png] ERROR   [ 59%]
+tests/test_tiles_stack.py::test_ds_tiles_stack_order ERROR               [ 62%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/3/3/3.png-PNG] ERROR [ 65%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/1/1.png-tms:world:2/1/1] ERROR [ 68%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/2.png-tms:country:2/2/2] ERROR [ 71%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/3/3.png-tms:city2:2/3/3] ERROR [ 75%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/1.png-tms:city1:2/2/1] ERROR [ 78%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/3/3/4.png-PNG] ERROR [ 81%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/1/2.png-tms:world:2/1/1] ERROR [ 84%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/1.png-tms:country:2/2/2] ERROR [ 87%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/3/0.png-tms:city2:2/3/3] ERROR [ 90%]
+tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/2.png-tms:city1:2/2/1] ERROR [ 93%]
+tests/test_tiles_stack.py::test_tiles_stack_order_setting ERROR          [ 96%]
+tests/test_tiles_stack.py::test_tiles_stack_explorer ERROR               [100%]
+
+==================================== ERRORS ====================================
+_________ ERROR at setup of test_tile[/-/tiles/basemap/3/6/5.png-200] __________
+'test_tiles.py' requested an async fixture 'ds', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+_________ ERROR at setup of test_tile[/-/tiles/basemap/4/10/8.png-200] _________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c400>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile[/-/tiles/basemap/4/10/8.png-200]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_________ ERROR at setup of test_tile[/-/tiles/basemap/8/6/5.png-404] __________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90d93b00>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile[/-/tiles/basemap/8/6/5.png-404]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_tile_tms[/-/tiles/basemap/3/6/2.png-/-/tiles-tms/basemap/3/6/5.png] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c720>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile_tms[/-/tiles/basemap/3/6/2.png-/-/tiles-tms/basemap/3/6/5.png]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_tile_tms[/-/tiles/basemap/4/10/7.png-/-/tiles-tms/basemap/4/10/8.png] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90d931a0>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile_tms[/-/tiles/basemap/4/10/7.png-/-/tiles-tms/basemap/4/10/8.png]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+______________________ ERROR at setup of test_tiles_index ______________________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c720>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tiles_index>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+____________________ ERROR at setup of test_tiles_explorer _____________________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c860>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tiles_explorer>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_____________ ERROR at setup of test_tiles_explorer_no_javascript ______________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f91b611c0>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tiles_explorer_no_javascript>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+___ ERROR at setup of test_database_and_column_action_menus[/:memory:-False] ___
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b9d260>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_database_and_column_action_menus[/:memory:-False]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+____ ERROR at setup of test_database_and_column_action_menus[/basemap-True] ____
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90d20540>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_database_and_column_action_menus[/basemap-True]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_database_and_column_action_menus[/basemap/grids-False] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c220>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_database_and_column_action_menus[/basemap/grids-False]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_database_and_column_action_menus[/basemap/tiles-True] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b9fc40>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_database_and_column_action_menus[/basemap/tiles-True]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_______ ERROR at setup of test_tile_404s[/-/tiles/basemap/10/10/10.png] ________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90c0c220>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile_404s[/-/tiles/basemap/10/10/10.png]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+________ ERROR at setup of test_tile_404s[/-/tiles-stack/10/10/10.png] _________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b9ff60>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds' scope='module' baseid='tests'>
+request = <SubRequest 'ds' for <Function test_tile_404s[/-/tiles-stack/10/10/10.png]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_________________ ERROR at setup of test_ds_tiles_stack_order __________________
+'test_tiles_stack.py' requested an async fixture 'ds_tiles_stack', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+___ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack-tms/3/3/3.png-PNG] ____
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b26340>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack-tms/3/3/3.png-PNG]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack-tms/2/1/1.png-tms:world:2/1/1] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b9d9e0>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack-tms/2/1/1.png-tms:world:2/1/1]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack-tms/2/2/2.png-tms:country:2/2/2] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b271a0>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack-tms/2/2/2.png-tms:country:2/2/2]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack-tms/2/3/3.png-tms:city2:2/3/3] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b9d9e0>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack-tms/2/3/3.png-tms:city2:2/3/3]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack-tms/2/2/1.png-tms:city1:2/2/1] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b27f60>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack-tms/2/2/1.png-tms:city1:2/2/1]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_____ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack/3/3/4.png-PNG] ______
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b25440>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack/3/3/4.png-PNG]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack/2/1/2.png-tms:world:2/1/1] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b27740>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack/2/1/2.png-tms:world:2/1/1]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack/2/2/1.png-tms:country:2/2/2] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b52b60>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack/2/2/1.png-tms:country:2/2/2]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack/2/3/0.png-tms:city2:2/3/3] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b27740>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack/2/3/0.png-tms:city2:2/3/3]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_ ERROR at setup of test_ds_tiles_stack[/-/tiles-stack/2/2/2.png-tms:city1:2/2/1] _
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b53c40>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_ds_tiles_stack[/-/tiles-stack/2/2/2.png-tms:city1:2/2/1]>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+_______________ ERROR at setup of test_tiles_stack_order_setting _______________
+'test_tiles_stack.py' requested an async fixture 'ds_tiles_stack_with_stack_order', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+_________________ ERROR at setup of test_tiles_stack_explorer __________________
+
+cls = <class '_pytest.runner.CallInfo'>
+func = <function call_and_report.<locals>.<lambda> at 0x7e0f90b53e20>
+when = 'setup'
+reraise = (<class '_pytest.outcomes.Exit'>, <class 'KeyboardInterrupt'>)
+
+    @classmethod
+    def from_call(
+        cls,
+        func: Callable[[], TResult],
+        when: Literal["collect", "setup", "call", "teardown"],
+        reraise: type[BaseException] | tuple[type[BaseException], ...] | None = None,
+    ) -> CallInfo[TResult]:
+        """Call func, wrapping the result in a CallInfo.
+    
+        :param func:
+            The function to call. Called without arguments.
+        :type func: Callable[[], _pytest.runner.TResult]
+        :param when:
+            The phase in which the function is called.
+        :param reraise:
+            Exception or exceptions that shall propagate if raised by the
+            function, instead of being wrapped in the CallInfo.
+        """
+        excinfo = None
+        instant = timing.Instant()
+        try:
+>           result: TResult | None = func()
+                                     ^^^^^^
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:361: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:250: in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_caller.py:197: in __call__
+    return self._hookexec(
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_manager.py:183: in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/logging.py:871: in pytest_runtest_setup
+    yield
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:64: in run_old_style_hookwrapper
+    return result.get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/pluggy/_execution.py:49: in run_old_style_hookwrapper
+    res = yield
+          ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/capture.py:901: in pytest_runtest_setup
+    return (yield)
+            ^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:170: in pytest_runtest_setup
+    item.session._setupstate.setup(item)
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/runner.py:536: in setup
+    col.setup()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/python.py:1801: in setup
+    self._request._fillfixtures()
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:877: in _fillfixtures
+    item.funcargs[argname] = self.getfixturevalue(argname)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:701: in getfixturevalue
+    fixturedef = self._get_active_fixturedef(argname)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:797: in _get_active_fixturedef
+    fixturedef.execute(request=subrequest)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <FixtureDef argname='ds_tiles_stack' scope='module' baseid='tests'>
+request = <SubRequest 'ds_tiles_stack' for <Function test_tiles_stack_explorer>>
+
+    def execute(self, request: SubRequest) -> FixtureValue:
+        """Return the value of this fixture, executing it if not cached."""
+        # Ensure that the dependent fixtures requested by this fixture are loaded.
+        # This needs to be done before checking if we have a cached value, since
+        # if a dependent fixture has their cache invalidated, e.g. due to
+        # parametrization, they finalize themselves and fixtures depending on it
+        # (which will likely include this fixture) setting `self.cached_result = None`.
+        # See #4871
+        requested_fixtures_that_should_finalize_us = []
+        for argname in self.argnames:
+            fixturedef = request._get_active_fixturedef(argname)
+            # Saves requested fixtures in a list so we later can add our finalizer
+            # to them, ensuring that if a requested fixture gets torn down we get torn
+            # down first. This is generally handled by SetupState, but still currently
+            # needed when this fixture is not parametrized but depends on a parametrized
+            # fixture.
+            requested_fixtures_that_should_finalize_us.append(fixturedef)
+    
+        # Check for (and return) cached value/exception.
+        if self.cached_result is not None:
+            request_cache_key = self.cache_key(request)
+            cache_key = self.cached_result[1]
+            try:
+                # Attempt to make a normal == check: this might fail for objects
+                # which do not implement the standard comparison (like numpy arrays -- #6497).
+                cache_hit = bool(request_cache_key == cache_key)
+            except (ValueError, RuntimeError):
+                # If the comparison raises, use 'is' as fallback.
+                cache_hit = request_cache_key is cache_key
+    
+            if cache_hit:
+                if self.cached_result[2] is not None:
+                    exc, exc_tb = self.cached_result[2]
+                    raise exc.with_traceback(exc_tb)
+                else:
+                    return self.cached_result[0]
+            # We have a previous but differently parametrized fixture instance
+            # so we need to tear it down before creating a new one.
+            self.finish(request)
+            assert self.cached_result is None
+    
+        # Add finalizer to requested fixtures we saved previously.
+        # We make sure to do this after checking for cached value to avoid
+        # adding our finalizer multiple times. (#12135)
+        finalizer = functools.partial(self.finish, request=request)
+        for parent_fixture in requested_fixtures_that_should_finalize_us:
+            parent_fixture.addfinalizer(finalizer)
+    
+        # Register the pytest_fixture_post_finalizer as the first finalizer,
+        # which is executed last.
+>       assert not self._finalizers
+               ^^^^^^^^^^^^^^^^^^^^
+E       AssertionError
+
+/home/runner/work/_temp/setup-uv-cache/archive-v0/sPe6y4bQ1HyjJuuh/lib/python3.13/site-packages/_pytest/fixtures.py:1290: AssertionError
+=================================== FAILURES ===================================
+____________________ test_detect_mtiles_databases[1--False] ____________________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_detect_mtiles_databases[2-CREATE TABLE foo (id integer primary key)-False] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_detect_mtiles_databases[3-CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);-True] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+_ test_detect_mtiles_databases[4-CREATE TABLE tiles (zoom_level integer, tile_row integer, tile_data blob);-False] _
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+______________ test_detect_mtiles_databases[5-create_table4-True] ______________
+async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+=============================== warnings summary ===============================
+tests/test_tiles.py:7
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:7: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:23
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:43
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:43: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:50
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:50: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:66
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:66: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:82
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:82: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:119
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles.py:137
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles.py:137: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles_stack.py:4
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles_stack.py:4: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles_stack.py:15
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles_stack.py:15: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles_stack.py:44
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles_stack.py:44: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+tests/test_tiles_stack.py:58
+  /tmp/datasette-tiles-j1hj8wp4/tagged-source/tests/test_tiles_stack.py:58: PytestUnknownMarkWarning: Unknown pytest.mark.asyncio - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.asyncio
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tiles/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_tiles.py::test_detect_mtiles_databases[1--False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_tiles.py::test_detect_mtiles_databases[2-CREATE TABLE foo (id integer primary key)-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_tiles.py::test_detect_mtiles_databases[3-CREATE TABLE tiles (zoom_level integer, tile_column integer, tile_row integer, tile_data blob);-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_tiles.py::test_detect_mtiles_databases[4-CREATE TABLE tiles (zoom_level integer, tile_row integer, tile_data blob);-False] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+FAILED tests/test_tiles.py::test_detect_mtiles_databases[5-create_table4-True] - Failed: async def functions are not natively supported.
+You need to install a suitable plugin for your async framework, for example:
+  - anyio
+  - pytest-asyncio
+  - pytest-tornasync
+  - pytest-trio
+  - pytest-twisted
+ERROR tests/test_tiles.py::test_tile[/-/tiles/basemap/3/6/5.png-200] - Failed: 'test_tiles.py' requested an async fixture 'ds', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+ERROR tests/test_tiles.py::test_tile[/-/tiles/basemap/4/10/8.png-200] - AssertionError
+ERROR tests/test_tiles.py::test_tile[/-/tiles/basemap/8/6/5.png-404] - AssertionError
+ERROR tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/3/6/2.png-/-/tiles-tms/basemap/3/6/5.png] - AssertionError
+ERROR tests/test_tiles.py::test_tile_tms[/-/tiles/basemap/4/10/7.png-/-/tiles-tms/basemap/4/10/8.png] - AssertionError
+ERROR tests/test_tiles.py::test_tiles_index - AssertionError
+ERROR tests/test_tiles.py::test_tiles_explorer - AssertionError
+ERROR tests/test_tiles.py::test_tiles_explorer_no_javascript - AssertionError
+ERROR tests/test_tiles.py::test_database_and_column_action_menus[/:memory:-False] - AssertionError
+ERROR tests/test_tiles.py::test_database_and_column_action_menus[/basemap-True] - AssertionError
+ERROR tests/test_tiles.py::test_database_and_column_action_menus[/basemap/grids-False] - AssertionError
+ERROR tests/test_tiles.py::test_database_and_column_action_menus[/basemap/tiles-True] - AssertionError
+ERROR tests/test_tiles.py::test_tile_404s[/-/tiles/basemap/10/10/10.png] - AssertionError
+ERROR tests/test_tiles.py::test_tile_404s[/-/tiles-stack/10/10/10.png] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack_order - Failed: 'test_tiles_stack.py' requested an async fixture 'ds_tiles_stack', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/3/3/3.png-PNG] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/1/1.png-tms:world:2/1/1] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/2.png-tms:country:2/2/2] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/3/3.png-tms:city2:2/3/3] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack-tms/2/2/1.png-tms:city1:2/2/1] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/3/3/4.png-PNG] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/1/2.png-tms:world:2/1/1] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/1.png-tms:country:2/2/2] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/3/0.png-tms:city2:2/3/3] - AssertionError
+ERROR tests/test_tiles_stack.py::test_ds_tiles_stack[/-/tiles-stack/2/2/2.png-tms:city1:2/2/1] - AssertionError
+ERROR tests/test_tiles_stack.py::test_tiles_stack_order_setting - Failed: 'test_tiles_stack.py' requested an async fixture 'ds_tiles_stack_with_stack_order', with no plugin or hook that handled it. This is an error, as pytest does not natively support it.
+See: https://docs.pytest.org/en/stable/deprecations.html#sync-test-depending-on-async-fixture
+ERROR tests/test_tiles_stack.py::test_tiles_stack_explorer - AssertionError
+================== 5 failed, 12 warnings, 27 errors in 1.82s ===================

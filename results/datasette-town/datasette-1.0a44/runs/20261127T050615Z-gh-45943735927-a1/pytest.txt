@@ -1,0 +1,85 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-town @ file:///tmp/datasette-town-r5yqklyj/datasette_town-0.0.1a4.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-town @ file:///tmp/datasette-town-r5yqklyj/datasette_town-0.0.1a4.tar.gz
+Installed 55 packages in 12ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpkqMzCX/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1016-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'asyncio': '1.5.0', 'datasette': '1.0a44', 'anyio': '4.16.0', 'json-report': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-town-r5yqklyj/tagged-source
+configfile: pyproject.toml
+plugins: metadata-3.1.1, asyncio-1.5.0, datasette-1.0a44, anyio-4.16.0, json-report-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 60 items
+
+tests/test_api.py::test_create_query PASSED                              [  1%]
+tests/test_api.py::test_create_and_get_query PASSED                      [  3%]
+tests/test_api.py::test_update_query PASSED                              [  5%]
+tests/test_api.py::test_patch_query PASSED                               [  6%]
+tests/test_api.py::test_delete_query PASSED                              [  8%]
+tests/test_api.py::test_shares_crud PASSED                               [ 10%]
+tests/test_api.py::test_permission_denied_for_non_owner PASSED           [ 11%]
+tests/test_api.py::test_public_query_visible PASSED                      [ 13%]
+tests/test_migrations.py::test_migrations_create_tables PASSED           [ 15%]
+tests/test_pages.py::test_town_list_page PASSED                          [ 16%]
+tests/test_pages.py::test_new_query_page PASSED                          [ 18%]
+tests/test_pages.py::test_query_detail_page PASSED                       [ 20%]
+tests/test_pages.py::test_plugin_is_installed PASSED                     [ 21%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_view_own_query PASSED [ 23%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_edit_own_query PASSED [ 25%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_delete_own_query PASSED [ 26%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_list_shares PASSED [ 28%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_add_share PASSED [ 30%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_remove_share PASSED [ 31%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_can_update_share PASSED [ 33%]
+tests/test_permissions.py::TestOwnerPermissions::test_owner_detail_page_shows_is_owner PASSED [ 35%]
+tests/test_permissions.py::TestViewerSharePermissions::test_viewer_can_view_shared_query PASSED [ 36%]
+tests/test_permissions.py::TestViewerSharePermissions::test_viewer_cannot_edit_shared_query PASSED [ 38%]
+tests/test_permissions.py::TestViewerSharePermissions::test_viewer_cannot_delete_shared_query PASSED [ 40%]
+tests/test_permissions.py::TestViewerSharePermissions::test_viewer_cannot_list_shares PASSED [ 41%]
+tests/test_permissions.py::TestViewerSharePermissions::test_viewer_cannot_add_share PASSED [ 43%]
+tests/test_permissions.py::TestEditorSharePermissions::test_editor_can_view_shared_query PASSED [ 45%]
+tests/test_permissions.py::TestEditorSharePermissions::test_editor_can_edit_shared_query PASSED [ 46%]
+tests/test_permissions.py::TestEditorSharePermissions::test_editor_cannot_delete_shared_query PASSED [ 48%]
+tests/test_permissions.py::TestEditorSharePermissions::test_editor_cannot_manage_shares PASSED [ 50%]
+tests/test_permissions.py::TestPublicQueryAccess::test_public_query_viewable_by_other_user PASSED [ 51%]
+tests/test_permissions.py::TestPublicQueryAccess::test_public_query_not_editable_by_stranger PASSED [ 53%]
+tests/test_permissions.py::TestPublicQueryAccess::test_public_query_not_deletable_by_stranger PASSED [ 55%]
+tests/test_permissions.py::TestPublicQueryAccess::test_public_query_shares_not_manageable_by_stranger PASSED [ 56%]
+tests/test_permissions.py::TestPrivateQueryDenial::test_private_query_not_viewable_by_stranger PASSED [ 58%]
+tests/test_permissions.py::TestPrivateQueryDenial::test_private_query_not_editable_by_stranger PASSED [ 60%]
+tests/test_permissions.py::TestPrivateQueryDenial::test_private_query_not_deletable_by_stranger PASSED [ 61%]
+tests/test_permissions.py::TestPrivateQueryDenial::test_nonexistent_query_returns_404 PASSED [ 63%]
+tests/test_permissions.py::TestAnonymousAccess::test_anonymous_can_view_public_query PASSED [ 65%]
+tests/test_permissions.py::TestAnonymousAccess::test_anonymous_cannot_view_private_query PASSED [ 66%]
+tests/test_permissions.py::TestAnonymousAccess::test_anonymous_cannot_edit_public_query PASSED [ 68%]
+tests/test_permissions.py::TestAnonymousAccess::test_anonymous_cannot_delete_public_query PASSED [ 70%]
+tests/test_permissions.py::TestGlobalGate::test_no_access_blocks_town_list PASSED [ 71%]
+tests/test_permissions.py::TestGlobalGate::test_no_access_blocks_query_create PASSED [ 73%]
+tests/test_permissions.py::TestGlobalGate::test_access_without_create_blocks_new_query PASSED [ 75%]
+tests/test_permissions.py::TestGlobalGate::test_access_without_create_can_view_list PASSED [ 76%]
+tests/test_permissions.py::TestGlobalGate::test_no_access_blocks_query_view_via_also_requires PASSED [ 78%]
+tests/test_permissions.py::TestShareLifecycle::test_add_viewer_then_upgrade_to_editor PASSED [ 80%]
+tests/test_permissions.py::TestShareLifecycle::test_downgrade_editor_to_viewer PASSED [ 81%]
+tests/test_permissions.py::TestShareLifecycle::test_remove_share_revokes_access PASSED [ 83%]
+tests/test_permissions.py::TestShareLifecycle::test_multiple_shares_independent PASSED [ 85%]
+tests/test_permissions.py::TestPublicPrivateToggle::test_make_private_query_public PASSED [ 86%]
+tests/test_permissions.py::TestPublicPrivateToggle::test_make_public_query_private PASSED [ 88%]
+tests/test_permissions.py::TestPublicPrivateToggle::test_public_query_still_editable_by_owner_only PASSED [ 90%]
+tests/test_permissions.py::TestEdgeCases::test_owner_with_share_still_has_full_access PASSED [ 91%]
+tests/test_permissions.py::TestEdgeCases::test_share_with_nonexistent_actor PASSED [ 93%]
+tests/test_permissions.py::TestEdgeCases::test_multiple_queries_isolated_permissions PASSED [ 95%]
+tests/test_permissions.py::TestEdgeCases::test_delete_query_with_shares PASSED [ 96%]
+tests/test_permissions.py::TestEdgeCases::test_create_requires_authentication PASSED [ 98%]
+tests/test_town.py::test_plugin_is_installed PASSED                      [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-town/datasette-1.0a44/runs/20261127T050615Z-gh-45943735927-a1/.pytest-report.json
+============================== 60 passed in 2.44s ==============================

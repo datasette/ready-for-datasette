@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-tiddlywiki",
+    "version": "0.2",
+    "repository": "simonw/datasette-tiddlywiki",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/f3/69/4995333650fb8e6a8eaf904ef645e7853aa4c687e5b8275c414203fd7001/datasette-tiddlywiki-0.2.tar.gz",
+      "sha256": "d2e94bfb562697d71fcc074883ecd8ce611cec26c05f4f2593f0c04d60181c8b"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-tiddlywiki",
+      "ref": "0.2",
+      "git_sha": "f66861d34fa943a805364e01b1d9d9d476d06b1e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T050613Z-gh-45943735927-a1",
+    "started_at": "2026-11-27T05:06:13Z",
+    "completed_at": "2026-11-27T05:06:20Z",
+    "duration_seconds": 6.791,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-tiddlywiki @ file:///tmp/datasette-tiddlywiki-hr1bfcax/datasette-tiddlywiki-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-tiddlywiki/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_tiddlywiki.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-tiddlywiki/datasette-1.0a44/runs/20261127T050613Z-gh-45943735927-a1/pytest.txt"
+  }
+}
