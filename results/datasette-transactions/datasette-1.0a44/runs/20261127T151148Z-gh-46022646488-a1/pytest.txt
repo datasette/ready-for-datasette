@@ -1,0 +1,75 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-transactions @ file:///tmp/datasette-transactions-8p5vp6k2/datasette_transactions-0.1a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-transactions @ file:///tmp/datasette-transactions-8p5vp6k2/datasette_transactions-0.1a0.tar.gz
+Installed 43 packages in 31ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpOmubD6/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-transactions-8p5vp6k2/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 50 items
+
+tests/test_client.py::TestAsyncClient::test_begin_transaction PASSED     [  2%]
+tests/test_client.py::TestAsyncClient::test_execute_sql PASSED           [  4%]
+tests/test_client.py::TestAsyncClient::test_execute_with_params PASSED   [  6%]
+tests/test_client.py::TestAsyncClient::test_commit PASSED                [  8%]
+tests/test_client.py::TestAsyncClient::test_rollback PASSED              [ 10%]
+tests/test_client.py::TestAsyncClient::test_savepoint PASSED             [ 12%]
+tests/test_client.py::TestAsyncClient::test_release_savepoint PASSED     [ 14%]
+tests/test_client.py::TestAsyncClient::test_transaction_not_found PASSED [ 16%]
+tests/test_client.py::TestAsyncClient::test_database_not_found PASSED    [ 18%]
+tests/test_client.py::TestAsyncClient::test_savepoint_exists PASSED      [ 20%]
+tests/test_client.py::TestAsyncClient::test_sql_error PASSED             [ 22%]
+tests/test_client.py::TestAsyncTransactionContextManager::test_context_manager_commits_on_success PASSED [ 24%]
+tests/test_client.py::TestAsyncTransactionContextManager::test_context_manager_rollbacks_on_exception PASSED [ 26%]
+tests/test_client.py::TestAsyncTransactionContextManager::test_context_manager_savepoints PASSED [ 28%]
+tests/test_client.py::TestAsyncTransactionContextManager::test_transaction_id_accessible PASSED [ 30%]
+tests/test_client.py::TestSyncClientAPI::test_sync_client_has_same_methods PASSED [ 32%]
+tests/test_client.py::TestSyncClientAPI::test_sync_transaction_has_same_methods PASSED [ 34%]
+tests/test_client.py::TestSyncClientAPI::test_execute_result_dataclass PASSED [ 36%]
+tests/test_client.py::TestExceptions::test_transaction_error_base PASSED [ 38%]
+tests/test_client.py::TestExceptions::test_all_exceptions_inherit_from_base PASSED [ 40%]
+tests/test_client.py::TestExceptions::test_exceptions_can_be_caught_by_base PASSED [ 42%]
+tests/test_transactions.py::test_plugin_is_installed PASSED              [ 44%]
+tests/test_transactions.py::test_begin_route_exists PASSED               [ 46%]
+tests/test_transactions.py::test_transaction_state_creation PASSED       [ 48%]
+tests/test_transactions.py::test_transaction_manager_add_and_get PASSED  [ 50%]
+tests/test_transactions.py::test_transaction_manager_remove PASSED       [ 52%]
+tests/test_transactions.py::test_transaction_manager_count_for_database PASSED [ 54%]
+tests/test_transactions.py::test_begin_transaction_requires_post PASSED  [ 56%]
+tests/test_transactions.py::test_begin_transaction_database_not_found PASSED [ 58%]
+tests/test_transactions.py::test_begin_transaction_requires_execute_sql_permission PASSED [ 60%]
+tests/test_transactions.py::test_begin_transaction_success PASSED        [ 62%]
+tests/test_transactions.py::test_begin_transaction_max_concurrent PASSED [ 64%]
+tests/test_transactions.py::test_execute_sql_transaction_not_found PASSED [ 66%]
+tests/test_transactions.py::test_execute_sql_select PASSED               [ 68%]
+tests/test_transactions.py::test_execute_sql_with_params PASSED          [ 70%]
+tests/test_transactions.py::test_execute_sql_insert PASSED               [ 72%]
+tests/test_transactions.py::test_execute_sql_unauthorized_table_read PASSED [ 74%]
+tests/test_transactions.py::test_execute_sql_unauthorized_table_write PASSED [ 76%]
+tests/test_transactions.py::test_create_savepoint PASSED                 [ 78%]
+tests/test_transactions.py::test_savepoint_uniqueness PASSED             [ 80%]
+tests/test_transactions.py::test_release_savepoint PASSED                [ 82%]
+tests/test_transactions.py::test_release_nonexistent_savepoint PASSED    [ 84%]
+tests/test_transactions.py::test_rollback_to_savepoint PASSED            [ 86%]
+tests/test_transactions.py::test_commit_transaction PASSED               [ 88%]
+tests/test_transactions.py::test_commit_removes_transaction PASSED       [ 90%]
+tests/test_transactions.py::test_commit_transaction_not_found PASSED     [ 92%]
+tests/test_transactions.py::test_rollback_transaction PASSED             [ 94%]
+tests/test_transactions.py::test_rollback_removes_transaction PASSED     [ 96%]
+tests/test_transactions.py::test_transaction_timeout PASSED              [ 98%]
+tests/test_transactions.py::test_transaction_no_timeout PASSED           [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-transactions/datasette-1.0a44/runs/20261127T151148Z-gh-46022646488-a1/.pytest-report.json
+============================== 50 passed in 1.55s ==============================

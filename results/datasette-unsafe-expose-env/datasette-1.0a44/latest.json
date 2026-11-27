@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-unsafe-expose-env",
+    "version": "0.1.1",
+    "repository": "simonw/datasette-unsafe-expose-env",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/23/fc/cc5342b6ab32be4c1b2d005535b465437d8f22c7ae07ce0eb671a585c8e4/datasette-unsafe-expose-env-0.1.1.tar.gz",
+      "sha256": "32a90e47c65b1536887e631ea07ebbccba363ddd21bbc841ecd284039c65c488"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-unsafe-expose-env",
+      "ref": "0.1.1",
+      "git_sha": "5a4569aed470774db73dce58c0648b8ada21158d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T151148Z-gh-46022646488-a1",
+    "started_at": "2026-11-27T15:11:48Z",
+    "completed_at": "2026-11-27T15:11:55Z",
+    "duration_seconds": 6.849,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-unsafe-expose-env @ file:///tmp/datasette-unsafe-expose-env-xout5_9p/datasette-unsafe-expose-env-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-unsafe-expose-env/datasette-1.0a44/runs/20261127T151148Z-gh-46022646488-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 3,
+    "passed": 0,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 4
+  },
+  "failing_tests": [
+    "tests/test_unsafe_expose_env.py::test_custom_redaction",
+    "tests/test_unsafe_expose_env.py::test_default_redaction",
+    "tests/test_unsafe_expose_env.py::test_env"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-unsafe-expose-env/datasette-1.0a44/runs/20261127T151148Z-gh-46022646488-a1/pytest.txt"
+  }
+}

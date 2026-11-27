@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-unsafe-actor-debug",
+    "version": "0.2",
+    "repository": "datasette/datasette-unsafe-actor-debug",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/36/21/b421c76f35e6bae959f85898fcf142326c88a92e6ddc5982ce97e9a5bc7f/datasette-unsafe-actor-debug-0.2.tar.gz",
+      "sha256": "ae7e44c0ea46f0ddf770347754418682c302068154a95b564ffef584048a265a"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-unsafe-actor-debug",
+      "ref": "0.2",
+      "git_sha": "0585ca559a3486c396c594a55ae1d9cdb98ed944"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T151146Z-gh-46022646488-a1",
+    "started_at": "2026-11-27T15:11:46Z",
+    "completed_at": "2026-11-27T15:11:52Z",
+    "duration_seconds": 6.118,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-unsafe-actor-debug @ file:///tmp/datasette-unsafe-actor-debug-3_7sacju/datasette-unsafe-actor-debug-0.2.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "datasette-test",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-unsafe-actor-debug/datasette-1.0a44/runs/20261127T151146Z-gh-46022646488-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 1,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_unsafe_actor_debug.py::test_unsafe_actor_debug[True]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "datasette-test"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-unsafe-actor-debug/datasette-1.0a44/runs/20261127T151146Z-gh-46022646488-a1/pytest.txt"
+  }
+}

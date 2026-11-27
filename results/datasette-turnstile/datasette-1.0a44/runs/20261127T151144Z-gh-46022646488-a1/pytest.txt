@@ -1,0 +1,65 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-turnstile @ file:///tmp/datasette-turnstile-_snq953f/datasette_turnstile-0.1a3.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-turnstile @ file:///tmp/datasette-turnstile-_snq953f/datasette_turnstile-0.1a3.tar.gz
+Installed 44 packages in 26ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbAXgSN/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'httpx': '0.36.2', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-turnstile-_snq953f/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, httpx-0.36.2, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 40 items
+
+tests/test_middleware.py::test_unprotected_path_passes_through PASSED    [  2%]
+tests/test_middleware.py::test_protected_path_redirects_to_challenge PASSED [  5%]
+tests/test_middleware.py::test_verified_cookie_allows_access PASSED      [  7%]
+tests/test_middleware.py::test_invalid_cookie_redirects PASSED           [ 10%]
+tests/test_middleware.py::test_json_excluded_passes_through PASSED       [ 12%]
+tests/test_middleware.py::test_preserves_query_string_in_next PASSED     [ 15%]
+tests/test_middleware.py::test_no_config_passes_through PASSED           [ 17%]
+tests/test_middleware.py::test_empty_protected_paths_passes_through PASSED [ 20%]
+tests/test_middleware.py::test_json_accept_header_returns_403 PASSED     [ 22%]
+tests/test_middleware.py::test_query_string_pattern_matching PASSED      [ 25%]
+tests/test_middleware.py::test_internal_client_requests_bypass_protection PASSED [ 27%]
+tests/test_turnstile.py::test_plugin_is_installed PASSED                 [ 30%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_exact_match PASSED     [ 32%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_no_match PASSED        [ 35%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_wildcard_single_segment PASSED [ 37%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_wildcard_no_match_root PASSED [ 40%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_multiple_patterns PASSED [ 42%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_nested_path_match PASSED [ 45%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_empty_patterns PASSED  [ 47%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_prefix_pattern PASSED  [ 50%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_query_string_with_multiple_ampersands PASSED [ 52%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_query_string_exact_path_any_query PASSED [ 55%]
+tests/test_utils.py::TestUrlMatchesPatterns::test_path_only_pattern_ignores_query_string PASSED [ 57%]
+tests/test_utils.py::TestIsExcluded::test_json_exclusion PASSED          [ 60%]
+tests/test_utils.py::TestIsExcluded::test_json_not_excluded PASSED       [ 62%]
+tests/test_utils.py::TestIsExcluded::test_empty_exclusions PASSED        [ 65%]
+tests/test_utils.py::TestIsExcluded::test_multiple_exclusions PASSED     [ 67%]
+tests/test_utils.py::TestIsExcluded::test_path_suffix_pattern PASSED     [ 70%]
+tests/test_verification.py::test_successful_verification PASSED          [ 72%]
+tests/test_verification.py::test_failed_verification PASSED              [ 75%]
+tests/test_verification.py::test_verification_with_remote_ip PASSED      [ 77%]
+tests/test_verification.py::test_expired_token PASSED                    [ 80%]
+tests/test_verification.py::test_network_error PASSED                    [ 82%]
+tests/test_views.py::test_challenge_page_renders PASSED                  [ 85%]
+tests/test_views.py::test_challenge_page_shows_error PASSED              [ 87%]
+tests/test_views.py::test_challenge_page_missing_site_key PASSED         [ 90%]
+tests/test_views.py::test_verify_success PASSED                          [ 92%]
+tests/test_views.py::test_verify_failure PASSED                          [ 95%]
+tests/test_views.py::test_verify_missing_token PASSED                    [ 97%]
+tests/test_views.py::test_verify_method_not_allowed PASSED               [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-turnstile/datasette-1.0a44/runs/20261127T151144Z-gh-46022646488-a1/.pytest-report.json
+============================== 40 passed in 0.45s ==============================

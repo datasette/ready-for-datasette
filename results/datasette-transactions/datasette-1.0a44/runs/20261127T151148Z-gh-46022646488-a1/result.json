@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-transactions",
+    "version": "0.1a0",
+    "repository": "datasette/datasette-transactions",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/e5/04/114faa37c67a497d76fce140f97cb91928da9dc98f5010cebc22897bd564/datasette_transactions-0.1a0.tar.gz",
+      "sha256": "b94f948cf16139595ca9fd484846829273c186e80e875d5d8e06e3d1aa1709b9"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-transactions",
+      "ref": "0.1a0",
+      "git_sha": "370a8507ac632d3825ae16c31c55ae3ccdda47d7"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T151148Z-gh-46022646488-a1",
+    "started_at": "2026-11-27T15:11:48Z",
+    "completed_at": "2026-11-27T15:11:55Z",
+    "duration_seconds": 6.732,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-transactions @ file:///tmp/datasette-transactions-8p5vp6k2/datasette_transactions-0.1a0.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-transactions/datasette-1.0a44/runs/20261127T151148Z-gh-46022646488-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 50,
+    "passed": 50,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 2,
+    "release_tag": 2
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-transactions/datasette-1.0a44/runs/20261127T151148Z-gh-46022646488-a1/pytest.txt"
+  }
+}

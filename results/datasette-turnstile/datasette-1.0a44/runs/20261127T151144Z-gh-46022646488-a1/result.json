@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-turnstile",
+    "version": "0.1a3",
+    "repository": "simonw/datasette-turnstile",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/80/fd/6e7d6138b00541225b2c6323e94f19d823c023b5491d98ef86bd58530863/datasette_turnstile-0.1a3.tar.gz",
+      "sha256": "f36532fd591bbfca139e93bc65df41b64ba0e635ecd8f9a95802ada9e51a05b9"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-turnstile",
+      "ref": "0.1a3",
+      "git_sha": "8a31b566ed3104a2224212524351e7c89b64b63e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261127T151144Z-gh-46022646488-a1",
+    "started_at": "2026-11-27T15:11:44Z",
+    "completed_at": "2026-11-27T15:11:49Z",
+    "duration_seconds": 4.651,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-turnstile @ file:///tmp/datasette-turnstile-_snq953f/datasette_turnstile-0.1a3.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-httpx>=0.36.0",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-turnstile/datasette-1.0a44/runs/20261127T151144Z-gh-46022646488-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 40,
+    "passed": 40,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-httpx>=0.36.0"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 5,
+    "release_tag": 5
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-turnstile/datasette-1.0a44/runs/20261127T151144Z-gh-46022646488-a1/pytest.txt"
+  }
+}
