@@ -336,10 +336,19 @@
     "name": "datasette-charts",
     "github_repo": "datasette/datasette-charts",
     "metadata_file": "pyproject.toml",
-    "metadata_sha256": "335c0d6077e75d6d791df23bf5b3397af6687bf309c5b44934a324eded608e23",
-    "metadata_etag": "\"2d9512dfbb7960aedd23a4858e47c83deb7afab7be3415f80dbba0a8bb7c9c41\"",
-    "latest_version": "0.3a0",
-    "latest_version_published_at": "2026-11-25T18:17:59Z"
+    "metadata_sha256": "86d51d5e9183f57d0dd6e6ae1ddf132f06c47b50ba1a148fd66764646a8a569e",
+    "metadata_etag": "\"fa1976da77d444a93de2c5da914a12bc52c0b835eff0db40489ac8af5d47c7fb\"",
+    "latest_version": "0.5a0",
+    "latest_version_published_at": "2026-11-28T02:52:27Z"
+  },
+  {
+    "name": "datasette-charts-pie",
+    "github_repo": "datasette/datasette-charts-pie",
+    "metadata_file": "pyproject.toml",
+    "metadata_sha256": "03eb6481f9c1b032574a3b3b6b04532152e1af1e6f87ba9c3e0b0516afd507d6",
+    "metadata_etag": "\"fa85084ffe02770bc0f3e6f7cec154b0eac1c83838a60801f9799b84324eb61c\"",
+    "latest_version": "0.1a0",
+    "latest_version_published_at": "2026-11-28T06:29:19Z"
   },
   {
     "name": "datasette-chatgpt-plugin",
