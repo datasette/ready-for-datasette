@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-write-ui",
+    "version": "0.0.1a14",
+    "repository": "datasette/datasette-write-ui",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/3e/73/755fedfd41836008bb3d6337d919a387453a0a38fb92925dad49b538b197/datasette_write_ui-0.0.1a14.tar.gz",
+      "sha256": "1262640194248ddc28af6f00acb53bcd846ab670d84f4b1e6b9c8133f2e04563"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-write-ui",
+      "ref": "0.0.1a14",
+      "git_sha": "03509590d6162bdbf030ceec950c271611a31c0e"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T165614Z-gh-46167752230-a1",
+    "started_at": "2026-11-28T16:56:14Z",
+    "completed_at": "2026-11-28T16:56:21Z",
+    "duration_seconds": 6.984,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-write-ui[test] @ file:///tmp/datasette-write-ui-r8n9i74r/datasette_write_ui-0.0.1a14.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-write-ui/datasette-1.0a44/runs/20261128T165614Z-gh-46167752230-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 6,
+    "passed": 4,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_datasette_write_ui.py::test_insert_row_details_route",
+    "tests/test_datasette_write_ui.py::test_update_row_details_route"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "project.optional-dependencies.test",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-write-ui/datasette-1.0a44/runs/20261128T165614Z-gh-46167752230-a1/pytest.txt"
+  }
+}

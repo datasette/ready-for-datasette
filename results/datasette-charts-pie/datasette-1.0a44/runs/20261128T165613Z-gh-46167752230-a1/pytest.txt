@@ -1,0 +1,129 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-charts-pie @ file:///tmp/datasette-charts-pie-sgva8ez4/datasette_charts_pie-0.1a0.tar.gz
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-charts-pie @ file:///tmp/datasette-charts-pie-sgva8ez4/datasette_charts_pie-0.1a0.tar.gz
+Installed 41 packages in 29ms
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpC2q7nv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-charts-pie-sgva8ez4/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 104 items
+
+tests/test_arcs.py::test_angles_add_up_to_the_sweep PASSED               [  0%]
+tests/test_arcs.py::test_values_not_above_zero_get_no_angle PASSED       [  1%]
+tests/test_arcs.py::test_single_slice_is_a_full_circle PASSED            [  2%]
+tests/test_arcs.py::test_half_sweep PASSED                               [  3%]
+tests/test_arcs.py::test_share_text PASSED                               [  4%]
+tests/test_arcs.py::test_polar_runs_clockwise_from_twelve PASSED         [  5%]
+tests/test_arcs.py::test_label_thresholds PASSED                         [  6%]
+tests/test_arcs.py::test_outside_label_has_a_leader_on_its_side PASSED   [  7%]
+tests/test_arcs.py::test_outside_labels_do_not_overlap PASSED            [  8%]
+tests/test_arcs.py::test_a_wide_label_goes_outside PASSED                [  9%]
+tests/test_arcs.py::test_single_slice_label_in_the_middle PASSED         [ 10%]
+tests/test_arcs.py::test_donut_labels_on_the_ring PASSED                 [ 11%]
+tests/test_arcs.py::test_layout_legend_right_from_520 PASSED             [ 12%]
+tests/test_arcs.py::test_layout_thumbnail PASSED                         [ 13%]
+tests/test_arcs.py::test_layout_half_sweep PASSED                        [ 14%]
+tests/test_arcs.py::test_nest_groups_runs_of_parents PASSED              [ 15%]
+tests/test_arcs.py::test_sunburst_children_fill_their_parent PASSED      [ 16%]
+tests/test_arcs.py::test_tints_fade_by_rank_with_other_palest PASSED     [ 17%]
+tests/test_arcs.py::test_radial_label PASSED                             [ 18%]
+tests/test_arcs.py::test_rose_radius PASSED                              [ 19%]
+tests/test_arcs.py::test_ring_values PASSED                              [ 20%]
+tests/test_arcs.py::test_outside_label_anchors PASSED                    [ 21%]
+tests/test_arcs.py::test_rose_layout PASSED                              [ 22%]
+tests/test_arcs.py::test_cycle_steps PASSED                              [ 23%]
+tests/test_charts_pie.py::test_plugin_is_installed PASSED                [ 24%]
+tests/test_charts_pie.py::test_types_listed PASSED                       [ 25%]
+tests/test_charts_pie.py::test_renderer_is_served PASSED                 [ 25%]
+tests/test_charts_pie.py::test_count_rows PASSED                         [ 26%]
+tests/test_charts_pie.py::test_sum_ties_broken_by_key PASSED             [ 27%]
+tests/test_charts_pie.py::test_count_of_a_column_title PASSED            [ 28%]
+tests/test_charts_pie.py::test_sort[key-expected0] PASSED                [ 29%]
+tests/test_charts_pie.py::test_sort[-key-expected1] PASSED               [ 30%]
+tests/test_charts_pie.py::test_sort[-value-expected2] PASSED             [ 31%]
+tests/test_charts_pie.py::test_sort[value-expected3] PASSED              [ 32%]
+tests/test_charts_pie.py::test_other_and_null_category PASSED            [ 33%]
+tests/test_charts_pie.py::test_other_false_is_ignored PASSED             [ 34%]
+tests/test_charts_pie.py::test_limit_clamped_to_8[9] PASSED              [ 35%]
+tests/test_charts_pie.py::test_limit_clamped_to_8[10] PASSED             [ 36%]
+tests/test_charts_pie.py::test_limit_clamped_to_8[100] PASSED            [ 37%]
+tests/test_charts_pie.py::test_other_largest_still_last PASSED           [ 38%]
+tests/test_charts_pie.py::test_foreign_key_label PASSED                  [ 39%]
+tests/test_charts_pie.py::test_negative_count PASSED                     [ 40%]
+tests/test_charts_pie.py::test_all_negative_still_reports_count PASSED   [ 41%]
+tests/test_charts_pie.py::test_no_rows PASSED                            [ 42%]
+tests/test_charts_pie.py::test_avg_is_rejected PASSED                    [ 43%]
+tests/test_charts_pie.py::test_donut_option_on_a_pie_is_rejected PASSED  [ 44%]
+tests/test_charts_pie.py::test_text_annotation_is_valid[pie] PASSED      [ 45%]
+tests/test_charts_pie.py::test_text_annotation_is_valid[donut] PASSED    [ 46%]
+tests/test_charts_pie.py::test_line_annotation_is_rejected[pie] PASSED   [ 47%]
+tests/test_charts_pie.py::test_line_annotation_is_rejected[donut] PASSED [ 48%]
+tests/test_charts_pie.py::test_pie_suggested_for_four_values PASSED      [ 49%]
+tests/test_charts_pie.py::test_pie_ranks_below_bar_of_same_column PASSED [ 50%]
+tests/test_charts_pie.py::test_at_most_two_pies_best_first PASSED        [ 50%]
+tests/test_charts_pie.py::test_no_pie_for_too_many_values PASSED         [ 51%]
+tests/test_charts_pie.py::test_donut_never_suggested PASSED              [ 52%]
+tests/test_charts_pie.py::test_suggest_false PASSED                      [ 53%]
+tests/test_rose.py::test_rose_listed PASSED                              [ 54%]
+tests/test_rose.py::test_each_cycle_and_kind[month-at_text] PASSED       [ 55%]
+tests/test_rose.py::test_each_cycle_and_kind[month-on_date] PASSED       [ 56%]
+tests/test_rose.py::test_each_cycle_and_kind[month-seen_at] PASSED       [ 57%]
+tests/test_rose.py::test_each_cycle_and_kind[month-ms_time] PASSED       [ 58%]
+tests/test_rose.py::test_each_cycle_and_kind[weekday-at_text] PASSED     [ 59%]
+tests/test_rose.py::test_each_cycle_and_kind[weekday-on_date] PASSED     [ 60%]
+tests/test_rose.py::test_each_cycle_and_kind[weekday-seen_at] PASSED     [ 61%]
+tests/test_rose.py::test_each_cycle_and_kind[weekday-ms_time] PASSED     [ 62%]
+tests/test_rose.py::test_each_cycle_and_kind[hour-at_text] PASSED        [ 63%]
+tests/test_rose.py::test_each_cycle_and_kind[hour-on_date] PASSED        [ 64%]
+tests/test_rose.py::test_each_cycle_and_kind[hour-seen_at] PASSED        [ 65%]
+tests/test_rose.py::test_each_cycle_and_kind[hour-ms_time] PASSED        [ 66%]
+tests/test_rose.py::test_monday_is_zero PASSED                           [ 67%]
+tests/test_rose.py::test_default_cycle_title_and_meta PASSED             [ 68%]
+tests/test_rose.py::test_aggregates[sum-Total temp by hour of the day (seen_at)] PASSED [ 69%]
+tests/test_rose.py::test_aggregates[avg-Average temp by hour of the day (seen_at)] PASSED [ 70%]
+tests/test_rose.py::test_aggregates[min-Minimum temp by hour of the day (seen_at)] PASSED [ 71%]
+tests/test_rose.py::test_aggregates[max-Maximum temp by hour of the day (seen_at)] PASSED [ 72%]
+tests/test_rose.py::test_aggregates[count_distinct-Distinct temp by hour of the day (seen_at)] PASSED [ 73%]
+tests/test_rose.py::test_aggregates[count-Count of temp by hour of the day (seen_at)] PASSED [ 74%]
+tests/test_rose.py::test_negative_values_come_back PASSED                [ 75%]
+tests/test_rose.py::test_missing_steps_are_not_rows PASSED               [ 75%]
+tests/test_rose.py::test_compile_errors[note-month-note is not a date or time column] PASSED [ 76%]
+tests/test_rose.py::test_compile_errors[year-month-A column of years has no months, weekdays or hours] PASSED [ 77%]
+tests/test_rose.py::test_compile_errors[year-hour-A column of years has no months, weekdays or hours] PASSED [ 78%]
+tests/test_rose.py::test_compile_errors[on_date-hour-on_date holds dates with no time of day] PASSED [ 79%]
+tests/test_rose.py::test_unknown_cycle_is_rejected PASSED                [ 80%]
+tests/test_rose.py::test_annotations PASSED                              [ 81%]
+tests/test_rose.py::test_rose_suggested_for_span[span_3_years-month-Rows for each month of the year, across 3 years of at] PASSED [ 82%]
+tests/test_rose.py::test_rose_suggested_for_span[span_3_months-weekday-Rows for each day of the week, across 13 weeks of at] PASSED [ 83%]
+tests/test_rose.py::test_rose_suggested_for_span[span_10_days-hour-Rows for each hour of the day, across 10 days of at] PASSED [ 84%]
+tests/test_rose.py::test_no_rose_for_short_spans[span_10_dates] PASSED   [ 85%]
+tests/test_rose.py::test_no_rose_for_short_spans[span_6_days] PASSED     [ 86%]
+tests/test_rose.py::test_at_most_two_roses_and_none_for_years PASSED     [ 87%]
+tests/test_rose.py::test_suggest_false PASSED                            [ 88%]
+tests/test_sunburst.py::test_sunburst_listed PASSED                      [ 89%]
+tests/test_sunburst.py::test_children_ranked_within_each_parent PASSED   [ 90%]
+tests/test_sunburst.py::test_default_limits_and_null_parent PASSED       [ 91%]
+tests/test_sunburst.py::test_limits_clamped_to_8[9] PASSED               [ 92%]
+tests/test_sunburst.py::test_limits_clamped_to_8[50] PASSED              [ 93%]
+tests/test_sunburst.py::test_sum_and_foreign_key_labels PASSED           [ 94%]
+tests/test_sunburst.py::test_child_foreign_key_label PASSED              [ 95%]
+tests/test_sunburst.py::test_negative_cells_left_out PASSED              [ 96%]
+tests/test_sunburst.py::test_same_column_twice_is_an_error PASSED        [ 97%]
+tests/test_sunburst.py::test_avg_is_rejected PASSED                      [ 98%]
+tests/test_sunburst.py::test_annotations PASSED                          [ 99%]
+tests/test_sunburst.py::test_never_suggested PASSED                      [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-charts-pie/datasette-1.0a44/runs/20261128T165613Z-gh-46167752230-a1/.pytest-report.json
+============================= 104 passed in 4.35s ==============================

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-x-forwarded-host",
+    "version": "0.1",
+    "repository": "simonw/datasette-x-forwarded-host",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/e9/b7/b3f67732b39e858bfc778498820ca646851410e316ede0c1179df17c53a9/datasette-x-forwarded-host-0.1.tar.gz",
+      "sha256": "66a516c88be7dcf8816a1140272ec234b4fff8825247de0cc3b9c22e2c6404e6"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-x-forwarded-host",
+      "ref": "0.1",
+      "git_sha": "e17cfa41485be80ef9593aef9d342450b2c9f2a2"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T165612Z-gh-46167752230-a1",
+    "started_at": "2026-11-28T16:56:12Z",
+    "completed_at": "2026-11-28T16:56:17Z",
+    "duration_seconds": 5.573,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-x-forwarded-host @ file:///tmp/datasette-x-forwarded-host-jwu8h8ap/datasette-x-forwarded-host-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-x-forwarded-host/datasette-1.0a44/runs/20261128T165612Z-gh-46167752230-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 2,
+    "passed": 0,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [
+    "tests/test_x_forwarded_host.py::test_x_forwarded_host[None]",
+    "tests/test_x_forwarded_host.py::test_x_forwarded_host[blah.dev]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-x-forwarded-host/datasette-1.0a44/runs/20261128T165612Z-gh-46167752230-a1/pytest.txt"
+  }
+}

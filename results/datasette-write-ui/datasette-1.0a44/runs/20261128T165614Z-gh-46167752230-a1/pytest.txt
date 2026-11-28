@@ -1,0 +1,223 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-write-ui @ file:///tmp/datasette-write-ui-r8n9i74r/datasette_write_ui-0.0.1a14.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-write-ui @ file:///tmp/datasette-write-ui-r8n9i74r/datasette_write_ui-0.0.1a14.tar.gz
+Installed 40 packages in 27ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/A_Zm9p41tvsjuNX2/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpE65NFm/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-write-ui-r8n9i74r/tagged-source
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 6 items
+
+tests/test_datasette_write_ui.py::test_plugin_is_installed PASSED        [ 16%]
+tests/test_datasette_write_ui.py::test_permissions PASSED                [ 33%]
+tests/test_datasette_write_ui.py::test_insert_row_details_route FAILED   [ 50%]
+tests/test_datasette_write_ui.py::test_update_row_details_route FAILED   [ 66%]
+tests/test_datasette_write_ui.py::test_base_url[None] PASSED             [ 83%]
+tests/test_datasette_write_ui.py::test_base_url[/abc/] PASSED            [100%]
+
+=================================== FAILURES ===================================
+________________________ test_insert_row_details_route _________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_insert_row_details_route0/students.db'
+
+    @pytest.mark.asyncio
+    async def test_insert_row_details_route(students_db_path):
+        datasette = Datasette([students_db_path])
+        datasette.root_enabled = True
+    
+        response = await datasette.client.get(
+            "/-/datasette-write-ui/insert-row-details?db=students&table=students",
+        )
+        assert response.status_code == 403
+    
+        response = await datasette.client.get(
+            "/-/datasette-write-ui/insert-row-details?db=students&table=students",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+        assert response.status_code == 200
+>       assert response.json() == {
+            "fields": [
+                {"name": "name", "affinity": "text"},
+                {"name": "age", "affinity": "int"},
+                {"name": "_weird (column)_", "affinity": "int"},
+            ]
+        }
+E       AssertionError: assert {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '[weird (column)]', 'affinity': 'int'}]} == {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '_weird (column)_', 'affinity': 'int'}]}
+E         
+E         Differing items:
+E         {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '[weird (column)]', 'affinity': 'int'}]} != {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '_weird (column)_', 'affinity': 'int'}]}
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E           {
+E               'fields': [
+E                   {
+E                       'name': 'name',
+E                       'affinity': 'text',
+E                   },
+E                   {
+E                       'name': 'age',
+E                       'affinity': 'int',
+E                   },
+E                   {
+E         -             'name': '_weird (column)_',
+E         ?                      ^              ^
+E         +             'name': '[weird (column)]',
+E         ?                      ^              ^
+E                       'affinity': 'int',
+E                   },
+E               ],
+E           }
+
+tests/test_datasette_write_ui.py:118: AssertionError
+________________________ test_update_row_details_route _________________________
+
+students_db_path = '/tmp/pytest-of-runner/pytest-0/test_update_row_details_route0/students.db'
+
+    @pytest.mark.asyncio
+    async def test_update_row_details_route(students_db_path):
+        datasette = Datasette([students_db_path])
+        datasette.root_enabled = True
+    
+        response = await datasette.client.get(
+            "/-/datasette-write-ui/edit-row-details?db=students&table=students",
+        )
+        assert response.status_code == 403
+    
+        response = await datasette.client.get(
+            "/-/datasette-write-ui/edit-row-details?db=students&table=students&primaryKeys=1",
+            cookies={"ds_actor": datasette.sign(actor_root, "actor")},
+        )
+        assert response.status_code == 200
+>       assert response.json() == {
+            "fields": [
+                {
+                    "key": "name",
+                    "value": "alex",
+                    "type": "str",
+                    "pk": False,
+                    "editable": True,
+                },
+                {"key": "age", "value": 10, "type": "int", "pk": False, "editable": True},
+                {
+                    "key": "_weird (column)_",
+                    "value": None,
+                    "type": "NoneType",
+                    "pk": False,
+                    "editable": True,
+                },
+            ]
+        }
+E       AssertionError: assert {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, 'editable': True}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, 'editable': True}, {'key': '[weird (column)]', 'value': None, 'type': 'NoneType', 'pk': False, 'editable': True}]} == {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, 'editable': True}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, 'editable': True}, {'key': '_weird (column)_', 'value': None, 'type': 'NoneType', 'pk': False, 'editable': True}]}
+E         
+E         Differing items:
+E         {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, ...}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, ...}, {'key': '[weird (column)]', 'value': None, 'type': 'NoneType', 'pk': False, ...}]} != {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, ...}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, ...}, {'key': '_weird (column)_', 'value': None, 'type': 'NoneType', 'pk': False, ...}]}
+E         
+E         Full diff: (-: missing in left side, +: extra in left side)
+E           {
+E               'fields': [
+E                   {
+E                       'key': 'name',
+E                       'value': 'alex',
+E                       'type': 'str',
+E                       'pk': False,
+E                       'editable': True,
+E                   },
+E                   {
+E                       'key': 'age',
+E                       'value': 10,
+E                       'type': 'int',
+E                       'pk': False,
+E                       'editable': True,
+E                   },
+E                   {
+E         -             'key': '_weird (column)_',
+E         ?                     ^              ^
+E         +             'key': '[weird (column)]',
+E         ?                     ^              ^
+E                       'value': None,
+E                       'type': 'NoneType',
+E                       'pk': False,
+E                       'editable': True,
+E                   },
+E               ],
+E           }
+
+tests/test_datasette_write_ui.py:142: AssertionError
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-write-ui/datasette-1.0a44/runs/20261128T165614Z-gh-46167752230-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_datasette_write_ui.py::test_insert_row_details_route - AssertionError: assert {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '[weird (column)]', 'affinity': 'int'}]} == {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '_weird (column)_', 'affinity': 'int'}]}
+  
+  Differing items:
+  {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '[weird (column)]', 'affinity': 'int'}]} != {'fields': [{'name': 'name', 'affinity': 'text'}, {'name': 'age', 'affinity': 'int'}, {'name': '_weird (column)_', 'affinity': 'int'}]}
+  
+  Full diff: (-: missing in left side, +: extra in left side)
+    {
+        'fields': [
+            {
+                'name': 'name',
+                'affinity': 'text',
+            },
+            {
+                'name': 'age',
+                'affinity': 'int',
+            },
+            {
+  -             'name': '_weird (column)_',
+  ?                      ^              ^
+  +             'name': '[weird (column)]',
+  ?                      ^              ^
+                'affinity': 'int',
+            },
+        ],
+    }
+FAILED tests/test_datasette_write_ui.py::test_update_row_details_route - AssertionError: assert {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, 'editable': True}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, 'editable': True}, {'key': '[weird (column)]', 'value': None, 'type': 'NoneType', 'pk': False, 'editable': True}]} == {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, 'editable': True}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, 'editable': True}, {'key': '_weird (column)_', 'value': None, 'type': 'NoneType', 'pk': False, 'editable': True}]}
+  
+  Differing items:
+  {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, ...}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, ...}, {'key': '[weird (column)]', 'value': None, 'type': 'NoneType', 'pk': False, ...}]} != {'fields': [{'key': 'name', 'value': 'alex', 'type': 'str', 'pk': False, ...}, {'key': 'age', 'value': 10, 'type': 'int', 'pk': False, ...}, {'key': '_weird (column)_', 'value': None, 'type': 'NoneType', 'pk': False, ...}]}
+  
+  Full diff: (-: missing in left side, +: extra in left side)
+    {
+        'fields': [
+            {
+                'key': 'name',
+                'value': 'alex',
+                'type': 'str',
+                'pk': False,
+                'editable': True,
+            },
+            {
+                'key': 'age',
+                'value': 10,
+                'type': 'int',
+                'pk': False,
+                'editable': True,
+            },
+            {
+  -             'key': '_weird (column)_',
+  ?                     ^              ^
+  +             'key': '[weird (column)]',
+  ?                     ^              ^
+                'value': None,
+                'type': 'NoneType',
+                'pk': False,
+                'editable': True,
+            },
+        ],
+    }
+========================= 2 failed, 4 passed in 0.97s ==========================

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-yaml",
+    "version": "0.1.1",
+    "repository": "simonw/datasette-yaml",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a6/0c/f33b327dd9764c134200cfa13e8e925619c5f165d75f82736e01e2addbf7/datasette-yaml-0.1.1.tar.gz",
+      "sha256": "cb42193ddf5d7df2a6e339f4f0900cd9b770b68b598fcb9aa25011a39ecb240a"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-yaml",
+      "ref": "0.1.1",
+      "git_sha": "c2f00b5d398bb93ec66fbc52720097e4d1a1eddb"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T165610Z-gh-46167752230-a1",
+    "started_at": "2026-11-28T16:56:10Z",
+    "completed_at": "2026-11-28T16:56:17Z",
+    "duration_seconds": 6.326,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 2,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-yaml @ file:///tmp/datasette-yaml-4h3oby2x/datasette-yaml-0.1.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-yaml/datasette-1.0a44/runs/20261128T165610Z-gh-46167752230-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "collection_error",
+  "counts": {
+    "collected": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [
+    "tests/test_yaml.py"
+  ],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-yaml/datasette-1.0a44/runs/20261128T165610Z-gh-46167752230-a1/pytest.txt"
+  }
+}

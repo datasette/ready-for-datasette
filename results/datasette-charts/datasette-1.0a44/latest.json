@@ -3,18 +3,18 @@
   "runner_version": 2,
   "package": {
     "name": "datasette-charts",
-    "version": "0.3a0",
+    "version": "0.5a0",
     "repository": "datasette/datasette-charts",
     "source": {
       "type": "pypi_sdist",
-      "url": "https://files.pythonhosted.org/packages/8d/d6/c220de8c998f616d37ec4ee09d9e8538833b577e4035f21d1f270b5d6f48/datasette_charts-0.3a0.tar.gz",
-      "sha256": "ce6ce0778c554a04206b1e17960b4c44639d01f7482d76dd8dacd327035b5d41"
+      "url": "https://files.pythonhosted.org/packages/8a/91/df564812ae4cca84ed578ecc30e9db5a62dd797aa2f9131a817fee176bb2/datasette_charts-0.5a0.tar.gz",
+      "sha256": "4cafd7cfd86d1f66ea05841012d0269b75706b16222c0b3dd8516e7f5c707b42"
     },
     "test_suite": {
       "type": "github_release_tag",
       "repository": "datasette/datasette-charts",
-      "ref": "0.3a0",
-      "git_sha": "1d084b20352af03f45182c1926f6f4dfe3cfe567"
+      "ref": "0.5a0",
+      "git_sha": "8330226b9ab72d521c9543d1b6e8ba703179f55f"
     }
   },
   "datasette": {
@@ -22,10 +22,10 @@
     "installed_version": "1.0a44"
   },
   "run": {
-    "id": "20261126T124504Z-gh-45822520945-a1",
-    "started_at": "2026-11-26T12:45:04Z",
-    "completed_at": "2026-11-26T12:45:23Z",
-    "duration_seconds": 19.459,
+    "id": "20261128T165613Z-gh-46167752230-a1",
+    "started_at": "2026-11-28T16:56:13Z",
+    "completed_at": "2026-11-28T16:56:41Z",
+    "duration_seconds": 27.959,
     "python_version": "3.13",
     "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
     "pytest_exit_code": 0,
@@ -40,7 +40,7 @@
       "if-necessary",
       "--no-progress",
       "--with",
-      "datasette-charts @ file:///tmp/datasette-charts-h9jikkag/datasette_charts-0.3a0.tar.gz",
+      "datasette-charts @ file:///tmp/datasette-charts-29nu62lc/datasette_charts-0.5a0.tar.gz",
       "--with",
       "pytest",
       "--with",
@@ -54,14 +54,14 @@
       "pytest",
       "-vv",
       "--json-report",
-      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-charts/datasette-1.0a44/runs/20261126T124504Z-gh-45822520945-a1/.pytest-report.json"
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-charts/datasette-1.0a44/runs/20261128T165613Z-gh-46167752230-a1/.pytest-report.json"
     ]
   },
   "passed": true,
   "outcome": "passed",
   "counts": {
-    "collected": 209,
-    "passed": 209,
+    "collected": 468,
+    "passed": 468,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
@@ -82,11 +82,11 @@
     ]
   },
   "test_inventory": {
-    "pypi_sdist": 11,
-    "release_tag": 12
+    "pypi_sdist": 15,
+    "release_tag": 16
   },
   "warnings": [],
   "artifacts": {
-    "pytest_output": "results/datasette-charts/datasette-1.0a44/runs/20261126T124504Z-gh-45822520945-a1/pytest.txt"
+    "pytest_output": "results/datasette-charts/datasette-1.0a44/runs/20261128T165613Z-gh-46167752230-a1/pytest.txt"
   }
 }
