@@ -1,0 +1,31 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-visible-internal-db @ file:///tmp/datasette-visible-internal-db-bq9wg7el/datasette-visible-internal-db-0.1.1.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-visible-internal-db @ file:///tmp/datasette-visible-internal-db-bq9wg7el/datasette-visible-internal-db-0.1.1.tar.gz
+Installed 40 packages in 13ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/8xtdmSr1F_fvt7xh/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbsvk4c/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1018-aws-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'metadata': '3.1.1', 'datasette': '1.0a44', 'json-report': '1.5.0', 'anyio': '4.16.0', 'asyncio': '1.5.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-visible-internal-db-bq9wg7el/tagged-source
+configfile: pyproject.toml
+plugins: metadata-3.1.1, datasette-1.0a44, json-report-1.5.0, anyio-4.16.0, asyncio-1.5.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 2 items
+
+tests/test_visible_internal_db.py::test_internal PASSED                  [ 50%]
+tests/test_visible_internal_db.py::test_internal_root_only PASSED        [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-visible-internal-db/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json
+============================== 2 passed in 0.09s ===============================

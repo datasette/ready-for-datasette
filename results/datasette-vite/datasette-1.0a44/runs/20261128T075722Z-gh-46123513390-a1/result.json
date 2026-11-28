@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-vite",
+    "version": "0.0.1a4",
+    "repository": "datasette/datasette-vite",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/d5/b0/f5e4ebd61181062e34ae9becffee296348feac00ebc91a2294b0bd7620d7/datasette_vite-0.0.1a4.tar.gz",
+      "sha256": "30a722ad4b9cd6e499b446b1fbe271af261c6cdc057fb872a8e31c43478ada2f"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "datasette/datasette-vite",
+      "ref": "0.0.1a4",
+      "git_sha": "e30144caefbac2e64f6170a70e3180e46d12f04d"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T075722Z-gh-46123513390-a1",
+    "started_at": "2026-11-28T07:57:22Z",
+    "completed_at": "2026-11-28T07:57:40Z",
+    "duration_seconds": 18.405,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-vite @ file:///tmp/datasette-vite-72ea4vzk/datasette_vite-0.0.1a4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "pytest-playwright",
+      "--with",
+      "ty>=0.0.18",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vite/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 25,
+    "passed": 17,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 8,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 1
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "pytest-playwright",
+      "ty>=0.0.18"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 3,
+    "release_tag": 4
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-vite/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/pytest.txt"
+  }
+}

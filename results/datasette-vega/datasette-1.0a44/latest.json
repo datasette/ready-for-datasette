@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-vega",
+    "version": "0.7",
+    "repository": "simonw/datasette-vega",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/ee/d7/0d72b1ff72b2b3a628a9631d3cbb7330c7f4f0c5a97e17e5c86c8170e666/datasette_vega-0.7.tar.gz",
+      "sha256": "1efbc4bbac60e4dd6246b555df4e5f109dcb0874588631c8a7c963f15beacbdd"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-vega",
+      "ref": "0.7",
+      "git_sha": "9eaded6f7eb88ede92d47342cb84cb1142679da5"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T075722Z-gh-46123513390-a1",
+    "started_at": "2026-11-28T07:57:22Z",
+    "completed_at": "2026-11-28T07:57:27Z",
+    "duration_seconds": 5.276,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-vega[test] @ file:///tmp/datasette-vega-m5x29kgj/datasette_vega-0.7.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "--with",
+      "pytest-asyncio",
+      "--with",
+      "httpx",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vega/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": "dependency-groups.dev",
+    "dependencies": [
+      "pytest",
+      "pytest-asyncio",
+      "httpx"
+    ]
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-vega/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/pytest.txt"
+  }
+}

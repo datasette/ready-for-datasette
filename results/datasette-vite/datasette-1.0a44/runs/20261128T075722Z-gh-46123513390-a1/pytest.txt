@@ -1,0 +1,227 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-vite @ file:///tmp/datasette-vite-72ea4vzk/datasette_vite-0.0.1a4.tar.gz
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+Downloading playwright (51.0MiB)
+Downloading pip (1.9MiB)
+Downloading ty (17.1MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+ Downloaded ty
+ Downloaded playwright
+      Built datasette-vite @ file:///tmp/datasette-vite-72ea4vzk/datasette_vite-0.0.1a4.tar.gz
+Installed 46 packages in 42ms
+Installing dependencies...
+Switching to root user to install dependencies...
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+Hit:2 http://azure.archive.ubuntu.com/ubuntu resolute InRelease
+Get:6 https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease [3964 B]
+Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+Get:7 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main arm64 Packages [178 kB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 Packages [928 kB]
+Get:14 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main amd64 Packages [192 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [205 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64v3 Packages [402 kB]
+Get:11 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [127 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted amd64v3 Packages [640 kB]
+Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-updates/restricted Translation-en [132 kB]
+Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-security/main amd64v3 Packages [765 kB]
+Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-security/main Translation-en [165 kB]
+Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe amd64v3 Packages [229 kB]
+Get:18 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe Translation-en [74.4 kB]
+Get:19 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted amd64v3 Packages [618 kB]
+Get:20 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted Translation-en [128 kB]
+Fetched 5199 kB in 0s (11.7 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libatk-bridge2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+libatk-bridge2.0-0t64 set to manually installed.
+libatk1.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+libatk1.0-0t64 set to manually installed.
+libatspi2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+libatspi2.0-0t64 set to manually installed.
+libcairo2 is already the newest version (1.18.4-3).
+libcairo2 set to manually installed.
+libcups2t64 is already the newest version (2.4.16-1ubuntu1.3).
+libcups2t64 set to manually installed.
+libdbus-1-3 is already the newest version (1.16.2-2ubuntu4).
+libdbus-1-3 set to manually installed.
+libdrm2 is already the newest version (2.4.131-1).
+libdrm2 set to manually installed.
+libgbm1 is already the newest version (26.0.8-1ubuntu0.3).
+libgbm1 set to manually installed.
+libglib2.0-0t64 is already the newest version (2.88.0-1ubuntu0.1).
+libglib2.0-0t64 set to manually installed.
+libnspr4 is already the newest version (2:4.38.2-1ubuntu1).
+libnspr4 set to manually installed.
+libnss3 is already the newest version (2:3.120-1ubuntu2.2).
+libnss3 set to manually installed.
+libpango-1.0-0 is already the newest version (1.57.0-1).
+libpango-1.0-0 set to manually installed.
+libx11-6 is already the newest version (2:1.8.13-1ubuntu0.1).
+libx11-6 set to manually installed.
+libxcb1 is already the newest version (1.17.0-2ubuntu1).
+libxcb1 set to manually installed.
+libxcomposite1 is already the newest version (1:0.4.6-1build1).
+libxcomposite1 set to manually installed.
+libxdamage1 is already the newest version (1:1.1.7-1).
+libxdamage1 set to manually installed.
+libxext6 is already the newest version (2:1.3.4-1build3).
+libxext6 set to manually installed.
+libxfixes3 is already the newest version (1:6.0.0-2build2).
+libxfixes3 set to manually installed.
+libxkbcommon0 is already the newest version (1.13.1-1).
+libxkbcommon0 set to manually installed.
+libxrandr2 is already the newest version (2:1.5.4-1build1).
+libxrandr2 set to manually installed.
+xvfb is already the newest version (2:21.1.22-1ubuntu1.3).
+fonts-noto-color-emoji is already the newest version (2.051-1build1).
+libfontconfig1 is already the newest version (2.17.1-3ubuntu1).
+libfontconfig1 set to manually installed.
+libfreetype6 is already the newest version (2.14.2+dfsg-1ubuntu0.2).
+libfreetype6 set to manually installed.
+fonts-liberation is already the newest version (1:2.1.5-3build1).
+fonts-liberation set to manually installed.
+Solving dependencies...
+The following additional packages will be installed:
+  libasound2-data xfonts-encodings xfonts-utils
+Recommended packages:
+  fonts-ipafont-mincho fonts-tlwg-loma
+The following NEW packages will be installed:
+  fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+  fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+  xfonts-utils
+The following packages will be upgraded:
+  libasound2-data libasound2t64
+2 upgraded, 9 newly installed, 0 to remove and 36 not upgraded.
+Need to get 22.3 MB of archives.
+After this operation, 80.2 MB of additional disk space will be used.
+Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-ipafont-gothic all 00303-23ubuntu1 [3703 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 fonts-freefont-ttf all 20211204+svn4273-4build1 [5656 kB]
+Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-tlwg-loma-otf all 1:0.7.3-1build1 [106 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-unifont all 1:16.0.04-1build1 [3169 kB]
+Get:6 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-wqy-zenhei all 0.9.45-8build1 [7863 kB]
+Get:7 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libasound2t64 amd64 1.2.15.3-1ubuntu1.2 [418 kB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libasound2-data all 1.2.15.3-1ubuntu1.2 [19.7 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-encodings all 1:1.0.5-0ubuntu3 [576 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-utils amd64 1:7.7+7build1 [97.3 kB]
+Get:11 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-cyrillic all 1:1.0.5+nmu1build1 [384 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-scalable all 1:1.0.3-1.3build1 [304 kB]
+Fetched 22.3 MB in 1s (40.7 MB/s)
+Selecting previously unselected package fonts-ipafont-gothic.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 214389 files and directories currently installed.)
+Preparing to unpack .../00-fonts-ipafont-gothic_00303-23ubuntu1_all.deb ...
+Unpacking fonts-ipafont-gothic (00303-23ubuntu1) ...
+Selecting previously unselected package fonts-freefont-ttf.
+Preparing to unpack .../01-fonts-freefont-ttf_20211204+svn4273-4build1_all.deb ...
+Unpacking fonts-freefont-ttf (20211204+svn4273-4build1) ...
+Selecting previously unselected package fonts-tlwg-loma-otf.
+Preparing to unpack .../02-fonts-tlwg-loma-otf_1%3a0.7.3-1build1_all.deb ...
+Unpacking fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+Selecting previously unselected package fonts-unifont.
+Preparing to unpack .../03-fonts-unifont_1%3a16.0.04-1build1_all.deb ...
+Unpacking fonts-unifont (1:16.0.04-1build1) ...
+Selecting previously unselected package fonts-wqy-zenhei.
+Preparing to unpack .../04-fonts-wqy-zenhei_0.9.45-8build1_all.deb ...
+Unpacking fonts-wqy-zenhei (0.9.45-8build1) ...
+Preparing to unpack .../05-libasound2t64_1.2.15.3-1ubuntu1.2_amd64v3.deb ...
+Unpacking libasound2t64:amd64 (1.2.15.3-1ubuntu1.2) over (1.2.15.3-1ubuntu1.1) ...
+Preparing to unpack .../06-libasound2-data_1.2.15.3-1ubuntu1.2_all.deb ...
+Unpacking libasound2-data (1.2.15.3-1ubuntu1.2) over (1.2.15.3-1ubuntu1.1) ...
+Selecting previously unselected package xfonts-encodings.
+Preparing to unpack .../07-xfonts-encodings_1%3a1.0.5-0ubuntu3_all.deb ...
+Unpacking xfonts-encodings (1:1.0.5-0ubuntu3) ...
+Selecting previously unselected package xfonts-utils.
+Preparing to unpack .../08-xfonts-utils_1%3a7.7+7build1_amd64v3.deb ...
+Unpacking xfonts-utils (1:7.7+7build1) ...
+Selecting previously unselected package xfonts-cyrillic.
+Preparing to unpack .../09-xfonts-cyrillic_1%3a1.0.5+nmu1build1_all.deb ...
+Unpacking xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+Selecting previously unselected package xfonts-scalable.
+Preparing to unpack .../10-xfonts-scalable_1%3a1.0.3-1.3build1_all.deb ...
+Unpacking xfonts-scalable (1:1.0.3-1.3build1) ...
+Setting up fonts-wqy-zenhei (0.9.45-8build1) ...
+Setting up fonts-freefont-ttf (20211204+svn4273-4build1) ...
+Setting up libasound2-data (1.2.15.3-1ubuntu1.2) ...
+Setting up libasound2t64:amd64 (1.2.15.3-1ubuntu1.2) ...
+Setting up fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+Setting up xfonts-encodings (1:1.0.5-0ubuntu3) ...
+Setting up fonts-ipafont-gothic (00303-23ubuntu1) ...
+update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+Setting up fonts-unifont (1:16.0.04-1build1) ...
+Setting up xfonts-utils (1:7.7+7build1) ...
+Setting up xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+Setting up xfonts-scalable (1:1.0.3-1.3build1) ...
+Processing triggers for libc-bin (2.43-2ubuntu2.7) ...
+Processing triggers for man-db (2.13.1-1build1) ...
+Not building database; man-db/auto-update is not 'true'.
+Processing triggers for fontconfig (2.17.1-3ubuntu1) ...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart hosted-compute-agent.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpUAi78J/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'playwright': '0.10.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-vite-72ea4vzk/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, playwright-0.10.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_stress.py::test_real_manifest_html[vanilla-ts-src/main.ts] SKIPPED [  4%]
+tests/test_stress.py::test_real_manifest_html[svelte-ts-src/main.ts] SKIPPED [  8%]
+tests/test_stress.py::test_real_manifest_html[react-ts-src/main.tsx] SKIPPED [ 12%]
+tests/test_stress.py::test_framework_fixtures_have_css[svelte-ts-src/main.ts] SKIPPED [ 16%]
+tests/test_stress.py::test_framework_fixtures_have_css[react-ts-src/main.tsx] SKIPPED [ 20%]
+tests/test_vite.py::test_plugin_is_installed PASSED                      [ 24%]
+tests/test_vite.py::test_prod_mode PASSED                                [ 28%]
+tests/test_vite.py::test_prod_mode_no_css PASSED                         [ 32%]
+tests/test_vite.py::test_prod_mode_imported_chunk_css PASSED             [ 36%]
+tests/test_vite.py::test_missing_entrypoint PASSED                       [ 40%]
+tests/test_vite.py::test_missing_manifest PASSED                         [ 44%]
+tests/test_vite.py::test_vite_js_urls_prod_mode PASSED                   [ 48%]
+tests/test_vite.py::test_vite_css_urls_prod_mode PASSED                  [ 52%]
+tests/test_vite.py::test_vite_js_urls_missing_entrypoint PASSED          [ 56%]
+tests/test_vite.py::test_vite_css_urls_missing_entrypoint PASSED         [ 60%]
+tests/test_vite.py::test_vite_entry_dev_path_from_plugin_config PASSED   [ 64%]
+tests/test_vite.py::test_vite_entry_dev_port_from_plugin_config PASSED   [ 68%]
+tests/test_vite.py::test_plugin_config_only_for_matching_package PASSED  [ 72%]
+tests/test_vite.py::test_vite_js_urls_dev_path_from_plugin_config PASSED [ 76%]
+tests/test_vite.py::test_vite_js_urls_dev_port_from_plugin_config PASSED [ 80%]
+tests/test_vite.py::test_vite_css_urls_dev_path_from_plugin_config PASSED [ 84%]
+tests/test_vite.py::test_dev_paths_takes_precedence_over_dev_ports PASSED [ 88%]
+tests/test_vite_browser.py::test_vanilla_ts_browser[chromium] SKIPPED    [ 92%]
+tests/test_vite_browser.py::test_svelte_ts_browser[chromium] SKIPPED     [ 96%]
+tests/test_vite_browser.py::test_react_ts_browser[chromium] SKIPPED      [100%]
+
+=============================== warnings summary ===============================
+tests/test_vite_browser.py::test_vanilla_ts_browser[chromium]
+  /home/runner/work/_temp/setup-uv-cache/archive-v0/lf8Mipa429LewPOD/lib/python3.13/site-packages/_pytest/fixtures.py:1392: PytestRemovedIn10Warning: Session-scoped fixtures defined as instance methods are deprecated.
+  Instance attributes set in the 'base_url' fixture will NOT be visible to test methods,
+  as each test gets a new instance while the fixture runs only once per class.
+  Use a @classmethod decorator below @pytest.fixture and set attributes on cls instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method
+    fixturefunc = resolve_fixture_function(fixturedef, request)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vite/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json
+=================== 17 passed, 8 skipped, 1 warning in 1.53s ===================

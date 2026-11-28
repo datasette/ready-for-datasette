@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T23:30:17Z",
+  "generated_at": "2026-11-28T07:57:40Z",
   "results": [
     {
       "schema_version": 1,
@@ -29737,6 +29737,481 @@
       "warnings": [],
       "artifacts": {
         "pytest_output": "results/datasette-user-profiles/datasette-1.0a44/runs/20261127T233008Z-gh-46082800101-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-vega",
+        "version": "0.7",
+        "repository": "simonw/datasette-vega",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/ee/d7/0d72b1ff72b2b3a628a9631d3cbb7330c7f4f0c5a97e17e5c86c8170e666/datasette_vega-0.7.tar.gz",
+          "sha256": "1efbc4bbac60e4dd6246b555df4e5f109dcb0874588631c8a7c963f15beacbdd"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-vega",
+          "ref": "0.7",
+          "git_sha": "9eaded6f7eb88ede92d47342cb84cb1142679da5"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261128T075722Z-gh-46123513390-a1",
+        "started_at": "2026-11-28T07:57:22Z",
+        "completed_at": "2026-11-28T07:57:27Z",
+        "duration_seconds": 5.276,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-vega[test] @ file:///tmp/datasette-vega-m5x29kgj/datasette_vega-0.7.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "httpx",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vega/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 5,
+        "passed": 5,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "httpx"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-vega/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-verify",
+        "version": "0.1",
+        "repository": "simonw/datasette-verify",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/39/42/2bd0bd3816c3f55f4602f4e064b93d7796a977fe3855cdbfdc63dc190f2f/datasette-verify-0.1.tar.gz",
+          "sha256": "8496c3b9cda158a19788f5bad446b310a20e5d9cfddd90f9e2452450ee0f4530"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-verify",
+          "ref": "0.1",
+          "git_sha": "77bbc92bd670d4098bd3738d9c7ebc3ed0a33014"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261128T075720Z-gh-46123513390-a1",
+        "started_at": "2026-11-28T07:57:20Z",
+        "completed_at": "2026-11-28T07:57:26Z",
+        "duration_seconds": 5.765,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-verify @ file:///tmp/datasette-verify-2sbpj55d/datasette-verify-0.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-verify/datasette-1.0a44/runs/20261128T075720Z-gh-46123513390-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 2,
+        "passed": 2,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 0,
+        "release_tag": 1
+      },
+      "warnings": [
+        {
+          "code": "tests_missing_from_sdist",
+          "message": "The exact release tag contains tests, but the PyPI sdist does not."
+        }
+      ],
+      "artifacts": {
+        "pytest_output": "results/datasette-verify/datasette-1.0a44/runs/20261128T075720Z-gh-46123513390-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-visible-internal-db",
+        "version": "0.1.1",
+        "repository": "datasette/datasette-visible-internal-db",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/62/0d/7316e1bc5926788d2126c8dd0fc9b242b2873aa152591d39460548c4673e/datasette-visible-internal-db-0.1.1.tar.gz",
+          "sha256": "13e28fb0a996a47c37e5c727abc514d4edc618b5dabcfd05047585a4fe63c83f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-visible-internal-db",
+          "ref": "0.1.1",
+          "git_sha": "759e7001f91d3076d9f42eddb03fbaf6d1c7b9bb"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261128T075722Z-gh-46123513390-a1",
+        "started_at": "2026-11-28T07:57:22Z",
+        "completed_at": "2026-11-28T07:57:27Z",
+        "duration_seconds": 4.562,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1018-aws-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-visible-internal-db @ file:///tmp/datasette-visible-internal-db-bq9wg7el/datasette-visible-internal-db-0.1.1.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-visible-internal-db/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 2,
+        "passed": 2,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "project.optional-dependencies.test",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-visible-internal-db/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-vite",
+        "version": "0.0.1a4",
+        "repository": "datasette/datasette-vite",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/d5/b0/f5e4ebd61181062e34ae9becffee296348feac00ebc91a2294b0bd7620d7/datasette_vite-0.0.1a4.tar.gz",
+          "sha256": "30a722ad4b9cd6e499b446b1fbe271af261c6cdc057fb872a8e31c43478ada2f"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "datasette/datasette-vite",
+          "ref": "0.0.1a4",
+          "git_sha": "e30144caefbac2e64f6170a70e3180e46d12f04d"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261128T075722Z-gh-46123513390-a1",
+        "started_at": "2026-11-28T07:57:22Z",
+        "completed_at": "2026-11-28T07:57:40Z",
+        "duration_seconds": 18.405,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 0,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-vite @ file:///tmp/datasette-vite-72ea4vzk/datasette_vite-0.0.1a4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "--with",
+          "pytest-asyncio",
+          "--with",
+          "pytest-playwright",
+          "--with",
+          "ty>=0.0.18",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vite/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json"
+        ]
+      },
+      "passed": true,
+      "outcome": "passed",
+      "counts": {
+        "collected": 25,
+        "passed": 17,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 8,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 1
+      },
+      "failing_tests": [],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": null,
+        "dependency_source": "dependency-groups.dev",
+        "dependencies": [
+          "pytest",
+          "pytest-asyncio",
+          "pytest-playwright",
+          "ty>=0.0.18"
+        ]
+      },
+      "test_inventory": {
+        "pypi_sdist": 3,
+        "release_tag": 4
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-vite/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/pytest.txt"
+      }
+    },
+    {
+      "schema_version": 1,
+      "runner_version": 2,
+      "package": {
+        "name": "datasette-write",
+        "version": "0.4",
+        "repository": "simonw/datasette-write",
+        "source": {
+          "type": "pypi_sdist",
+          "url": "https://files.pythonhosted.org/packages/a2/29/52216a9a0d16c4f8e188436b7fb66c08af7a553a6379091b306f01ac8303/datasette_write-0.4.tar.gz",
+          "sha256": "4b599b05950921b1bceb7a800583de9d7cf2b1071d642ba16fbb2df13d47f665"
+        },
+        "test_suite": {
+          "type": "github_release_tag",
+          "repository": "simonw/datasette-write",
+          "ref": "0.4",
+          "git_sha": "4b86ea74aab042ff4d077ed34b425add8bb85f3b"
+        }
+      },
+      "datasette": {
+        "requested_version": "1.0a44",
+        "installed_version": "1.0a44"
+      },
+      "run": {
+        "id": "20261128T075719Z-gh-46123513390-a1",
+        "started_at": "2026-11-28T07:57:19Z",
+        "completed_at": "2026-11-28T07:57:26Z",
+        "duration_seconds": 7.344,
+        "python_version": "3.13",
+        "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+        "pytest_exit_code": 1,
+        "command": [
+          "uv",
+          "run",
+          "--isolated",
+          "--no-project",
+          "--python",
+          "3.13",
+          "--prerelease",
+          "if-necessary",
+          "--no-progress",
+          "--with",
+          "datasette-write[test] @ file:///tmp/datasette-write-ija3t5ez/datasette_write-0.4.tar.gz",
+          "--with",
+          "pytest",
+          "--with",
+          "pytest-json-report",
+          "--with",
+          "datasette==1.0a44",
+          "pytest",
+          "-vv",
+          "--json-report",
+          "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-write/datasette-1.0a44/runs/20261128T075719Z-gh-46123513390-a1/.pytest-report.json"
+        ]
+      },
+      "passed": false,
+      "outcome": "test_failures",
+      "counts": {
+        "collected": 36,
+        "passed": 11,
+        "failed": 25,
+        "errors": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "deselected": 0,
+        "warnings": 0
+      },
+      "failing_tests": [
+        "tests/test_write.py::test_execute_write[test-alter table one add column bigfile blob-params2-Altered table: one]",
+        "tests/test_write.py::test_execute_write[test-create table newtable (id integer)-params0-Created table: newtable]",
+        "tests/test_write.py::test_execute_write[test-drop table one-params1-Dropped table: one]",
+        "tests/test_write.py::test_execute_write[test-invalid sql-params6-near \"invalid\": syntax error]",
+        "tests/test_write.py::test_execute_write[test-update one set count = 5-params5-2 rows affected]",
+        "tests/test_write.py::test_execute_write[test-update one set count = :count-params7-2 rows affected]",
+        "tests/test_write.py::test_execute_write[test-update one set count = :count-params8-Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.]",
+        "tests/test_write.py::test_execute_write[test2-create table newtable (id integer)-params3-Created table: newtable]",
+        "tests/test_write.py::test_execute_write[test2-create view blah as select 1 + 1-params4-Created view: blah]",
+        "tests/test_write.py::test_permission_denied",
+        "tests/test_write.py::test_permission_granted_to_root",
+        "tests/test_write.py::test_populate_sql_from_query_string",
+        "tests/test_write.py::test_redirect_to[False]",
+        "tests/test_write.py::test_redirect_to[True]",
+        "tests/test_write.py::test_row_actions[/test2/compound_pk/1,2-expected2]",
+        "tests/test_write.py::test_row_actions[/test2/has_not_null/1-update \"has_not_null\" set\\n  \"sql\" = :_sql\\nwhere \"id\" = :id_hidden]",
+        "tests/test_write.py::test_row_actions[/test2/simple_pk/1-update \"simple_pk\" set\\n  \"name\" = nullif(:name, '')\\nwhere \"id\" = :id_hidden]",
+        "tests/test_write.py::test_row_actions[/test2/simple_pk_multiline/1-update \"simple_pk_multiline\" set\\n  \"name\" = nullif(:name_textarea, '')\\nwhere \"id\" = :id_hidden]",
+        "tests/test_write.py::test_title[invalid]",
+        "tests/test_write.py::test_title[none]",
+        "tests/test_write.py::test_title[valid]",
+        "tests/test_write.py::test_write_redirect[/-/write-/test/-/write]",
+        "tests/test_write.py::test_write_redirect[/-/write?database=test-/test/-/write]",
+        "tests/test_write.py::test_write_redirect[/-/write?database=test2&a=1&a=2-/test2/-/write?a=1&a=2]",
+        "tests/test_write.py::test_write_redirect[/-/write?database=test2-/test2/-/write]"
+      ],
+      "error_tests": [],
+      "test_environment": {
+        "package_extra": "test",
+        "dependency_source": null,
+        "dependencies": []
+      },
+      "test_inventory": {
+        "pypi_sdist": 1,
+        "release_tag": 1
+      },
+      "warnings": [],
+      "artifacts": {
+        "pytest_output": "results/datasette-write/datasette-1.0a44/runs/20261128T075719Z-gh-46123513390-a1/pytest.txt"
       }
     }
   ]

@@ -1,0 +1,1676 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-write @ file:///tmp/datasette-write-ija3t5ez/datasette_write-0.4.tar.gz
+Downloading pygments (1.2MiB)
+Downloading pip (1.9MiB)
+Downloading pydantic-core (2.2MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+      Built datasette-write @ file:///tmp/datasette-write-ija3t5ez/datasette_write-0.4.tar.gz
+Installed 45 packages in 38ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpbbTfOm/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-write-ija3t5ez/tagged-source
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 36 items
+
+tests/test_write.py::test_permission_denied FAILED                       [  2%]
+tests/test_write.py::test_permission_granted_to_root FAILED              [  5%]
+tests/test_write.py::test_populate_sql_from_query_string FAILED          [  8%]
+tests/test_write.py::test_execute_write[test-create table newtable (id integer)-params0-Created table: newtable] FAILED [ 11%]
+tests/test_write.py::test_execute_write[test-drop table one-params1-Dropped table: one] FAILED [ 13%]
+tests/test_write.py::test_execute_write[test-alter table one add column bigfile blob-params2-Altered table: one] FAILED [ 16%]
+tests/test_write.py::test_execute_write[test2-create table newtable (id integer)-params3-Created table: newtable] FAILED [ 19%]
+tests/test_write.py::test_execute_write[test2-create view blah as select 1 + 1-params4-Created view: blah] FAILED [ 22%]
+tests/test_write.py::test_execute_write[test-update one set count = 5-params5-2 rows affected] FAILED [ 25%]
+tests/test_write.py::test_execute_write[test-invalid sql-params6-near "invalid": syntax error] FAILED [ 27%]
+tests/test_write.py::test_execute_write[test-update one set count = :count-params7-2 rows affected] FAILED [ 30%]
+tests/test_write.py::test_execute_write[test-update one set count = :count-params8-Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.] FAILED [ 33%]
+tests/test_write.py::test_parse_create_alter_drop_sql[create table hello (...-hello-create-table] PASSED [ 36%]
+tests/test_write.py::test_parse_create_alter_drop_sql[  create view hello2 as (...-hello2-create-view] PASSED [ 38%]
+tests/test_write.py::test_parse_create_alter_drop_sql[select 1 + 1-None-None-None] PASSED [ 41%]
+tests/test_write.py::test_parse_create_alter_drop_sql[create table 'hello' (-hello-create-table] PASSED [ 44%]
+tests/test_write.py::test_parse_create_alter_drop_sql[  create   \n table "hello" (-hello-create-table] PASSED [ 47%]
+tests/test_write.py::test_parse_create_alter_drop_sql[create table [hello] (-hello-create-table] PASSED [ 50%]
+tests/test_write.py::test_parse_create_alter_drop_sql[create view 'hello' (-hello-create-view] PASSED [ 52%]
+tests/test_write.py::test_parse_create_alter_drop_sql[  create   \n view "hello" (-hello-create-view] PASSED [ 55%]
+tests/test_write.py::test_parse_create_alter_drop_sql[create view [hello] (-hello-create-view] PASSED [ 58%]
+tests/test_write.py::test_parse_create_alter_drop_sql[alter table [hello] -hello-alter-table] PASSED [ 61%]
+tests/test_write.py::test_parse_create_alter_drop_sql[alter view [hello] -None-None-None] PASSED [ 63%]
+tests/test_write.py::test_write_redirect[/-/write-/test/-/write] FAILED  [ 66%]
+tests/test_write.py::test_write_redirect[/-/write?database=test-/test/-/write] FAILED [ 69%]
+tests/test_write.py::test_write_redirect[/-/write?database=test2-/test2/-/write] FAILED [ 72%]
+tests/test_write.py::test_write_redirect[/-/write?database=test2&a=1&a=2-/test2/-/write?a=1&a=2] FAILED [ 75%]
+tests/test_write.py::test_redirect_to[True] FAILED                       [ 77%]
+tests/test_write.py::test_redirect_to[False] FAILED                      [ 80%]
+tests/test_write.py::test_title[valid] FAILED                            [ 83%]
+tests/test_write.py::test_title[invalid] FAILED                          [ 86%]
+tests/test_write.py::test_title[none] FAILED                             [ 88%]
+tests/test_write.py::test_row_actions[/test2/simple_pk/1-update "simple_pk" set\n  "name" = nullif(:name, '')\nwhere "id" = :id_hidden] FAILED [ 91%]
+tests/test_write.py::test_row_actions[/test2/simple_pk_multiline/1-update "simple_pk_multiline" set\n  "name" = nullif(:name_textarea, '')\nwhere "id" = :id_hidden] FAILED [ 94%]
+tests/test_write.py::test_row_actions[/test2/compound_pk/1,2-expected2] FAILED [ 97%]
+tests/test_write.py::test_row_actions[/test2/has_not_null/1-update "has_not_null" set\n  "sql" = :_sql\nwhere "id" = :id_hidden] FAILED [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_permission_denied ____________________________
+
+ds = <datasette.app.Datasette object at 0x7674e29a7620>
+
+    @pytest.mark.asyncio
+    async def test_permission_denied(ds):
+        response = await ds.client.get("/test/-/write")
+>       assert 403 == response.status_code
+E       assert 403 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:42: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______________________ test_permission_granted_to_root ________________________
+
+ds = <datasette.app.Datasette object at 0x7674e28f1bd0>
+
+    @pytest.mark.asyncio
+    async def test_permission_granted_to_root(ds):
+        response = await ds.client.get(
+            "/test/-/write",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:51: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_____________________ test_populate_sql_from_query_string ______________________
+
+ds = <datasette.app.Datasette object at 0x7674e2754190>
+
+    @pytest.mark.asyncio
+    async def test_populate_sql_from_query_string(ds):
+        response = await ds.client.get(
+            "/test/-/write?sql=select+1",
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:73: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test-create table newtable (id integer)-params0-Created table: newtable] _
+
+ds = <datasette.app.Datasette object at 0x7674e27579d0>, database = 'test'
+sql = 'create table newtable (id integer)', params = {}
+expected_message = 'Created table: newtable'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______ test_execute_write[test-drop table one-params1-Dropped table: one] ______
+
+ds = <datasette.app.Datasette object at 0x7674e2754e10>, database = 'test'
+sql = 'drop table one', params = {}, expected_message = 'Dropped table: one'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test-alter table one add column bigfile blob-params2-Altered table: one] _
+
+ds = <datasette.app.Datasette object at 0x7674e2756490>, database = 'test'
+sql = 'alter table one add column bigfile blob', params = {}
+expected_message = 'Altered table: one'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test2-create table newtable (id integer)-params3-Created table: newtable] _
+
+ds = <datasette.app.Datasette object at 0x7674e2754cd0>, database = 'test2'
+sql = 'create table newtable (id integer)', params = {}
+expected_message = 'Created table: newtable'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test2-create view blah as select 1 + 1-params4-Created view: blah] _
+
+ds = <datasette.app.Datasette object at 0x7674e2756d50>, database = 'test2'
+sql = 'create view blah as select 1 + 1', params = {}
+expected_message = 'Created view: blah'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__ test_execute_write[test-update one set count = 5-params5-2 rows affected] ___
+
+ds = <datasette.app.Datasette object at 0x7674e28f1d10>, database = 'test'
+sql = 'update one set count = 5', params = {}
+expected_message = '2 rows affected'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__ test_execute_write[test-invalid sql-params6-near "invalid": syntax error] ___
+
+ds = <datasette.app.Datasette object at 0x7674e28f3750>, database = 'test'
+sql = 'invalid sql', params = {}
+expected_message = 'near "invalid": syntax error'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test-update one set count = :count-params7-2 rows affected] _
+
+ds = <datasette.app.Datasette object at 0x7674e2754690>, database = 'test'
+sql = 'update one set count = :count', params = {'qp_count': 4}
+expected_message = '2 rows affected'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_execute_write[test-update one set count = :count-params8-Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.] _
+
+ds = <datasette.app.Datasette object at 0x7674e2757d90>, database = 'test'
+sql = 'update one set count = :count', params = {}
+expected_message = 'Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.'
+
+    @pytest.mark.parametrize(
+        "database,sql,params,expected_message",
+        [
+            (
+                "test",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test",
+                "drop table one",
+                {},
+                "Dropped table: one",
+            ),
+            (
+                "test",
+                "alter table one add column bigfile blob",
+                {},
+                "Altered table: one",
+            ),
+            (
+                "test2",
+                "create table newtable (id integer)",
+                {},
+                "Created table: newtable",
+            ),
+            (
+                "test2",
+                "create view blah as select 1 + 1",
+                {},
+                "Created view: blah",
+            ),
+            ("test", "update one set count = 5", {}, "2 rows affected"),
+            ("test", "invalid sql", {}, 'near "invalid": syntax error'),
+            # Parameterized queries
+            ("test", "update one set count = :count", {"qp_count": 4}, "2 rows affected"),
+            # This should error
+            (
+                "test",
+                "update one set count = :count",
+                {},
+                "Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.",
+            ),
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_execute_write(ds, database, sql, params, expected_message):
+        # Get csrftoken
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get("/{}/-/write".format(database), cookies=cookies)
+>       assert 200 == response.status_code
+E       assert 200 == 500
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:128: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_________________ test_write_redirect[/-/write-/test/-/write] __________________
+
+ds = <datasette.app.Datasette object at 0x7674e2757390>, path = '/-/write'
+expected_path = '/test/-/write'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/-/write", "/test/-/write"),
+            ("/-/write?database=test", "/test/-/write"),
+            ("/-/write?database=test2", "/test2/-/write"),
+            ("/-/write?database=test2&a=1&a=2", "/test2/-/write?a=1&a=2"),
+        ),
+    )
+    async def test_write_redirect(ds, path, expected_path):
+        response = await ds.client.get(
+            path,
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:193: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 103, in write_redirect
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+__________ test_write_redirect[/-/write?database=test-/test/-/write] ___________
+
+ds = <datasette.app.Datasette object at 0x7674e2754050>
+path = '/-/write?database=test', expected_path = '/test/-/write'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/-/write", "/test/-/write"),
+            ("/-/write?database=test", "/test/-/write"),
+            ("/-/write?database=test2", "/test2/-/write"),
+            ("/-/write?database=test2&a=1&a=2", "/test2/-/write?a=1&a=2"),
+        ),
+    )
+    async def test_write_redirect(ds, path, expected_path):
+        response = await ds.client.get(
+            path,
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:193: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 103, in write_redirect
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_________ test_write_redirect[/-/write?database=test2-/test2/-/write] __________
+
+ds = <datasette.app.Datasette object at 0x7674e2756850>
+path = '/-/write?database=test2', expected_path = '/test2/-/write'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/-/write", "/test/-/write"),
+            ("/-/write?database=test", "/test/-/write"),
+            ("/-/write?database=test2", "/test2/-/write"),
+            ("/-/write?database=test2&a=1&a=2", "/test2/-/write?a=1&a=2"),
+        ),
+    )
+    async def test_write_redirect(ds, path, expected_path):
+        response = await ds.client.get(
+            path,
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:193: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 103, in write_redirect
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_write_redirect[/-/write?database=test2&a=1&a=2-/test2/-/write?a=1&a=2] __
+
+ds = <datasette.app.Datasette object at 0x7674e2755450>
+path = '/-/write?database=test2&a=1&a=2'
+expected_path = '/test2/-/write?a=1&a=2'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "path,expected_path",
+        (
+            ("/-/write", "/test/-/write"),
+            ("/-/write?database=test", "/test/-/write"),
+            ("/-/write?database=test2", "/test2/-/write"),
+            ("/-/write?database=test2&a=1&a=2", "/test2/-/write?a=1&a=2"),
+        ),
+    )
+    async def test_write_redirect(ds, path, expected_path):
+        response = await ds.client.get(
+            path,
+            cookies={"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")},
+        )
+>       assert response.status_code == 302
+E       assert 500 == 302
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:193: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 103, in write_redirect
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+____________________________ test_redirect_to[True] ____________________________
+
+ds = <datasette.app.Datasette object at 0x7674e2756c10>, valid = True
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("valid", (True, False))
+    async def test_redirect_to(ds, valid):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        signed_redirect_to = ds.sign("/", "redirect_to")
+        used_redirect_to = signed_redirect_to + ("" if valid else "invalid")
+        response = await ds.client.get(
+            "/test/-/write",
+            params={"_redirect_to": used_redirect_to},
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:208: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+___________________________ test_redirect_to[False] ____________________________
+
+ds = <datasette.app.Datasette object at 0x7674e2690050>, valid = False
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("valid", (True, False))
+    async def test_redirect_to(ds, valid):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        signed_redirect_to = ds.sign("/", "redirect_to")
+        used_redirect_to = signed_redirect_to + ("" if valid else "invalid")
+        response = await ds.client.get(
+            "/test/-/write",
+            params={"_redirect_to": used_redirect_to},
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:208: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________________________ test_title[valid] _______________________________
+
+ds = <datasette.app.Datasette object at 0x7674e2690190>, scenario = 'valid'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", ("valid", "invalid", "none"))
+    async def test_title(ds, scenario):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        signed_title = ds.sign("Custom Title", "query_title")
+        params = {}
+        if scenario != "none":
+            params["_title"] = signed_title + ("" if scenario == "valid" else "invalid")
+        response = await ds.client.get(
+            "/test/-/write",
+            params=params,
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:244: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_____________________________ test_title[invalid] ______________________________
+
+ds = <datasette.app.Datasette object at 0x7674e2690690>, scenario = 'invalid'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", ("valid", "invalid", "none"))
+    async def test_title(ds, scenario):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        signed_title = ds.sign("Custom Title", "query_title")
+        params = {}
+        if scenario != "none":
+            params["_title"] = signed_title + ("" if scenario == "valid" else "invalid")
+        response = await ds.client.get(
+            "/test/-/write",
+            params=params,
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:244: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_______________________________ test_title[none] _______________________________
+
+ds = <datasette.app.Datasette object at 0x7674e2757110>, scenario = 'none'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("scenario", ("valid", "invalid", "none"))
+    async def test_title(ds, scenario):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        signed_title = ds.sign("Custom Title", "query_title")
+        params = {}
+        if scenario != "none":
+            params["_title"] = signed_title + ("" if scenario == "valid" else "invalid")
+        response = await ds.client.get(
+            "/test/-/write",
+            params=params,
+            cookies=cookies,
+        )
+>       assert response.status_code == 200
+E       assert 500 == 200
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/test_write.py:244: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3772, in async_view_fn
+    response = await async_call_with_supported_arguments(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 1495, in async_call_with_supported_arguments
+    return await fn(*call_with)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 9, in write
+    if not await datasette.permission_allowed(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_row_actions[/test2/simple_pk/1-update "simple_pk" set\n  "name" = nullif(:name, '')\nwhere "id" = :id_hidden] _
+
+ds = <datasette.app.Datasette object at 0x7674e2690550>
+path = '/test2/simple_pk/1'
+expected = 'update "simple_pk" set\n  "name" = nullif(:name, \'\')\nwhere "id" = :id_hidden'
+
+    @pytest.mark.asyncio
+    # Skip if Datasette < ('1', '0a15')
+    @pytest.mark.skipif(
+        datasette.__version_info__ < ("1", "0"),
+        reason="Datasette < 1.0 does not support this hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected",
+        [
+            (
+                "/test2/simple_pk/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk" set
+                          "name" = nullif(:name, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/simple_pk_multiline/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk_multiline" set
+                          "name" = nullif(:name_textarea, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/compound_pk/1,2",
+                textwrap.dedent(
+                    """
+                        update "compound_pk" set
+                          "name" = nullif(:name, '')
+                        where "id1" = :id1_hidden and "id2" = :id2_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/has_not_null/1",
+                textwrap.dedent(
+                    """
+                        update "has_not_null" set
+                          "sql" = :_sql
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+        ],
+    )
+    async def test_row_actions(ds, path, expected):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get(
+            path,
+            cookies=cookies,
+        )
+>       href = Soup(response.text, "html.parser").select(".dropdown-menu a")[0]["href"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_write.py:311: IndexError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 191, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 139, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 253, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 270, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 543, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 195, in inner
+    if database != "_internal" and await datasette.permission_allowed(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_row_actions[/test2/simple_pk_multiline/1-update "simple_pk_multiline" set\n  "name" = nullif(:name_textarea, '')\nwhere "id" = :id_hidden] _
+
+ds = <datasette.app.Datasette object at 0x7674e2691450>
+path = '/test2/simple_pk_multiline/1'
+expected = 'update "simple_pk_multiline" set\n  "name" = nullif(:name_textarea, \'\')\nwhere "id" = :id_hidden'
+
+    @pytest.mark.asyncio
+    # Skip if Datasette < ('1', '0a15')
+    @pytest.mark.skipif(
+        datasette.__version_info__ < ("1", "0"),
+        reason="Datasette < 1.0 does not support this hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected",
+        [
+            (
+                "/test2/simple_pk/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk" set
+                          "name" = nullif(:name, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/simple_pk_multiline/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk_multiline" set
+                          "name" = nullif(:name_textarea, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/compound_pk/1,2",
+                textwrap.dedent(
+                    """
+                        update "compound_pk" set
+                          "name" = nullif(:name, '')
+                        where "id1" = :id1_hidden and "id2" = :id2_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/has_not_null/1",
+                textwrap.dedent(
+                    """
+                        update "has_not_null" set
+                          "sql" = :_sql
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+        ],
+    )
+    async def test_row_actions(ds, path, expected):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get(
+            path,
+            cookies=cookies,
+        )
+>       href = Soup(response.text, "html.parser").select(".dropdown-menu a")[0]["href"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_write.py:311: IndexError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 191, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 139, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 253, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 270, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 543, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 195, in inner
+    if database != "_internal" and await datasette.permission_allowed(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+______________ test_row_actions[/test2/compound_pk/1,2-expected2] ______________
+
+ds = <datasette.app.Datasette object at 0x7674e2691810>
+path = '/test2/compound_pk/1,2'
+expected = 'update "compound_pk" set\n  "name" = nullif(:name, \'\')\nwhere "id1" = :id1_hidden and "id2" = :id2_hidden'
+
+    @pytest.mark.asyncio
+    # Skip if Datasette < ('1', '0a15')
+    @pytest.mark.skipif(
+        datasette.__version_info__ < ("1", "0"),
+        reason="Datasette < 1.0 does not support this hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected",
+        [
+            (
+                "/test2/simple_pk/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk" set
+                          "name" = nullif(:name, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/simple_pk_multiline/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk_multiline" set
+                          "name" = nullif(:name_textarea, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/compound_pk/1,2",
+                textwrap.dedent(
+                    """
+                        update "compound_pk" set
+                          "name" = nullif(:name, '')
+                        where "id1" = :id1_hidden and "id2" = :id2_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/has_not_null/1",
+                textwrap.dedent(
+                    """
+                        update "has_not_null" set
+                          "sql" = :_sql
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+        ],
+    )
+    async def test_row_actions(ds, path, expected):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get(
+            path,
+            cookies=cookies,
+        )
+>       href = Soup(response.text, "html.parser").select(".dropdown-menu a")[0]["href"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_write.py:311: IndexError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 191, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 139, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 253, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 270, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 543, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 195, in inner
+    if database != "_internal" and await datasette.permission_allowed(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+_ test_row_actions[/test2/has_not_null/1-update "has_not_null" set\n  "sql" = :_sql\nwhere "id" = :id_hidden] _
+
+ds = <datasette.app.Datasette object at 0x7674e26916d0>
+path = '/test2/has_not_null/1'
+expected = 'update "has_not_null" set\n  "sql" = :_sql\nwhere "id" = :id_hidden'
+
+    @pytest.mark.asyncio
+    # Skip if Datasette < ('1', '0a15')
+    @pytest.mark.skipif(
+        datasette.__version_info__ < ("1", "0"),
+        reason="Datasette < 1.0 does not support this hook",
+    )
+    @pytest.mark.parametrize(
+        "path,expected",
+        [
+            (
+                "/test2/simple_pk/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk" set
+                          "name" = nullif(:name, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/simple_pk_multiline/1",
+                textwrap.dedent(
+                    """
+                        update "simple_pk_multiline" set
+                          "name" = nullif(:name_textarea, '')
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/compound_pk/1,2",
+                textwrap.dedent(
+                    """
+                        update "compound_pk" set
+                          "name" = nullif(:name, '')
+                        where "id1" = :id1_hidden and "id2" = :id2_hidden
+                    """
+                ).strip(),
+            ),
+            (
+                "/test2/has_not_null/1",
+                textwrap.dedent(
+                    """
+                        update "has_not_null" set
+                          "sql" = :_sql
+                        where "id" = :id_hidden
+                    """
+                ).strip(),
+            ),
+        ],
+    )
+    async def test_row_actions(ds, path, expected):
+        cookies = {"ds_actor": ds.sign({"a": {"id": "root"}}, "actor")}
+        response = await ds.client.get(
+            path,
+            cookies=cookies,
+        )
+>       href = Soup(response.text, "html.parser").select(".dropdown-menu a")[0]["href"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_write.py:311: IndexError
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/app.py", line 3557, in route_path
+    response = await view(request, send)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 191, in view
+    return await self.dispatch_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/base.py", line 139, in dispatch_request
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 253, in get
+    response = await self.html(request, data, extra_template_data, templates)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 270, in html
+    extras = await extras
+             ^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/views/row.py", line 543, in template_data
+    extra_links = await await_me_maybe(hook)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette/utils/__init__.py", line 295, in await_me_maybe
+    value = await value
+            ^^^^^^^^^^^
+  File "/home/runner/work/_temp/setup-uv-cache/archive-v0/fRZ2zBwa8i_II43p/lib/python3.13/site-packages/datasette_write/__init__.py", line 195, in inner
+    if database != "_internal" and await datasette.permission_allowed(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Datasette' object has no attribute 'permission_allowed'
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-write/datasette-1.0a44/runs/20261128T075719Z-gh-46123513390-a1/.pytest-report.json
+=========================== short test summary info ============================
+FAILED tests/test_write.py::test_permission_denied - assert 403 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_permission_granted_to_root - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_populate_sql_from_query_string - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-create table newtable (id integer)-params0-Created table: newtable] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-drop table one-params1-Dropped table: one] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-alter table one add column bigfile blob-params2-Altered table: one] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test2-create table newtable (id integer)-params3-Created table: newtable] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test2-create view blah as select 1 + 1-params4-Created view: blah] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-update one set count = 5-params5-2 rows affected] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-invalid sql-params6-near "invalid": syntax error] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-update one set count = :count-params7-2 rows affected] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_execute_write[test-update one set count = :count-params8-Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.] - assert 200 == 500
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_write_redirect[/-/write-/test/-/write] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_write_redirect[/-/write?database=test-/test/-/write] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_write_redirect[/-/write?database=test2-/test2/-/write] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_write_redirect[/-/write?database=test2&a=1&a=2-/test2/-/write?a=1&a=2] - assert 500 == 302
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_redirect_to[True] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_redirect_to[False] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_title[valid] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_title[invalid] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_title[none] - assert 500 == 200
+ +  where 500 = <Response [500 Internal Server Error]>.status_code
+FAILED tests/test_write.py::test_row_actions[/test2/simple_pk/1-update "simple_pk" set\n  "name" = nullif(:name, '')\nwhere "id" = :id_hidden] - IndexError: list index out of range
+FAILED tests/test_write.py::test_row_actions[/test2/simple_pk_multiline/1-update "simple_pk_multiline" set\n  "name" = nullif(:name_textarea, '')\nwhere "id" = :id_hidden] - IndexError: list index out of range
+FAILED tests/test_write.py::test_row_actions[/test2/compound_pk/1,2-expected2] - IndexError: list index out of range
+FAILED tests/test_write.py::test_row_actions[/test2/has_not_null/1-update "has_not_null" set\n  "sql" = :_sql\nwhere "id" = :id_hidden] - IndexError: list index out of range
+======================== 25 failed, 11 passed in 1.73s =========================

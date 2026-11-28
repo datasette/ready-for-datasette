@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-verify",
+    "version": "0.1",
+    "repository": "simonw/datasette-verify",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/39/42/2bd0bd3816c3f55f4602f4e064b93d7796a977fe3855cdbfdc63dc190f2f/datasette-verify-0.1.tar.gz",
+      "sha256": "8496c3b9cda158a19788f5bad446b310a20e5d9cfddd90f9e2452450ee0f4530"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-verify",
+      "ref": "0.1",
+      "git_sha": "77bbc92bd670d4098bd3738d9c7ebc3ed0a33014"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T075720Z-gh-46123513390-a1",
+    "started_at": "2026-11-28T07:57:20Z",
+    "completed_at": "2026-11-28T07:57:26Z",
+    "duration_seconds": 5.765,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 0,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-verify @ file:///tmp/datasette-verify-2sbpj55d/datasette-verify-0.1.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-verify/datasette-1.0a44/runs/20261128T075720Z-gh-46123513390-a1/.pytest-report.json"
+    ]
+  },
+  "passed": true,
+  "outcome": "passed",
+  "counts": {
+    "collected": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": null,
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 0,
+    "release_tag": 1
+  },
+  "warnings": [
+    {
+      "code": "tests_missing_from_sdist",
+      "message": "The exact release tag contains tests, but the PyPI sdist does not."
+    }
+  ],
+  "artifacts": {
+    "pytest_output": "results/datasette-verify/datasette-1.0a44/runs/20261128T075720Z-gh-46123513390-a1/pytest.txt"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "runner_version": 2,
+  "package": {
+    "name": "datasette-write",
+    "version": "0.4",
+    "repository": "simonw/datasette-write",
+    "source": {
+      "type": "pypi_sdist",
+      "url": "https://files.pythonhosted.org/packages/a2/29/52216a9a0d16c4f8e188436b7fb66c08af7a553a6379091b306f01ac8303/datasette_write-0.4.tar.gz",
+      "sha256": "4b599b05950921b1bceb7a800583de9d7cf2b1071d642ba16fbb2df13d47f665"
+    },
+    "test_suite": {
+      "type": "github_release_tag",
+      "repository": "simonw/datasette-write",
+      "ref": "0.4",
+      "git_sha": "4b86ea74aab042ff4d077ed34b425add8bb85f3b"
+    }
+  },
+  "datasette": {
+    "requested_version": "1.0a44",
+    "installed_version": "1.0a44"
+  },
+  "run": {
+    "id": "20261128T075719Z-gh-46123513390-a1",
+    "started_at": "2026-11-28T07:57:19Z",
+    "completed_at": "2026-11-28T07:57:26Z",
+    "duration_seconds": 7.344,
+    "python_version": "3.13",
+    "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+    "pytest_exit_code": 1,
+    "command": [
+      "uv",
+      "run",
+      "--isolated",
+      "--no-project",
+      "--python",
+      "3.13",
+      "--prerelease",
+      "if-necessary",
+      "--no-progress",
+      "--with",
+      "datasette-write[test] @ file:///tmp/datasette-write-ija3t5ez/datasette_write-0.4.tar.gz",
+      "--with",
+      "pytest",
+      "--with",
+      "pytest-json-report",
+      "--with",
+      "datasette==1.0a44",
+      "pytest",
+      "-vv",
+      "--json-report",
+      "--json-report-file=/home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-write/datasette-1.0a44/runs/20261128T075719Z-gh-46123513390-a1/.pytest-report.json"
+    ]
+  },
+  "passed": false,
+  "outcome": "test_failures",
+  "counts": {
+    "collected": 36,
+    "passed": 11,
+    "failed": 25,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "xpassed": 0,
+    "deselected": 0,
+    "warnings": 0
+  },
+  "failing_tests": [
+    "tests/test_write.py::test_execute_write[test-alter table one add column bigfile blob-params2-Altered table: one]",
+    "tests/test_write.py::test_execute_write[test-create table newtable (id integer)-params0-Created table: newtable]",
+    "tests/test_write.py::test_execute_write[test-drop table one-params1-Dropped table: one]",
+    "tests/test_write.py::test_execute_write[test-invalid sql-params6-near \"invalid\": syntax error]",
+    "tests/test_write.py::test_execute_write[test-update one set count = 5-params5-2 rows affected]",
+    "tests/test_write.py::test_execute_write[test-update one set count = :count-params7-2 rows affected]",
+    "tests/test_write.py::test_execute_write[test-update one set count = :count-params8-Incorrect number of bindings supplied. The current statement uses 1, and there are 0 supplied.]",
+    "tests/test_write.py::test_execute_write[test2-create table newtable (id integer)-params3-Created table: newtable]",
+    "tests/test_write.py::test_execute_write[test2-create view blah as select 1 + 1-params4-Created view: blah]",
+    "tests/test_write.py::test_permission_denied",
+    "tests/test_write.py::test_permission_granted_to_root",
+    "tests/test_write.py::test_populate_sql_from_query_string",
+    "tests/test_write.py::test_redirect_to[False]",
+    "tests/test_write.py::test_redirect_to[True]",
+    "tests/test_write.py::test_row_actions[/test2/compound_pk/1,2-expected2]",
+    "tests/test_write.py::test_row_actions[/test2/has_not_null/1-update \"has_not_null\" set\\n  \"sql\" = :_sql\\nwhere \"id\" = :id_hidden]",
+    "tests/test_write.py::test_row_actions[/test2/simple_pk/1-update \"simple_pk\" set\\n  \"name\" = nullif(:name, '')\\nwhere \"id\" = :id_hidden]",
+    "tests/test_write.py::test_row_actions[/test2/simple_pk_multiline/1-update \"simple_pk_multiline\" set\\n  \"name\" = nullif(:name_textarea, '')\\nwhere \"id\" = :id_hidden]",
+    "tests/test_write.py::test_title[invalid]",
+    "tests/test_write.py::test_title[none]",
+    "tests/test_write.py::test_title[valid]",
+    "tests/test_write.py::test_write_redirect[/-/write-/test/-/write]",
+    "tests/test_write.py::test_write_redirect[/-/write?database=test-/test/-/write]",
+    "tests/test_write.py::test_write_redirect[/-/write?database=test2&a=1&a=2-/test2/-/write?a=1&a=2]",
+    "tests/test_write.py::test_write_redirect[/-/write?database=test2-/test2/-/write]"
+  ],
+  "error_tests": [],
+  "test_environment": {
+    "package_extra": "test",
+    "dependency_source": null,
+    "dependencies": []
+  },
+  "test_inventory": {
+    "pypi_sdist": 1,
+    "release_tag": 1
+  },
+  "warnings": [],
+  "artifacts": {
+    "pytest_output": "results/datasette-write/datasette-1.0a44/runs/20261128T075719Z-gh-46123513390-a1/pytest.txt"
+  }
+}

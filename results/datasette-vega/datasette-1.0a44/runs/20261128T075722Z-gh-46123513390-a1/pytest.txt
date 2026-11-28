@@ -1,0 +1,35 @@
+Downloading cpython-3.13.18-linux-x86_64-gnu (download) (34.0MiB)
+ Downloaded cpython-3.13.18-linux-x86_64-gnu (download)
+   Building datasette-vega @ file:///tmp/datasette-vega-m5x29kgj/datasette_vega-0.7.tar.gz
+warning: `build_system.requires = ["uv-build>=0.9.18,<0.12.0"]` does not contain the current uv version 0.13.10
+Downloading pydantic-core (2.2MiB)
+Downloading pygments (1.2MiB)
+      Built datasette-vega @ file:///tmp/datasette-vega-m5x29kgj/datasette_vega-0.7.tar.gz
+Downloading pip (1.9MiB)
+ Downloaded pydantic-core
+ Downloaded pygments
+ Downloaded pip
+Installed 43 packages in 28ms
+/home/runner/work/_temp/setup-uv-cache/archive-v0/riqQh1m4sErW8y1K/lib/python3.13/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.2.0, pluggy-1.7.0 -- /home/runner/work/_temp/setup-uv-cache/builds-v0/.tmpcthC1c/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.18', 'Platform': 'Linux-7.0.0-1020-azure-x86_64-with-glibc2.43', 'Packages': {'pytest': '9.2.0', 'pluggy': '1.7.0'}, 'Plugins': {'anyio': '4.16.0', 'datasette': '1.0a44', 'asyncio': '1.5.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-25-jdk-amd64'}
+rootdir: /tmp/datasette-vega-m5x29kgj/tagged-source
+configfile: pyproject.toml
+plugins: anyio-4.16.0, datasette-1.0a44, asyncio-1.5.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+tests/test_vega.py::test_plugin_is_installed PASSED                      [ 20%]
+tests/test_vega.py::test_assets_included_on_table_and_query_pages[/test_vega/t-True] PASSED [ 40%]
+tests/test_vega.py::test_assets_included_on_table_and_query_pages[/test_vega?sql=select+*+from+t-True] PASSED [ 60%]
+tests/test_vega.py::test_assets_included_on_table_and_query_pages[/test_vega/t/1-False] PASSED [ 80%]
+tests/test_vega.py::test_assets_included_on_table_and_query_pages[/test_vega-False] PASSED [100%]
+
+--------------------------------- JSON report ----------------------------------
+report saved to: /home/runner/work/ready-for-datasette/ready-for-datasette/staged-results/datasette-vega/datasette-1.0a44/runs/20261128T075722Z-gh-46123513390-a1/.pytest-report.json
+============================== 5 passed in 0.62s ===============================
